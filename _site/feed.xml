@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T19:41:30+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T21:46:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -118,6 +118,40 @@ public class mysqltest {
     }
 }
 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;外部配置信息建立连接&quot;&gt;外部配置信息建立连接&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;在resource下新建文件mysqlproperties&quot;&gt;在resource下新建文件&lt;code&gt;mysql.properties&lt;/code&gt;&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;driver=com.mysql.cj.jdbc.Driver
+url=jdbc:mysql://localhost:3306/cov
+user=admin
+password=admin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;配置文件读取&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;Properties properties = new Properties();
+        FileInputStream inputStream = new FileInputStream(&quot;resource/mysql.properties&quot;);  //注意路径
+        properties.load(inputStream);
+
+        String driver = properties.getProperty(&quot;driver&quot;);
+        String url = properties.getProperty(&quot;url&quot;);
+        String user = properties.getProperty(&quot;user&quot;);
+        String pwd=properties.getProperty(&quot;password&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;获取配置信息更好方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;//通过反射
+InputStream inputStream = this(当前类的Class对象).getResourceAsStream(&quot;/mysql.properties&quot;); 
 &lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="jdbc笔记" /><summary type="html">jdbc笔记</summary></entry><entry><title type="html">sql-server复习</title><link href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/" rel="alternate" type="text/html" title="sql-server复习" /><published>2020-05-02T00:00:00+08:00</published><updated>2020-05-02T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">&lt;h2 id=&quot;sql-server复习一&quot;&gt;sql-server复习一&lt;/h2&gt;
 
 &lt;ul&gt;
