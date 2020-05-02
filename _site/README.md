@@ -8,7 +8,7 @@
 
 - Address: **SiChuan LuZhou China**
 - Phone: **+86 17378993771**
-- Site: **<https://www.ido.top>**
+- Site: **<https://www.imod.top>**
 
 <!-- slide vertical=true -->
 
