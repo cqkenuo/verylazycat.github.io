@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T16:37:00+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T16:47:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -18,7 +18,7 @@
 
 &lt;h4 id=&quot;jdbc双层架构&quot;&gt;jdbc双层架构&lt;/h4&gt;
 
-&lt;h4&gt;&lt;img src=&quot;../img/jdbc1.png&quot; alt=&quot;jdbc1&quot; /&gt;&lt;/h4&gt;
+&lt;h4&gt;&lt;img src=&quot;/img/jdbc1.png&quot; alt=&quot;jdbc1&quot; /&gt;&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;作用：此架构中，Java Applet 或应用直接访问数据源。&lt;/li&gt;
@@ -29,7 +29,7 @@
 
 &lt;hr /&gt;
 
-&lt;p&gt;jdbc三层架构&lt;img src=&quot;../img/jdbc2.png&quot; alt=&quot;jdbc2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;jdbc三层架构&lt;img src=&quot;/img/jdbc2.png&quot; alt=&quot;jdbc2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;侧架构特殊之处在于，引入中间层服务.&lt;/p&gt;
 
