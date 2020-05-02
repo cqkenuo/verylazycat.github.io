@@ -15,7 +15,7 @@
 - E-mail:
   - **[outlook](mailto:verylazycat@outlook.com)**
   - **[QQ](mailto:1647495684@qq.com)**
-- WeChat: **---**
+- WeChat: **wxid_yulfdob67t9322**
 - QQ: **1647495684**
 
 <!-- slide -->
@@ -24,7 +24,7 @@
 
 <!-- slide vertical=true -->
 
-
+XHU university
 
 <!-- slide -->
 
@@ -32,7 +32,8 @@
 
 <!-- slide vertical=true -->
 
-
+- Simple unmanned system design
+- Driver assistance system design
 
 <!-- slide -->
 
@@ -52,7 +53,12 @@
 
 <!-- slide vertical=true -->
 
-
+- C/C++
+- java
+- java web
+- web penetration
+- Machine learning
+- The data analysis
 
 <!-- slide vertical=true -->
 
