@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>标签 | imod</title>
+<title>jdbc笔记 | imod</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="标签" />
+<meta property="og:title" content="jdbc笔记" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat &lt;iframe src=”” width=100% height=52 frameborder=”no” border=”0” marginwidth=”0” marginheight=”0” &lt;/iframe&gt;" />
-<meta property="og:description" content="lazycat &lt;iframe src=”” width=100% height=52 frameborder=”no” border=”0” marginwidth=”0” marginheight=”0” &lt;/iframe&gt;" />
-<link rel="canonical" href="http://localhost:4000/tags/" />
-<meta property="og:url" content="http://localhost:4000/tags/" />
+<meta name="description" content="jdbc笔记" />
+<meta property="og:description" content="jdbc笔记" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/" />
 <meta property="og:site_name" content="imod" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-02T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/tags/","headline":"标签","description":"lazycat &lt;iframe src=”” width=100% height=52 frameborder=”no” border=”0” marginwidth=”0” marginheight=”0” &lt;/iframe&gt;","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/","headline":"jdbc笔记","dateModified":"2020-05-02T00:00:00+08:00","datePublished":"2020-05-02T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/"},"description":"jdbc笔记","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -211,7 +213,7 @@
   <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
   <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"
-    checked />
+     />
   <!-- Toggleable sidebar -->
   <div class="sidebar" id="sidebar">
     
@@ -250,7 +252,7 @@
         <i class="fas fa-comments fa-fw"></i> 留言
       </a>
       
-      <a class="sidebar-nav-item active" href="/tags/">
+      <a class="sidebar-nav-item" href="/tags/">
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
@@ -555,7 +557,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    标签
+    jdbc笔记
     <a href="http://localhost:4000/" title="Home">
       <small>
         imod
@@ -566,51 +568,166 @@
 </div>
 
 <div class="container content">
-  <p>文章标签分类较多，可在侧边栏的目录中快速定位~</p>
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    02 May 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    1331字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    5分
+    
+    
+    <span class="leancloud-visitors" data-xid="/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/" data-flag-title="jdbc笔记">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    dbc笔记
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>（除特别声明或转载文章外）
+
+    
+  </span>
+  <h2 id="jdbc笔记">jdbc笔记</h2>
+
+<h4 id="jdbc双层架构">jdbc双层架构</h4>
+
+<h4><img src="../img/jdbc1.png" alt="jdbc1" /></h4>
+
+<ul>
+  <li>作用：此架构中，Java Applet 或应用直接访问数据源。</li>
+  <li>条件:要求 Driver 能与访问的数据库交互</li>
+  <li>机制:用户命令传给数据库或其他数据源，随之结果被返回。</li>
+  <li>部署:数据源可以在另一台机器上，用户通过网络连接，称为 C/S配置（可以是内联网或互联网）</li>
+</ul>
+
+<hr />
+
+<p>jdbc三层架构<img src="../img/jdbc2.png" alt="jdbc2" /></p>
+
+<p>侧架构特殊之处在于，引入中间层服务.</p>
+
+<p>流程：命令和结构都会经过该层。</p>
+
+<p>吸引：可以增加企业数据的访问控制，以及多种类型的更新；另外，也可简化应用的部署，并在多数情况下有性能优势。</p>
+
+<p>历史趋势： 以往，因性能问题，中间层都用 C 或 C++ 编写，随着优化编译器（将 Java 字节码 转为 高效的  特定机器码）和技术的发展，如EJB，Java 开始用于中间层的开发这也让 Java 的优势突显出现出来，使用 Java  作为服务器代码语言，JDBC随之被重视。</p>
+
+<hr />
+
+<h4 id="步骤">步骤</h4>
+
+<ul>
+  <li>加载驱动</li>
+</ul>
+
+<pre><code class="language-java">Class.forName("com.mysql.cj.jdbc.Driver");
+</code></pre>
+
+<ul>
+  <li>建立连接</li>
+</ul>
+
+<pre><code class="language-java">Connection  conn = DriverManager.getConnection(URL,USER,PASSWORD);
+</code></pre>
+
+<ul>
+  <li>执行sql</li>
+</ul>
+
+<pre><code class="language-java">String sql = "select * from details";
+注意没有分号
+</code></pre>
+
+<ul>
+  <li>结果</li>
+</ul>
+
+<pre><code class="language-java">while(rs.next()){
+                    System.out.println(rs.getString("字段"));
+                }
+</code></pre>
+
+<ul>
+  <li>释放资源</li>
+</ul>
+
+<pre><code class="language-java">rs.close();
+conn.close();
+</code></pre>
+
+<hr />
+
+<pre><code class="language-java">import java.sql.*;
+
+public class mysqltest {
+    public static final String URL = "jdbc:mysql://localhost:3306/cov";
+    public static  final  String USER = "admin";
+    public static final String PASSWORD = "admin";
+    public static void main(String[] args) {
+       //加载驱动
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = null;
+            try {
+                conn = DriverManager.getConnection(URL,USER,PASSWORD);
+                System.out.println("连接成功");
+                Statement statement = conn.createStatement();
+                String sql = "select * from details";
+                ResultSet rs;
+                rs = statement.executeQuery(sql);
+                while(rs.next()){
+                    System.out.println(rs.getString("city"));
+                }
+                rs.close();
+                conn.close();
+            } catch (SQLException throwables) {
+                System.out.println("连接失败");
+                throwables.printStackTrace();
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("驱动加载失败");
+            e.printStackTrace();
+        }
+    }
+}
+
+</code></pre>
 
 
-<div class="mermaid">
-  pie
-  
-  
-  "软件工程理论与实践" : 1
-  
-  "dbc笔记" : 1
-  
 </div>
-
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  软件工程理论与实践
-</h2>
-<ul>
-  
-  <li>
-    <small>26 Apr 2020</small>
-    <a href="http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/">软件工程理论与实践（三）</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  dbc笔记
-</h2>
-<ul>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-</ul>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
 </div>
   </div>
