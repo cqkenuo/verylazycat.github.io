@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T16:32:48+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T16:37:00+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -118,7 +118,7 @@ public class mysqltest {
     }
 }
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="dbc笔记" /><summary type="html">jdbc笔记</summary></entry><entry><title type="html">软件工程理论与实践（三）</title><link href="http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/" rel="alternate" type="text/html" title="软件工程理论与实践（三）" /><published>2020-04-26T00:00:00+08:00</published><updated>2020-04-26T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5(%E4%B8%89)</id><content type="html" xml:base="http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/">&lt;h2 id=&quot;uml-中活动图是在用在生命周期中的哪个阶段的用来做什么的有几个图形符号画出来它们表示什么含义&quot;&gt;UML 中活动图是在用在生命周期中的哪个阶段的、用来做什么的、有几个图形符号(画出来)、它们表示什么含义&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="jdbc笔记" /><summary type="html">jdbc笔记</summary></entry><entry><title type="html">软件工程理论与实践（三）</title><link href="http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/" rel="alternate" type="text/html" title="软件工程理论与实践（三）" /><published>2020-04-26T00:00:00+08:00</published><updated>2020-04-26T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5(%E4%B8%89)</id><content type="html" xml:base="http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/">&lt;h2 id=&quot;uml-中活动图是在用在生命周期中的哪个阶段的用来做什么的有几个图形符号画出来它们表示什么含义&quot;&gt;UML 中活动图是在用在生命周期中的哪个阶段的、用来做什么的、有几个图形符号(画出来)、它们表示什么含义&lt;/h2&gt;
 
 &lt;p&gt;活动图在用例规约阶段，用来写用例的流程（主流程、备选流程），有六个符号：&lt;/p&gt;
 
