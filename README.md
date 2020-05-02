@@ -32,8 +32,9 @@ XHU university
 
 <!-- slide vertical=true -->
 
-- Simple unmanned system design
-- Driver assistance system design
+- Simple Unmanned System Design
+- Driver Assistance System Design
+- Coronavirus PneumoniaData Visualization
 
 <!-- slide -->
 
@@ -41,6 +42,7 @@ XHU university
 
 <!-- slide vertical=true -->
 
+- 爱奔杯
 
 
 <!-- slide vertical=true -->
@@ -68,7 +70,7 @@ XHU university
 
 ## 我的一些领导力
 
-
+深度学习模型分享(QQ群:923763720)
 
 <!-- slide -->
 
