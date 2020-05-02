@@ -1,7 +1,7 @@
 ---
 layout: tags
 title: 标签
-jekyll-theme-WuK:
+jekyll-theme-lazycat:
   sidebar_open: true
 ---
 
