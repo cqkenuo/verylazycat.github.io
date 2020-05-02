@@ -42,8 +42,10 @@ XHU university
 
 <!-- slide vertical=true -->
 
-- 爱奔杯
 
+
+- 爱奔杯
+- 
 
 <!-- slide vertical=true -->
 
@@ -70,9 +72,9 @@ XHU university
 
 ## 我的一些领导力
 
-深度学习模型分享(QQ群:923763720)
-
 <!-- slide -->
+
+- 深度学习模型分享(QQ群:923763720)
 
 ## 我的一些文字
 
