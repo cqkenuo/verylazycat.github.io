@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T14:44:46+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">wu-kan</title><subtitle>lazycat&lt;br/&gt;
+&lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
+  &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
+&lt;/a&gt;
+&lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
+  &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
+&lt;/a&gt;
+&lt;iframe
+  src=&quot;&quot;
+  width=100%
+  height=52
+  frameborder=&quot;no&quot;
+  border=&quot;0&quot;
+  marginwidth=&quot;0&quot;
+  marginheight=&quot;0&quot;
+&gt;&lt;/iframe&gt;
+</subtitle><entry><title type="html">软件工程理论与实践（三）</title><link href="http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/" rel="alternate" type="text/html" title="软件工程理论与实践（三）" /><published>2020-04-26T00:00:00+08:00</published><updated>2020-04-26T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5(%E4%B8%89)</id><content type="html" xml:base="http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/">&lt;h2 id=&quot;uml-中活动图是在用在生命周期中的哪个阶段的用来做什么的有几个图形符号画出来它们表示什么含义&quot;&gt;UML 中活动图是在用在生命周期中的哪个阶段的、用来做什么的、有几个图形符号(画出来)、它们表示什么含义&lt;/h2&gt;
+
+&lt;p&gt;活动图在用例规约阶段，用来写用例的流程（主流程、备选流程），有六个符号：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;实心圆圈：表示开始节点与结束节点&lt;/li&gt;
+  &lt;li&gt;圆边矩形：表示 state&lt;/li&gt;
+  &lt;li&gt;圆角矩形：表示 state&lt;/li&gt;
+  &lt;li&gt;实心条：表示同步&lt;/li&gt;
+  &lt;li&gt;缺角矩形：表示注释&lt;/li&gt;
+  &lt;li&gt;菱形：表示判断&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;根据你自己的理解uml-对于软件项目的成功有什么价值写出-3-5-条&quot;&gt;根据你自己的理解，UML 对于软件项目的成功有什么价值？（写出 3-5 条）&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;把抽象的项目需求转换为直白的模型&lt;/li&gt;
+  &lt;li&gt;可以清楚地把项目表现给客户&lt;/li&gt;
+  &lt;li&gt;便于后期维护&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;画完用例图你要进行复审一般你检查哪些内容写出-3-5-条&quot;&gt;画完用例图，你要进行复审，一般你检查哪些内容？（写出 3-5 条）&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;所有用例是否出现&lt;/li&gt;
+  &lt;li&gt;关系的对应关系是否正确&lt;/li&gt;
+  &lt;li&gt;是否表达清晰&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;actor-表示角色其是外部环境怎样理解&quot;&gt;Actor 表示角色，其是“外部环境”，怎样理解&lt;/h2&gt;
+
+&lt;p&gt;Actor 是指系统外的，在使用系统或与系统交互中所扮演的角色，所以不是系统内部的，算是外部条件&lt;/p&gt;</content><author><name></name></author><category term="软件工程理论与实践" /><summary type="html">UML 中活动图是在用在生命周期中的哪个阶段的、用来做什么的、有几个图形符号(画出来)、它们表示什么含义 活动图在用例规约阶段，用来写用例的流程（主流程、备选流程），有六个符号： 实心圆圈：表示开始节点与结束节点 圆边矩形：表示 state 圆角矩形：表示 state 实心条：表示同步 缺角矩形：表示注释 菱形：表示判断 根据你自己的理解，UML 对于软件项目的成功有什么价值？（写出 3-5 条） 把抽象的项目需求转换为直白的模型 可以清楚地把项目表现给客户 便于后期维护 画完用例图，你要进行复审，一般你检查哪些内容？（写出 3-5 条） 所有用例是否出现 关系的对应关系是否正确 是否表达清晰 Actor 表示角色，其是“外部环境”，怎样理解 Actor 是指系统外的，在使用系统或与系统交互中所扮演的角色，所以不是系统内部的，算是外部条件</summary></entry></feed>
