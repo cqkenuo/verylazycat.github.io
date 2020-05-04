@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-03T12:18:23+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-04T15:06:10+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -14,7 +14,365 @@
   marginwidth=&quot;0&quot;
   marginheight=&quot;0&quot;
 &gt;&lt;/iframe&gt;
-</subtitle><entry><title type="html">jdbc笔记</title><link href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="jdbc笔记" /><published>2020-05-02T00:00:00+08:00</published><updated>2020-05-02T00:00:00+08:00</updated><id>http://localhost:4000/_posts/jdbc%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;jdbc笔记&quot;&gt;jdbc笔记&lt;/h2&gt;
+</subtitle><entry><title type="html">数据结构－线性表</title><link href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="alternate" type="text/html" title="数据结构－线性表" /><published>2020-05-04T00:00:00+08:00</published><updated>2020-05-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">&lt;h4 id=&quot;创建线性表和链表实现表之间的链接并去掉重复&quot;&gt;创建线性表和链表，实现表之间的链接，并去掉重复&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;error.h&amp;gt;
+
+//数据类型声明
+typedef int DataType;
+
+//顺序表实现
+//顺序表结构定义
+typedef struct orderList
+{
+    DataType *value;//数据
+    size_t size;//当前数据大小
+    size_t max;//最大存储容量
+}orderList;
+
+//创建orderList
+orderList *CreateOrderList(void)
+{
+    orderList *list = NULL;
+    list = malloc(sizeof(orderList *));
+    if (list == NULL)
+    {
+        perror(&quot;malloc:&quot;);
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        printf(&quot;顺序表创建成功!,adress:%p\n&quot;,list);
+        printf(&quot;---------------------------------------\n&quot;);
+        return list;
+    }
+}
+
+//orderList 初始化
+//max : 最大长度
+int OrderListInit(orderList *list,size_t max)
+{
+    list-&amp;gt;value = malloc(sizeof(DataType) * max);
+    if (list-&amp;gt;value == NULL)
+    {
+        perror(&quot;malloc&quot;);
+        // exit(EXIT_FAILURE);
+        return -1;
+    }
+    list-&amp;gt;size = 0;
+    list-&amp;gt;max = max;
+    return 1;
+}
+
+//顺序表插入值，当插入-1退出
+//有缺陷，不能插入-1
+void InsertOrderList(orderList *list)
+{
+    if (list == NULL)
+    {
+        printf(&quot;list is not create or init \n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    printf(&quot;Enter the value you want,while enter -1 exit:\n&quot;);
+    //计数，是否达到上限
+    DataType temp = 0;
+    for ( int i = 0; i &amp;lt; list-&amp;gt;max; i++)
+    {
+        scanf(&quot;%d&quot;,&amp;amp;temp);
+        if (temp == -1)
+        {
+            printf(&quot;exit\n&quot;);
+            printf(&quot;---------------------------------------\n&quot;);
+            break;            
+        }
+        list-&amp;gt;value[i] =  temp;
+        list-&amp;gt;size++;
+    }
+}
+
+//打印
+void DisplayOrderList(orderList *list)
+{
+    if (list == NULL)
+    {
+        printf(&quot;list is not create or init \n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    for (int  i = 0; i &amp;lt; list-&amp;gt;size; i++)
+    {
+        printf(&quot;value:%d\tsize:%ld,max:%ld\taddress:%p\n&quot;,list-&amp;gt;value[i], list-&amp;gt;size,list-&amp;gt;max,&amp;amp;list-&amp;gt;value[i]);
+    }
+    printf(&quot;---------------------------------------\n&quot;);
+}
+
+//链接两个线性表
+
+orderList *linkTwoOrderList(orderList *listDes,orderList *listFrom)
+{
+    //先判断输入是否合法
+    if (listDes == NULL)
+    {
+        printf(&quot;listDes is not create or init \n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    if (listFrom == NULL)
+    {
+        printf(&quot;listFrom is not create or init \n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    orderList *list = NULL;
+    list = malloc(sizeof(orderList *));
+    if (list == NULL)
+    {
+        printf(&quot;listFrom is not create or init \n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    list-&amp;gt;max = listDes-&amp;gt;max + listFrom-&amp;gt;max;
+    list-&amp;gt;value = malloc(sizeof(DataType)*list-&amp;gt;max);
+    list-&amp;gt;size = 0;
+    if (list == NULL)
+    {
+        perror(&quot;malloc:&quot;);
+        exit(EXIT_FAILURE);
+    }
+    //两次循环，填充list
+    //注意顺序，from ---&amp;gt;&amp;gt; des
+    int temp = 0;
+    for (int  i = 0; i &amp;lt; listDes-&amp;gt;size; i++,temp ++)
+    {
+        list-&amp;gt;value[i] = listDes-&amp;gt;value[i];
+        list-&amp;gt;size ++;
+    }
+    for (int  i = 0; i &amp;lt; listFrom-&amp;gt;size; i++,temp++)
+    {
+        list-&amp;gt;value[temp] = listFrom-&amp;gt;value[i];
+        list-&amp;gt;size ++;
+    }
+    printf(&quot;链接成功\n&quot;);
+    return list;
+}
+//删除array某值
+//不越界情况下
+void DelArrayIndex(orderList *array,int size)
+{
+int i,j,k=0;
+    for(i=0;i&amp;lt;size;++i)
+    {
+        for(j=i+1;j&amp;lt;size &amp;amp;&amp;amp; array-&amp;gt;value[i]-array-&amp;gt;value[j];++j);
+        if(!(j-size))
+            array-&amp;gt;value[k++]=array-&amp;gt;value[i];
+    }
+    //调整array size
+    array-&amp;gt;size = k;
+}
+//去重
+orderList *RemoveRepeatValue(orderList *list)
+{
+    if (list == NULL)
+    {
+        printf(&quot;Invalid list\n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    DelArrayIndex(list,list-&amp;gt;size);
+    return list;
+}
+// -------------------------------------------------
+
+//单链表实现
+//node定义
+typedef struct listNode
+{
+    DataType value;
+    struct  listNode *next;
+}listNode;
+
+//list定义
+typedef struct List
+{
+    listNode *head;
+    listNode *tail;
+    size_t len;
+}List;
+
+//list创建
+List *CreateList(void )
+{
+    List *list  = NULL;
+    list = malloc(sizeof(List *));
+    if(list == NULL)
+    {
+        perror(&quot;malloc:&quot;);
+        exit(EXIT_FAILURE);
+    }
+    list-&amp;gt;head = NULL;
+    list-&amp;gt;tail = NULL;
+    list-&amp;gt;len = 0;
+    return list;
+}
+//尾插
+//.....
+//在表头插入节点
+int InserNode(List *dlist,DataType data)
+{
+    listNode *pNode = NULL;
+    pNode = malloc(sizeof(listNode *));
+    if (pNode == NULL)
+    {
+        perror(&quot;malloc&quot;);
+        return -1;
+    }
+    pNode-&amp;gt;value = data;
+    pNode-&amp;gt;next = NULL;
+    // pNode-&amp;gt;prev = NULL;
+
+    if (dlist-&amp;gt;len == 0)//表示当前链表无节点
+    {
+        dlist-&amp;gt;head = pNode;
+        dlist-&amp;gt;tail = pNode;
+    }
+    else//已有节点
+    {
+        pNode-&amp;gt;next = dlist-&amp;gt;head;
+        // dlist-&amp;gt;head-&amp;gt;prev = pNode;
+        dlist-&amp;gt;head = pNode;
+    }
+    dlist-&amp;gt;len ++;
+    return 0;
+}
+
+
+//print list
+void DisplayList(List *list)
+{
+    if(list == NULL)
+    {
+        perror(&quot;malloc:&quot;);
+        exit(EXIT_FAILURE);
+    }
+    if(list-&amp;gt;len == 0)
+    {
+        printf(&quot;list is Empty\n&quot;);
+        exit(EXIT_SUCCESS);
+    }
+    listNode *temp = list-&amp;gt;head;//一定不要直接操作list,要间接操作!!!!!!
+    for (int i = 0; i &amp;lt; list-&amp;gt;len; i++)
+    {
+        printf(&quot;value=%d\tadress=%p\tnextAdress=%p\n&quot;,temp-&amp;gt;value,temp,temp-&amp;gt;next);
+        //交换
+        temp = temp-&amp;gt;next;
+    }
+}
+//链接
+List  *linkTwoList(List *desList,List *fromList)
+{
+    if(desList == NULL || fromList == NULL)
+    {
+        printf(&quot;Invalid List\n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    List *list = NULL;
+    list = malloc(sizeof(List *));
+    if(list == NULL)
+    {
+        perror(&quot;malloc:&quot;);
+        exit(EXIT_FAILURE);
+    }
+    list-&amp;gt;len = desList-&amp;gt;len + fromList-&amp;gt;len;
+    list-&amp;gt;head = desList-&amp;gt;head;
+    desList-&amp;gt;tail-&amp;gt;next = fromList-&amp;gt;head;
+    list-&amp;gt;tail = fromList-&amp;gt;tail;
+    return list;
+}
+
+void pur_LinkList(List *L){
+	listNode *p,*s,*q;
+	p=L-&amp;gt;head-&amp;gt;next;
+	if(!p)	
+        return;
+	while(p)
+	{
+        //固定p所指结点，向后遍历，寻找与之数据域相同的结点
+		q=p;
+		while(q-&amp;gt;next)				
+		{
+            //在这里将q-&amp;gt;next所指的结点存放数据与p作比较
+			if(q-&amp;gt;next-&amp;gt;value==p-&amp;gt;value)	
+			{
+				s=q-&amp;gt;next;
+				q-&amp;gt;next=s-&amp;gt;next;
+				free(s);
+                L-&amp;gt;len --;
+			}
+			else q=q-&amp;gt;next;
+		}
+		p=p-&amp;gt;next;
+	}
+}
+
+// #define __BUILD_OderList__
+#define __BUILD_List_
+int main(int argc, char const *argv[])
+{
+    #ifdef __BUILD_OderList__
+    //创建
+    orderList *listOne = CreateOrderList();
+    orderList *listTwo = CreateOrderList();
+    orderList *listTree = CreateOrderList();
+    //init
+    printf(&quot;orderOne:&quot;);
+    OrderListInit(listOne,5);
+    //插入
+    InsertOrderList(listOne);
+    printf(&quot;orderTwo:&quot;);
+    OrderListInit(listTwo,5);
+    InsertOrderList(listTwo);
+    //printf
+    DisplayOrderList(listOne);
+    DisplayOrderList(listTwo);
+    //链接
+    listTree = linkTwoOrderList(listOne,listTwo);
+    printf(&quot;listOne 链接 listTwo:\n&quot;);
+    DisplayOrderList(listTree);
+    //去重
+    listTree = RemoveRepeatValue(listTree);
+    printf(&quot;去掉重复元素:\n&quot;);
+    DisplayOrderList(listTree);
+    #endif    
+    //--------------------------------
+    #ifdef  __BUILD_List_
+    List *listOne = CreateList();
+    List *listTwo = CreateList();
+    List *listThres = CreateList();
+    //插值
+    InserNode(listOne,1);
+    InserNode(listOne,1);
+    InserNode(listOne,0);
+    //插值
+    InserNode(listTwo,4);
+    InserNode(listTwo,3);
+    InserNode(listTwo,2);
+    printf(&quot;初始化完成\n&quot;);
+    printf(&quot;listOne:\n&quot;);
+    DisplayList(listOne);
+    printf(&quot;-----------------------------------\n&quot;);
+    printf(&quot;listTwo:\n&quot;);
+    DisplayList(listTwo);
+    printf(&quot;-----------------------------------\n&quot;);
+    listThres = linkTwoList(listOne,listTwo);
+    printf(&quot;链接成功:\n&quot;);
+    DisplayList(listThres);
+    printf(&quot;-----------------------------------\n&quot;);
+    pur_LinkList(listThres);
+    printf(&quot;去重成功:\n&quot;);
+    DisplayList(listThres);
+    #endif
+    
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="数据结构" /><summary type="html">创建线性表和链表，实现表之间的链接，并去掉重复</summary></entry><entry><title type="html">jdbc笔记</title><link href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="jdbc笔记" /><published>2020-05-02T00:00:00+08:00</published><updated>2020-05-02T00:00:00+08:00</updated><id>http://localhost:4000/_posts/jdbc%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;jdbc笔记&quot;&gt;jdbc笔记&lt;/h2&gt;
 
 &lt;h4 id=&quot;jdbc双层架构&quot;&gt;jdbc双层架构&lt;/h4&gt;
 
