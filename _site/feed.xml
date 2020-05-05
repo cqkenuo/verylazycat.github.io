@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-04T19:59:51+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-05T15:48:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -14,7 +14,23 @@
   marginwidth=&quot;0&quot;
   marginheight=&quot;0&quot;
 &gt;&lt;/iframe&gt;
-</subtitle><entry><title type="html">数据结构－线性表</title><link href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="alternate" type="text/html" title="数据结构－线性表" /><published>2020-05-04T00:00:00+08:00</published><updated>2020-05-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">&lt;h4 id=&quot;创建线性表和链表实现表之间的链接并去掉重复&quot;&gt;创建线性表和链表，实现表之间的链接，并去掉重复&lt;/h4&gt;
+</subtitle><entry><title type="html">JDK &amp;amp; JRE</title><link href="http://localhost:4000/_posts/2020-05-05-JRE&JDK/" rel="alternate" type="text/html" title="JDK &amp; JRE" /><published>2020-05-05T00:00:00+08:00</published><updated>2020-05-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/JRE&amp;JDK</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-05-JRE&amp;JDK/">&lt;p&gt;&lt;code&gt;JDK&lt;/code&gt; &amp;amp; &lt;code&gt;JRE&lt;/code&gt;区别&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;JRE&lt;/code&gt;:Java RunTime Environment&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;JDK&lt;/code&gt;:Java Development Kit&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;JRE顾名思义是java运行时环境，包含了java虚拟机，java基础类库。是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;JDK顾名思义是java开发工具包，是程序员使用java语言编写java程序所需的开发工具包，是提供给程序员使用的。JDK包含了JRE，同时还包含了编译java源码的编译器&lt;code&gt;javac&lt;/code&gt;，还包含了很多java程序调试和分析的工具：jconsole，jvisualvm等工具软件，还包含了java程序编写所需的文档和demo例子程序。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/jdk&amp;amp;jre.png&quot; alt=&quot;jdk&amp;amp;jre&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">JDK &amp;amp; JRE区别</summary></entry><entry><title type="html">数据结构－线性表</title><link href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="alternate" type="text/html" title="数据结构－线性表" /><published>2020-05-04T00:00:00+08:00</published><updated>2020-05-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">&lt;h4 id=&quot;创建线性表和链表实现表之间的链接并去掉重复&quot;&gt;创建线性表和链表，实现表之间的链接，并去掉重复&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
 #include &amp;lt;stdlib.h&amp;gt;
@@ -510,7 +526,7 @@ password=admin
 
 &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;//通过反射
 InputStream inputStream = this(当前类的Class对象).getResourceAsStream(&quot;/mysql.properties&quot;); 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="jdbc笔记" /><summary type="html">jdbc笔记</summary></entry><entry><title type="html">sql-server复习</title><link href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/" rel="alternate" type="text/html" title="sql-server复习" /><published>2020-05-02T00:00:00+08:00</published><updated>2020-05-02T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">&lt;h2 id=&quot;sql-server复习一&quot;&gt;sql-server复习一&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">jdbc笔记</summary></entry><entry><title type="html">sql-server复习</title><link href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/" rel="alternate" type="text/html" title="sql-server复习" /><published>2020-05-02T00:00:00+08:00</published><updated>2020-05-02T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">&lt;h2 id=&quot;sql-server复习一&quot;&gt;sql-server复习一&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;

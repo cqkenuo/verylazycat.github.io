@@ -58,16 +58,18 @@ XHU university
 
 <!-- slide vertical=true -->
 
+- linux
+- git
+- markdown
+
+<!-- slide vertical=true -->
+
 - C/C++
 - java
 - java web
 - web penetration
 - Machine learning
 - The data analysis
-
-<!-- slide vertical=true -->
-
-
 
 <!-- slide -->
 
