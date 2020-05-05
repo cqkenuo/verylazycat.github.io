@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-05T15:48:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-05T16:51:48+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -14,7 +14,11 @@
   marginwidth=&quot;0&quot;
   marginheight=&quot;0&quot;
 &gt;&lt;/iframe&gt;
-</subtitle><entry><title type="html">JDK &amp;amp; JRE</title><link href="http://localhost:4000/_posts/2020-05-05-JRE&JDK/" rel="alternate" type="text/html" title="JDK &amp; JRE" /><published>2020-05-05T00:00:00+08:00</published><updated>2020-05-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/JRE&amp;JDK</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-05-JRE&amp;JDK/">&lt;p&gt;&lt;code&gt;JDK&lt;/code&gt; &amp;amp; &lt;code&gt;JRE&lt;/code&gt;区别&lt;/p&gt;
+</subtitle><entry><title type="html">JAVA一些问题</title><link href="http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" rel="alternate" type="text/html" title="JAVA一些问题" /><published>2020-05-05T00:00:00+08:00</published><updated>2020-05-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;jdk--jre区别&quot;&gt;&lt;code&gt;JDK&lt;/code&gt; &amp;amp; &lt;code&gt;JRE&lt;/code&gt;区别&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr /&gt;
 
@@ -30,7 +34,167 @@
 
 &lt;p&gt;JDK顾名思义是java开发工具包，是程序员使用java语言编写java程序所需的开发工具包，是提供给程序员使用的。JDK包含了JRE，同时还包含了编译java源码的编译器&lt;code&gt;javac&lt;/code&gt;，还包含了很多java程序调试和分析的工具：jconsole，jvisualvm等工具软件，还包含了java程序编写所需的文档和demo例子程序。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/jdk&amp;amp;jre.png&quot; alt=&quot;jdk&amp;amp;jre&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">JDK &amp;amp; JRE区别</summary></entry><entry><title type="html">数据结构－线性表</title><link href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="alternate" type="text/html" title="数据结构－线性表" /><published>2020-05-04T00:00:00+08:00</published><updated>2020-05-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">&lt;h4 id=&quot;创建线性表和链表实现表之间的链接并去掉重复&quot;&gt;创建线性表和链表，实现表之间的链接，并去掉重复&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/img/jdk&amp;amp;jre.png&quot; alt=&quot;jdk&amp;amp;jre&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;-和equals区别&quot;&gt;&lt;code&gt;==&lt;/code&gt; 和&lt;code&gt;equals&lt;/code&gt;区别&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;==&lt;/code&gt;&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;基本类型:&lt;code&gt;==&lt;/code&gt;比较值是否相同&lt;/li&gt;
+      &lt;li&gt;引用类型:&lt;code&gt;==&lt;/code&gt;比较引用是否相同&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;String x = &quot;string&quot;;
+String y = &quot;string&quot;;
+String z = new String(&quot;string&quot;);
+System.out.println(x==y);  //true
+System.out.println(x==z);  //false
+System.out.println(x.equals(y));  //true
+System.out.println(x.equals(z));  //true
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;equals&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;String&lt;/code&gt;和&lt;code&gt;Integer&lt;/code&gt;重写了equals方法,默认&lt;code&gt;equals&lt;/code&gt;比较有相同值的对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;static class  Cat{
+        private  String name;
+        public Cat(String name){
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+    public static void main(String[] args) {
+        Cat cat1  = new Cat(&quot;one&quot;);
+        Cat cat2 = new Cat(&quot;one&quot;);
+        System.out.println(cat1.equals(cat2)); // false
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;equals源码 (本质就是&lt;code&gt;==&lt;/code&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public boolean equals(Object var1) {
+    return this == var1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;String 重写了&lt;code&gt;equals&lt;/code&gt;，源码如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public boolean equals(Object var1) {
+    if (this == var1) {
+        return true;
+    } else {
+        if (var1 instanceof String) {
+            String var2 = (String)var1;
+            int var3 = this.value.length;
+            if (var3 == var2.value.length) {
+                char[] var4 = this.value;
+                char[] var5 = var2.value;
+                for(int var6 = 0; var3-- != 0; ++var6) {
+                    if (var4[var6] != var5[var6]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;总结：&lt;code&gt;==&lt;/code&gt;用于值的比较,&lt;code&gt;equals&lt;/code&gt;用于引用的比较，不过String ,Integer等重写了&lt;code&gt;equals&lt;/code&gt;，所以一般情况下，&lt;code&gt;equals&lt;/code&gt;比较值是否相同&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;hashcode相同equals一定为true吗&quot;&gt;&lt;code&gt;hashcode&lt;/code&gt;相同,&lt;code&gt;equals&lt;/code&gt;一定为&lt;code&gt;true&lt;/code&gt;吗?&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;不一定，反例如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;String str1 = &quot;通话&quot;;
+String str2 = &quot;重地&quot;;
+//        str:1179395 | str2:1179395
+System.out.println(String.format(&quot;str:%d | str2:%d&quot;,str1.hashCode(),str2.hashCode()));
+//        false
+System.out.println(str1.equals(str2));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在散列表中，&lt;code&gt;hashcode&lt;/code&gt;相等则两个键值对的哈希值相等，然而哈希值相等，并不能得出键值对相等&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;final&quot;&gt;&lt;code&gt;final&lt;/code&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code&gt;final&lt;/code&gt;修饰的类叫最终类，，不能被继承&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;final&lt;/code&gt;修饰的方法不能被重写&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;final&lt;/code&gt;修饰的变量叫常量，必须被初始化，之后不能被修改&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;mathround-15值&quot;&gt;Math.round(-1.5)值&lt;/h2&gt;
+
+    &lt;p&gt;-1&lt;/p&gt;
+
+    &lt;p&gt;中间值0.5向右取&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;java基础数据类型&quot;&gt;Java基础数据类型&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;byte&lt;/li&gt;
+  &lt;li&gt;boolean&lt;/li&gt;
+  &lt;li&gt;char&lt;/li&gt;
+  &lt;li&gt;short&lt;/li&gt;
+  &lt;li&gt;int&lt;/li&gt;
+  &lt;li&gt;float&lt;/li&gt;
+  &lt;li&gt;long&lt;/li&gt;
+  &lt;li&gt;double&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;字符串操作类&quot;&gt;字符串操作类&lt;/h2&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;&lt;code&gt;String&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code&gt;StringBuffer&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code&gt;StringBuilder&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;p&gt;&lt;code&gt;String&lt;/code&gt;声明的是不可变的对象，每次操作都会产生新的&lt;code&gt;String&lt;/code&gt;对象，然后指针指向新的对象，&lt;code&gt;StringBuffer&lt;/code&gt;和&lt;code&gt;StringBuilder&lt;/code&gt;可以在原有的对象上操作．&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;StringBuffer&lt;/code&gt;和&lt;code&gt;StringBuilder&lt;/code&gt;区别：&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;StringBuffer&lt;/code&gt;是线程安全的，而&lt;code&gt;StringBuilder&lt;/code&gt;是非线程安全的，但是&lt;code&gt;StringBuilder&lt;/code&gt;性能高于&lt;code&gt;SringBuffer&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">JDK &amp;amp; JRE区别</summary></entry><entry><title type="html">数据结构－线性表</title><link href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="alternate" type="text/html" title="数据结构－线性表" /><published>2020-05-04T00:00:00+08:00</published><updated>2020-05-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">&lt;h4 id=&quot;创建线性表和链表实现表之间的链接并去掉重复&quot;&gt;创建线性表和链表，实现表之间的链接，并去掉重复&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
 #include &amp;lt;stdlib.h&amp;gt;
