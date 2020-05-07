@@ -2,12 +2,30 @@
 [
   
     {
-      "title"    : "JAVA一些问题",
+      "title"    : "新型冠状肺炎数据可视化",
+      "category" : "",
+      "tags"     : "数据可视化",
+      "date"     : "2020-05-06 00:00:00 +0800",
+      
+      "url"      : "http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"
+    } ,
+  
+    {
+      "title"    : "JAVA一些问题二",
       "category" : "",
       "tags"     : "JAVA",
       "date"     : "2020-05-05 00:00:00 +0800",
       
-      "url"      : "http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"
+      "url"      : "http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BA%8C/"
+    } ,
+  
+    {
+      "title"    : "JAVA一些问题一",
+      "category" : "",
+      "tags"     : "JAVA",
+      "date"     : "2020-05-05 00:00:00 +0800",
+      
+      "url"      : "http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%80/"
     } ,
   
     {
@@ -35,15 +53,6 @@
       "date"     : "2020-05-02 00:00:00 +0800",
       
       "url"      : "http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/"
-    } ,
-  
-    {
-      "title"    : "软件工程理论与实践（三）",
-      "category" : "",
-      "tags"     : "软件工程理论与实践",
-      "date"     : "2020-04-26 00:00:00 +0800",
-      
-      "url"      : "http://localhost:4000/_posts/2020-04-26-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E4%B8%89/"
     } 
   
   ,
