@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-08T13:36:04+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-08T21:59:05+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -14,7 +14,464 @@
   marginwidth=&quot;0&quot;
   marginheight=&quot;0&quot;
 &gt;&lt;/iframe&gt;
-</subtitle><entry><title type="html">git常用命令</title><link href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="git常用命令" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">&lt;p&gt;&lt;img src=&quot;/img/git.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
+</subtitle><entry><title type="html">BIO&amp;amp;NIO&amp;amp;AIO</title><link href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/" rel="alternate" type="text/html" title="BIO&amp;NIO&amp;AIO" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/BIO&amp;NIO&amp;AIO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-BIO&amp;NIO&amp;AIO/">&lt;p&gt;Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;同步与异步&quot;&gt;&lt;strong&gt;同步与异步&lt;/strong&gt;&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;同步：&lt;/strong&gt; 同步就是发起一个调用后，被调用者未处理完请求之前，调用不返回。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;异步：&lt;/strong&gt; 异步就是发起一个调用后，立刻得到被调用者的回应表示已接收到请求，但是被调用者并没有返回结果，此时我们可以处理其他的请求，被调用者通常依靠事件，回调等机制来通知调用者其返回结果&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;同步和异步的区别最大在于异步的调用者不需要等待处理结果，被调用者会通过回调等机制来通知调用者其返回结果&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;阻塞和非阻塞&quot;&gt;&lt;strong&gt;阻塞和非阻塞&lt;/strong&gt;&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;阻塞：&lt;/strong&gt; 阻塞就是发起一个请求，调用者一直等待请求结果返回，也就是当前线程会被挂起，无法从事其他任务，只有当条件就绪才能继续。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;非阻塞：&lt;/strong&gt; 非阻塞就是发起一个请求，调用者不用一直等着结果返回，可以先去干其他事情&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;bio-blocking-io&quot;&gt;BIO (Blocking I/O)&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;同步阻塞I/O模式，数据的读取写入必须阻塞在一个线程内等待其完成&lt;/p&gt;
+
+&lt;h4 id=&quot;传统-bio&quot;&gt;传统 BIO&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/BIO.png&quot; alt=&quot;BIO&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;采用 &lt;strong&gt;BIO 通信模型&lt;/strong&gt; 的服务端，通常由一个独立的 Acceptor 线程负责监听客户端的连接。我们一般通过在 &lt;code&gt;while(true)&lt;/code&gt; 循环中服务端会调用 &lt;code&gt;accept()&lt;/code&gt; 方法等待接收客户端的连接的方式监听请求，请求一旦接收到一个连接请求，就可以建立通信套接字在这个通信套接字上进行读写操作，此时不能再接收其他客户端连接请求，只能等待同当前连接的客户端的操作执行完成， 不过可以通过多线程来支持多个客户端的连接，如上图所示。&lt;/p&gt;
+
+&lt;p&gt;如果要让 &lt;strong&gt;BIO 通信模型&lt;/strong&gt; 能够同时处理多个客户端请求，就必须使用多线程（主要原因是 &lt;code&gt;socket.accept()&lt;/code&gt;、 &lt;code&gt;socket.read()&lt;/code&gt;、 &lt;code&gt;socket.write()&lt;/code&gt; 涉及的三个主要函数都是同步阻塞的），也就是说它在接收到客户端连接请求之后为每个客户端创建一个新的线程进行链路处理，处理完成之后，通过输出流返回应答给客户端，线程销毁。这就是典型的 &lt;strong&gt;一请求一应答通信模型&lt;/strong&gt; 。我们可以设想一下如果这个连接不做任何事情的话就会造成不必要的线程开销，不过可以通过 &lt;strong&gt;线程池机制&lt;/strong&gt; 改善，线程池还可以让线程的创建和回收成本相对较低。使用&lt;code&gt;FixedThreadPool&lt;/code&gt; 可以有效的控制了线程的最大数量，保证了系统有限的资源的控制，实现了N(客户端请求数量):M(处理客户端请求的线程数量)的伪异步I/O模型（N 可以远远大于 M），下面一节”伪异步 BIO”中会详细介绍到。&lt;/p&gt;
+
+&lt;h4 id=&quot;我们再设想一下当客户端并发访问量增加后这种模型会出现什么问题&quot;&gt;&lt;strong&gt;我们再设想一下当客户端并发访问量增加后这种模型会出现什么问题？&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;在 Java 虚拟机中，线程是宝贵的资源，线程的创建和销毁成本很高，除此之外，线程的切换成本也是很高的。尤其在 Linux 这样的操作系统中，线程本质上就是一个进程，创建和销毁线程都是重量级的系统函数。如果并发访问量增加会导致线程数急剧膨胀可能会导致线程堆栈溢出、创建新线程失败等问题，最终导致进程宕机或者僵死，不能对外提供服务。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;伪异步-io&quot;&gt;伪异步 IO&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;为了解决同步阻塞I/O面临的一个链路需要一个线程处理的问题，后来有人对它的线程模型进行了优化一一一后端通过一个线程池来处理多个客户端的请求接入，形成客户端个数M：线程池最大线程数N的比例关系，其中M可以远远大于N.通过线程池可以灵活地调配线程资源，设置线程的最大值，防止由于海量并发接入导致线程耗尽&lt;/p&gt;
+
+&lt;p&gt;伪异步IO模型图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/伪异步io.png&quot; alt=&quot;伪异步io&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;采用线程池和任务队列可以实现一种叫做伪异步的 I/O 通信框架，它的模型图如上图所示。当有新的客户端接入时，将客户端的 Socket 封装成一个Task（该任务实现java.lang.Runnable接口）投递到后端的线程池中进行处理，JDK 的线程池维护一个消息队列和 N 个活跃线程，对消息队列中的任务进行处理。由于线程池可以设置消息队列的大小和最大线程数，因此，它的资源占用是可控的，无论多少个客户端并发访问，都不会导致资源的耗尽和宕机。&lt;/p&gt;
+
+&lt;p&gt;伪异步I/O通信框架采用了线程池实现，因此避免了为每个请求都创建一个独立线程造成的线程资源耗尽问题。不过因为它的底层任然是同步阻塞的BIO模型，因此无法从根本上解决问题。&lt;/p&gt;
+
+&lt;p&gt;在活动连接数不是特别高（小于单机1000）的情况下，这种模型是比较不错的，可以让每一个连接专注于自己的 I/O 并且编程模型简单，也不用过多考虑系统的过载、限流等问题。线程池本身就是一个天然的漏斗，可以缓冲一些系统处理不了的连接或请求。但是，当面对十万甚至百万级连接的时候，传统的 BIO 模型是无能为力的。因此，我们需要一种更高效的 I/O 处理模型来应对更高的并发量。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;nio-new-io&quot;&gt;NIO (New I/O)&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;NIO是一种同步非阻塞的I/O模型，在Java 1.4 中引入了NIO框架，对应 java.nio 包，提供了 Channel , Selector，Buffer等抽象。&lt;/p&gt;
+
+&lt;p&gt;NIO中的N可以理解为Non-blocking，不单纯是New。它支持面向缓冲的，基于通道的I/O操作方法。 NIO提供了与传统BIO模型中的 &lt;code&gt;Socket&lt;/code&gt; 和 &lt;code&gt;ServerSocket&lt;/code&gt; 相对应的 &lt;code&gt;SocketChannel&lt;/code&gt; 和 &lt;code&gt;ServerSocketChannel&lt;/code&gt; 两种不同的套接字通道实现,两种通道都支持阻塞和非阻塞两种模式。阻塞模式使用就像传统中的支持一样，比较简单，但是性能和可靠性都不好；非阻塞模式正好与之相反。对于低负载、低并发的应用程序，可以使用同步阻塞I/O来提升开发速率和更好的维护性；对于高负载、高并发的（网络）应用，应使用 NIO 的非阻塞模式来开发&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NIO的特性/NIO与IO区别&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;non-blocking-io非阻塞io&quot;&gt;Non-blocking IO（非阻塞IO）&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;IO流是阻塞的，NIO流是不阻塞的。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Java NIO使我们可以进行非阻塞IO操作。比如说，单线程中从通道读取数据到buffer，同时可以继续做别的事情，当数据读取到buffer中后，线程再继续处理数据。写数据也是一样的。另外，非阻塞写也是如此。一个线程请求写入一些数据到某通道，但不需要等待它完全写入，这个线程同时可以去做别的事情。&lt;/p&gt;
+
+&lt;p&gt;Java IO的各种流是阻塞的。这意味着，当一个线程调用 &lt;code&gt;read()&lt;/code&gt; 或 &lt;code&gt;write()&lt;/code&gt; 时，该线程被阻塞，直到有一些数据被读取，或数据完全写入。该线程在此期间不能再干任何事情了&lt;/p&gt;
+
+&lt;h4 id=&quot;buffer缓冲区&quot;&gt;Buffer(缓冲区)&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;IO 面向流(Stream oriented)，而 NIO 面向缓冲区(Buffer oriented)。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Buffer是一个对象，它包含一些要写入或者要读出的数据。在NIO类库中加入Buffer对象，体现了新库与原I/O的一个重要区别。在面向流的I/O中·可以将数据直接写入或者将数据直接读到 Stream 对象中。虽然 Stream 中也有 Buffer 开头的扩展类，但只是流的包装类，还是从流读到缓冲区，而 NIO 却是直接读到 Buffer 中进行操作。&lt;/p&gt;
+
+&lt;p&gt;在NIO厍中，所有数据都是用缓冲区处理的。在读取数据时，它是直接读到缓冲区中的; 在写入数据时，写入到缓冲区中。任何时候访问NIO中的数据，都是通过缓冲区进行操作。&lt;/p&gt;
+
+&lt;p&gt;最常用的缓冲区是 ByteBuffer,一个 ByteBuffer 提供了一组功能用于操作 byte 数组。除了ByteBuffer,还有其他的一些缓冲区，事实上，每一种Java基本类型（除了Boolean类型）都对应有一种缓冲区。&lt;/p&gt;
+
+&lt;h4 id=&quot;channel-通道&quot;&gt;Channel (通道)&lt;/h4&gt;
+
+&lt;p&gt;NIO 通过Channel（通道） 进行读写。&lt;/p&gt;
+
+&lt;p&gt;通道是双向的，可读也可写，而流的读写是单向的。无论读写，通道只能和Buffer交互。因为 Buffer，通道可以异步地读写。&lt;/p&gt;
+
+&lt;h4 id=&quot;selectors选择器&quot;&gt;Selectors(选择器)&lt;/h4&gt;
+
+&lt;p&gt;NIO有选择器，而IO没有。&lt;/p&gt;
+
+&lt;p&gt;选择器用于使用单个线程处理多个通道。因此，它需要较少的线程来处理这些通道。线程之间的切换对于操作系统来说是昂贵的。 因此，为了提高系统效率选择器是有用的。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;nio-读数据和写数据方式&quot;&gt;NIO 读数据和写数据方式&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;通常来说NIO中的所有IO都是从 Channel（通道） 开始的。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;从通道进行数据读取 ：创建一个缓冲区，然后请求通道读取数据。&lt;/li&gt;
+  &lt;li&gt;从通道进行数据写入 ：创建一个缓冲区，填充数据，并要求通道写入数据。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;数据读取和写入操作图示：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;channel&lt;/code&gt; —»»&lt;code&gt;buffer&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;channel&lt;/code&gt; ««—-&lt;code&gt;buffer&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;nio核心组件简单介绍&quot;&gt;NIO核心组件简单介绍&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;NIO 包含下面几个核心的组件：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Channel(通道)&lt;/li&gt;
+  &lt;li&gt;Buffer(缓冲区)&lt;/li&gt;
+  &lt;li&gt;Selector(选择器)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;整个NIO体系包含的类远远不止这三个，只能说这三个是NIO体系的“核心API”&lt;/p&gt;
+
+&lt;h2 id=&quot;aio-asynchronous-io&quot;&gt;AIO (Asynchronous I/O)&lt;/h2&gt;
+
+&lt;p&gt;AIO 也就是 NIO 2。在 Java 7 中引入了 NIO 的改进版 NIO 2,它是异步非阻塞的IO模型。异步 IO 是基于事件和回调机制实现的，也就是应用操作之后会直接返回，不会堵塞在那里，当后台处理完成，操作系统会通知相应的线程进行后续的操作。&lt;/p&gt;
+
+&lt;p&gt;AIO 是异步IO的缩写，虽然 NIO 在网络操作中，提供了非阻塞的方法，但是 NIO 的 IO 行为还是同步的。对于 NIO 来说，我们的业务线程是在 IO 操作准备好时，得到通知，接着就由这个线程自行进行 IO 操作，IO操作本身是同步的。（除了 AIO 其他的 IO 类型都是同步的，这一点可以从底层IO线程模型解释。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;从操作系统上理解&quot;&gt;从操作系统上理解&lt;/h4&gt;
+
+&lt;p&gt;考虑下面两种情况：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;用系统调用&lt;code&gt;read&lt;/code&gt;从socket里读取一段数据&lt;/li&gt;
+  &lt;li&gt;用系统调用&lt;code&gt;read&lt;/code&gt;从一个磁盘文件读取一段数据到内存&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于第一种情况，算作block，因为Linux无法知道网络上对方是否会发数据。如果没数据发过来，对于调用&lt;code&gt;read&lt;/code&gt;的程序来说，就只能“等”。&lt;/p&gt;
+
+&lt;p&gt;对于第二种情况，&lt;strong&gt;不算做block&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;对于磁盘文件IO，Linux总是不视作Block&lt;/p&gt;
+
+&lt;p&gt;一个解释是，所谓“Block”是指操作系统可以预见这个Block会发生才会主动Block。例如当读取TCP连接的数据时，如果发现Socket buffer里没有数据就可以确定定对方还没有发过来，于是Block；而对于普通磁盘文件的读写，也许磁盘运作期间会抖动，会短暂暂停，但是操作系统无法预见这种情况，只能视作不会Block，照样执行&lt;/p&gt;
+
+&lt;p&gt;基于这个基本的设定，在讨论IO时，一定要严格区分网络IO和磁盘文件IO。NIO和后文讲到的IO多路复用只对网络IO有意义。&lt;/p&gt;
+
+&lt;h1 id=&quot;bio&quot;&gt;BIO&lt;/h1&gt;
+
+&lt;p&gt;有了Block的定义，就可以讨论BIO和NIO了。BIO是Blocking IO的意思。在类似于网络中进行&lt;code&gt;read&lt;/code&gt;, &lt;code&gt;write&lt;/code&gt;, &lt;code&gt;connect&lt;/code&gt;一类的系统调用时会被卡住。&lt;/p&gt;
+
+&lt;p&gt;举个例子，当用&lt;code&gt;read&lt;/code&gt;去读取网络的数据时，是无法预知对方是否已经发送数据的。因此在收到数据之前，能做的只有等待，直到对方把数据发过来，或者等到网络超时。&lt;/p&gt;
+
+&lt;p&gt;对于单线程的网络服务，这样做就会有卡死的问题。因为当等待时，整个线程会被挂起，无法执行，也无法做其他的工作。&lt;/p&gt;
+
+&lt;p&gt;这种Block是不会影响同时运行的其他程序（进程）的，因为现代操作系统都是多任务的，任务之间的切换是抢占式的。这里Block只是指Block当前的进程。&lt;/p&gt;
+
+&lt;p&gt;网络服务为了同时响应多个并发的网络请求，必须实现为多线程的。每个线程处理一个网络请求。线程数随着并发连接数线性增长。这的确能奏效。实际上2000年之前很多网络服务器就是这么实现的。但这带来两个问题：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;线程越多，Context Switch就越多，而Context Switch是一个比较重的操作，会无谓浪费大量的CPU。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;每个线程会占用一定的内存作为线程的栈。比如有1000个线程同时运行，每个占用1MB内存，就占用了1个G的内存。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;问题的关键在于，当调用&lt;code&gt;read&lt;/code&gt;接受网络请求时，有数据到了就用，没数据到时，实际上是可以干别的。使用大量线程，仅仅是因为Block发生，没有其他办法。&lt;/p&gt;
+
+&lt;p&gt;当然你可能会说，是不是可以弄个线程池呢？这样既能并发的处理请求，又不会产生大量线程。但这样会限制最大并发的连接数。比如你弄4个线程，那么最大4个线程都Block了就没法响应更多请求了。&lt;/p&gt;
+
+&lt;p&gt;要是操作IO接口时，操作系统能够总是直接告诉有没有数据，而不是Block去等就好了。于是，NIO登场&lt;/p&gt;
+
+&lt;h1 id=&quot;nio&quot;&gt;NIO&lt;/h1&gt;
+
+&lt;p&gt;NIO是指将IO模式设为“Non-Blocking”模式。在Linux下，一般是这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;void setnonblocking(int fd) {
+    int flags = fcntl(fd, F_GETFL, 0);
+    fcntl(fd, F_SETFL, flags | O_NONBLOCK);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在BIO模式下，调用read，如果发现没数据已经到达，就会Block住。&lt;/p&gt;
+
+&lt;p&gt;在NIO模式下，调用read，如果发现没数据已经到达，就会立刻返回-1, 并且errno被设为&lt;code&gt;EAGAIN&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;于是，一段NIO的代码，大概就可以写成这个样子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct timespec sleep_interval{.tv_sec = 0, .tv_nsec = 1000};
+ssize_t nbytes;
+while (1) {
+    /* 尝试读取 */
+    if ((nbytes = read(fd, buf, sizeof(buf))) &amp;lt; 0) {
+        if (errno == EAGAIN) { // 没数据到
+            perror(&quot;nothing can be read&quot;);
+        } else {
+            perror(&quot;fatal error&quot;);
+            exit(EXIT_FAILURE);
+        }
+    } else { // 有数据
+        process_data(buf, nbytes);
+    }
+    // 处理其他事情，做完了就等一会，再尝试
+    nanosleep(sleep_interval, NULL);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码很容易理解，就是轮询，不断的尝试有没有数据到达，有了就处理，没有(得到&lt;code&gt;EWOULDBLOCK&lt;/code&gt;或者&lt;code&gt;EAGAIN&lt;/code&gt;)就等一小会再试。这比之前BIO好多了，起码程序不会被卡死了&lt;/p&gt;
+
+&lt;p&gt;但这样会带来两个新问题：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果有大量文件描述符都要等，那么就得一个一个的read。这会带来大量的Context Switch（&lt;code&gt;read&lt;/code&gt;是系统调用，每调用一次就得在用户态和核心态切换一次）&lt;/li&gt;
+  &lt;li&gt;休息一会的时间不好把握。这里是要猜多久之后数据才能到。等待时间设的太长，程序响应延迟就过大；设的太短，就会造成过于频繁的重试，干耗CPU而已。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;要是操作系统能一口气告诉程序，哪些数据到了就好了。&lt;/p&gt;
+
+&lt;p&gt;于是IO多路复用被搞出来解决这个问题&lt;/p&gt;
+
+&lt;h1 id=&quot;io多路复用&quot;&gt;IO多路复用&lt;/h1&gt;
+
+&lt;p&gt;IO多路复用（IO Multiplexing) 是这么一种机制：程序注册一组socket文件描述符给操作系统，表示“我要监视这些fd是否有IO事件发生，有了就告诉程序处理”。&lt;/p&gt;
+
+&lt;p&gt;IO多路复用是要和NIO一起使用的。尽管在操作系统级别，NIO和IO多路复用是两个相对独立的事情。NIO仅仅是指IO API总是能立刻返回，不会被Blocking；而IO多路复用仅仅是操作系统提供的一种便利的通知机制。操作系统并不会强制这俩必须得一起用——你可以用NIO，但不用IO多路复用，就像上一节中的代码；也可以只用IO多路复用 + BIO，这时效果还是当前线程被卡住。但是，&lt;strong&gt;IO多路复用和NIO是要配合一起使用才有实际意义&lt;/strong&gt;。因此，在使用IO多路复用之前，请总是先把fd设为&lt;code&gt;O_NONBLOCK&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;对IO多路复用，还存在一些常见的误解，比如：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;❌IO多路复用是指多个数据流共享同一个Socket&lt;/strong&gt;。其实IO多路复用说的是多个Socket，只不过操作系统是一起监听他们的事件而已。&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;多个数据流共享同一个TCP连接的场景的确是有，比如Http2 Multiplexing就是指Http2通讯中中多个逻辑的数据流共享同一个TCP连接。但这与IO多路复用是完全不同的问题。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;❌IO多路复用是NIO，所以总是不Block的&lt;/strong&gt;。其实IO多路复用的关键API调用(&lt;code&gt;select&lt;/code&gt;，&lt;code&gt;poll&lt;/code&gt;，&lt;code&gt;epoll_wait&lt;/code&gt;）总是Block的，正如下文的例子所讲。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌&lt;strong&gt;IO多路复用和NIO一起减少了IO&lt;/strong&gt;。实际上，IO本身（网络数据的收发）无论用不用IO多路复用和NIO，都没有变化。请求的数据该是多少还是多少；网络上该传输多少数据还是多少数据。IO多路复用和NIO一起仅仅是解决了调度的问题，避免CPU在这个过程中的浪费，使系统的瓶颈更容易触达到网络带宽，而非CPU或者内存。要提高IO吞吐，还是提高硬件的容量（例如，用支持更大带宽的网线、网卡和交换机）和依靠并发传输（例如HDFS的数据多副本并发传输&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;操作系统级别提供了一些接口来支持IO多路复用，最老掉牙的是&lt;code&gt;select&lt;/code&gt;和&lt;code&gt;poll&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;select&quot;&gt;select&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;select&lt;/code&gt;长这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它接受3个文件描述符的数组，分别监听读取(&lt;code&gt;readfds&lt;/code&gt;)，写入(&lt;code&gt;writefds&lt;/code&gt;)和异常(&lt;code&gt;expectfds&lt;/code&gt;)事件。那么一个 IO多路复用的代码大概是这样&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct timeval tv = {.tv_sec = 1, .tv_usec = 0};
+
+ssize_t nbytes;
+while(1) {
+    FD_ZERO(&amp;amp;read_fds);
+    setnonblocking(fd1);
+    setnonblocking(fd2);
+    FD_SET(fd1, &amp;amp;read_fds);
+    FD_SET(fd2, &amp;amp;read_fds);
+    // 把要监听的fd拼到一个数组里，而且每次循环都得重来一次...
+    if (select(FD_SETSIZE, &amp;amp;read_fds, NULL, NULL, &amp;amp;tv) &amp;lt; 0) { // block住，直到有事件到达
+        perror(&quot;select出错了&quot;);
+        exit(EXIT_FAILURE);
+    }
+    for (int i = 0; i &amp;lt; FD_SETSIZE; i++) {
+        if (FD_ISSET(i, &amp;amp;read_fds)) {
+            /* 检测到第[i]个读取fd已经收到了，这里假设buf总是大于到达的数据，所以可以一次read完 */
+            if ((nbytes = read(i, buf, sizeof(buf))) &amp;gt;= 0) {
+                process_data(nbytes, buf);
+            } else {
+                perror(&quot;读取出错了&quot;);
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先，为了&lt;code&gt;select&lt;/code&gt;需要构造一个fd数组（这里为了简化，没有构造要监听写入和异常事件的fd数组）。之后，用&lt;code&gt;select&lt;/code&gt;监听了&lt;code&gt;read_fds&lt;/code&gt;中的多个socket的读取时间。调用&lt;code&gt;select&lt;/code&gt;后，程序会Block住，直到一个事件发生了，或者等到最大1秒钟(&lt;code&gt;tv&lt;/code&gt;定义了这个时间长度）就返回。之后，需要遍历所有注册的fd，挨个检查哪个fd有事件到达(&lt;code&gt;FD_ISSET&lt;/code&gt;返回true)。如果是，就说明数据已经到达了，可以读取fd了。读取后就可以进行数据的处理。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;select&lt;/code&gt;有一些发指的缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;select&lt;/code&gt;能够支持的最大的fd数组的长度是1024。这对要处理高并发的web服务器是不可接受的。&lt;/li&gt;
+  &lt;li&gt;fd数组按照监听的事件分为了3个数组，为了这3个数组要分配3段内存去构造，而且每次调用&lt;code&gt;select&lt;/code&gt;前都要重设它们（因为&lt;code&gt;select&lt;/code&gt;会改这3个数组)；调用&lt;code&gt;select&lt;/code&gt;后，这3数组要从用户态复制一份到内核态；事件到达后，要遍历这3数组。很不爽。&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;select&lt;/code&gt;返回后要挨个遍历fd，找到被“SET”的那些进行处理。这样比较低效。&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;select&lt;/code&gt;是无状态的，即每次调用&lt;code&gt;select&lt;/code&gt;，内核都要重新检查所有被注册的fd的状态。&lt;code&gt;select&lt;/code&gt;返回后，这些状态就被返回了，内核不会记住它们；到了下一次调用，内核依然要重新检查一遍。于是查询的效率很低。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;poll&quot;&gt;poll&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;poll&lt;/code&gt;与&lt;code&gt;select&lt;/code&gt;类似于。它大概长这样&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-CQL&quot;&gt;int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;poll&lt;/code&gt;的代码例子和&lt;code&gt;select&lt;/code&gt;差不多，因此也就不赘述了。有意思的是&lt;code&gt;poll&lt;/code&gt;这个单词的意思是“轮询”，所以很多中文资料都会提到对IO进行“轮询”。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;poll&lt;/code&gt;优化了&lt;code&gt;select&lt;/code&gt;的一些问题。比如不再有3个数组，而是1个&lt;code&gt;polldfd&lt;/code&gt;结构的数组了，并且也不需要每次重设了。数组的个数也没有了1024的限制。但其他的问题依旧：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;依然是无状态的，性能的问题与&lt;code&gt;select&lt;/code&gt;差不多一样；&lt;/li&gt;
+  &lt;li&gt;应用程序仍然无法很方便的拿到那些“有事件发生的fd“，还是需要遍历所有注册的fd。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目前来看，高性能的web服务器都不会使用&lt;code&gt;select&lt;/code&gt;和&lt;code&gt;poll&lt;/code&gt;。他们俩存在的意义仅仅是“兼容性”，因为很多操作系统都实现了这两个系统调用。&lt;/p&gt;
+
+&lt;p&gt;如果是追求性能的话，在BSD/macOS上提供了kqueue api；在Salorias中提供了/dev/poll（可惜该操作系统已经凉凉)；而在Linux上提供了epoll api。它们的出现彻底解决了&lt;code&gt;select&lt;/code&gt;和&lt;code&gt;poll&lt;/code&gt;的问题。Java NIO，nginx等在对应的平台的上都是使用这些api实现。&lt;/p&gt;
+
+&lt;p&gt;因为大部分情况下我会用Linux做服务器，所以下文以Linux epoll为例子来解释多路复用是怎么工作的。&lt;/p&gt;
+
+&lt;h1 id=&quot;用epoll实现的io多路复用&quot;&gt;用epoll实现的IO多路复用&lt;/h1&gt;
+
+&lt;p&gt;epoll是Linux下的IO多路复用的实现。这里单开一章是因为它非常有代表性，并且Linux也是目前最广泛被作为服务器的操作系统。细致的了解epoll对整个IO多路复用的工作原理非常有帮助。&lt;/p&gt;
+
+&lt;p&gt;与&lt;code&gt;select&lt;/code&gt;和&lt;code&gt;poll&lt;/code&gt;不同，要使用epoll是需要先创建一下的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;int epfd = epoll_create(10);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;epoll_create&lt;/code&gt;在内核层创建了一个数据表，接口会返回一个“epoll的文件描述符”指向这个表。注意，接口参数是一个表达要监听事件列表的长度的数值。但不用太在意，因为epoll内部随后会根据事件注册和事件注销动态调整epoll中表格的大小。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/epoll.png&quot; alt=&quot;epoll&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;为什么epoll要创建一个用文件描述符来指向的表呢？这里有两个好处：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;epoll是有状态的，不像&lt;code&gt;select&lt;/code&gt;和&lt;code&gt;poll&lt;/code&gt;那样每次都要重新传入所有要监听的fd，这避免了很多无谓的数据复制。epoll的数据是用接口&lt;code&gt;epoll_ctl&lt;/code&gt;来管理的（增、删、改）。&lt;/li&gt;
+  &lt;li&gt;epoll文件描述符在进程被fork时，子进程是可以继承的。这可以给对多进程共享一份epoll数据，实现并行监听网络请求带来便利。但这超过了本文的讨论范围，就此打住。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;epoll创建后，第二步是使用&lt;code&gt;epoll_ctl&lt;/code&gt;接口来注册要监听的事件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中第一个参数就是上面创建的&lt;code&gt;epfd&lt;/code&gt;。第二个参数&lt;code&gt;op&lt;/code&gt;表示如何对文件名进行操作，共有3种。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;EPOLL_CTL_ADD&lt;/code&gt; - 注册一个事件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;EPOLL_CTL_DEL&lt;/code&gt; - 取消一个事件的注册&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;EPOLL_CTL_MOD&lt;/code&gt; - 修改一个事件的注册&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第三个参数是要操作的fd，这里必须是支持NIO的fd（比如socket）。第四个参数是一个&lt;code&gt;epoll_event&lt;/code&gt;的类型的数据，表达了注册的事件的具体信息。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;typedef union epoll_data {
+    void    *ptr;
+    int      fd;
+    uint32_t u32;
+    uint64_t u64;
+} epoll_data_t;
+
+struct epoll_event {
+    uint32_t     events;    /* Epoll events */
+    epoll_data_t data;      /* User data variable */
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比方说，想关注一个fd1的读取事件事件，并采用边缘触发(下文会解释什么是边缘触发），大概要这么写：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct epoll_data ev;
+ev.events = EPOLLIN | EPOLLET; // EPOLLIN表示读事件；EPOLLET表示边缘触发
+ev.data.fd = fd1;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过&lt;code&gt;epoll_ctl&lt;/code&gt;就可以灵活的注册/取消注册/修改注册某个fd的某些事件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/epoll_ctl.png&quot; alt=&quot;epoll_ctl&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第三步，使用&lt;code&gt;epoll_wait&lt;/code&gt;来等待事件的发生&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-CQL&quot;&gt;int epoll_wait(int epfd, struct epoll_event *evlist, int maxevents, int timeout);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;特别留意，这一步是”block”的。只有当注册的事件至少有一个发生，或者&lt;code&gt;timeout&lt;/code&gt;达到时，该调用才会返回。这与&lt;code&gt;select&lt;/code&gt;和&lt;code&gt;poll&lt;/code&gt;几乎一致。但不一样的地方是&lt;code&gt;evlist&lt;/code&gt;，它是&lt;code&gt;epoll_wait&lt;/code&gt;的返回数组，里面&lt;strong&gt;只包含那些被触发的事件对应的fd&lt;/strong&gt;，而不是像&lt;code&gt;select&lt;/code&gt;和&lt;code&gt;poll&lt;/code&gt;那样返回所有注册的fd。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/epoll_wait.png&quot; alt=&quot;epoll_wait&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;综合起来，一段比较完整的epoll代码大概是这样的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#define MAX_EVENTS 10
+struct epoll_event ev, events[MAX_EVENTS];
+int nfds, epfd, fd1, fd2;
+
+// 假设这里有两个socket，fd1和fd2，被初始化好。
+// 设置为non blocking
+setnonblocking(fd1);
+setnonblocking(fd2);
+
+// 创建epoll
+epfd = epoll_create(MAX_EVENTS);
+if (epollfd == -1) {
+    perror(&quot;epoll_create1&quot;);
+    exit(EXIT_FAILURE);
+}
+
+//注册事件
+ev.events = EPOLLIN | EPOLLET;
+ev.data.fd = fd1;
+if (epoll_ctl(epollfd, EPOLL_CTL_ADD, fd1, &amp;amp;ev) == -1) {
+    perror(&quot;epoll_ctl: error register fd1&quot;);
+    exit(EXIT_FAILURE);
+}
+if (epoll_ctl(epollfd, EPOLL_CTL_ADD, fd2, &amp;amp;ev) == -1) {
+    perror(&quot;epoll_ctl: error register fd2&quot;);
+    exit(EXIT_FAILURE);
+}
+
+// 监听事件
+for (;;) {
+    nfds = epoll_wait(epdf, events, MAX_EVENTS, -1);
+    if (nfds == -1) {
+        perror(&quot;epoll_wait&quot;);
+        exit(EXIT_FAILURE);
+    }
+
+    for (n = 0; n &amp;lt; nfds; ++n) { // 处理所有发生IO事件的fd
+        process_event(events[n].data.fd);
+        // 如果有必要，可以利用epoll_ctl继续对本fd注册下一次监听，然后重新epoll_wait
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;所有的基于IO多路复用的代码都会遵循这样的写法：注册——监听事件——处理——再注册，无限循环下去。&lt;/p&gt;</content><author><name></name></author><category term="java" /><summary type="html">Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了</summary></entry><entry><title type="html">git常用命令</title><link href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="git常用命令" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">&lt;p&gt;&lt;img src=&quot;/img/git.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;workspace&lt;/code&gt;：工作区&lt;/li&gt;
