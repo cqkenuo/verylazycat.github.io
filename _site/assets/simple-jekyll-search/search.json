@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "sql-server复习二",
+      "category" : "",
+      "tags"     : "sql",
+      "date"     : "2020-05-10 00:00:00 +0800",
+      
+      "url"      : "http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/"
+    } ,
+  
+    {
       "title"    : "linux笔记",
       "category" : "",
       "tags"     : "linux",
@@ -22,7 +31,7 @@
     {
       "title"    : "BIO&amp;NIO&amp;AIO",
       "category" : "",
-      "tags"     : "java",
+      "tags"     : "JAVA",
       "date"     : "2020-05-08 00:00:00 +0800",
       
       "url"      : "http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/"
@@ -74,9 +83,9 @@
     } ,
   
     {
-      "title"    : "sql-server复习",
+      "title"    : "sql-server复习一",
       "category" : "",
-      "tags"     : "sql-server复习",
+      "tags"     : "sql",
       "date"     : "2020-05-02 00:00:00 +0800",
       
       "url"      : "http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/"
@@ -98,6 +107,15 @@
       "date"     : "2020-04-08 00:00:00 +0800",
       
       "url"      : "http://localhost:4000/_posts/2020-04-08-MakeMyOs/"
+    } ,
+  
+    {
+      "title"    : "CPU模式",
+      "category" : "",
+      "tags"     : "linux",
+      "date"     : "2020-03-12 00:00:00 +0800",
+      
+      "url"      : "http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/"
     } 
   
   ,

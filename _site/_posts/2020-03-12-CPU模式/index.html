@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>标签 | imod</title>
+<title>CPU模式 | imod</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="标签" />
+<meta property="og:title" content="CPU模式" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat" />
-<meta property="og:description" content="lazycat" />
-<link rel="canonical" href="http://localhost:4000/tags/" />
-<meta property="og:url" content="http://localhost:4000/tags/" />
+<meta name="description" content="CPU模式" />
+<meta property="og:description" content="CPU模式" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/" />
 <meta property="og:site_name" content="imod" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-12T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/tags/","headline":"标签","description":"lazycat","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/","headline":"CPU模式","dateModified":"2020-03-12T00:00:00+08:00","datePublished":"2020-03-12T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/"},"description":"CPU模式","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -241,7 +243,7 @@
         <i class="fas fa-comments fa-fw"></i> 留言
       </a>
       
-      <a class="sidebar-nav-item active" href="/tags/">
+      <a class="sidebar-nav-item" href="/tags/">
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
@@ -546,7 +548,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    标签
+    CPU模式
     <a href="http://localhost:4000/" title="Home">
       <small>
         imod
@@ -557,158 +559,75 @@
 </div>
 
 <div class="container content">
-  <p>文章标签分类较多，可在侧边栏的目录中快速定位~</p>
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    12 Mar 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    1669字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    6分
+    
+    
+    <span class="leancloud-visitors" data-xid="/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/" data-flag-title="CPU模式">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    linux
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>（除特别声明或转载文章外）
 
+    
+  </span>
+  <h2 id="cpu模式">CPU模式</h2>
 
-<div class="mermaid">
-  pie
-  
-  
-  "linux" : 3
-  
-  "JAVA" : 5
-  
-  "sql" : 2
-  
-  "数据结构" : 1
-  
-  "数据可视化" : 1
-  
-  "git" : 1
-  
+<p>大部分CPU 至少都有两种CPU 模式。CPU 模式也称为特权级，它会根据CPU 的工作模式限制可以执行的操作。CPU 模式中，全部指令可以无限制执行的模式称为内核模式（Kernel Mode）或管理者模式（Supervisor Mode），操作系统等系统软件需要在内核模式下工作。反之，可执行的指令被限制的模式称为用户模式（User Mode），应用软件通常在用户模式下工作。用户模式中被限制的操作包括CPU 控制寄存器的访问、改变CPU 状态的指令等。如果应用程序擅自更改CPU 的状态，最坏会导致操作系统崩溃 。因此，需要根据CPU 模式管理各种软件的权限。 大多情况下，CPU 的控制寄存器内都有可以设置CPU 模式的区域。在从高权限的内核模式转换到低权限 的用户模式时，可以通过操作控制寄存器来实现。反之，如果要从低权限的用户模式转换到高权限的内 核模式，需要使用专用的指令。</p>
+
+<h1 id="cpu三种工作模式">CPU三种工作模式</h1>
+
+<p>从80386开始，cpu有三种工作方式：实模式，保护模式和虚拟8086模式。只有在刚刚启动的时候是real-mode，等到linux操作系统运行 起来以后就运行在保护模式。实模式只能访问地址在1M以下的内存称为常规内存，我们把地址在1M 以上的内存称为扩展内存。在保护模式下，全部32条地址线有效，可寻址高达4G字节的物理地址空间; 扩充的存储器分段管理机制和可选的存储器分页管理机制，不仅为存储器共享和保护提供了硬件支持，而且为实现虚拟存储器提供了硬件支持; 支持多任务，能够快速地进行任务切换和保护任务环境; 4个特权级和完善的特权检查机制，既能实现资源共享又能保证代码和数据 的安全和保密及任务的隔离; 支持虚拟8086方式，便于执行8086程序。虚拟8086模式是运行在保护模式中的实模式，为了在32位保护模式下执行纯16位程序。它不是一个真正的CPU模式，还属于保护模式。保护模式同实模式的根本区别是进程内存受保护与否。可寻址空间的区别只是这一原因的果。实模式将整个物理内存看成分段的区域,程序代码和数据位于不同 区域，系统程序和用户程序没有区别对待，而且每一个指针都是指向”实在”的物理地址。这样一来，用户程序的一个指针如果指向了系统程序 区域或其他用户程序 区域，并改变了值，那么对于这个被修改的系统程序或用户程序，其后果就很可能是灾难性的。为了克服这种低劣的内存管理方式，处理器厂商开发出保护模式。这 样，物理内存地址不 能直接被程序访问，程序内部的地址（虚拟地址）要由操作系统转化为物理地址去访问，程序对此一无所知。 至此，进程（这时我们可以称程序 为进程了）有了严格的边界，任何其他进程根本没有办法访问不属于自己的物理内存区域，甚至在自己的虚拟地址范围内也不是可以任意访问的，因为有一些虚拟区  域已经被放进一些公共系统运行库。这些区域也不能随便修改，若修改就会有: SIGSEGV（linux 段错误）;非法内存访问对话框（windows 对话框）。CPU启动环境为16位实模式，之后可以切换到保护模式。但从保护模式无法切换回实模式 事实上，现在的64位奔腾4处理器，拥有三种基本模式和一种扩展模式， 
+基本模式： 
+保护模式：纯32位保护执行环境。
+实模式：纯16位无保护执行环境。 
+系统管理模式：当SMI引脚为有效进入系统管理模式，首先保存当前的CPU上下文。它有独立的地址空间，用来执行电源管理或系统安全方面的指令</p>
+
+<p>扩展模式： IA-32e模 式: 64位操作系统运行在该模式。该模式有两种子模式: 
+  1）兼容模式：该模式下，64位操作系统运行在32位兼容环境，能正常运行16，32位应用程序就像基本的保护模式一样，访问32位地址空间，但不能 运行纯16位实模式程序（就是不能运行虚拟86模式程序了）。 
+ 2）64位模式：在该模式下，处理器完全执行64位指令，使用64位地址空间和64操作数，运行16，32位程序必须切换到兼容模式。IA-32e子模式的切换完全基于代码段寄存器。这样一来，运行在IA-32e模式中（64位 ）的OS完全可以无缝的运行所有16，32，64为应用程序，通过设置32位后的CS。</p>
+
 </div>
-
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>3</small>
-  
-  linux
-</h2>
-<ul>
-  
-  <li>
-    <small>09 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">linux笔记</a>
-  </li>
-  
-  <li>
-    <small>08 Apr 2020</small>
-    <a href="http://localhost:4000/_posts/2020-04-08-MakeMyOs/">MakeMyOs</a>
-  </li>
-  
-  <li>
-    <small>12 Mar 2020</small>
-    <a href="http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/">CPU模式</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>5</small>
-  
-  JAVA
-</h2>
-<ul>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/">BIO&NIO&AIO</a>
-  </li>
-  
-  <li>
-    <small>07 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题三</a>
-  </li>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BA%8C/">JAVA一些问题二</a>
-  </li>
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%80/">JAVA一些问题一</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>2</small>
-  
-  sql
-</h2>
-<ul>
-  
-  <li>
-    <small>10 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">sql-server复习二</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">sql-server复习一</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  数据结构
-</h2>
-<ul>
-  
-  <li>
-    <small>04 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构－线性表</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  数据可视化
-</h2>
-<ul>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">新型冠状肺炎数据可视化</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  git
-</h2>
-<ul>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-  </li>
-  
-</ul>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
 </div>
   </div>

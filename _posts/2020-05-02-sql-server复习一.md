@@ -1,6 +1,6 @@
 ---
-title: sql-server复习
-tags: sql-server复习
+title: sql-server复习一
+tags: sql
 ---
 
 ## sql-server复习一
