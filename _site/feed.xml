@@ -1,11 +1,288 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-10T21:11:01+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-11T16:44:34+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">sql-server复习二</title><link href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" rel="alternate" type="text/html" title="sql-server复习二" /><published>2020-05-10T00:00:00+08:00</published><updated>2020-05-10T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">&lt;h2 id=&quot;sql-server复习二&quot;&gt;sql-server复习二&lt;/h2&gt;
+</subtitle><entry><title type="html">JAVA一些问题二</title><link href="http://localhost:4000/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/" rel="alternate" type="text/html" title="JAVA一些问题二" /><published>2020-05-11T00:00:00+08:00</published><updated>2020-05-11T00:00:00+08:00</updated><id>http://localhost:4000/_posts/JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;并行和并发区别&quot;&gt;&lt;strong&gt;并行和并发区别&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;并行是指两个或者多个事件在同一时刻发生；而并发是指两个或多个事件在同一时间间隔发生。&lt;/li&gt;
+  &lt;li&gt;并行是在不同实体上的多个事件，并发是在同一实体上的多个事件。&lt;/li&gt;
+  &lt;li&gt;在一台处理器上“同时”处理多个任务，在多台处理器上同时处理多个任务。如hadoop分布式集群。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所以并发编程的目标是充分的利用处理器的每一个核，以达到最高的处理性能&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;线程和进程的区别&quot;&gt;&lt;strong&gt;线程和进程的区别&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;简而言之，进程是程序运行和资源分配的基本单位，一个程序至少有一个进程，一个进程至少有一个线程。进程在执行过程中拥有独立的内存单元，而多个线程共享内存资源，减少切换次数，从而效率更高。线程是进程的一个实体，是cpu调度和分派的基本单位，是比程序更小的能独立运行的基本单位。同一进程中的多个线程之间可以并发执行。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;守护线程&quot;&gt;&lt;strong&gt;守护线程&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;守护线程（即daemon thread），是个服务线程，准确地来说就是服务其他的线程。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;创建线程方式&quot;&gt;&lt;strong&gt;创建线程&lt;/strong&gt;方式&lt;em&gt;**&lt;/em&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;①. 继承Thread类创建线程类&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体。&lt;/li&gt;
+  &lt;li&gt;创建Thread子类的实例，即创建了线程对象。&lt;/li&gt;
+  &lt;li&gt;调用线程对象的start()方法来启动该线程。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;②. 通过Runnable接口创建线程类&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;定义runnable接口的实现类，并重写该接口的run()方法，该run()方法的方法体同样是该线程的线程执行体。&lt;/li&gt;
+  &lt;li&gt;创建 Runnable实现类的实例，并依此实例作为Thread的target来创建Thread对象，该Thread对象才是真正的线程对象。&lt;/li&gt;
+  &lt;li&gt;调用线程对象的start()方法来启动该线程。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;③. 通过Callable和Future创建线程&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值。&lt;/li&gt;
+  &lt;li&gt;创建Callable实现类的实例，使用FutureTask类来包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值。&lt;/li&gt;
+  &lt;li&gt;使用FutureTask对象作为Thread对象的target创建并启动新线程。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;调用FutureTask对象的get()方法来获得子线程执行结束后的返回值&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;runnable-和-callable-区别&quot;&gt;&lt;strong&gt;runnable 和 callable 区别&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已；&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;线程状态&quot;&gt;&lt;strong&gt;线程状态&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;线程通常都有五种状态，创建、就绪、运行、阻塞和死亡。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建状态。在生成线程对象，并没有调用该对象的start方法，这是线程处于创建状态。&lt;/li&gt;
+  &lt;li&gt;就绪状态。当调用了线程对象的start方法之后，该线程就进入了就绪状态，但是此时线程调度程序还没有把该线程设置为当前线程，此时处于就绪状态。在线程运行之后，从等待或者睡眠中回来之后，也会处于就绪状态。&lt;/li&gt;
+  &lt;li&gt;运行状态。线程调度程序将处于就绪状态的线程设置为当前线程，此时线程就进入了运行状态，开始运行run函数当中的代码。&lt;/li&gt;
+  &lt;li&gt;阻塞状态。线程正在运行的时候，被暂停，通常是为了等待某个时间的发生(比如说某项资源就绪)之后再继续运行。sleep,suspend，wait等方法都可以导致线程阻塞。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;死亡状态。如果一个线程的run方法执行结束或者调用stop方法后，该线程就会死亡。对于已经死亡的线程，无法再使用start方法令其进入就绪 　　&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;sleep-和-wait-区别&quot;&gt;&lt;strong&gt;sleep() 和 wait()&lt;/strong&gt; 区别&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;sleep()：方法是线程类（Thread）的静态方法，让调用线程进入睡眠状态，让出执行机会给其他线程，等到休眠时间结束后，线程进入就绪状态和其他线程一起竞争cpu的执行时间。因为sleep() 是static静态的方法，他不能改变对象的机锁，当一个synchronized块中调用了sleep()  方法，线程虽然进入休眠，但是对象的机锁没有被释放，其他线程依然无法访问这个对象。&lt;/p&gt;
+
+&lt;p&gt;wait()：wait()是Object类的方法，当一个线程执行到wait方法时，它就进入到一个和该对象相关的等待池，同时释放对象的机锁，使得其他线程能够访问，可以通过notify，notifyAll方法来唤醒等待的线程&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;notify和-notifyall区别&quot;&gt;&lt;strong&gt;notify()和 notifyAll()&lt;/strong&gt;区别&lt;em&gt;**&lt;/em&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果线程调用了对象的 wait()方法，那么线程便会处于该对象的等待池中，等待池中的线程不会去竞争该对象的锁。&lt;/p&gt;
+
+&lt;p&gt;当有线程调用了对象的 notifyAll()方法（唤醒所有 wait 线程）或 notify()方法（只随机唤醒一个 wait  线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。也就是说，调用了notify后只要一个线程会由等待池进入锁池，而notifyAll会将该对象等待池内的所有线程移动到锁池中，等待锁竞争。&lt;/p&gt;
+
+&lt;p&gt;优先级高的线程竞争到对象锁的概率大，假若某线程没有竞争到该对象锁，它还会留在锁池中，唯有线程再次调用 wait()方法，它才会重新回到等待池中。而竞争到对象锁的线程则继续往下执行，直到执行完了 synchronized  代码块，它会释放掉该对象锁，这时锁池中的线程会继续竞争该对象锁&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;线程的-run和-start区别&quot;&gt;&lt;strong&gt;线程的 run()和 start()&lt;/strong&gt;区别&lt;em&gt;**&lt;/em&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;每个线程都是通过某个特定Thread对象所对应的方法run()来完成其操作的，方法run()称为线程体。通过调用Thread类的start()方法来启动一个线程。&lt;/p&gt;
+
+&lt;p&gt;start()方法来启动一个线程，真正实现了多线程运行。这时无需等待run方法体代码执行完毕，可以直接继续执行下面的代码； 这时此线程是处于就绪状态， 并没有运行。 然后通过此Thread类调用方法run()来完成其运行状态，  这里方法run()称为线程体，它包含了要执行的这个线程的内容， Run方法运行结束， 此线程终止。然后CPU再调度其它线程。&lt;/p&gt;
+
+&lt;p&gt;run()方法是在本线程里的，只是线程里的一个函数,而不是多线程的。 如果直接调用run(),其实就相当于是调用了一个普通函数而已，直接待用run()方法必须等待run()方法执行完毕才能执行下面的代码，所以执行路径还是只有一条，根本就没有线程的特征，所以在多线程执行时要使用start()方法而不是run()方法。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;创建线程池方式&quot;&gt;&lt;strong&gt;创建线程池方式&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;①. newFixedThreadPool(int nThreads)&lt;/p&gt;
+
+&lt;p&gt;创建一个固定长度的线程池，每当提交一个任务就创建一个线程，直到达到线程池的最大数量，这时线程规模将不再变化，当线程发生未预期的错误而结束时，线程池会补充一个新的线程。&lt;/p&gt;
+
+&lt;p&gt;②. newCachedThreadPool()&lt;/p&gt;
+
+&lt;p&gt;创建一个可缓存的线程池，如果线程池的规模超过了处理需求，将自动回收空闲线程，而当需求增加时，则可以自动添加新线程，线程池的规模不存在任何限制。&lt;/p&gt;
+
+&lt;p&gt;③. newSingleThreadExecutor()&lt;/p&gt;
+
+&lt;p&gt;这是一个单线程的Executor，它创建单个工作线程来执行任务，如果这个线程异常结束，会创建一个新的来替代它；它的特点是能确保依照任务在队列中的顺序来串行执行。&lt;/p&gt;
+
+&lt;p&gt;④. newScheduledThreadPool(int corePoolSize)&lt;/p&gt;
+
+&lt;p&gt;创建了一个固定长度的线程池，而且以延迟或定时的方式来执行任务，类似于Timer。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;线程池状态&quot;&gt;&lt;strong&gt;线程池&lt;/strong&gt;状态&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;线程池有5种状态：Running、ShutDown、Stop、Tidying、Terminated&lt;/p&gt;
+
+&lt;p&gt;线程池各个状态切换框架图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/博客/verylazycat.github.io/img/线程池.png&quot; alt=&quot;线程池&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;线程池中-submit和-execute方法区别&quot;&gt;&lt;strong&gt;线程池中 submit()和 execute()方法&lt;/strong&gt;区别&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;接收的参数不一样&lt;/li&gt;
+  &lt;li&gt;submit有返回值，而execute没有&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;submit方便Exception处理&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;在-java-程序中怎么保证多线程的运行安全&quot;&gt;&lt;strong&gt;在 java 程序中怎么保证多线程的运行安全&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;线程安全在三个方面体现：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;原子性：提供互斥访问，同一时刻只能有一个线程对数据进行操作，（atomic,synchronized）；&lt;/li&gt;
+  &lt;li&gt;可见性：一个线程对主内存的修改可以及时地被其他线程看到，（synchronized,volatile）；&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;有序性：一个线程观察其他线程中的指令执行顺序，由于指令重排序，该观察结果一般杂乱无序，（happens-before原则&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;多线程锁的升级原理&quot;&gt;&lt;strong&gt;多线程锁的升级原理&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在Java中，锁共有4种状态，级别从低到高依次为：无状态锁，偏向锁，轻量级锁和重量级锁状态，这几个状态会随着竞争情况逐渐升级。锁可以升级但不能降级&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/博客/verylazycat.github.io/img/锁升级.png&quot; alt=&quot;锁升级&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;死锁&quot;&gt;&lt;strong&gt;死锁&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。是操作系统层面的一个错误，是进程死锁的简称，最早在 1965 年由 Dijkstra 在研究银行家算法时提出的，它是计算机操作系统乃至整个并发程序设计领域最难处理的问题之一。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;防止死锁&quot;&gt;&lt;strong&gt;防止死锁&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;死锁的四个必要条件：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;互斥条件：进程对所分配到的资源不允许其他进程进行访问，若其他进程访问该资源，只能等待，直至占有该资源的进程使用完成后释放该资源&lt;/li&gt;
+  &lt;li&gt;请求和保持条件：进程获得一定的资源之后，又对其他资源发出请求，但是该资源可能被其他进程占有，此事请求阻塞，但又对自己获得的资源保持不放&lt;/li&gt;
+  &lt;li&gt;不可剥夺条件：是指进程已获得的资源，在未完成使用之前，不可被剥夺，只能在使用完后自己释放&lt;/li&gt;
+  &lt;li&gt;环路等待条件：是指进程发生死锁后，若干进程之间形成一种头尾相接的循环等待资源关系&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之 一不满足，就不会发生死锁。理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和 解除死锁。所以，在系统设计、进程调度等方面注意如何不让这四个必要条件成立，如何确 定资源的合理分配算法，避免进程永久占据系统资源。&lt;/p&gt;
+
+&lt;p&gt;此外，也要防止进程在处于等待状态的情况下占用资源。因此，对资源的分配要给予合理的规划。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;threadlocal&quot;&gt;&lt;strong&gt;ThreadLocal&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;线程局部变量是局限于线程内部的变量，属于线程自身所有，不在多个线程间共享。Java提供ThreadLocal类来支持线程局部变量，是一种实现线程安全的方式。但是在管理环境下（如 web  服务器）使用线程局部变量的时候要特别小心，在这种情况下，工作线程的生命周期比任何应用变量的生命周期都要长。任何线程局部变量一旦在工作完成后没有释放，Java 应用就存在内存泄露的风险。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;synchronized-底层实现原理&quot;&gt;&lt;strong&gt;synchronized 底层实现原理&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;synchronized可以保证方法或者代码块在运行时，同一时刻只有一个方法可以进入到临界区，同时它还可以保证共享变量的内存可见性。&lt;/p&gt;
+
+&lt;p&gt;Java中每一个对象都可以作为锁，这是synchronized实现同步的基础：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;普通同步方法，锁是当前实例对象&lt;/li&gt;
+  &lt;li&gt;静态同步方法，锁是当前类的class对象&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;同步方法块，锁是括号里面的对象&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;synchronized-和-volatile-的区别&quot;&gt;&lt;strong&gt;synchronized 和 volatile 的区别&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;volatile本质是在告诉jvm当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取； synchronized则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。&lt;/li&gt;
+  &lt;li&gt;volatile仅能使用在变量级别；synchronized则可以使用在变量、方法、和类级别的。&lt;/li&gt;
+  &lt;li&gt;volatile仅能实现变量的修改可见性，不能保证原子性；而synchronized则可以保证变量的修改可见性和原子性。&lt;/li&gt;
+  &lt;li&gt;volatile不会造成线程的阻塞；synchronized可能会造成线程的阻塞。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;volatile标记的变量不会被编译器优化；synchronized标记的变量可以被编译器优化&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;synchronized-和-lock-区别&quot;&gt;&lt;strong&gt;synchronized 和 Lock 区别&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;首先synchronized是java内置关键字，在jvm层面，Lock是个java类；&lt;/li&gt;
+  &lt;li&gt;synchronized无法判断是否获取锁的状态，Lock可以判断是否获取到锁；&lt;/li&gt;
+  &lt;li&gt;synchronized会自动释放锁(a 线程执行完同步代码会释放锁 ；b 线程执行过程中发生异常会释放锁)，Lock需在finally中手工释放锁（unlock()方法释放锁），否则容易造成线程死锁；&lt;/li&gt;
+  &lt;li&gt;用synchronized关键字的两个线程1和线程2，如果当前线程1获得锁，线程2线程等待。如果线程1阻塞，线程2则会一直等待下去，而Lock锁就不一定会等待下去，如果尝试获取不到锁，线程可以不用一直等待就结束了；&lt;/li&gt;
+  &lt;li&gt;synchronized的锁可重入、不可中断、非公平，而Lock锁可重入、可判断、可公平（两者皆可）；&lt;/li&gt;
+  &lt;li&gt;Lock锁适合大量同步的代码的同步问题，synchronized锁适合代码少量的同步问题&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;synchronized-和-reentrantlock-区别&quot;&gt;&lt;strong&gt;synchronized 和 ReentrantLock 区别&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;synchronized是和if、else、for、while一样的关键字，ReentrantLock是类，这是二者的本质区别。既然ReentrantLock是类，那么它就提供了比synchronized更多更灵活的特性，可以被继承、可以有方法、可以有各种各样的类变量，ReentrantLock比synchronized的扩展性体现在几点上：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ReentrantLock可以对获取锁的等待时间进行设置，这样就避免了死锁&lt;/li&gt;
+  &lt;li&gt;ReentrantLock可以获取各种锁的信息&lt;/li&gt;
+  &lt;li&gt;ReentrantLock可以灵活地实现多路通知&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;另外，二者的锁机制其实也是不一样的:ReentrantLock底层调用的是Unsafe的park方法加锁，synchronized操作的应该是对象头中mark word&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;atomic-的原理&quot;&gt;&lt;strong&gt;atomic 的原理&lt;/strong&gt;&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Atomic包中的类基本的特性就是在多线程环境下，当有多个线程同时对单个（包括基本类型及引用类型）变量进行操作时，具有排他性，即当多个线程同时对该变量的值进行更新时，仅有一个线程能成功，而未成功的线程可以向自旋锁一样，继续尝试，一直等到执行成功。&lt;/p&gt;
+
+&lt;p&gt;Atomic系列的类中的核心方法都会调用unsafe类中的几个本地方法。我们需要先知道一个东西就是Unsafe类，全名为：sun.misc.Unsafe，这个类包含了大量的对C代码的操作，包括很多直接内存分配以及原子操作的调用，而它之所以标记为非安全的，是告诉你这个里面大量的方法调用都会存在安全隐患，需要小心使用，否则会导致严重的后果，例如在通过unsafe分配内存的时候，如果自己指定某些区域可能会导致一些类似C++一样的指针越界到其他进程的问题。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">并行和并发区别</summary></entry><entry><title type="html">sql-server复习二</title><link href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" rel="alternate" type="text/html" title="sql-server复习二" /><published>2020-05-10T00:00:00+08:00</published><updated>2020-05-10T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">&lt;h2 id=&quot;sql-server复习二&quot;&gt;sql-server复习二&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -2698,142 +2975,4 @@ int main(int argc, char const *argv[])
     
     return 0;
 }
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="数据结构" /><summary type="html">创建线性表和链表，实现表之间的链接，并去掉重复</summary></entry><entry><title type="html">jdbc笔记</title><link href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="jdbc笔记" /><published>2020-05-02T00:00:00+08:00</published><updated>2020-05-02T00:00:00+08:00</updated><id>http://localhost:4000/_posts/jdbc%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;jdbc笔记&quot;&gt;jdbc笔记&lt;/h2&gt;
-
-&lt;h4 id=&quot;jdbc双层架构&quot;&gt;jdbc双层架构&lt;/h4&gt;
-
-&lt;h4&gt;&lt;img src=&quot;/img/jdbc1.png&quot; alt=&quot;jdbc1&quot; /&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;作用：此架构中，Java Applet 或应用直接访问数据源。&lt;/li&gt;
-  &lt;li&gt;条件:要求 Driver 能与访问的数据库交互&lt;/li&gt;
-  &lt;li&gt;机制:用户命令传给数据库或其他数据源，随之结果被返回。&lt;/li&gt;
-  &lt;li&gt;部署:数据源可以在另一台机器上，用户通过网络连接，称为 C/S配置（可以是内联网或互联网）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;jdbc三层架构&lt;img src=&quot;/img/jdbc2.png&quot; alt=&quot;jdbc2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;侧架构特殊之处在于，引入中间层服务.&lt;/p&gt;
-
-&lt;p&gt;流程：命令和结构都会经过该层。&lt;/p&gt;
-
-&lt;p&gt;吸引：可以增加企业数据的访问控制，以及多种类型的更新；另外，也可简化应用的部署，并在多数情况下有性能优势。&lt;/p&gt;
-
-&lt;p&gt;历史趋势： 以往，因性能问题，中间层都用 C 或 C++ 编写，随着优化编译器（将 Java 字节码 转为 高效的  特定机器码）和技术的发展，如EJB，Java 开始用于中间层的开发这也让 Java 的优势突显出现出来，使用 Java  作为服务器代码语言，JDBC随之被重视。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;步骤&quot;&gt;步骤&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;加载驱动&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;建立连接&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;Connection  conn = DriverManager.getConnection(URL,USER,PASSWORD);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;执行sql&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;String sql = &quot;select * from details&quot;;
-注意没有分号
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;结果&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;while(rs.next()){
-                    System.out.println(rs.getString(&quot;字段&quot;));
-                }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;释放资源&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;rs.close();
-conn.close();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import java.sql.*;
-
-public class mysqltest {
-    public static final String URL = &quot;jdbc:mysql://localhost:3306/cov&quot;;
-    public static  final  String USER = &quot;admin&quot;;
-    public static final String PASSWORD = &quot;admin&quot;;
-    public static void main(String[] args) {
-       //加载驱动
-        try {
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-            Connection conn = null;
-            try {
-                conn = DriverManager.getConnection(URL,USER,PASSWORD);
-                System.out.println(&quot;连接成功&quot;);
-                Statement statement = conn.createStatement();
-                String sql = &quot;select * from details&quot;;
-                ResultSet rs;
-                rs = statement.executeQuery(sql);
-                while(rs.next()){
-                    System.out.println(rs.getString(&quot;city&quot;));
-                }
-                rs.close();
-                conn.close();
-            } catch (SQLException throwables) {
-                System.out.println(&quot;连接失败&quot;);
-                throwables.printStackTrace();
-            }
-        } catch (ClassNotFoundException e) {
-            System.out.println(&quot;驱动加载失败&quot;);
-            e.printStackTrace();
-        }
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;外部配置信息建立连接&quot;&gt;外部配置信息建立连接&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;在resource下新建文件mysqlproperties&quot;&gt;在resource下新建文件&lt;code&gt;mysql.properties&lt;/code&gt;&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;driver=com.mysql.cj.jdbc.Driver
-url=jdbc:mysql://localhost:3306/cov
-user=admin
-password=admin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;配置文件读取&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;Properties properties = new Properties();
-        FileInputStream inputStream = new FileInputStream(&quot;resource/mysql.properties&quot;);  //注意路径
-        properties.load(inputStream);
-
-        String driver = properties.getProperty(&quot;driver&quot;);
-        String url = properties.getProperty(&quot;url&quot;);
-        String user = properties.getProperty(&quot;user&quot;);
-        String pwd=properties.getProperty(&quot;password&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;获取配置信息更好方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;//通过反射
-InputStream inputStream = this(当前类的Class对象).getResourceAsStream(&quot;/mysql.properties&quot;); 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">jdbc笔记</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="数据结构" /><summary type="html">创建线性表和链表，实现表之间的链接，并去掉重复</summary></entry></feed>
