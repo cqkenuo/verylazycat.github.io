@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>标签 | imod</title>
+<title>删除文件原理 | imod</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="标签" />
+<meta property="og:title" content="删除文件原理" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat" />
-<meta property="og:description" content="lazycat" />
-<link rel="canonical" href="http://localhost:4000/tags/" />
-<meta property="og:url" content="http://localhost:4000/tags/" />
+<meta name="description" content="LINUX删除文件原理" />
+<meta property="og:description" content="LINUX删除文件原理" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/" />
 <meta property="og:site_name" content="imod" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-12T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/tags/","headline":"标签","description":"lazycat","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/","headline":"删除文件原理","dateModified":"2020-05-12T00:00:00+08:00","datePublished":"2020-05-12T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/"},"description":"LINUX删除文件原理","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -241,7 +243,7 @@
         <i class="fas fa-comments fa-fw"></i> 留言
       </a>
       
-      <a class="sidebar-nav-item active" href="/tags/">
+      <a class="sidebar-nav-item" href="/tags/">
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
@@ -546,7 +548,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    标签
+    删除文件原理
     <a href="http://localhost:4000/" title="Home">
       <small>
         imod
@@ -557,183 +559,75 @@
 </div>
 
 <div class="container content">
-  <p>文章标签分类较多，可在侧边栏的目录中快速定位~</p>
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    12 May 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    584字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    2分
+    
+    
+    <span class="leancloud-visitors" data-xid="/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/" data-flag-title="删除文件原理">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    linux
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>（除特别声明或转载文章外）
 
+    
+  </span>
+  <ul>
+  <li>
+    <h2 id="linux删除文件原理">LINUX删除文件原理</h2>
+  </li>
+</ul>
 
-<div class="mermaid">
-  pie
-  
-  
-  "linux" : 6
-  
-  "JAVA" : 6
-  
-  "sql" : 3
-  
-  "数据结构" : 1
-  
-  "数据可视化" : 1
-  
-  "git" : 1
-  
+<p>Linux是通过link的数量来控制文件删除的，只有当一个文件不存在任何link的时候，这个文件才会被删除。一般来说，每个文件都有2个link计数器:<code>i_count</code> 和<code>i_link</code></p>
+
+<p><code>i_count</code>的意义是当前文件使用者（或被调用）的数量,i_link 的意义是介质连接的数量（硬链接的数量）；可以理解为<code>i_count</code>是内存引用计数器，i_link是磁盘的引用计数器。</p>
+
+<p>当一个文件被某一个进程引用时，对应<code>i_count</code>数就会增加；当创建文件的硬链接的时候，对应<code>i_link</code>数就会增加</p>
+
+<p><code>**对于删除命令rm而言，实际就是减少磁盘引用计数i_link**。</code>这里就会有一个问题，如果一个文件正在被某个进程调用，而用户却执行rm操作把文件删除了，那么会出现什么结果呢？当用户执行rm操作删除文件后，再执行ls或者其他文件管理命令，无法再找到这个文件了，但是调用这个删除的文件的进程却在继续正常执行，依然能够从文件中正确的读取及写入内容.</p>
+
+<p>这是因为rm操作只是将文件的i_link减少了，如果没其它的链接i_link就为0了；但由于该文件依然被进程引用，因此，此时文件对应的i_count并不为0，所以即使执行rm操作，但系统并没有真正删除这个文件，当只有i_link及i_count都为0的时候，这个文件才会真正被删除。也就是说，还需要解除该进程的对该文件的调用才行。</p>
+
 </div>
-
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>6</small>
-  
-  linux
-</h2>
-<ul>
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/">删除文件原理</a>
-  </li>
-  
-  <li>
-    <small>09 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">linux笔记</a>
-  </li>
-  
-  <li>
-    <small>08 Apr 2020</small>
-    <a href="http://localhost:4000/_posts/2020-04-08-MakeMyOs/">MakeMyOs</a>
-  </li>
-  
-  <li>
-    <small>12 Mar 2020</small>
-    <a href="http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/">CPU模式</a>
-  </li>
-  
-  <li>
-    <small>09 Feb 2020</small>
-    <a href="http://localhost:4000/_posts/2020-02-09-makefile%E7%AC%94%E8%AE%B0/">makefile笔记</a>
-  </li>
-  
-  <li>
-    <small>07 Jan 2020</small>
-    <a href="http://localhost:4000/_posts/2020-01-07-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>6</small>
-  
-  JAVA
-</h2>
-<ul>
-  
-  <li>
-    <small>11 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题二</a>
-  </li>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/">BIO&NIO&AIO</a>
-  </li>
-  
-  <li>
-    <small>07 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题三</a>
-  </li>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BA%8C/">JAVA一些问题二</a>
-  </li>
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%80/">JAVA一些问题一</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>3</small>
-  
-  sql
-</h2>
-<ul>
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">sql-server常用命令总结</a>
-  </li>
-  
-  <li>
-    <small>10 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">sql-server复习二</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">sql-server复习一</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  数据结构
-</h2>
-<ul>
-  
-  <li>
-    <small>04 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构－线性表</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  数据可视化
-</h2>
-<ul>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">新型冠状肺炎数据可视化</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  git
-</h2>
-<ul>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-  </li>
-  
-</ul>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
 </div>
   </div>
