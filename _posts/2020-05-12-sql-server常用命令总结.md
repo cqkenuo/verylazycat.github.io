@@ -568,3 +568,162 @@ GO
 
 ```
 
+## 游标
+
+声明游标
+和使用其它类型变量一样，使用一个游标之前，必须先声明它。
+    DECLARE CURSOR<游标名>
+    [INSENSITIVE] [SCROLL] CURSOR
+    FOR <SELECT-语句>
+    [FOR READ ONLY|UPDATE[OF <列名>[, … n]]]
+INSENSITIVE：定义的游标所选出来的元组存放在一个临时表中（建立在tempdb数据库中），对该游标的读取操作都有临时表来应答。
+ SCROLL：指定游标使用的读取选项，默认时为NEXT，其取值如下表所示。
+
+ SCROLL的取值
+
+| **SCROLL**选项 | **含 义**                                                    |
+| -------------- | ------------------------------------------------------------ |
+| **FIRST**      | **读取游标中的第一行数据。**                                 |
+| **LAST**       | **读取游标中的最后一行数据。**                               |
+| **PRIOR**      | **读取游标当前位置的上一行数据。**                           |
+| **NEXT**       | **读取游标当前位置的下一行数据。**                           |
+| **RELATIVE n** | **读取游标当前位置之前或之后的第**n行数据（n为正向前，为负向后）。 |
+| **ABSULUTE n** | **读取游标中的第**n行数据。                                  |
+
+ READ ONLY：表示定义的游标为只读游标，表明不允许使用UPDATE、DELETE语句更新游标内的数据。默认状态下游标允许更新。
+UPDATE[OF<列名>[, … n]]：指定游标内可以更新的列，如果没有指定要更新的列，则表明所有列都允许更新
+
+```mssql
+例  声明一个名为S_Cursor的游标，用以读取计算机科学系（CS）的所有学生的信息。
+USE JXGL
+GO
+DECLARE S_Cursor CURSOR 
+FOR SELECT *
+         FROM S
+         WHERE SDEPT='CS'
+    GO
+```
+
+打开游标
+声明一个游标后，还必须使用OPEN语句打开游标，才能对其进行访问。语句格式如下：
+    OPEN [GLOBAL] <游标名>|<游标变量名>
+参数说明如下：
+GLOBAL：指定游标为全局游标。
+<游标名>：已声明的游标名称。如果一个全局游标与一个局部游标同名，则要使用GLOBAL表明其全局游标。
+ <游标变量名>：游标变量的名称，该名称可以引用一个游标
+
+当执行打开游标的语句时，服务器将执行声明游标时使用的SELECT语句。如果声明游标时使用了INSENSITIVE选项，则服务器会在tempdb中建立一个临时表，存放游标将要进行操作的结果集的副本。
+利用OPEN语句打开游标后，游标位于查询结果集的第一个行。同时也可以使用全局变量@@cursor_rows获得最后打开的游标中符合条件的行数。
+
+```mssql
+例  打开例6.47所声明的游标。
+    GO
+    OPEN S_Cursor
+    GO
+```
+
+读取游标
+在打开游标后，就可以利用FETCH语句从查询结果集中读取数据。使用FETCH语句一次可以读取一条记录，具体语句格式如下：
+FETCH [[NEXT|PRIOR|FIRST|LAST
+|ABSOLUTE n|@nvar
+|RELATIVE n|@nvar]
+FROM]
+    [GLOBAL]<游标名>|<游标变量名>
+    [INTO @变量名[, … n]]
+NEXT：返回结果集中当前行的下一行，并将当前行向后移一行。 
+PRIOR：读取紧临当前行的前面一行，并将当前行向前移一行。
+
+FIRST：读取结果集中的第一行并将其设为当前行。
+LAST：读取结果集中的最后一行并将其设为当前行。
+ABSOLUTE n|@nvar：如果n或@nvar为正数，读取从结果集头部开始的第n行，并将返回的行变为新的当前行；如果n或@nvar为负数，读取从结果集尾部之前的第n行，并将返回的行变为新的当前行；如果n或@nvar为0，则没有行返回。
+RELATIVE n | @nvar：如果n或@nvar为正数，则读取当前行之后的第n行，并将返回的行变为新的当前行；如果n或@nvar为负数，则读取当前行之前的第n行，并将返回的行变为新的当前行；如果n或@nvar为0，则读取当前行。
+GLOBAL：指定游标为全局游标。
+INTO @变量名[, … n]：允许读取的数据存放在多个变量中。在变量行中的每个变量必须与结果集中相应的属性列对应（顺序、数据类型等）
+
+ @@FETCH_STATUS全局变量返回上次执行FETCH命令的状态。返回值如下：
+0：表示 FETCH 语句成功。
+-1：表示FETCH 语句失败或此行不在结果集中。
+-2：表示被读取的行不存在。
+
+```mssql
+例 从例6.47所声明的游标中读取数据。
+    GO
+    FETCH NEXT FROM S_Cursor
+    GO
+
+```
+
+关闭游标
+在处理完结果集中数据之后，必须关闭游标来释放结果集。可以使用CLOSE语句来关闭游标，但此语句不释放与游标有关的一切资源。语句格式如下：
+CLOSE[GLOBAL]<游标名>|<游标变量名>
+其中各参数意义与打开命令一致。
+
+```mssql
+例  关闭例6.47所声明的游标。
+     GO
+     CLOSE S_Cursor
+     GO
+```
+
+释放游标
+游标使用不再需要之后，要释放游标，以获取与游标有关的一切资源。语句格式如下：
+DEALLOCATE[GLOBAL]<游标名>|<游标变量名>
+其中各参数意义与打开命令一致。
+
+```mssql
+例  释放例6.47所声明的游标。
+     GO
+     DEALLOCATE S_Cursor
+     GO
+```
+
+## 创建视图
+
+```mssql
+语句格式为：
+     CREATE VIEW <视图名>[(<列名>[, … n ])] 
+     AS 
+      <SELECT查询子句> 
+     [WITH CHECK OPTION] 
+```
+
+```mssql
+例7.2 建立数学系（MA）学生的视图V_MA，并要求进行修改和插入操作时仍需保证该视图只有数学系的学生。 
+USE JXGL
+GO
+CREATE VIEW V_MA
+AS
+SELECT SNO,SNAME,AGE
+FROM S
+WHERE SDEPT='MA'
+WITH CHECK OPTION
+GO    
+由于在定义V_MA视图时加上了WITH CHECK OPTION子句，以后对该视图进行插入、修改和删除操作时，RDBMS会验证条件SDEPT=’MA’。
+```
+
+## 修改视图
+
+```mssql
+T-SQL提供了ALTER VIEW语句修改视图，语句格式如下：
+     ALTER VIEW <视图名>[(<列名>[, … n ])] 
+     AS 
+     <SELECT查询子句> 
+     [WITH CHECK OPTION]
+```
+
+```mssql
+例7.5 修改例7.2中视图V_MA，并要求该视图只查询数学系（MA）的男学生。 
+    USE JXGL
+    GO
+    ALTER VIEW V_MA
+    AS
+    SELECT SNO,SNAME,AGE
+    FROM S
+    WHERE SDEPT='MA' AND SEX='M'
+    WITH CHECK OPTION
+    GO
+```
+
+## 删除视图
+
+DROP VIEW <视图名>
