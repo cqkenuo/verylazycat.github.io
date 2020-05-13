@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "类加载",
+      "category" : "",
+      "tags"     : "JVM",
+      "date"     : "2020-05-13 00:00:00 +0800",
+      
+      "url"      : "http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/"
+    } ,
+  
+    {
       "title"    : "删除文件原理",
       "category" : "",
       "tags"     : "linux",

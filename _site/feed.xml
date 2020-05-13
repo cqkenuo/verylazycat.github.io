@@ -1,11 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-12T20:36:35+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-13T15:37:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">sql-server常用命令总结</title><link href="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="sql-server常用命令总结" /><published>2020-05-12T00:00:00+08:00</published><updated>2020-05-12T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">&lt;ol&gt;
+</subtitle><entry><title type="html">类加载</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="alternate" type="text/html" title="类加载" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%B1%BB%E5%8A%A0%E8%BD%BD</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;类加载&quot;&gt;类加载&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在java代码中，&lt;code&gt;类型&lt;/code&gt;的&lt;code&gt;加载&lt;/code&gt;，&lt;code&gt;连接&lt;/code&gt;，&lt;code&gt;初始化&lt;/code&gt;过程都是在程序运行期间完成的&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;java结束生命周期&quot;&gt;java结束生命周期&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;执行System.exit()&lt;/li&gt;
+  &lt;li&gt;程序正常结束&lt;/li&gt;
+  &lt;li&gt;异常或错误&lt;/li&gt;
+  &lt;li&gt;操作系统出错&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;类的加载连接初始化&quot;&gt;类的加载，连接，初始化&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;加载：查找并加载类的二进制数据，将class文件的二进制数据读入内存，将其放到运行时数据区的方法区内，然后在内存中创建一个java.lang.Class对象来封装类在方法区内的数据结构&lt;/li&gt;
+  &lt;li&gt;连接：
+    &lt;ol&gt;
+      &lt;li&gt;验证：确保加载类的准确性&lt;/li&gt;
+      &lt;li&gt;准备：为类的&lt;code&gt;静态变量&lt;/code&gt;分配内存，并初始胡为&lt;code&gt;默认值&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;解析：把类中的&lt;code&gt;符号引用&lt;/code&gt;转换为&lt;code&gt;直接引用&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;初始化:&lt;code&gt;为静态变量赋初始值&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;类的使用&quot;&gt;类的使用&lt;/h2&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;主动使用
+        &lt;ol&gt;
+          &lt;li&gt;创建类的实例&lt;/li&gt;
+          &lt;li&gt;访问类或者接口静态变量(getstatice)，或者对静态变量赋值(putstatice)&lt;/li&gt;
+          &lt;li&gt;调用静态方法(invokestatic)&lt;/li&gt;
+          &lt;li&gt;反射&lt;/li&gt;
+          &lt;li&gt;初始化类的子类&lt;/li&gt;
+          &lt;li&gt;java虚拟机启动时被标明的启动类&lt;/li&gt;
+          &lt;li&gt;动态语言支持&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;被动使用&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="JVM" /><summary type="html">类加载</summary></entry><entry><title type="html">sql-server常用命令总结</title><link href="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="sql-server常用命令总结" /><published>2020-05-12T00:00:00+08:00</published><updated>2020-05-12T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">&lt;ol&gt;
   &lt;li&gt;
     &lt;h1 id=&quot;部分语句模板&quot;&gt;部分语句模板&lt;/h1&gt;
   &lt;/li&gt;
@@ -3083,31 +3141,4 @@ git push origin master     #将代码推到master上
   &lt;li&gt;Iterator可用来遍历Set和List集合，但是ListIterator只能用来遍历List。&lt;/li&gt;
   &lt;li&gt;Iterator对集合只能是前向遍历，ListIterator既可以前向也可以后向。&lt;/li&gt;
   &lt;li&gt;ListIterator实现了Iterator接口，并包含其他的功能，比如：增加元素，替换元素，获取前一个和后一个元素的索引，等等&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">java 容器都有哪些</summary></entry><entry><title type="html">新型冠状肺炎数据可视化</title><link href="http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="alternate" type="text/html" title="新型冠状肺炎数据可视化" /><published>2020-05-06T00:00:00+08:00</published><updated>2020-05-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">&lt;h4 id=&quot;时间20200110--20200412&quot;&gt;时间:2020.01.10 ~ 2020.04.12&lt;/h4&gt;
-
-&lt;h4 id=&quot;国内数据&quot;&gt;国内数据&lt;/h4&gt;
-
-&lt;h4 id=&quot;主要数据来源&quot;&gt;主要数据来源：&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-http&quot;&gt;https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5
-https://view.inews.qq.com/g2/getOnsInfo?name=disease_other
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;后续网站可能没有维护，在此保存了&lt;code&gt;sql&lt;/code&gt;文件:&lt;code&gt;cov.sql&lt;/code&gt;,您只需导入即可&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;使用前请修改相应的&lt;code&gt;sql&lt;/code&gt;连接配置&lt;/p&gt;
-
-    &lt;p&gt;&lt;code&gt;spider.py &lt;/code&gt;&amp;amp; &lt;code&gt;utils.py&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt; conn = pymysql.connect(host=&quot;######&quot;, user=&quot;#####&quot;, password=&quot;#######&quot;, db=&quot;cov&quot;, charset=&quot;utf8&quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/cov.jpg&quot; alt=&quot;cov&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;项目地址:https://github.com/verylazycat/COV_2020&lt;/p&gt;</content><author><name></name></author><category term="数据可视化" /><summary type="html">时间:2020.01.10 ~ 2020.04.12</summary></entry></feed>
+&lt;/ol&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">java 容器都有哪些</summary></entry></feed>
