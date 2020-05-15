@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>标签 | imod</title>
+<title>Docker笔记 | imod</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="标签" />
+<meta property="og:title" content="Docker笔记" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat" />
-<meta property="og:description" content="lazycat" />
-<link rel="canonical" href="http://localhost:4000/tags/" />
-<meta property="og:url" content="http://localhost:4000/tags/" />
+<meta name="description" content="Docker" />
+<meta property="og:description" content="Docker" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/" />
 <meta property="og:site_name" content="imod" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-15T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/tags/","headline":"标签","description":"lazycat","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/","headline":"Docker笔记","dateModified":"2020-05-15T00:00:00+08:00","datePublished":"2020-05-15T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/"},"description":"Docker","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -241,7 +243,7 @@
         <i class="fas fa-comments fa-fw"></i> 留言
       </a>
       
-      <a class="sidebar-nav-item active" href="/tags/">
+      <a class="sidebar-nav-item" href="/tags/">
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
@@ -546,7 +548,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    标签
+    Docker笔记
     <a href="http://localhost:4000/" title="Home">
       <small>
         imod
@@ -557,242 +559,434 @@
 </div>
 
 <div class="container content">
-  <p>文章标签分类较多，可在侧边栏的目录中快速定位~</p>
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    15 May 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    4859字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    17分
+    
+    
+    <span class="leancloud-visitors" data-xid="/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/" data-flag-title="Docker笔记">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    linux
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>（除特别声明或转载文章外）
 
+    
+  </span>
+  <h2 id="docker">Docker</h2>
 
-<div class="mermaid">
-  pie
-  
-  
-  "机器学习" : 1
-  
-  "linux" : 7
-  
-  "JAVA" : 6
-  
-  "sql" : 3
-  
-  "数据结构" : 1
-  
-  "数据可视化" : 1
-  
-  "git" : 1
-  
-  "JVM" : 1
-  
-  "安全" : 1
-  
+<ul>
+  <li>
+    <h4 id="官网"><a href="https://www.docker.com/">官网</a></h4>
+  </li>
+  <li>
+    <h4 id="安装教程"><a href="https://hub.docker.com/search?q=&amp;type=edition&amp;offering=community&amp;operating_system=linux">安装教程</a></h4>
+  </li>
+  <li>
+    <h3 id="基础命令">基础命令</h3>
+  </li>
+</ul>
+
+<pre><code class="language-bash">Usage:	docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           "/home/yourname/.docker")
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "/home/yourname/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "/home/yourname/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "/home/yourname/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  builder     Manage builds
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  engine      Manage the docker engine
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  deploy      Deploy a new stack or update an existing stack
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+Run 'docker COMMAND --help' for more information on a command.
+</code></pre>
+
+<ul>
+  <li>
+    <h4 id="docker--for-ubuntu-images">Docker  For Ubuntu Images</h4>
+  </li>
+</ul>
+
+<h4 id="网站"><a href="https://hub.docker.com/_/ubuntu?tab=tags&amp;page=1">网站</a></h4>
+
+<ul>
+  <li>
+    <h3 id="拉取最新版的-ubuntu-镜像">拉取最新版的 Ubuntu 镜像</h3>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker pull ubuntu:latest
+</code></pre>
+
+<ul>
+  <li>
+    <h4 id="查看本地镜像">查看本地镜像</h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker images
+</code></pre>
+
+<ul>
+  <li>
+    <h4 id="删除镜像">删除镜像</h4>
+  </li>
+</ul>
+
+<p><code>docker rmi </code></p>
+
+<ul>
+  <li>
+    <h4 id="构建镜像">构建镜像</h4>
+  </li>
+</ul>
+
+<p><code>docker build </code></p>
+
+<p>需要创建一个 <code>Dockerfile</code> 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像</p>
+
+<pre><code class="language-dockerfile">FROM    centos:6.7
+MAINTAINER      Fisher "fisher@sudops.com"
+
+RUN     /bin/echo 'root:123456' |chpasswd
+RUN     useradd runoob
+RUN     /bin/echo 'runoob:123456' |chpasswd
+RUN     /bin/echo -e "LANG=\"en_US.UTF-8\"" &gt;/etc/default/local
+EXPOSE  22
+EXPOSE  80
+CMD     /usr/sbin/sshd -D
+</code></pre>
+
+<p>每一个指令都会在镜像上创建一个新的层，每一个指令的前缀都必须是大写的。</p>
+
+<p>第一条FROM，指定使用哪个镜像源</p>
+
+<p>RUN 指令告诉docker 在镜像内执行命令，安装了什么。。。</p>
+
+<p>然后，我们使用<code>Dockerfile</code> 文件，通过 <code>docker build</code> 命令来构建一个镜像</p>
+
+<pre><code class="language-bash"> docker build -t runoob/centos:6.7 .
+</code></pre>
+
+<pre><code>Sending build context to Docker daemon 17.92 kB
+Step 1 : FROM centos:6.7
+ ---&amp;gt; d95b5ca17cc3
+Step 2 : MAINTAINER Fisher "fisher@sudops.com"
+ ---&amp;gt; Using cache
+ ---&amp;gt; 0c92299c6f03
+Step 3 : RUN /bin/echo 'root:123456' |chpasswd
+ ---&amp;gt; Using cache
+ ---&amp;gt; 0397ce2fbd0a
+Step 4 : RUN useradd runoob
+......
+</code></pre>
+
+<ol>
+  <li><strong>-t</strong> ：指定要创建的目标镜像名</li>
+  <li><strong>.</strong> ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径</li>
+</ol>
+
+<ul>
+  <li>
+    <h4 id="查看端口的绑定情况">查看端口的绑定情况</h4>
+  </li>
+</ul>
+
+<p><code>docker port </code></p>
+
+<ul>
+  <li>
+    <h4 id="运行容器">运行容器</h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker run -itd --name ubuntu-test ubuntu
+</code></pre>
+
+<h4 id="exec-命令进入-ubuntu-容器">exec 命令进入 ubuntu 容器</h4>
+
+<pre><code class="language-bash">docker exec -it ubuntu-test /bin/bas
+</code></pre>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="运行交互式的容器">运行交互式的容器</h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker run -i -t docker_image /bin/bash
+</code></pre>
+
+<ol>
+  <li><code>-t</code>在新容器内指定一个伪终端或终端</li>
+  <li><code>-i</code>允许你对容器内的标准输入 (<code>STDIN</code>) 进行交互</li>
+</ol>
+
+<ul>
+  <li>
+    <h4 id="docker-ps">docker ps</h4>
+  </li>
+</ul>
+
+<ol>
+  <li><strong>CONTAINER ID</strong>:容器 ID</li>
+  <li><strong>IMAGE:</strong> 使用的镜像</li>
+  <li><strong>COMMAND:</strong> 启动容器时运行的命令</li>
+  <li><strong>CREATED:</strong> 容器的创建时间</li>
+  <li><strong>STATUS:</strong> 容器状态
+    <ol>
+      <li>created（已创建）</li>
+      <li>restarting（重启中）</li>
+      <li>running（运行中）</li>
+      <li>removing（迁移中）</li>
+      <li>paused（暂停）</li>
+      <li>exited（停止）</li>
+      <li>dead（死亡）</li>
+    </ol>
+  </li>
+  <li><strong>PORTS:</strong> 容器的端口信息和使用的连接类型（tcp\udp）</li>
+  <li><strong>NAMES:</strong> 自动分配的容器名称</li>
+</ol>
+
+<ul>
+  <li>
+    <h4 id="停止容器">停止容器</h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker stop CONTAINER ID
+</code></pre>
+
+<ul>
+  <li>
+    <h4 id="重启容器">重启容器</h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash"> docker restart CONTAINER ID
+</code></pre>
+
+<ul>
+  <li>
+    <h4 id="进入容器">进入容器</h4>
+  </li>
+</ul>
+
+<p>在使用 <strong>-d</strong> 参数时，容器启动后会进入后台。此时想要进入容器，可以通过以下指令进入：</p>
+
+<pre><code class="language-bash">docker attach  CONTAINER ID
+</code></pre>
+
+<pre><code class="language-bash">docker exec -it CONTAINER ID /bin/bash
+</code></pre>
+
+<p>推荐使用 <code>docker exec</code> 命令，因为此退出容器终端，不会导致容器的停止。</p>
+
+<p>更多参数说明请使用 <code>docker exec --help</code> 命令查看</p>
+
+<ul>
+  <li>
+    <h4 id="导出容器"><strong>导出容器</strong></h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker export  CONTAINER ID &gt; dockername.tar
+</code></pre>
+
+<ul>
+  <li>
+    <h4 id="导入容器快照"><strong>导入容器快照</strong></h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">cat docker/ubuntu.tar | docker import - test/ubuntu:v1
+也可以通过指定 URL 或者某个目录来导入
+docker import http://example.com/exampleimage.tgz example/imagerepo
+</code></pre>
+
+<ul>
+  <li>
+    <h3 id="删除容器">删除容器</h3>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker rm -f CONTAINER ID
+</code></pre>
+
+<ul>
+  <li>
+    <h4 id="运行一个-web-应用flask">运行一个 web 应用(Flask)</h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker pull training/webapp  # 载入镜像
+docker run -d -P training/webapp python app.py
+</code></pre>
+
+<p><strong>-d:</strong>让容器在后台运行。</p>
+
+<p><strong>-P:</strong>将容器内部使用的网络端口映射到我们使用的主机上</p>
+
+<ul>
+  <li>
+    <h4 id="查看-web-应用程序日志">查看 WEB 应用程序日志</h4>
+  </li>
+</ul>
+
+<pre><code class="language-bash">docker logs -f  CONTAINER ID
+</code></pre>
+
+<p><strong>-f:</strong> 让 <strong>docker logs</strong> 像使用 <strong>tail -f</strong> 一样来输出容器内部的标准输出</p>
+
+<ul>
+  <li>
+    <h4 id="查看web应用程序容器的进程">查看WEB应用程序容器的进程</h4>
+  </li>
+</ul>
+
+<p><code> docker top</code> 来查看容器内部运行的进程</p>
+
+<p><code>docker inspect </code>查看 Docker 的底层信息</p>
+
+<ul>
+  <li>
+    <h4 id="停止-web-应用容器">停止 WEB 应用容器</h4>
+  </li>
+</ul>
+
+<p><code>docker stop </code></p>
+
+<ul>
+  <li>
+    <h4 id="重启web应用容器">重启WEB应用容器</h4>
+  </li>
+</ul>
+
+<p><code>docker start</code></p>
+
+<ul>
+  <li>
+    <h4 id="移除web应用容器">移除WEB应用容器</h4>
+  </li>
+</ul>
+
+<p><code> docker rm</code></p>
+
 </div>
-
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  机器学习
-</h2>
-<ul>
-  
-  <li>
-    <small>13 May 2019</small>
-    <a href="http://localhost:4000/_posts/2019-05-13-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">机器学习笔记</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>7</small>
-  
-  linux
-</h2>
-<ul>
-  
-  <li>
-    <small>15 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">Docker笔记</a>
-  </li>
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/">删除文件原理</a>
-  </li>
-  
-  <li>
-    <small>09 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">linux笔记</a>
-  </li>
-  
-  <li>
-    <small>08 Apr 2020</small>
-    <a href="http://localhost:4000/_posts/2020-04-08-MakeMyOs/">MakeMyOs</a>
-  </li>
-  
-  <li>
-    <small>12 Mar 2020</small>
-    <a href="http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/">CPU模式</a>
-  </li>
-  
-  <li>
-    <small>09 Feb 2020</small>
-    <a href="http://localhost:4000/_posts/2020-02-09-makefile%E7%AC%94%E8%AE%B0/">makefile笔记</a>
-  </li>
-  
-  <li>
-    <small>07 Jan 2020</small>
-    <a href="http://localhost:4000/_posts/2020-01-07-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>6</small>
-  
-  JAVA
-</h2>
-<ul>
-  
-  <li>
-    <small>11 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题二</a>
-  </li>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/">BIO&NIO&AIO</a>
-  </li>
-  
-  <li>
-    <small>07 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题三</a>
-  </li>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BA%8C/">JAVA一些问题二</a>
-  </li>
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%80/">JAVA一些问题一</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>3</small>
-  
-  sql
-</h2>
-<ul>
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">sql-server常用命令总结</a>
-  </li>
-  
-  <li>
-    <small>10 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">sql-server复习二</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">sql-server复习一</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  数据结构
-</h2>
-<ul>
-  
-  <li>
-    <small>04 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构－线性表</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  数据可视化
-</h2>
-<ul>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">新型冠状肺炎数据可视化</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  git
-</h2>
-<ul>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  JVM
-</h2>
-<ul>
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">类加载</a>
-  </li>
-  
-</ul>
-
-<h2>
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  安全
-</h2>
-<ul>
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/">置换密码</a>
-  </li>
-  
-</ul>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
 </div>
   </div>

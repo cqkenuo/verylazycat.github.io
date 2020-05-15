@@ -1,11 +1,384 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-13T21:32:33+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-15T14:43:26+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">类加载</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="alternate" type="text/html" title="类加载" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%B1%BB%E5%8A%A0%E8%BD%BD</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">&lt;ul&gt;
+</subtitle><entry><title type="html">Docker笔记</title><link href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="Docker笔记" /><published>2020-05-15T00:00:00+08:00</published><updated>2020-05-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/Docker%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;官网&quot;&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;官网&lt;/a&gt;&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;安装教程&quot;&gt;&lt;a href=&quot;https://hub.docker.com/search?q=&amp;amp;type=edition&amp;amp;offering=community&amp;amp;operating_system=linux&quot;&gt;安装教程&lt;/a&gt;&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;基础命令&quot;&gt;基础命令&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;Usage:	docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           &quot;/home/yourname/.docker&quot;)
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with &quot;docker context use&quot;)
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;)
+                           (default &quot;info&quot;)
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           &quot;/home/yourname/.docker/ca.pem&quot;)
+      --tlscert string     Path to TLS certificate file (default
+                           &quot;/home/yourname/.docker/cert.pem&quot;)
+      --tlskey string      Path to TLS key file (default
+                           &quot;/home/yourname/.docker/key.pem&quot;)
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  builder     Manage builds
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  engine      Manage the docker engine
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  deploy      Deploy a new stack or update an existing stack
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+Run 'docker COMMAND --help' for more information on a command.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;docker--for-ubuntu-images&quot;&gt;Docker  For Ubuntu Images&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;网站&quot;&gt;&lt;a href=&quot;https://hub.docker.com/_/ubuntu?tab=tags&amp;amp;page=1&quot;&gt;网站&lt;/a&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;拉取最新版的-ubuntu-镜像&quot;&gt;拉取最新版的 Ubuntu 镜像&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker pull ubuntu:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;查看本地镜像&quot;&gt;查看本地镜像&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker images
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;删除镜像&quot;&gt;删除镜像&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi &lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;构建镜像&quot;&gt;构建镜像&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;docker build &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;需要创建一个 &lt;code&gt;Dockerfile&lt;/code&gt; 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;FROM    centos:6.7
+MAINTAINER      Fisher &quot;fisher@sudops.com&quot;
+
+RUN     /bin/echo 'root:123456' |chpasswd
+RUN     useradd runoob
+RUN     /bin/echo 'runoob:123456' |chpasswd
+RUN     /bin/echo -e &quot;LANG=\&quot;en_US.UTF-8\&quot;&quot; &amp;gt;/etc/default/local
+EXPOSE  22
+EXPOSE  80
+CMD     /usr/sbin/sshd -D
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;每一个指令都会在镜像上创建一个新的层，每一个指令的前缀都必须是大写的。&lt;/p&gt;
+
+&lt;p&gt;第一条FROM，指定使用哪个镜像源&lt;/p&gt;
+
+&lt;p&gt;RUN 指令告诉docker 在镜像内执行命令，安装了什么。。。&lt;/p&gt;
+
+&lt;p&gt;然后，我们使用&lt;code&gt;Dockerfile&lt;/code&gt; 文件，通过 &lt;code&gt;docker build&lt;/code&gt; 命令来构建一个镜像&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt; docker build -t runoob/centos:6.7 .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Sending build context to Docker daemon 17.92 kB
+Step 1 : FROM centos:6.7
+ ---&amp;amp;gt; d95b5ca17cc3
+Step 2 : MAINTAINER Fisher &quot;fisher@sudops.com&quot;
+ ---&amp;amp;gt; Using cache
+ ---&amp;amp;gt; 0c92299c6f03
+Step 3 : RUN /bin/echo 'root:123456' |chpasswd
+ ---&amp;amp;gt; Using cache
+ ---&amp;amp;gt; 0397ce2fbd0a
+Step 4 : RUN useradd runoob
+......
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;-t&lt;/strong&gt; ：指定要创建的目标镜像名&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;.&lt;/strong&gt; ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;查看端口的绑定情况&quot;&gt;查看端口的绑定情况&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;docker port &lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;运行容器&quot;&gt;运行容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker run -itd --name ubuntu-test ubuntu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;exec-命令进入-ubuntu-容器&quot;&gt;exec 命令进入 ubuntu 容器&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker exec -it ubuntu-test /bin/bas
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;运行交互式的容器&quot;&gt;运行交互式的容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker run -i -t docker_image /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt;在新容器内指定一个伪终端或终端&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-i&lt;/code&gt;允许你对容器内的标准输入 (&lt;code&gt;STDIN&lt;/code&gt;) 进行交互&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;docker-ps&quot;&gt;docker ps&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;CONTAINER ID&lt;/strong&gt;:容器 ID&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IMAGE:&lt;/strong&gt; 使用的镜像&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;COMMAND:&lt;/strong&gt; 启动容器时运行的命令&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CREATED:&lt;/strong&gt; 容器的创建时间&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;STATUS:&lt;/strong&gt; 容器状态
+    &lt;ol&gt;
+      &lt;li&gt;created（已创建）&lt;/li&gt;
+      &lt;li&gt;restarting（重启中）&lt;/li&gt;
+      &lt;li&gt;running（运行中）&lt;/li&gt;
+      &lt;li&gt;removing（迁移中）&lt;/li&gt;
+      &lt;li&gt;paused（暂停）&lt;/li&gt;
+      &lt;li&gt;exited（停止）&lt;/li&gt;
+      &lt;li&gt;dead（死亡）&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PORTS:&lt;/strong&gt; 容器的端口信息和使用的连接类型（tcp\udp）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;NAMES:&lt;/strong&gt; 自动分配的容器名称&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;停止容器&quot;&gt;停止容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker stop CONTAINER ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;重启容器&quot;&gt;重启容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt; docker restart CONTAINER ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;进入容器&quot;&gt;进入容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在使用 &lt;strong&gt;-d&lt;/strong&gt; 参数时，容器启动后会进入后台。此时想要进入容器，可以通过以下指令进入：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker attach  CONTAINER ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker exec -it CONTAINER ID /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;推荐使用 &lt;code&gt;docker exec&lt;/code&gt; 命令，因为此退出容器终端，不会导致容器的停止。&lt;/p&gt;
+
+&lt;p&gt;更多参数说明请使用 &lt;code&gt;docker exec --help&lt;/code&gt; 命令查看&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;导出容器&quot;&gt;&lt;strong&gt;导出容器&lt;/strong&gt;&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker export  CONTAINER ID &amp;gt; dockername.tar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;导入容器快照&quot;&gt;&lt;strong&gt;导入容器快照&lt;/strong&gt;&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cat docker/ubuntu.tar | docker import - test/ubuntu:v1
+也可以通过指定 URL 或者某个目录来导入
+docker import http://example.com/exampleimage.tgz example/imagerepo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;删除容器&quot;&gt;删除容器&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker rm -f CONTAINER ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;运行一个-web-应用flask&quot;&gt;运行一个 web 应用(Flask)&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker pull training/webapp  # 载入镜像
+docker run -d -P training/webapp python app.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;-d:&lt;/strong&gt;让容器在后台运行。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;-P:&lt;/strong&gt;将容器内部使用的网络端口映射到我们使用的主机上&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;查看-web-应用程序日志&quot;&gt;查看 WEB 应用程序日志&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker logs -f  CONTAINER ID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;-f:&lt;/strong&gt; 让 &lt;strong&gt;docker logs&lt;/strong&gt; 像使用 &lt;strong&gt;tail -f&lt;/strong&gt; 一样来输出容器内部的标准输出&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;查看web应用程序容器的进程&quot;&gt;查看WEB应用程序容器的进程&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt; docker top&lt;/code&gt; 来查看容器内部运行的进程&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker inspect &lt;/code&gt;查看 Docker 的底层信息&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;停止-web-应用容器&quot;&gt;停止 WEB 应用容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;docker stop &lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;重启web应用容器&quot;&gt;重启WEB应用容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;docker start&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;移除web应用容器&quot;&gt;移除WEB应用容器&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt; docker rm&lt;/code&gt;&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">Docker</summary></entry><entry><title type="html">类加载</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="alternate" type="text/html" title="类加载" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%B1%BB%E5%8A%A0%E8%BD%BD</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">&lt;ul&gt;
   &lt;li&gt;
     &lt;h2 id=&quot;类加载&quot;&gt;类加载&lt;/h2&gt;
   &lt;/li&gt;
@@ -2710,303 +3083,4 @@ git pull
 git checkout master
 git merge dev              #合并dev分支到master上
 git push origin master     #将代码推到master上
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="git" /><summary type="html"></summary></entry><entry><title type="html">JAVA一些问题三</title><link href="http://localhost:4000/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/" rel="alternate" type="text/html" title="JAVA一些问题三" /><published>2020-05-07T00:00:00+08:00</published><updated>2020-05-07T00:00:00+08:00</updated><id>http://localhost:4000/_posts/JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;并行和并发有什么区别&quot;&gt;&lt;strong&gt;并行和并发有什么区别&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;并行是指两个或者多个事件在同一时刻发生；而并发是指两个或多个事件在同一时间间隔发生。&lt;/li&gt;
-  &lt;li&gt;并行是在不同实体上的多个事件，并发是在同一实体上的多个事件。&lt;/li&gt;
-  &lt;li&gt;在一台处理器上“同时”处理多个任务，在多台处理器上同时处理多个任务。如hadoop分布式集群&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;所以并发编程的目标是充分的利用处理器的每一个核，以达到最高的处理性能。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;线程和进程的区别&quot;&gt;&lt;strong&gt;线程和进程的区别？&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;简而言之，进程是程序运行和资源分配的基本单位，一个程序至少有一个进程，一个进程至少有一个线程。进程在执行过程中拥有独立的内存单元，而多个线程共享内存资源，减少切换次数，从而效率更高。线程是进程的一个实体，是cpu调度和分派的基本单位，是比程序更小的能独立运行的基本单位。同一进程中的多个线程之间可以并发执行。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;守护线程是什么&quot;&gt;&lt;strong&gt;守护线程是什么？&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;守护线程（即daemon thread），是个服务线程，准确地来说就是服务其他的线程。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;创建线程有哪几种方式&quot;&gt;&lt;strong&gt;创建线程有哪几种方式&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;①. 继承Thread类创建线程类&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体。&lt;/li&gt;
-  &lt;li&gt;创建Thread子类的实例，即创建了线程对象。&lt;/li&gt;
-  &lt;li&gt;调用线程对象的start()方法来启动该线程。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;②. 通过Runnable接口创建线程类&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;定义runnable接口的实现类，并重写该接口的run()方法，该run()方法的方法体同样是该线程的线程执行体。&lt;/li&gt;
-  &lt;li&gt;创建 Runnable实现类的实例，并依此实例作为Thread的target来创建Thread对象，该Thread对象才是真正的线程对象。&lt;/li&gt;
-  &lt;li&gt;调用线程对象的start()方法来启动该线程。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;③. 通过Callable和Future创建线程&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值。&lt;/li&gt;
-  &lt;li&gt;创建Callable实现类的实例，使用FutureTask类来包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值。&lt;/li&gt;
-  &lt;li&gt;使用FutureTask对象作为Thread对象的target创建并启动新线程。&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;调用FutureTask对象的get()方法来获得子线程执行结束后的返回值。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;runnable-和-callable-区别&quot;&gt;runnable 和 callable 区别&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;有点深的问题了，也看出一个Java程序员学习知识的广度。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已；&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;线程有哪些状态&quot;&gt;&lt;strong&gt;线程有哪些状态&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;创建状态。在生成线程对象，并没有调用该对象的start方法，这是线程处于创建状态。&lt;/p&gt;
-
-&lt;p&gt;就绪状态。当调用了线程对象的start方法之后，该线程就进入了就绪状态，但是此时线程调度程序还没有把该线程设置为当前线程，此时处于就绪状态。在线程运行之后，从等待或者睡眠中回来之后，也会处于就绪状态。&lt;/p&gt;
-
-&lt;p&gt;运行状态。线程调度程序将处于就绪状态的线程设置为当前线程，此时线程就进入了运行状态，开始运行run函数当中的代码。&lt;/p&gt;
-
-&lt;p&gt;阻塞状态。线程正在运行的时候，被暂停，通常是为了等待某个时间的发生(比如说某项资源就绪)之后再继续运行。sleep,suspend，wait等方法都可以导致线程阻塞。&lt;/p&gt;
-
-&lt;p&gt;死亡状态。如果一个线程的run方法执行结束或者调用stop方法后，该线程就会死亡。对于已经死亡的线程，无法再使用start方法令其进入就绪&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;sleep-和-wait-区别&quot;&gt;&lt;strong&gt;sleep() 和 wait() 区别&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;sleep()：方法是线程类（Thread）的静态方法，让调用线程进入睡眠状态，让出执行机会给其他线程，等到休眠时间结束后，线程进入就绪状态和其他线程一起竞争cpu的执行时间。因为sleep() 是static静态的方法，他不能改变对象的机锁，当一个synchronized块中调用了sleep()  方法，线程虽然进入休眠，但是对象的机锁没有被释放，其他线程依然无法访问这个对象。&lt;/p&gt;
-
-&lt;p&gt;wait()：wait()是Object类的方法，当一个线程执行到wait方法时，它就进入到一个和该对象相关的等待池，同时释放对象的机锁，使得其他线程能够访问，可以通过notify，notifyAll方法来唤醒等待的线程&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;notify和-notifyall有什么区别&quot;&gt;&lt;strong&gt;notify()和 notifyAll()有什么区别&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;如果线程调用了对象的 wait()方法，那么线程便会处于该对象的等待池中，等待池中的线程不会去竞争该对象的锁。&lt;/p&gt;
-
-&lt;p&gt;当有线程调用了对象的 notifyAll()方法（唤醒所有 wait 线程）或 notify()方法（只随机唤醒一个 wait  线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。也就是说，调用了notify后只要一个线程会由等待池进入锁池，而notifyAll会将该对象等待池内的所有线程移动到锁池中，等待锁竞争。&lt;/p&gt;
-
-&lt;p&gt;优先级高的线程竞争到对象锁的概率大，假若某线程没有竞争到该对象锁，它还会留在锁池中，唯有线程再次调用 wait()方法，它才会重新回到等待池中。而竞争到对象锁的线程则继续往下执行，直到执行完了 synchronized  代码块，它会释放掉该对象锁，这时锁池中的线程会继续竞争该对象锁&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;线程的-run和-start有什么区别&quot;&gt;&lt;strong&gt;线程的 run()和 start()有什么区别&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;每个线程都是通过某个特定Thread对象所对应的方法run()来完成其操作的，方法run()称为线程体。通过调用Thread类的start()方法来启动一个线程。&lt;/p&gt;
-
-&lt;p&gt;start()方法来启动一个线程，真正实现了多线程运行。这时无需等待run方法体代码执行完毕，可以直接继续执行下面的代码； 这时此线程是处于就绪状态， 并没有运行。 然后通过此Thread类调用方法run()来完成其运行状态，  这里方法run()称为线程体，它包含了要执行的这个线程的内容， Run方法运行结束， 此线程终止。然后CPU再调度其它线程。&lt;/p&gt;
-
-&lt;p&gt;run()方法是在本线程里的，只是线程里的一个函数,而不是多线程的。 如果直接调用run(),其实就相当于是调用了一个普通函数而已，直接待用run()方法必须等待run()方法执行完毕才能执行下面的代码，所以执行路径还是只有一条，根本就没有线程的特征，所以在多线程执行时要使用start()方法而不是run()方法&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;创建线程池有哪几种方式&quot;&gt;&lt;strong&gt;创建线程池有哪几种方式&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;①. newFixedThreadPool(int nThreads)&lt;/p&gt;
-
-&lt;p&gt;创建一个固定长度的线程池，每当提交一个任务就创建一个线程，直到达到线程池的最大数量，这时线程规模将不再变化，当线程发生未预期的错误而结束时，线程池会补充一个新的线程。&lt;/p&gt;
-
-&lt;p&gt;②. newCachedThreadPool()&lt;/p&gt;
-
-&lt;p&gt;创建一个可缓存的线程池，如果线程池的规模超过了处理需求，将自动回收空闲线程，而当需求增加时，则可以自动添加新线程，线程池的规模不存在任何限制。&lt;/p&gt;
-
-&lt;p&gt;③. newSingleThreadExecutor()&lt;/p&gt;
-
-&lt;p&gt;这是一个单线程的Executor，它创建单个工作线程来执行任务，如果这个线程异常结束，会创建一个新的来替代它；它的特点是能确保依照任务在队列中的顺序来串行执行。&lt;/p&gt;
-
-&lt;p&gt;④. newScheduledThreadPool(int corePoolSize)&lt;/p&gt;
-
-&lt;p&gt;创建了一个固定长度的线程池，而且以延迟或定时的方式来执行任务，类似于Timer&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;线程池都有哪些状态&quot;&gt;&lt;strong&gt;线程池都有哪些状态&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;线程池有5种状态：Running、ShutDown、Stop、Tidying、Terminated。&lt;/p&gt;
-
-&lt;p&gt;线程池各个状态切换框架图&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/线程池.png&quot; alt=&quot;线程池&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;线程池中-submit和-execute方法有什么区别&quot;&gt;&lt;strong&gt;线程池中 submit()和 execute()方法有什么区别&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;接收的参数不一样&lt;/li&gt;
-  &lt;li&gt;submit有返回值，而execute没有&lt;/li&gt;
-  &lt;li&gt;submit方便Exception处理&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;在-java-程序中怎么保证多线程的运行安全&quot;&gt;&lt;strong&gt;在 java 程序中怎么保证多线程的运行安全&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;线程安全在三个方面体现：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;原子性：提供互斥访问，同一时刻只能有一个线程对数据进行操作，（atomic,synchronized）；&lt;/li&gt;
-  &lt;li&gt;可见性：一个线程对主内存的修改可以及时地被其他线程看到，（synchronized,volatile）；&lt;/li&gt;
-  &lt;li&gt;有序性：一个线程观察其他线程中的指令执行顺序，由于指令重排序，该观察结果一般杂乱无序，（happens-before原则）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;多线程锁的升级原理是什么&quot;&gt;&lt;strong&gt;多线程锁的升级原理是什么&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;在Java中，锁共有4种状态，级别从低到高依次为：无状态锁，偏向锁，轻量级锁和重量级锁状态，这几个状态会随着竞争情况逐渐升级。锁可以升级但不能降级。&lt;/p&gt;
-
-&lt;p&gt;锁升级的图示过程:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/锁升级.png&quot; alt=&quot;锁升级&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;什么是死锁&quot;&gt;&lt;strong&gt;什么是死锁&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。是操作系统层面的一个错误，是进程死锁的简称，最早在 1965 年由 Dijkstra 在研究银行家算法时提出的，它是计算机操作系统乃至整个并发程序设计领域最难处理的问题之一&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;怎么防止死锁&quot;&gt;&lt;strong&gt;怎么防止死锁&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;死锁的四个必要条件：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;互斥条件：进程对所分配到的资源不允许其他进程进行访问，若其他进程访问该资源，只能等待，直至占有该资源的进程使用完成后释放该资源&lt;/li&gt;
-  &lt;li&gt;请求和保持条件：进程获得一定的资源之后，又对其他资源发出请求，但是该资源可能被其他进程占有，此事请求阻塞，但又对自己获得的资源保持不放&lt;/li&gt;
-  &lt;li&gt;不可剥夺条件：是指进程已获得的资源，在未完成使用之前，不可被剥夺，只能在使用完后自己释放&lt;/li&gt;
-  &lt;li&gt;环路等待条件：是指进程发生死锁后，若干进程之间形成一种头尾相接的循环等待资源关系&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之 一不满足，就不会发生死锁。&lt;/p&gt;
-
-&lt;p&gt;理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和 解除死锁。&lt;/p&gt;
-
-&lt;p&gt;所以，在系统设计、进程调度等方面注意如何不让这四个必要条件成立，如何确 定资源的合理分配算法，避免进程永久占据系统资源。&lt;/p&gt;
-
-&lt;p&gt;此外，也要防止进程在处于等待状态的情况下占用资源。因此，对资源的分配要给予合理的规划&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;threadlocal-是什么有哪些使用场景&quot;&gt;&lt;strong&gt;ThreadLocal 是什么？有哪些使用场景&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;线程局部变量是局限于线程内部的变量，属于线程自身所有，不在多个线程间共享。Java提供ThreadLocal类来支持线程局部变量，是一种实现线程安全的方式。但是在管理环境下（如 web  服务器）使用线程局部变量的时候要特别小心，在这种情况下，工作线程的生命周期比任何应用变量的生命周期都要长。任何线程局部变量一旦在工作完成后没有释放，Java 应用就存在内存泄露的风险&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;说一下-synchronized-底层实现原理&quot;&gt;&lt;strong&gt;说一下 synchronized 底层实现原理&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;synchronized可以保证方法或者代码块在运行时，同一时刻只有一个方法可以进入到临界区，同时它还可以保证共享变量的内存可见性。&lt;/p&gt;
-
-&lt;p&gt;Java中每一个对象都可以作为锁，这是synchronized实现同步的基础：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;普通同步方法，锁是当前实例对象&lt;/li&gt;
-  &lt;li&gt;静态同步方法，锁是当前类的class对象&lt;/li&gt;
-  &lt;li&gt;同步方法块，锁是括号里面的对象&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;synchronized-和-volatile-的区别是什么&quot;&gt;&lt;strong&gt;synchronized 和 volatile 的区别是什么&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;volatile本质是在告诉jvm当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取； synchronized则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。&lt;/li&gt;
-  &lt;li&gt;volatile仅能使用在变量级别；synchronized则可以使用在变量、方法、和类级别的。&lt;/li&gt;
-  &lt;li&gt;volatile仅能实现变量的修改可见性，不能保证原子性；而synchronized则可以保证变量的修改可见性和原子性。&lt;/li&gt;
-  &lt;li&gt;volatile不会造成线程的阻塞；synchronized可能会造成线程的阻塞。&lt;/li&gt;
-  &lt;li&gt;volatile标记的变量不会被编译器优化；synchronized标记的变量可以被编译器优化&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;synchronized-和-lock-有什么区别&quot;&gt;&lt;strong&gt;synchronized 和 Lock 有什么区别&lt;/strong&gt;&lt;/h2&gt;
-
-    &lt;ol&gt;
-      &lt;li&gt;首先synchronized是java内置关键字，在jvm层面，Lock是个java类；&lt;/li&gt;
-      &lt;li&gt;synchronized无法判断是否获取锁的状态，Lock可以判断是否获取到锁；&lt;/li&gt;
-      &lt;li&gt;synchronized会自动释放锁(a 线程执行完同步代码会释放锁 ；b 线程执行过程中发生异常会释放锁)，Lock需在finally中手工释放锁（unlock()方法释放锁），否则容易造成线程死锁；&lt;/li&gt;
-      &lt;li&gt;用synchronized关键字的两个线程1和线程2，如果当前线程1获得锁，线程2线程等待。如果线程1阻塞，线程2则会一直等待下去，而Lock锁就不一定会等待下去，如果尝试获取不到锁，线程可以不用一直等待就结束了；&lt;/li&gt;
-      &lt;li&gt;synchronized的锁可重入、不可中断、非公平，而Lock锁可重入、可判断、可公平（两者皆可）；&lt;/li&gt;
-      &lt;li&gt;Lock锁适合大量同步的代码的同步问题，synchronized锁适合代码少量的同步问题。&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;synchronized-和-reentrantlock-区别是什么&quot;&gt;&lt;strong&gt;synchronized 和 ReentrantLock 区别是什么&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;synchronized是和if、else、for、while一样的关键字，ReentrantLock是类，这是二者的本质区别。既然ReentrantLock是类，那么它就提供了比synchronized更多更灵活的特性，可以被继承、可以有方法、可以有各种各样的类变量，ReentrantLock比synchronized的扩展性体现在几点上：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;ReentrantLock可以对获取锁的等待时间进行设置，这样就避免了死锁&lt;/li&gt;
-  &lt;li&gt;ReentrantLock可以获取各种锁的信息&lt;/li&gt;
-  &lt;li&gt;ReentrantLock可以灵活地实现多路通知&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;另外，二者的锁机制其实也是不一样的:ReentrantLock底层调用的是Unsafe的park方法加锁，synchronized操作的应该是对象头中mark word&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;atomic-的原理&quot;&gt;&lt;strong&gt;atomic 的原理&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Atomic包中的类基本的特性就是在多线程环境下，当有多个线程同时对单个（包括基本类型及引用类型）变量进行操作时，具有排他性，即当多个线程同时对该变量的值进行更新时，仅有一个线程能成功，而未成功的线程可以向自旋锁一样，继续尝试，一直等到执行成功。&lt;/p&gt;
-
-&lt;p&gt;Atomic系列的类中的核心方法都会调用unsafe类中的几个本地方法。我们需要先知道一个东西就是Unsafe类，全名为：sun.misc.Unsafe，这个类包含了大量的对C代码的操作，包括很多直接内存分配以及原子操作的调用，而它之所以标记为非安全的，是告诉你这个里面大量的方法调用都会存在安全隐患，需要小心使用，否则会导致严重的后果，例如在通过unsafe分配内存的时候，如果自己指定某些区域可能会导致一些类似C++一样的指针越界到其他进程的问题&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">并行和并发有什么区别</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="git" /><summary type="html"></summary></entry></feed>
