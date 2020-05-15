@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>归档 | imod</title>
+<title>Hydra | imod</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="归档" />
+<meta property="og:title" content="Hydra" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat" />
-<meta property="og:description" content="lazycat" />
-<link rel="canonical" href="http://localhost:4000/archive/" />
-<meta property="og:url" content="http://localhost:4000/archive/" />
+<meta name="description" content="Hydra密码爆破" />
+<meta property="og:description" content="Hydra密码爆破" />
+<link rel="canonical" href="http://localhost:4000/_posts/2019-03-13-Hydra/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2019-03-13-Hydra/" />
 <meta property="og:site_name" content="imod" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-13T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/archive/","headline":"归档","description":"lazycat","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2019-03-13-Hydra/","headline":"Hydra","dateModified":"2019-03-13T00:00:00+08:00","datePublished":"2019-03-13T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2019-03-13-Hydra/"},"description":"Hydra密码爆破","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -245,7 +247,7 @@
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
-      <a class="sidebar-nav-item active" href="/archive/">
+      <a class="sidebar-nav-item" href="/archive/">
         <i class="fas fa-archive fa-fw"></i> 归档
       </a>
       
@@ -546,7 +548,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    归档
+    Hydra
     <a href="http://localhost:4000/" title="Home">
       <small>
         imod
@@ -557,335 +559,131 @@
 </div>
 
 <div class="container content">
-  
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    13 Mar 2019
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    1802字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    7分
+    
+    
+    <span class="leancloud-visitors" data-xid="/_posts/2019-03-13-Hydra/" data-flag-title="Hydra">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    安全
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>（除特别声明或转载文章外）
+
+    
+  </span>
+  <h2 id="hydra密码爆破">Hydra密码爆破</h2>
+
+<ol>
+  <li>
+    <p>爆破如下网络登录：</p>
+
+    <ol>
+      <li>RDP</li>
+      <li>SSH</li>
+      <li>TELNET</li>
+      <li>FTP</li>
+    </ol>
+  </li>
+  <li>
+    <p>安装</p>
+
+    <pre><code class="language-sh">sudo apt update -y &amp;&amp; sudo apt install -y hydra
+</code></pre>
+  </li>
+  <li>
+    <p>字典</p>
+
+    <p><a href="https://github.com/danielmiessler/SecLists">推荐</a></p>
+  </li>
+  <li>
+    <p>基础语法</p>
+
+    <pre><code class="language-sh">iSyntax: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS] [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME] [-ISOuvVd46] [service://server[:PORT][/OPT]]
+Options:
+  -l LOGIN or -L FILE  login with LOGIN name, or load several logins from FILE
+  -p PASS  or -P FILE  try password PASS, or load several passwords from FILE
+  -C FILE   colon separated &amp;quot;login:pass&amp;quot; format, instead of -L/-P options
+  -M FILE   list of servers to attack, one entry per line, &amp;#39;:&amp;#39; to specify port
+  -t TASKS  run TASKS number of connects in parallel per target (default: 16)
+  -U        service module usage details
+  -h        more command line options (COMPLETE HELP)
+  server    the target: DNS, IP or 192.168.0.0/24 (this OR the -M option)
+  service   the service to crack (see below for supported protocols)
+  OPT       some service modules support additional input (-U for module help)
+Supported services: adam6500 asterisk cisco cisco-enable cvs firebird ftp ftps http[s]-{head|get|post} http[s]-{get|post}-form http-proxy http-proxy-urlenum icq imap[s] irc ldap2[s] ldap3[-{cram|digest}md5][s] mssql mysql nntp oracle-listener oracle-sid pcanywhere pcnfs pop3[s] postgres radmin2 rdp redis rexec rlogin rpcap rsh rtsp s7-300 sip smb smtp[s] smtp-enum snmp socks5 ssh sshkey svn teamspeak telnet[s] vmauthd vnc xmpp
+Hydra is a tool to guess/crack valid login/password pairs. Licensed under AGPL
+v3.0. The newest version is always available at http://www.thc.org/thc-hydra
+Don&amp;#39;t use in military or secret service organizations, or for illegal purposes.
+Example:  hydra -l user -P passlist.txt ftp://192.168.0.1ss
+</code></pre>
+  </li>
+  <li>
+    <p>示例</p>
+
+    <pre><code class="language-bash">#指定用户名和密码
+hydra -l root -p password ssh://192.168.1.2
+#指定用户名和密码字典
+hydra -l root -P /usr/share/wordlists/password.lst ssh://192.168.1.2
+#指定用户名字典和密码字典
+hydra -L /path/to/user.list -P /path/to/password.list ssh://192.168.1.2
+</code></pre>
+  </li>
+  <li>
+    <p>线程</p>
+
+    <p>默认16线程，也可用<code>-t</code>指定线程数量</p>
+
+    <pre><code class="language-sh">hydra -L /path/to/userlist -P /path/to/passlist -t 4 ssh://192.168.1.2
+</code></pre>
+  </li>
+  <li>
+    <p>更多请查看帮助</p>
+  </li>
+</ol>
 
 
-23篇博文。长路漫漫！
-
-
-
-
-
-
-
-
-
-<div class="mermaid">
-  pie
-  
-  
-  
-  
-  
-  
-  "2020" : 21
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  "2019" : 2
-  
-  
-  
-  
-  
-  
-  
 </div>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
-
-<ul>
-  
-  
-  
-  
-  
-</ul>
-<h2>
-  <i class="fas fa-folder-open"></i>
-  
-  <small>21</small>
-  
-  2020
-</h2>
-<ul>
-  
-  
-  <li>
-    <small>15 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">Docker笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/">置换密码</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">类加载</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/">删除文件原理</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">sql-server常用命令总结</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>11 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>10 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">sql-server复习二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>09 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">linux笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/">BIO&NIO&AIO</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>07 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题三</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">新型冠状肺炎数据可视化</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BA%8C/">JAVA一些问题二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%80/">JAVA一些问题一</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>04 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构－线性表</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">sql-server复习一</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 Apr 2020</small>
-    <a href="http://localhost:4000/_posts/2020-04-08-MakeMyOs/">MakeMyOs</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 Mar 2020</small>
-    <a href="http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/">CPU模式</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>09 Feb 2020</small>
-    <a href="http://localhost:4000/_posts/2020-02-09-makefile%E7%AC%94%E8%AE%B0/">makefile笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>07 Jan 2020</small>
-    <a href="http://localhost:4000/_posts/2020-01-07-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-  </li>
-  
-  
-  
-  
-</ul>
-<h2>
-  <i class="fas fa-folder-open"></i>
-  
-  <small>2</small>
-  
-  2019
-</h2>
-<ul>
-  
-  
-  <li>
-    <small>13 May 2019</small>
-    <a href="http://localhost:4000/_posts/2019-05-13-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">机器学习笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 Mar 2019</small>
-    <a href="http://localhost:4000/_posts/2019-03-13-Hydra/">Hydra</a>
-  </li>
-  
-</ul>
 </div>
   </div>
   
