@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-17T11:37:01+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-17T20:44:24+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -378,19 +378,13 @@ docker run -d -P training/webapp python app.py
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;code&gt; docker rm&lt;/code&gt;&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">Docker</summary></entry><entry><title type="html">类加载</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="alternate" type="text/html" title="类加载" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%B1%BB%E5%8A%A0%E8%BD%BD</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;类加载&quot;&gt;类加载&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt; docker rm&lt;/code&gt;&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">Docker</summary></entry><entry><title type="html">类加载</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="alternate" type="text/html" title="类加载" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%B1%BB%E5%8A%A0%E8%BD%BD</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;类加载&quot;&gt;类加载&lt;/h1&gt;
 
 &lt;p&gt;在java代码中，&lt;code&gt;类型&lt;/code&gt;的&lt;code&gt;加载&lt;/code&gt;，&lt;code&gt;连接&lt;/code&gt;，&lt;code&gt;初始化&lt;/code&gt;过程都是在程序运行期间完成的&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;java结束生命周期&quot;&gt;java结束生命周期&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;java结束生命周期&quot;&gt;java结束生命周期&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;执行System.exit()&lt;/li&gt;
@@ -399,11 +393,7 @@ docker run -d -P training/webapp python app.py
   &lt;li&gt;操作系统出错&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;类的加载连接初始化&quot;&gt;类的加载，连接，初始化&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;类的加载连接初始化&quot;&gt;类的加载，连接，初始化&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;加载：查找并加载类的二进制数据，将class文件的二进制数据读入内存，将其放到运行时数据区的方法区内，然后在内存中创建一个java.lang.Class对象来封装类在方法区内的数据结构&lt;/li&gt;
@@ -417,26 +407,20 @@ docker run -d -P training/webapp python app.py
   &lt;li&gt;初始化:&lt;code&gt;为静态变量赋初始值&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;类的使用&quot;&gt;类的使用&lt;/h2&gt;
+&lt;h2 id=&quot;类的使用&quot;&gt;类的使用&lt;/h2&gt;
 
-    &lt;ol&gt;
-      &lt;li&gt;主动使用
-        &lt;ol&gt;
-          &lt;li&gt;创建类的实例&lt;/li&gt;
-          &lt;li&gt;访问类或者接口静态变量(getstatice)，或者对静态变量赋值(putstatice)&lt;/li&gt;
-          &lt;li&gt;调用静态方法(invokestatic)&lt;/li&gt;
-          &lt;li&gt;反射&lt;/li&gt;
-          &lt;li&gt;初始化类的子类&lt;/li&gt;
-          &lt;li&gt;java虚拟机启动时被标明的启动类&lt;/li&gt;
-          &lt;li&gt;动态语言支持&lt;/li&gt;
-        &lt;/ol&gt;
-      &lt;/li&gt;
-      &lt;li&gt;被动使用&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="JVM" /><summary type="html">类加载</summary></entry><entry><title type="html">置换密码</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/" rel="alternate" type="text/html" title="置换密码" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/">&lt;ul&gt;
+&lt;p&gt;主动使用&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;创建类的实例&lt;/li&gt;
+  &lt;li&gt;访问类或者接口静态变量(getstatice)，或者对静态变量赋值(putstatice)&lt;/li&gt;
+  &lt;li&gt;调用静态方法(invokestatic)&lt;/li&gt;
+  &lt;li&gt;反射&lt;/li&gt;
+  &lt;li&gt;初始化类的子类&lt;/li&gt;
+  &lt;li&gt;java虚拟机启动时被标明的启动类&lt;/li&gt;
+  &lt;li&gt;动态语言支持&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;被动使用&quot;&gt;被动使用&lt;/h2&gt;</content><author><name></name></author><category term="JVM" /><summary type="html">[toc]</summary></entry><entry><title type="html">置换密码</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/" rel="alternate" type="text/html" title="置换密码" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/">&lt;ul&gt;
   &lt;li&gt;
     &lt;h2 id=&quot;置换密码&quot;&gt;置换密码&lt;/h2&gt;
   &lt;/li&gt;
@@ -1887,11 +1871,9 @@ STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函�
 
 &lt;p&gt;(3) 如果R属于2NF但R不属于3NF，分解R使其满足3NF。
 将关系模式分解为符合3NF条件的方法如下：设关系模式R(U)，主键是W，R上还存在函数依赖X→Z。Z不含于X并且是非主属性，X不是候选键，那么W→Z就是一个传递函数依赖。
-此时应把R分解成两个模式R1(XZ)，主键是X和R2(Y)，其中Y=U-Z，主键仍是W，外键是X。如在例2.15的关系模式R1(CNO,TNAME,TADDR)，取W={CNO}，X={TNAME}，Z={TADDR}，利用该方法就可以得到符合3NF的关系模式R11(TNAME,TADDR)和R12(CNO,TNAME)。&lt;/p&gt;</content><author><name></name></author><category term="sql" /><summary type="html">sql-server复习二</summary></entry><entry><title type="html">linux笔记</title><link href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="linux笔记" /><published>2020-05-09T00:00:00+08:00</published><updated>2020-05-09T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;unix和linux区别&quot;&gt;Unix和Linux区别&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+此时应把R分解成两个模式R1(XZ)，主键是X和R2(Y)，其中Y=U-Z，主键仍是W，外键是X。如在例2.15的关系模式R1(CNO,TNAME,TADDR)，取W={CNO}，X={TNAME}，Z={TADDR}，利用该方法就可以得到符合3NF的关系模式R11(TNAME,TADDR)和R12(CNO,TNAME)。&lt;/p&gt;</content><author><name></name></author><category term="sql" /><summary type="html">sql-server复习二</summary></entry><entry><title type="html">linux笔记</title><link href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="linux笔记" /><published>2020-05-09T00:00:00+08:00</published><updated>2020-05-09T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;unix和linux区别&quot;&gt;Unix和Linux区别&lt;/h1&gt;
 
 &lt;ol&gt;
   &lt;li&gt;开源性
@@ -1906,11 +1888,7 @@ Linux操作系统对硬件的要求较低，安装方法更易掌握；Unix对�
 Linux的用户群体很广泛，个人和企业均可使用；Unix的用户群体比较窄，多是安全性要求高的大型企业使用，如银行、电信部门等，或者Unix硬件厂商使用，如Sun等。相比于Unix操作系统，Linux操作系统更受广大计算机爱好者的喜爱，主要原因是Linux操作系统具有Unix操作系统的全部功能，并且能够在普通PC计算机上实现全部的Unix特性，开源免费的特性，更容易普及使用&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-内核&quot;&gt;Linux 内核&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-内核&quot;&gt;Linux 内核&lt;/h1&gt;
 
 &lt;p&gt;Linux 系统的核心是内核。内核控制着计算机系统上的所有硬件和软件，在必要时分配硬件，并根据需要执行软件。&lt;/p&gt;
 
@@ -1921,19 +1899,11 @@ Linux的用户群体很广泛，个人和企业均可使用；Unix的用户群�
   &lt;li&gt;文件系统管理&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux的基本组件&quot;&gt;Linux的基本组件&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux的基本组件&quot;&gt;Linux的基本组件&lt;/h1&gt;
 
 &lt;p&gt;Linux内核、Shell、GUI,文件系统、应用程序&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-的体系结构&quot;&gt;Linux 的体系结构&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-的体系结构&quot;&gt;Linux 的体系结构&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/linux.png&quot; alt=&quot;linux&quot; /&gt;&lt;/p&gt;
 
@@ -1949,11 +1919,7 @@ Linux的用户群体很广泛，个人和企业均可使用；Unix的用户群�
 
 &lt;p&gt;用户空间和内核空间是程序执行的&lt;strong&gt;两种不同的状态&lt;/strong&gt;，我们可以通过两种方式完成用户空间到内核空间的转移：1）系统调用；2）硬件中断&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;bash和dos之间的基本区别&quot;&gt;BASH和DOS之间的基本区别&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;bash和dos之间的区别&quot;&gt;BASH和DOS之间的区别&lt;/h1&gt;
 
 &lt;p&gt;BASH和DOS控制台之间的主要区别在于3个方面：&lt;/p&gt;
 
@@ -1963,11 +1929,7 @@ Linux的用户群体很广泛，个人和企业均可使用；Unix的用户群�
   &lt;li&gt;DOS遵循命名文件中的约定，即8个字符的文件名后跟一个点，扩展名为3个字符。BASH没有遵循这样的惯例&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-开机启动过程&quot;&gt;Linux 开机启动过程&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-开机启动过程&quot;&gt;Linux 开机启动过程&lt;/h1&gt;
 
 &lt;p&gt;1、主机加电自检，加载 BIOS 硬件信息。&lt;/p&gt;
 
@@ -1977,7 +1939,7 @@ Linux的用户群体很广泛，个人和企业均可使用；Unix的用户群�
 
 &lt;p&gt;MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。&lt;/p&gt;
 
-&lt;h4 id=&quot;mbr结构&quot;&gt;&lt;code&gt;MBR&lt;/code&gt;结构&lt;/h4&gt;
+&lt;h1 id=&quot;mbr结构&quot;&gt;&lt;code&gt;MBR&lt;/code&gt;结构&lt;/h1&gt;
 
 &lt;ol&gt;
   &lt;li&gt;主引导程序代码，占446字节&lt;/li&gt;
@@ -2075,11 +2037,7 @@ initrd /initrd-2.6.18-194.el5PAE.img                            #ramdisk文件�
 
 &lt;p&gt;6、运行终端，输入用户名和密码&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux系统缺省的运行级别&quot;&gt;Linux系统缺省的运行级别&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux系统缺省的运行级别&quot;&gt;Linux系统缺省的运行级别&lt;/h1&gt;
 
 &lt;ol&gt;
   &lt;li&gt;关机。&lt;/li&gt;
@@ -2091,11 +2049,7 @@ initrd /initrd-2.6.18-194.el5PAE.img                            #ramdisk文件�
   &lt;li&gt;重启&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-使用的进程间通信方式&quot;&gt;Linux 使用的进程间通信方式&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-使用的进程间通信方式&quot;&gt;Linux 使用的进程间通信方式&lt;/h1&gt;
 
 &lt;p&gt;1、管道(pipe)、流管道(s_pipe)、有名管道(FIFO)。&lt;/p&gt;
 
@@ -2109,87 +2063,47 @@ initrd /initrd-2.6.18-194.el5PAE.img                            #ramdisk文件�
 
 &lt;p&gt;6、套接字(socket)&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-有哪些系统日志文件&quot;&gt;Linux 有哪些系统日志文件&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-有哪些系统日志文件&quot;&gt;Linux 有哪些系统日志文件&lt;/h1&gt;
 
 &lt;p&gt;重要的是 &lt;code&gt;/var/log/messages&lt;/code&gt; 日志文件&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux系统桌面环境&quot;&gt;Linux系统桌面环境&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux系统桌面环境&quot;&gt;Linux系统桌面环境&lt;/h1&gt;
 
 &lt;p&gt;KDE或Gnome&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;交换空间&quot;&gt;交换空间&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;交换空间&quot;&gt;交换空间&lt;/h1&gt;
 
 &lt;p&gt;交换空间是Linux使用的一定空间，用于临时保存一些并发运行的程序。当RAM没有足够的内存来容纳正在执行的所有程序时，就会发生这种情况。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;root帐户&quot;&gt;root帐户&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;root帐户&quot;&gt;root帐户&lt;/h1&gt;
 
 &lt;p&gt;root帐户就像一个系统管理员帐户，允许你完全控制系统。你可以在此处创建和维护用户帐户，为每个帐户分配不同的权限。每次安装Linux时都是默认帐户&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;lilo&quot;&gt;LILO&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;lilo&quot;&gt;LILO&lt;/h1&gt;
 
 &lt;p&gt;LILO是Linux的引导加载程序。它主要用于将Linux操作系统加载到主内存中，以便它可以开始运行&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;bash&quot;&gt;BASH&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;bash&quot;&gt;BASH&lt;/h1&gt;
 
 &lt;p&gt;BASH是Bourne Again SHell的缩写。它由Steve Bourne编写，作为原始Bourne Shell（由/ bin / sh表示）的替代品。它结合了原始版本的Bourne Shell的所有功能，以及其他功能，使其更容易使用。从那以后，它已被改编为运行Linux的大多数系统的默认shell；推荐&lt;code&gt;zsh&lt;/code&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;cli&quot;&gt;CLI&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;cli&quot;&gt;CLI&lt;/h1&gt;
 
 &lt;p&gt;命令行界面（英语&lt;strong&gt;：command-line interface&lt;/strong&gt;，缩写]：CLI）是在图形用户界面得到普及之前使用最为广泛的用户界面，它通常不支持鼠标，用户通过键盘输入指令，计算机接收到指令后，予以执行。也有人称之为字符用户界面（CUI）。&lt;/p&gt;
 
 &lt;p&gt;通常认为，命令行界面（CLI）没有图形用户界面（GUI）那么方便用户操作。因为，命令行界面的软件通常需要用户记忆操作的命令，但是，由于其本身的特点，命令行界面要较图形用户界面节约计算机系统的资源。在熟记命令的前提下，使用命令行界面往往要较使用图形用户界面的操作速度要快。所以，图形用户界面的操作系统中，都保留着可选的命令行界面。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;gui&quot;&gt;GUI&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;gui&quot;&gt;GUI&lt;/h1&gt;
 
 &lt;p&gt;图形用户界面（Graphical User Interface，简称 GUI，又称图形用户接口）是指采用图形方式显示的计算机操作用户界面。&lt;/p&gt;
 
 &lt;p&gt;图形用户界面是一种人与计算机通信的界面显示格式，允许用户使用鼠标等输入设备操纵屏幕上的图标或菜单选项，以选择命令、调用文件、启动程序或执行其它一些日常任务。与通过键盘输入文本或字符命令来完成例行任务的字符界面相比，图形用户界面有许多优点&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;开源优势&quot;&gt;开源优势&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;开源优势&quot;&gt;开源优势&lt;/h1&gt;
 
 &lt;p&gt;开源允许你将软件（包括源代码）免费分发给任何感兴趣的人。然后，人们可以添加功能，甚至可以调试和更正源代码中的错误。它们甚至可以让它运行得更好，然后再次自由地重新分配这些增强的源代码。这最终使社区中的每个人受益&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-文件系统&quot;&gt;Linux 文件系统&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-文件系统&quot;&gt;Linux 文件系统&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;在 Linux 操作系统中，所有被操作系统管理的资源，例如网络接口卡、磁盘驱动器、打印机、输入输出设备、普通文件或是目录都被看作是一个文件&lt;/strong&gt;&lt;/p&gt;
 
@@ -2199,11 +2113,7 @@ initrd /initrd-2.6.18-194.el5PAE.img                            #ramdisk文件�
 
 &lt;p&gt;&lt;img src=&quot;/img/LINUX_FILE.png&quot; alt=&quot;LINUX_FILE&quot; /&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-的目录结构&quot;&gt;Linux 的目录结构&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-的目录结构&quot;&gt;Linux 的目录结构&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/LINUX_THREE.png&quot; alt=&quot;LINUX_THREE&quot; /&gt;&lt;/p&gt;
 
@@ -2225,11 +2135,7 @@ initrd /initrd-2.6.18-194.el5PAE.img                            #ramdisk文件�
   &lt;li&gt;/lost+found： 这个目录平时是空的，系统非正常关机而留下“无家可归”的文件（windows下叫什么.chk）就在这里&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;inode&quot;&gt;inode&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;inode&quot;&gt;inode&lt;/h1&gt;
 
 &lt;p&gt;文件储存在硬盘上，硬盘的最小存储单位叫做”扇区”（Sector）。每个扇区储存512字节（相当于0.5KB）。&lt;/p&gt;
 
@@ -2239,20 +2145,12 @@ initrd /initrd-2.6.18-194.el5PAE.img                            #ramdisk文件�
 
 &lt;p&gt;每一个文件都有对应的inode，里面包含了与该文件有关的一些信息&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux-文件系统通过-i-节点把文件的逻辑结构和物理结构转换的工作过程&quot;&gt;&lt;strong&gt;Linux 文件系统通过 i 节点把文件的逻辑结构和物理结构转换的工作过程&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;linux-文件系统通过-i-节点把文件的逻辑结构和物理结构转换的工作过程&quot;&gt;Linux 文件系统通过 i 节点把文件的逻辑结构和物理结构转换的工作过程&lt;/h1&gt;
 
 &lt;p&gt;inode 节点是一个 64 字节长的表，表中包含了文件的相关信息，其中有文件的大小、文件所有者、文件的存取许可方式以及文件的类型等重要信息。在 inode 节点表中最重要的内容是磁盘地址表。在磁盘地址表中有 13 个块号，文件将以块号在磁盘地址表中出现的顺序依次读取相应的块。
 Linux 文件系统通过把 inode 节点和文件名进行连接，当需要读取该文件时，文件系统在当前目录表中查找该文件名对应的项，由此得到该文件相对应的 inode 节点号，通过该 inode 节点的磁盘地址表把分散存放的文件物理块连接成文件的逻辑结构&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;硬链接和软链接&quot;&gt;硬链接和软链接&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;硬链接和软链接&quot;&gt;硬链接和软链接&lt;/h1&gt;
 
 &lt;p&gt;1）硬链接&lt;/p&gt;
 
@@ -2270,11 +2168,7 @@ Linux 文件系统通过把 inode 节点和文件名进行连接，当需要读�
 
 &lt;p&gt;实际场景下，基本是使用软链接。总结区别如下：&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;raid&quot;&gt;RAID&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;raid&quot;&gt;RAID&lt;/h1&gt;
 
 &lt;p&gt;RAID 全称为独立磁盘冗余阵列(Redundant Array of Independent Disks)，基本思想就是把多个相对便宜的硬盘组合起来，成为一个硬盘阵列组，使性能达到甚至超过一个价格昂贵、 容量巨大的硬盘。RAID 通常被用在服务器电脑上，使用完全相同的硬盘组成一个逻辑扇区，因此操作系统只会把它当做一个硬盘。&lt;/p&gt;
 
@@ -2289,7 +2183,7 @@ Linux 文件系统通过把 inode 节点和文件名进行连接，当需要读�
 5、Tuning the processor subsystem (处理器子系统调优)。
 6、Tuning the memory subsystem (内存子系统调优)。
 7、Tuning the file system (文件系统子系统调优)。
-8、Tuning the network subsystem（网络子系统调优)&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">Unix和Linux区别</summary></entry><entry><title type="html">BIO&amp;amp;NIO&amp;amp;AIO</title><link href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/" rel="alternate" type="text/html" title="BIO&amp;NIO&amp;AIO" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/BIO&amp;NIO&amp;AIO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-BIO&amp;NIO&amp;AIO/">&lt;p&gt;Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了&lt;/p&gt;
+8、Tuning the network subsystem（网络子系统调优)&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">BIO&amp;amp;NIO&amp;amp;AIO</title><link href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/" rel="alternate" type="text/html" title="BIO&amp;NIO&amp;AIO" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/BIO&amp;NIO&amp;AIO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-BIO&amp;NIO&amp;AIO/">&lt;p&gt;Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -2746,19 +2640,20 @@ for (;;) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;所有的基于IO多路复用的代码都会遵循这样的写法：注册——监听事件——处理——再注册，无限循环下去。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了</summary></entry><entry><title type="html">git常用命令</title><link href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="git常用命令" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">&lt;p&gt;&lt;img src=&quot;/img/git.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;所有的基于IO多路复用的代码都会遵循这样的写法：注册——监听事件——处理——再注册，无限循环下去。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了</summary></entry><entry><title type="html">git常用命令</title><link href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="git常用命令" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;说明&quot;&gt;说明&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/git.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;workspace&lt;/code&gt;：工作区&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;index/stage&lt;/code&gt;：暂存区&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;repository&lt;/code&gt;:厂库区&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code&gt;remoter&lt;/code&gt;远程厂库&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;配置&quot;&gt;配置&lt;/h2&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;remoter&lt;/code&gt;远程厂库&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h1 id=&quot;配置&quot;&gt;配置&lt;/h1&gt;
 
 &lt;p&gt;Git的设置文件为&lt;code&gt;.gitconfig&lt;/code&gt;，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置)&lt;/p&gt;
 
@@ -2773,21 +2668,13 @@ git config --global user.name  &quot;[name]&quot;
 git config --global user.email &quot;[email address]&quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;创建代码库&quot;&gt;创建代码库&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;创建代码库&quot;&gt;创建代码库&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git init
 git clone  url
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;增加删除&quot;&gt;增加/删除&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;增加删除&quot;&gt;增加/删除&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;#添加到暂存区
 git add file  
@@ -2811,11 +2698,7 @@ git rm --cached [file]
 git mv [file-original] [file-renamed]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;代码提交&quot;&gt;代码提交&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;代码提交&quot;&gt;代码提交&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 提交暂存区到仓库区
 git commit -m [message]
@@ -2837,11 +2720,7 @@ git commit --amend -m [message]
 git commit --amend [file1] [file2] 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;分支&quot;&gt;分支&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;分支&quot;&gt;分支&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;
 # 列出所有本地分支
@@ -2896,11 +2775,7 @@ git push origin develop_chen
 git branch --set-upstream-to=origin/develop  develop  本地分支和远程分支简历跟踪关系
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;标签&quot;&gt;标签&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;标签&quot;&gt;标签&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 列出所有tag
 $ git tag
@@ -2930,11 +2805,7 @@ $ git push [remote] --tags
 $ git checkout -b [branch] [tag]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;查看信息&quot;&gt;查看信息&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;查看信息&quot;&gt;查看信息&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 显示有变更的文件
 $ git status
@@ -3001,11 +2872,7 @@ $ git reflog
 $ git rebase [branch]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;远程同步&quot;&gt;远程同步&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;远程同步&quot;&gt;远程同步&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git remote update  --更新远程仓储
 # 下载远程仓库的所有变动
@@ -3033,11 +2900,7 @@ $ git push [remote] --force
 $ git push [remote] --all
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;撤销&quot;&gt;撤销&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;撤销&quot;&gt;撤销&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 恢复暂存区的指定文件到工作区
 $ git checkout [file]
@@ -3072,15 +2935,11 @@ $ git stash
 $ git stash pop
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;合并&quot;&gt;合并&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;合并&quot;&gt;合并&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git checkout dev           #切换到dev开发分支
 git pull
 git checkout master
 git merge dev              #合并dev分支到master上
 git push origin master     #将代码推到master上
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="git" /><summary type="html"></summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="git" /><summary type="html">[toc]</summary></entry></feed>
