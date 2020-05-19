@@ -8,15 +8,15 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="sql-server复习二" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="sql-server复习二" />
-<meta property="og:description" content="sql-server复习二" />
+<meta name="description" content="[toc]" />
+<meta property="og:description" content="[toc]" />
 <link rel="canonical" href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" />
 <meta property="og:url" content="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" />
 <meta property="og:site_name" content="imod" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-05-10T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/","headline":"sql-server复习二","dateModified":"2020-05-10T00:00:00+08:00","datePublished":"2020-05-10T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/"},"description":"sql-server复习二","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/","headline":"sql-server复习二","dateModified":"2020-05-10T00:00:00+08:00","datePublished":"2020-05-10T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/"},"description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -567,11 +567,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    6384字
+    6754字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    22分
+    23分
     
     
     <span class="leancloud-visitors" data-xid="/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" data-flag-title="sql-server复习二">
@@ -594,13 +594,9 @@
 
     
   </span>
-  <h2 id="sql-server复习二">sql-server复习二</h2>
+  <p>[toc]</p>
 
-<ul>
-  <li>
-    <h2 id="关系模式">关系模式</h2>
-  </li>
-</ul>
+<h1 id="关系模式">关系模式</h1>
 
 <p>每个关系都有一个模式，称为关系模式(relation schema)，由一个关系名及它的所有属性名构成。一般表示为：关系名（属性1,属性2,…,属性n）</p>
 
@@ -610,11 +606,7 @@
 没有行序。
 理论上没有列序，但一般使用时都有列序</p>
 
-<ul>
-  <li>
-    <h2 id="关键码和表之间的联系">关键码和表之间的联系</h2>
-  </li>
-</ul>
+<h1 id="关键码和表之间的联系">关键码和表之间的联系</h1>
 
 <ol>
   <li>超键：在一个关系中，能惟一标识元组的属性或属性集称为关系的超键</li>
@@ -623,46 +615,29 @@
   <li>外键：若一个关系R中包含有另一个关系S的主键所对应的属性组F，则称F为R的外键。并称关系S为参照关系，关系R为依赖关系。</li>
 </ol>
 
-<ul>
-  <li>
-    <h2 id="基本的关系操作">基本的关系操作</h2>
-  </li>
-</ul>
+<h1 id="基本的关系操作">基本的关系操作</h1>
 
 <p>关系模型中常用的关系操作包括<code>查询（Query）</code>操作和<code>插入（Insert）</code>、<code>删除（Delete）</code>、<code>修改（Update）</code>操作。
 查询操作又可以分为：<code>选择（Select）</code>、<code>投影（Project）</code>、<code>连接（Join）</code>、<code>除（Divide）</code>、<code>并（Union）</code>、<code>差（Except）</code>、<code>交（Intersection）</code>、<code>笛卡尔积等</code>。其中选择、投影、并、差、笛卡尔积是5种基本操作</p>
 
-<ul>
-  <li>
-    <h2 id="实体完整性entity-integrity约束">实体完整性（Entity Integrity）约束</h2>
-  </li>
-</ul>
+<h1 id="实体完整性entity-integrity约束">实体完整性（Entity Integrity）约束</h1>
 
 <p>若属性（指一个或一组属性）A是基本关系R的主属性。则A不能取空值。</p>
 
-<ul>
-  <li>
-    <h2 id="参照完整性约束">参照完整性约束</h2>
-  </li>
-</ul>
+<h1 id="参照完整性约束">参照完整性约束</h1>
 
 <p>如果属性集K是关系模式R1的主键，K也是关系模式R2的外键，那么在R2的关系中，K的取值只允许两种可能，或者为空值，或者等于R1关系中某个主键值。
  这条规则的实质是“不允许引用不存在的实体”。
  在上述形式定义中，关系模式R1的关系称为“参照关系”，关系模式R2的关系称为“依赖关系”。</p>
 
-<ul>
-  <li>
-    <h2 id="用户定义的完整性规则">用户定义的完整性规则</h2>
-  </li>
-</ul>
+<h1 id="用户定义的完整性规则">用户定义的完整性规则</h1>
 
 <p>用户定义完整性约束（user defined integrity constraint）就是针对用户的具体应用环境，给出的具体数据的约束条件。 
 用户可以针对具体的数据要求特征，设置完整性约束，由系统来检验实施，以使用统一的方法处理它们，不再由应用程序承担这项工作</p>
 
+<h1 id="传统的集合运算">传统的集合运算</h1>
+
 <ul>
-  <li>
-    <h2 id="传统的集合运算">传统的集合运算</h2>
-  </li>
   <li>并（Union）
       设关系R和S具有相同的关系模式，R和S的并是由属于R或属
   于S的元组构成的集合，记为R∪S。形式定义如下：
@@ -729,57 +704,33 @@ R∩S，这里要求R和S定义在相同的关系模式上。形式定义如
 
 <hr />
 
-<ul>
-  <li>
-    <h2 id="规范化原则">规范化原则</h2>
-  </li>
-</ul>
+<h1 id="规范化原则">规范化原则</h1>
 
 <p>关系模式有操作异常或冗余问题，就分解它</p>
 
-<ul>
-  <li>
-    <h2 id="函数依赖的定义">函数依赖的定义</h2>
-  </li>
-</ul>
+<h1 id="函数依赖的定义">函数依赖的定义</h1>
 
 <p>设有关系模式R(U)，X和Y是属性集U的子集，若对于R(U)的任意一个可能的关系r，r中不可能存在两个元组在X上的属性值相等，而在Y上的属性值不等，则称X函数确定Y或Y函数依赖（Functional Depend-
 ency，简记为FD）于X，记作X→Y</p>
 
-<ul>
-  <li>
-    <h2 id="完全函数依赖和部分函数依赖">完全函数依赖和部分函数依赖</h2>
-  </li>
-</ul>
+<h1 id="完全函数依赖和部分函数依赖">完全函数依赖和部分函数依赖</h1>
 
 <p>假设在关系模式R(U)中，X和Y是属性集U的子集，且有X→Y，如果对于X的任一个真子集W，都有W→Y不成立，则称Y完全函数依赖于X，否则，称Y部分函数依赖于X。
  完全函数依赖说明了在依赖关系的决定项中没有多余的属性。
 如函数依赖(SNO,CNO)→GRADE，TNAME→TAGE是完全函数依赖。 (SNO,CNO)→SNAME，(SNO,CNO)→CNAME，(SNO,CNO)→TNAME，(SNO,CNO)→TAGE都是部分函数依赖。</p>
 
-<ul>
-  <li>
-    <h2 id="fd和关键码的联系">FD和关键码的联系</h2>
-  </li>
-</ul>
+<h1 id="fd和关键码的联系">FD和关键码的联系</h1>
 
 <p>利用完全函数依赖和部分函数依赖可以说明函数依赖和键的关系：假设关系
 模式R的属性集是U，X是U的一个子集。如果U部分函数依赖于X，则X是R的一个
 超键。如果U完全函数依赖于X，则X是R的一个候选键。</p>
 
-<ul>
-  <li>
-    <h2 id="传递函数依赖">传递函数依赖</h2>
-  </li>
-</ul>
+<h1 id="传递函数依赖">传递函数依赖</h1>
 
 <p>假设在关系模式R(U)中，X 、Y和Z是属性集U的不同子集，如果X→Y（并且Y→X不成立），Y→Z，则称Z传递函数依赖X，或称X传递函数确定Z。
 如函数依赖CNO→TNAME和TNAME→TAGE，所以R的函数依赖CNO→TAGE是传递函数依赖。</p>
 
-<ul>
-  <li>
-    <h2 id="armstrong推理">Armstrong推理</h2>
-  </li>
-</ul>
+<h1 id="armstrong推理">Armstrong推理</h1>
 
 <p>从已知的一些函数依赖，可以推导出另外一些函数依赖，这就需要一系列的推理规则。称为Armstrong公理。</p>
 
@@ -801,11 +752,7 @@ ency，简记为FD）于X，记作X→Y</p>
 同理可得R的另外三个候选键E、CD和BC。 
 </code></pre>
 
-<ul>
-  <li>
-    <h2 id="关系的范式及规范化">关系的范式及规范化</h2>
-  </li>
-</ul>
+<h1 id="关系的范式及规范化">关系的范式及规范化</h1>
 
 <p>关系模式的好与坏，用什么标准衡量？这个标准就是模式的范式
 （Normal Forms，简记为NF）。范式的种类与数据依赖有着直接的联系，基于FD的范式有1NF、2NF、3NF、BCNF等多种。
@@ -817,25 +764,22 @@ ency，简记为FD）于X，记作X→Y</p>
 <pre><code class="language-markdown">BCNF | 3NF | 2NF | 1NF
 </code></pre>
 
-<ul>
-  <li>
-    <h2 id="范式">范式</h2>
-  </li>
-  <li>
-    <p>第一范式</p>
+<h1 id="范式">范式</h1>
 
-    <p>定义 如果关系模式R的每个关系r的属性值都是不可分的原子值，那么称R是第一范式（first normal form，简记为1NF）的模式。
- 满足1NF的关系称为规范化的关系，否则称为非规范化的关系。关系数据库研究的关系都是规范化的关系。例如关系模式R（NAME，
- ADDRESS，PHONE），如果一个人有两个电话号码（PHONE），那么在关系中至少要出现两个元组，以便存储这两个号码。
- 1NF是关系模式应具备的最起码的条件。</p>
+<h2 id="第一范式">第一范式</h2>
 
-    <p>非规范模式变为1NF：
+<p>定义 如果关系模式R的每个关系r的属性值都是不可分的原子值，那么称R是第一范式（first normal form，简记为1NF）的模式。
+满足1NF的关系称为规范化的关系，否则称为非规范化的关系。关系数据库研究的关系都是规范化的关系。例如关系模式R（NAME，
+ADDRESS，PHONE），如果一个人有两个电话号码（PHONE），那么在关系中至少要出现两个元组，以便存储这两个号码。
+1NF是关系模式应具备的最起码的条件。</p>
+
+<p>非规范模式变为1NF：
    (1)  把不含单纯值的属性分解为多个原子值。
    (2)  把关系模式分解。</p>
-  </li>
-  <li>第二范式
-定义 如果关系模式R是1NF，且每个非主属性完全函数依赖于候选键，那么称R是第二范式（2NF）的模式。如果数据库模式中每个关系模式都是2NF，则称数据库模式为2NF的数据库模式。</li>
-</ul>
+
+<h2 id="第二范式">第二范式</h2>
+
+<p>定义 如果关系模式R是1NF，且每个非主属性完全函数依赖于候选键，那么称R是第二范式（2NF）的模式。如果数据库模式中每个关系模式都是2NF，则称数据库模式为2NF的数据库模式。</p>
 
 <pre><code class="language-markdown">例2.15 设关系模式R(SNO,CNO,GRADE,TNAME,TADDR) 。  
 （SNO,CNO）是R的候选键。R上有两个函数依赖：
@@ -845,21 +789,19 @@ ency，简记为FD）于X，记作X→Y</p>
 如果把R分解成R1(CNO,TNAME,TADDR)和R2(SNO,CNO,GRADE)后，局部依赖(SNO,CNO)→(TNAME,TADDR)就消失了。R1和R2都属于2NF模式。  
 </code></pre>
 
-<ul>
-  <li>第三范式
-定义  如果关系模式R是1NF，且每个非主属性都不传递依赖于R的候选键，那么称R是第三范式（3NF）的模式。如果数据库模式中每个关系模式都是3NF，则称其为3NF的数据库模式 。</li>
-</ul>
+<h2 id="第三范式">第三范式</h2>
+
+<p>定义  如果关系模式R是1NF，且每个非主属性都不传递依赖于R的候选键，那么称R是第三范式（3NF）的模式。如果数据库模式中每个关系模式都是3NF，则称其为3NF的数据库模式 。</p>
 
 <pre><code class="language-markdown">例  在例2.15中，R2是2NF模式，而且也已是3NF模式。
 R1(CNO,TNAME,TADDR)是2NF模式，却不是3NF模式。这是因为R1中存在函数依赖CNO→TNAME和TNAME→TADDR，则CNO→TADDR是一个传递依赖。
 如果把R2分解成R21(TNAME,TADDR)和R22(CNO,TNAME)后，CNO→TADDR就不会出现在R21和R22中。这样R21和R22都是3NF模式。 
 </code></pre>
 
-<ul>
-  <li>BC范式
-定义 如果关系模式R是1NF，且每个属性都不传递依赖于R的候选键，那么称R是BCNF的模式。如果数据库模式中每个关系模式都是BCNF，则称为BCNF的数据库模式。
-如果R是BCNF模式，那么R也是3NF模式。</li>
-</ul>
+<h2 id="bc范式">BC范式</h2>
+
+<p>定义 如果关系模式R是1NF，且每个属性都不传递依赖于R的候选键，那么称R是BCNF的模式。如果数据库模式中每个关系模式都是BCNF，则称为BCNF的数据库模式。
+如果R是BCNF模式，那么R也是3NF模式。</p>
 
 <pre><code class="language-markdown">例2.16 设关系模式C(CNO,CNAME,PCNO)的属性分别表示课程号、课程名和先修课程号。
 CNO是主键，这里没有任何非主属性对CNO部分依赖或传递依赖，所以C属于3NF。
@@ -873,19 +815,11 @@ STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函�
 3NF和BC范式是在函数依赖的条件下对模式分解所能达到的分离程度的测度。一个数据库中的关系模式如果都是BC范式，那么在函数依赖范畴内，它已经实现彻底的分离，已消除了插入和删除异常。
 </code></pre>
 
-<ul>
-  <li>
-    <h2 id="无损分解">无损分解</h2>
-  </li>
-</ul>
+<h1 id="无损分解">无损分解</h1>
 
 <p>定义 当对关系模式R进行分解时，R的元组将分别在相应属性集进行投影而产生新的关系。如果对新的关系进行自然连接得到的元组集合与原关系完全一致，则称该分解为无损分解（lossless decompose）。否则称为有损分解。</p>
 
-<ul>
-  <li>
-    <h2 id="heath定理">Heath定理</h2>
-  </li>
-</ul>
+<h1 id="heath定理">Heath定理</h1>
 
 <p>假设关系模式R分解为两个子关系模式R1和R2，如果R1∩R2至少包含其中一个子关系模式的主键，则此分解是无损分解。
       在例2.18中，R(SNO,CNAME,TNAME,GRADE)分解成两个子关系模式R1(SNO,CNAME,GRADE)和R2(CNAME,TNAME)，由于R1∩R2={CNAME}，而CNAME是关系模式R2的主键，由Heath定理，该分解为无损分解。</p>
@@ -896,20 +830,12 @@ STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函�
      因为R1∩R2=SNO, 由于SNO是R1的主键，则分解具有无损性连接。
 </code></pre>
 
-<ul>
-  <li>
-    <h2 id="保持函数依赖分解">保持函数依赖分解</h2>
-  </li>
-</ul>
+<h1 id="保持函数依赖分解">保持函数依赖分解</h1>
 
 <p>模式分解的过程还必须保证数据的语义完整性。在做任何数据输入和修改时，只要每个关系模式本身的函数依赖被满足，就可以确保整个数据库中数据的语义完整性不受破坏。
 定义：设ρ={R1(U1),R2(U2),…,Rn(Un)}是关系模式R(U)的一个分解，R的函数依赖集F在Ui上的投影为Fi，如果满足              ，则称ρ具有函数依赖保持性，也称该分解为保持依赖分解（preserve depend-ency decompose）</p>
 
-<ul>
-  <li>
-    <h2 id="3nf分解">3NF分解</h2>
-  </li>
-</ul>
+<h1 id="3nf分解">3NF分解</h1>
 
 <p>前在信息系统的设计中，广泛被采用的是“基于3NF的系统设计”方法 。
 将R分解成多个3NF关系模式的步骤如下：
@@ -923,6 +849,55 @@ STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函�
 <p>(3) 如果R属于2NF但R不属于3NF，分解R使其满足3NF。
 将关系模式分解为符合3NF条件的方法如下：设关系模式R(U)，主键是W，R上还存在函数依赖X→Z。Z不含于X并且是非主属性，X不是候选键，那么W→Z就是一个传递函数依赖。
 此时应把R分解成两个模式R1(XZ)，主键是X和R2(Y)，其中Y=U-Z，主键仍是W，外键是X。如在例2.15的关系模式R1(CNO,TNAME,TADDR)，取W={CNO}，X={TNAME}，Z={TADDR}，利用该方法就可以得到符合3NF的关系模式R11(TNAME,TADDR)和R12(CNO,TNAME)。</p>
+
+<h1 id="事务四大特性及隔离级别">事务四大特性及隔离级别</h1>
+
+<h2 id="特性">特性:</h2>
+
+<ul>
+  <li>原子性</li>
+</ul>
+
+<p>原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚</p>
+
+<ul>
+  <li>一致性</li>
+</ul>
+
+<p>一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态</p>
+
+<ul>
+  <li>隔离性</li>
+</ul>
+
+<p>隔离性是当多个用户<code>并发</code>访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。</p>
+
+<ul>
+  <li>持久性</li>
+</ul>
+
+<p>持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
+
+<h2 id="隔离级别">隔离级别</h2>
+
+<ul>
+  <li>
+    <p>脏读</p>
+
+    <p>脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据</p>
+  </li>
+  <li>
+    <p>不可重复读</p>
+
+    <p>不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。</p>
+  </li>
+  <li>
+    <p>虚读</p>
+
+    <p>幻读是事务非独立执行时发生的一种现象</p>
+  </li>
+</ul>
+
 
 </div>
 <div class="v">

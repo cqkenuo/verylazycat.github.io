@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-17T20:44:24+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-19T10:23:16+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -1543,13 +1543,9 @@ DROP VIEW &lt;视图名&gt;
 
 &lt;p&gt;Atomic包中的类基本的特性就是在多线程环境下，当有多个线程同时对单个（包括基本类型及引用类型）变量进行操作时，具有排他性，即当多个线程同时对该变量的值进行更新时，仅有一个线程能成功，而未成功的线程可以向自旋锁一样，继续尝试，一直等到执行成功。&lt;/p&gt;
 
-&lt;p&gt;Atomic系列的类中的核心方法都会调用unsafe类中的几个本地方法。我们需要先知道一个东西就是Unsafe类，全名为：sun.misc.Unsafe，这个类包含了大量的对C代码的操作，包括很多直接内存分配以及原子操作的调用，而它之所以标记为非安全的，是告诉你这个里面大量的方法调用都会存在安全隐患，需要小心使用，否则会导致严重的后果，例如在通过unsafe分配内存的时候，如果自己指定某些区域可能会导致一些类似C++一样的指针越界到其他进程的问题。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">并行和并发区别</summary></entry><entry><title type="html">sql-server复习二</title><link href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" rel="alternate" type="text/html" title="sql-server复习二" /><published>2020-05-10T00:00:00+08:00</published><updated>2020-05-10T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">&lt;h2 id=&quot;sql-server复习二&quot;&gt;sql-server复习二&lt;/h2&gt;
+&lt;p&gt;Atomic系列的类中的核心方法都会调用unsafe类中的几个本地方法。我们需要先知道一个东西就是Unsafe类，全名为：sun.misc.Unsafe，这个类包含了大量的对C代码的操作，包括很多直接内存分配以及原子操作的调用，而它之所以标记为非安全的，是告诉你这个里面大量的方法调用都会存在安全隐患，需要小心使用，否则会导致严重的后果，例如在通过unsafe分配内存的时候，如果自己指定某些区域可能会导致一些类似C++一样的指针越界到其他进程的问题。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">并行和并发区别</summary></entry><entry><title type="html">sql-server复习二</title><link href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" rel="alternate" type="text/html" title="sql-server复习二" /><published>2020-05-10T00:00:00+08:00</published><updated>2020-05-10T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">&lt;p&gt;[toc]&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;关系模式&quot;&gt;关系模式&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;关系模式&quot;&gt;关系模式&lt;/h1&gt;
 
 &lt;p&gt;每个关系都有一个模式，称为关系模式(relation schema)，由一个关系名及它的所有属性名构成。一般表示为：关系名（属性1,属性2,…,属性n）&lt;/p&gt;
 
@@ -1559,11 +1555,7 @@ DROP VIEW &lt;视图名&gt;
 没有行序。
 理论上没有列序，但一般使用时都有列序&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;关键码和表之间的联系&quot;&gt;关键码和表之间的联系&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;关键码和表之间的联系&quot;&gt;关键码和表之间的联系&lt;/h1&gt;
 
 &lt;ol&gt;
   &lt;li&gt;超键：在一个关系中，能惟一标识元组的属性或属性集称为关系的超键&lt;/li&gt;
@@ -1572,46 +1564,29 @@ DROP VIEW &lt;视图名&gt;
   &lt;li&gt;外键：若一个关系R中包含有另一个关系S的主键所对应的属性组F，则称F为R的外键。并称关系S为参照关系，关系R为依赖关系。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;基本的关系操作&quot;&gt;基本的关系操作&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;基本的关系操作&quot;&gt;基本的关系操作&lt;/h1&gt;
 
 &lt;p&gt;关系模型中常用的关系操作包括&lt;code&gt;查询（Query）&lt;/code&gt;操作和&lt;code&gt;插入（Insert）&lt;/code&gt;、&lt;code&gt;删除（Delete）&lt;/code&gt;、&lt;code&gt;修改（Update）&lt;/code&gt;操作。
 查询操作又可以分为：&lt;code&gt;选择（Select）&lt;/code&gt;、&lt;code&gt;投影（Project）&lt;/code&gt;、&lt;code&gt;连接（Join）&lt;/code&gt;、&lt;code&gt;除（Divide）&lt;/code&gt;、&lt;code&gt;并（Union）&lt;/code&gt;、&lt;code&gt;差（Except）&lt;/code&gt;、&lt;code&gt;交（Intersection）&lt;/code&gt;、&lt;code&gt;笛卡尔积等&lt;/code&gt;。其中选择、投影、并、差、笛卡尔积是5种基本操作&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;实体完整性entity-integrity约束&quot;&gt;实体完整性（Entity Integrity）约束&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;实体完整性entity-integrity约束&quot;&gt;实体完整性（Entity Integrity）约束&lt;/h1&gt;
 
 &lt;p&gt;若属性（指一个或一组属性）A是基本关系R的主属性。则A不能取空值。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;参照完整性约束&quot;&gt;参照完整性约束&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;参照完整性约束&quot;&gt;参照完整性约束&lt;/h1&gt;
 
 &lt;p&gt;如果属性集K是关系模式R1的主键，K也是关系模式R2的外键，那么在R2的关系中，K的取值只允许两种可能，或者为空值，或者等于R1关系中某个主键值。
  这条规则的实质是“不允许引用不存在的实体”。
  在上述形式定义中，关系模式R1的关系称为“参照关系”，关系模式R2的关系称为“依赖关系”。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;用户定义的完整性规则&quot;&gt;用户定义的完整性规则&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;用户定义的完整性规则&quot;&gt;用户定义的完整性规则&lt;/h1&gt;
 
 &lt;p&gt;用户定义完整性约束（user defined integrity constraint）就是针对用户的具体应用环境，给出的具体数据的约束条件。 
 用户可以针对具体的数据要求特征，设置完整性约束，由系统来检验实施，以使用统一的方法处理它们，不再由应用程序承担这项工作&lt;/p&gt;
 
+&lt;h1 id=&quot;传统的集合运算&quot;&gt;传统的集合运算&lt;/h1&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;传统的集合运算&quot;&gt;传统的集合运算&lt;/h2&gt;
-  &lt;/li&gt;
   &lt;li&gt;并（Union）
       设关系R和S具有相同的关系模式，R和S的并是由属于R或属
   于S的元组构成的集合，记为R∪S。形式定义如下：
@@ -1678,57 +1653,33 @@ R∩S，这里要求R和S定义在相同的关系模式上。形式定义如
 
 &lt;hr /&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;规范化原则&quot;&gt;规范化原则&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;规范化原则&quot;&gt;规范化原则&lt;/h1&gt;
 
 &lt;p&gt;关系模式有操作异常或冗余问题，就分解它&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;函数依赖的定义&quot;&gt;函数依赖的定义&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;函数依赖的定义&quot;&gt;函数依赖的定义&lt;/h1&gt;
 
 &lt;p&gt;设有关系模式R(U)，X和Y是属性集U的子集，若对于R(U)的任意一个可能的关系r，r中不可能存在两个元组在X上的属性值相等，而在Y上的属性值不等，则称X函数确定Y或Y函数依赖（Functional Depend-
 ency，简记为FD）于X，记作X→Y&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;完全函数依赖和部分函数依赖&quot;&gt;完全函数依赖和部分函数依赖&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;完全函数依赖和部分函数依赖&quot;&gt;完全函数依赖和部分函数依赖&lt;/h1&gt;
 
 &lt;p&gt;假设在关系模式R(U)中，X和Y是属性集U的子集，且有X→Y，如果对于X的任一个真子集W，都有W→Y不成立，则称Y完全函数依赖于X，否则，称Y部分函数依赖于X。
  完全函数依赖说明了在依赖关系的决定项中没有多余的属性。
 如函数依赖(SNO,CNO)→GRADE，TNAME→TAGE是完全函数依赖。 (SNO,CNO)→SNAME，(SNO,CNO)→CNAME，(SNO,CNO)→TNAME，(SNO,CNO)→TAGE都是部分函数依赖。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;fd和关键码的联系&quot;&gt;FD和关键码的联系&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;fd和关键码的联系&quot;&gt;FD和关键码的联系&lt;/h1&gt;
 
 &lt;p&gt;利用完全函数依赖和部分函数依赖可以说明函数依赖和键的关系：假设关系
 模式R的属性集是U，X是U的一个子集。如果U部分函数依赖于X，则X是R的一个
 超键。如果U完全函数依赖于X，则X是R的一个候选键。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;传递函数依赖&quot;&gt;传递函数依赖&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;传递函数依赖&quot;&gt;传递函数依赖&lt;/h1&gt;
 
 &lt;p&gt;假设在关系模式R(U)中，X 、Y和Z是属性集U的不同子集，如果X→Y（并且Y→X不成立），Y→Z，则称Z传递函数依赖X，或称X传递函数确定Z。
 如函数依赖CNO→TNAME和TNAME→TAGE，所以R的函数依赖CNO→TAGE是传递函数依赖。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;armstrong推理&quot;&gt;Armstrong推理&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;armstrong推理&quot;&gt;Armstrong推理&lt;/h1&gt;
 
 &lt;p&gt;从已知的一些函数依赖，可以推导出另外一些函数依赖，这就需要一系列的推理规则。称为Armstrong公理。&lt;/p&gt;
 
@@ -1750,11 +1701,7 @@ ency，简记为FD）于X，记作X→Y&lt;/p&gt;
 同理可得R的另外三个候选键E、CD和BC。 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;关系的范式及规范化&quot;&gt;关系的范式及规范化&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;关系的范式及规范化&quot;&gt;关系的范式及规范化&lt;/h1&gt;
 
 &lt;p&gt;关系模式的好与坏，用什么标准衡量？这个标准就是模式的范式
 （Normal Forms，简记为NF）。范式的种类与数据依赖有着直接的联系，基于FD的范式有1NF、2NF、3NF、BCNF等多种。
@@ -1766,25 +1713,22 @@ ency，简记为FD）于X，记作X→Y&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;BCNF | 3NF | 2NF | 1NF
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;范式&quot;&gt;范式&lt;/h2&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;第一范式&lt;/p&gt;
+&lt;h1 id=&quot;范式&quot;&gt;范式&lt;/h1&gt;
 
-    &lt;p&gt;定义 如果关系模式R的每个关系r的属性值都是不可分的原子值，那么称R是第一范式（first normal form，简记为1NF）的模式。
- 满足1NF的关系称为规范化的关系，否则称为非规范化的关系。关系数据库研究的关系都是规范化的关系。例如关系模式R（NAME，
- ADDRESS，PHONE），如果一个人有两个电话号码（PHONE），那么在关系中至少要出现两个元组，以便存储这两个号码。
- 1NF是关系模式应具备的最起码的条件。&lt;/p&gt;
+&lt;h2 id=&quot;第一范式&quot;&gt;第一范式&lt;/h2&gt;
 
-    &lt;p&gt;非规范模式变为1NF：
+&lt;p&gt;定义 如果关系模式R的每个关系r的属性值都是不可分的原子值，那么称R是第一范式（first normal form，简记为1NF）的模式。
+满足1NF的关系称为规范化的关系，否则称为非规范化的关系。关系数据库研究的关系都是规范化的关系。例如关系模式R（NAME，
+ADDRESS，PHONE），如果一个人有两个电话号码（PHONE），那么在关系中至少要出现两个元组，以便存储这两个号码。
+1NF是关系模式应具备的最起码的条件。&lt;/p&gt;
+
+&lt;p&gt;非规范模式变为1NF：
    (1)  把不含单纯值的属性分解为多个原子值。
    (2)  把关系模式分解。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;第二范式
-定义 如果关系模式R是1NF，且每个非主属性完全函数依赖于候选键，那么称R是第二范式（2NF）的模式。如果数据库模式中每个关系模式都是2NF，则称数据库模式为2NF的数据库模式。&lt;/li&gt;
-&lt;/ul&gt;
+
+&lt;h2 id=&quot;第二范式&quot;&gt;第二范式&lt;/h2&gt;
+
+&lt;p&gt;定义 如果关系模式R是1NF，且每个非主属性完全函数依赖于候选键，那么称R是第二范式（2NF）的模式。如果数据库模式中每个关系模式都是2NF，则称数据库模式为2NF的数据库模式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例2.15 设关系模式R(SNO,CNO,GRADE,TNAME,TADDR) 。  
 （SNO,CNO）是R的候选键。R上有两个函数依赖：
@@ -1794,21 +1738,19 @@ ency，简记为FD）于X，记作X→Y&lt;/p&gt;
 如果把R分解成R1(CNO,TNAME,TADDR)和R2(SNO,CNO,GRADE)后，局部依赖(SNO,CNO)→(TNAME,TADDR)就消失了。R1和R2都属于2NF模式。  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;第三范式
-定义  如果关系模式R是1NF，且每个非主属性都不传递依赖于R的候选键，那么称R是第三范式（3NF）的模式。如果数据库模式中每个关系模式都是3NF，则称其为3NF的数据库模式 。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;第三范式&quot;&gt;第三范式&lt;/h2&gt;
+
+&lt;p&gt;定义  如果关系模式R是1NF，且每个非主属性都不传递依赖于R的候选键，那么称R是第三范式（3NF）的模式。如果数据库模式中每个关系模式都是3NF，则称其为3NF的数据库模式 。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例  在例2.15中，R2是2NF模式，而且也已是3NF模式。
 R1(CNO,TNAME,TADDR)是2NF模式，却不是3NF模式。这是因为R1中存在函数依赖CNO→TNAME和TNAME→TADDR，则CNO→TADDR是一个传递依赖。
 如果把R2分解成R21(TNAME,TADDR)和R22(CNO,TNAME)后，CNO→TADDR就不会出现在R21和R22中。这样R21和R22都是3NF模式。 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;BC范式
-定义 如果关系模式R是1NF，且每个属性都不传递依赖于R的候选键，那么称R是BCNF的模式。如果数据库模式中每个关系模式都是BCNF，则称为BCNF的数据库模式。
-如果R是BCNF模式，那么R也是3NF模式。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;bc范式&quot;&gt;BC范式&lt;/h2&gt;
+
+&lt;p&gt;定义 如果关系模式R是1NF，且每个属性都不传递依赖于R的候选键，那么称R是BCNF的模式。如果数据库模式中每个关系模式都是BCNF，则称为BCNF的数据库模式。
+如果R是BCNF模式，那么R也是3NF模式。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例2.16 设关系模式C(CNO,CNAME,PCNO)的属性分别表示课程号、课程名和先修课程号。
 CNO是主键，这里没有任何非主属性对CNO部分依赖或传递依赖，所以C属于3NF。
@@ -1822,19 +1764,11 @@ STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函�
 3NF和BC范式是在函数依赖的条件下对模式分解所能达到的分离程度的测度。一个数据库中的关系模式如果都是BC范式，那么在函数依赖范畴内，它已经实现彻底的分离，已消除了插入和删除异常。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;无损分解&quot;&gt;无损分解&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;无损分解&quot;&gt;无损分解&lt;/h1&gt;
 
 &lt;p&gt;定义 当对关系模式R进行分解时，R的元组将分别在相应属性集进行投影而产生新的关系。如果对新的关系进行自然连接得到的元组集合与原关系完全一致，则称该分解为无损分解（lossless decompose）。否则称为有损分解。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;heath定理&quot;&gt;Heath定理&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;heath定理&quot;&gt;Heath定理&lt;/h1&gt;
 
 &lt;p&gt;假设关系模式R分解为两个子关系模式R1和R2，如果R1∩R2至少包含其中一个子关系模式的主键，则此分解是无损分解。
       在例2.18中，R(SNO,CNAME,TNAME,GRADE)分解成两个子关系模式R1(SNO,CNAME,GRADE)和R2(CNAME,TNAME)，由于R1∩R2={CNAME}，而CNAME是关系模式R2的主键，由Heath定理，该分解为无损分解。&lt;/p&gt;
@@ -1845,20 +1779,12 @@ STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函�
      因为R1∩R2=SNO, 由于SNO是R1的主键，则分解具有无损性连接。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;保持函数依赖分解&quot;&gt;保持函数依赖分解&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;保持函数依赖分解&quot;&gt;保持函数依赖分解&lt;/h1&gt;
 
 &lt;p&gt;模式分解的过程还必须保证数据的语义完整性。在做任何数据输入和修改时，只要每个关系模式本身的函数依赖被满足，就可以确保整个数据库中数据的语义完整性不受破坏。
 定义：设ρ={R1(U1),R2(U2),…,Rn(Un)}是关系模式R(U)的一个分解，R的函数依赖集F在Ui上的投影为Fi，如果满足              ，则称ρ具有函数依赖保持性，也称该分解为保持依赖分解（preserve depend-ency decompose）&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;3nf分解&quot;&gt;3NF分解&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;3nf分解&quot;&gt;3NF分解&lt;/h1&gt;
 
 &lt;p&gt;前在信息系统的设计中，广泛被采用的是“基于3NF的系统设计”方法 。
 将R分解成多个3NF关系模式的步骤如下：
@@ -1871,7 +1797,55 @@ STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函�
 
 &lt;p&gt;(3) 如果R属于2NF但R不属于3NF，分解R使其满足3NF。
 将关系模式分解为符合3NF条件的方法如下：设关系模式R(U)，主键是W，R上还存在函数依赖X→Z。Z不含于X并且是非主属性，X不是候选键，那么W→Z就是一个传递函数依赖。
-此时应把R分解成两个模式R1(XZ)，主键是X和R2(Y)，其中Y=U-Z，主键仍是W，外键是X。如在例2.15的关系模式R1(CNO,TNAME,TADDR)，取W={CNO}，X={TNAME}，Z={TADDR}，利用该方法就可以得到符合3NF的关系模式R11(TNAME,TADDR)和R12(CNO,TNAME)。&lt;/p&gt;</content><author><name></name></author><category term="sql" /><summary type="html">sql-server复习二</summary></entry><entry><title type="html">linux笔记</title><link href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="linux笔记" /><published>2020-05-09T00:00:00+08:00</published><updated>2020-05-09T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">&lt;p&gt;[toc]&lt;/p&gt;
+此时应把R分解成两个模式R1(XZ)，主键是X和R2(Y)，其中Y=U-Z，主键仍是W，外键是X。如在例2.15的关系模式R1(CNO,TNAME,TADDR)，取W={CNO}，X={TNAME}，Z={TADDR}，利用该方法就可以得到符合3NF的关系模式R11(TNAME,TADDR)和R12(CNO,TNAME)。&lt;/p&gt;
+
+&lt;h1 id=&quot;事务四大特性及隔离级别&quot;&gt;事务四大特性及隔离级别&lt;/h1&gt;
+
+&lt;h2 id=&quot;特性&quot;&gt;特性:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;原子性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;一致性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;隔离性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;隔离性是当多个用户&lt;code&gt;并发&lt;/code&gt;访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;持久性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。&lt;/p&gt;
+
+&lt;h2 id=&quot;隔离级别&quot;&gt;隔离级别&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;脏读&lt;/p&gt;
+
+    &lt;p&gt;脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;不可重复读&lt;/p&gt;
+
+    &lt;p&gt;不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;虚读&lt;/p&gt;
+
+    &lt;p&gt;幻读是事务非独立执行时发生的一种现象&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux笔记</title><link href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="linux笔记" /><published>2020-05-09T00:00:00+08:00</published><updated>2020-05-09T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;unix和linux区别&quot;&gt;Unix和Linux区别&lt;/h1&gt;
 
