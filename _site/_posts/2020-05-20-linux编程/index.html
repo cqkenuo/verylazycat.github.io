@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>归档 | imod</title>
+<title>linux编程 | imod</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="归档" />
+<meta property="og:title" content="linux编程" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat" />
-<meta property="og:description" content="lazycat" />
-<link rel="canonical" href="http://localhost:4000/archive/" />
-<meta property="og:url" content="http://localhost:4000/archive/" />
+<meta name="description" content="[toc]" />
+<meta property="og:description" content="[toc]" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" />
 <meta property="og:site_name" content="imod" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-20T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/archive/","headline":"归档","description":"lazycat","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/","headline":"linux编程","dateModified":"2020-05-20T00:00:00+08:00","datePublished":"2020-05-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/"},"description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -245,7 +247,7 @@
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
-      <a class="sidebar-nav-item active" href="/archive/">
+      <a class="sidebar-nav-item" href="/archive/">
         <i class="fas fa-archive fa-fw"></i> 归档
       </a>
       
@@ -546,7 +548,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    归档
+    linux编程
     <a href="http://localhost:4000/" title="Home">
       <small>
         imod
@@ -557,371 +559,488 @@
 </div>
 
 <div class="container content">
-  
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    20 May 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    6492字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    22分
+    
+    
+    <span class="leancloud-visitors" data-xid="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" data-flag-title="linux编程">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    linux
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>（除特别声明或转载文章外）
+
+    
+  </span>
+  <p>[toc]</p>
+
+<h1 id="error">ERROR</h1>
+
+<pre><code class="language-sh">vim /usr/include/asm-generic/errno-base.h 
+errno.h 
+</code></pre>
+
+<pre><code class="language-c">#ifndef _ASM_GENERIC_ERRNO_BASE_H
+#define _ASM_GENERIC_ERRNO_BASE_H
+
+#define EPERM            1      /* Operation not permitted */
+#define ENOENT           2      /* No such file or directory */
+#define ESRCH            3      /* No such process */
+#define EINTR            4      /* Interrupted system call */
+#define EIO              5      /* I/O error */
+#define ENXIO            6      /* No such device or address */
+#define E2BIG            7      /* Argument list too long */
+#define ENOEXEC          8      /* Exec format error */
+#define EBADF            9      /* Bad file number */
+#define ECHILD          10      /* No child processes */
+#define EAGAIN          11      /* Try again */
+#define ENOMEM          12      /* Out of memory */
+#define EACCES          13      /* Permission denied */
+#define EFAULT          14      /* Bad address */
+#define ENOTBLK         15      /* Block device required */
+#define EBUSY           16      /* Device or resource busy */
+#define EEXIST          17      /* File exists */
+#define EXDEV           18      /* Cross-device link */
+#define ENODEV          19      /* No such device */
+#define ENOTDIR         20      /* Not a directory */
+#define EISDIR          21      /* Is a directory */
+#define EINVAL          22      /* Invalid argument */
+#define ENFILE          23      /* File table overflow */
+#define EMFILE          24      /* Too many open files */
+#define ENOTTY          25      /* Not a typewriter */
+#define ETXTBSY         26      /* Text file busy */
+#define EFBIG           27      /* File too large */
+#define ENOSPC          28      /* No space left on device */
+#define ESPIPE          29      /* Illegal seek */
+#define EROFS           30      /* Read-only file system */
+#define EMLINK          31      /* Too many links */
+#define EPIPE           32      /* Broken pipe */
+#define EDOM            33      /* Math argument out of domain of func */
+#define ERANGE          34      /* Math result not representable */
+#endif
+</code></pre>
+
+<h1 id="man手册">man手册</h1>
+
+<ul>
+  <li>第一章:基本命令</li>
+  <li>第二章:系统调用</li>
+  <li>第三章:标准库函数</li>
+  <li>第七章:体系结构</li>
+</ul>
+
+<h2 id="宏和函数">宏和函数</h2>
+
+<p>宏占用编译时间,函数占用运行时间,不过更安全</p>
+
+<h1 id="io">IO</h1>
+
+<p><code>一切实现的基础</code></p>
+
+<p><code>input</code>&amp;<code>output</code></p>
+
+<p>实现:</p>
+
+<ol>
+  <li><code>stdio</code></li>
+  <li><code>sysio</code></li>
+</ol>
+
+<p>优先考虑stdio,扩展性更好,不同平台底层不一样.</p>
+
+<h2 id="errorno-to-error_msg">errorno to error_msg</h2>
+
+<p>更直观展示错误内容</p>
+
+<ol>
+  <li>perror (关联全局变量errorno)</li>
+  <li>strerror</li>
+</ol>
+
+<h2 id="file结构体">FILE结构体</h2>
+
+<p>….</p>
+
+<h2 id="常用函数">常用函数</h2>
+
+<ul>
+  <li>fopen</li>
+  <li>fclose</li>
+</ul>
+
+<pre><code class="language-markdown">NAME
+       fopen, fdopen, freopen - stream open functions
+SYNOPSIS
+       #include &lt;stdio.h&gt;
+       FILE *fopen(const char *pathname, const char *mode);
+       FILE *fdopen(int fd, const char *mode);
+       FILE *freopen(const char *pathname, const char *mode, FILE *stream);
+</code></pre>
+
+<p><code>const</code>参数,安全性;</p>
+
+<p><code>mode</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>r</th>
+      <th>for read</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>r+</td>
+      <td>reading and writing</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>truncate fileto zero length or create text  file  for  writing</td>
+    </tr>
+    <tr>
+      <td>w+</td>
+      <td>open for reading and writing</td>
+    </tr>
+    <tr>
+      <td>a</td>
+      <td>open for appending</td>
+    </tr>
+    <tr>
+      <td>a+</td>
+      <td>open for reading and appending</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>返回:</p>
+
+<pre><code class="language-markdown">RETURN VALUE
+       Upon successful completion fopen(), fdopen()  and  freopen()  return  a
+       FILE pointer.  Otherwise, NULL is returned and errno is set to indicate
+       the error.
+</code></pre>
+
+<p>error 一个<code>全局变量</code></p>
+
+<p>FILE 创建的指针在栈,静态区,或者堆???</p>
+
+<pre><code class="language-c">FILE *fopen(const char *pathname, const char *mode);
+</code></pre>
+
+<p>在堆上;</p>
+
+<p>如果一个操作成对出现使用,<code>一般</code>放在<code>堆</code>上</p>
+
+<p><code>是资源一定有上限</code></p>
+
+<p>fopen打开<code>流</code>是有上限的,一般体现出来的数量是<code>1021</code>,其实真实打开的是<code>1024</code>个,有<code>3</code>个默认<code>流</code>:<code>stdout</code>,<code>stdinput</code>,<code>stderr</code></p>
+
+<p><code>Linux</code>具体限制参考:</p>
+
+<p><code>ulimit -a</code></p>
+
+<pre><code class="language-sh">-t: cpu time (seconds)              unlimited
+-f: file size (blocks)              unlimited
+-d: data seg size (kbytes)          unlimited
+-s: stack size (kbytes)             8192
+-c: core file size (blocks)         0
+-m: resident set size (kbytes)      unlimited
+-u: processes                       31073
+-n: file descriptors                1024
+-l: locked-in-memory size (kbytes)  16384
+-v: address space (kbytes)          unlimited
+-x: file locks                      unlimited
+-i: pending signals                 31073
+-q: bytes in POSIX msg queues       819200
+-e: max nice                        0
+-r: max rt priority                 0
+-N 15:                              unlimited
+
+</code></pre>
+
+<p>创建文件后的权限</p>
+
+<p>具体公式:<code>0666 &amp; ~umask</code></p>
+
+<hr />
+
+<p>字符操作</p>
+
+<ul>
+  <li>fgetc</li>
+  <li>fputc</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+//---------------------
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+</code></pre>
+
+<p>return value</p>
+
+<pre><code class="language-markdown">fgetc(),  getc() and getchar() return the character read as an unsigned
+char cast to an int or EOF on end of file or error.
+fgets() returns s on success, and NULL on error or  when  end  of  file
+occurs while no characters have been read.
+ungetc() returns c on success, or EOF on error.
+
+--------------------------
+
+fgetc(),  getc() and getchar() return the character read as an unsigned
+char cast to an int or `EOF` on end of file or error.
+</code></pre>
+
+<ul>
+  <li>fgets</li>
+</ul>
+
+<pre><code class="language-CQL">#include &lt;stdio.h&gt;
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+</code></pre>
+
+<ul>
+  <li>fputs</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fputc(int c, FILE *stream);
+int fputs(const char *s, FILE *stream);
+int putc(int c, FILE *stream);
+int putchar(int c);
+int puts(const char *s);
+</code></pre>
+
+<ul>
+  <li>fwrite</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+size_t fwrite(const void *ptr, size_t size, size_t nmemb,
+              FILE *stream);
+</code></pre>
+
+<ul>
+  <li>printf</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int printf(const char *format, ...);
+int fprintf(FILE *stream, const char *format, ...);
+int dprintf(int fd, const char *format, ...);
+int sprintf(char *str, const char *format, ...);
+int snprintf(char *str, size_t size, const char *format, ...);
+#include &lt;stdarg.h&gt;
+int vprintf(const char *format, va_list ap);
+int vfprintf(FILE *stream, const char *format, va_list ap);
+int vdprintf(int fd, const char *format, va_list ap);
+int vsprintf(char *str, const char *format, va_list ap);
+int vsnprintf(char *str, size_t size, const char *format, va_list ap);=
+</code></pre>
+
+<ul>
+  <li>scanf</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int scanf(const char *format, ...);
+int fscanf(FILE *stream, const char *format, ...);
+int sscanf(const char *str, const char *format, ...);
+#include &lt;stdarg.h&gt;
+int vscanf(const char *format, va_list ap);
+int vsscanf(const char *str, const char *format, va_list ap);
+int vfscanf(FILE *stream, const char *format, va_list ap);
+</code></pre>
+
+<ul>
+  <li>fseek</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fseek(FILE *stream, long offset, int whence);
+long ftell(FILE *stream);
+void rewind(FILE *stream);
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+</code></pre>
+
+<p><code>whence</code>:</p>
+
+<ol>
+  <li>SEEK_SET</li>
+  <li>SEEK_CUR</li>
+  <li>SEEK_END</li>
+</ol>
+
+<p><code>long offset</code>注意长度限制,类型为long,有缺陷,<code>fseeko</code>修改了缺陷,如下:</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fseeko(FILE *stream, off_t offset, int whence);
+off_t ftello(FILE *stream);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+fseeko(), ftello():
+_FILE_OFFSET_BITS == 64 || _POSIX_C_SOURCE &gt;= 200112L
+(defining the obsolete _LARGEFILE_SOURCE macro also works)
+</code></pre>
+
+<p>注意:</p>
+
+<pre><code class="language-markdown">On some architectures, both off_t and long are 32-bit types, but defin‐
+       ing  _FILE_OFFSET_BITS  with  the value 64 (before including any header
+       files) will turn off_t into a 64-bit type.
+</code></pre>
+
+<ul>
+  <li>ftell</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fseek(FILE *stream, long offset, int whence);
+long ftell(FILE *stream);
+void rewind(FILE *stream);
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+</code></pre>
+<ul>
+  <li>fflush</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fflush(FILE *stream);
+</code></pre>
+
+<p>注意:</p>
+
+<p>If the stream argument is NULL, fflush() flushes all open output streams.For a nonlocking counterpart, see unlocked_stdio(3).</p>
+
+<p>缓冲区作用:合并系统调用</p>
+
+<p>分类:</p>
+
+<ol>
+  <li>行缓冲:换行时刷新,stdout</li>
+  <li>全缓冲:满了就刷新,默认</li>
+  <li>无缓冲:stderr</li>
+</ol>
+
+<p>修改缓冲:</p>
+
+<p>setvbuf</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+void setbuf(FILE *stream, char *buf);
+void setbuffer(FILE *stream, char *buf, size_t size);
+void setlinebuf(FILE *stream);
+int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+</code></pre>
+
+<p>The mode argument must be one of the following three macros:</p>
+
+<pre><code class="language-markdown">_IONBF unbuffered
+_IOLBF line buffered
+_IOFBF fully buffered
+</code></pre>
+
+<ul>
+  <li>getline</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t getdelim(char **lineptr, size_t *n, int delim, FILE *stream);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+getline(), getdelim():
+Since glibc 2.10:
+_POSIX_C_SOURCE &gt;= 200809L
+    Before glibc 2.10:
+_GNU_SOURCE
+</code></pre>
+
+<p>对于段错误一定要仔细分析,可能是调用的函数引用了其他函数,但是没有初始化,这种容易出错;</p>
+
+<ul>
+  <li>tmpnam</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+char *tmpnam(char *s);
+char *tmpnam_r(char *s);
+</code></pre>
+
+<ul>
+  <li>tmpfile</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+FILE *tmpfile(void);
+</code></pre>
+
+<p>匿名文件</p>
+
+<p>临时问阿金两个问题:</p>
+
+<ol>
+  <li>不冲突</li>
+  <li>及时销毁</li>
+</ol>
+
+<h2 id="文件描述符">文件描述符</h2>
 
 
-26篇博文。长路漫漫！
-
-
-
-
-
-
-
-
-
-<div class="mermaid">
-  pie
-  
-  
-  
-  
-  
-  
-  "2020" : 24
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  "2019" : 2
-  
-  
-  
-  
-  
-  
-  
 </div>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
-
-<ul>
-  
-  
-  
-  
-  
-</ul>
-<h2>
-  <i class="fas fa-folder-open"></i>
-  
-  <small>24</small>
-  
-  2020
-</h2>
-<ul>
-  
-  
-  <li>
-    <small>20 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/">linux编程</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>15 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">Docker笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/">置换密码</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">类加载</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/">删除文件原理</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">sql-server常用命令总结</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>11 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>10 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">sql-server复习二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>09 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">linux笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-08-BIO&NIO&AIO/">BIO&NIO&AIO</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>07 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题三</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">新型冠状肺炎数据可视化</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">数据结构－二分查找</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-06-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BA%8C/">JAVA一些问题二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-05-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/">数据结构－二叉树</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%80/">JAVA一些问题一</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>04 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构－线性表</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">sql-server复习一</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="http://localhost:4000/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 Apr 2020</small>
-    <a href="http://localhost:4000/_posts/2020-04-08-MakeMyOs/">MakeMyOs</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 Mar 2020</small>
-    <a href="http://localhost:4000/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/">CPU模式</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>09 Feb 2020</small>
-    <a href="http://localhost:4000/_posts/2020-02-09-makefile%E7%AC%94%E8%AE%B0/">makefile笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>07 Jan 2020</small>
-    <a href="http://localhost:4000/_posts/2020-01-07-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-  </li>
-  
-  
-  
-  
-</ul>
-<h2>
-  <i class="fas fa-folder-open"></i>
-  
-  <small>2</small>
-  
-  2019
-</h2>
-<ul>
-  
-  
-  <li>
-    <small>13 May 2019</small>
-    <a href="http://localhost:4000/_posts/2019-05-13-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">机器学习笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 Mar 2019</small>
-    <a href="http://localhost:4000/_posts/2019-03-13-Hydra/">Hydra</a>
-  </li>
-  
-</ul>
 </div>
   </div>
   

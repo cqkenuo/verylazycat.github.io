@@ -1,11 +1,436 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-19T10:23:16+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-20T21:38:37+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">imod</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">Docker笔记</title><link href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="Docker笔记" /><published>2020-05-15T00:00:00+08:00</published><updated>2020-05-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/Docker%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
+</subtitle><entry><title type="html">linux编程</title><link href="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" rel="alternate" type="text/html" title="linux编程" /><published>2020-05-20T00:00:00+08:00</published><updated>2020-05-20T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;error&quot;&gt;ERROR&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;vim /usr/include/asm-generic/errno-base.h 
+errno.h 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#ifndef _ASM_GENERIC_ERRNO_BASE_H
+#define _ASM_GENERIC_ERRNO_BASE_H
+
+#define EPERM            1      /* Operation not permitted */
+#define ENOENT           2      /* No such file or directory */
+#define ESRCH            3      /* No such process */
+#define EINTR            4      /* Interrupted system call */
+#define EIO              5      /* I/O error */
+#define ENXIO            6      /* No such device or address */
+#define E2BIG            7      /* Argument list too long */
+#define ENOEXEC          8      /* Exec format error */
+#define EBADF            9      /* Bad file number */
+#define ECHILD          10      /* No child processes */
+#define EAGAIN          11      /* Try again */
+#define ENOMEM          12      /* Out of memory */
+#define EACCES          13      /* Permission denied */
+#define EFAULT          14      /* Bad address */
+#define ENOTBLK         15      /* Block device required */
+#define EBUSY           16      /* Device or resource busy */
+#define EEXIST          17      /* File exists */
+#define EXDEV           18      /* Cross-device link */
+#define ENODEV          19      /* No such device */
+#define ENOTDIR         20      /* Not a directory */
+#define EISDIR          21      /* Is a directory */
+#define EINVAL          22      /* Invalid argument */
+#define ENFILE          23      /* File table overflow */
+#define EMFILE          24      /* Too many open files */
+#define ENOTTY          25      /* Not a typewriter */
+#define ETXTBSY         26      /* Text file busy */
+#define EFBIG           27      /* File too large */
+#define ENOSPC          28      /* No space left on device */
+#define ESPIPE          29      /* Illegal seek */
+#define EROFS           30      /* Read-only file system */
+#define EMLINK          31      /* Too many links */
+#define EPIPE           32      /* Broken pipe */
+#define EDOM            33      /* Math argument out of domain of func */
+#define ERANGE          34      /* Math result not representable */
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;man手册&quot;&gt;man手册&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;第一章:基本命令&lt;/li&gt;
+  &lt;li&gt;第二章:系统调用&lt;/li&gt;
+  &lt;li&gt;第三章:标准库函数&lt;/li&gt;
+  &lt;li&gt;第七章:体系结构&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;宏和函数&quot;&gt;宏和函数&lt;/h2&gt;
+
+&lt;p&gt;宏占用编译时间,函数占用运行时间,不过更安全&lt;/p&gt;
+
+&lt;h1 id=&quot;io&quot;&gt;IO&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;一切实现的基础&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;input&lt;/code&gt;&amp;amp;&lt;code&gt;output&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;实现:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code&gt;stdio&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;sysio&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;优先考虑stdio,扩展性更好,不同平台底层不一样.&lt;/p&gt;
+
+&lt;h2 id=&quot;errorno-to-error_msg&quot;&gt;errorno to error_msg&lt;/h2&gt;
+
+&lt;p&gt;更直观展示错误内容&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;perror (关联全局变量errorno)&lt;/li&gt;
+  &lt;li&gt;strerror&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;file结构体&quot;&gt;FILE结构体&lt;/h2&gt;
+
+&lt;p&gt;….&lt;/p&gt;
+
+&lt;h2 id=&quot;常用函数&quot;&gt;常用函数&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fopen&lt;/li&gt;
+  &lt;li&gt;fclose&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;NAME
+       fopen, fdopen, freopen - stream open functions
+SYNOPSIS
+       #include &amp;lt;stdio.h&amp;gt;
+       FILE *fopen(const char *pathname, const char *mode);
+       FILE *fdopen(int fd, const char *mode);
+       FILE *freopen(const char *pathname, const char *mode, FILE *stream);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;const&lt;/code&gt;参数,安全性;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;mode&lt;/code&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;r&lt;/th&gt;
+      &lt;th&gt;for read&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;r+&lt;/td&gt;
+      &lt;td&gt;reading and writing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;w&lt;/td&gt;
+      &lt;td&gt;truncate fileto zero length or create text  file  for  writing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;w+&lt;/td&gt;
+      &lt;td&gt;open for reading and writing&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;a&lt;/td&gt;
+      &lt;td&gt;open for appending&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;a+&lt;/td&gt;
+      &lt;td&gt;open for reading and appending&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;返回:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;RETURN VALUE
+       Upon successful completion fopen(), fdopen()  and  freopen()  return  a
+       FILE pointer.  Otherwise, NULL is returned and errno is set to indicate
+       the error.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;error 一个&lt;code&gt;全局变量&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;FILE 创建的指针在栈,静态区,或者堆???&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;FILE *fopen(const char *pathname, const char *mode);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在堆上;&lt;/p&gt;
+
+&lt;p&gt;如果一个操作成对出现使用,&lt;code&gt;一般&lt;/code&gt;放在&lt;code&gt;堆&lt;/code&gt;上&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;是资源一定有上限&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;fopen打开&lt;code&gt;流&lt;/code&gt;是有上限的,一般体现出来的数量是&lt;code&gt;1021&lt;/code&gt;,其实真实打开的是&lt;code&gt;1024&lt;/code&gt;个,有&lt;code&gt;3&lt;/code&gt;个默认&lt;code&gt;流&lt;/code&gt;:&lt;code&gt;stdout&lt;/code&gt;,&lt;code&gt;stdinput&lt;/code&gt;,&lt;code&gt;stderr&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Linux&lt;/code&gt;具体限制参考:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ulimit -a&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;-t: cpu time (seconds)              unlimited
+-f: file size (blocks)              unlimited
+-d: data seg size (kbytes)          unlimited
+-s: stack size (kbytes)             8192
+-c: core file size (blocks)         0
+-m: resident set size (kbytes)      unlimited
+-u: processes                       31073
+-n: file descriptors                1024
+-l: locked-in-memory size (kbytes)  16384
+-v: address space (kbytes)          unlimited
+-x: file locks                      unlimited
+-i: pending signals                 31073
+-q: bytes in POSIX msg queues       819200
+-e: max nice                        0
+-r: max rt priority                 0
+-N 15:                              unlimited
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建文件后的权限&lt;/p&gt;
+
+&lt;p&gt;具体公式:&lt;code&gt;0666 &amp;amp; ~umask&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;字符操作&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fgetc&lt;/li&gt;
+  &lt;li&gt;fputc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+//---------------------
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;return value&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;fgetc(),  getc() and getchar() return the character read as an unsigned
+char cast to an int or EOF on end of file or error.
+fgets() returns s on success, and NULL on error or  when  end  of  file
+occurs while no characters have been read.
+ungetc() returns c on success, or EOF on error.
+
+--------------------------
+
+fgetc(),  getc() and getchar() return the character read as an unsigned
+char cast to an int or `EOF` on end of file or error.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fgets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-CQL&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fputs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int fputc(int c, FILE *stream);
+int fputs(const char *s, FILE *stream);
+int putc(int c, FILE *stream);
+int putchar(int c);
+int puts(const char *s);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fwrite&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+size_t fwrite(const void *ptr, size_t size, size_t nmemb,
+              FILE *stream);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;printf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int printf(const char *format, ...);
+int fprintf(FILE *stream, const char *format, ...);
+int dprintf(int fd, const char *format, ...);
+int sprintf(char *str, const char *format, ...);
+int snprintf(char *str, size_t size, const char *format, ...);
+#include &amp;lt;stdarg.h&amp;gt;
+int vprintf(const char *format, va_list ap);
+int vfprintf(FILE *stream, const char *format, va_list ap);
+int vdprintf(int fd, const char *format, va_list ap);
+int vsprintf(char *str, const char *format, va_list ap);
+int vsnprintf(char *str, size_t size, const char *format, va_list ap);=
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;scanf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int scanf(const char *format, ...);
+int fscanf(FILE *stream, const char *format, ...);
+int sscanf(const char *str, const char *format, ...);
+#include &amp;lt;stdarg.h&amp;gt;
+int vscanf(const char *format, va_list ap);
+int vsscanf(const char *str, const char *format, va_list ap);
+int vfscanf(FILE *stream, const char *format, va_list ap);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fseek&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int fseek(FILE *stream, long offset, int whence);
+long ftell(FILE *stream);
+void rewind(FILE *stream);
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;whence&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;SEEK_SET&lt;/li&gt;
+  &lt;li&gt;SEEK_CUR&lt;/li&gt;
+  &lt;li&gt;SEEK_END&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;long offset&lt;/code&gt;注意长度限制,类型为long,有缺陷,&lt;code&gt;fseeko&lt;/code&gt;修改了缺陷,如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int fseeko(FILE *stream, off_t offset, int whence);
+off_t ftello(FILE *stream);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+fseeko(), ftello():
+_FILE_OFFSET_BITS == 64 || _POSIX_C_SOURCE &amp;gt;= 200112L
+(defining the obsolete _LARGEFILE_SOURCE macro also works)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;On some architectures, both off_t and long are 32-bit types, but defin‐
+       ing  _FILE_OFFSET_BITS  with  the value 64 (before including any header
+       files) will turn off_t into a 64-bit type.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ftell&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int fseek(FILE *stream, long offset, int whence);
+long ftell(FILE *stream);
+void rewind(FILE *stream);
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+  &lt;li&gt;fflush&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+int fflush(FILE *stream);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意:&lt;/p&gt;
+
+&lt;p&gt;If the stream argument is NULL, fflush() flushes all open output streams.For a nonlocking counterpart, see unlocked_stdio(3).&lt;/p&gt;
+
+&lt;p&gt;缓冲区作用:合并系统调用&lt;/p&gt;
+
+&lt;p&gt;分类:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;行缓冲:换行时刷新,stdout&lt;/li&gt;
+  &lt;li&gt;全缓冲:满了就刷新,默认&lt;/li&gt;
+  &lt;li&gt;无缓冲:stderr&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;修改缓冲:&lt;/p&gt;
+
+&lt;p&gt;setvbuf&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+void setbuf(FILE *stream, char *buf);
+void setbuffer(FILE *stream, char *buf, size_t size);
+void setlinebuf(FILE *stream);
+int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The mode argument must be one of the following three macros:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;_IONBF unbuffered
+_IOLBF line buffered
+_IOFBF fully buffered
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getline&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t getdelim(char **lineptr, size_t *n, int delim, FILE *stream);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+getline(), getdelim():
+Since glibc 2.10:
+_POSIX_C_SOURCE &amp;gt;= 200809L
+    Before glibc 2.10:
+_GNU_SOURCE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于段错误一定要仔细分析,可能是调用的函数引用了其他函数,但是没有初始化,这种容易出错;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tmpnam&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+char *tmpnam(char *s);
+char *tmpnam_r(char *s);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tmpfile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+FILE *tmpfile(void);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;匿名文件&lt;/p&gt;
+
+&lt;p&gt;临时问阿金两个问题:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;不冲突&lt;/li&gt;
+  &lt;li&gt;及时销毁&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;文件描述符&quot;&gt;文件描述符&lt;/h2&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">Docker笔记</title><link href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="Docker笔记" /><published>2020-05-15T00:00:00+08:00</published><updated>2020-05-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/Docker%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -2614,306 +3039,4 @@ for (;;) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;所有的基于IO多路复用的代码都会遵循这样的写法：注册——监听事件——处理——再注册，无限循环下去。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了</summary></entry><entry><title type="html">git常用命令</title><link href="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="git常用命令" /><published>2020-05-08T00:00:00+08:00</published><updated>2020-05-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;说明&quot;&gt;说明&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/git.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;workspace&lt;/code&gt;：工作区&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;index/stage&lt;/code&gt;：暂存区&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;repository&lt;/code&gt;:厂库区&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;remoter&lt;/code&gt;远程厂库&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;配置&quot;&gt;配置&lt;/h1&gt;
-
-&lt;p&gt;Git的设置文件为&lt;code&gt;.gitconfig&lt;/code&gt;，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;#查看配置
-git config --list
-
-#编辑配置
-git config -e [--global]
-
-#设置提交代码用户配置
-git config --global user.name  &quot;[name]&quot;
-git config --global user.email &quot;[email address]&quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;创建代码库&quot;&gt;创建代码库&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git init
-git clone  url
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;增加删除&quot;&gt;增加/删除&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;#添加到暂存区
-git add file  
-
-#添加指定目录到暂存区
-git add  dir
-
-#添加当前目录所有文件到暂存区
-git add . 
-
-#对于同一个文件的多处变化，可以实现分次提交
-git add -p
-
-# 删除工作区文件，并且将这次删除放入暂存区
-git rm [file1] [file2]
-
-# 停止追踪指定文件，但该文件会保留在工作区
-git rm --cached [file]
-
-# 改名文件，并且将这个改名放入暂存区
-git mv [file-original] [file-renamed]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;代码提交&quot;&gt;代码提交&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 提交暂存区到仓库区
-git commit -m [message]
-
-# 提交暂存区的指定文件到仓库区
-git commit [file1] [file2] ... -m [message]
-
-# 提交工作区自上次commit之后的变化，直接到仓库区
-git commit -a
-
-# 提交时显示所有diff信息
-git commit -v
-
-# 使用一次新的commit，替代上一次提交
-# 如果代码没有任何新变化，则用来改写上一次commit的提交信息
-git commit --amend -m [message]
-
-# 重做上一次commit，并包括指定文件的新变化
-git commit --amend [file1] [file2] 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;分支&quot;&gt;分支&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;
-# 列出所有本地分支
-$ git branch
-
-# 列出所有远程分支
-$ git branch -r
-
-# 列出所有本地分支和远程分支
-$ git branch -a
-
-# 新建一个分支，但依然停留在当前分支
-$ git branch [branch-name]
-
-# 新建一个分支，并切换到该分支
-$ git checkout -b [branch]
-
-# 新建一个分支，指向指定commit
-$ git branch [branch] [commit]
-
-# 新建一个分支，与指定的远程分支建立追踪关系
-$ git branch --track [branch] [remote-branch]
-
-# 切换到指定分支，并更新工作区
-$ git checkout [branch-name]
-
-# 切换到上一个分支
-$ git checkout -
-
-# 建立追踪关系，在现有分支与指定的远程分支之间
-$ git branch --set-upstream [branch] [remote-branch]
-
-# 合并指定分支到当前分支
-$ git merge [branch]
-
-# 选择一个commit，合并进当前分支
-$ git cherry-pick [commit]
-
-# 删除分支
-$ git branch -d [branch-name]
-
-# 删除远程分支
-$ git push origin --delete [branch-name]
-$ git branch -dr [remote/branch]
-
-# 本地存在一个分支，名称叫：develop_chen，但远程没有怎么办？
-
-git push origin develop_chen
-
-这样就在远程建立一个和本地一样的分支 
-
-git branch --set-upstream-to=origin/develop  develop  本地分支和远程分支简历跟踪关系
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;标签&quot;&gt;标签&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 列出所有tag
-$ git tag
-
-# 新建一个tag在当前commit
-$ git tag [tag]
-
-# 新建一个tag在指定commit
-$ git tag [tag] [commit]
-
-# 删除本地tag
-$ git tag -d [tag]
-
-# 删除远程tag
-$ git push origin :refs/tags/[tagName]
-
-# 查看tag信息
-$ git show [tag]
-
-# 提交指定tag
-$ git push [remote] [tag]
-
-# 提交所有tag
-$ git push [remote] --tags
-
-# 新建一个分支，指向某个tag
-$ git checkout -b [branch] [tag]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;查看信息&quot;&gt;查看信息&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 显示有变更的文件
-$ git status
-
-# 显示当前分支的版本历史
-$ git log
-
-# 显示commit历史，以及每次commit发生变更的文件
-$ git log --stat
-
-# 搜索提交历史，根据关键词
-$ git log -S [keyword]
-
-# 显示某个commit之后的所有变动，每个commit占据一行
-$ git log [tag] HEAD --pretty=format:%s
-
-# 显示某个commit之后的所有变动，其&quot;提交说明&quot;必须符合搜索条件
-$ git log [tag] HEAD --grep feature
-
-# 显示某个文件的版本历史，包括文件改名
-$ git log --follow [file]
-$ git whatchanged [file]
-
-# 显示指定文件相关的每一次diff
-$ git log -p [file]
-
-# 显示过去5次提交
-$ git log -5 --pretty --oneline
-
-# 显示所有提交过的用户，按提交次数排序
-$ git shortlog -sn
-
-# 显示指定文件是什么人在什么时间修改过
-$ git blame [file]
-
-# 显示暂存区和工作区的代码差异
-$ git diff
-
-# 显示暂存区和上一个commit的差异
-$ git diff --cached [file]
-
-# 显示工作区与当前分支最新commit之间的差异
-$ git diff HEAD
-
-# 显示两次提交之间的差异
-$ git diff [first-branch]...[second-branch]
-
-# 显示今天你写了多少行代码
-$ git diff --shortstat &quot;@{0 day ago}&quot;
-
-# 显示某次提交的元数据和内容变化
-$ git show [commit]
-
-# 显示某次提交发生变化的文件
-$ git show --name-only [commit]
-
-# 显示某次提交时，某个文件的内容
-$ git show [commit]:[filename]
-
-# 显示当前分支的最近几次提交
-$ git reflog
-
-# 从本地master拉取代码更新当前分支：branch 一般为master
-$ git rebase [branch]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;远程同步&quot;&gt;远程同步&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git remote update  --更新远程仓储
-# 下载远程仓库的所有变动
-$ git fetch [remote]
-
-# 显示所有远程仓库
-$ git remote -v
-
-# 显示某个远程仓库的信息
-$ git remote show [remote]
-
-# 增加一个新的远程仓库，并命名
-$ git remote add [shortname] [url]
-
-# 取回远程仓库的变化，并与本地分支合并
-$ git pull [remote] [branch]
-
-# 上传本地指定分支到远程仓库
-$ git push [remote] [branch]
-
-# 强行推送当前分支到远程仓库，即使有冲突
-$ git push [remote] --force
-
-# 推送所有分支到远程仓库
-$ git push [remote] --all
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;撤销&quot;&gt;撤销&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;# 恢复暂存区的指定文件到工作区
-$ git checkout [file]
-
-# 恢复某个commit的指定文件到暂存区和工作区
-$ git checkout [commit] [file]
-
-# 恢复暂存区的所有文件到工作区
-$ git checkout .
-
-# 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
-$ git reset [file]
-
-# 重置暂存区与工作区，与上一次commit保持一致
-$ git reset --hard
-
-# 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
-$ git reset [commit]
-
-# 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
-$ git reset --hard [commit]
-
-# 重置当前HEAD为指定commit，但保持暂存区和工作区不变
-$ git reset --keep [commit]
-
-# 新建一个commit，用来撤销指定commit
-# 后者的所有变化都将被前者抵消，并且应用到当前分支
-$ git revert [commit]
-
-# 暂时将未提交的变化移除，稍后再移入
-$ git stash
-$ git stash pop
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;合并&quot;&gt;合并&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;git checkout dev           #切换到dev开发分支
-git pull
-git checkout master
-git merge dev              #合并dev分支到master上
-git push origin master     #将代码推到master上
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="git" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;所有的基于IO多路复用的代码都会遵循这样的写法：注册——监听事件——处理——再注册，无限循环下去。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了</summary></entry></feed>
