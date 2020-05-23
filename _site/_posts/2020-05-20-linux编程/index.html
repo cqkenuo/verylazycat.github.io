@@ -567,11 +567,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    6492字
+    14222字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    22分
+    48分
     
     
     <span class="leancloud-visitors" data-xid="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" data-flag-title="linux编程">
@@ -1020,6 +1020,692 @@ FILE *tmpfile(void);
 </ol>
 
 <h2 id="文件描述符">文件描述符</h2>
+
+<p>…</p>
+
+<h2 id="系统io">系统IO</h2>
+
+<h3 id="函数">函数</h3>
+
+<ul>
+  <li>open</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+int open(const char *pathname, int flags);
+int open(const char *pathname, int flags, mode_t mode);
+int creat(const char *pathname, mode_t mode);
+int openat(int dirfd, const char *pathname, int flags);
+int openat(int dirfd, const char *pathname, int flags, mode_t mode);
+</code></pre>
+
+<p>函数名相同,参数不同,在c++和Java里面叫做<code>重载</code>,但是c里面没有重载,此处是使用<code>变参实现</code></p>
+
+<p>可以传入多个参数取去编译,如果报错,就是重载实现,如果没有报错,则是变参实现.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>flag</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O_APPEND</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_ASYNC</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_CLOEXEC</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_CREAT</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_DIRECT</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_DIRECTORY</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_DSYNC</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_EXCL</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_LARGEFILE</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NOATIME</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NOCTTY</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NOFOLLOW</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NONBLOCK</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_PATH</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_SYNC</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>联系<code>标准io</code>里面的model,有如下对应关系:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>model</th>
+      <th>flags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>r-</td>
+      <td>O_RDONLY</td>
+    </tr>
+    <tr>
+      <td>r+</td>
+      <td>O_RDWR</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>O_WRONLY|O_CREAT|O_TRUNC</td>
+    </tr>
+    <tr>
+      <td>w+</td>
+      <td>O_RDWR|O_TRUNC|O_CREAT</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>close</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int close(int fd);
+</code></pre>
+
+<ul>
+  <li>read</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+ssize_t read(int fd, void *buf, size_t count);
+</code></pre>
+
+<ul>
+  <li>write</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+ssize_t write(int fd, const void *buf, size_t count);
+</code></pre>
+
+<ul>
+  <li>lseek</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+off_t lseek(int fd, off_t offset, int whence);
+</code></pre>
+
+<ul>
+  <li>dup</li>
+</ul>
+
+<p>复制文件描述符</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int dup(int oldfd);
+int dup2(int oldfd, int newfd);
+#define _GNU_SOURCE             /* See feature_test_macros(7) */
+#include &lt;fcntl.h&gt;              /* Obtain O_* constant definitions */
+#include &lt;unistd.h&gt;
+int dup3(int oldfd, int newfd, int flags);
+</code></pre>
+
+<hr />
+
+<p>标准IO不要和系统IO混用</p>
+
+<p>转换</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+void clearerr(FILE *stream);
+int feof(FILE *stream);
+int ferror(FILE *stream);
+int fileno(FILE *stream);
+</code></pre>
+
+<hr />
+
+<h2 id="原子操作">原子操作</h2>
+
+<p>不可分割的最小单位,解决竞争和冲突</p>
+
+<hr />
+
+<h2 id="同步">同步</h2>
+
+<h3 id="函数-1">函数</h3>
+
+<ul>
+  <li>sync</li>
+</ul>
+
+<p>sync, syncfs - commit filesystem caches to disk</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+void sync(void);
+int syncfs(int fd);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+sync():
+_XOPEN_SOURCE &gt;= 500
+|| /* Since glibc 2.19: */ _DEFAULT_SOURCE
+|| /* Glibc versions &lt;= 2.19: */ _BSD_SOURCE
+syncfs():
+_GNU_SOURCE
+</code></pre>
+
+<ul>
+  <li>fsync</li>
+</ul>
+
+<p>ynchronize  a  file’s in-core state with storage
+       device</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int fsync(int fd);
+int fdatasync(int fd);
+</code></pre>
+
+<ul>
+  <li>fcntl</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+int fcntl(int fd, int cmd, ... /* arg */ );
+</code></pre>
+
+<ul>
+  <li>ioctl</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/ioctl.h&gt;
+int ioctl(int fd, unsigned long request, ...);
+</code></pre>
+
+<hr />
+
+<h2 id="devfd目录">/dev/fd目录</h2>
+
+<p>虚目录,显示当前进程的文件描述符的信息</p>
+
+<h1 id="文件系统">文件系统</h1>
+
+<h2 id="获取文件属性">获取文件属性</h2>
+
+<ul>
+  <li>stat</li>
+</ul>
+
+<p>stat, fstat, lstat, fstatat - get file status</p>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;unistd.h&gt;
+int stat(const char *pathname, struct stat *statbuf);
+int fstat(int fd, struct stat *statbuf);
+int lstat(const char *pathname, struct stat *statbuf);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;sys/stat.h&gt;
+int fstatat(int dirfd, const char *pathname, struct stat *statbuf,
+            int flags);
+</code></pre>
+
+<h2 id="stat结构体">stat结构体</h2>
+
+<pre><code class="language-c">struct stat {
+dev_t     st_dev;         /* ID of device containing file */
+ino_t     st_ino;         /* Inode number */
+mode_t    st_mode;        /* File type and mode */
+nlink_t   st_nlink;       /* Number of hard links */
+uid_t     st_uid;         /* User ID of owner */
+gid_t     st_gid;         /* Group ID of owner */
+dev_t     st_rdev;        /* Device ID (if special file) */
+off_t     st_size;        /* Total size, in bytes */
+blksize_t st_blksize;     /* Block size for filesystem I/O */
+blkcnt_t  st_blocks;      /* Number of 512B blocks allocated */
+
+/* Since Linux 2.6, the kernel supports nanosecond
+precision for the following timestamp fields.
+For the details before Linux 2.6, see NOTES. */
+
+struct timespec st_atim;  /* Time of last access */
+struct timespec st_mtim;  /* Time of last modification */
+struct timespec st_ctim;  /* Time of last status change */
+
+#define st_atime st_atim.tv_sec      /* Backward compatibility */
+#define st_mtime st_mtim.tv_sec
+#define st_ctime st_ctim.tv_sec
+};
+</code></pre>
+
+<p>获取文件大小测试程序</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;unistd.h&gt;
+//获取文件大小函数
+static off_t flen(const char *filename)
+{
+    //获取文件属性
+    struct stat fileinfo;
+    if(stat(filename,&amp;fileinfo) &lt; 0)
+    {
+        perror("stat()");
+        exit(1);
+    }
+    return fileinfo.st_size;
+}
+</code></pre>
+
+<p>空洞文件</p>
+
+<pre><code class="language-c"> int fd;
+    fd = open(argv[1],O_WRONLY|O_CREAT|O_TRUNC,0600);
+    if(fd  &lt; 0)
+    {
+        perror("open()");
+        exit(0);
+    }
+    //偏移
+//带上LL单位
+    lseek(fd,5LL*1024LL*1024LL*1024LL - 1LL,SEEK_SET);
+    write(fd,"",1);
+    close(fd);
+</code></pre>
+
+<p>mode_t    st_mode</p>
+
+<pre><code class="language-markdown">权限和文件类型，位图，权限位9位，类型3位，u+s 1位，g+s 1位，粘滞位(T位)1位。位图是用一位或几位数据表示某种状态
+</code></pre>
+
+<p>文件类型:<code>dcb-lsp</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>d</th>
+      <th>目录</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>c</td>
+      <td>字符快设备文件</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>块文件</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>普通文件</td>
+    </tr>
+    <tr>
+      <td>l</td>
+      <td>符号链接文件</td>
+    </tr>
+    <tr>
+      <td>s</td>
+      <td>套接字文件</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>管道文件</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="文件权限更改">文件权限更改</h2>
+
+<ul>
+  <li>chmod</li>
+  <li>fchmod</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/stat.h&gt;
+int chmod(const char *pathname, mode_t mode);
+int fchmod(int fd, mode_t mode);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;sys/stat.h&gt;
+int fchmodat(int dirfd, const char *pathname, mode_t mode, int flags);
+</code></pre>
+
+<h2 id="粘住位">粘住位</h2>
+
+<p>t位</p>
+
+<hr />
+
+<p>文件系统:<code>FAT</code>,<code>UFS</code></p>
+
+<h2 id="硬链接符号链接">硬链接&amp;符号链接</h2>
+
+<p>硬链接与目录项是同义词,且建立硬链接有限制,不能给分区建立,不能给目录建立;符号链接优点:可跨分区,可以给目录建立</p>
+
+<ul>
+  <li>link</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int link(const char *oldpath, const char *newpath);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;unistd.h&gt;
+int linkat(int olddirfd, const char *oldpath,
+           int newdirfd, const char *newpath, int flags);
+</code></pre>
+
+<ul>
+  <li>unlink</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int unlink(const char *pathname);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;unistd.h&gt;
+int unlinkat(int dirfd, const char *pathname, int flags);
+</code></pre>
+
+<ul>
+  <li>remove</li>
+</ul>
+
+<p>remove a file or directory</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int remove(const char *pathname);
+</code></pre>
+
+<ul>
+  <li>rename</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int rename(const char *oldpath, const char *newpath);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;stdio.h&gt;
+int renameat(int olddirfd, const char *oldpath,
+int newdirfd, const char *newpath);
+int renameat2(int olddirfd, const char *oldpath,
+int newdirfd, const char *newpath, unsigned int flags);
+</code></pre>
+
+<h2 id="文件时间">文件时间</h2>
+
+<ul>
+  <li>utime</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;utime.h&gt;
+int utime(const char *filename, const struct utimbuf *times);
+#include &lt;sys/time.h&gt;
+int utimes(const char *filename, const struct timeval times[2]);
+</code></pre>
+
+<h2 id="目录创建删除">目录创建&amp;删除</h2>
+
+<ul>
+  <li>mkdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/stat.h&gt;
+#include &lt;sys/types.h&gt;
+int mkdir(const char *pathname, mode_t mode);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;sys/stat.h&gt;
+int mkdirat(int dirfd, const char *pathname, mode_t mode);
+</code></pre>
+
+<ul>
+  <li>rmdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int rmdir(const char *pathname);
+</code></pre>
+
+<h2 id="修改工作路径">修改工作路径</h2>
+
+<ul>
+  <li>chdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int chdir(const char *path);
+int fchdir(int fd);
+</code></pre>
+
+<p>突破安全限制,有缺陷</p>
+
+<h2 id="获取当前工作路径">获取当前工作路径</h2>
+
+<ul>
+  <li>getcwd</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+char *getcwd(char *buf, size_t size);
+char *getwd(char *buf);
+char *get_current_dir_name(void);
+</code></pre>
+
+<h2 id="目录glob函数">目录glob函数</h2>
+
+<ul>
+  <li>glob</li>
+</ul>
+
+<p>find pathnames <code>matching a pattern</code>, free memory from
+       glob()</p>
+
+<pre><code class="language-c">#include &lt;glob.h&gt;
+int glob(const char *pattern, int flags,
+int (*errfunc) (const char *epath, int eerrno),
+glob_t *pglob);
+void globfree(glob_t *pglob);
+</code></pre>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;glob.h&gt;
+//匹配的文件
+#define PAT "/etc/a*.conf"
+//返回错误的函数
+int errfunc_(const char *epath,int eerror)
+{
+    puts(epath);
+    fprintf(stderr,"error msg:%s\n",strerror(eerror));
+    return 0;
+}
+int main(int argc, char const *argv[])
+{
+    glob_t       globres;
+    int err = 0;
+    err = glob(PAT,0,NULL,&amp;globres);
+    if(err)
+    {
+        printf("error code = %d\n",err);
+        exit(1);
+    }
+    for (size_t i = 0; i &lt; globres.gl_pathc; i++)
+    {
+        puts(globres.gl_pathv[i]);
+    }
+    globfree(&amp;globres);
+    return 0;
+}
+</code></pre>
+
+<ul>
+  <li>opendir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;dirent.h&gt;
+DIR *opendir(const char *name);
+DIR *fdopendir(int fd);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+fdopendir():
+Since glibc 2.10:
+_POSIX_C_SOURCE &gt;= 200809L
+Before glibc 2.10:
+_GNU_SOURCE
+</code></pre>
+
+<ul>
+  <li>closedir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;dirent.h&gt;
+int closedir(DIR *dirp);
+</code></pre>
+
+<ul>
+  <li>readdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;dirent.h&gt;
+struct dirent *readdir(DIR *dirp);
+</code></pre>
+
+<p>dirent结构体</p>
+
+<pre><code class="language-c">struct dirent {
+               ino_t          d_ino;       /* Inode number */
+               off_t          d_off;       /* Not an offset; see below */
+               unsigned short d_reclen;    /* Length of this record */
+               unsigned char  d_type;      /* Type of file; not supported
+                                              by all filesystem types */
+               char           d_name[256]; /* Null-terminated filename */
+           };
+</code></pre>
+
+<p>获取文件名</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;dirent.h&gt;
+#define PAT "/etc"
+int main(int argc, char const *argv[])
+{
+    DIR *dp;
+    struct dirent *cur;
+    dp = opendir(PAT);
+    if(dp == NULL)
+    {
+        perror("opendir");
+        exit(1);
+    }
+    while ((cur = readdir(dp)) != NULL)
+    {
+         puts(cur-&gt;d_name);
+    }
+    closedir(dp);
+    return 0;
+}
+</code></pre>
+
+<ul>
+  <li>rewenddir</li>
+  <li>seekdir</li>
+  <li>telldir</li>
+</ul>
+
+<hr />
+
+<h2 id="系统数据文件和信息">系统数据文件和信息</h2>
+
+<ul>
+  <li>
+    <p>/etc/passwd</p>
+
+    <ul>
+      <li>getpwuid</li>
+      <li>getpwnam</li>
+    </ul>
+
+    <pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;pwd.h&gt;
+struct passwd *getpwnam(const char *name);
+struct passwd *getpwuid(uid_t uid);
+int getpwnam_r(const char *name, struct passwd *pwd,
+char *buf, size_t buflen, struct passwd **result);
+int getpwuid_r(uid_t uid, struct passwd *pwd,
+char *buf, size_t buflen, struct passwd **result);
+</code></pre>
+
+    <p>passwd结构体</p>
+  </li>
+</ul>
+
+<pre><code class="language-c">struct passwd {
+               char   *pw_name;       /* username */
+               char   *pw_passwd;     /* user password */
+               uid_t   pw_uid;        /* user ID */
+               gid_t   pw_gid;        /* group ID */
+               char   *pw_gecos;      /* user information */
+               char   *pw_dir;        /* home directory */
+               char   *pw_shell;      /* shell program */
+           };
+</code></pre>
+
+<ul>
+  <li>/etc/group
+    <ul>
+      <li>getgrgid</li>
+      <li>getgrgrnam</li>
+    </ul>
+  </li>
+  <li>/etc/shadow</li>
+  <li>时间戳</li>
+</ul>
 
 
 </div>
