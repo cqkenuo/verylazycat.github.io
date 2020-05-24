@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "linux编程",
+      "category" : "",
+      "tags"     : "linux",
+      "date"     : "2020-05-20 00:00:00 +0800",
+      
+      "url"      : "http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/"
+    } ,
+  
+    {
       "title"    : "Docker笔记",
       "category" : "",
       "tags"     : "linux",

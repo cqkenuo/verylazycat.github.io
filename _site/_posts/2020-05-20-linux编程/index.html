@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>linux编程 | imod</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="linux编程" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="[toc]" />
+<meta property="og:description" content="[toc]" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" />
+<meta property="og:site_name" content="imod" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-20T00:00:00+08:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/","headline":"linux编程","dateModified":"2020-05-20T00:00:00+08:00","datePublished":"2020-05-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/"},"description":"[toc]","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  
+  <meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1"
+/>
+<meta
+  http-equiv="content-type"
+  content="text/html; charset=utf-8"
+/>
+<link
+  rel="alternate"
+  href="/feed.xml"
+  title="RSS"
+  type="application/rss+xml"
+/>
+
+  
+  <link
+  rel="apple-touch-icon-precomposed"
+  href="https://pic.cr173.com/up/2017-8/2017841818322084.jpg"
+/>
+<link
+  rel="shortcut
+  icon"
+  href="https://pic.cr173.com/up/2017-8/2017841818322084.jpg"
+/>
+
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/combine/gh/poole/lanyon@v1.1.0/public/css/poole.min.css,gh/poole/lanyon@v1.1.0/public/css/lanyon.min.css"
+/>
+
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"
+/>
+
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/Dreamer-Paul/Pio@2.4/static/pio.min.css"
+/>
+<script
+  async="async"
+  src="https://cdn.jsdelivr.net/combine/gh/Dreamer-Paul/Pio@2.4/static/l2d.min.js,gh/Dreamer-Paul/Pio@2.4/static/pio.min.js"
+  onload='
+      let pio_container = document.createElement("div");
+      pio_container.classList.add("pio-container");
+      pio_container.classList.add("right");
+      pio_container.style.bottom = "-2rem";
+      pio_container.style.zIndex = "1";
+      document.body.insertAdjacentElement("beforeend", pio_container);
+      let pio_action = document.createElement("div");
+      pio_action.classList.add("pio-action");
+      pio_container.insertAdjacentElement("beforeend", pio_action);
+      let pio_canvas = document.createElement("canvas");
+      pio_canvas.id = "pio";
+      pio_canvas.style.width = "14rem";
+      pio_canvas.width = "600";
+      pio_canvas.height = "800";
+      pio_container.insertAdjacentElement("beforeend", pio_canvas);
+      let pio = new Paul_Pio({
+        "mode": "fixed",
+        "hidden": true,
+        "night": "for(let i=7; i<16; ++i) if(document.body.classList.contains(`theme-base-0`+i.toString(16))) { document.body.classList.remove(`theme-base-0`+i.toString(16)); document.body.classList.add(`theme-base-0`+((i-6)%9+7).toString(16)); break; }",
+        "content": {
+          "link": ["https://jekyll-theme-WuK.wu-kan.cn"],
+          "skin": ["要换成我的朋友吗？", "让她放个假吧~"],
+          "hidden": true,
+          "custom": [{
+            "selector": "a",
+            "type": "link",
+          }, {
+            "selector": ".sidebar-toggle",
+            "text": "打开侧边栏叭~"
+          }, {
+            "selector": ".effect-info",
+            "text": "哇，你发现了什么！"
+          }, {
+            "selector": "#sidebar-search-input",
+            "text": "想搜索什么呢？很多干货哦！"
+          }, {
+            "selector": "#toc",
+            "text": "这是目录~"
+          }, {
+            "selector": ".page-title",
+            "text": "这是标题~"
+          }, {
+            "selector": ".v",
+            "text": "评论没有审核，要对自己的发言负责哦~"
+          }]
+        },
+        "model": [
+          "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/33/model.2018.bls-winter.json",
+          "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/platelet-2/model.json",
+          "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/xiaomai/xiaomai.model.json",
+          "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/mashiro/seifuku.model.json",
+          "https:\/\/cdn.jsdelivr.net/gh/imuncle/live2d/model/Violet/14.json",
+          "https:\/\/cdn.jsdelivr.net/gh/xiaoski/live2d_models_collection/Kobayaxi/Kobayaxi.model.json",
+          "https:\/\/cdn.jsdelivr.net/gh/xiaoski/live2d_models_collection/mikoto/mikoto.model.json",
+          "https:\/\/cdn.jsdelivr.net/gh/xiaoski/live2d_models_collection/uiharu/uiharu.model.json"]
+      });'
+></script>
+
+  
+  <script
+  src='https://zz.bdstatic.com/linksubmit/push.js'
+  async="async"
+></script>
+
+  
+  <script
+  async="async"
+  src="https://www.googletagmanager.com/gtag/js?id=UA-163543967-1"
+  onload="
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-163543967-1');"
+></script>
+
+  
+  <style>
+  .wrap {
+    min-height: 100vh;
+    display: inline-block;
+    background-size: 100vw auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(https://www.hqwalls.com/wp-content/uploads/2012/12/Chrome-OS-hi-res-wallpapers-32.jpg);
+  }
+  @media (min-aspect-ratio: 2400/1850) {
+    .wrap {
+      background-image: url(https://www.hqwalls.com/wp-content/uploads/2012/12/Chrome-OS-hi-res-wallpapers-32.jpg);
+    }
+  }
+</style>
+
+  
+  <style>
+  html,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .sidebar {
+    font-family: PingFang SC, Menlo, Monaco, "Courier New", Microsoft JhengHei, monospace;
+  }
+</style>
+
+  
+  <style>
+  img {
+    display: inline-block;
+    margin: 0;
+  }
+</style>
+
+  
+  <style>
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(45deg, Cyan 0%, Magenta 50%, Yellow 100%);
+  }
+</style>
+
+  
+  <style>
+  ::selection {
+    color: White;
+    background: Black;
+  }
+</style>
+
+  
+</head>
+
+<body
+  class="theme-base-07">
+  
+  
+  
+  <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+  <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"
+     />
+  <!-- Toggleable sidebar -->
+  <div class="sidebar" id="sidebar">
+    
+    <div class="sidebar-item">
+      <div class="effect effect-right_to_left">
+        <img class="effect-img" src="https://pic.cr173.com/up/2017-8/2017841818322084.jpg" alt="img" />
+        <div class="effect-info">
+          lazycat<br/>
+<a href="mailto:verylazycat@outlook.com">
+  <i class="fas fa-envelope"></i>
+</a>
+<a href="https://github.com/verylazycat">
+  <i class="fab fa-github"></i>
+</a>
+
+        </div>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      
+      <a class="sidebar-nav-item" href="/">
+        <i class="fas fa-home fa-fw"></i> 首页
+      </a>
+      
+      <a class="sidebar-nav-item" href="/comments/">
+        <i class="fas fa-comments fa-fw"></i> 留言
+      </a>
+      
+      <a class="sidebar-nav-item" href="/tags/">
+        <i class="fas fa-tags fa-fw"></i> 标签
+      </a>
+      
+      <a class="sidebar-nav-item" href="/archive/">
+        <i class="fas fa-archive fa-fw"></i> 归档
+      </a>
+      
+      <a class="sidebar-nav-item" href="/merger/">
+        <i class="fas fa-coffee fa-fw"></i> 打赏
+      </a>
+      
+    </nav>
+    <div class="sidebar-item">
+      
+      <div>
+        <style>
+  #sidebar-search-input {
+    background: none;
+    border: none;
+    color: White;
+    width: 100%;
+  }
+  #sidebar-search-results-container {
+    overflow: auto auto;
+    max-height: 50vh;
+  }
+</style>
+<input
+  id="sidebar-search-input"
+  placeholder="搜索博文"
+/>
+<ol
+  id="sidebar-search-results-container"
+></ol>
+<script
+  src='https://cdn.jsdelivr.net/npm/simple-jekyll-search/dest/simple-jekyll-search.min.js'
+  async='async'
+  onload='
+    SimpleJekyllSearch({
+      json: "/assets/simple-jekyll-search/search.json",
+      searchInput: document.getElementById("sidebar-search-input"),
+      resultsContainer: document.getElementById("sidebar-search-results-container"),
+      searchResultTemplate: `<li><a href="{url}">{title}</a></li>`,
+      limit: 999,
+      fuzzy: true
+    })'
+></script>
+
+      </div>
+      
+      
+      <style>
+  .sidebar-checkbox {
+    display: none;
+  }
+  .sidebar-toggle {
+    position: fixed;
+  }
+</style>
+
+      
+      <style>
+  .effect {
+    margin: 1rem;
+    perspective: 900px;
+  }
+  .effect-info {
+    text-align: center;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    transform-style: preserve-3d;
+  }
+  .effect-img {
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+  }
+  .effect-img:before {
+    position: absolute;
+    display: block;
+  }
+  .effect-right_to_left .effect-img {
+    transform-origin: 0% 50%;
+  }
+  .effect-right_to_left:hover .effect-img {
+    transform: rotate3d(0, 1, 0, -180deg);
+  }
+</style>
+
+      
+      <style>
+  #toc {
+    overflow: auto auto;
+    max-height:50vh;
+  }
+</style>
+<aside id="toc">
+  目录
+</aside>
+<script
+  defer='defer'
+  src='https://cdn.jsdelivr.net/npm/html-contents/html-contents.min.js'
+  onload="htmlContents('#toc', {listType: 'o', filter: function(arr) {return !arr.matches('.masthead-title')}})"
+></script>
+
+      
+      <div>
+  <i class="fas fa-cog fa-spin fa-fw"></i>
+  <span id="run_time_day">
+    <i class="fas fa-spinner fa-pulse"></i>
+  </span>天
+  <span id="run_time_hour">
+    <i class="fas fa-spinner fa-pulse"></i>
+  </span>时
+  <span id="run_time_minute">
+    <i class="fas fa-spinner fa-pulse"></i>
+  </span>分
+  <span id="run_time_second">
+    <i class="fas fa-spinner fa-pulse"></i>
+  </span>秒
+  <script>
+    setInterval(function (BirthDay) {
+      function setzero(i) {
+        if (i < 10) return "0" + i;
+        return i;
+      }
+      BirthDay = new Date(BirthDay);
+      today = new Date();
+      timeold = (today.getTime() - BirthDay.getTime());
+      sectimeold = timeold / 1000;
+      secondsold = Math.floor(sectimeold);
+      msPerDay = 24 * 60 * 60 * 1000;
+      e_daysold = timeold / msPerDay;
+      daysold = Math.floor(e_daysold);
+      e_hrsold = (e_daysold - daysold) * 24;
+      hrsold = Math.floor(e_hrsold);
+      e_minsold = (e_hrsold - hrsold) * 60;
+      minsold = Math.floor((e_hrsold - hrsold) * 60);
+      seconds = Math.floor((e_minsold - minsold) * 60);
+      document.getElementById("run_time_day").innerHTML = daysold;
+      document.getElementById("run_time_hour").innerHTML = setzero(hrsold);
+      document.getElementById("run_time_minute").innerHTML = setzero(minsold);
+      document.getElementById("run_time_second").innerHTML = setzero(seconds);
+    }, 1000, "05/02/2020 14:03:56") // 第一篇博客的时间
+  </script>
+</div>
+
+      
+      <div>
+  <div>
+    <i class="fas fa-eye fa-fw"></i>
+    <span id="busuanzi_value_page_pv">
+      <i class="fas fa-spinner fa-pulse"></i>
+    </span>次
+  </div>
+  <div>
+    <i class="fas fa-paw fa-fw"></i>
+    <span id="busuanzi_value_site_pv">
+      <i class="fas fa-spinner fa-pulse"></i>
+    </span>枚
+  </div>
+  <div>
+    <i class="fas fa-user-friends fa-fw"></i>
+    <span id="busuanzi_value_site_uv">
+      <i class="fas fa-spinner fa-pulse"></i>
+    </span>人
+  </div>
+  <script
+    src='https://cdn.jsdelivr.net/npm/busuanzi'
+    async='async'
+  ></script>
+</div>
+
+      
+      <div>
+  <i class="fas fa-copyright fa-fw"></i>
+  2020-2022 lazycat
+</div>
+
+      
+      <div>
+  <i class="fas fa-info-circle fa-fw"></i>
+  <a href="http://beian.miit.gov.cn">
+    蜀ICP备20011774号
+  </a>
+</div>
+
+      
+      
+    </div>
+  </div>
+  <!-- Wrap is the content to shift when toggling the sidebar. We wrap the content to avoid any CSS collisions with our real content. -->
+  
+  <div class="wrap">
+    
+<style>
+  pre {
+    max-height: 50vh;
+    overflow: auto;
+  }
+</style>
+
+
+<style>
+  @media (min-width: 56em) {
+    .container {
+      max-width: 66.6%;
+    }
+  }
+</style>
+
+
+<style>
+  .masthead,
+  .container.content {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 0 .75rem rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    animation: animationAppear 2s;
+  }
+  @keyframes animationAppear {
+    0%,
+    33% {
+      opacity: 0;
+    }
+    100% {}
+  }
+</style>
+
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/combine/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css,npm/prismjs/plugins/toolbar/prism-toolbar.min.css,gh/PrismJS/prism-themes@1955cfef6953b3a59e66016e8a1e016b45d6cc79/themes/prism-nord.min.css"
+/>
+<script
+  src="https://cdn.jsdelivr.net/combine/npm/prismjs/components/prism-core.min.js,npm/prismjs/plugins/autoloader/prism-autoloader.min.js,npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js,npm/prismjs/plugins/toolbar/prism-toolbar.min.js"
+  defer="defer"
+  onload='
+    Prism.plugins.autoloader.languages_path = "https:\/\/cdn.jsdelivr.net/npm/prismjs/components/";
+    for(let x=document.getElementsByTagName("pre"), i=0;i<x.length;i++)
+    {
+      x[i].classList.add("line-numbers");
+    }
+    Prism.plugins.toolbar.registerButton("select-code", function (env) {
+      let button = document.createElement("button");
+      button.innerHTML = "select this " + env.language;
+      button.addEventListener("click", function () {
+        if (document.body.createTextRange) {
+          let range = document.body.createTextRange();
+          range.moveToElementText(env.element);
+          range.select();
+        } else if (window.getSelection) {
+          let selection = window.getSelection();
+          let range = document.createRange();
+          range.selectNodeContents(env.element);
+          selection.removeAllRanges();
+            selection.addRange(range);
+        }
+      });
+      return button;
+    })'
+></script>
+
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
+<script
+  src="https://cdn.jsdelivr.net/combine/npm/katex/dist/katex.min.js,npm/katex/dist/contrib/mathtex-script-type.min.js,npm/katex/dist/contrib/auto-render.min.js"
+  defer="defer"
+  onload='renderMathInElement(document.body, { delimiters: [{ left: "$", right: "$", display: false }] })'
+></script>
+
+
+<style>
+  pre.language-mermaid,
+  code.language-mermaid {
+    display: none;
+  }
+</style>
+<script
+  src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
+  defer="defer"
+  onload='
+  for(let x=document.getElementsByClassName("language-mermaid"), i=0;i<x.length;i++)
+    if(x[i].nodeName=="CODE")
+    {
+      let m = document.createElement("div");
+      m.classList.add("mermaid");
+      m.textContent = x[i].textContent;
+      x[i].parentNode.insertAdjacentElement("beforebegin", m);
+    }'
+></script>
+
+
+
+<div class="masthead">
+  <h3 class="container masthead-title">
+    
+    linux编程
+    <a href="http://localhost:4000/" title="Home">
+      <small>
+        imod
+      </small>
+    </a>
+    
+  </h3>
+</div>
+
+<div class="container content">
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    20 May 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    14222字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    48分
+    
+    
+    <span class="leancloud-visitors" data-xid="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" data-flag-title="linux编程">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    linux
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>（除特别声明或转载文章外）
+
+    
+  </span>
+  <p>[toc]</p>
+
+<h1 id="error">ERROR</h1>
+
+<pre><code class="language-sh">vim /usr/include/asm-generic/errno-base.h 
+errno.h 
+</code></pre>
+
+<pre><code class="language-c">#ifndef _ASM_GENERIC_ERRNO_BASE_H
+#define _ASM_GENERIC_ERRNO_BASE_H
+
+#define EPERM            1      /* Operation not permitted */
+#define ENOENT           2      /* No such file or directory */
+#define ESRCH            3      /* No such process */
+#define EINTR            4      /* Interrupted system call */
+#define EIO              5      /* I/O error */
+#define ENXIO            6      /* No such device or address */
+#define E2BIG            7      /* Argument list too long */
+#define ENOEXEC          8      /* Exec format error */
+#define EBADF            9      /* Bad file number */
+#define ECHILD          10      /* No child processes */
+#define EAGAIN          11      /* Try again */
+#define ENOMEM          12      /* Out of memory */
+#define EACCES          13      /* Permission denied */
+#define EFAULT          14      /* Bad address */
+#define ENOTBLK         15      /* Block device required */
+#define EBUSY           16      /* Device or resource busy */
+#define EEXIST          17      /* File exists */
+#define EXDEV           18      /* Cross-device link */
+#define ENODEV          19      /* No such device */
+#define ENOTDIR         20      /* Not a directory */
+#define EISDIR          21      /* Is a directory */
+#define EINVAL          22      /* Invalid argument */
+#define ENFILE          23      /* File table overflow */
+#define EMFILE          24      /* Too many open files */
+#define ENOTTY          25      /* Not a typewriter */
+#define ETXTBSY         26      /* Text file busy */
+#define EFBIG           27      /* File too large */
+#define ENOSPC          28      /* No space left on device */
+#define ESPIPE          29      /* Illegal seek */
+#define EROFS           30      /* Read-only file system */
+#define EMLINK          31      /* Too many links */
+#define EPIPE           32      /* Broken pipe */
+#define EDOM            33      /* Math argument out of domain of func */
+#define ERANGE          34      /* Math result not representable */
+#endif
+</code></pre>
+
+<h1 id="man手册">man手册</h1>
+
+<ul>
+  <li>第一章:基本命令</li>
+  <li>第二章:系统调用</li>
+  <li>第三章:标准库函数</li>
+  <li>第七章:体系结构</li>
+</ul>
+
+<h2 id="宏和函数">宏和函数</h2>
+
+<p>宏占用编译时间,函数占用运行时间,不过更安全</p>
+
+<h1 id="io">IO</h1>
+
+<p><code>一切实现的基础</code></p>
+
+<p><code>input</code>&amp;<code>output</code></p>
+
+<p>实现:</p>
+
+<ol>
+  <li><code>stdio</code></li>
+  <li><code>sysio</code></li>
+</ol>
+
+<p>优先考虑stdio,扩展性更好,不同平台底层不一样.</p>
+
+<h2 id="errorno-to-error_msg">errorno to error_msg</h2>
+
+<p>更直观展示错误内容</p>
+
+<ol>
+  <li>perror (关联全局变量errorno)</li>
+  <li>strerror</li>
+</ol>
+
+<h2 id="file结构体">FILE结构体</h2>
+
+<p>….</p>
+
+<h2 id="常用函数">常用函数</h2>
+
+<ul>
+  <li>fopen</li>
+  <li>fclose</li>
+</ul>
+
+<pre><code class="language-markdown">NAME
+       fopen, fdopen, freopen - stream open functions
+SYNOPSIS
+       #include &lt;stdio.h&gt;
+       FILE *fopen(const char *pathname, const char *mode);
+       FILE *fdopen(int fd, const char *mode);
+       FILE *freopen(const char *pathname, const char *mode, FILE *stream);
+</code></pre>
+
+<p><code>const</code>参数,安全性;</p>
+
+<p><code>mode</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>r</th>
+      <th>for read</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>r+</td>
+      <td>reading and writing</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>truncate fileto zero length or create text  file  for  writing</td>
+    </tr>
+    <tr>
+      <td>w+</td>
+      <td>open for reading and writing</td>
+    </tr>
+    <tr>
+      <td>a</td>
+      <td>open for appending</td>
+    </tr>
+    <tr>
+      <td>a+</td>
+      <td>open for reading and appending</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>返回:</p>
+
+<pre><code class="language-markdown">RETURN VALUE
+       Upon successful completion fopen(), fdopen()  and  freopen()  return  a
+       FILE pointer.  Otherwise, NULL is returned and errno is set to indicate
+       the error.
+</code></pre>
+
+<p>error 一个<code>全局变量</code></p>
+
+<p>FILE 创建的指针在栈,静态区,或者堆???</p>
+
+<pre><code class="language-c">FILE *fopen(const char *pathname, const char *mode);
+</code></pre>
+
+<p>在堆上;</p>
+
+<p>如果一个操作成对出现使用,<code>一般</code>放在<code>堆</code>上</p>
+
+<p><code>是资源一定有上限</code></p>
+
+<p>fopen打开<code>流</code>是有上限的,一般体现出来的数量是<code>1021</code>,其实真实打开的是<code>1024</code>个,有<code>3</code>个默认<code>流</code>:<code>stdout</code>,<code>stdinput</code>,<code>stderr</code></p>
+
+<p><code>Linux</code>具体限制参考:</p>
+
+<p><code>ulimit -a</code></p>
+
+<pre><code class="language-sh">-t: cpu time (seconds)              unlimited
+-f: file size (blocks)              unlimited
+-d: data seg size (kbytes)          unlimited
+-s: stack size (kbytes)             8192
+-c: core file size (blocks)         0
+-m: resident set size (kbytes)      unlimited
+-u: processes                       31073
+-n: file descriptors                1024
+-l: locked-in-memory size (kbytes)  16384
+-v: address space (kbytes)          unlimited
+-x: file locks                      unlimited
+-i: pending signals                 31073
+-q: bytes in POSIX msg queues       819200
+-e: max nice                        0
+-r: max rt priority                 0
+-N 15:                              unlimited
+
+</code></pre>
+
+<p>创建文件后的权限</p>
+
+<p>具体公式:<code>0666 &amp; ~umask</code></p>
+
+<hr />
+
+<p>字符操作</p>
+
+<ul>
+  <li>fgetc</li>
+  <li>fputc</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+//---------------------
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+</code></pre>
+
+<p>return value</p>
+
+<pre><code class="language-markdown">fgetc(),  getc() and getchar() return the character read as an unsigned
+char cast to an int or EOF on end of file or error.
+fgets() returns s on success, and NULL on error or  when  end  of  file
+occurs while no characters have been read.
+ungetc() returns c on success, or EOF on error.
+
+--------------------------
+
+fgetc(),  getc() and getchar() return the character read as an unsigned
+char cast to an int or `EOF` on end of file or error.
+</code></pre>
+
+<ul>
+  <li>fgets</li>
+</ul>
+
+<pre><code class="language-CQL">#include &lt;stdio.h&gt;
+int fgetc(FILE *stream);
+char *fgets(char *s, int size, FILE *stream);
+int getc(FILE *stream);
+int getchar(void);
+int ungetc(int c, FILE *stream);
+</code></pre>
+
+<ul>
+  <li>fputs</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fputc(int c, FILE *stream);
+int fputs(const char *s, FILE *stream);
+int putc(int c, FILE *stream);
+int putchar(int c);
+int puts(const char *s);
+</code></pre>
+
+<ul>
+  <li>fwrite</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+size_t fwrite(const void *ptr, size_t size, size_t nmemb,
+              FILE *stream);
+</code></pre>
+
+<ul>
+  <li>printf</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int printf(const char *format, ...);
+int fprintf(FILE *stream, const char *format, ...);
+int dprintf(int fd, const char *format, ...);
+int sprintf(char *str, const char *format, ...);
+int snprintf(char *str, size_t size, const char *format, ...);
+#include &lt;stdarg.h&gt;
+int vprintf(const char *format, va_list ap);
+int vfprintf(FILE *stream, const char *format, va_list ap);
+int vdprintf(int fd, const char *format, va_list ap);
+int vsprintf(char *str, const char *format, va_list ap);
+int vsnprintf(char *str, size_t size, const char *format, va_list ap);=
+</code></pre>
+
+<ul>
+  <li>scanf</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int scanf(const char *format, ...);
+int fscanf(FILE *stream, const char *format, ...);
+int sscanf(const char *str, const char *format, ...);
+#include &lt;stdarg.h&gt;
+int vscanf(const char *format, va_list ap);
+int vsscanf(const char *str, const char *format, va_list ap);
+int vfscanf(FILE *stream, const char *format, va_list ap);
+</code></pre>
+
+<ul>
+  <li>fseek</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fseek(FILE *stream, long offset, int whence);
+long ftell(FILE *stream);
+void rewind(FILE *stream);
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+</code></pre>
+
+<p><code>whence</code>:</p>
+
+<ol>
+  <li>SEEK_SET</li>
+  <li>SEEK_CUR</li>
+  <li>SEEK_END</li>
+</ol>
+
+<p><code>long offset</code>注意长度限制,类型为long,有缺陷,<code>fseeko</code>修改了缺陷,如下:</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fseeko(FILE *stream, off_t offset, int whence);
+off_t ftello(FILE *stream);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+fseeko(), ftello():
+_FILE_OFFSET_BITS == 64 || _POSIX_C_SOURCE &gt;= 200112L
+(defining the obsolete _LARGEFILE_SOURCE macro also works)
+</code></pre>
+
+<p>注意:</p>
+
+<pre><code class="language-markdown">On some architectures, both off_t and long are 32-bit types, but defin‐
+       ing  _FILE_OFFSET_BITS  with  the value 64 (before including any header
+       files) will turn off_t into a 64-bit type.
+</code></pre>
+
+<ul>
+  <li>ftell</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fseek(FILE *stream, long offset, int whence);
+long ftell(FILE *stream);
+void rewind(FILE *stream);
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+</code></pre>
+<ul>
+  <li>fflush</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int fflush(FILE *stream);
+</code></pre>
+
+<p>注意:</p>
+
+<p>If the stream argument is NULL, fflush() flushes all open output streams.For a nonlocking counterpart, see unlocked_stdio(3).</p>
+
+<p>缓冲区作用:合并系统调用</p>
+
+<p>分类:</p>
+
+<ol>
+  <li>行缓冲:换行时刷新,stdout</li>
+  <li>全缓冲:满了就刷新,默认</li>
+  <li>无缓冲:stderr</li>
+</ol>
+
+<p>修改缓冲:</p>
+
+<p>setvbuf</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+void setbuf(FILE *stream, char *buf);
+void setbuffer(FILE *stream, char *buf, size_t size);
+void setlinebuf(FILE *stream);
+int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+</code></pre>
+
+<p>The mode argument must be one of the following three macros:</p>
+
+<pre><code class="language-markdown">_IONBF unbuffered
+_IOLBF line buffered
+_IOFBF fully buffered
+</code></pre>
+
+<ul>
+  <li>getline</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t getdelim(char **lineptr, size_t *n, int delim, FILE *stream);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+getline(), getdelim():
+Since glibc 2.10:
+_POSIX_C_SOURCE &gt;= 200809L
+    Before glibc 2.10:
+_GNU_SOURCE
+</code></pre>
+
+<p>对于段错误一定要仔细分析,可能是调用的函数引用了其他函数,但是没有初始化,这种容易出错;</p>
+
+<ul>
+  <li>tmpnam</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+char *tmpnam(char *s);
+char *tmpnam_r(char *s);
+</code></pre>
+
+<ul>
+  <li>tmpfile</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+FILE *tmpfile(void);
+</code></pre>
+
+<p>匿名文件</p>
+
+<p>临时问阿金两个问题:</p>
+
+<ol>
+  <li>不冲突</li>
+  <li>及时销毁</li>
+</ol>
+
+<h2 id="文件描述符">文件描述符</h2>
+
+<p>…</p>
+
+<h2 id="系统io">系统IO</h2>
+
+<h3 id="函数">函数</h3>
+
+<ul>
+  <li>open</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+int open(const char *pathname, int flags);
+int open(const char *pathname, int flags, mode_t mode);
+int creat(const char *pathname, mode_t mode);
+int openat(int dirfd, const char *pathname, int flags);
+int openat(int dirfd, const char *pathname, int flags, mode_t mode);
+</code></pre>
+
+<p>函数名相同,参数不同,在c++和Java里面叫做<code>重载</code>,但是c里面没有重载,此处是使用<code>变参实现</code></p>
+
+<p>可以传入多个参数取去编译,如果报错,就是重载实现,如果没有报错,则是变参实现.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>flag</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O_APPEND</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_ASYNC</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_CLOEXEC</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_CREAT</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_DIRECT</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_DIRECTORY</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_DSYNC</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_EXCL</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_LARGEFILE</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NOATIME</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NOCTTY</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NOFOLLOW</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_NONBLOCK</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_PATH</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>O_SYNC</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>联系<code>标准io</code>里面的model,有如下对应关系:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>model</th>
+      <th>flags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>r-</td>
+      <td>O_RDONLY</td>
+    </tr>
+    <tr>
+      <td>r+</td>
+      <td>O_RDWR</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>O_WRONLY|O_CREAT|O_TRUNC</td>
+    </tr>
+    <tr>
+      <td>w+</td>
+      <td>O_RDWR|O_TRUNC|O_CREAT</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>close</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int close(int fd);
+</code></pre>
+
+<ul>
+  <li>read</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+ssize_t read(int fd, void *buf, size_t count);
+</code></pre>
+
+<ul>
+  <li>write</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+ssize_t write(int fd, const void *buf, size_t count);
+</code></pre>
+
+<ul>
+  <li>lseek</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+off_t lseek(int fd, off_t offset, int whence);
+</code></pre>
+
+<ul>
+  <li>dup</li>
+</ul>
+
+<p>复制文件描述符</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int dup(int oldfd);
+int dup2(int oldfd, int newfd);
+#define _GNU_SOURCE             /* See feature_test_macros(7) */
+#include &lt;fcntl.h&gt;              /* Obtain O_* constant definitions */
+#include &lt;unistd.h&gt;
+int dup3(int oldfd, int newfd, int flags);
+</code></pre>
+
+<hr />
+
+<p>标准IO不要和系统IO混用</p>
+
+<p>转换</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+void clearerr(FILE *stream);
+int feof(FILE *stream);
+int ferror(FILE *stream);
+int fileno(FILE *stream);
+</code></pre>
+
+<hr />
+
+<h2 id="原子操作">原子操作</h2>
+
+<p>不可分割的最小单位,解决竞争和冲突</p>
+
+<hr />
+
+<h2 id="同步">同步</h2>
+
+<h3 id="函数-1">函数</h3>
+
+<ul>
+  <li>sync</li>
+</ul>
+
+<p>sync, syncfs - commit filesystem caches to disk</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+void sync(void);
+int syncfs(int fd);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+sync():
+_XOPEN_SOURCE &gt;= 500
+|| /* Since glibc 2.19: */ _DEFAULT_SOURCE
+|| /* Glibc versions &lt;= 2.19: */ _BSD_SOURCE
+syncfs():
+_GNU_SOURCE
+</code></pre>
+
+<ul>
+  <li>fsync</li>
+</ul>
+
+<p>ynchronize  a  file’s in-core state with storage
+       device</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int fsync(int fd);
+int fdatasync(int fd);
+</code></pre>
+
+<ul>
+  <li>fcntl</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+int fcntl(int fd, int cmd, ... /* arg */ );
+</code></pre>
+
+<ul>
+  <li>ioctl</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/ioctl.h&gt;
+int ioctl(int fd, unsigned long request, ...);
+</code></pre>
+
+<hr />
+
+<h2 id="devfd目录">/dev/fd目录</h2>
+
+<p>虚目录,显示当前进程的文件描述符的信息</p>
+
+<h1 id="文件系统">文件系统</h1>
+
+<h2 id="获取文件属性">获取文件属性</h2>
+
+<ul>
+  <li>stat</li>
+</ul>
+
+<p>stat, fstat, lstat, fstatat - get file status</p>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;unistd.h&gt;
+int stat(const char *pathname, struct stat *statbuf);
+int fstat(int fd, struct stat *statbuf);
+int lstat(const char *pathname, struct stat *statbuf);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;sys/stat.h&gt;
+int fstatat(int dirfd, const char *pathname, struct stat *statbuf,
+            int flags);
+</code></pre>
+
+<h2 id="stat结构体">stat结构体</h2>
+
+<pre><code class="language-c">struct stat {
+dev_t     st_dev;         /* ID of device containing file */
+ino_t     st_ino;         /* Inode number */
+mode_t    st_mode;        /* File type and mode */
+nlink_t   st_nlink;       /* Number of hard links */
+uid_t     st_uid;         /* User ID of owner */
+gid_t     st_gid;         /* Group ID of owner */
+dev_t     st_rdev;        /* Device ID (if special file) */
+off_t     st_size;        /* Total size, in bytes */
+blksize_t st_blksize;     /* Block size for filesystem I/O */
+blkcnt_t  st_blocks;      /* Number of 512B blocks allocated */
+
+/* Since Linux 2.6, the kernel supports nanosecond
+precision for the following timestamp fields.
+For the details before Linux 2.6, see NOTES. */
+
+struct timespec st_atim;  /* Time of last access */
+struct timespec st_mtim;  /* Time of last modification */
+struct timespec st_ctim;  /* Time of last status change */
+
+#define st_atime st_atim.tv_sec      /* Backward compatibility */
+#define st_mtime st_mtim.tv_sec
+#define st_ctime st_ctim.tv_sec
+};
+</code></pre>
+
+<p>获取文件大小测试程序</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;unistd.h&gt;
+//获取文件大小函数
+static off_t flen(const char *filename)
+{
+    //获取文件属性
+    struct stat fileinfo;
+    if(stat(filename,&amp;fileinfo) &lt; 0)
+    {
+        perror("stat()");
+        exit(1);
+    }
+    return fileinfo.st_size;
+}
+</code></pre>
+
+<p>空洞文件</p>
+
+<pre><code class="language-c"> int fd;
+    fd = open(argv[1],O_WRONLY|O_CREAT|O_TRUNC,0600);
+    if(fd  &lt; 0)
+    {
+        perror("open()");
+        exit(0);
+    }
+    //偏移
+//带上LL单位
+    lseek(fd,5LL*1024LL*1024LL*1024LL - 1LL,SEEK_SET);
+    write(fd,"",1);
+    close(fd);
+</code></pre>
+
+<p>mode_t    st_mode</p>
+
+<pre><code class="language-markdown">权限和文件类型，位图，权限位9位，类型3位，u+s 1位，g+s 1位，粘滞位(T位)1位。位图是用一位或几位数据表示某种状态
+</code></pre>
+
+<p>文件类型:<code>dcb-lsp</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>d</th>
+      <th>目录</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>c</td>
+      <td>字符快设备文件</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>块文件</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>普通文件</td>
+    </tr>
+    <tr>
+      <td>l</td>
+      <td>符号链接文件</td>
+    </tr>
+    <tr>
+      <td>s</td>
+      <td>套接字文件</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>管道文件</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="文件权限更改">文件权限更改</h2>
+
+<ul>
+  <li>chmod</li>
+  <li>fchmod</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/stat.h&gt;
+int chmod(const char *pathname, mode_t mode);
+int fchmod(int fd, mode_t mode);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;sys/stat.h&gt;
+int fchmodat(int dirfd, const char *pathname, mode_t mode, int flags);
+</code></pre>
+
+<h2 id="粘住位">粘住位</h2>
+
+<p>t位</p>
+
+<hr />
+
+<p>文件系统:<code>FAT</code>,<code>UFS</code></p>
+
+<h2 id="硬链接符号链接">硬链接&amp;符号链接</h2>
+
+<p>硬链接与目录项是同义词,且建立硬链接有限制,不能给分区建立,不能给目录建立;符号链接优点:可跨分区,可以给目录建立</p>
+
+<ul>
+  <li>link</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int link(const char *oldpath, const char *newpath);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;unistd.h&gt;
+int linkat(int olddirfd, const char *oldpath,
+           int newdirfd, const char *newpath, int flags);
+</code></pre>
+
+<ul>
+  <li>unlink</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int unlink(const char *pathname);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;unistd.h&gt;
+int unlinkat(int dirfd, const char *pathname, int flags);
+</code></pre>
+
+<ul>
+  <li>remove</li>
+</ul>
+
+<p>remove a file or directory</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int remove(const char *pathname);
+</code></pre>
+
+<ul>
+  <li>rename</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int rename(const char *oldpath, const char *newpath);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;stdio.h&gt;
+int renameat(int olddirfd, const char *oldpath,
+int newdirfd, const char *newpath);
+int renameat2(int olddirfd, const char *oldpath,
+int newdirfd, const char *newpath, unsigned int flags);
+</code></pre>
+
+<h2 id="文件时间">文件时间</h2>
+
+<ul>
+  <li>utime</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;utime.h&gt;
+int utime(const char *filename, const struct utimbuf *times);
+#include &lt;sys/time.h&gt;
+int utimes(const char *filename, const struct timeval times[2]);
+</code></pre>
+
+<h2 id="目录创建删除">目录创建&amp;删除</h2>
+
+<ul>
+  <li>mkdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/stat.h&gt;
+#include &lt;sys/types.h&gt;
+int mkdir(const char *pathname, mode_t mode);
+#include &lt;fcntl.h&gt;           /* Definition of AT_* constants */
+#include &lt;sys/stat.h&gt;
+int mkdirat(int dirfd, const char *pathname, mode_t mode);
+</code></pre>
+
+<ul>
+  <li>rmdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int rmdir(const char *pathname);
+</code></pre>
+
+<h2 id="修改工作路径">修改工作路径</h2>
+
+<ul>
+  <li>chdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int chdir(const char *path);
+int fchdir(int fd);
+</code></pre>
+
+<p>突破安全限制,有缺陷</p>
+
+<h2 id="获取当前工作路径">获取当前工作路径</h2>
+
+<ul>
+  <li>getcwd</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+char *getcwd(char *buf, size_t size);
+char *getwd(char *buf);
+char *get_current_dir_name(void);
+</code></pre>
+
+<h2 id="目录glob函数">目录glob函数</h2>
+
+<ul>
+  <li>glob</li>
+</ul>
+
+<p>find pathnames <code>matching a pattern</code>, free memory from
+       glob()</p>
+
+<pre><code class="language-c">#include &lt;glob.h&gt;
+int glob(const char *pattern, int flags,
+int (*errfunc) (const char *epath, int eerrno),
+glob_t *pglob);
+void globfree(glob_t *pglob);
+</code></pre>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;glob.h&gt;
+//匹配的文件
+#define PAT "/etc/a*.conf"
+//返回错误的函数
+int errfunc_(const char *epath,int eerror)
+{
+    puts(epath);
+    fprintf(stderr,"error msg:%s\n",strerror(eerror));
+    return 0;
+}
+int main(int argc, char const *argv[])
+{
+    glob_t       globres;
+    int err = 0;
+    err = glob(PAT,0,NULL,&amp;globres);
+    if(err)
+    {
+        printf("error code = %d\n",err);
+        exit(1);
+    }
+    for (size_t i = 0; i &lt; globres.gl_pathc; i++)
+    {
+        puts(globres.gl_pathv[i]);
+    }
+    globfree(&amp;globres);
+    return 0;
+}
+</code></pre>
+
+<ul>
+  <li>opendir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;dirent.h&gt;
+DIR *opendir(const char *name);
+DIR *fdopendir(int fd);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+fdopendir():
+Since glibc 2.10:
+_POSIX_C_SOURCE &gt;= 200809L
+Before glibc 2.10:
+_GNU_SOURCE
+</code></pre>
+
+<ul>
+  <li>closedir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;dirent.h&gt;
+int closedir(DIR *dirp);
+</code></pre>
+
+<ul>
+  <li>readdir</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;dirent.h&gt;
+struct dirent *readdir(DIR *dirp);
+</code></pre>
+
+<p>dirent结构体</p>
+
+<pre><code class="language-c">struct dirent {
+               ino_t          d_ino;       /* Inode number */
+               off_t          d_off;       /* Not an offset; see below */
+               unsigned short d_reclen;    /* Length of this record */
+               unsigned char  d_type;      /* Type of file; not supported
+                                              by all filesystem types */
+               char           d_name[256]; /* Null-terminated filename */
+           };
+</code></pre>
+
+<p>获取文件名</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;dirent.h&gt;
+#define PAT "/etc"
+int main(int argc, char const *argv[])
+{
+    DIR *dp;
+    struct dirent *cur;
+    dp = opendir(PAT);
+    if(dp == NULL)
+    {
+        perror("opendir");
+        exit(1);
+    }
+    while ((cur = readdir(dp)) != NULL)
+    {
+         puts(cur-&gt;d_name);
+    }
+    closedir(dp);
+    return 0;
+}
+</code></pre>
+
+<ul>
+  <li>rewenddir</li>
+  <li>seekdir</li>
+  <li>telldir</li>
+</ul>
+
+<hr />
+
+<h2 id="系统数据文件和信息">系统数据文件和信息</h2>
+
+<ul>
+  <li>
+    <p>/etc/passwd</p>
+
+    <ul>
+      <li>getpwuid</li>
+      <li>getpwnam</li>
+    </ul>
+
+    <pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;pwd.h&gt;
+struct passwd *getpwnam(const char *name);
+struct passwd *getpwuid(uid_t uid);
+int getpwnam_r(const char *name, struct passwd *pwd,
+char *buf, size_t buflen, struct passwd **result);
+int getpwuid_r(uid_t uid, struct passwd *pwd,
+char *buf, size_t buflen, struct passwd **result);
+</code></pre>
+
+    <p>passwd结构体</p>
+  </li>
+</ul>
+
+<pre><code class="language-c">struct passwd {
+               char   *pw_name;       /* username */
+               char   *pw_passwd;     /* user password */
+               uid_t   pw_uid;        /* user ID */
+               gid_t   pw_gid;        /* group ID */
+               char   *pw_gecos;      /* user information */
+               char   *pw_dir;        /* home directory */
+               char   *pw_shell;      /* shell program */
+           };
+</code></pre>
+
+<ul>
+  <li>/etc/group
+    <ul>
+      <li>getgrgid</li>
+      <li>getgrgrnam</li>
+    </ul>
+  </li>
+  <li>/etc/shadow</li>
+  <li>时间戳</li>
+</ul>
+
+
+</div>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
+
+</div>
+  </div>
+  
+  <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+  
+</body>
+
+</html>
