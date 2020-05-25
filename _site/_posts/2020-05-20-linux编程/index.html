@@ -567,11 +567,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    14222字
+    17169字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    48分
+    58分
     
     
     <span class="leancloud-visitors" data-xid="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" data-flag-title="linux编程">
@@ -1703,10 +1703,204 @@ char *buf, size_t buflen, struct passwd **result);
       <li>getgrgrnam</li>
     </ul>
   </li>
-  <li>/etc/shadow</li>
-  <li>时间戳</li>
+  <li>
+    <p>/etc/shadow</p>
+
+    <ul>
+      <li>getspnam</li>
+    </ul>
+
+    <pre><code class="language-c">#include &lt;shadow.h&gt;
+struct spwd *getspnam(const char *name);
+struct spwd *getspent(void);
+void setspent(void);
+void endspent(void);
+struct spwd *fgetspent(FILE *stream);
+struct spwd *sgetspent(const char *s);
+int putspent(const struct spwd *p, FILE *stream);
+int lckpwdf(void);
+int ulckpwdf(void);
+/* GNU extension */
+#include &lt;shadow.h&gt;
+int getspent_r(struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int getspnam_r(const char *name, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int fgetspent_r(FILE *stream, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int sgetspent_r(const char *s, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+</code></pre>
+
+    <p>spwd结构体</p>
+
+    <pre><code class="language-c">struct spwd {
+               char *sp_namp;     /* Login name */
+               char *sp_pwdp;     /* Encrypted password */
+               long  sp_lstchg;   /* Date of last change
+                                     (measured in days since
+                                     1970-01-01 00:00:00 +0000 (UTC)) */
+               long  sp_min;      /* Min # of days between changes */
+               long  sp_max;      /* Max # of days between changes */
+               long  sp_warn;     /* # of days before password expires
+                                     to warn user to change it */
+               long  sp_inact;    /* # of days after password expires
+                                     until account is disabled */
+               long  sp_expire;   /* Date when account expires
+                                     (measured in days since
+                                     1970-01-01 00:00:00 +0000 (UTC)) */
+               unsigned long sp_flag;  /* Reserved */
+           };
+</code></pre>
+
+    <ul>
+      <li>
+        <p>crypt</p>
+
+        <pre><code class="language-c">#define _XOPEN_SOURCE       /* See feature_test_macros(7) */
+#include &lt;unistd.h&gt;
+char *crypt(const char *key, const char *salt);
+#define _GNU_SOURCE         /* See feature_test_macros(7) */
+#include &lt;crypt.h&gt;
+char *crypt_r(const char *key, const char *salt,
+struct crypt_data *data);
+Link with -lcrypt.
+</code></pre>
+      </li>
+      <li>
+        <p>getpass</p>
+      </li>
+    </ul>
+
+    <pre><code class="language-c">#include &lt;unistd.h&gt;
+char *getpass(const char *prompt);
+</code></pre>
+  </li>
+  <li>
+    <p>时间戳</p>
+
+    <ul>
+      <li>time</li>
+    </ul>
+
+    <pre><code class="language-c">#include &lt;time.h&gt;
+time_t time(time_t *tloc);
+</code></pre>
+
+    <ul>
+      <li>gmtime</li>
+      <li>localtime</li>
+    </ul>
+
+    <pre><code class="language-c">#include &lt;time.h&gt;
+char *asctime(const struct tm *tm);
+char *asctime_r(const struct tm *tm, char *buf);
+char *ctime(const time_t *timep);
+char *ctime_r(const time_t *timep, char *buf);
+struct tm *gmtime(const time_t *timep);
+struct tm *gmtime_r(const time_t *timep, struct tm *result);
+struct tm *localtime(const time_t *timep);
+struct tm *localtime_r(const time_t *timep, struct tm *result);
+time_t mktime(struct tm *tm);
+</code></pre>
+
+    <p>tm结构体</p>
+
+    <pre><code class="language-c">struct tm {
+               int tm_sec;    /* Seconds (0-60) */
+               int tm_min;    /* Minutes (0-59) */
+               int tm_hour;   /* Hours (0-23) */
+               int tm_mday;   /* Day of the month (1-31) */
+               int tm_mon;    /* Month (0-11) */
+               int tm_year;   /* Year - 1900 */
+               int tm_wday;   /* Day of the week (0-6, Sunday = 0) */
+               int tm_yday;   /* Day in the year (0-365, 1 Jan = 0) */
+               int tm_isdst;  /* Daylight saving time */
+           };
+</code></pre>
+
+    <ul>
+      <li>strftime</li>
+    </ul>
+
+    <pre><code class="language-c">#include &lt;time.h&gt;
+size_t strftime(char *s, size_t max, const char *format,
+const struct tm *tm);
+</code></pre>
+  </li>
 </ul>
 
+<h2 id="进程环境">进程环境</h2>
+
+<ul>
+  <li>main函数</li>
+</ul>
+
+<pre><code class="language-c">int main(int argc,char *argv[])
+//其实还有第三个参数,环境变量
+</code></pre>
+
+<ul>
+  <li>进程的终止</li>
+</ul>
+
+<p>正常终止:</p>
+
+<ol>
+  <li>main函数返回</li>
+  <li>调用exit</li>
+  <li>调用_exit或者_Exit</li>
+  <li>最后一个线程从其启动例程饭后</li>
+  <li>最后一个线程调用pthread_exit</li>
+</ol>
+
+<p>异常终止:</p>
+
+<ol>
+  <li>调用abort</li>
+  <li>接到一个信号并终止</li>
+  <li>最后一个线程对其取消请求做出响应</li>
+</ol>
+
+<p>钩子函数</p>
+
+<ul>
+  <li>atexit</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+int atexit(void (*function)(void));
+</code></pre>
+
+<ul>
+  <li>
+    <p>命令行参数分析</p>
+
+    <ol>
+      <li>getopt</li>
+      <li>getopt_long</li>
+    </ol>
+
+    <pre><code class="language-c">#include &lt;unistd.h&gt;
+int getopt(int argc, char * const argv[],
+const char *optstring);
+extern char *optarg;
+extern int optind, opterr, optopt;
+#include &lt;getopt.h&gt;
+int getopt_long(int argc, char * const argv[],
+const char *optstring,
+const struct option *longopts, int *longindex);
+int getopt_long_only(int argc, char * const argv[],
+const char *optstring,
+const struct option *longopts, int *longindex);
+</code></pre>
+  </li>
+  <li>环境变量</li>
+  <li>c程序的存储空间布局</li>
+  <li>库</li>
+  <li>函数跳转</li>
+  <li>资源获取及控制</li>
+</ul>
 
 </div>
 <div class="v">
