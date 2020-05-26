@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="[toc]" />
 <meta property="og:description" content="[toc]" />
-<link rel="canonical" href="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" />
-<meta property="og:url" content="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/" />
 <meta property="og:site_name" content="imod" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-05-20T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/","headline":"linux编程","dateModified":"2020-05-20T00:00:00+08:00","datePublished":"2020-05-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/"},"description":"[toc]","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/","headline":"linux编程","dateModified":"2020-05-20T00:00:00+08:00","datePublished":"2020-05-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/"},"description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -567,14 +567,14 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    17169字
+    19435字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    58分
+    65分
     
     
-    <span class="leancloud-visitors" data-xid="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B/" data-flag-title="linux编程">
+    <span class="leancloud-visitors" data-xid="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/" data-flag-title="linux编程">
       <i class="fas fa-book-reader fa-fw"></i>
       <span class="leancloud-visitors-count">
         <i class="fas fa-spinner fa-pulse"></i>
@@ -1895,12 +1895,158 @@ const char *optstring,
 const struct option *longopts, int *longindex);
 </code></pre>
   </li>
-  <li>环境变量</li>
-  <li>c程序的存储空间布局</li>
-  <li>库</li>
-  <li>函数跳转</li>
-  <li>资源获取及控制</li>
+  <li>
+    <p>环境变量</p>
+  </li>
 </ul>
+
+<p>environ</p>
+
+<pre><code class="language-c">extern char **environ;
+</code></pre>
+
+<p>getenv</p>
+
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+char *getenv(const char *name);
+char *secure_getenv(const char *name);
+</code></pre>
+
+<p>setenv</p>
+
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+int setenv(const char *name, const char *value, int overwrite);
+int unsetenv(const char *name);
+</code></pre>
+
+<p>putenv</p>
+
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+int putenv(char *string);
+</code></pre>
+
+<ul>
+  <li>c程序的存储空间布局</li>
+</ul>
+
+<p><code>pmap</code>命令查看</p>
+
+<ul>
+  <li>库</li>
+</ul>
+
+<ol>
+  <li>动态库</li>
+  <li>静态库</li>
+  <li>手工装载库</li>
+</ol>
+
+<p>dlopen</p>
+
+<p>dlclose</p>
+
+<p>dlerror</p>
+
+<p>dlsym</p>
+
+<pre><code class="language-c">#include &lt;dlfcn.h&gt;
+void *dlopen(const char *filename, int flags);
+int dlclose(void *handle);
+#define _GNU_SOURCE
+#include &lt;dlfcn.h&gt;
+void *dlmopen (Lmid_t lmid, const char *filename, int flags);
+Link with -ldl.   
+    #include &lt;dlfcn.h&gt;
+    void *dlopen(const char *filename, int flags);
+int dlclose(void *handle);
+#define _GNU_SOURCE
+#include &lt;dlfcn.h&gt;
+void *dlmopen (Lmid_t lmid, const char *filename, int flags);
+#include &lt;dlfcn.h&gt;
+char *dlerror(void);
+void *dlsym(void *handle, const char *symbol);
+#define _GNU_SOURCE
+#include &lt;dlfcn.h&gt;
+void *dlvsym(void *handle, char *symbol, char *version);
+</code></pre>
+
+<p>example</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+       #include &lt;stdlib.h&gt;
+       #include &lt;dlfcn.h&gt;
+       #include &lt;gnu/lib-names.h&gt;  /* Defines LIBM_SO (which will be a
+                                      string such as "libm.so.6") */
+       int
+       main(void)
+       {
+           void *handle;
+           double (*cosine)(double);
+           char *error;
+
+           handle = dlopen(LIBM_SO, RTLD_LAZY);
+           if (!handle) {
+               fprintf(stderr, "%s\n", dlerror());
+               exit(EXIT_FAILURE);
+           }
+
+           dlerror();    /* Clear any existing error */
+
+           cosine = (double (*)(double)) dlsym(handle, "cos");
+
+           /* According to the ISO C standard, casting between function
+              pointers and 'void *', as done above, produces undefined results.
+              POSIX.1-2003 and POSIX.1-2008 accepted this state of affairs and
+              proposed the following workaround:
+
+                  *(void **) (&amp;cosine) = dlsym(handle, "cos");
+
+              This (clumsy) cast conforms with the ISO C standard and will
+              avoid any compiler warnings.
+
+              The 2013 Technical Corrigendum to POSIX.1-2008 (a.k.a.
+              POSIX.1-2013) improved matters by requiring that conforming
+              implementations support casting 'void *' to a function pointer.
+              Nevertheless, some compilers (e.g., gcc with the '-pedantic'
+              option) may complain about the cast used in this program. */
+
+           error = dlerror();
+           if (error != NULL) {
+               fprintf(stderr, "%s\n", error);
+               exit(EXIT_FAILURE);
+           }
+
+           printf("%f\n", (*cosine)(2.0));
+           dlclose(handle);
+           exit(EXIT_SUCCESS);
+       }
+</code></pre>
+
+<ul>
+  <li>
+    <p>函数跳转</p>
+
+    <p>setjmp</p>
+
+    <p>longjmp</p>
+  </li>
+  <li>
+    <p>资源获取及控制</p>
+
+    <p>getrlimit</p>
+
+    <p>setrlimit</p>
+  </li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/time.h&gt;
+#include &lt;sys/resource.h&gt;
+int getrlimit(int resource, struct rlimit *rlim);
+int setrlimit(int resource, const struct rlimit *rlim);
+int prlimit(pid_t pid, int resource, const struct rlimit *new_limit,
+struct rlimit *old_limit);
+</code></pre>
+
 
 </div>
 <div class="v">
