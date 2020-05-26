@@ -4,19 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>sql-server复习一 | lazycat</title>
+<title>KMP算法 | lazycat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="sql-server复习一" />
+<meta property="og:title" content="KMP算法" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="sql-server复习一" />
-<meta property="og:description" content="sql-server复习一" />
-<link rel="canonical" href="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/" />
-<meta property="og:url" content="http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/" />
+<meta name="description" content="[toc]" />
+<meta property="og:description" content="[toc]" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/" />
 <meta property="og:site_name" content="lazycat" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-05-02T00:00:00+08:00" />
+<meta property="article:published_time" content="2020-05-26T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"sql-server复习一","dateModified":"2020-05-02T00:00:00+08:00","datePublished":"2020-05-02T00:00:00+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/"},"url":"http://localhost:4000/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/","description":"sql-server复习一","@context":"https://schema.org"}</script>
+{"headline":"KMP算法","dateModified":"2020-05-26T00:00:00+08:00","datePublished":"2020-05-26T00:00:00+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/"},"url":"http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/","description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -334,8 +334,13 @@
 </style>
 
       <ol id="toc">
-  <li><a href="#sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80">sql-server复习一</a>
-    1.  <a href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5">基础概念</a></li>
+  <li><a href="#bf">BF</a></li>
+  <li><a href="#kmp">KMP</a></li>
+  <li><a href="#next%E6%95%B0%E7%BB%84">Next数组</a>
+    1.  <a href="#%E9%80%90%E6%AD%A5%E8%AE%A8%E8%AE%BA">逐步讨论</a></li>
+  <li><a href="#kmp%E5%AE%9E%E7%8E%B0">KMP实现</a></li>
+  <li><a href="#next">next</a></li>
+  <li><a href="#nextval">Nextval</a></li>
 </ol>
       
       
@@ -584,7 +589,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    sql-server复习一
+    KMP算法
     <a href="/" title="Home">
       <small>
         lazycat
@@ -599,18 +604,18 @@
   <span class="post-date">
     
     <i class="fas fa-calendar-day fa-fw"></i>
-    02 May 2020
+    26 May 2020
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    4094字
+    2590字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    14分
+    9分
     
     
-    <span class="leancloud-visitors" id="/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/" data-xid="/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/" data-flag-title="sql-server复习一">
+    <span class="leancloud-visitors" id="/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/" data-xid="/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/" data-flag-title="KMP算法">
       <i class="fas fa-book-reader fa-fw"></i>
       <span class="leancloud-visitors-count">
         <i class="fas fa-spinner fa-pulse"></i>
@@ -620,7 +625,7 @@
     
     
     <i class="fas fa-tag fa-fw"></i>
-    sql
+    数据结构
     
     
     <br/>
@@ -637,258 +642,153 @@
 
     
   </span>
-  <h2 id="sql-server复习一">sql-server复习一</h2>
+  <p>[toc]</p>
+
+<h1 id="bf">BF</h1>
+
+<p>Brute-Force(BF) 算法又称naive算法，是对字符串子串搜索最简单明了的算法。其主旨就是：</p>
 
 <ul>
-  <li>
-    <h4 id="基础概念">基础概念</h4>
-
-    <ol>
-      <li>数据库(Data)</li>
-      <li>数据库(Database)</li>
-      <li>数据库管理系统(DBMS)</li>
-      <li>数据库系统(DBS)</li>
-    </ol>
-  </li>
-  <li>
-    <p>数据库系统组成</p>
-
-    <ol>
-      <li>数据库</li>
-      <li>数据库管理系统</li>
-      <li>应用程序</li>
-      <li>数据库管理员</li>
-    </ol>
-  </li>
-  <li>
-    <p>DBMS主要功能</p>
-
-    <ol>
-      <li>数据库的定义功能:定义语言DDL来定义数据库的三级结构、两级映象，定义数据的完整性约束、保密限制等约束</li>
-      <li>数据库的操纵功能：操纵语言DML实现对数据的基本操作，数据查询和数据更新</li>
-      <li>数据库的保护功能：数据库恢复、数据库的并发控制、数据完整性控制、数据安全性控制</li>
-      <li>数据库的维护功能：数据库的数据载入、转换、转储、数据库的改组以及性能监控工能</li>
-      <li>数据字典（DD）：对数据库的操作都要通过DD才能实现，DD还存放数据库运行时的统计信息</li>
-    </ol>
-  </li>
-  <li>
-    <p>数据库管理员(DBA)职责</p>
-
-    <ol>
-      <li>决定数据库中的信息内容和结构：数据库中要存放哪些信息，DBA要参与决策</li>
-      <li>决定数据库的存储结构和存取策略：DBA要综合各用户的应用要求，和数据库设计人员共同决定数据的存储结构和存取策略，以求获得较高的存取效率和存储空间利用率</li>
-      <li>定义数据的安全性要求和完整性约束条件：DBA的重要职责是保证数据库的安全性和完整性</li>
-      <li>监控数据库的使用和运行：DBA还有一个重要职责就是监视数据库系统的运行情况，及时处理运行过程中出现的问题。比如系统发生各种故障时，数据库会因此遭到不同程度的破坏，DBA必须在最短时间内将数据库恢复到正确状态，并尽可能不影响或少影响计算机系统其他部分的正常运行</li>
-      <li>数据库的改进、重组或重构：DBA还负责在系统运行期间监视系统的空间利用率、处理效率等性能指标，对运行情况进行记录、统计分析，依靠工作实践并根据实际应用环境，不断改进数据库设计</li>
-    </ol>
-  </li>
-  <li>
-    <p>三级模式体系结构</p>
-
-    <ol>
-      <li>外部级（External）</li>
-      <li>概念级（Conceptual）</li>
-      <li>内部级（Internal）</li>
-    </ol>
-  </li>
-  <li>
-    <p>模式/内模式映像
-由于这两级的数据结构可能不一致，即记录类型、字段类型的命名和组成可能不一样，因此需要这个映像说明概念记录和内部记录之间的对应性。模式/内模式映像一般是放在内模式中描述的。</p>
-  </li>
-  <li>
-    <p>外模式/模式映像
- 外模式/模式映像一般是放在外模式中描述的。三级模式结构中，模式即全局逻辑结构是数据库的中心与关键，它独立于其他层次。因此设计数据库模式结构时应首先确定数据库的逻辑模式</p>
-  </li>
-  <li>
-    <p>数据独立性（Data Independence）</p>
-
-    <ol>
-      <li>物理数据独立性
-如果数据库的内模式要修改，即数据库的物理结构有所变化，那么只要对模式/内模式映像做相应的修改即可。</li>
-      <li>逻辑数据独立性  <br />
-   如果数据库的概念模式要修改，譬如增加记录类型或增加数据项，那么只要对外模式/模式映像做相应的修改，可以使外模式和应用程序尽可能保持不变。</li>
-    </ol>
-  </li>
-  <li>
-    <p>数据处理的三个阶段</p>
-
-    <ol>
-      <li>
-        <p>概念数据模型：</p>
-
-        <p>独立于计算机系统的数据模型，完全不涉及信息在计算机中的表示，只是用来描述某个特定组织所关心的信息结构</p>
-      </li>
-      <li>
-        <p>逻辑数据模型：</p>
-
-        <p>是直接面向数据库的逻辑结构，它是对现实世界的第二层抽象。这类模型直接与DBMS有关，简称“逻辑模型”。</p>
-      </li>
-    </ol>
-  </li>
-  <li>ER</li>
+  <li>不处理模式串</li>
+  <li>模式串从目标串<strong>第一个元素</strong>起逐一匹配</li>
+  <li>发现无法匹配，模式串匹配右移一位，从下一位目标串元素重新初始逐一元素匹配</li>
 </ul>
 
-<ol>
-  <li>
-    <p>ER（实体─联系方法）图提供了表示实体型、属性和联系的方法：</p>
+<p><img src="/img/BF.gif" alt="" /></p>
 
-    <ol>
-      <li>实体型：用矩形表示，矩形框内写明实体名。</li>
-      <li>属性：用椭圆形表示，并用无向边将其与相应的实体型连接起来。<img src="/img/er.png" alt="er" /></li>
-      <li>联系：用菱形表示，菱形框内写明联系名，并用无向边分别与有关实体型连接起来，同时在无向边旁标上联系的类型（1:1，1:N或M:N）</li>
-    </ol>
+<p>虽然简单易懂，但是同时也导致了复杂度较高，最慢的情形其复杂度可以到达O（模式串长 * 目标串长）</p>
 
-    <p><img src="/img/联系.png" alt="联系" /></p>
-  </li>
-</ol>
+<p><img src="/img/BF_LOW.webp" alt="" /></p>
 
-<ul>
-  <li>
-    <p>二元联系主</p>
+<h1 id="kmp"><strong>KMP</strong></h1>
 
-    <ol>
-      <li>一对一联系（1:1）：如果对于实体集A中的每一个实体，实体集B中至多有一个（也可以没有）实体与之联系，反之亦然，则称实体集A与实体集B具有一对一联系，记为l:1</li>
-      <li>一对多联系（1:N）：如果对于实体集A中的每一个实体，实体集B中有N（N≥0）个实体与之联系，反之，对于实体集B中的每一个实体，实体集A中至多只有一个实体与之联系，则称实体集A与实体集B有一对多联系，记为1:N</li>
-      <li>多对多联系（M:N）：如果对于实体集A中的每一个实体，实体集B中有N（N≥0）个实体与之联系，反之，对于实体集B中的每一个实体，实体集A中也有M（M≥0）个实体与之联系，则称实体集A与实体集B具有多对多联系，记为M:N</li>
-    </ol>
-  </li>
-  <li>
-    <p>三元联系和一元联系</p>
-  </li>
-</ul>
+<p>但是如果仔细观察，可以发现<strong>模式串</strong>本身是可以自带一些<strong>可被预先计算出</strong>的<strong>可用于加速匹配的信息</strong>的。</p>
 
-<ol>
-  <li>三元联系是三个实体之间的联系，这些实体之间也存在着一对一、一对多或多对多的联系。例如，对于课程、教师与参考书3个实体，如果一门课程可以有多个教师讲授，使用若干本参考书，而每一个教师只讲授一门课程，每一本参考书只供一门课程使用，则课程与教师、参考书之间的联系是一对多的</li>
-  <li>同一个实体集内的各实体之间也可以存在一对一、一对多、多对多的联系，称为一元联系。例如，一个公司的所有员工组成的实体集内部具有领导与被领导的联系，即某一员工（经理）领导若干名员工，而一个员工仅被另外一个员工（经理）直接领导，因此这是一对多的联</li>
-</ol>
+<p>当模式串的第K位失配时，前K-1位必然是匹配的，如果直接整体后移一位重新从头开始匹配那之前的那些<strong>已经匹配的信息</strong>就被浪费了。于是我们可以寻找<strong>最大的必定不需要再匹配的串</strong>，那这个串是什么呢？</p>
 
-<ul>
-  <li>
-    <p>逻辑模型</p>
+<p>很显然，这个串就是[1,K-1]位串中<strong>最大且相同</strong>的<strong>头尾</strong>串（S）。当失配发生，可以直接<strong>保持目标串中的失配元素不变</strong>，移动模式串，K-1-S串长个单位重新匹配，这就是KMP算法。</p>
 
-    <ol>
-      <li>在数据库系统中，传统的逻辑模型有层次模型、网状模型和关系模型三种，非传统的逻辑模型有面向对象模型（Object-Oriented model，OO）</li>
-    </ol>
-  </li>
-  <li>
-    <p>逻辑模型中的数据描述</p>
+<p><img src="/img/KMP.gif" alt="" /></p>
 
-    <ol>
-      <li>字段（field）：标记实体属性的命名单位称为字段或数据项。字段的命名往往和属性名相同。例如学生有学号、姓名、性别、年龄等字段。</li>
-      <li>记录（record）：字段的有序集合称为记录。一般用一个记录描述一个实体，所以记录又可以定义为能完整地描述一个实体的字段集。</li>
-      <li>文件（file）： 同一类记录的集合称为文件。文件是用来描述实体集的。
-关键码（key）： 能惟一标识文件中每个记录的字段或字段集，称为记录的关键码（简称为键）</li>
-    </ol>
-  </li>
-  <li>
-    <p>层次数据模型的数据结构</p>
+<p>为什么要移动K-1-S串长个单位？失配元素前方一共有K-1个元素，最大相同头尾串长为S。</p>
 
-    <ol>
-      <li>在数据库中定义满足下面两个条件的基本层次联系的集合为层次模型。有且只有一个结点没有双亲结点，这个结点称为根结点；</li>
-      <li>根以外的其他结点有且只有一个双亲结点</li>
-    </ol>
-  </li>
-  <li>
-    <p>层次模型的优点</p>
+<p><img src="/img/KMP2.png" alt="" /></p>
 
-    <ol>
-      <li>层次模型的数据结构比较简单清晰。</li>
-      <li>层次数据库的查询效率高。因为层次模型中记录之间的联系用有向边表示，这种联系在DBMS中常常用指针来实现。因此这种联系也就是记录之间的存取路径。当要存取某个结点的记录值，DBMS就沿着这一条路径很快找到该记录值，所以，层次数据库的查询性能优于关系数据库，不低于网状数据库。</li>
-      <li>层次数据模型提供了良好的完整性支持。</li>
-    </ol>
-  </li>
-  <li>
-    <p>层次模型的缺点</p>
+<p>若移动小于K-1-S长度(例如K-1-S-1 = K - 1 - (S+1))，则必然无法匹配，因为不存在<strong>更大</strong>的相同首尾串，如下图中（bab不是相同首尾串，故必然不匹配）。</p>
 
-    <ol>
-      <li>现实世界中很多联系是非层次型的，如结点之间具有多对多联系。</li>
-      <li>一个结点具有多个双亲等，层次模型表示这类联系的方法很笨拙，只能通过引入冗余数据（易产生不一致性）或创建非自然的数据结构（引入虚拟结点）来解决。对插入和删除操作的限制比较多，因此应用程序的编写比较复杂。</li>
-      <li>查询子女结点必须通过双亲结点。</li>
-      <li>由于结构严密，层次命令趋于程序化</li>
-    </ol>
-  </li>
-  <li>
-    <p>网状数据模型的数据结构</p>
+<p><img src="/img/KMP3.png" alt="" /></p>
 
-    <ol>
-      <li>在数据库中，把满足以下两个条件的基本层次联系集合称为网状模型：允许一个以上的结点无双亲；一个结点可以有多于一个的双亲。</li>
-    </ol>
-  </li>
-  <li>
-    <p>网状数据模型的优点</p>
+<p>若移动大于K-1-S长度(例如K-1-S+1 = K - 1 - (S-1))，有可能匹配（当S-1同样是相同子串时），但是可能会因为多移动了位数而遗漏结果。</p>
 
-    <ol>
-      <li>能够更为直接地描述现实世界，如一个结点可以有多个双亲。结点之间可以有多种联系。</li>
-      <li>具有良好的性能，存取效率较高</li>
-    </ol>
-  </li>
-  <li>
-    <p>网状数据模型的缺点</p>
+<p>KMP算法本身比较好理解，而关于KMP的实现需要引入一个Next数组（由模式串预处理出的数组），Next数组的本身的算法则很难理解</p>
 
-    <ol>
-      <li>结构比较复杂，而且随着应用环境的扩大，数据库的结构就变得越来越复杂，不利于最终用户掌握。</li>
-      <li>网状模型的DDL、DML复杂，并且要嵌入某一种高级语言（如COBOL、C）中。因此用户不易掌握和使用。</li>
-      <li>由于记录之间的联系是通过存取路径实现的，应用程序在访问数据时必须选择适当的存取路径，因此，用户必须了解系统结构的细节。这样就加重了编写应用程序的负担</li>
-    </ol>
-  </li>
-  <li>
-    <p>关系数据模型的数据结构</p>
+<h1 id="next数组"><strong>Next数组</strong></h1>
 
-    <ol>
-      <li>关系（Relation）： 一个关系对应通常说的一张表，如表2.2中的这张学生登记表。元组（Tuple） 表中的一行即为一个元组。</li>
-      <li>属性（Attribute）： 表中的一列即为一个属性，给每一个属性起一个名称即属性名。如这张表有6列，对应6个属性：学号，姓名，年龄，性别，系名和年级。</li>
-      <li>码（Key）： 也称为码键。表中的某个属性组，它可以惟一确定一个元组，如表2.2中的学号，可以惟一确定一个学生，也就成为本关系的码。</li>
-      <li>域（Domain）： 属性的取值范围，如人的年龄一般在1～150岁之间，大学生年龄属性的域是（14～38），性别的域是（男，女），系名的域是一个学校所有系名的集合。分量 元组中的一个属性值。</li>
-    </ol>
-  </li>
-  <li>
-    <p>关系模式</p>
+<p>Next数组的含义很直观，就是<strong>第几个元素失配时应该右移模式串重新匹配第几个元素</strong>（不同的教材采用的首元素索引序号不同有的是0有的是1，这也是Next数组算法难以理解的一大原因，所以文中讨论索引序号都直接使用的是<strong>第</strong>几个元素）。</p>
 
-    <p>关系名（属性l，属性2，…，属性n）</p>
-  </li>
-  <li>
-    <p>关系数据模型优点</p>
+<p>Next数组的算法步骤如下图所示，在我们逐步讨论完其算法过程后再会看这张动图或许你会有更深刻地理解。</p>
 
-    <ol>
-      <li>关系模型与非关系模型不同，它是建立在严格的数学概念的基础上的。</li>
-      <li>关系模型的概念单一。无论实体还是实体之间的联系都用关系来表示。对数据的检索和更新结果也是关系（即表）。所以其数据结构简单、清晰，用户易懂易用。</li>
-      <li>关系模型的存取路径对用户透明，从而具有更高的数据独立性、更好的安全保密性，也简化了程序员的工作和数据库开发建立的工作</li>
-    </ol>
-  </li>
-  <li>
-    <p>关系数据模型缺点</p>
+<p><img src="/img/next.webp" alt="" /></p>
 
-    <ol>
-      <li>由于存取路径对用户透明，查询效率往往不如非关系数据模型。</li>
-    </ol>
-  </li>
-  <li>
-    <p>面向对象模型</p>
+<h3 id="逐步讨论"><strong>逐步讨论</strong></h3>
 
-    <ol>
-      <li>对象（Object）： 对象是现实世界中实体的模型化，与记录概念相仿，但远比记录复杂。每个对象有一个惟一的标识符，把状态（State）和行为（Behavior）封装（Encapsulate）在一起。其中，对象的状态是该对象属性值的集合，对象的行为是在对象状态上操作的方法集。</li>
-      <li>类（Class）： 将属性集和方法集相同的所有对象组合在一起，构成了一个类。类的属性值域可以是基本数据类型（整型、实型、字符串型），也可以是记录类型和集合类型。也就是类可以有嵌套结构。系统中所有的类组成了一个有根的有向无环图，叫类层次</li>
-    </ol>
-  </li>
-  <li>
-    <p>面向对象数据库系统的优点</p>
+<p>对于模式串的首个元素的Next值，约定为<strong>首元素索引值 - 1</strong>，这么做仅仅是为了<strong>方便实现递归算法</strong>。这个值<strong>不一定只为首元素的Next值</strong>，经过优化后可能为其他元素的Next值，这个值（首元素索引 - 1）的含义是：</p>
 
-    <ol>
-      <li>能有效地表达客观世界和有效地查询信息：面向对象方法综合了在关系数据库中发展的全部工程原理、系统分析、软件工程和专家系统领域的内容。</li>
-      <li>可维护性好：在耦合性和内聚性方面，面向对象数据模型的性能尤为突出。</li>
-      <li>能很好地解决“阻抗不匹配”（impedance mismatch）问题：应用程序语言与数据库管理系统对数据类型支持的不一致问题，这一问题通常称之为阻抗不匹配问题</li>
-    </ol>
-  </li>
-  <li>
-    <p>面向对象数据库系统的缺点</p>
+<p>将<strong>模式串</strong>的<strong>首元素</strong>移动到<strong>失配元素后一位</strong>并从首元素开始，重新匹配。</p>
 
-    <ol>
-      <li>技术还不成熟：面向对象模型还存在着标准化问题，是否修改SQL以适应面向对象的程序，还是用新的对象查询语言来代替它，目前还没有解决。</li>
-      <li>面向对象系统开发的有关原理才刚开始，只是具有雏形，还需要一段时间的研究。但在可靠性、成本等方面还是令人可以接受的。</li>
-      <li>理论还需完善：到现在为止没有关于面向对象分析的一套清晰的概念模型，怎样设计独立于物理存储的信息还不明确</li>
-    </ol>
-  </li>
-</ul>
+<p><img src="/img/next2.webp" alt="" /></p>
+
+<h1 id="kmp实现">KMP实现</h1>
+
+<pre><code class="language-c">// T 模式串， S目标串， pos第几个字符之后搜索
+// 约定索引起始值为1
+void Index_KMP(SString S, SString T, int pos){
+   // i 目标串指针，j 模式串指针
+    i = pos; j = 1;
+    // 只要指针没有溢出对应的串
+    while( i &lt;= length(S) &amp;&amp; j &lt;= length(T)){
+        // 如果将要和 目标串元素 匹配的元素是模式串首元素前一位的元素
+        // 或者
+        // 当前目标串元素 和 模式串元素可以匹配
+        // if (j == first_indexof(T) - 1 || S[i] == T[j]){
+        if(j == 0 || S[i] == T[j]){
+           // 指针各自右移一位
+            ++i;
+            ++j;
+        }else{
+            // 发生了失配，查Next数组移动模式串指针
+            j = next[j];
+        }
+    }
+    if (j &gt; length(T)){
+        // 如果模式串指针溢出了（模式串指针匹配完毕了所有模式串中的元素）
+       return i - length(T);
+    }
+    else return 0;
+}
+</code></pre>
+
+<h1 id="next">next</h1>
+
+<pre><code class="language-c">// T 模式串， next Next数组
+// 约定索引起始值为1
+void get_next(SString T, int &amp;next[]){
+    // i 计算每一个元素Next值的指针，它只可能右移用于计算下一个元素的Next值
+    // j 用于指向 无法找到头尾串时 的递归回溯的元素 
+    // 初始化第一个元素的Next值
+    i = 1; next[1] = 0; j = 0;
+    while(i &lt; length(T)){
+        // 如果递归回溯到第一个元素，它的next值为0，就无法继续回溯 -&gt; 下一位元素的 Next值 就会等于 第一个元素的索引（1 即 0 + 1）
+        // 如果 当前元素 等于 当前元素Next值对应的元素 -&gt; 下一个元素的 Next值 就会等于 当前元素的Next值 + 1
+        if (j == 0 || T[i] == T[j]){
+            ++i; ++j; next[i] = j;
+        }
+        else{
+            // 否则递归回溯j，将其指向更小的一个同首尾的子串的尾部 + 1
+            j = next[j];
+        }
+    }
+}
+</code></pre>
+
+<h1 id="nextval"><strong>Nextval</strong></h1>
+
+<p>(以下的讨论假设不需要递归以简化讨论过程)</p>
+
+<p>优化Next，当第<code>i+1</code>位失配的时候。通常，我们按照算法会比较 <code>T[i]</code> 和 <code>T[next[i]]</code>，若它们相同则将<code>Next[i+1]</code>设置成<code>Next[i] + 1</code>。但是，如果 <code>T[Next[i] + 1]</code>和失配元素（<code>T[i+1]</code>）相同时，这样设置则是多余的（Next元素的含义就是，某个元素失配时用哪个元素补充匹配，若补充匹配的元素和失配元素相同则这样设置是多余的）。所以，此时应该把<code>Next[i+1]</code>设置成<code>Next[Next[i] + 1]</code>，就是当<code>Next[i]+1</code>失配时应该用哪个元素补充匹配。</p>
+
+<p>那为什么<code>T[Next[Next[i] + 1]]</code>不会等于<code>T[i+1]</code>呢？因为按照这样的算法<strong>递推</strong>是从第一个元素开始计算，可以确保除了当前失配的元素以外，<strong>之前的任意一个元素（索引为m）</strong>都不可能等于<code>T[Next[m]+1]</code></p>
+
+<pre><code class="language-c">// T 模式串， next Next数组
+// 约定索引起始值为1
+void get_nextval(SString T, int &amp;nextval[]){
+    // i 计算每一个元素Next值的指针，它只可能右移用于计算下一个元素的Next值
+    // j 用于指向 无法找到头尾串时 的递归回溯的元素 
+    // 初始化第一个元素的Next值
+    i = 1; nextval[1] = 0; j = 0;
+    while(i &lt; length(T)){
+        // 如果递归回溯到第一个元素，它的next值为0，就无法继续回溯 
+        // 如果 当前元素 等于 当前元素Next值对应的元素 
+        if (j == 0 || T[i] == T[j]){
+            ++i; ++j; 
+            if(T[i] != T[j]){
+                // 如果替补匹配的值不等于当前失配值,则设置它的索引为Next值
+               nextval[i] = j;
+            }
+          else{
+                // 否则设置它的Next值为当前失配值的Next值
+                nextval[i] = next[j];
+            }
+        }
+        else{
+            // 否则递归回溯j，将其指向更小的一个同首尾的子串的尾部 + 1
+            j = nextval[j];
+        }
+    }
+}
+</code></pre>
+
+<p><img src="/img/next3.webp" alt="" /></p>
 
 </div>
 <div class="v">
