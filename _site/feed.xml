@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-26T17:30:55+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-27T15:53:25+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -161,7 +161,111 @@ void get_nextval(SString T, int &amp;amp;nextval[]){
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/next3.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="数据结构" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-文件系统</title><link href="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="alternate" type="text/html" title="linux编程-文件系统" /><published>2020-05-22T00:00:00+08:00</published><updated>2020-05-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/next3.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="数据结构" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-进程基础</title><link href="http://localhost:4000/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="alternate" type="text/html" title="linux编程-进程基础" /><published>2020-05-25T00:00:00+08:00</published><updated>2020-05-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;进程标示符pid&quot;&gt;进程标示符pid&lt;/h1&gt;
+
+&lt;p&gt;类型:pid_t&lt;/p&gt;
+
+&lt;p&gt;命令:ps&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getpid&lt;/li&gt;
+  &lt;li&gt;getppid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+pid_t getpid(void);
+pid_t getppid(void);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;进程产生&quot;&gt;进程产生&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fork&lt;/li&gt;
+  &lt;li&gt;vfork&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+pid_t fork(void);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+pid_t vfork(void);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+vfork():
+Since glibc 2.12:
+(_XOPEN_SOURCE &amp;gt;= 500) &amp;amp;&amp;amp; ! (_POSIX_C_SOURCE &amp;gt;= 200809L)
+|| /* Since glibc 2.19: */ _DEFAULT_SOURCE
+|| /* Glibc versions &amp;lt;= 2.19: */ _BSD_SOURCE
+Before glibc 2.12:
+_BSD_SOURCE || _XOPEN_SOURCE &amp;gt;= 500
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;fork()  creates  a new process by duplicating the calling process.  The
+       new process is referred to as the child process.  The  calling  process
+       is referred to as the parent process.&lt;/p&gt;
+
+&lt;p&gt;fork后父子进程区别:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;返回值不同&lt;/li&gt;
+  &lt;li&gt;pid不同,ppid不同&lt;/li&gt;
+  &lt;li&gt;未决信号和文件锁不继承&lt;/li&gt;
+  &lt;li&gt;资源利用量清0&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;init进程:1号,是所有的进程的祖先进程&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;调度器的调度策略决定那个进程先运行&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在fork之前,尽量刷新所有的流:fflush&lt;很重要&gt;&lt;/很重要&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;进程消亡以及资源释放&quot;&gt;进程消亡以及资源释放&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;wait&lt;/li&gt;
+  &lt;li&gt;waitpid&lt;/li&gt;
+  &lt;li&gt;waitid&lt;/li&gt;
+  &lt;li&gt;wait3&lt;/li&gt;
+  &lt;li&gt;wait4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/wait.h&amp;gt;
+pid_t wait(int *wstatus);
+pid_t waitpid(pid_t pid, int *wstatus, int options);
+int waitid(idtype_t idtype, id_t id, siginfo_t *infop, int options);
+/* This is the glibc and POSIX interface; see
+NOTES for information on the raw system call. */
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+waitid():
+Since glibc 2.26: _XOPEN_SOURCE &amp;gt;= 500 ||
+_POSIX_C_SOURCE &amp;gt;= 200809L
+Glibc 2.25 and earlier:
+_XOPEN_SOURCE
+|| /* Since glibc 2.12: */ _POSIX_C_SOURCE &amp;gt;= 200809L
+|| /* Glibc versions &amp;lt;= 2.19: */ _BSD_SOURCE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;exec函数族&quot;&gt;exec函数族&lt;/h1&gt;
+
+&lt;h1 id=&quot;用户权限以及组权限&quot;&gt;用户权限以及组权限&lt;/h1&gt;
+
+&lt;h1 id=&quot;解释器文件&quot;&gt;解释器文件&lt;/h1&gt;
+
+&lt;h1 id=&quot;system&quot;&gt;system&lt;/h1&gt;
+
+&lt;h1 id=&quot;进程会计&quot;&gt;进程会计&lt;/h1&gt;
+
+&lt;h1 id=&quot;进程时间&quot;&gt;进程时间&lt;/h1&gt;
+
+&lt;h1 id=&quot;守护进程&quot;&gt;守护进程&lt;/h1&gt;
+
+&lt;h1 id=&quot;系统日志&quot;&gt;系统日志&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-文件系统</title><link href="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="alternate" type="text/html" title="linux编程-文件系统" /><published>2020-05-22T00:00:00+08:00</published><updated>2020-05-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;文件系统&quot;&gt;文件系统&lt;/h1&gt;
 
@@ -3926,306 +4030,4 @@ DROP VIEW &lt;视图名&gt;
 
 &lt;p&gt;Atomic包中的类基本的特性就是在多线程环境下，当有多个线程同时对单个（包括基本类型及引用类型）变量进行操作时，具有排他性，即当多个线程同时对该变量的值进行更新时，仅有一个线程能成功，而未成功的线程可以向自旋锁一样，继续尝试，一直等到执行成功。&lt;/p&gt;
 
-&lt;p&gt;Atomic系列的类中的核心方法都会调用unsafe类中的几个本地方法。我们需要先知道一个东西就是Unsafe类，全名为：sun.misc.Unsafe，这个类包含了大量的对C代码的操作，包括很多直接内存分配以及原子操作的调用，而它之所以标记为非安全的，是告诉你这个里面大量的方法调用都会存在安全隐患，需要小心使用，否则会导致严重的后果，例如在通过unsafe分配内存的时候，如果自己指定某些区域可能会导致一些类似C++一样的指针越界到其他进程的问题。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">并行和并发区别</summary></entry><entry><title type="html">sql-server复习二</title><link href="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/" rel="alternate" type="text/html" title="sql-server复习二" /><published>2020-05-10T00:00:00+08:00</published><updated>2020-05-10T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;关系模式&quot;&gt;关系模式&lt;/h1&gt;
-
-&lt;p&gt;每个关系都有一个模式，称为关系模式(relation schema)，由一个关系名及它的所有属性名构成。一般表示为：关系名（属性1,属性2,…,属性n）&lt;/p&gt;
-
-&lt;p&gt;关系是一种规范化了的二维表格，具有如下性质：
-属性值是原子的，不可分解。
-没有重复元组。
-没有行序。
-理论上没有列序，但一般使用时都有列序&lt;/p&gt;
-
-&lt;h1 id=&quot;关键码和表之间的联系&quot;&gt;关键码和表之间的联系&lt;/h1&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;超键：在一个关系中，能惟一标识元组的属性或属性集称为关系的超键&lt;/li&gt;
-  &lt;li&gt;候选键：如果一个属性集能惟一标识元组，且又不含有多余的属性，那么这个属性集称为关系的候选键。&lt;/li&gt;
-  &lt;li&gt;主键：若一个关系中有多个候选键，则选其中的一个为关系的主键。&lt;/li&gt;
-  &lt;li&gt;外键：若一个关系R中包含有另一个关系S的主键所对应的属性组F，则称F为R的外键。并称关系S为参照关系，关系R为依赖关系。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;基本的关系操作&quot;&gt;基本的关系操作&lt;/h1&gt;
-
-&lt;p&gt;关系模型中常用的关系操作包括&lt;code&gt;查询（Query）&lt;/code&gt;操作和&lt;code&gt;插入（Insert）&lt;/code&gt;、&lt;code&gt;删除（Delete）&lt;/code&gt;、&lt;code&gt;修改（Update）&lt;/code&gt;操作。
-查询操作又可以分为：&lt;code&gt;选择（Select）&lt;/code&gt;、&lt;code&gt;投影（Project）&lt;/code&gt;、&lt;code&gt;连接（Join）&lt;/code&gt;、&lt;code&gt;除（Divide）&lt;/code&gt;、&lt;code&gt;并（Union）&lt;/code&gt;、&lt;code&gt;差（Except）&lt;/code&gt;、&lt;code&gt;交（Intersection）&lt;/code&gt;、&lt;code&gt;笛卡尔积等&lt;/code&gt;。其中选择、投影、并、差、笛卡尔积是5种基本操作&lt;/p&gt;
-
-&lt;h1 id=&quot;实体完整性entity-integrity约束&quot;&gt;实体完整性（Entity Integrity）约束&lt;/h1&gt;
-
-&lt;p&gt;若属性（指一个或一组属性）A是基本关系R的主属性。则A不能取空值。&lt;/p&gt;
-
-&lt;h1 id=&quot;参照完整性约束&quot;&gt;参照完整性约束&lt;/h1&gt;
-
-&lt;p&gt;如果属性集K是关系模式R1的主键，K也是关系模式R2的外键，那么在R2的关系中，K的取值只允许两种可能，或者为空值，或者等于R1关系中某个主键值。
- 这条规则的实质是“不允许引用不存在的实体”。
- 在上述形式定义中，关系模式R1的关系称为“参照关系”，关系模式R2的关系称为“依赖关系”。&lt;/p&gt;
-
-&lt;h1 id=&quot;用户定义的完整性规则&quot;&gt;用户定义的完整性规则&lt;/h1&gt;
-
-&lt;p&gt;用户定义完整性约束（user defined integrity constraint）就是针对用户的具体应用环境，给出的具体数据的约束条件。 
-用户可以针对具体的数据要求特征，设置完整性约束，由系统来检验实施，以使用统一的方法处理它们，不再由应用程序承担这项工作&lt;/p&gt;
-
-&lt;h1 id=&quot;传统的集合运算&quot;&gt;传统的集合运算&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;并（Union）
-      设关系R和S具有相同的关系模式，R和S的并是由属于R或属
-  于S的元组构成的集合，记为R∪S。形式定义如下：
-  R∪S≡{t | t∈R ∨ t∈S}，t是元组变量，R和S的元数相同。&lt;/li&gt;
-  &lt;li&gt;差（Difference）
-      设关系R和S具有相同的关系模式，R和S的差是由属于R但不
-  属于S的元组构成的集合，记为R－S。形式定义如下：
-  R－S≡{ t | t∈R ∧ t∈S}，R和S的元数相同。&lt;/li&gt;
-  &lt;li&gt;交（intersection）
-      关系R和S的交是由属于R又属于S的元组构成的集合，记为
-R∩S，这里要求R和S定义在相同的关系模式上。形式定义如
-下：
-       R∩S≡{t︱t∈R ∧ t∈S}，R和S的元数相同。
-由于R∩S = R-(R-S)，或R∩S = S-(S-R)，因此交操作不是一个独立的操作。&lt;/li&gt;
-  &lt;li&gt;笛卡儿积(Cartesian Product)
-    设关系R和S的元数分别为r和s,定义R和S的一个(r+s)元的元
-组集合，每个元组的前r个分量来自R的一个元组，后s个分量来自S的一个元组，记为R×S。
-       R×S ≡{t|t=&amp;lt;tr,ts&amp;gt;∧tr∈R∧ts∈S}&lt;/li&gt;
-  &lt;li&gt;选择（Selection）
-选择是在关系R中选择满足给定条件的所有元组构成的新关系。形式定义为：
-σF(R)={t|t∈R∧F(t)=true}其中，F表示选择条件，它是一个逻辑表达式，取逻辑值“true”或“false”。在选择条件表达式F中，有时属性也用其排列序号来表示，常量值用单引号括起来。
-例如，σ2＞ˊ3ˊ（R）表示从R中挑选第2个分量值大于3的元组所构成的关系。
-书写时，为了与属性序号区别起见，常量用引号括起来，而属性序号或属性名不要用引号括起来。&lt;/li&gt;
-  &lt;li&gt;投影
-关系R上的投影是从R中选择出若干属性列组成新的关系。形式定义为：
- πA(R)={t[A] | t∈R}
-其中A为R中的属性列集合，其中A也可以用属性序号表示。 
-投影操作是从列角度进行的运算。&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;连接（join）
-连接（join）运算是从两个关系的笛卡尔积中选取属性间满足一定条件的元组。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;实例&quot;&gt;实例&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;例2.11 设教学数据库中有三个关系：
-      学生关系   S(S#,SNAME,AGE,SEX)
-      选课关系   SC(S#,C#,GRADE)&lt;br /&gt;
-      课程关系    C(C#,CNAME,TEACHER)
-   用关系代数表达式表示查询语句。
-  (1) 检索学习课程号为C2的学生学号与成绩。
-        πS#,GRADE(σC#=‘C2’ (SC))
- (2) 检索学习课程号为C2的学生的学号与姓名。
-         πS#,SNAME(σC#=‘C2’ (S ⋈ SC))
- (3) 检索选修课程名为MATHS的学生学号与姓名。
-           πS#,SNAME(σCNAME=‘MATHS’ (S ⋈ SC ⋈ C))&lt;/p&gt;
-
-&lt;p&gt;(4) 检索选修课程号为C2或C4的学生学号。
-           πS#(σC#=‘C2’ ∨C#=‘C4’(SC))
-  (5) 检索至少选修课程号为C2和C4的学生学号。
-           π1(σ1=4∧2=‘C2’ ∧5=‘C4’ (SC×SC))&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;一般地有下列规律：
-(1) 对于只涉及到选择、投影、连接的查询可用下列表达式表示：                &lt;br /&gt;
-             π(σ(R×S)) 	或者π(σ(R       S))
-(2) 对于否定的操作，一般要用差操作表示，例如“检索不学C2课的学生姓名”。用下列表达式表示：
-          πSNAME(S)-πSNAME(σCNO=’C2’(S       SC))但不能用下式表示：    		πSNAME(σCNO≠’C2’(S       SC))  &lt;br /&gt;
-⑶ 对于检索具有“全部”特征的操作，一般要用除法操作表示，例如“检索学习全部课程的学生学号”。用下列表达式表示：    &lt;br /&gt;
-         要用πSNO,CNO(SC)÷πCNO(C)表示&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;规范化原则&quot;&gt;规范化原则&lt;/h1&gt;
-
-&lt;p&gt;关系模式有操作异常或冗余问题，就分解它&lt;/p&gt;
-
-&lt;h1 id=&quot;函数依赖的定义&quot;&gt;函数依赖的定义&lt;/h1&gt;
-
-&lt;p&gt;设有关系模式R(U)，X和Y是属性集U的子集，若对于R(U)的任意一个可能的关系r，r中不可能存在两个元组在X上的属性值相等，而在Y上的属性值不等，则称X函数确定Y或Y函数依赖（Functional Depend-
-ency，简记为FD）于X，记作X→Y&lt;/p&gt;
-
-&lt;h1 id=&quot;完全函数依赖和部分函数依赖&quot;&gt;完全函数依赖和部分函数依赖&lt;/h1&gt;
-
-&lt;p&gt;假设在关系模式R(U)中，X和Y是属性集U的子集，且有X→Y，如果对于X的任一个真子集W，都有W→Y不成立，则称Y完全函数依赖于X，否则，称Y部分函数依赖于X。
- 完全函数依赖说明了在依赖关系的决定项中没有多余的属性。
-如函数依赖(SNO,CNO)→GRADE，TNAME→TAGE是完全函数依赖。 (SNO,CNO)→SNAME，(SNO,CNO)→CNAME，(SNO,CNO)→TNAME，(SNO,CNO)→TAGE都是部分函数依赖。&lt;/p&gt;
-
-&lt;h1 id=&quot;fd和关键码的联系&quot;&gt;FD和关键码的联系&lt;/h1&gt;
-
-&lt;p&gt;利用完全函数依赖和部分函数依赖可以说明函数依赖和键的关系：假设关系
-模式R的属性集是U，X是U的一个子集。如果U部分函数依赖于X，则X是R的一个
-超键。如果U完全函数依赖于X，则X是R的一个候选键。&lt;/p&gt;
-
-&lt;h1 id=&quot;传递函数依赖&quot;&gt;传递函数依赖&lt;/h1&gt;
-
-&lt;p&gt;假设在关系模式R(U)中，X 、Y和Z是属性集U的不同子集，如果X→Y（并且Y→X不成立），Y→Z，则称Z传递函数依赖X，或称X传递函数确定Z。
-如函数依赖CNO→TNAME和TNAME→TAGE，所以R的函数依赖CNO→TAGE是传递函数依赖。&lt;/p&gt;
-
-&lt;h1 id=&quot;armstrong推理&quot;&gt;Armstrong推理&lt;/h1&gt;
-
-&lt;p&gt;从已知的一些函数依赖，可以推导出另外一些函数依赖，这就需要一系列的推理规则。称为Armstrong公理。&lt;/p&gt;
-
-&lt;p&gt;设U是关系模式R的属性集，F是R上成立的只涉及到U中属性的函数依赖集。FD的推理规则有以下三条：
- A1（自反性，Reflexivity）：若YXU，则X→Y在R上成立。
- A2（增广性，Augmentation）：若X→Y在R上成立，且ZU，则XZ→YZ在R上成立。
- A3（传递性，Transitivity）：若X→Y和Y→Z在R上成立，则X→Z在R上成立。&lt;/p&gt;
-
-&lt;p&gt;FD的其他五条推理规则:
-(1) A4（合并性，Union）：｛ X→Y，X→Z ｝⊨X→YZ。
-(2) A5（分解性，Decomposition）：  ｛ X→Y，ZY ｝ ⊨ X→Z 。
-(3) A6（伪传递性）：｛ X→Y，WY→Z ｝⊨ WX→Z。
-(4) A7（复合性，Composition）：  ｛ X→Y，W→Z ｝ ⊨ XW→YZ。&lt;/p&gt;
-
-&lt;p&gt;例：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例2.14  设关系R(ABCDE)上函数依赖集为F，并且F={A→BC，CD→E，B→D，E→A}。求出R的候选键。
-解：已知A→BC，由分解性得A→B，A→C；又已知B→D，由传递性得 A→D；又由合并性得 A→CD，又已知CD→E，再由传递性得 A→E，因此，A是R的一个候选键。
-同理可得R的另外三个候选键E、CD和BC。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;关系的范式及规范化&quot;&gt;关系的范式及规范化&lt;/h1&gt;
-
-&lt;p&gt;关系模式的好与坏，用什么标准衡量？这个标准就是模式的范式
-（Normal Forms，简记为NF）。范式的种类与数据依赖有着直接的联系，基于FD的范式有1NF、2NF、3NF、BCNF等多种。
-在不提及FD时，关系中是不可能有冗余的问题，但是当存在FD时，关系中就有可能存在数据冗余问题。
-1NF是关系模式的基础；2NF已成为历史，一般不再提及；在数据库设计中最常用的是3NF和BCNF。&lt;/p&gt;
-
-&lt;p&gt;对于各种范式之间的联系有：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;BCNF | 3NF | 2NF | 1NF
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;范式&quot;&gt;范式&lt;/h1&gt;
-
-&lt;h2 id=&quot;第一范式&quot;&gt;第一范式&lt;/h2&gt;
-
-&lt;p&gt;定义 如果关系模式R的每个关系r的属性值都是不可分的原子值，那么称R是第一范式（first normal form，简记为1NF）的模式。
-满足1NF的关系称为规范化的关系，否则称为非规范化的关系。关系数据库研究的关系都是规范化的关系。例如关系模式R（NAME，
-ADDRESS，PHONE），如果一个人有两个电话号码（PHONE），那么在关系中至少要出现两个元组，以便存储这两个号码。
-1NF是关系模式应具备的最起码的条件。&lt;/p&gt;
-
-&lt;p&gt;非规范模式变为1NF：
-   (1)  把不含单纯值的属性分解为多个原子值。
-   (2)  把关系模式分解。&lt;/p&gt;
-
-&lt;h2 id=&quot;第二范式&quot;&gt;第二范式&lt;/h2&gt;
-
-&lt;p&gt;定义 如果关系模式R是1NF，且每个非主属性完全函数依赖于候选键，那么称R是第二范式（2NF）的模式。如果数据库模式中每个关系模式都是2NF，则称数据库模式为2NF的数据库模式。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例2.15 设关系模式R(SNO,CNO,GRADE,TNAME,TADDR) 。  
-（SNO,CNO）是R的候选键。R上有两个函数依赖：
-  (SNO,CNO)→(TNAME,TADDR)
-   CNO→(TNAME,TADDR)
- 前一个函数依赖是局部依赖，R不属于2NF模式。此时R的关系就会出现数据冗余和操作异常现象。
-如果把R分解成R1(CNO,TNAME,TADDR)和R2(SNO,CNO,GRADE)后，局部依赖(SNO,CNO)→(TNAME,TADDR)就消失了。R1和R2都属于2NF模式。  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;第三范式&quot;&gt;第三范式&lt;/h2&gt;
-
-&lt;p&gt;定义  如果关系模式R是1NF，且每个非主属性都不传递依赖于R的候选键，那么称R是第三范式（3NF）的模式。如果数据库模式中每个关系模式都是3NF，则称其为3NF的数据库模式 。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例  在例2.15中，R2是2NF模式，而且也已是3NF模式。
-R1(CNO,TNAME,TADDR)是2NF模式，却不是3NF模式。这是因为R1中存在函数依赖CNO→TNAME和TNAME→TADDR，则CNO→TADDR是一个传递依赖。
-如果把R2分解成R21(TNAME,TADDR)和R22(CNO,TNAME)后，CNO→TADDR就不会出现在R21和R22中。这样R21和R22都是3NF模式。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;bc范式&quot;&gt;BC范式&lt;/h2&gt;
-
-&lt;p&gt;定义 如果关系模式R是1NF，且每个属性都不传递依赖于R的候选键，那么称R是BCNF的模式。如果数据库模式中每个关系模式都是BCNF，则称为BCNF的数据库模式。
-如果R是BCNF模式，那么R也是3NF模式。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例2.16 设关系模式C(CNO,CNAME,PCNO)的属性分别表示课程号、课程名和先修课程号。
-CNO是主键，这里没有任何非主属性对CNO部分依赖或传递依赖，所以C属于3NF。
-同时C中CNO是唯一的决定因素，所以C∈BCNF。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例2.17 关系模式STJ(S，T，J)中，S表示学生，T表示教师，J表示课程。每一教师只教一门课。每门课有若干教师，某一学生选定某门课，就对应一个固定的教师。由语义可得到如下的函数依赖。
-(S，J)→T；(S，T)→J；T→J。
-这里(S，J)、(S，T)都是候诜键。
-STJ是3NF，因为没有任何非主属性对键函数传递依赖或部分函数依赖。但STJ不是BCNF模式，是因为T是决定因素，而T不包含键。
-3NF和BC范式是在函数依赖的条件下对模式分解所能达到的分离程度的测度。一个数据库中的关系模式如果都是BC范式，那么在函数依赖范畴内，它已经实现彻底的分离，已消除了插入和删除异常。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;无损分解&quot;&gt;无损分解&lt;/h1&gt;
-
-&lt;p&gt;定义 当对关系模式R进行分解时，R的元组将分别在相应属性集进行投影而产生新的关系。如果对新的关系进行自然连接得到的元组集合与原关系完全一致，则称该分解为无损分解（lossless decompose）。否则称为有损分解。&lt;/p&gt;
-
-&lt;h1 id=&quot;heath定理&quot;&gt;Heath定理&lt;/h1&gt;
-
-&lt;p&gt;假设关系模式R分解为两个子关系模式R1和R2，如果R1∩R2至少包含其中一个子关系模式的主键，则此分解是无损分解。
-      在例2.18中，R(SNO,CNAME,TNAME,GRADE)分解成两个子关系模式R1(SNO,CNAME,GRADE)和R2(CNAME,TNAME)，由于R1∩R2={CNAME}，而CNAME是关系模式R2的主键，由Heath定理，该分解为无损分解。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;例：设有关系模式R（{SNO，Sname,CNO,Grade},                                 
-        的一个分解为：
-      R1(SNO,Sname),R2(SNO,CNO,Grade)
-     因为R1∩R2=SNO, 由于SNO是R1的主键，则分解具有无损性连接。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;保持函数依赖分解&quot;&gt;保持函数依赖分解&lt;/h1&gt;
-
-&lt;p&gt;模式分解的过程还必须保证数据的语义完整性。在做任何数据输入和修改时，只要每个关系模式本身的函数依赖被满足，就可以确保整个数据库中数据的语义完整性不受破坏。
-定义：设ρ={R1(U1),R2(U2),…,Rn(Un)}是关系模式R(U)的一个分解，R的函数依赖集F在Ui上的投影为Fi，如果满足              ，则称ρ具有函数依赖保持性，也称该分解为保持依赖分解（preserve depend-ency decompose）&lt;/p&gt;
-
-&lt;h1 id=&quot;3nf分解&quot;&gt;3NF分解&lt;/h1&gt;
-
-&lt;p&gt;前在信息系统的设计中，广泛被采用的是“基于3NF的系统设计”方法 。
-将R分解成多个3NF关系模式的步骤如下：
-(1) 如果R不属于1NF，对其进行分解，使其满足1NF。
-分解为1NF的方法可以直接将其多值属性进行分解，用分解后的多个单值属性集取代原来的属性。如关系模式R(NAME,ADDRESS,PHONE)中，假设每条记录至多有3个电话号码。此时可将多值属性分解为R1(NAME,ADDRESS,PHONE1,PHONE2,PHONE3)。有时，当多值属性取值较多时，为了防止出现大量的空值，一般将多值属性单独定义为一个实体。&lt;/p&gt;
-
-&lt;p&gt;(2) 如果R属于1NF但R不属于2NF，分解R使其满足2NF。
-将关系模式分解为符合2NF条件的方法如下：
-设关系模式R(U)，主键是W，R上还存在函数依赖X→Z，并且Z是非主属性和XW，那么W→Z就是一个局部依赖。此时应把R分解成两个模式R1(XZ)，主键是X和R2(Y)，其中Y=U-Z，主键仍是W，外键是X。&lt;/p&gt;
-
-&lt;p&gt;(3) 如果R属于2NF但R不属于3NF，分解R使其满足3NF。
-将关系模式分解为符合3NF条件的方法如下：设关系模式R(U)，主键是W，R上还存在函数依赖X→Z。Z不含于X并且是非主属性，X不是候选键，那么W→Z就是一个传递函数依赖。
-此时应把R分解成两个模式R1(XZ)，主键是X和R2(Y)，其中Y=U-Z，主键仍是W，外键是X。如在例2.15的关系模式R1(CNO,TNAME,TADDR)，取W={CNO}，X={TNAME}，Z={TADDR}，利用该方法就可以得到符合3NF的关系模式R11(TNAME,TADDR)和R12(CNO,TNAME)。&lt;/p&gt;
-
-&lt;h1 id=&quot;事务四大特性及隔离级别&quot;&gt;事务四大特性及隔离级别&lt;/h1&gt;
-
-&lt;h2 id=&quot;特性&quot;&gt;特性:&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;原子性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一致性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;隔离性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;隔离性是当多个用户&lt;code&gt;并发&lt;/code&gt;访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;持久性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。&lt;/p&gt;
-
-&lt;h2 id=&quot;隔离级别&quot;&gt;隔离级别&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;脏读&lt;/p&gt;
-
-    &lt;p&gt;脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;不可重复读&lt;/p&gt;
-
-    &lt;p&gt;不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;虚读&lt;/p&gt;
-
-    &lt;p&gt;幻读是事务非独立执行时发生的一种现象&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;Atomic系列的类中的核心方法都会调用unsafe类中的几个本地方法。我们需要先知道一个东西就是Unsafe类，全名为：sun.misc.Unsafe，这个类包含了大量的对C代码的操作，包括很多直接内存分配以及原子操作的调用，而它之所以标记为非安全的，是告诉你这个里面大量的方法调用都会存在安全隐患，需要小心使用，否则会导致严重的后果，例如在通过unsafe分配内存的时候，如果自己指定某些区域可能会导致一些类似C++一样的指针越界到其他进程的问题。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">并行和并发区别</summary></entry></feed>
