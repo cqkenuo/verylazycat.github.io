@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-27T15:53:25+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-28T15:18:19+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -252,6 +252,22 @@ _XOPEN_SOURCE
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1 id=&quot;exec函数族&quot;&gt;exec函数族&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+extern char **environ;
+int execl(const char *path, const char *arg, ...
+/* (char  *) NULL */);
+int execlp(const char *file, const char *arg, ...
+/* (char  *) NULL */);
+int execle(const char *path, const char *arg, ...
+/*, (char *) NULL, char * const envp[] */);
+int execv(const char *path, char *const argv[]);
+int execvp(const char *file, char *const argv[]);
+int execvpe(const char *file, char *const argv[],
+char *const envp[]);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+execvpe(): _GNU_SOURCE
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1 id=&quot;用户权限以及组权限&quot;&gt;用户权限以及组权限&lt;/h1&gt;
 
