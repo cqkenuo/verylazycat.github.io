@@ -612,11 +612,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    1872字
+    3160字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    7分
+    11分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/" data-xid="/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/" data-flag-title="linux编程-进程基础">
@@ -756,17 +756,135 @@ execvpe(): _GNU_SOURCE
 
 <h1 id="用户权限以及组权限">用户权限以及组权限</h1>
 
+<p>u+s</p>
+
+<p>g+s</p>
+
+<ul>
+  <li>getuid</li>
+  <li>geteuid</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+#include &lt;sys/types.h&gt;
+uid_t getuid(void);
+uid_t geteuid(void);
+#include &lt;unistd.h&gt;
+#include &lt;sys/types.h&gt;
+gid_t getgid(void);
+gid_t getegid(void);
+</code></pre>
+
+<ul>
+  <li>setuid</li>
+</ul>
+
+<pre><code>#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+int setuid(uid_t uid);
+</code></pre>
+
+<ul>
+  <li>setgid</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+int setgid(gid_t gid);
+</code></pre>
+
+<ul>
+  <li>setreuid</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+int setreuid(uid_t ruid, uid_t euid);
+int setregid(gid_t rgid, gid_t egid);
+</code></pre>
+
 <h1 id="解释器文件">解释器文件</h1>
+
+<pre><code class="language-bash">#!bin/bash
+</code></pre>
 
 <h1 id="system">system</h1>
 
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+int system(const char *command);
+</code></pre>
+
+<p><code>fork</code>+<code>exec</code>+<code>wait</code>封装</p>
+
 <h1 id="进程会计">进程会计</h1>
+
+<ul>
+  <li>acct</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int acct(const char *filename);
+</code></pre>
+
+<p>不是标准,了解即可</p>
 
 <h1 id="进程时间">进程时间</h1>
 
+<ul>
+  <li>times</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/times.h&gt;
+clock_t times(struct tms *buf);
+</code></pre>
+
 <h1 id="守护进程">守护进程</h1>
 
+<p>session:sid</p>
+
+<ul>
+  <li>setsid</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+pid_t setsid(void);
+</code></pre>
+
+<ul>
+  <li>getpgrp</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+int setpgid(pid_t pid, pid_t pgid);
+pid_t getpgid(pid_t pid);
+pid_t getpgrp(void);                 /* POSIX.1 version */
+pid_t getpgrp(pid_t pid);            /* BSD version */
+int setpgrp(void);                   /* System V version */
+int setpgrp(pid_t pid, pid_t pgid);  /* BSD version */
+</code></pre>
+
+<p>单实例守护进程:锁文件:/var/run/name.pid</p>
+
+<p>启动脚本文件: /etc/rc*…</p>
+
 <h1 id="系统日志">系统日志</h1>
+
+<p>syslogd服务</p>
+
+<ul>
+  <li>openlog</li>
+  <li>syslog</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;syslog.h&gt;
+void openlog(const char *ident, int option, int facility);
+void syslog(int priority, const char *format, ...);
+void closelog(void);
+void vsyslog(int priority, const char *format, va_list ap);
+</code></pre>
+
 
 </div>
 <div class="v">

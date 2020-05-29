@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-28T15:18:19+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-29T13:04:30+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -271,17 +271,134 @@ execvpe(): _GNU_SOURCE
 
 &lt;h1 id=&quot;用户权限以及组权限&quot;&gt;用户权限以及组权限&lt;/h1&gt;
 
+&lt;p&gt;u+s&lt;/p&gt;
+
+&lt;p&gt;g+s&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getuid&lt;/li&gt;
+  &lt;li&gt;geteuid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;sys/types.h&amp;gt;
+uid_t getuid(void);
+uid_t geteuid(void);
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;sys/types.h&amp;gt;
+gid_t getgid(void);
+gid_t getegid(void);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;setuid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+int setuid(uid_t uid);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;setgid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+int setgid(gid_t gid);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;setreuid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+int setreuid(uid_t ruid, uid_t euid);
+int setregid(gid_t rgid, gid_t egid);
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h1 id=&quot;解释器文件&quot;&gt;解释器文件&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;#!bin/bash
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1 id=&quot;system&quot;&gt;system&lt;/h1&gt;
 
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+int system(const char *command);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;fork&lt;/code&gt;+&lt;code&gt;exec&lt;/code&gt;+&lt;code&gt;wait&lt;/code&gt;封装&lt;/p&gt;
+
 &lt;h1 id=&quot;进程会计&quot;&gt;进程会计&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;acct&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+int acct(const char *filename);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不是标准,了解即可&lt;/p&gt;
 
 &lt;h1 id=&quot;进程时间&quot;&gt;进程时间&lt;/h1&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;times&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/times.h&amp;gt;
+clock_t times(struct tms *buf);
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h1 id=&quot;守护进程&quot;&gt;守护进程&lt;/h1&gt;
 
-&lt;h1 id=&quot;系统日志&quot;&gt;系统日志&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-文件系统</title><link href="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="alternate" type="text/html" title="linux编程-文件系统" /><published>2020-05-22T00:00:00+08:00</published><updated>2020-05-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;session:sid&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;setsid&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+pid_t setsid(void);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getpgrp&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+int setpgid(pid_t pid, pid_t pgid);
+pid_t getpgid(pid_t pid);
+pid_t getpgrp(void);                 /* POSIX.1 version */
+pid_t getpgrp(pid_t pid);            /* BSD version */
+int setpgrp(void);                   /* System V version */
+int setpgrp(pid_t pid, pid_t pgid);  /* BSD version */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;单实例守护进程:锁文件:/var/run/name.pid&lt;/p&gt;
+
+&lt;p&gt;启动脚本文件: /etc/rc*…&lt;/p&gt;
+
+&lt;h1 id=&quot;系统日志&quot;&gt;系统日志&lt;/h1&gt;
+
+&lt;p&gt;syslogd服务&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;openlog&lt;/li&gt;
+  &lt;li&gt;syslog&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;syslog.h&amp;gt;
+void openlog(const char *ident, int option, int facility);
+void syslog(int priority, const char *format, ...);
+void closelog(void);
+void vsyslog(int priority, const char *format, va_list ap);
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-文件系统</title><link href="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="alternate" type="text/html" title="linux编程-文件系统" /><published>2020-05-22T00:00:00+08:00</published><updated>2020-05-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;文件系统&quot;&gt;文件系统&lt;/h1&gt;
 
