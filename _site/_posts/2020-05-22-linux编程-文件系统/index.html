@@ -617,11 +617,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    11036字
+    11166字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    37分
+    38分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-xid="/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-flag-title="linux编程-文件系统">
@@ -723,6 +723,8 @@ static off_t flen(const char *filename)
     return fileinfo.st_size;
 }
 </code></pre>
+
+<p><strong>在 Linux 系统中，一个文件实际占用了多大的磁盘空间要看 st_blocks 的数量，而不是看 st_size 的大小</strong>;一般情况下文件系统的一个 block 的大小为 4KB，而每个 st_blocks 是 512B，所以一个有效文件站用磁盘空间最小的大小为 8 个 st_blocks</p>
 
 <p>空洞文件</p>
 
