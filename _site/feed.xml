@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-30T14:47:46+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-31T15:17:41+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -56,11 +56,36 @@ sighandler_t signal(int signum, sighandler_t handler);
 
 &lt;h3 id=&quot;kill&quot;&gt;kill&lt;/h3&gt;
 
+&lt;p&gt;send signal to a process&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;signal.h&amp;gt;
+int kill(pid_t pid, int sig);
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&quot;raise&quot;&gt;raise&lt;/h3&gt;
+
+&lt;p&gt;send a signal to the caller&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
+int raise(int sig);
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;alarm&quot;&gt;alarm&lt;/h3&gt;
 
+&lt;p&gt;set an alarm clock for delivery of a signal&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+unsigned int alarm(unsigned int seconds);
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&quot;pause&quot;&gt;pause&lt;/h3&gt;
+
+&lt;p&gt;wait for signal&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+int pause(void);
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;abort&quot;&gt;abort&lt;/h3&gt;
 

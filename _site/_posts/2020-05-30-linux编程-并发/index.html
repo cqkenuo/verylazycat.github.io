@@ -632,11 +632,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    356字
+    663字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    2分
+    3分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/" data-xid="/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/" data-flag-title="linux编程-并发">
@@ -707,11 +707,36 @@ sighandler_t signal(int signum, sighandler_t handler);
 
 <h3 id="kill">kill</h3>
 
+<p>send signal to a process</p>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;signal.h&gt;
+int kill(pid_t pid, int sig);
+</code></pre>
+
 <h3 id="raise">raise</h3>
+
+<p>send a signal to the caller</p>
+
+<pre><code class="language-c">#include &lt;signal.h&gt;
+int raise(int sig);
+</code></pre>
 
 <h3 id="alarm">alarm</h3>
 
+<p>set an alarm clock for delivery of a signal</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+unsigned int alarm(unsigned int seconds);
+</code></pre>
+
 <h3 id="pause">pause</h3>
+
+<p>wait for signal</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int pause(void);
+</code></pre>
 
 <h3 id="abort">abort</h3>
 
