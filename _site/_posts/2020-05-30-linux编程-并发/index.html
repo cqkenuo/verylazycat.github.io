@@ -347,6 +347,7 @@
           <li><a href="#raise">raise</a></li>
           <li><a href="#alarm">alarm</a></li>
           <li><a href="#pause">pause</a></li>
+          <li><a href="#setitimer">setitimer</a></li>
           <li><a href="#abort">abort</a></li>
           <li><a href="#system">system</a></li>
           <li><a href="#sleep">sleep</a></li>
@@ -358,7 +359,7 @@
         <ol>
           <li><a href="#sigsuspend">sigsuspend</a></li>
           <li><a href="#sigaction">sigaction</a></li>
-          <li><a href="#setitimer">setitimer</a></li>
+          <li><a href="#setitimer-1">setitimer</a></li>
         </ol>
       </li>
       <li><a href="#%E5%AE%9E%E6%97%B6%E4%BF%A1%E5%8F%B7">实时信号</a></li>
@@ -632,7 +633,7 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    663字
+    828字
     
     
     <i class="fas fa-clock fa-fw"></i>
@@ -738,6 +739,14 @@ unsigned int alarm(unsigned int seconds);
 int pause(void);
 </code></pre>
 
+<h3 id="setitimer">setitimer</h3>
+
+<pre><code class="language-c">#include &lt;sys/time.h&gt;
+int getitimer(int which, struct itimerval *curr_value);
+int setitimer(int which, const struct itimerval *new_value,
+struct itimerval *old_value);
+</code></pre>
+
 <h3 id="abort">abort</h3>
 
 <h3 id="system">system</h3>
@@ -754,7 +763,7 @@ int pause(void);
 
 <h3 id="sigaction">sigaction</h3>
 
-<h3 id="setitimer">setitimer</h3>
+<h3 id="setitimer-1">setitimer</h3>
 
 <h2 id="实时信号">实时信号</h2>
 
