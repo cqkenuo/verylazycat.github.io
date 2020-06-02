@@ -359,7 +359,6 @@
         <ol>
           <li><a href="#sigsuspend">sigsuspend</a></li>
           <li><a href="#sigaction">sigaction</a></li>
-          <li><a href="#setitimer-1">setitimer</a></li>
         </ol>
       </li>
       <li><a href="#%E5%AE%9E%E6%97%B6%E4%BF%A1%E5%8F%B7">实时信号</a></li>
@@ -633,11 +632,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    828字
+    2250字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    3分
+    8分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/" data-xid="/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/" data-flag-title="linux编程-并发">
@@ -747,23 +746,94 @@ int setitimer(int which, const struct itimerval *new_value,
 struct itimerval *old_value);
 </code></pre>
 
+<p>尽量用setitimer不要alarm</p>
+
 <h3 id="abort">abort</h3>
+
+<p>cause abnormal process termination</p>
+
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+void abort(void);
+</code></pre>
 
 <h3 id="system">system</h3>
 
+<p>execute a shell command</p>
+
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+int system(const char *command);
+</code></pre>
+
+<p>During  execution  of  the command, SIGCHLD will be blocked, and SIGINT
+       and SIGQUIT will be ignored, in the process that calls system()  (these
+       signals  will  be  handled according to their defaults inside the child
+       process that executes command)</p>
+
 <h3 id="sleep">sleep</h3>
+
+<p>sleep for a specified number of seconds</p>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+unsigned int sleep(unsigned int seconds);
+</code></pre>
 
 <h2 id="信号集">信号集</h2>
 
+<p>sigemptyset, sigfillset, sigaddset, sigdelset, sigismember - POSIX sig‐nal set operations</p>
+
+<p>类型:sigset_t</p>
+
+<pre><code class="language-C">#include &lt;signal.h&gt;
+int sigemptyset(sigset_t *set);
+int sigfillset(sigset_t *set);
+int sigaddset(sigset_t *set, int signum);
+int sigdelset(sigset_t *set, int signum);
+int sigismember(const sigset_t *set, int signum);
+</code></pre>
+
+<ul>
+  <li>sigpending</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;signal.h&gt;
+int sigpending(sigset_t *set);
+</code></pre>
+
 <h2 id="信号屏蔽字pending集的处理">信号屏蔽字/pending集的处理</h2>
+
+<ul>
+  <li>sigprocmask</li>
+</ul>
+
+<p>sigprocmask, rt_sigprocmask - examine and change blocked signals</p>
+
+<pre><code class="language-c">#include &lt;signal.h&gt;
+/* Prototype for the glibc wrapper function */
+int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
+/* Prototype for the underlying system call */
+int rt_sigprocmask(int how, const kernel_sigset_t *set,
+kernel_sigset_t *oldset, size_t sigsetsize);
+/* Prototype for the legacy system call (deprecated) */
+int sigprocmask(int how, const old_kernel_sigset_t *set,
+old_kernel_sigset_t *oldset);
+</code></pre>
+
+<p>联系mask和pending的位图,理解原理</p>
 
 <h2 id="扩展函数">扩展函数</h2>
 
 <h3 id="sigsuspend">sigsuspend</h3>
 
+<pre><code class="language-c">#include &lt;signal.h&gt;
+int sigsuspend(const sigset_t *mask);
+</code></pre>
+
 <h3 id="sigaction">sigaction</h3>
 
-<h3 id="setitimer-1">setitimer</h3>
+<pre><code class="language-c">#include &lt;signal.h&gt;
+int sigaction(int signum, const struct sigaction *act,
+struct sigaction *oldact);
+</code></pre>
 
 <h2 id="实时信号">实时信号</h2>
 

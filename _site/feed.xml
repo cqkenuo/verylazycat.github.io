@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-01T13:34:12+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-02T20:00:25+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -95,23 +95,94 @@ int setitimer(int which, const struct itimerval *new_value,
 struct itimerval *old_value);
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;尽量用setitimer不要alarm&lt;/p&gt;
+
 &lt;h3 id=&quot;abort&quot;&gt;abort&lt;/h3&gt;
+
+&lt;p&gt;cause abnormal process termination&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+void abort(void);
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;system&quot;&gt;system&lt;/h3&gt;
 
+&lt;p&gt;execute a shell command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+int system(const char *command);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;During  execution  of  the command, SIGCHLD will be blocked, and SIGINT
+       and SIGQUIT will be ignored, in the process that calls system()  (these
+       signals  will  be  handled according to their defaults inside the child
+       process that executes command)&lt;/p&gt;
+
 &lt;h3 id=&quot;sleep&quot;&gt;sleep&lt;/h3&gt;
+
+&lt;p&gt;sleep for a specified number of seconds&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+unsigned int sleep(unsigned int seconds);
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;信号集&quot;&gt;信号集&lt;/h2&gt;
 
+&lt;p&gt;sigemptyset, sigfillset, sigaddset, sigdelset, sigismember - POSIX sig‐nal set operations&lt;/p&gt;
+
+&lt;p&gt;类型:sigset_t&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;#include &amp;lt;signal.h&amp;gt;
+int sigemptyset(sigset_t *set);
+int sigfillset(sigset_t *set);
+int sigaddset(sigset_t *set, int signum);
+int sigdelset(sigset_t *set, int signum);
+int sigismember(const sigset_t *set, int signum);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sigpending&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
+int sigpending(sigset_t *set);
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&quot;信号屏蔽字pending集的处理&quot;&gt;信号屏蔽字/pending集的处理&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sigprocmask&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;sigprocmask, rt_sigprocmask - examine and change blocked signals&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
+/* Prototype for the glibc wrapper function */
+int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
+/* Prototype for the underlying system call */
+int rt_sigprocmask(int how, const kernel_sigset_t *set,
+kernel_sigset_t *oldset, size_t sigsetsize);
+/* Prototype for the legacy system call (deprecated) */
+int sigprocmask(int how, const old_kernel_sigset_t *set,
+old_kernel_sigset_t *oldset);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;联系mask和pending的位图,理解原理&lt;/p&gt;
 
 &lt;h2 id=&quot;扩展函数&quot;&gt;扩展函数&lt;/h2&gt;
 
 &lt;h3 id=&quot;sigsuspend&quot;&gt;sigsuspend&lt;/h3&gt;
 
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
+int sigsuspend(const sigset_t *mask);
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&quot;sigaction&quot;&gt;sigaction&lt;/h3&gt;
 
-&lt;h3 id=&quot;setitimer-1&quot;&gt;setitimer&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
+int sigaction(int signum, const struct sigaction *act,
+struct sigaction *oldact);
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;实时信号&quot;&gt;实时信号&lt;/h2&gt;
 
