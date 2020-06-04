@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-02T20:07:10+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-04T10:51:13+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -186,7 +186,126 @@ struct sigaction *oldact);
 
 &lt;h2 id=&quot;实时信号&quot;&gt;实时信号&lt;/h2&gt;
 
-&lt;h1 id=&quot;线程&quot;&gt;线程&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">KMP算法</title><link href="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/" rel="alternate" type="text/html" title="KMP算法" /><published>2020-05-26T00:00:00+08:00</published><updated>2020-05-26T00:00:00+08:00</updated><id>http://localhost:4000/_posts/KMP%E7%AE%97%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;线程&quot;&gt;线程&lt;/h1&gt;
+
+&lt;h2 id=&quot;线程概念&quot;&gt;线程概念&lt;/h2&gt;
+
+&lt;p&gt;posix标准&lt;/p&gt;
+
+&lt;p&gt;openmp线程&lt;/p&gt;
+
+&lt;p&gt;线程标识:pthread_t&lt;/p&gt;
+
+&lt;p&gt;pthread_equal&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;compare thread IDs&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
+int pthread_equal(pthread_t t1, pthread_t t2);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;pthread_self&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;obtain ID of the calling thread&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
+pthread_t pthread_self(void);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;线程创建&quot;&gt;线程创建&lt;/h2&gt;
+
+&lt;p&gt;pthread_create&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;create a new thread&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
+void *(*start_routine) (void *), void *arg);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;线程的调度取决于调度器策略&lt;/p&gt;
+
+&lt;h2 id=&quot;线程终止&quot;&gt;线程终止&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;线程从启动例程返回,返回值就是线程的退出码&lt;/li&gt;
+  &lt;li&gt;线程可以被同一进程中的其他线程取消&lt;/li&gt;
+  &lt;li&gt;线程调用&lt;code&gt;pthread_exi&lt;/code&gt;t函数&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
+void pthread_exit(void *retval);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;pthread_join&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
+int pthread_join(pthread_t thread, void **retval);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;线程的取消选项&quot;&gt;线程的取消选项&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pthread_cancel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;send a cancellation request to a thread&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
+int pthread_cancel(pthread_t thread);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;可取消状态&lt;/li&gt;
+  &lt;li&gt;取消类型(推迟取消)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;取消点必须是系统调用&lt;/p&gt;
+
+&lt;h2 id=&quot;栈清理&quot;&gt;栈清理&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pthread_cleanup_push&lt;/li&gt;
+  &lt;li&gt;pthread_cleanup_pop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;类似钩子函数&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;pthread_cleanup_push, pthread_cleanup_pop - push and pop thread cancel-lation clean-up handlers&lt;/p&gt;
+
+&lt;p&gt;必须匹配使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
+void pthread_cleanup_push(void (*routine)(void *),
+void *arg);
+void pthread_cleanup_pop(int execute);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;线程同步&quot;&gt;线程同步&lt;/h2&gt;
+
+&lt;p&gt;互斥量:&lt;/p&gt;
+
+&lt;h2 id=&quot;线程属性&quot;&gt;线程属性&lt;/h2&gt;
+
+&lt;h2 id=&quot;线程与信号&quot;&gt;线程与信号&lt;/h2&gt;
+
+&lt;h2 id=&quot;线程include-&quot;&gt;线程#include &lt;pthread.h&gt;&lt;/pthread.h&gt;&lt;/h2&gt;
+
+&lt;p&gt;void pthread_cleanup_push(void (*routine)(void *),
+void *arg);
+void pth#include &lt;pthread.h&gt;&lt;/pthread.h&gt;&lt;/p&gt;
+
+&lt;p&gt;void pthread_cleanup_push(void (*routine)(void *),
+void *arg);
+void pthread_cleanup_pop(int execute);read_cleanup_pop(int execute);与fork&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">KMP算法</title><link href="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/" rel="alternate" type="text/html" title="KMP算法" /><published>2020-05-26T00:00:00+08:00</published><updated>2020-05-26T00:00:00+08:00</updated><id>http://localhost:4000/_posts/KMP%E7%AE%97%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;bf&quot;&gt;BF&lt;/h1&gt;
 
