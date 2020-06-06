@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-05T20:59:12+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-06T20:56:44+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -15,7 +15,225 @@
   marginwidth=&quot;0&quot;
   marginheight=&quot;0&quot;
 &gt;&lt;/iframe&gt;
-</subtitle><entry><title type="html">linux编程-并发</title><link href="http://localhost:4000/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/" rel="alternate" type="text/html" title="linux编程-并发" /><published>2020-05-30T00:00:00+08:00</published><updated>2020-05-30T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">linux编程-高级IO</title><link href="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" rel="alternate" type="text/html" title="linux编程-高级IO" /><published>2020-06-06T00:00:00+08:00</published><updated>2020-06-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;非阻塞io&quot;&gt;非阻塞IO&lt;/h1&gt;
+
+&lt;h2 id=&quot;非阻塞io概念&quot;&gt;非阻塞IO概念&lt;/h2&gt;
+
+&lt;p&gt;简单流程:自然流程是结构化的&lt;/p&gt;
+
+&lt;p&gt;复杂流程:自然流程不是结构化的&lt;/p&gt;
+
+&lt;h2 id=&quot;io多路转接&quot;&gt;IO多路转接&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;select&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;synchronous I/O  multiplexing&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;/* According to POSIX.1-2001, POSIX.1-2008 */
+#include &amp;lt;sys/select.h&amp;gt;
+/* According to earlier standards */
+#include &amp;lt;sys/time.h&amp;gt;
+#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+int select(int nfds, fd_set *readfds, fd_set *writefds,
+fd_set *exceptfds, struct timeval *timeout);
+void FD_CLR(int fd, fd_set *set);
+int  FD_ISSET(int fd, fd_set *set);
+void FD_SET(int fd, fd_set *set);
+void FD_ZERO(fd_set *set);
+#include &amp;lt;sys/select.h&amp;gt;
+int pselect(int nfds, fd_set *readfds, fd_set *writefds,
+fd_set *exceptfds, const struct timespec *timeout,
+const sigset_t *sigmask);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;poll&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;wait for some event on a file descriptor&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;poll.h&amp;gt;
+int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+#define _GNU_SOURCE         /* See feature_test_macros(7) */
+#include &amp;lt;signal.h&amp;gt;
+#include &amp;lt;poll.h&amp;gt;
+int ppoll(struct pollfd *fds, nfds_t nfds,
+const struct timespec *tmo_p, const sigset_t *sigmask);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;epoll&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I/O event notification facility&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;查看机制&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;man 7 epoll
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;其他读写函数&quot;&gt;其他读写函数&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;readv&lt;/li&gt;
+  &lt;li&gt;writev&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;read or write data into multiple buffers&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/uio.h&amp;gt;
+ssize_t readv(int fd, const struct iovec *iov, int iovcnt);
+ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
+ssize_t preadv(int fd, const struct iovec *iov, int iovcnt,
+off_t offset);
+ssize_t pwritev(int fd, const struct iovec *iov, int iovcnt,
+off_t offset);
+ssize_t preadv2(int fd, const struct iovec *iov, int iovcnt,
+off_t offset, int flags);
+ssize_t pwritev2(int fd, const struct iovec *iov, int iovcnt,
+off_t offset, int flags);
+struct iovec {
+               void  *iov_base;    /* Starting address */
+               size_t iov_len;     /* Number of bytes to transfer */
+           };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;存储映射io&quot;&gt;存储映射IO&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;mmap&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;map or unmap files or devices into memory&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/mman.h&amp;gt;
+void *mmap(void *addr, size_t length, int prot, int flags,
+int fd, off_t offset);
+int munmap(void *addr, size_t length);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;文件锁&quot;&gt;文件锁&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;lockf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;test or remove a POSIX lock on an open file&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+int lockf(int fd, int cmd, off_t len);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;flock&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;apply or remove an advisory lock on an open file&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/file.h&amp;gt;
+int flock(int fd, int operation);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;有限状态机编程&quot;&gt;有限状态机编程&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">排序算法</title><link href="http://localhost:4000/_posts/2020-06-06-%E6%8E%92%E5%BA%8F/" rel="alternate" type="text/html" title="排序算法" /><published>2020-06-06T00:00:00+08:00</published><updated>2020-06-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%8E%92%E5%BA%8F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-06-%E6%8E%92%E5%BA%8F/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;冒泡排序&quot;&gt;冒泡排序&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/冒泡排序.webp&quot; alt=&quot;冒泡排序&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;void BubbleSort(int *array,int length)
+{
+    if (array == NULL)
+    {
+        fprintf(stderr,&quot;empty\n&quot;);
+        exit(1);
+    }
+    int temp = 0;
+    for (size_t i = 0; i &amp;lt; length; i++)
+    {
+        for (size_t j = i+1; j &amp;lt; length; j++)
+        {
+            if (array[i] &amp;gt; array[j])
+            {
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            } 
+        }          
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;选择排序&quot;&gt;选择排序&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在一个长度为 N 的无序数组中，第一次遍历 n-1 个数找到最小的和第一个数交换。&lt;/li&gt;
+  &lt;li&gt;第二次从下一个数开始遍历 n-2 个数，找到最小的数和第二个数交换。&lt;/li&gt;
+  &lt;li&gt;重复以上操作直到第 n-1 次遍历最小的数和第 n-1 个数交换，排序完成&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/选择排序.gif&quot; alt=&quot;选择排序&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;void SelectSort(int *array,int length)
+{
+    if (array == NULL || length == 0)
+    {
+        fprintf(stderr,&quot;empty\n&quot;);
+        exit(1);
+    }
+    for (size_t i = 0; i &amp;lt; length; i++)
+    {
+        int MinKey = array[i];
+        for (size_t j = i; j &amp;lt; length; j++)
+        {
+            if (MinKey &amp;gt; array[j])
+            {
+                int temp = array[j];
+                array[j] = MinKey;
+                MinKey = temp;
+            } 
+        }
+           array[i] = MinKey;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;快速排序&quot;&gt;快速排序&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;首先设定一个分界值，通过该分界值将数组分成左右两部分。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将大于或等于分界值的数据集中到数组右边，小于分界值的数据集中到数组的左边。此时，左边部分中各元素都小于或等于分界值，而右边部分中各元素都大于或等于分界值。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;然后，左边和右边的数据可以独立排序。对于左侧的数组数据，又可以取一个分界值，将该部分数据分成左右两部分，同样在左边放置较小值，右边放置较大值。右侧的数组数据也可以做类似处理。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;重复上述过程，可以看出，这是一个递归定义。通过递归将左侧部分排好序后，再递归排好右侧部分的顺序。当左、右两个部分各数据排序完成后，整个数组的排序也就完成了&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/img/快速排序.gif&quot; alt=&quot;快速排序&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><category term="算法" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-并发</title><link href="http://localhost:4000/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/" rel="alternate" type="text/html" title="linux编程-并发" /><published>2020-05-30T00:00:00+08:00</published><updated>2020-05-30T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;信号&quot;&gt;信号&lt;/h1&gt;
 
@@ -3522,816 +3740,4 @@ docker run -d -P training/webapp python app.py
   \end{matrix}
   \right\}
   =
-  (125)(3)(4786)=(152)(4786) %]]&gt;&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">置换密码</summary></entry><entry><title type="html">sql-server常用命令总结</title><link href="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="sql-server常用命令总结" /><published>2020-05-12T00:00:00+08:00</published><updated>2020-05-12T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">&lt;ol&gt;
-  &lt;li&gt;
-    &lt;h1 id=&quot;部分语句模板&quot;&gt;部分语句模板&lt;/h1&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;创建数据库&quot;&gt;创建数据库&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Create a new database called 'DatabaseName'
--- Connect to the 'master' database to run this snippet
-USE master
-GO
--- Create the new database if it does not exist already
-IF NOT EXISTS (
-    SELECT name
-        FROM sys.databases
-        WHERE name = N'DatabaseName'
-)
-CREATE DATABASE DatabaseName
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;创建表&quot;&gt;创建表&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Create a new table called 'TableName' in schema 'SchemaName'
--- Drop the table if it already exists
-IF OBJECT_ID('SchemaName.TableName', 'U') IS NOT NULL
-DROP TABLE SchemaName.TableName
-GO
--- Create the table in the specified schema
-CREATE TABLE SchemaName.TableName
-(
-    TableNameId INT NOT NULL PRIMARY KEY, -- primary key column
-    Column1 [NVARCHAR](50) NOT NULL,
-    Column2 [NVARCHAR](50) NOT NULL
-    -- specify more columns here
-);
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;创建存储过程&quot;&gt;创建存储过程&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Create a new stored procedure called 'StoredProcedureName' in schema 'SchemaName'
--- Drop the stored procedure if it already exists
-IF EXISTS (
-SELECT *
-    FROM INFORMATION_SCHEMA.ROUTINES
-WHERE SPECIFIC_SCHEMA = N'SchemaName'
-    AND SPECIFIC_NAME = N'StoredProcedureName'
-)
-DROP PROCEDURE SchemaName.StoredProcedureName
-GO
--- Create the stored procedure in the specified schema
-CREATE PROCEDURE SchemaName.StoredProcedureName
-    @param1 /*parameter name*/ int /*datatype_for_param1*/ = 0, /*default_value_for_param1*/
-    @param2 /*parameter name*/ int /*datatype_for_param1*/ = 0 /*default_value_for_param2*/
--- add more stored procedure parameters here
-AS
-    -- body of the stored procedure
-    SELECT @param1, @param2
-GO
--- example to execute the stored procedure we just created
-EXECUTE SchemaName.StoredProcedureName 1 /*value_for_param1*/, 2 /*value_for_param2*/
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;创建视图&quot;&gt;创建视图&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Create a new view called 'ViewName' in schema 'SchemaName'
--- Drop the view if it already exists
-IF EXISTS (
-SELECT *
-    FROM sys.views
-    JOIN sys.schemas
-    ON sys.views.schema_id = sys.schemas.schema_id
-    WHERE sys.schemas.name = N'SchemaName'
-    AND sys.views.name = N'ViewName'
-)
-DROP VIEW SchemaName.ViewName
-GO
--- Create the view in the specified schema
-CREATE VIEW SchemaName.ViewName
-AS
-    -- body of the view
-    SELECT [Column1],
-        [Column2],
-        [Column3],
-    FROM SchemaName.TableName
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;删除数据库&quot;&gt;删除数据库&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Drop the database 'DatabaseName'
--- Connect to the 'master' database to run this snippet
-USE master
-GO
--- Uncomment the ALTER DATABASE statement below to set the database to SINGLE_USER mode if the drop database command fails because the database is in use.
--- ALTER DATABASE DatabaseName SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
--- Drop the database if it exists
-IF EXISTS (
-  SELECT name
-   FROM sys.databases
-   WHERE name = N'DatabaseName'
-)
-DROP DATABASE DatabaseName
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;删除表&quot;&gt;删除表&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Drop the table 'TableName' in schema 'SchemaName'
-IF EXISTS (
-    SELECT *
-        FROM sys.tables
-        JOIN sys.schemas
-            ON sys.tables.schema_id = sys.schemas.schema_id
-    WHERE sys.schemas.name = N'SchemaName'
-        AND sys.tables.name = N'TableName'
-)
-    DROP TABLE SchemaName.TableName
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;删除字段&quot;&gt;删除字段&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Drop 'ColumnName' from table 'TableName' in schema 'SchemaName'
-ALTER TABLE SchemaName.TableName
-    DROP COLUMN ColumnName
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;删除存储过程&quot;&gt;删除存储过程&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Drop the stored procedure called 'StoredProcedureName' in schema 'SchemaName'
-IF EXISTS (
-SELECT *
-    FROM INFORMATION_SCHEMA.ROUTINES
-WHERE SPECIFIC_SCHEMA = N'SchemaName'
-    AND SPECIFIC_NAME = N'StoredProcedureName'
-)
-DROP PROCEDURE SchemaName.StoredProcedureName
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;删除视图&quot;&gt;删除视图&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Drop the view 'ViewName' in schema 'SchemaName'
-IF EXISTS (
-    SELECT *
-        FROM sys.views
-        JOIN sys.schemas
-            ON sys.views.schema_id = sys.schemas.schema_id
-    WHERE sys.schemas.name = N'SchemaName'
-        AND sys.views.name = N'ViewName'
-)
-    DROP VIEW SchemaName.ViewName
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GetHelp&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;/*
-mssql getting started:
------------------------------
-1. Change language mode to SQL: Open a .sql file or press Ctrl+K M (Cmd+K M on Mac) and choose 'SQL'.
-2. Connect to a database: Press F1 to show the command palette, type 'sqlcon' or 'sql' then click 'Connect'.
-3. Use the T-SQL editor: Type T-SQL statements in the editor using T-SQL IntelliSense or type 'sql' to see a list of code snippets you can tweak &amp;amp; reuse.
-4. Run T-SQL statements: Press F1 and type 'sqlex' or press Ctrl+Shift+e (Cmd+Shift+e on Mac) to execute all the T-SQL code in the editor.
-
-Tip #1: Put GO on a line by itself to separate T-SQL batches.
-Tip #2: Select some T-SQL text in the editor and press `Ctrl+Shift+e` (`Cmd+Shift+e` on Mac) to execute the selection
-*/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;获取空白&quot;&gt;获取空白&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Get the space used by table TableName
-SELECT TABL.name AS table_name,
-INDX.name AS index_name,
-SUM(PART.rows) AS rows_count,
-SUM(ALOC.total_pages) AS total_pages,
-SUM(ALOC.used_pages) AS used_pages,
-SUM(ALOC.data_pages) AS data_pages,
-(SUM(ALOC.total_pages)*8/1024) AS total_space_MB,
-(SUM(ALOC.used_pages)*8/1024) AS used_space_MB,
-(SUM(ALOC.data_pages)*8/1024) AS data_space_MB
-FROM sys.tables AS TABL
-INNER JOIN sys.indexes AS INDX
-ON TABL.object_id = INDX.object_id
-INNER JOIN sys.partitions AS PART
-ON INDX.object_id = PART.object_id
-AND INDX.index_id = PART.index_id
-INNER JOIN sys.allocation_units AS ALOC
-ON PART.partition_id = ALOC.container_id
-WHERE TABL.name LIKE '%TableName%'
-AND INDX.object_id &amp;gt; 255
-AND INDX.index_id &amp;lt;= 1
-GROUP BY TABL.name, 
-INDX.object_id,
-INDX.index_id,
-INDX.name
-ORDER BY Object_Name(INDX.object_id),
-(SUM(ALOC.total_pages)*8/1024) DESC
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;插入表&quot;&gt;插入表&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Insert rows into table 'TableName'
-INSERT INTO TableName
-( -- columns to insert data into
- [Column1], [Column2], [Column3]
-)
-VALUES
-( -- first row: values for the columns in the list above
- Column1_Value, Column2_Value, Column3_Value
-),
-( -- second row: values for the columns in the list above
- Column1_Value, Column2_Value, Column3_Value
-)
--- add more rows here
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;查找表&quot;&gt;查找表&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- List columns in all tables whose name is like 'TableName'
-SELECT 
-    TableName = tbl.TABLE_SCHEMA + '.' + tbl.TABLE_NAME, 
-    ColumnName = col.COLUMN_NAME, 
-    ColumnDataType = col.DATA_TYPE
-FROM INFORMATION_SCHEMA.TABLES tbl
-INNER JOIN INFORMATION_SCHEMA.COLUMNS col 
-    ON col.TABLE_NAME = tbl.TABLE_NAME
-    AND col.TABLE_SCHEMA = tbl.TABLE_SCHEMA
-
-WHERE tbl.TABLE_TYPE = 'BASE TABLE' and tbl.TABLE_NAME like '%TableName%'
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;列举数据库&quot;&gt;列举数据库&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Get a list of databases
-SELECT name FROM sys.databases
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;列举当前数据库的表和视图&quot;&gt;列举当前数据库的表和视图&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Get a list of tables and views in the current database
-SELECT table_catalog [database], table_schema [schema], table_name name, table_type type
-FROM INFORMATION_SCHEMA.TABLES
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;查询&quot;&gt;查询&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Select rows from a Table or View 'TableOrViewName' in schema 'SchemaName'
-SELECT * FROM SchemaName.TableOrViewName
-WHERE 	/* add search conditions here */
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;更新表里面的数据&quot;&gt;更新表里面的数据&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Update rows in table 'TableName'
-UPDATE TableName
-SET
-    [Colum1] = Colum1_Value,
-    [Colum2] = Colum2_Value
-    -- add more columns and values here
-WHERE 	/* add search conditions here */
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;添加字段&quot;&gt;添加字段&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Add a new column 'NewColumnName' to table 'TableName' in schema 'SchemaName'
-ALTER TABLE SchemaName.TableName
-    ADD NewColumnName /*new_column_name*/ int /*new_column_datatype*/ NULL /*new_column_nullability*/
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;删除表里面的行数据&quot;&gt;删除表里面的行数据&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;-- Add a new column 'NewColumnName' to table 'TableName' in schema 'SchemaName'
-ALTER TABLE SchemaName.TableName
-    ADD NewColumnName /*new_column_name*/ int /*new_column_datatype*/ NULL /*new_column_nullability*/
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;h1 id=&quot;详细语句&quot;&gt;详细语句&lt;/h1&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;SELECT&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;SELECT [ALL|DISTINCT][TOP n[PERCENT]]&amp;lt;目标列表达式&amp;gt;[, … n]    [INTO &amp;lt;新表名&amp;gt;]
-FROM &amp;lt;表名&amp;gt;|&amp;lt;视图名&amp;gt;[, … n]
-[WHERE &amp;lt;条件表达式&amp;gt;]
-[GROUP BY &amp;lt;列名l&amp;gt;
-[HAVING &amp;lt;条件表达式&amp;gt;]]
-[ORDER BY &amp;lt;列名2&amp;gt;[ASC|DESC]]；  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;ALL：表示输出所有记录，包括重复记录。DISTINCT表示输出无重
-复结果的记录。TOP n [PERCENT]指定返回查询结果的前n行数据，如
-果指定PERCENT关键字，则返回查询结果的前n%行数据。&lt;/li&gt;
-  &lt;li&gt;
-    &lt;目标列表达式&gt;：描述结果集的列，它制定了结果集中要包含的列的名称。
-&lt;/目标列表达式&gt;
-  &lt;/li&gt;
-  &lt;li&gt;INTO &lt;新表名&gt;：指定使用结果集来创建新表，&lt;新表名&gt;指定新表的名称。&lt;/新表名&gt;&lt;/新表名&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;FROM &lt;表名&gt;|&lt;视图名&gt;：该子句指定从中查询到结果集数据的源表名或源视图名。&lt;/视图名&gt;&lt;/表名&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;WHERE &lt;条件表达式&gt;：该子句是一个筛选条件，它定义了源表或源视图中的行要满足SELECT语句的要求所必须达到的条件。&lt;/条件表达式&gt;&lt;/li&gt;
-  &lt;li&gt;GROUP BY &lt;列名l&gt;：该子句将结果按&lt;列名l&gt;的值进行分组，该属性列值相等的元组为一个组，通常需要在每组上取聚集函数值。&lt;/列名l&gt;&lt;/列名l&gt;&lt;/li&gt;
-  &lt;li&gt;HAVING &lt;条件表达式&gt;：该子句是应用于结果集的附加筛选，用来向使用GROUP BY子句的查询中添加数据过滤准则。&lt;/条件表达式&gt;&lt;/li&gt;
-  &lt;li&gt;ORDER BY &lt;列名2&gt; [ASC|DESC]：该子句定义了结果集中行的排序顺序，升序使用ASC关键字，降序使用DESC关键字，默认为升序。&lt;/列名2&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;确定范围&quot;&gt;确定范围&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;语句BETWEEN…AND…和NOT BETWEEN…AND…可以用来查找属性值在（或不在）指定范围内的元组，其中BETWEEN后是范围的下限（即低值），AND后是范围的上限（即高值）
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;确定集合&quot;&gt;确定集合&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;运算符IN可以用来查找属性值属于指定集合的元组
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;字符匹配&quot;&gt;字符匹配&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;[NOT] LIKE ’&amp;lt;匹配串&amp;gt;’[ESCAPE ’&amp;lt;换码字符&amp;gt;’]
-其含义是查找指定的属性列值与&amp;lt;匹配串&amp;gt;相匹配的元组。&amp;lt;匹配串&amp;gt;可以是一个完整的字符串，也可以含有通配符%和_。其中：
- %（百分号）：代表任意长度（长度可以为0）的字符串。例如a%b表示以a开头，以b结尾的任意长度的字符串。如acb，addgb，ab等都满足该匹配串。
- _（下划线）：代表任意单个字符或汉字。例如a_b表示以a开头，以b结尾的长度为3的任意字符串。如acb，a王b等都满足该匹配串。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;涉及空值的查询例&quot;&gt;涉及空值的查询例&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;where **** IS NULL
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;多重条件查询&quot;&gt;多重条件查询&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;可用逻辑运算符AND和OR来联结多个查询条件。AND的优先级高于OR，但可以用括号改变优先级
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;order-by&quot;&gt;ORDER BY&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;  用户可以用ORDER BY子句对查询结果按照一个或多个属性列的升序（ASC）或降序（DESC）排列，缺省值为升序
-SELECT *** FROM **
-WHERE ***
-ORDER BY *** DESC(ASC)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;带having子句的分组查询&quot;&gt;带HAVING子句的分组查询&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;当完成数据结果的查询和统计后，可以使用HAVING关键字来对查询和统计的结果进行进一步的筛选。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;输出前n行&quot;&gt;输出前n行&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;可以利用TOP语句输出查询结果集的前面若干行元组。也可以利用INTO语句将查询结果集输出到一个新建的数据表中
-SELECT TOP NUMBER ** FROM ***
-WHERE ***
-ORDER BY **
-TOP后面跟数字表示前几行，后跟PERCENT　表示百分比
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;查询结果集输出到新建表中&quot;&gt;查询结果集输出到新建表中&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;INTO子句用于把查询结果存放到一个新建的表中。新建的表名由&amp;lt;新表名&amp;gt;给出，新表的列由SELECT子句中指定的列构成
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;集合并运算&quot;&gt;集合并运算&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;集合并运算是将来自不同查询的结果集合组合起来，形成一个具有综合信息的查询结果集（并集），UNION操作会自动将重复的元组去除。
-SELECT ** FROM **
-WHERE ***
-UNION
-SELECT ** FROM **
-WHERE ***
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;集合交运算&quot;&gt;集合交运算&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;集合交运算是将来自不同查询结果集合中共有的元组组合起来，形成一个具有综合信息的查询结果集（交集）
-SELECT ** FROM **
-WHERE ***
-INTERSECT
-SELECT ** FROM **
-WHERE ***
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;集合差运算&quot;&gt;集合差运算&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;集合差运算是将属于左查询结果集但不属于右查询结果集的元组组合起来，形成一个具有综合信息的查询结果集（差集）。
-SELECT ** FROM **
-WHERE ***
-EXCEPT
-SELECT ** FROM **
-WHERE ***
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;连接查询-内连接&quot;&gt;连接查询-内连接&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;SELECT &amp;lt;目标列表达式&amp;gt; [, … n]
-    FROM &amp;lt;表1&amp;gt; INNER JOIN &amp;lt;表2&amp;gt;
-   ON &amp;lt;连接条件表达式&amp;gt;[, … n]
-注意：连接条件表达式中的各连接字段类型必须是可比的，但名称不必相同。
- USE JXGL
-GO
-SELECT S.*,SC.*
-FROM S INNER JOIN SC
-ON S.SNO=SC.SNO 
-GO 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;连接查询-外连接&quot;&gt;连接查询-外连接&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;(1) 左外连接
-左外连接是对连接条件左边的表不加限制。当左边表元组与右边表元组不匹配时，与右边表的相应列值取NULL。语句格式如下：
-    SELECT &amp;lt;目标列表达式&amp;gt;[, … n]
-    FROM &amp;lt;表1&amp;gt;LEFT[OUTER]JOIN &amp;lt;表2&amp;gt;[, … n]
-    ON &amp;lt;连接条件表达式&amp;gt;
-
-  (2) 右外连接
-右外连接是对连接条件右边的表不加限制。当右边表元组与左边表元组不匹配时，与左边表的相应列值取NULL。语句格式如下：
-SELECT &amp;lt;目标列表达式&amp;gt;[, … n]
-FROM &amp;lt;表1&amp;gt; RIGHT [OUTER] JOIN &amp;lt;表2&amp;gt;[, … n]
-ON &amp;lt;连接条件表达式&amp;gt;
-
-(3) 全外连接
-全外连接是对连接条件的两个表都不加限制。当一边表元组与另一边表元组不匹配时，与另一边表的相应列值取NULL。语句格式如下：
-SELECT &amp;lt;目标列表达式&amp;gt; [, … n]
-FROM &amp;lt;表1&amp;gt; FULL [OUTER] JOIN &amp;lt;表2&amp;gt;[, … n]
-ON &amp;lt;连接条件表达式&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;交叉连接&quot;&gt;交叉连接&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;交叉连接（cross join）也称为笛卡尔积，它是在没有连接条件下的两个表的连接，包含了所连接的两个表中所有元组的全部组合。
-该连接方式在实际应用中是很少的。语句格式如下：
-  SELECT &amp;lt;目标列表达式&amp;gt; [,1 …n]
-  FROM &amp;lt;表1&amp;gt; CROSS JOIN &amp;lt;表2&amp;gt;[,1 …n]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;子查询&quot;&gt;子查询&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;子查询（subquery）是指在一个SELECT查询语句中包含另一个SELECT查询语句，即一个SELECT语句嵌入到另一个SELECT语句中。其中，外层的SELECT语句称为父查询或外查询，嵌入内层的SELECT语句称为子查询或内查询。因此，子查询也称为嵌套查询（nested query）
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;无关子查询&quot;&gt;无关子查询&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;无关子查询的执行不依赖于父查询。它执行的过程是：首先执行子查询语句，得到的子查询结果集传递给父查询语句使用。无关子查询中对父查询没有任何引用
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;例  查询选修了“C3”号课程的学生的姓名和所在专业。
-GO
-SELECT SNAME,SDEPT 
-FROM S
-WHERE SNO IN
-     (SELECT SNO
-      FROM SC
-      WHERE CNO='C3')
-GO 
-注意：子查询的SELECT语句不能使用ORDER BY子句，ORDER BY子句只能对最终查询结果排序。
-
-例6.41 查询其它系中比计算机科学系（CS）某一学生年龄小的学生姓名和年龄。
-    GO
-    SELECT SNAME,AGE
-    FROM S
-    WHERE AGE&amp;lt;ANY(SELECT AGE
-                     FROM S
-                     WHERE SDEPT='CS')
-              AND Sdept&amp;lt;&amp;gt;‘CS’      --注意这是父查询块中的条件
-    GO
-    SQL Server执行此查询时，首先处理子查询，找出CS系中所有学生的年龄，构成一个查询结果集合，如（21，23，22）。然后处理父查询，查找所有不是CS系且年龄小于21或23或22的学生。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;插入子查询结果&quot;&gt;插入子查询结果&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;子查询不仅可以嵌套在SELECT语句中，也可以嵌套在INSERT语句中，用以生成要插入的批量数据。
-    插入子查询结果的INSERT语句的格式为：
-     INSERT  INTO &amp;lt;表名&amp;gt;[(&amp;lt;列名&amp;gt;[, … n)]&amp;lt;子查询&amp;gt; 
-例  对每一个系，求学生的平均年龄，并把结果存入数据库。首先在数据库中建立一个新表，其中一列存放系名，另一列存放相应的学生平均年龄。
-    USE JXGL
-    GO
-    CREATE TABLE DEPT_AGE( SDEPT CHAR(15), AVG_AGE REAL)
-    GO
-    然后对S表按系分组求平均年龄，再把系名和平均年龄存入新表中。
-    USE JXGL
-    GO
-    INSERT  INTO DEPT_AGE(SDEPT,AVG_AGE)
-    SELECT SDEPT,AVG(AGE)
-    FROM S
-    GROUP BY SDEPT
-    GO
-  
-     (2) 带子查询的删除语句
-子查询也可以嵌套在DELETE语句中，用以构造执行删除操作的条件。
-例6.45 删除计算机科学系（CS）所有学生的选课记录。
-  USE JXGL
-  GO
-  DELETE
-  FROM SC
-  WHERE 'CS'=
-      (SELECT SDEPT 
-        FROM S
-       WHERE S.SNO=SC.SNO)
-  GO
-                        
-    (3) 带子查询的修改语句
-子查询也可以嵌套在UPDATE语句中，用以构造修改的条件。
-例  将计算机科学系（CS）全体学生的成绩提高5%。 
-    USE JXGL
-    GO
-    UPDATE SC
-    SET GRADE=GRADE+GRADE*0.05
-    WHERE 'CS'=
-       (SELECT SDEPT
-        FROM S
-        WHERE S.SNO=SC.SNO)
-     GO   
-注意：对某个基本表中数据的增、删、改操作有可能会破坏参照完整性。 
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;游标&quot;&gt;游标&lt;/h2&gt;
-
-&lt;p&gt;声明游标
-和使用其它类型变量一样，使用一个游标之前，必须先声明它。
-    DECLARE CURSOR&lt;游标名&gt;
-    [INSENSITIVE] [SCROLL] CURSOR
-    FOR &lt;SELECT-语句&gt;
-    [FOR READ ONLY|UPDATE[OF &lt;列名&gt;[, … n]]]
-INSENSITIVE：定义的游标所选出来的元组存放在一个临时表中（建立在tempdb数据库中），对该游标的读取操作都有临时表来应答。
- SCROLL：指定游标使用的读取选项，默认时为NEXT，其取值如下表所示。&lt;/列名&gt;&lt;/SELECT-语句&gt;&lt;/游标名&gt;&lt;/p&gt;
-
-&lt;p&gt;SCROLL的取值&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;&lt;strong&gt;SCROLL&lt;/strong&gt;选项&lt;/th&gt;
-      &lt;th&gt;&lt;strong&gt;含 义&lt;/strong&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;FIRST&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;读取游标中的第一行数据。&lt;/strong&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;LAST&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;读取游标中的最后一行数据。&lt;/strong&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;PRIOR&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;读取游标当前位置的上一行数据。&lt;/strong&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;NEXT&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;读取游标当前位置的下一行数据。&lt;/strong&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;RELATIVE n&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;读取游标当前位置之前或之后的第&lt;/strong&gt;n行数据（n为正向前，为负向后）。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;ABSULUTE n&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;读取游标中的第&lt;/strong&gt;n行数据。&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;READ ONLY：表示定义的游标为只读游标，表明不允许使用UPDATE、DELETE语句更新游标内的数据。默认状态下游标允许更新。
-UPDATE[OF&lt;列名&gt;[, … n]]：指定游标内可以更新的列，如果没有指定要更新的列，则表明所有列都允许更新&lt;/列名&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;例  声明一个名为S_Cursor的游标，用以读取计算机科学系（CS）的所有学生的信息。
-USE JXGL
-GO
-DECLARE S_Cursor CURSOR 
-FOR SELECT *
-         FROM S
-         WHERE SDEPT='CS'
-    GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;打开游标
-声明一个游标后，还必须使用OPEN语句打开游标，才能对其进行访问。语句格式如下：
-    OPEN [GLOBAL] &lt;游标名&gt;|&lt;游标变量名&gt;
-参数说明如下：
-GLOBAL：指定游标为全局游标。&lt;/游标变量名&gt;&lt;/游标名&gt;&lt;/p&gt;
-&lt;游标名&gt;：已声明的游标名称。如果一个全局游标与一个局部游标同名，则要使用GLOBAL表明其全局游标。
- &lt;游标变量名&gt;：游标变量的名称，该名称可以引用一个游标
-
-当执行打开游标的语句时，服务器将执行声明游标时使用的SELECT语句。如果声明游标时使用了INSENSITIVE选项，则服务器会在tempdb中建立一个临时表，存放游标将要进行操作的结果集的副本。
-利用OPEN语句打开游标后，游标位于查询结果集的第一个行。同时也可以使用全局变量@@cursor_rows获得最后打开的游标中符合条件的行数。
-
-```mssql
-例  打开例6.47所声明的游标。
-    GO
-    OPEN S_Cursor
-    GO
-```
-
-读取游标
-在打开游标后，就可以利用FETCH语句从查询结果集中读取数据。使用FETCH语句一次可以读取一条记录，具体语句格式如下：
-FETCH [[NEXT|PRIOR|FIRST|LAST
-|ABSOLUTE n|@nvar
-|RELATIVE n|@nvar]
-FROM]
-    [GLOBAL]&lt;游标名&gt;|&lt;游标变量名&gt;
-    [INTO @变量名[, … n]]
-NEXT：返回结果集中当前行的下一行，并将当前行向后移一行。 
-PRIOR：读取紧临当前行的前面一行，并将当前行向前移一行。
-
-FIRST：读取结果集中的第一行并将其设为当前行。
-LAST：读取结果集中的最后一行并将其设为当前行。
-ABSOLUTE n|@nvar：如果n或@nvar为正数，读取从结果集头部开始的第n行，并将返回的行变为新的当前行；如果n或@nvar为负数，读取从结果集尾部之前的第n行，并将返回的行变为新的当前行；如果n或@nvar为0，则没有行返回。
-RELATIVE n | @nvar：如果n或@nvar为正数，则读取当前行之后的第n行，并将返回的行变为新的当前行；如果n或@nvar为负数，则读取当前行之前的第n行，并将返回的行变为新的当前行；如果n或@nvar为0，则读取当前行。
-GLOBAL：指定游标为全局游标。
-INTO @变量名[, … n]：允许读取的数据存放在多个变量中。在变量行中的每个变量必须与结果集中相应的属性列对应（顺序、数据类型等）
-
- @@FETCH_STATUS全局变量返回上次执行FETCH命令的状态。返回值如下：
-0：表示 FETCH 语句成功。
--1：表示FETCH 语句失败或此行不在结果集中。
--2：表示被读取的行不存在。
-
-```mssql
-例 从例6.47所声明的游标中读取数据。
-    GO
-    FETCH NEXT FROM S_Cursor
-    GO
-
-```
-
-关闭游标
-在处理完结果集中数据之后，必须关闭游标来释放结果集。可以使用CLOSE语句来关闭游标，但此语句不释放与游标有关的一切资源。语句格式如下：
-CLOSE[GLOBAL]&lt;游标名&gt;|&lt;游标变量名&gt;
-其中各参数意义与打开命令一致。
-
-```mssql
-例  关闭例6.47所声明的游标。
-     GO
-     CLOSE S_Cursor
-     GO
-```
-
-释放游标
-游标使用不再需要之后，要释放游标，以获取与游标有关的一切资源。语句格式如下：
-DEALLOCATE[GLOBAL]&lt;游标名&gt;|&lt;游标变量名&gt;
-其中各参数意义与打开命令一致。
-
-```mssql
-例  释放例6.47所声明的游标。
-     GO
-     DEALLOCATE S_Cursor
-     GO
-```
-
-## 创建视图
-
-```mssql
-语句格式为：
-     CREATE VIEW &lt;视图名&gt;[(&lt;列名&gt;[, … n ])] 
-     AS 
-      &lt;SELECT查询子句&gt; 
-     [WITH CHECK OPTION] 
-```
-
-```mssql
-例7.2 建立数学系（MA）学生的视图V_MA，并要求进行修改和插入操作时仍需保证该视图只有数学系的学生。 
-USE JXGL
-GO
-CREATE VIEW V_MA
-AS
-SELECT SNO,SNAME,AGE
-FROM S
-WHERE SDEPT='MA'
-WITH CHECK OPTION
-GO    
-由于在定义V_MA视图时加上了WITH CHECK OPTION子句，以后对该视图进行插入、修改和删除操作时，RDBMS会验证条件SDEPT=’MA’。
-```
-
-## 修改视图
-
-```mssql
-T-SQL提供了ALTER VIEW语句修改视图，语句格式如下：
-     ALTER VIEW &lt;视图名&gt;[(&lt;列名&gt;[, … n ])] 
-     AS 
-     &lt;SELECT查询子句&gt; 
-     [WITH CHECK OPTION]
-```
-
-```mssql
-例7.5 修改例7.2中视图V_MA，并要求该视图只查询数学系（MA）的男学生。 
-    USE JXGL
-    GO
-    ALTER VIEW V_MA
-    AS
-    SELECT SNO,SNAME,AGE
-    FROM S
-    WHERE SDEPT='MA' AND SEX='M'
-    WITH CHECK OPTION
-    GO
-```
-
-## 删除视图
-
-DROP VIEW &lt;视图名&gt;
-&lt;/视图名&gt;&lt;/SELECT查询子句&gt;&lt;/列名&gt;&lt;/视图名&gt;&lt;/SELECT查询子句&gt;&lt;/列名&gt;&lt;/视图名&gt;&lt;/游标变量名&gt;&lt;/游标名&gt;&lt;/游标变量名&gt;&lt;/游标名&gt;&lt;/游标变量名&gt;&lt;/游标名&gt;&lt;/游标变量名&gt;&lt;/游标名&gt;</content><author><name></name></author><category term="sql" /><summary type="html">部分语句模板</summary></entry><entry><title type="html">删除文件原理</title><link href="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/" rel="alternate" type="text/html" title="删除文件原理" /><published>2020-05-12T00:00:00+08:00</published><updated>2020-05-12T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/">&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;linux删除文件原理&quot;&gt;LINUX删除文件原理&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Linux是通过link的数量来控制文件删除的，只有当一个文件不存在任何link的时候，这个文件才会被删除。一般来说，每个文件都有2个link计数器:&lt;code&gt;i_count&lt;/code&gt; 和&lt;code&gt;i_link&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;i_count&lt;/code&gt;的意义是当前文件使用者（或被调用）的数量,i_link 的意义是介质连接的数量（硬链接的数量）；可以理解为&lt;code&gt;i_count&lt;/code&gt;是内存引用计数器，i_link是磁盘的引用计数器。&lt;/p&gt;
-
-&lt;p&gt;当一个文件被某一个进程引用时，对应&lt;code&gt;i_count&lt;/code&gt;数就会增加；当创建文件的硬链接的时候，对应&lt;code&gt;i_link&lt;/code&gt;数就会增加&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;**对于删除命令rm而言，实际就是减少磁盘引用计数i_link**。&lt;/code&gt;这里就会有一个问题，如果一个文件正在被某个进程调用，而用户却执行rm操作把文件删除了，那么会出现什么结果呢？当用户执行rm操作删除文件后，再执行ls或者其他文件管理命令，无法再找到这个文件了，但是调用这个删除的文件的进程却在继续正常执行，依然能够从文件中正确的读取及写入内容.&lt;/p&gt;
-
-&lt;p&gt;这是因为rm操作只是将文件的i_link减少了，如果没其它的链接i_link就为0了；但由于该文件依然被进程引用，因此，此时文件对应的i_count并不为0，所以即使执行rm操作，但系统并没有真正删除这个文件，当只有i_link及i_count都为0的时候，这个文件才会真正被删除。也就是说，还需要解除该进程的对该文件的调用才行。&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">LINUX删除文件原理</summary></entry></feed>
+  (125)(3)(4786)=(152)(4786) %]]&gt;&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">置换密码</summary></entry></feed>

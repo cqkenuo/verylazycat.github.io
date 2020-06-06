@@ -4,19 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>MakeMyOs | lazycat</title>
+<title>linux编程-高级IO | lazycat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="MakeMyOs" />
+<meta property="og:title" content="linux编程-高级IO" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="[toc]" />
 <meta property="og:description" content="[toc]" />
-<link rel="canonical" href="http://localhost:4000/_posts/2020-04-08-MakeMyOs/" />
-<meta property="og:url" content="http://localhost:4000/_posts/2020-04-08-MakeMyOs/" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" />
 <meta property="og:site_name" content="lazycat" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-04-08T00:00:00+08:00" />
+<meta property="article:published_time" content="2020-06-06T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"MakeMyOs","dateModified":"2020-04-08T00:00:00+08:00","datePublished":"2020-04-08T00:00:00+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-04-08-MakeMyOs/"},"url":"http://localhost:4000/_posts/2020-04-08-MakeMyOs/","description":"[toc]","@context":"https://schema.org"}</script>
+{"headline":"linux编程-高级IO","dateModified":"2020-06-06T00:00:00+08:00","datePublished":"2020-06-06T00:00:00+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/"},"url":"http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/","description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -334,8 +334,16 @@
 </style>
 
       <ol id="toc">
-  <li><a href="#github">github</a></li>
-  <li><a href="#readme">README</a></li>
+  <li><a href="#%E9%9D%9E%E9%98%BB%E5%A1%9Eio">非阻塞IO</a>
+    <ol>
+      <li><a href="#%E9%9D%9E%E9%98%BB%E5%A1%9Eio%E6%A6%82%E5%BF%B5">非阻塞IO概念</a></li>
+      <li><a href="#io%E5%A4%9A%E8%B7%AF%E8%BD%AC%E6%8E%A5">IO多路转接</a></li>
+      <li><a href="#%E5%85%B6%E4%BB%96%E8%AF%BB%E5%86%99%E5%87%BD%E6%95%B0">其他读写函数</a></li>
+      <li><a href="#%E5%AD%98%E5%82%A8%E6%98%A0%E5%B0%84io">存储映射IO</a></li>
+      <li><a href="#%E6%96%87%E4%BB%B6%E9%94%81">文件锁</a></li>
+    </ol>
+  </li>
+  <li><a href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA%E7%BC%96%E7%A8%8B">有限状态机编程</a></li>
 </ol>
       
       
@@ -584,7 +592,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    MakeMyOs
+    linux编程-高级IO
     <a href="/" title="Home">
       <small>
         lazycat
@@ -599,18 +607,18 @@
   <span class="post-date">
     
     <i class="fas fa-calendar-day fa-fw"></i>
-    08 Apr 2020
+    06 Jun 2020
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    17字
+    1861字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    1分
+    7分
     
     
-    <span class="leancloud-visitors" id="/_posts/2020-04-08-MakeMyOs/" data-xid="/_posts/2020-04-08-MakeMyOs/" data-flag-title="MakeMyOs">
+    <span class="leancloud-visitors" id="/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" data-xid="/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" data-flag-title="linux编程-高级IO">
       <i class="fas fa-book-reader fa-fw"></i>
       <span class="leancloud-visitors-count">
         <i class="fas fa-spinner fa-pulse"></i>
@@ -639,9 +647,143 @@
   </span>
   <p>[toc]</p>
 
-<h1 id="github"><a href="https://github.com/verylazycat/MakeMyOs">github</a></h1>
+<h1 id="非阻塞io">非阻塞IO</h1>
 
-<h1 id="readme"><a href="https://github.com/verylazycat/MakeMyOs/blob/master/README.md">README</a></h1>
+<h2 id="非阻塞io概念">非阻塞IO概念</h2>
+
+<p>简单流程:自然流程是结构化的</p>
+
+<p>复杂流程:自然流程不是结构化的</p>
+
+<h2 id="io多路转接">IO多路转接</h2>
+
+<ul>
+  <li>select</li>
+</ul>
+
+<blockquote>
+  <p>synchronous I/O  multiplexing</p>
+</blockquote>
+
+<pre><code class="language-c">/* According to POSIX.1-2001, POSIX.1-2008 */
+#include &lt;sys/select.h&gt;
+/* According to earlier standards */
+#include &lt;sys/time.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+int select(int nfds, fd_set *readfds, fd_set *writefds,
+fd_set *exceptfds, struct timeval *timeout);
+void FD_CLR(int fd, fd_set *set);
+int  FD_ISSET(int fd, fd_set *set);
+void FD_SET(int fd, fd_set *set);
+void FD_ZERO(fd_set *set);
+#include &lt;sys/select.h&gt;
+int pselect(int nfds, fd_set *readfds, fd_set *writefds,
+fd_set *exceptfds, const struct timespec *timeout,
+const sigset_t *sigmask);
+</code></pre>
+
+<ul>
+  <li>poll</li>
+</ul>
+
+<blockquote>
+  <p>wait for some event on a file descriptor</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;poll.h&gt;
+int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+#define _GNU_SOURCE         /* See feature_test_macros(7) */
+#include &lt;signal.h&gt;
+#include &lt;poll.h&gt;
+int ppoll(struct pollfd *fds, nfds_t nfds,
+const struct timespec *tmo_p, const sigset_t *sigmask);
+</code></pre>
+
+<ul>
+  <li>epoll</li>
+</ul>
+
+<blockquote>
+  <p>I/O event notification facility</p>
+</blockquote>
+
+<p>查看机制</p>
+
+<pre><code class="language-sh">man 7 epoll
+</code></pre>
+
+<h2 id="其他读写函数">其他读写函数</h2>
+
+<ul>
+  <li>readv</li>
+  <li>writev</li>
+</ul>
+
+<blockquote>
+  <p>read or write data into multiple buffers</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/uio.h&gt;
+ssize_t readv(int fd, const struct iovec *iov, int iovcnt);
+ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
+ssize_t preadv(int fd, const struct iovec *iov, int iovcnt,
+off_t offset);
+ssize_t pwritev(int fd, const struct iovec *iov, int iovcnt,
+off_t offset);
+ssize_t preadv2(int fd, const struct iovec *iov, int iovcnt,
+off_t offset, int flags);
+ssize_t pwritev2(int fd, const struct iovec *iov, int iovcnt,
+off_t offset, int flags);
+struct iovec {
+               void  *iov_base;    /* Starting address */
+               size_t iov_len;     /* Number of bytes to transfer */
+           };
+</code></pre>
+
+<h2 id="存储映射io">存储映射IO</h2>
+
+<ul>
+  <li>mmap</li>
+</ul>
+
+<blockquote>
+  <p>map or unmap files or devices into memory</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/mman.h&gt;
+void *mmap(void *addr, size_t length, int prot, int flags,
+int fd, off_t offset);
+int munmap(void *addr, size_t length);
+</code></pre>
+
+<h2 id="文件锁">文件锁</h2>
+
+<ul>
+  <li>lockf</li>
+</ul>
+
+<blockquote>
+  <p>test or remove a POSIX lock on an open file</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int lockf(int fd, int cmd, off_t len);
+</code></pre>
+
+<ul>
+  <li>flock</li>
+</ul>
+
+<blockquote>
+  <p>apply or remove an advisory lock on an open file</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/file.h&gt;
+int flock(int fd, int operation);
+</code></pre>
+
+<h1 id="有限状态机编程">有限状态机编程</h1>
 
 </div>
 <div class="v">
