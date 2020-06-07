@@ -56,6 +56,15 @@
     } ,
   
     {
+      "title"    : "HashMap实现原理",
+      "category" : "",
+      "tags"     : "JAVA",
+      "date"     : "2020-05-21 00:00:00 +0800",
+      
+      "url"      : "/_posts/2020-05-21-HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86;/"
+    } ,
+  
+    {
       "title"    : "linux编程",
       "category" : "",
       "tags"     : "linux",
@@ -155,15 +164,6 @@
     } ,
   
     {
-      "title"    : "JAVA一些问题三",
-      "category" : "",
-      "tags"     : "JAVA",
-      "date"     : "2020-05-07 00:00:00 +0800",
-      
-      "url"      : "/_posts/2020-05-07-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/"
-    } ,
-  
-    {
       "title"    : "新型冠状肺炎数据可视化",
       "category" : "",
       "tags"     : "数据可视化",
@@ -182,30 +182,12 @@
     } ,
   
     {
-      "title"    : "JAVA一些问题二",
-      "category" : "",
-      "tags"     : "JAVA",
-      "date"     : "2020-05-06 00:00:00 +0800",
-      
-      "url"      : "/_posts/2020-05-06-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%BA%8C/"
-    } ,
-  
-    {
       "title"    : "数据结构－二叉树",
       "category" : "",
       "tags"     : "数据结构",
       "date"     : "2020-05-05 00:00:00 +0800",
       
       "url"      : "/_posts/2020-05-05-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/"
-    } ,
-  
-    {
-      "title"    : "JAVA一些问题一",
-      "category" : "",
-      "tags"     : "JAVA",
-      "date"     : "2020-05-05 00:00:00 +0800",
-      
-      "url"      : "/_posts/2020-05-05-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%80/"
     } ,
   
     {
@@ -238,7 +220,7 @@
     {
       "title"    : "MakeMyOs",
       "category" : "",
-      "tags"     : "linux",
+      "tags"     : "操作系统",
       "date"     : "2020-04-08 00:00:00 +0800",
       
       "url"      : "/_posts/2020-04-08-MakeMyOs/"
