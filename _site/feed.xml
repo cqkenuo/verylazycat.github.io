@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-07T22:11:55+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-09T10:42:45+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -15,7 +15,385 @@
   marginwidth=&quot;0&quot;
   marginheight=&quot;0&quot;
 &gt;&lt;/iframe&gt;
-</subtitle><entry><title type="html">linux编程-高级IO</title><link href="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" rel="alternate" type="text/html" title="linux编程-高级IO" /><published>2020-06-06T00:00:00+08:00</published><updated>2020-06-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">linux编程-进程间通信</title><link href="http://localhost:4000/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" rel="alternate" type="text/html" title="linux编程-进程间通信" /><published>2020-06-09T00:00:00+08:00</published><updated>2020-06-09T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;管道&quot;&gt;管道&lt;/h1&gt;
+
+&lt;h2 id=&quot;内核提供单工自同步机制&quot;&gt;内核提供,单工,自同步机制&lt;/h2&gt;
+
+&lt;h2 id=&quot;匿名管道&quot;&gt;匿名管道&lt;/h2&gt;
+
+&lt;p&gt;pipe&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;create pipe&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
+int pipe(int pipefd[2]);
+#define _GNU_SOURCE             /* See feature_test_macros(7) */
+#include &amp;lt;fcntl.h&amp;gt;              /* Obtain O_* constant definitions */
+#include &amp;lt;unistd.h&amp;gt;
+int pipe2(int pipefd[2], int flags);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;命名管道&quot;&gt;命名管道&lt;/h2&gt;
+
+&lt;h1 id=&quot;xsi&quot;&gt;XSI&lt;/h1&gt;
+
+&lt;p&gt;IPC -&amp;gt; Internet Process Communication&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;ipcs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;key:ftok&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;convert  a pathname and a project identifier to a System V IPC key&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/ipc.h&amp;gt;
+key_t ftok(const char *pathname, int proj_id);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Message Queues&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;msgget&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;get a System V message queue identifier&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/ipc.h&amp;gt;
+#include &amp;lt;sys/msg.h&amp;gt;
+int msgget(key_t key, int msgflg);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;msgop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;System V message queue operations&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/ipc.h&amp;gt;
+#include &amp;lt;sys/msg.h&amp;gt;
+int msgsnd(int msqid, const void *msgp, size_t msgsz, int msgflg);
+ssize_t msgrcv(int msqid, void *msgp, size_t msgsz, long msgtyp,
+int msgflg);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;msgctl&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;System V message control operations&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/ipc.h&amp;gt;
+#include &amp;lt;sys/msg.h&amp;gt;
+int msgctl(int msqid, int cmd, struct msqid_ds *buf);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Semaphore Arrays&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;semget&lt;/li&gt;
+  &lt;li&gt;semop&lt;/li&gt;
+  &lt;li&gt;semctl&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Shared Memory&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;shmget&lt;/li&gt;
+  &lt;li&gt;shmop&lt;/li&gt;
+  &lt;li&gt;shmctl&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;网络套接字socket&quot;&gt;网络套接字socket&lt;/h1&gt;
+
+&lt;h2 id=&quot;字节序问题&quot;&gt;字节序问题&lt;/h2&gt;
+
+&lt;p&gt;大端:低地址放高字节&lt;/p&gt;
+
+&lt;p&gt;小端:低地址放低字节&lt;/p&gt;
+
+&lt;h2 id=&quot;报式套接字&quot;&gt;报式套接字&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;socket&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;create an endpoint for communication&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;          /* See NOTES */
+#include &amp;lt;sys/socket.h&amp;gt;
+int socket(int domain, int type, int protocol);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;bind&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;bind a name to a socket&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;          /* See NOTES */
+#include &amp;lt;sys/socket.h&amp;gt;
+int bind(int sockfd, const struct sockaddr *addr,
+socklen_t addrlen);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sendto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;send a message on a socket&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/socket.h&amp;gt;
+ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,
+const struct sockaddr *dest_addr, socklen_t addrlen);
+ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;rcvfrom&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;inet_pton&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;convert IPv4 and IPv6 addresses from text to binary form&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;arpa/inet.h&amp;gt;
+int inet_pton(int af, const char *src, void *dst);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;inet_ntop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;convert IPv4 and IPv6 addresses from binary to text form&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;arpa/inet.h&amp;gt;
+const char *inet_ntop(int af, const void *src,
+char *dst, socklen_t size);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;getsockopt&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;setsockopt&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;get and set options on sockets&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;          /* See NOTES */
+#include &amp;lt;sys/socket.h&amp;gt;
+int getsockopt(int sockfd, int level, int optname,
+void *optval, socklen_t *optlen);
+int setsockopt(int sockfd, int level, int optname,
+const void *optval, socklen_t optlen);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;多点通讯&quot;&gt;多点通讯&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;广播
+    &lt;ul&gt;
+      &lt;li&gt;全网广播&lt;/li&gt;
+      &lt;li&gt;子网广播&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;多播/组播&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;流式套接字&quot;&gt;流式套接字&lt;/h2&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">虚拟内存</title><link href="http://localhost:4000/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" rel="alternate" type="text/html" title="虚拟内存" /><published>2020-06-08T00:00:00+08:00</published><updated>2020-06-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;概念&quot;&gt;概念&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;虚拟内存是计算机系统内存管理的一种技术。它使得应用程序认为它拥有连续可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;现代所有用于一般应用的操作系统都对普通的应用程序使用虚拟内存技术，老一些的操作系统，如DOS和1980年代的Windows，或者那些1960年代的大型机，一般都没有虚拟内存的功能&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在很久以前,程序指令所访问的内存地址就是物理内存地址,也就是不得不把程序的全部装进内存当中，然后运行。&lt;/p&gt;
+
+&lt;p&gt;物理内存其实就是插在计算机主板内存槽上的实际物理内存，CPU可以直接进行寻址。物理内存的容量是固定的，但是寻址空间却取决于cpu地址线条数，如32位机，则寻址空间为2^32 = 4G，所以最大支只持4G的寻址空间，即使插了8G的内存条也只能使用4G内存;&lt;/p&gt;
+
+&lt;h1 id=&quot;直接使用物理内存产生的问题&quot;&gt;直接使用物理内存产生的问题&lt;/h1&gt;
+
+&lt;p&gt;在这种直接使用物理内存的状态下就会产生一些问题:&lt;/p&gt;
+
+&lt;h2 id=&quot;内存空间利用率的问题&quot;&gt;内存空间利用率的问题&lt;/h2&gt;
+
+&lt;p&gt;各个进程对内存的使用会导致内存碎片化，当要用malloc分配一块很大的内存空间时，可能会出现虽然有足够多的空闲物理内存，却没有足够大的连续空闲内存这种情况，东一块西一块的内存碎片就被浪费掉了&lt;/p&gt;
+
+&lt;h2 id=&quot;读写内存的安全性问题&quot;&gt;读写内存的安全性问题&lt;/h2&gt;
+
+&lt;p&gt;物理内存本身是不限制访问的，任何地址都可以读写，而现代操作系统需要实现不同的页面具有不同的访问权限，例如只读的数据等等&lt;/p&gt;
+
+&lt;h2 id=&quot;进程间的安全问题&quot;&gt;进程间的安全问题&lt;/h2&gt;
+
+&lt;p&gt;各个进程之间没有独立的地址空间，一个进程由于执行错误指令或是恶意代码都可以直接修改其它进程的数据，甚至修改内核地址空间的数据，这是操作系统所不愿看到的&lt;/p&gt;
+
+&lt;h2 id=&quot;内存读写的效率问题&quot;&gt;内存读写的效率问题&lt;/h2&gt;
+
+&lt;p&gt;当多个进程同时运行，需要分配给进程的内存总和大于实际可用的物理内存时，需要将其他程序暂时拷贝到硬盘当中，然后将新的程序装入内存运行。由于大量的数据频繁装入装出，内存的使用效率会非常低&lt;/p&gt;
+
+&lt;h1 id=&quot;什么是虚拟内存&quot;&gt;什么是虚拟内存&lt;/h1&gt;
+
+&lt;p&gt;每个进程创建加载的时候，会被分配一个大小为4G的连续的虚拟地址空间，虚拟的意思就是，其实这个地址空间时不存在的，仅仅是每个进程“认为”自己拥有4G的内存，而实际上，它用了多少空间，操作系统就在磁盘上划出多少空间给它，等到进程真正运行的时候，需要某些数据并且数据不在物理内存中，才会触发缺页异常，进行数据拷贝&lt;/p&gt;
+
+&lt;p&gt;更准确一点的说，系统将虚拟内存分割为称为虚拟页(Virtual Page,VP)的大小固定的块，每个虚拟页的大小为P =  2^p字节，类似地，物理内存被分割为物理页(Physical Page,PP)，大小也为P字节（物理页也称为页帧(page frame)）&lt;/p&gt;
+
+&lt;p&gt;在任意时刻，虚拟页面都分为互不相交的三种：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;未分配的：系统还未分配（或者创建）的页。未分配的块没有任何数据和它们相关联，因此也就不占用任何磁盘空间&lt;/li&gt;
+  &lt;li&gt;未缓存的：没有缓存在物理存储器中的已分配页&lt;/li&gt;
+  &lt;li&gt;缓存的：当前缓存在物理存储器中的已分配页&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下图是一个示例：&lt;img src=&quot;/img/虚拟存储器.jpg&quot; alt=&quot;虚拟存储器&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个示例展示了一个有8个虚拟页的小虚拟存储器，虚拟页0和3还没有被分配，因此在磁盘上还不存在。虚拟页1、4和6被缓存在物理存储器中。页2、5和7已经被分配了，但是当前并未缓存在主存中&lt;/p&gt;
+
+&lt;p&gt;操作系统向进程描述了一个完整的连续的虚拟地址空间供进程使用，但是在物理内存中进程数据的存储采用离散式存储(提高内存利用率)，但是其实虚拟内存和物理内存之间的关系并不像上图中那样直接，其中还需要使用页表映射虚拟地址与物理地址的映射关系，并且通过页表实现内存访问控制。&lt;/p&gt;
+
+&lt;h1 id=&quot;页表&quot;&gt;页表&lt;/h1&gt;
+
+&lt;p&gt;页表是一种特殊的数据结构，存放着各个虚拟页的状态，是否映射，是否缓存.。进程要知道哪些内存地址上的数据在物理内存上，哪些不在，还有在物理内存上的哪里，这就需要用页表来记录。页表的每一个表项分为两部分，第一部分记录此页是否在物理内存上，第二部分记录物理内存页的地址(如果在的话)。当进程访问某个虚拟地址，就会先去看页表，如果发现对应的数据不在物理内存中，则发生缺页异常。&lt;/p&gt;
+
+&lt;p&gt;缺页异常的事等下再说，先体会一下虚拟内存究竟是如何通过页表与物理内存联系起来的，再看一个示例：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/页表.jpg&quot; alt=&quot;页表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图中展示了一个页表的基本组织结构，页表就是一个页表条目(Page Table  Entry,PTE)的数组，每个PTE由一个有效位(valid  bit)和一个地址组成，有效位表明了该虚拟页当前是否存在于物理内存中，如果有效位是1，该PTE中就会存储物理内存中相应的物理页的起始地址。如果有效位是0，且PTE中的地址为null，这表示这个虚拟页还未被分配，而如果有效位是0且PTE中有地址，那么这个地址指向该虚拟页在磁盘上的起始位置&lt;/p&gt;
+
+&lt;p&gt;上图的示例展示了一个有8个虚拟页和4个物理页的系统的页表，四个虚拟页（VP1、VP2、VP4和VP7）当前存储于物理内存中，两个页（VP0和VP5）还未被分配（也就是什么都没存的虚拟内存，在磁盘和物理内存中都不存在这个空间），而剩下的页（VP3和VP6）已经被分配了，但是还未缓存进物理内存（也就是存在于磁盘上）&lt;/p&gt;
+
+&lt;p&gt;在上面的过程中，CPU读包含在VP1中的一个数据时，地址翻译硬件将虚拟地址作为一个索引找到页表中的PTE 2，然后再从PTE 2中保存的物理地址从真正的物理内存中读到这个数据，在有效位为1的PTE中成功找到对应的物理页就称之为页命中&lt;/p&gt;
+
+&lt;p&gt;而当试图访问一个有效位为0，但PTE中又保存了地址的虚拟内存中的数据时（也就是VP3和VP6的情况，数据保存在磁盘中），就是DRAM缓存不命中，一般将这种状况称为缺页异常(page  fault)。触发缺页异常后，系统会调用内核中的缺页异常处理程序，该程序会选择一个牺牲页(牺牲页的选择有具体的算法，在这里不做讨论)，在此例中就是存放在PP3中的VP4，内核将修改后的VP4重新拷贝回磁盘，并且修改VP4中的页表条目，将有效位改成0，反映出VP4不再存在于物理内存中这一事实。接下来，内核从磁盘拷贝VP3到存储器中的PP3，更新PTE3，随后返回。当异常处理程序返回时，它会重新启动导致缺页的指令，再次从试图访问该虚拟地址开始，这时有效位是1，于是正常页命中，从物理地址中读取内存&lt;/p&gt;
+
+&lt;h1 id=&quot;虚拟内存的工作原理&quot;&gt;虚拟内存的工作原理&lt;/h1&gt;
+
+&lt;p&gt;当一个进程试图访问虚拟地址空间中的某个数据时，会经历下面两种情况的过程:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;CPU想访问某个虚拟内存地址，找到进程对应的页表中的条目，判断有效位， 如果有效位为1，说明在页表条目中的物理内存地址不为空，根据物理内存地址，访问物理内存中的内容，返回&lt;/li&gt;
+  &lt;li&gt;CPU想访问某个虚拟内存地址，找到进程对应的页表中的条目，判断有效位，如果有效位为0，但页表条目中还有地址，这个地址是磁盘空间的地址，这时触发缺页异常，系统把物理内存中的一些数据拷贝到磁盘上，腾出所需的空间，并且更新页表。此时重新执行访问之前虚拟内存的指令，就会发现变成了情况1.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><category term="操作系统" /><summary type="html">[toc]</summary></entry><entry><title type="html">进程虚拟地址空间区域划分</title><link href="http://localhost:4000/_posts/2020-06-08-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/" rel="alternate" type="text/html" title="进程虚拟地址空间区域划分" /><published>2020-06-08T00:00:00+08:00</published><updated>2020-06-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-08-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;首先要知道一点，程序由磁盘加载到内存时是不可能直接加载到物理内存当中的，这里的原因以及物理内存和虚拟内存的区别与联系在本篇先不做讨论&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本篇接下来所讨论的范围在x86体系32位Linux环境下&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Linux系统会给当前每一个进程分配一个2^32位大小(4G)的一块空间，这块空间就叫做进程的虚拟地址空间&lt;/p&gt;
+
+&lt;p&gt;这里附上IBM公司关于&lt;strong&gt;虚拟&lt;/strong&gt;的解释:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;它存在，你看得见，它是物理的&lt;/li&gt;
+  &lt;li&gt;它存在，你看不见，它是透明的&lt;/li&gt;
+  &lt;li&gt;它不存在，你看得见，它是虚拟的&lt;/li&gt;
+  &lt;li&gt;它不存在，你看不见，它被删除&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这块空间的内容如下图所示:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/内存空间.png&quot; alt=&quot;内存空间&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接下来分别阐述每块空间的作用:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;从0x00000000到0x08048000的这段空间是预留的，是不能访问的，例如对空指针进行访问程序就会崩溃&lt;/li&gt;
+  &lt;li&gt;程序运行时产生的指令就放在.text段（代码段）。这一段同时也保存了只读数据（read only data），例如char* p = “hello world”中的”hello world”，在这里，当想进行*p = ‘a’操作时可以通过编译但运行会崩溃（在比较新的c++编译器中不允许用普通指针指向常量字符串），因为该段是只能读但不能写的。&lt;/li&gt;
+  &lt;li&gt;.data存放了初始化了的且初始化的值不为0的数据&lt;/li&gt;
+  &lt;li&gt;.bss存放未初始化及初始化为0的数据,打印未初始化的全局变量会看到值为0，因为存放于.bss段，操作系统会将.bss段的数据全部赋值为0&lt;/li&gt;
+  &lt;li&gt;堆（heap），在《深入理解计算机系统》中的名称是运行时堆（由malloc创建），也就是说这里的堆空间是暂时没有的，当程序运行，new或malloc之后才会分配堆内存，由低地址向高地址增长&lt;/li&gt;
+  &lt;li&gt;加载共享库，也就是动态链接库，Windows下是&lt;em&gt;.dll,Linux下是&lt;/em&gt;so&lt;/li&gt;
+  &lt;li&gt;stack 函数运行或产生线程时，每一个函数/线程独有的栈空间，由高地址向低地址增长的&lt;/li&gt;
+  &lt;li&gt;命令行参数和环境变量，命令行参数如main函数传参，环境变量如搜索头文件、库文件时默认的路径&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;通过分析具体代码的方式体会虚拟地址空间的划分:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;int g_data1 = 10;
+int g_data2 = 0;
+int g_data3;
+
+static int g_data4 = 11;
+static int g_data5 = 0;
+static int g_data6;
+
+int main(){
+    int a = 12;
+    int b = 0;
+    int c;
+
+    static int e = 13;
+    static int f = 0;
+    static int g;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在上面的程序中，所有的全局变量（g_data），不管是普通的还是静态（static）的，每一个在编译后的符号表中都会产生符号，他们叫做数据。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;g_data1和g_data4都是初始化了的且初始化的值不为0的，所以它们放在.data段&lt;/li&gt;
+  &lt;li&gt;g_data3和g_data6都是未初始化的，g_data2和g_data5虽然已经初始化但初始化值为0，所以它们都放在.bss段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;而在main函数中，a、b、c三个局部变量并不会在符号表中产生符号，它们生成的是指令，例如int a = 12;在x86架构的汇编中产生的是mov dword ptr[a],0Ch指令，也就是将0Ch(12)移入a的内存，所以它们三个其实是放在指令段（.text）的
+main函数中的e、f、g三个静态局部变量也是放在数据段的，但是程序启动时不会初始化，当程序运行到该条语句时才会初始化，它们的存储位置与全局变量相同&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e是初始化且不为0的，放在.data段&lt;/li&gt;
+  &lt;li&gt;f虽然初始化但初始化值为0，g未初始化，所以都放在.bss段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在这里，如果打印c，c的值不会为0，而打印g的值为0，原因就是g存放在.bss段，操作系统自动赋初值为0了.&lt;/p&gt;
+
+&lt;p&gt;同时这里理解时可能会产生一个问题，通常我们说局部变量是在栈上，为什么这里说是指令保存在指令段呢？事实上，int a = 12这句代码在编译时产生的是一条指令，这个指令保存在.text段，而在运行时，系统会在当前进程的栈上给函数开辟一个栈帧，该指令运行时会在栈上开辟一段4个字节的空间存放“12”这个整数&lt;/p&gt;
+
+&lt;p&gt;同时对于这一部分也要注意，每一个进程的用户空间是私有的，但是内核空间是共享的。这也就是进程间通信比较困难的原因，而进程间通信方式的一种，匿名管道通信其实就是在内核空间中划分出一片内存，每个进程就都可以在这片空间写入数据给其他进程看，由此实现通信的目的&lt;/p&gt;</content><author><name></name></author><category term="操作系统" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-高级IO</title><link href="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" rel="alternate" type="text/html" title="linux编程-高级IO" /><published>2020-06-06T00:00:00+08:00</published><updated>2020-06-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;非阻塞io&quot;&gt;非阻塞IO&lt;/h1&gt;
 
@@ -2177,1870 +2555,4 @@ public class MyTest {
 
 &lt;p&gt;如果我们已经对HashMap的原理有了一定了解，这个结果就不难理解了。尽管我们在进行get和put操作的时候，使用的key从逻辑上讲是等值的（通过equals比较是相等的），但由于没有重写hashCode方法，所以put操作时，key(hashcode1)–&amp;gt;hash–&amp;gt;indexFor–&amp;gt;最终索引位置 ，而通过key取出value的时候  key(hashcode1)–&amp;gt;hash–&amp;gt;indexFor–&amp;gt;最终索引位置，由于hashcode1不等于hashcode2，导致没有定位到一个数组位置而返回逻辑上错误的值null（也有可能碰巧定位到一个数组位置，但是也会判断其entry的hash值是否相等，上面get方法中有提到。）&lt;/p&gt;
 
-&lt;p&gt;　　所以，在重写equals的方法的时候，必须注意重写hashCode方法，同时还要保证通过equals判断相等的两个对象，调用hashCode方法要返回同样的整数值。而如果equals判断不相等的两个对象，其hashCode可以相同（只不过会发生哈希冲突，应尽量避免）。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程</title><link href="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/" rel="alternate" type="text/html" title="linux编程" /><published>2020-05-20T00:00:00+08:00</published><updated>2020-05-20T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-IO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;error&quot;&gt;ERROR&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;vim /usr/include/asm-generic/errno-base.h 
-errno.h 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#ifndef _ASM_GENERIC_ERRNO_BASE_H
-#define _ASM_GENERIC_ERRNO_BASE_H
-
-#define EPERM            1      /* Operation not permitted */
-#define ENOENT           2      /* No such file or directory */
-#define ESRCH            3      /* No such process */
-#define EINTR            4      /* Interrupted system call */
-#define EIO              5      /* I/O error */
-#define ENXIO            6      /* No such device or address */
-#define E2BIG            7      /* Argument list too long */
-#define ENOEXEC          8      /* Exec format error */
-#define EBADF            9      /* Bad file number */
-#define ECHILD          10      /* No child processes */
-#define EAGAIN          11      /* Try again */
-#define ENOMEM          12      /* Out of memory */
-#define EACCES          13      /* Permission denied */
-#define EFAULT          14      /* Bad address */
-#define ENOTBLK         15      /* Block device required */
-#define EBUSY           16      /* Device or resource busy */
-#define EEXIST          17      /* File exists */
-#define EXDEV           18      /* Cross-device link */
-#define ENODEV          19      /* No such device */
-#define ENOTDIR         20      /* Not a directory */
-#define EISDIR          21      /* Is a directory */
-#define EINVAL          22      /* Invalid argument */
-#define ENFILE          23      /* File table overflow */
-#define EMFILE          24      /* Too many open files */
-#define ENOTTY          25      /* Not a typewriter */
-#define ETXTBSY         26      /* Text file busy */
-#define EFBIG           27      /* File too large */
-#define ENOSPC          28      /* No space left on device */
-#define ESPIPE          29      /* Illegal seek */
-#define EROFS           30      /* Read-only file system */
-#define EMLINK          31      /* Too many links */
-#define EPIPE           32      /* Broken pipe */
-#define EDOM            33      /* Math argument out of domain of func */
-#define ERANGE          34      /* Math result not representable */
-#endif
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;man手册&quot;&gt;man手册&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;第一章:基本命令&lt;/li&gt;
-  &lt;li&gt;第二章:系统调用&lt;/li&gt;
-  &lt;li&gt;第三章:标准库函数&lt;/li&gt;
-  &lt;li&gt;第七章:体系结构&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;宏和函数&quot;&gt;宏和函数&lt;/h2&gt;
-
-&lt;p&gt;宏占用编译时间,函数占用运行时间,不过更安全&lt;/p&gt;
-
-&lt;h1 id=&quot;io&quot;&gt;IO&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;一切实现的基础&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;input&lt;/code&gt;&amp;amp;&lt;code&gt;output&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;实现:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code&gt;stdio&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;sysio&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;优先考虑stdio,扩展性更好,不同平台底层不一样.&lt;/p&gt;
-
-&lt;h2 id=&quot;errorno-to-error_msg&quot;&gt;errorno to error_msg&lt;/h2&gt;
-
-&lt;p&gt;更直观展示错误内容&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;perror (关联全局变量errorno)&lt;/li&gt;
-  &lt;li&gt;strerror&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;file结构体&quot;&gt;FILE结构体&lt;/h2&gt;
-
-&lt;p&gt;….&lt;/p&gt;
-
-&lt;h2 id=&quot;常用函数&quot;&gt;常用函数&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fopen&lt;/li&gt;
-  &lt;li&gt;fclose&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;NAME
-       fopen, fdopen, freopen - stream open functions
-SYNOPSIS
-       #include &amp;lt;stdio.h&amp;gt;
-       FILE *fopen(const char *pathname, const char *mode);
-       FILE *fdopen(int fd, const char *mode);
-       FILE *freopen(const char *pathname, const char *mode, FILE *stream);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;const&lt;/code&gt;参数,安全性;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;mode&lt;/code&gt;:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;r&lt;/th&gt;
-      &lt;th&gt;for read&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r+&lt;/td&gt;
-      &lt;td&gt;reading and writing&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;w&lt;/td&gt;
-      &lt;td&gt;truncate fileto zero length or create text  file  for  writing&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;w+&lt;/td&gt;
-      &lt;td&gt;open for reading and writing&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;a&lt;/td&gt;
-      &lt;td&gt;open for appending&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;a+&lt;/td&gt;
-      &lt;td&gt;open for reading and appending&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;返回:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;RETURN VALUE
-       Upon successful completion fopen(), fdopen()  and  freopen()  return  a
-       FILE pointer.  Otherwise, NULL is returned and errno is set to indicate
-       the error.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;error 一个&lt;code&gt;全局变量&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;FILE 创建的指针在栈,静态区,或者堆???&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;FILE *fopen(const char *pathname, const char *mode);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在堆上;&lt;/p&gt;
-
-&lt;p&gt;如果一个操作成对出现使用,&lt;code&gt;一般&lt;/code&gt;放在&lt;code&gt;堆&lt;/code&gt;上&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;是资源一定有上限&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;fopen打开&lt;code&gt;流&lt;/code&gt;是有上限的,一般体现出来的数量是&lt;code&gt;1021&lt;/code&gt;,其实真实打开的是&lt;code&gt;1024&lt;/code&gt;个,有&lt;code&gt;3&lt;/code&gt;个默认&lt;code&gt;流&lt;/code&gt;:&lt;code&gt;stdout&lt;/code&gt;,&lt;code&gt;stdinput&lt;/code&gt;,&lt;code&gt;stderr&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Linux&lt;/code&gt;具体限制参考:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;ulimit -a&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;-t: cpu time (seconds)              unlimited
--f: file size (blocks)              unlimited
--d: data seg size (kbytes)          unlimited
--s: stack size (kbytes)             8192
--c: core file size (blocks)         0
--m: resident set size (kbytes)      unlimited
--u: processes                       31073
--n: file descriptors                1024
--l: locked-in-memory size (kbytes)  16384
--v: address space (kbytes)          unlimited
--x: file locks                      unlimited
--i: pending signals                 31073
--q: bytes in POSIX msg queues       819200
--e: max nice                        0
--r: max rt priority                 0
--N 15:                              unlimited
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;创建文件后的权限&lt;/p&gt;
-
-&lt;p&gt;具体公式:&lt;code&gt;0666 &amp;amp; ~umask&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;字符操作&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fgetc&lt;/li&gt;
-  &lt;li&gt;fputc&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int fgetc(FILE *stream);
-char *fgets(char *s, int size, FILE *stream);
-int getc(FILE *stream);
-int getchar(void);
-int ungetc(int c, FILE *stream);
-//---------------------
-int fgetc(FILE *stream);
-char *fgets(char *s, int size, FILE *stream);
-int getc(FILE *stream);
-int getchar(void);
-int ungetc(int c, FILE *stream);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;return value&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;fgetc(),  getc() and getchar() return the character read as an unsigned
-char cast to an int or EOF on end of file or error.
-fgets() returns s on success, and NULL on error or  when  end  of  file
-occurs while no characters have been read.
-ungetc() returns c on success, or EOF on error.
-
---------------------------
-
-fgetc(),  getc() and getchar() return the character read as an unsigned
-char cast to an int or `EOF` on end of file or error.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fgets&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-CQL&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int fgetc(FILE *stream);
-char *fgets(char *s, int size, FILE *stream);
-int getc(FILE *stream);
-int getchar(void);
-int ungetc(int c, FILE *stream);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fputs&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int fputc(int c, FILE *stream);
-int fputs(const char *s, FILE *stream);
-int putc(int c, FILE *stream);
-int putchar(int c);
-int puts(const char *s);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fwrite&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-size_t fwrite(const void *ptr, size_t size, size_t nmemb,
-              FILE *stream);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;printf&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int printf(const char *format, ...);
-int fprintf(FILE *stream, const char *format, ...);
-int dprintf(int fd, const char *format, ...);
-int sprintf(char *str, const char *format, ...);
-int snprintf(char *str, size_t size, const char *format, ...);
-#include &amp;lt;stdarg.h&amp;gt;
-int vprintf(const char *format, va_list ap);
-int vfprintf(FILE *stream, const char *format, va_list ap);
-int vdprintf(int fd, const char *format, va_list ap);
-int vsprintf(char *str, const char *format, va_list ap);
-int vsnprintf(char *str, size_t size, const char *format, va_list ap);=
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;scanf&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int scanf(const char *format, ...);
-int fscanf(FILE *stream, const char *format, ...);
-int sscanf(const char *str, const char *format, ...);
-#include &amp;lt;stdarg.h&amp;gt;
-int vscanf(const char *format, va_list ap);
-int vsscanf(const char *str, const char *format, va_list ap);
-int vfscanf(FILE *stream, const char *format, va_list ap);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fseek&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int fseek(FILE *stream, long offset, int whence);
-long ftell(FILE *stream);
-void rewind(FILE *stream);
-int fgetpos(FILE *stream, fpos_t *pos);
-int fsetpos(FILE *stream, const fpos_t *pos);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;whence&lt;/code&gt;:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;SEEK_SET&lt;/li&gt;
-  &lt;li&gt;SEEK_CUR&lt;/li&gt;
-  &lt;li&gt;SEEK_END&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;code&gt;long offset&lt;/code&gt;注意长度限制,类型为long,有缺陷,&lt;code&gt;fseeko&lt;/code&gt;修改了缺陷,如下:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int fseeko(FILE *stream, off_t offset, int whence);
-off_t ftello(FILE *stream);
-Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
-fseeko(), ftello():
-_FILE_OFFSET_BITS == 64 || _POSIX_C_SOURCE &amp;gt;= 200112L
-(defining the obsolete _LARGEFILE_SOURCE macro also works)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注意:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;On some architectures, both off_t and long are 32-bit types, but defin‐
-       ing  _FILE_OFFSET_BITS  with  the value 64 (before including any header
-       files) will turn off_t into a 64-bit type.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ftell&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int fseek(FILE *stream, long offset, int whence);
-long ftell(FILE *stream);
-void rewind(FILE *stream);
-int fgetpos(FILE *stream, fpos_t *pos);
-int fsetpos(FILE *stream, const fpos_t *pos);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-  &lt;li&gt;fflush&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int fflush(FILE *stream);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注意:&lt;/p&gt;
-
-&lt;p&gt;If the stream argument is NULL, fflush() flushes all open output streams.For a nonlocking counterpart, see unlocked_stdio(3).&lt;/p&gt;
-
-&lt;p&gt;缓冲区作用:合并系统调用&lt;/p&gt;
-
-&lt;p&gt;分类:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;行缓冲:换行时刷新,stdout&lt;/li&gt;
-  &lt;li&gt;全缓冲:满了就刷新,默认&lt;/li&gt;
-  &lt;li&gt;无缓冲:stderr&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;修改缓冲:&lt;/p&gt;
-
-&lt;p&gt;setvbuf&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-void setbuf(FILE *stream, char *buf);
-void setbuffer(FILE *stream, char *buf, size_t size);
-void setlinebuf(FILE *stream);
-int setvbuf(FILE *stream, char *buf, int mode, size_t size);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The mode argument must be one of the following three macros:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;_IONBF unbuffered
-_IOLBF line buffered
-_IOFBF fully buffered
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;getline&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-ssize_t getdelim(char **lineptr, size_t *n, int delim, FILE *stream);
-Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
-getline(), getdelim():
-Since glibc 2.10:
-_POSIX_C_SOURCE &amp;gt;= 200809L
-    Before glibc 2.10:
-_GNU_SOURCE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;对于段错误一定要仔细分析,可能是调用的函数引用了其他函数,但是没有初始化,这种容易出错;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tmpnam&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-char *tmpnam(char *s);
-char *tmpnam_r(char *s);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;tmpfile&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-FILE *tmpfile(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;匿名文件&lt;/p&gt;
-
-&lt;p&gt;临时问阿金两个问题:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;不冲突&lt;/li&gt;
-  &lt;li&gt;及时销毁&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;文件描述符&quot;&gt;文件描述符&lt;/h2&gt;
-
-&lt;p&gt;…&lt;/p&gt;
-
-&lt;h2 id=&quot;系统io&quot;&gt;系统IO&lt;/h2&gt;
-
-&lt;h3 id=&quot;函数&quot;&gt;函数&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;open&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;sys/stat.h&amp;gt;
-#include &amp;lt;fcntl.h&amp;gt;
-int open(const char *pathname, int flags);
-int open(const char *pathname, int flags, mode_t mode);
-int creat(const char *pathname, mode_t mode);
-int openat(int dirfd, const char *pathname, int flags);
-int openat(int dirfd, const char *pathname, int flags, mode_t mode);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;函数名相同,参数不同,在c++和Java里面叫做&lt;code&gt;重载&lt;/code&gt;,但是c里面没有重载,此处是使用&lt;code&gt;变参实现&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;可以传入多个参数取去编译,如果报错,就是重载实现,如果没有报错,则是变参实现.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;flag&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_APPEND&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_ASYNC&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_CLOEXEC&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_CREAT&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_DIRECT&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_DIRECTORY&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_DSYNC&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_EXCL&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_LARGEFILE&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_NOATIME&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_NOCTTY&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_NOFOLLOW&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_NONBLOCK&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_PATH&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;O_SYNC&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;联系&lt;code&gt;标准io&lt;/code&gt;里面的model,有如下对应关系:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;model&lt;/th&gt;
-      &lt;th&gt;flags&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r-&lt;/td&gt;
-      &lt;td&gt;O_RDONLY&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;r+&lt;/td&gt;
-      &lt;td&gt;O_RDWR&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;w&lt;/td&gt;
-      &lt;td&gt;O_WRONLY|O_CREAT|O_TRUNC&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;w+&lt;/td&gt;
-      &lt;td&gt;O_RDWR|O_TRUNC|O_CREAT&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;close&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int close(int fd);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;read&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-ssize_t read(int fd, void *buf, size_t count);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;write&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-ssize_t write(int fd, const void *buf, size_t count);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;lseek&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-off_t lseek(int fd, off_t offset, int whence);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;dup&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;复制文件描述符&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int dup(int oldfd);
-int dup2(int oldfd, int newfd);
-#define _GNU_SOURCE             /* See feature_test_macros(7) */
-#include &amp;lt;fcntl.h&amp;gt;              /* Obtain O_* constant definitions */
-#include &amp;lt;unistd.h&amp;gt;
-int dup3(int oldfd, int newfd, int flags);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;标准IO不要和系统IO混用&lt;/p&gt;
-
-&lt;p&gt;转换&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-void clearerr(FILE *stream);
-int feof(FILE *stream);
-int ferror(FILE *stream);
-int fileno(FILE *stream);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;原子操作&quot;&gt;原子操作&lt;/h2&gt;
-
-&lt;p&gt;不可分割的最小单位,解决竞争和冲突&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;同步&quot;&gt;同步&lt;/h2&gt;
-
-&lt;h3 id=&quot;函数-1&quot;&gt;函数&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;sync&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;sync, syncfs - commit filesystem caches to disk&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-void sync(void);
-int syncfs(int fd);
-Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
-sync():
-_XOPEN_SOURCE &amp;gt;= 500
-|| /* Since glibc 2.19: */ _DEFAULT_SOURCE
-|| /* Glibc versions &amp;lt;= 2.19: */ _BSD_SOURCE
-syncfs():
-_GNU_SOURCE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fsync&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ynchronize  a  file’s in-core state with storage
-       device&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int fsync(int fd);
-int fdatasync(int fd);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fcntl&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-#include &amp;lt;fcntl.h&amp;gt;
-int fcntl(int fd, int cmd, ... /* arg */ );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ioctl&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/ioctl.h&amp;gt;
-int ioctl(int fd, unsigned long request, ...);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;devfd目录&quot;&gt;/dev/fd目录&lt;/h2&gt;
-
-&lt;p&gt;虚目录,显示当前进程的文件描述符的信息&lt;/p&gt;
-
-&lt;h1 id=&quot;文件系统&quot;&gt;文件系统&lt;/h1&gt;
-
-&lt;h2 id=&quot;获取文件属性&quot;&gt;获取文件属性&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;stat&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;stat, fstat, lstat, fstatat - get file status&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;sys/stat.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-int stat(const char *pathname, struct stat *statbuf);
-int fstat(int fd, struct stat *statbuf);
-int lstat(const char *pathname, struct stat *statbuf);
-#include &amp;lt;fcntl.h&amp;gt;           /* Definition of AT_* constants */
-#include &amp;lt;sys/stat.h&amp;gt;
-int fstatat(int dirfd, const char *pathname, struct stat *statbuf,
-            int flags);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;stat结构体&quot;&gt;stat结构体&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct stat {
-dev_t     st_dev;         /* ID of device containing file */
-ino_t     st_ino;         /* Inode number */
-mode_t    st_mode;        /* File type and mode */
-nlink_t   st_nlink;       /* Number of hard links */
-uid_t     st_uid;         /* User ID of owner */
-gid_t     st_gid;         /* Group ID of owner */
-dev_t     st_rdev;        /* Device ID (if special file) */
-off_t     st_size;        /* Total size, in bytes */
-blksize_t st_blksize;     /* Block size for filesystem I/O */
-blkcnt_t  st_blocks;      /* Number of 512B blocks allocated */
-
-/* Since Linux 2.6, the kernel supports nanosecond
-precision for the following timestamp fields.
-For the details before Linux 2.6, see NOTES. */
-
-struct timespec st_atim;  /* Time of last access */
-struct timespec st_mtim;  /* Time of last modification */
-struct timespec st_ctim;  /* Time of last status change */
-
-#define st_atime st_atim.tv_sec      /* Backward compatibility */
-#define st_mtime st_mtim.tv_sec
-#define st_ctime st_ctim.tv_sec
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;获取文件大小测试程序&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;stdlib.h&amp;gt;
-#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;sys/stat.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-//获取文件大小函数
-static off_t flen(const char *filename)
-{
-    //获取文件属性
-    struct stat fileinfo;
-    if(stat(filename,&amp;amp;fileinfo) &amp;lt; 0)
-    {
-        perror(&quot;stat()&quot;);
-        exit(1);
-    }
-    return fileinfo.st_size;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;空洞文件&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt; int fd;
-    fd = open(argv[1],O_WRONLY|O_CREAT|O_TRUNC,0600);
-    if(fd  &amp;lt; 0)
-    {
-        perror(&quot;open()&quot;);
-        exit(0);
-    }
-    //偏移
-//带上LL单位
-    lseek(fd,5LL*1024LL*1024LL*1024LL - 1LL,SEEK_SET);
-    write(fd,&quot;&quot;,1);
-    close(fd);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;mode_t    st_mode&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;权限和文件类型，位图，权限位9位，类型3位，u+s 1位，g+s 1位，粘滞位(T位)1位。位图是用一位或几位数据表示某种状态
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;文件类型:&lt;code&gt;dcb-lsp&lt;/code&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;d&lt;/th&gt;
-      &lt;th&gt;目录&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;c&lt;/td&gt;
-      &lt;td&gt;字符快设备文件&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;b&lt;/td&gt;
-      &lt;td&gt;块文件&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;-&lt;/td&gt;
-      &lt;td&gt;普通文件&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;l&lt;/td&gt;
-      &lt;td&gt;符号链接文件&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;s&lt;/td&gt;
-      &lt;td&gt;套接字文件&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;p&lt;/td&gt;
-      &lt;td&gt;管道文件&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;文件权限更改&quot;&gt;文件权限更改&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;chmod&lt;/li&gt;
-  &lt;li&gt;fchmod&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/stat.h&amp;gt;
-int chmod(const char *pathname, mode_t mode);
-int fchmod(int fd, mode_t mode);
-#include &amp;lt;fcntl.h&amp;gt;           /* Definition of AT_* constants */
-#include &amp;lt;sys/stat.h&amp;gt;
-int fchmodat(int dirfd, const char *pathname, mode_t mode, int flags);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;粘住位&quot;&gt;粘住位&lt;/h2&gt;
-
-&lt;p&gt;t位&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;文件系统:&lt;code&gt;FAT&lt;/code&gt;,&lt;code&gt;UFS&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;硬链接符号链接&quot;&gt;硬链接&amp;amp;符号链接&lt;/h2&gt;
-
-&lt;p&gt;硬链接与目录项是同义词,且建立硬链接有限制,不能给分区建立,不能给目录建立;符号链接优点:可跨分区,可以给目录建立&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;link&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int link(const char *oldpath, const char *newpath);
-#include &amp;lt;fcntl.h&amp;gt;           /* Definition of AT_* constants */
-#include &amp;lt;unistd.h&amp;gt;
-int linkat(int olddirfd, const char *oldpath,
-           int newdirfd, const char *newpath, int flags);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;unlink&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int unlink(const char *pathname);
-#include &amp;lt;fcntl.h&amp;gt;           /* Definition of AT_* constants */
-#include &amp;lt;unistd.h&amp;gt;
-int unlinkat(int dirfd, const char *pathname, int flags);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;remove&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;remove a file or directory&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int remove(const char *pathname);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;rename&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-int rename(const char *oldpath, const char *newpath);
-#include &amp;lt;fcntl.h&amp;gt;           /* Definition of AT_* constants */
-#include &amp;lt;stdio.h&amp;gt;
-int renameat(int olddirfd, const char *oldpath,
-int newdirfd, const char *newpath);
-int renameat2(int olddirfd, const char *oldpath,
-int newdirfd, const char *newpath, unsigned int flags);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;文件时间&quot;&gt;文件时间&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;utime&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;utime.h&amp;gt;
-int utime(const char *filename, const struct utimbuf *times);
-#include &amp;lt;sys/time.h&amp;gt;
-int utimes(const char *filename, const struct timeval times[2]);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;目录创建删除&quot;&gt;目录创建&amp;amp;删除&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;mkdir&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/stat.h&amp;gt;
-#include &amp;lt;sys/types.h&amp;gt;
-int mkdir(const char *pathname, mode_t mode);
-#include &amp;lt;fcntl.h&amp;gt;           /* Definition of AT_* constants */
-#include &amp;lt;sys/stat.h&amp;gt;
-int mkdirat(int dirfd, const char *pathname, mode_t mode);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;rmdir&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int rmdir(const char *pathname);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;修改工作路径&quot;&gt;修改工作路径&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;chdir&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int chdir(const char *path);
-int fchdir(int fd);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;突破安全限制,有缺陷&lt;/p&gt;
-
-&lt;h2 id=&quot;获取当前工作路径&quot;&gt;获取当前工作路径&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;getcwd&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-char *getcwd(char *buf, size_t size);
-char *getwd(char *buf);
-char *get_current_dir_name(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;目录glob函数&quot;&gt;目录glob函数&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;glob&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;find pathnames &lt;code&gt;matching a pattern&lt;/code&gt;, free memory from
-       glob()&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;glob.h&amp;gt;
-int glob(const char *pattern, int flags,
-int (*errfunc) (const char *epath, int eerrno),
-glob_t *pglob);
-void globfree(glob_t *pglob);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;stdlib.h&amp;gt;
-#include &amp;lt;string.h&amp;gt;
-#include &amp;lt;glob.h&amp;gt;
-//匹配的文件
-#define PAT &quot;/etc/a*.conf&quot;
-//返回错误的函数
-int errfunc_(const char *epath,int eerror)
-{
-    puts(epath);
-    fprintf(stderr,&quot;error msg:%s\n&quot;,strerror(eerror));
-    return 0;
-}
-int main(int argc, char const *argv[])
-{
-    glob_t       globres;
-    int err = 0;
-    err = glob(PAT,0,NULL,&amp;amp;globres);
-    if(err)
-    {
-        printf(&quot;error code = %d\n&quot;,err);
-        exit(1);
-    }
-    for (size_t i = 0; i &amp;lt; globres.gl_pathc; i++)
-    {
-        puts(globres.gl_pathv[i]);
-    }
-    globfree(&amp;amp;globres);
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;opendir&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;dirent.h&amp;gt;
-DIR *opendir(const char *name);
-DIR *fdopendir(int fd);
-Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
-fdopendir():
-Since glibc 2.10:
-_POSIX_C_SOURCE &amp;gt;= 200809L
-Before glibc 2.10:
-_GNU_SOURCE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;closedir&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;dirent.h&amp;gt;
-int closedir(DIR *dirp);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;readdir&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;dirent.h&amp;gt;
-struct dirent *readdir(DIR *dirp);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dirent结构体&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct dirent {
-               ino_t          d_ino;       /* Inode number */
-               off_t          d_off;       /* Not an offset; see below */
-               unsigned short d_reclen;    /* Length of this record */
-               unsigned char  d_type;      /* Type of file; not supported
-                                              by all filesystem types */
-               char           d_name[256]; /* Null-terminated filename */
-           };
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;获取文件名&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;stdlib.h&amp;gt;
-#include &amp;lt;dirent.h&amp;gt;
-#define PAT &quot;/etc&quot;
-int main(int argc, char const *argv[])
-{
-    DIR *dp;
-    struct dirent *cur;
-    dp = opendir(PAT);
-    if(dp == NULL)
-    {
-        perror(&quot;opendir&quot;);
-        exit(1);
-    }
-    while ((cur = readdir(dp)) != NULL)
-    {
-         puts(cur-&amp;gt;d_name);
-    }
-    closedir(dp);
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;rewenddir&lt;/li&gt;
-  &lt;li&gt;seekdir&lt;/li&gt;
-  &lt;li&gt;telldir&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;系统数据文件和信息&quot;&gt;系统数据文件和信息&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;/etc/passwd&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;getpwuid&lt;/li&gt;
-      &lt;li&gt;getpwnam&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;pwd.h&amp;gt;
-struct passwd *getpwnam(const char *name);
-struct passwd *getpwuid(uid_t uid);
-int getpwnam_r(const char *name, struct passwd *pwd,
-char *buf, size_t buflen, struct passwd **result);
-int getpwuid_r(uid_t uid, struct passwd *pwd,
-char *buf, size_t buflen, struct passwd **result);
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;p&gt;passwd结构体&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct passwd {
-               char   *pw_name;       /* username */
-               char   *pw_passwd;     /* user password */
-               uid_t   pw_uid;        /* user ID */
-               gid_t   pw_gid;        /* group ID */
-               char   *pw_gecos;      /* user information */
-               char   *pw_dir;        /* home directory */
-               char   *pw_shell;      /* shell program */
-           };
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;/etc/group
-    &lt;ul&gt;
-      &lt;li&gt;getgrgid&lt;/li&gt;
-      &lt;li&gt;getgrgrnam&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;/etc/shadow&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;getspnam&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;shadow.h&amp;gt;
-struct spwd *getspnam(const char *name);
-struct spwd *getspent(void);
-void setspent(void);
-void endspent(void);
-struct spwd *fgetspent(FILE *stream);
-struct spwd *sgetspent(const char *s);
-int putspent(const struct spwd *p, FILE *stream);
-int lckpwdf(void);
-int ulckpwdf(void);
-/* GNU extension */
-#include &amp;lt;shadow.h&amp;gt;
-int getspent_r(struct spwd *spbuf,
-char *buf, size_t buflen, struct spwd **spbufp);
-int getspnam_r(const char *name, struct spwd *spbuf,
-char *buf, size_t buflen, struct spwd **spbufp);
-int fgetspent_r(FILE *stream, struct spwd *spbuf,
-char *buf, size_t buflen, struct spwd **spbufp);
-int sgetspent_r(const char *s, struct spwd *spbuf,
-char *buf, size_t buflen, struct spwd **spbufp);
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;p&gt;spwd结构体&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct spwd {
-               char *sp_namp;     /* Login name */
-               char *sp_pwdp;     /* Encrypted password */
-               long  sp_lstchg;   /* Date of last change
-                                     (measured in days since
-                                     1970-01-01 00:00:00 +0000 (UTC)) */
-               long  sp_min;      /* Min # of days between changes */
-               long  sp_max;      /* Max # of days between changes */
-               long  sp_warn;     /* # of days before password expires
-                                     to warn user to change it */
-               long  sp_inact;    /* # of days after password expires
-                                     until account is disabled */
-               long  sp_expire;   /* Date when account expires
-                                     (measured in days since
-                                     1970-01-01 00:00:00 +0000 (UTC)) */
-               unsigned long sp_flag;  /* Reserved */
-           };
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;crypt&lt;/p&gt;
-
-        &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#define _XOPEN_SOURCE       /* See feature_test_macros(7) */
-#include &amp;lt;unistd.h&amp;gt;
-char *crypt(const char *key, const char *salt);
-#define _GNU_SOURCE         /* See feature_test_macros(7) */
-#include &amp;lt;crypt.h&amp;gt;
-char *crypt_r(const char *key, const char *salt,
-struct crypt_data *data);
-Link with -lcrypt.
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;getpass&lt;/p&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-char *getpass(const char *prompt);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;时间戳&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;time&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;time.h&amp;gt;
-time_t time(time_t *tloc);
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;gmtime&lt;/li&gt;
-      &lt;li&gt;localtime&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;time.h&amp;gt;
-char *asctime(const struct tm *tm);
-char *asctime_r(const struct tm *tm, char *buf);
-char *ctime(const time_t *timep);
-char *ctime_r(const time_t *timep, char *buf);
-struct tm *gmtime(const time_t *timep);
-struct tm *gmtime_r(const time_t *timep, struct tm *result);
-struct tm *localtime(const time_t *timep);
-struct tm *localtime_r(const time_t *timep, struct tm *result);
-time_t mktime(struct tm *tm);
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;p&gt;tm结构体&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;struct tm {
-               int tm_sec;    /* Seconds (0-60) */
-               int tm_min;    /* Minutes (0-59) */
-               int tm_hour;   /* Hours (0-23) */
-               int tm_mday;   /* Day of the month (1-31) */
-               int tm_mon;    /* Month (0-11) */
-               int tm_year;   /* Year - 1900 */
-               int tm_wday;   /* Day of the week (0-6, Sunday = 0) */
-               int tm_yday;   /* Day in the year (0-365, 1 Jan = 0) */
-               int tm_isdst;  /* Daylight saving time */
-           };
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;strftime&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;time.h&amp;gt;
-size_t strftime(char *s, size_t max, const char *format,
-const struct tm *tm);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;进程环境&quot;&gt;进程环境&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;main函数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;int main(int argc,char *argv[])
-//其实还有第三个参数,环境变量
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;进程的终止&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;正常终止:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;main函数返回&lt;/li&gt;
-  &lt;li&gt;调用exit&lt;/li&gt;
-  &lt;li&gt;调用_exit或者_Exit&lt;/li&gt;
-  &lt;li&gt;最后一个线程从其启动例程饭后&lt;/li&gt;
-  &lt;li&gt;最后一个线程调用pthread_exit&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;异常终止:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;调用abort&lt;/li&gt;
-  &lt;li&gt;接到一个信号并终止&lt;/li&gt;
-  &lt;li&gt;最后一个线程对其取消请求做出响应&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;钩子函数&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;atexit&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
-int atexit(void (*function)(void));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;命令行参数分析&lt;/p&gt;
-
-    &lt;ol&gt;
-      &lt;li&gt;getopt&lt;/li&gt;
-      &lt;li&gt;getopt_long&lt;/li&gt;
-    &lt;/ol&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int getopt(int argc, char * const argv[],
-const char *optstring);
-extern char *optarg;
-extern int optind, opterr, optopt;
-#include &amp;lt;getopt.h&amp;gt;
-int getopt_long(int argc, char * const argv[],
-const char *optstring,
-const struct option *longopts, int *longindex);
-int getopt_long_only(int argc, char * const argv[],
-const char *optstring,
-const struct option *longopts, int *longindex);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;环境变量&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;environ&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;extern char **environ;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;getenv&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
-char *getenv(const char *name);
-char *secure_getenv(const char *name);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;setenv&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
-int setenv(const char *name, const char *value, int overwrite);
-int unsetenv(const char *name);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;putenv&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
-int putenv(char *string);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;c程序的存储空间布局&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;pmap&lt;/code&gt;命令查看&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;库&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;动态库&lt;/li&gt;
-  &lt;li&gt;静态库&lt;/li&gt;
-  &lt;li&gt;手工装载库&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;dlopen&lt;/p&gt;
-
-&lt;p&gt;dlclose&lt;/p&gt;
-
-&lt;p&gt;dlerror&lt;/p&gt;
-
-&lt;p&gt;dlsym&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;dlfcn.h&amp;gt;
-void *dlopen(const char *filename, int flags);
-int dlclose(void *handle);
-#define _GNU_SOURCE
-#include &amp;lt;dlfcn.h&amp;gt;
-void *dlmopen (Lmid_t lmid, const char *filename, int flags);
-Link with -ldl.   
-    #include &amp;lt;dlfcn.h&amp;gt;
-    void *dlopen(const char *filename, int flags);
-int dlclose(void *handle);
-#define _GNU_SOURCE
-#include &amp;lt;dlfcn.h&amp;gt;
-void *dlmopen (Lmid_t lmid, const char *filename, int flags);
-#include &amp;lt;dlfcn.h&amp;gt;
-char *dlerror(void);
-void *dlsym(void *handle, const char *symbol);
-#define _GNU_SOURCE
-#include &amp;lt;dlfcn.h&amp;gt;
-void *dlvsym(void *handle, char *symbol, char *version);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;example&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-       #include &amp;lt;stdlib.h&amp;gt;
-       #include &amp;lt;dlfcn.h&amp;gt;
-       #include &amp;lt;gnu/lib-names.h&amp;gt;  /* Defines LIBM_SO (which will be a
-                                      string such as &quot;libm.so.6&quot;) */
-       int
-       main(void)
-       {
-           void *handle;
-           double (*cosine)(double);
-           char *error;
-
-           handle = dlopen(LIBM_SO, RTLD_LAZY);
-           if (!handle) {
-               fprintf(stderr, &quot;%s\n&quot;, dlerror());
-               exit(EXIT_FAILURE);
-           }
-
-           dlerror();    /* Clear any existing error */
-
-           cosine = (double (*)(double)) dlsym(handle, &quot;cos&quot;);
-
-           /* According to the ISO C standard, casting between function
-              pointers and 'void *', as done above, produces undefined results.
-              POSIX.1-2003 and POSIX.1-2008 accepted this state of affairs and
-              proposed the following workaround:
-
-                  *(void **) (&amp;amp;cosine) = dlsym(handle, &quot;cos&quot;);
-
-              This (clumsy) cast conforms with the ISO C standard and will
-              avoid any compiler warnings.
-
-              The 2013 Technical Corrigendum to POSIX.1-2008 (a.k.a.
-              POSIX.1-2013) improved matters by requiring that conforming
-              implementations support casting 'void *' to a function pointer.
-              Nevertheless, some compilers (e.g., gcc with the '-pedantic'
-              option) may complain about the cast used in this program. */
-
-           error = dlerror();
-           if (error != NULL) {
-               fprintf(stderr, &quot;%s\n&quot;, error);
-               exit(EXIT_FAILURE);
-           }
-
-           printf(&quot;%f\n&quot;, (*cosine)(2.0));
-           dlclose(handle);
-           exit(EXIT_SUCCESS);
-       }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;函数跳转&lt;/p&gt;
-
-    &lt;p&gt;setjmp&lt;/p&gt;
-
-    &lt;p&gt;longjmp&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;资源获取及控制&lt;/p&gt;
-
-    &lt;p&gt;getrlimit&lt;/p&gt;
-
-    &lt;p&gt;setrlimit&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/time.h&amp;gt;
-#include &amp;lt;sys/resource.h&amp;gt;
-int getrlimit(int resource, struct rlimit *rlim);
-int setrlimit(int resource, const struct rlimit *rlim);
-int prlimit(pid_t pid, int resource, const struct rlimit *new_limit,
-struct rlimit *old_limit);
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">Docker笔记</title><link href="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="Docker笔记" /><published>2020-05-15T00:00:00+08:00</published><updated>2020-05-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/Docker%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;官网&quot;&gt;&lt;a href=&quot;https://www.docker.com/&quot;&gt;官网&lt;/a&gt;&lt;/h4&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;安装教程&quot;&gt;&lt;a href=&quot;https://hub.docker.com/search?q=&amp;amp;type=edition&amp;amp;offering=community&amp;amp;operating_system=linux&quot;&gt;安装教程&lt;/a&gt;&lt;/h4&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;基础命令&quot;&gt;基础命令&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;Usage:	docker [OPTIONS] COMMAND
-
-A self-sufficient runtime for containers
-
-Options:
-      --config string      Location of client config files (default
-                           &quot;/home/yourname/.docker&quot;)
-  -c, --context string     Name of the context to use to connect to the
-                           daemon (overrides DOCKER_HOST env var and
-                           default context set with &quot;docker context use&quot;)
-  -D, --debug              Enable debug mode
-  -H, --host list          Daemon socket(s) to connect to
-  -l, --log-level string   Set the logging level
-                           (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;)
-                           (default &quot;info&quot;)
-      --tls                Use TLS; implied by --tlsverify
-      --tlscacert string   Trust certs signed only by this CA (default
-                           &quot;/home/yourname/.docker/ca.pem&quot;)
-      --tlscert string     Path to TLS certificate file (default
-                           &quot;/home/yourname/.docker/cert.pem&quot;)
-      --tlskey string      Path to TLS key file (default
-                           &quot;/home/yourname/.docker/key.pem&quot;)
-      --tlsverify          Use TLS and verify the remote
-  -v, --version            Print version information and quit
-
-Management Commands:
-  builder     Manage builds
-  config      Manage Docker configs
-  container   Manage containers
-  context     Manage contexts
-  engine      Manage the docker engine
-  image       Manage images
-  network     Manage networks
-  node        Manage Swarm nodes
-  plugin      Manage plugins
-  secret      Manage Docker secrets
-  service     Manage services
-  stack       Manage Docker stacks
-  swarm       Manage Swarm
-  system      Manage Docker
-  trust       Manage trust on Docker images
-  volume      Manage volumes
-
-Commands:
-  attach      Attach local standard input, output, and error streams to a running container
-  build       Build an image from a Dockerfile
-  commit      Create a new image from a container's changes
-  cp          Copy files/folders between a container and the local filesystem
-  create      Create a new container
-  deploy      Deploy a new stack or update an existing stack
-  diff        Inspect changes to files or directories on a container's filesystem
-  events      Get real time events from the server
-  exec        Run a command in a running container
-  export      Export a container's filesystem as a tar archive
-  history     Show the history of an image
-  images      List images
-  import      Import the contents from a tarball to create a filesystem image
-  info        Display system-wide information
-  inspect     Return low-level information on Docker objects
-  kill        Kill one or more running containers
-  load        Load an image from a tar archive or STDIN
-  login       Log in to a Docker registry
-  logout      Log out from a Docker registry
-  logs        Fetch the logs of a container
-  pause       Pause all processes within one or more containers
-  port        List port mappings or a specific mapping for the container
-  ps          List containers
-  pull        Pull an image or a repository from a registry
-  push        Push an image or a repository to a registry
-  rename      Rename a container
-  restart     Restart one or more containers
-  rm          Remove one or more containers
-  rmi         Remove one or more images
-  run         Run a command in a new container
-  save        Save one or more images to a tar archive (streamed to STDOUT by default)
-  search      Search the Docker Hub for images
-  start       Start one or more stopped containers
-  stats       Display a live stream of container(s) resource usage statistics
-  stop        Stop one or more running containers
-  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
-  top         Display the running processes of a container
-  unpause     Unpause all processes within one or more containers
-  update      Update configuration of one or more containers
-  version     Show the Docker version information
-  wait        Block until one or more containers stop, then print their exit codes
-Run 'docker COMMAND --help' for more information on a command.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;docker--for-ubuntu-images&quot;&gt;Docker  For Ubuntu Images&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;网站&quot;&gt;&lt;a href=&quot;https://hub.docker.com/_/ubuntu?tab=tags&amp;amp;page=1&quot;&gt;网站&lt;/a&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;拉取最新版的-ubuntu-镜像&quot;&gt;拉取最新版的 Ubuntu 镜像&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker pull ubuntu:latest
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;查看本地镜像&quot;&gt;查看本地镜像&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker images
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;删除镜像&quot;&gt;删除镜像&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;docker rmi &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;构建镜像&quot;&gt;构建镜像&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;docker build &lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;需要创建一个 &lt;code&gt;Dockerfile&lt;/code&gt; 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;FROM    centos:6.7
-MAINTAINER      Fisher &quot;fisher@sudops.com&quot;
-
-RUN     /bin/echo 'root:123456' |chpasswd
-RUN     useradd runoob
-RUN     /bin/echo 'runoob:123456' |chpasswd
-RUN     /bin/echo -e &quot;LANG=\&quot;en_US.UTF-8\&quot;&quot; &amp;gt;/etc/default/local
-EXPOSE  22
-EXPOSE  80
-CMD     /usr/sbin/sshd -D
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;每一个指令都会在镜像上创建一个新的层，每一个指令的前缀都必须是大写的。&lt;/p&gt;
-
-&lt;p&gt;第一条FROM，指定使用哪个镜像源&lt;/p&gt;
-
-&lt;p&gt;RUN 指令告诉docker 在镜像内执行命令，安装了什么。。。&lt;/p&gt;
-
-&lt;p&gt;然后，我们使用&lt;code&gt;Dockerfile&lt;/code&gt; 文件，通过 &lt;code&gt;docker build&lt;/code&gt; 命令来构建一个镜像&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt; docker build -t runoob/centos:6.7 .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;Sending build context to Docker daemon 17.92 kB
-Step 1 : FROM centos:6.7
- ---&amp;amp;gt; d95b5ca17cc3
-Step 2 : MAINTAINER Fisher &quot;fisher@sudops.com&quot;
- ---&amp;amp;gt; Using cache
- ---&amp;amp;gt; 0c92299c6f03
-Step 3 : RUN /bin/echo 'root:123456' |chpasswd
- ---&amp;amp;gt; Using cache
- ---&amp;amp;gt; 0397ce2fbd0a
-Step 4 : RUN useradd runoob
-......
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;-t&lt;/strong&gt; ：指定要创建的目标镜像名&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;.&lt;/strong&gt; ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;查看端口的绑定情况&quot;&gt;查看端口的绑定情况&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;docker port &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;运行容器&quot;&gt;运行容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker run -itd --name ubuntu-test ubuntu
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;exec-命令进入-ubuntu-容器&quot;&gt;exec 命令进入 ubuntu 容器&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker exec -it ubuntu-test /bin/bas
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;运行交互式的容器&quot;&gt;运行交互式的容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker run -i -t docker_image /bin/bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code&gt;-t&lt;/code&gt;在新容器内指定一个伪终端或终端&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;-i&lt;/code&gt;允许你对容器内的标准输入 (&lt;code&gt;STDIN&lt;/code&gt;) 进行交互&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;docker-ps&quot;&gt;docker ps&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;CONTAINER ID&lt;/strong&gt;:容器 ID&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;IMAGE:&lt;/strong&gt; 使用的镜像&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;COMMAND:&lt;/strong&gt; 启动容器时运行的命令&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;CREATED:&lt;/strong&gt; 容器的创建时间&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;STATUS:&lt;/strong&gt; 容器状态
-    &lt;ol&gt;
-      &lt;li&gt;created（已创建）&lt;/li&gt;
-      &lt;li&gt;restarting（重启中）&lt;/li&gt;
-      &lt;li&gt;running（运行中）&lt;/li&gt;
-      &lt;li&gt;removing（迁移中）&lt;/li&gt;
-      &lt;li&gt;paused（暂停）&lt;/li&gt;
-      &lt;li&gt;exited（停止）&lt;/li&gt;
-      &lt;li&gt;dead（死亡）&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;PORTS:&lt;/strong&gt; 容器的端口信息和使用的连接类型（tcp\udp）&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;NAMES:&lt;/strong&gt; 自动分配的容器名称&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;停止容器&quot;&gt;停止容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker stop CONTAINER ID
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;重启容器&quot;&gt;重启容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt; docker restart CONTAINER ID
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;进入容器&quot;&gt;进入容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;在使用 &lt;strong&gt;-d&lt;/strong&gt; 参数时，容器启动后会进入后台。此时想要进入容器，可以通过以下指令进入：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker attach  CONTAINER ID
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker exec -it CONTAINER ID /bin/bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;推荐使用 &lt;code&gt;docker exec&lt;/code&gt; 命令，因为此退出容器终端，不会导致容器的停止。&lt;/p&gt;
-
-&lt;p&gt;更多参数说明请使用 &lt;code&gt;docker exec --help&lt;/code&gt; 命令查看&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;导出容器&quot;&gt;&lt;strong&gt;导出容器&lt;/strong&gt;&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker export  CONTAINER ID &amp;gt; dockername.tar
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;导入容器快照&quot;&gt;&lt;strong&gt;导入容器快照&lt;/strong&gt;&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cat docker/ubuntu.tar | docker import - test/ubuntu:v1
-也可以通过指定 URL 或者某个目录来导入
-docker import http://example.com/exampleimage.tgz example/imagerepo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;删除容器&quot;&gt;删除容器&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker rm -f CONTAINER ID
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;运行一个-web-应用flask&quot;&gt;运行一个 web 应用(Flask)&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker pull training/webapp  # 载入镜像
-docker run -d -P training/webapp python app.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;-d:&lt;/strong&gt;让容器在后台运行。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;-P:&lt;/strong&gt;将容器内部使用的网络端口映射到我们使用的主机上&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;查看-web-应用程序日志&quot;&gt;查看 WEB 应用程序日志&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker logs -f  CONTAINER ID
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;-f:&lt;/strong&gt; 让 &lt;strong&gt;docker logs&lt;/strong&gt; 像使用 &lt;strong&gt;tail -f&lt;/strong&gt; 一样来输出容器内部的标准输出&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;查看web应用程序容器的进程&quot;&gt;查看WEB应用程序容器的进程&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt; docker top&lt;/code&gt; 来查看容器内部运行的进程&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;docker inspect &lt;/code&gt;查看 Docker 的底层信息&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;停止-web-应用容器&quot;&gt;停止 WEB 应用容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;docker stop &lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;重启web应用容器&quot;&gt;重启WEB应用容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;docker start&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;移除web应用容器&quot;&gt;移除WEB应用容器&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt; docker rm&lt;/code&gt;&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">Docker</summary></entry><entry><title type="html">类加载</title><link href="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="alternate" type="text/html" title="类加载" /><published>2020-05-13T00:00:00+08:00</published><updated>2020-05-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E7%B1%BB%E5%8A%A0%E8%BD%BD</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;类加载&quot;&gt;类加载&lt;/h1&gt;
-
-&lt;p&gt;在java代码中，&lt;code&gt;类型&lt;/code&gt;的&lt;code&gt;加载&lt;/code&gt;，&lt;code&gt;连接&lt;/code&gt;，&lt;code&gt;初始化&lt;/code&gt;过程都是在程序运行期间完成的&lt;/p&gt;
-
-&lt;h2 id=&quot;java结束生命周期&quot;&gt;java结束生命周期&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;执行System.exit()&lt;/li&gt;
-  &lt;li&gt;程序正常结束&lt;/li&gt;
-  &lt;li&gt;异常或错误&lt;/li&gt;
-  &lt;li&gt;操作系统出错&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;类的加载连接初始化&quot;&gt;类的加载，连接，初始化&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;加载：查找并加载类的二进制数据，将class文件的二进制数据读入内存，将其放到运行时数据区的方法区内，然后在内存中创建一个java.lang.Class对象来封装类在方法区内的数据结构&lt;/li&gt;
-  &lt;li&gt;连接：
-    &lt;ol&gt;
-      &lt;li&gt;验证：确保加载类的准确性&lt;/li&gt;
-      &lt;li&gt;准备：为类的&lt;code&gt;静态变量&lt;/code&gt;分配内存，并初始胡为&lt;code&gt;默认值&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;解析：把类中的&lt;code&gt;符号引用&lt;/code&gt;转换为&lt;code&gt;直接引用&lt;/code&gt;&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;初始化:&lt;code&gt;为静态变量赋初始值&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;类的使用&quot;&gt;类的使用&lt;/h2&gt;
-
-&lt;p&gt;主动使用&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;创建类的实例&lt;/li&gt;
-  &lt;li&gt;访问类或者接口静态变量(getstatice)，或者对静态变量赋值(putstatice)&lt;/li&gt;
-  &lt;li&gt;调用静态方法(invokestatic)&lt;/li&gt;
-  &lt;li&gt;反射&lt;/li&gt;
-  &lt;li&gt;初始化类的子类&lt;/li&gt;
-  &lt;li&gt;java虚拟机启动时被标明的启动类&lt;/li&gt;
-  &lt;li&gt;动态语言支持&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;被动使用&quot;&gt;被动使用&lt;/h2&gt;</content><author><name></name></author><category term="JVM" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;　　所以，在重写equals的方法的时候，必须注意重写hashCode方法，同时还要保证通过equals判断相等的两个对象，调用hashCode方法要返回同样的整数值。而如果equals判断不相等的两个对象，其hashCode可以相同（只不过会发生哈希冲突，应尽量避免）。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry></feed>

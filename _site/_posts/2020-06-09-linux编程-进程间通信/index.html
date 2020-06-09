@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>归档 | lazycat</title>
+<title>linux编程-进程间通信 | lazycat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="归档" />
+<meta property="og:title" content="linux编程-进程间通信" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat &lt;iframe src=”https://music.163.com/outchain/player?type=0&amp;id=161689985&amp;auto=0&amp;height=32” width=100% height=52 frameborder=”no” border=”0” marginwidth=”0” marginheight=”0” &lt;/iframe&gt;" />
-<meta property="og:description" content="lazycat &lt;iframe src=”https://music.163.com/outchain/player?type=0&amp;id=161689985&amp;auto=0&amp;height=32” width=100% height=52 frameborder=”no” border=”0” marginwidth=”0” marginheight=”0” &lt;/iframe&gt;" />
-<link rel="canonical" href="http://localhost:4000/archive/" />
-<meta property="og:url" content="http://localhost:4000/archive/" />
+<meta name="description" content="[toc]" />
+<meta property="og:description" content="[toc]" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" />
 <meta property="og:site_name" content="lazycat" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-09T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"归档","@type":"WebPage","url":"http://localhost:4000/archive/","description":"lazycat &lt;iframe src=”https://music.163.com/outchain/player?type=0&amp;id=161689985&amp;auto=0&amp;height=32” width=100% height=52 frameborder=”no” border=”0” marginwidth=”0” marginheight=”0” &lt;/iframe&gt;","@context":"https://schema.org"}</script>
+{"headline":"linux编程-进程间通信","dateModified":"2020-06-09T00:00:00+08:00","datePublished":"2020-06-09T00:00:00+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/"},"url":"http://localhost:4000/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/","description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -278,7 +280,7 @@
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
-      <a class="sidebar-nav-item active" href="/archive/">
+      <a class="sidebar-nav-item" href="/archive/">
         <i class="fas fa-archive fa-fw"></i> 归档
       </a>
       
@@ -332,8 +334,25 @@
 </style>
 
       <ol id="toc">
-  <li><a href="#2020">      31    2020</a></li>
-  <li><a href="#2019">      2    2019</a></li>
+  <li><a href="#%E7%AE%A1%E9%81%93">管道</a>
+    <ol>
+      <li><a href="#%E5%86%85%E6%A0%B8%E6%8F%90%E4%BE%9B%E5%8D%95%E5%B7%A5%E8%87%AA%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6">内核提供,单工,自同步机制</a></li>
+      <li><a href="#%E5%8C%BF%E5%90%8D%E7%AE%A1%E9%81%93">匿名管道</a></li>
+      <li><a href="#%E5%91%BD%E5%90%8D%E7%AE%A1%E9%81%93">命名管道</a></li>
+    </ol>
+  </li>
+  <li><a href="#xsi">XSI</a></li>
+  <li><a href="#%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97socket">网络套接字socket</a>
+    <ol>
+      <li><a href="#%E5%AD%97%E8%8A%82%E5%BA%8F%E9%97%AE%E9%A2%98">字节序问题</a></li>
+      <li><a href="#%E6%8A%A5%E5%BC%8F%E5%A5%97%E6%8E%A5%E5%AD%97">报式套接字</a>
+        <ol>
+          <li><a href="#%E5%A4%9A%E7%82%B9%E9%80%9A%E8%AE%AF">多点通讯</a></li>
+        </ol>
+      </li>
+      <li><a href="#%E6%B5%81%E5%BC%8F%E5%A5%97%E6%8E%A5%E5%AD%97">流式套接字</a></li>
+    </ol>
+  </li>
 </ol>
       
       
@@ -582,7 +601,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    归档
+    linux编程-进程间通信
     <a href="/" title="Home">
       <small>
         lazycat
@@ -593,455 +612,289 @@
 </div>
 
 <div class="container content">
-  
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    09 Jun 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    2263字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    8分
+    
+    
+    <span class="leancloud-visitors" id="/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" data-xid="/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" data-flag-title="linux编程-进程间通信">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    linux
+    
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a
+  href="https://creativecommons.org/licenses/by/4.0/deed.zh"
+  rel="license">
+  CC BY 4.0
+</a>
+（除特别声明或转载文章外）
 
+    
+  </span>
+  <p>[toc]</p>
 
-33篇博文。长路漫漫！
+<h1 id="管道">管道</h1>
 
+<h2 id="内核提供单工自同步机制">内核提供,单工,自同步机制</h2>
 
+<h2 id="匿名管道">匿名管道</h2>
 
+<p>pipe</p>
 
+<blockquote>
+  <p>create pipe</p>
+</blockquote>
 
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+int pipe(int pipefd[2]);
+#define _GNU_SOURCE             /* See feature_test_macros(7) */
+#include &lt;fcntl.h&gt;              /* Obtain O_* constant definitions */
+#include &lt;unistd.h&gt;
+int pipe2(int pipefd[2], int flags);
+</code></pre>
 
+<h2 id="命名管道">命名管道</h2>
 
+<h1 id="xsi">XSI</h1>
 
+<p>IPC -&gt; Internet Process Communication</p>
 
-<div class="mermaid">
-  pie
-  
-  
-  
-  
-  
-  
-  "2020" : 31
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  "2019" : 2
-  
-  
-  
-  
-  
-  
-  
+<pre><code class="language-sh">ipcs
+</code></pre>
+
+<p>key:ftok</p>
+
+<blockquote>
+  <p>convert  a pathname and a project identifier to a System V IPC key</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+key_t ftok(const char *pathname, int proj_id);
+</code></pre>
+
+<p>Message Queues</p>
+
+<ul>
+  <li>msgget</li>
+</ul>
+
+<blockquote>
+  <p>get a System V message queue identifier</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/msg.h&gt;
+int msgget(key_t key, int msgflg);
+</code></pre>
+
+<ul>
+  <li>msgop</li>
+</ul>
+
+<blockquote>
+  <p>System V message queue operations</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/msg.h&gt;
+int msgsnd(int msqid, const void *msgp, size_t msgsz, int msgflg);
+ssize_t msgrcv(int msqid, void *msgp, size_t msgsz, long msgtyp,
+int msgflg);
+</code></pre>
+
+<ul>
+  <li>msgctl</li>
+</ul>
+
+<blockquote>
+  <p>System V message control operations</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/msg.h&gt;
+int msgctl(int msqid, int cmd, struct msqid_ds *buf);
+</code></pre>
+
+<p>Semaphore Arrays</p>
+
+<ul>
+  <li>semget</li>
+  <li>semop</li>
+  <li>semctl</li>
+</ul>
+
+<p>Shared Memory</p>
+
+<ul>
+  <li>shmget</li>
+  <li>shmop</li>
+  <li>shmctl</li>
+</ul>
+
+<h1 id="网络套接字socket">网络套接字socket</h1>
+
+<h2 id="字节序问题">字节序问题</h2>
+
+<p>大端:低地址放高字节</p>
+
+<p>小端:低地址放低字节</p>
+
+<h2 id="报式套接字">报式套接字</h2>
+
+<ul>
+  <li>socket</li>
+</ul>
+
+<blockquote>
+  <p>create an endpoint for communication</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;          /* See NOTES */
+#include &lt;sys/socket.h&gt;
+int socket(int domain, int type, int protocol);
+</code></pre>
+
+<ul>
+  <li>bind</li>
+</ul>
+
+<blockquote>
+  <p>bind a name to a socket</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;          /* See NOTES */
+#include &lt;sys/socket.h&gt;
+int bind(int sockfd, const struct sockaddr *addr,
+socklen_t addrlen);
+</code></pre>
+
+<ul>
+  <li>sendto</li>
+</ul>
+
+<blockquote>
+  <p>send a message on a socket</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,
+const struct sockaddr *dest_addr, socklen_t addrlen);
+ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags);
+</code></pre>
+
+<ul>
+  <li>
+    <p>rcvfrom</p>
+  </li>
+  <li>
+    <p>inet_pton</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>convert IPv4 and IPv6 addresses from text to binary form</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;arpa/inet.h&gt;
+int inet_pton(int af, const char *src, void *dst);
+</code></pre>
+
+<ul>
+  <li>inet_ntop</li>
+</ul>
+
+<blockquote>
+  <p>convert IPv4 and IPv6 addresses from binary to text form</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;arpa/inet.h&gt;
+const char *inet_ntop(int af, const void *src,
+char *dst, socklen_t size);
+</code></pre>
+
+<ul>
+  <li>
+    <p>getsockopt</p>
+  </li>
+  <li>
+    <p>setsockopt</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>get and set options on sockets</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;sys/types.h&gt;          /* See NOTES */
+#include &lt;sys/socket.h&gt;
+int getsockopt(int sockfd, int level, int optname,
+void *optval, socklen_t *optlen);
+int setsockopt(int sockfd, int level, int optname,
+const void *optval, socklen_t optlen);
+</code></pre>
+
+<h3 id="多点通讯">多点通讯</h3>
+
+<ul>
+  <li>广播
+    <ul>
+      <li>全网广播</li>
+      <li>子网广播</li>
+    </ul>
+  </li>
+  <li>多播/组播</li>
+</ul>
+
+<h2 id="流式套接字">流式套接字</h2>
+
 </div>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
-
-<ul>
-  
-  
-  
-  
-  
-</ul>
-<h2 id="2020">
-  <i class="fas fa-folder-open"></i>
-  
-  <small>31</small>
-  
-  2020
-</h2>
-<ul>
-  
-  
-  <li>
-    <small>09 Jun 2020</small>
-    <a href="/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">linux编程-进程间通信</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 Jun 2020</small>
-    <a href="/_posts/2020-06-08-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">进程虚拟地址空间区域划分</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 Jun 2020</small>
-    <a href="/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">虚拟内存</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 Jun 2020</small>
-    <a href="/_posts/2020-06-06-%E6%8E%92%E5%BA%8F/">排序算法</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 Jun 2020</small>
-    <a href="/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/">linux编程-高级IO</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>30 May 2020</small>
-    <a href="/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/">linux编程-并发</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>26 May 2020</small>
-    <a href="/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/">KMP算法</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>25 May 2020</small>
-    <a href="/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/">linux编程-进程基础</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>22 May 2020</small>
-    <a href="/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">linux编程-文件系统</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>21 May 2020</small>
-    <a href="/_posts/2020-05-21-HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86;/">HashMap实现原理</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>20 May 2020</small>
-    <a href="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/">linux编程</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>15 May 2020</small>
-    <a href="/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">Docker笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="/_posts/2020-05-13-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81/">置换密码</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">类加载</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/">删除文件原理</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">sql-server常用命令总结</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>11 May 2020</small>
-    <a href="/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>10 May 2020</small>
-    <a href="/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">sql-server复习二</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>09 May 2020</small>
-    <a href="/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">linux笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="/_posts/2020-05-08-BIO&NIO&AIO/">BIO&NIO&AIO</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">新型冠状肺炎数据可视化</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="/_posts/2020-05-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">数据结构－二分查找</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="/_posts/2020-05-05-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/">数据结构－二叉树</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>04 May 2020</small>
-    <a href="/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构－线性表</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">sql-server复习一</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>08 Apr 2020</small>
-    <a href="/_posts/2020-04-08-MakeMyOs/">MakeMyOs</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>12 Mar 2020</small>
-    <a href="/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/">CPU模式</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>09 Feb 2020</small>
-    <a href="/_posts/2020-02-09-makefile%E7%AC%94%E8%AE%B0/">makefile笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>07 Jan 2020</small>
-    <a href="/_posts/2020-01-07-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-  </li>
-  
-  
-  
-  
-</ul>
-<h2 id="2019">
-  <i class="fas fa-folder-open"></i>
-  
-  <small>2</small>
-  
-  2019
-</h2>
-<ul>
-  
-  
-  <li>
-    <small>13 May 2019</small>
-    <a href="/_posts/2019-05-13-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">机器学习笔记</a>
-  </li>
-  
-  
-  
-  
-  <li>
-    <small>13 Mar 2019</small>
-    <a href="/_posts/2019-03-13-Hydra/">Hydra</a>
-  </li>
-  
-</ul>
 </div>
   </div>
   
