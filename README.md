@@ -15,7 +15,7 @@
 - E-mail:
   - **[outlook](mailto:verylazycat@outlook.com)**
   - **[QQ](mailto:1647495684@qq.com)**
-- WeChat: **wxid_yulfdob67t9322**
+- WeChat: **serendipity_liuY**
 - QQ: **1647495684**
 
 <!-- slide -->
@@ -100,7 +100,7 @@ XHU university
 
 ## 我的一些文字
 
-
+[大三(上)规划](/_posts/2020-06-11-大三上计划.md)
 
 <!-- slide vertical=true -->
 
