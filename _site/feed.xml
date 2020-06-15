@@ -1,11 +1,167 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-13T08:42:16+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-15T14:13:58+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">TCP三次握手四次挥手</title><link href="http://localhost:4000/_posts/2020-06-12-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" rel="alternate" type="text/html" title="TCP三次握手四次挥手" /><published>2020-06-12T00:00:00+08:00</published><updated>2020-06-12T00:00:00+08:00</updated><id>http://localhost:4000/_posts/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-12-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">滑动验证码黑产</title><link href="http://localhost:4000/_posts/2020-06-15-%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7/" rel="alternate" type="text/html" title="滑动验证码黑产" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;session参数重复校验漏洞&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;思路&quot;&gt;思路&lt;/h1&gt;
+
+&lt;p&gt;由于每次拖动滑块后，会发送一个Request请求数据包到服务器，服务器会验证这个Request请求数据包里携带的位移参数，来判断是否是拖动滑块到了正确的缺口位置。而服务器接收的数据包有很多，除了你发送的，也还会有其他人发送的请求，所以需要一个session参数来作为标识。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;首先，触发滑动验证机制&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;接着，滑动滑块到正确缺口位置，然后抓包。分析数据包，寻找session参数。&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;每次滑动正确位移后，使用Brupsuite或者其它中间人代理工具，抓包提取数据包里的session参数，保存到本地&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;因为服务器后端默认隐含对我们本地保存的session参数有一个有效时间和有效次数，所以我们不需要再去滑动验证码，直接在session的有效期内发送Request请求数据包到服务器即可验证成功！&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;最后黑产在实际批量注册，薅羊毛或刷赞过程中，遇到触发的滑动验证码机制，只要session在有效期内，只需使用python读取本地的txt内容，调用requests库发送请求数据包，即可绕过滑动验证码&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">TCP&amp;amp;UDP区别</title><link href="http://localhost:4000/_posts/2020-06-13-TCP&UDP%E5%8C%BA%E5%88%AB/" rel="alternate" type="text/html" title="TCP&amp;UDP区别" /><published>2020-06-13T00:00:00+08:00</published><updated>2020-06-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/TCP&amp;UDP%E5%8C%BA%E5%88%AB</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-13-TCP&amp;UDP%E5%8C%BA%E5%88%AB/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;tcp协议与udp协议的区别&quot;&gt;&lt;strong&gt;TCP协议与UDP协议的区别&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;TCP/IP协议是一个协议簇。里面包括很多协议的，UDP只是其中的一个， 之所以命名为TCP/IP协议，因为TCP、IP协议是两个很重要的协议，就用他两命名了。&lt;/p&gt;
+
+&lt;p&gt;TCP/IP协议集包括应用层,传输层，网络层，网络访问层。&lt;/p&gt;
+
+&lt;h2 id=&quot;应用层包括&quot;&gt;应用层包括&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;超文本传输协议（HTTP）:万维网的基本协议；&lt;/li&gt;
+  &lt;li&gt;文件传输（TFTP简单文件传输协议）；&lt;/li&gt;
+  &lt;li&gt;远程登录（Telnet），提供远程访问其它主机功能, 它允许用户登录internet主机，并在这台主机上执行命令；&lt;/li&gt;
+  &lt;li&gt;网络管理（SNMP简单网络管理协议），该协议提供了监控网络设备的方法， 以及配置管理,统计信息收集,性能管理及安全管理等；&lt;/li&gt;
+  &lt;li&gt;域名系统（DNS），该系统用于在internet中将域名及其公共广播的网络节点转换成IP地址。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;网络层包括&quot;&gt;网络层包括&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Internet协议（IP）；&lt;/li&gt;
+  &lt;li&gt;Internet控制信息协议（ICMP）；&lt;/li&gt;
+  &lt;li&gt;地址解析协议（ARP）；&lt;/li&gt;
+  &lt;li&gt;反向地址解析协议（RARP)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;网络访问层&quot;&gt;网络访问层&lt;/h2&gt;
+
+&lt;p&gt;网络访问层又称作主机到网络层（host-to-network），网络访问层的功能包括IP地址与物理地址硬件的映射，  以及将IP封装成帧.基于不同硬件类型的网络接口，网络访问层定义了和物理介质的连接.&lt;/p&gt;
+
+&lt;h1 id=&quot;tcp协议和udp协议的区别&quot;&gt;&lt;strong&gt;TCP协议和UDP协议的区别&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;TCP（Transmission Control  Protocol，传输控制协议）是面向连接的协议，也就是说，在收发数据前，必须和对方建立可靠的连接。  一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂， 只简单的描述下这三次对话的简单过程:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；&lt;/li&gt;
+  &lt;li&gt;主机B向主机A发送同意连接和要求同步 （同步就是两台主机一个在发送，一个在接收，协调工作）的数据包 ：“可以，你什么时候发？”，这是第二次对话；&lt;/li&gt;
+  &lt;li&gt;主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”， 这是第三次对话。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;三次“对话”的目的是使数据包的发送和接收同步， 经过三次“对话”之后，主机A才向主机B正式发送数据。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/_posts/2020-06-12-TCP三次握手四次挥手.md&quot;&gt;详细参考&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;名词解释&quot;&gt;名词解释&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ACK 是TCP报头的控制位之一，对数据进行确认。确认由目的端发出， 用它来告诉发送端这个序列号之前的数据段都收到了。  比如确认号为X，则表示前X-1个数据段都收到了，只有当ACK=1时,确认号才有效，当ACK=0时，确认号无效，这时会要求重传数据，保证数据的完整性。&lt;/li&gt;
+  &lt;li&gt;SYN 同步序列号，TCP建立连接时将这个位置1。&lt;/li&gt;
+  &lt;li&gt;FIN 发送端完成发送任务位，当TCP完成数据传输需要断开时,，提出断开连接的一方将这位置1。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tcp的包头结构&quot;&gt;TCP的包头结构&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;源端口 16位；&lt;/li&gt;
+  &lt;li&gt;目标端口 16位；&lt;/li&gt;
+  &lt;li&gt;序列号 32位；&lt;/li&gt;
+  &lt;li&gt;回应序号 32位；&lt;/li&gt;
+  &lt;li&gt;TCP头长度 4位；&lt;/li&gt;
+  &lt;li&gt;reserved 6位；&lt;/li&gt;
+  &lt;li&gt;控制代码 6位；&lt;/li&gt;
+  &lt;li&gt;窗口大小 16位；&lt;/li&gt;
+  &lt;li&gt;偏移量 16位；&lt;/li&gt;
+  &lt;li&gt;校验和 16位；&lt;/li&gt;
+  &lt;li&gt;选项 32位(可选)；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;这样我们得出了TCP包头的最小长度，为20字节。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;udpuser-data-protocol用户数据报协议&quot;&gt;&lt;strong&gt;UDP（User Data Protocol，用户数据报协议）&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;UDP是一个非连接的协议，传输数据之前源端和终端不建立连接，  当它想传送时就简单地去抓取来自应用程序的数据，并尽可能快地把它扔到网络上。 在发送端，UDP传送数据的速度仅仅是受应用程序生成数据的速度、  计算机的能力和传输带宽的限制； 在接收端，UDP把每个消息段放在队列中，应用程序每次从队列中读一个消息段。&lt;/li&gt;
+  &lt;li&gt;由于传输数据不建立连接，因此也就不需要维护连接状态，包括收发状态等， 因此一台服务机可同时向多个客户机传输相同的消息。&lt;/li&gt;
+  &lt;li&gt;UDP信息包的标题很短，只有8个字节，相对于TCP的20个字节信息包的额外开销很小。&lt;/li&gt;
+  &lt;li&gt;吞吐量不受拥挤控制算法的调节，只受应用软件生成数据的速率、传输带宽、 源端和终端主机性能的限制。&lt;/li&gt;
+  &lt;li&gt;UDP使用尽最大努力交付，即不保证可靠交付， 因此主机不需要维持复杂的链接状态表（这里面有许多参数）。&lt;/li&gt;
+  &lt;li&gt;UDP是面向报文的。发送方的UDP对应用程序交下来的报文， 在添加首部后就向下交付给IP层。既不拆分，也不合并，而是保留这些报文的边界， 因此，应用程序需要选择合适的报文大小。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我们经常使用“ping”命令来测试两台主机之间TCP/IP通信是否正常， 其实“ping”命令的原理就是向对方主机发送UDP数据包，然后对方主机确认收到数据包， 如果数据包是否到达的消息及时反馈回来，那么网络就是通的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ping命令&lt;/strong&gt;是用来探测主机到主机之间是否可通信，如果不能&lt;strong&gt;ping&lt;/strong&gt;到某台主机，表明不能和这台主机建立连接。&lt;strong&gt;ping命令&lt;/strong&gt;是使用 IP 和网络控制信息协议 (ICMP)，因而没有涉及到任何传输协议(UDP/TCP) 和应用程序。它发送icmp回送请求消息给目的主机&lt;/p&gt;
+
+&lt;p&gt;ICMP协议规定：目的主机必须返回ICMP回送应答消息给源主机。如果源主机在一定时间内收到应答，则认为主机可达。&lt;/p&gt;
+
+&lt;h2 id=&quot;udp的包头结构&quot;&gt;&lt;strong&gt;UDP的包头结构&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;源端口 16位&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;目的端口 16位&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;长度 16位&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;校验和 16位&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;具体编程时的区别&quot;&gt;具体编程时的区别&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;socket()的参数不同&lt;/li&gt;
+  &lt;li&gt;UDP Server不需要调用listen和accept&lt;/li&gt;
+  &lt;li&gt;UDP收发数据用sendto/recvfrom函数&lt;/li&gt;
+  &lt;li&gt;TCP：地址信息在connect/accept时确定&lt;/li&gt;
+  &lt;li&gt;UDP：在sendto/recvfrom函数中每次均 需指定地址信息&lt;/li&gt;
+  &lt;li&gt;UDP：shutdown函数无效&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;小结&quot;&gt;小结&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;基于连接与无连接；&lt;/li&gt;
+  &lt;li&gt;对系统资源的要求（TCP较多，UDP少）；&lt;/li&gt;
+  &lt;li&gt;UDP程序结构较简单；&lt;/li&gt;
+  &lt;li&gt;流模式与数据报模式 ；&lt;/li&gt;
+  &lt;li&gt;TCP保证数据正确性，UDP可能丢包；&lt;/li&gt;
+  &lt;li&gt;TCP保证数据顺序，UDP不保证&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">TCP三次握手四次挥手</title><link href="http://localhost:4000/_posts/2020-06-12-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" rel="alternate" type="text/html" title="TCP三次握手四次挥手" /><published>2020-06-12T00:00:00+08:00</published><updated>2020-06-12T00:00:00+08:00</updated><id>http://localhost:4000/_posts/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-12-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;tcp-三次握手&quot;&gt;&lt;strong&gt;TCP 三次握手&lt;/strong&gt;&lt;/h1&gt;
 
@@ -89,6 +245,10 @@
 &lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;category&quot; /&gt;leetcode&lt;/p&gt;
 &lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;category&quot; /&gt;c/c++/java深入学习&lt;/p&gt;
 &lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;category&quot; /&gt;省或国奖&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;category&quot; /&gt;写个c++项目,结合ROS或者caffe&lt;/p&gt;
+
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;category&quot; /&gt;写一个java前后端分离项目&lt;/p&gt;
+
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;其他&quot;&gt;其他&lt;/h1&gt;
@@ -1135,387 +1295,4 @@ int main(int argc, char const *argv[])
 }
          exit(0);
 }
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">KMP算法</title><link href="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/" rel="alternate" type="text/html" title="KMP算法" /><published>2020-05-26T00:00:00+08:00</published><updated>2020-05-26T00:00:00+08:00</updated><id>http://localhost:4000/_posts/KMP%E7%AE%97%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;bf&quot;&gt;BF&lt;/h1&gt;
-
-&lt;p&gt;Brute-Force(BF) 算法又称naive算法，是对字符串子串搜索最简单明了的算法。其主旨就是：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;不处理模式串&lt;/li&gt;
-  &lt;li&gt;模式串从目标串&lt;strong&gt;第一个元素&lt;/strong&gt;起逐一匹配&lt;/li&gt;
-  &lt;li&gt;发现无法匹配，模式串匹配右移一位，从下一位目标串元素重新初始逐一元素匹配&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/BF.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;虽然简单易懂，但是同时也导致了复杂度较高，最慢的情形其复杂度可以到达O（模式串长 * 目标串长）&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/BF_LOW.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;kmp&quot;&gt;&lt;strong&gt;KMP&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;但是如果仔细观察，可以发现&lt;strong&gt;模式串&lt;/strong&gt;本身是可以自带一些&lt;strong&gt;可被预先计算出&lt;/strong&gt;的&lt;strong&gt;可用于加速匹配的信息&lt;/strong&gt;的。&lt;/p&gt;
-
-&lt;p&gt;当模式串的第K位失配时，前K-1位必然是匹配的，如果直接整体后移一位重新从头开始匹配那之前的那些&lt;strong&gt;已经匹配的信息&lt;/strong&gt;就被浪费了。于是我们可以寻找&lt;strong&gt;最大的必定不需要再匹配的串&lt;/strong&gt;，那这个串是什么呢？&lt;/p&gt;
-
-&lt;p&gt;很显然，这个串就是[1,K-1]位串中&lt;strong&gt;最大且相同&lt;/strong&gt;的&lt;strong&gt;头尾&lt;/strong&gt;串（S）。当失配发生，可以直接&lt;strong&gt;保持目标串中的失配元素不变&lt;/strong&gt;，移动模式串，K-1-S串长个单位重新匹配，这就是KMP算法。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/KMP.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;为什么要移动K-1-S串长个单位？失配元素前方一共有K-1个元素，最大相同头尾串长为S。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/KMP2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;若移动小于K-1-S长度(例如K-1-S-1 = K - 1 - (S+1))，则必然无法匹配，因为不存在&lt;strong&gt;更大&lt;/strong&gt;的相同首尾串，如下图中（bab不是相同首尾串，故必然不匹配）。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/KMP3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;若移动大于K-1-S长度(例如K-1-S+1 = K - 1 - (S-1))，有可能匹配（当S-1同样是相同子串时），但是可能会因为多移动了位数而遗漏结果。&lt;/p&gt;
-
-&lt;p&gt;KMP算法本身比较好理解，而关于KMP的实现需要引入一个Next数组（由模式串预处理出的数组），Next数组的本身的算法则很难理解&lt;/p&gt;
-
-&lt;h1 id=&quot;next数组&quot;&gt;&lt;strong&gt;Next数组&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;Next数组的含义很直观，就是&lt;strong&gt;第几个元素失配时应该右移模式串重新匹配第几个元素&lt;/strong&gt;（不同的教材采用的首元素索引序号不同有的是0有的是1，这也是Next数组算法难以理解的一大原因，所以文中讨论索引序号都直接使用的是&lt;strong&gt;第&lt;/strong&gt;几个元素）。&lt;/p&gt;
-
-&lt;p&gt;Next数组的算法步骤如下图所示，在我们逐步讨论完其算法过程后再会看这张动图或许你会有更深刻地理解。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/next.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;逐步讨论&quot;&gt;&lt;strong&gt;逐步讨论&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;对于模式串的首个元素的Next值，约定为&lt;strong&gt;首元素索引值 - 1&lt;/strong&gt;，这么做仅仅是为了&lt;strong&gt;方便实现递归算法&lt;/strong&gt;。这个值&lt;strong&gt;不一定只为首元素的Next值&lt;/strong&gt;，经过优化后可能为其他元素的Next值，这个值（首元素索引 - 1）的含义是：&lt;/p&gt;
-
-&lt;p&gt;将&lt;strong&gt;模式串&lt;/strong&gt;的&lt;strong&gt;首元素&lt;/strong&gt;移动到&lt;strong&gt;失配元素后一位&lt;/strong&gt;并从首元素开始，重新匹配。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/next2.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;kmp实现&quot;&gt;KMP实现&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;// T 模式串， S目标串， pos第几个字符之后搜索
-// 约定索引起始值为1
-void Index_KMP(SString S, SString T, int pos){
-   // i 目标串指针，j 模式串指针
-    i = pos; j = 1;
-    // 只要指针没有溢出对应的串
-    while( i &amp;lt;= length(S) &amp;amp;&amp;amp; j &amp;lt;= length(T)){
-        // 如果将要和 目标串元素 匹配的元素是模式串首元素前一位的元素
-        // 或者
-        // 当前目标串元素 和 模式串元素可以匹配
-        // if (j == first_indexof(T) - 1 || S[i] == T[j]){
-        if(j == 0 || S[i] == T[j]){
-           // 指针各自右移一位
-            ++i;
-            ++j;
-        }else{
-            // 发生了失配，查Next数组移动模式串指针
-            j = next[j];
-        }
-    }
-    if (j &amp;gt; length(T)){
-        // 如果模式串指针溢出了（模式串指针匹配完毕了所有模式串中的元素）
-       return i - length(T);
-    }
-    else return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;next&quot;&gt;next&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;// T 模式串， next Next数组
-// 约定索引起始值为1
-void get_next(SString T, int &amp;amp;next[]){
-    // i 计算每一个元素Next值的指针，它只可能右移用于计算下一个元素的Next值
-    // j 用于指向 无法找到头尾串时 的递归回溯的元素 
-    // 初始化第一个元素的Next值
-    i = 1; next[1] = 0; j = 0;
-    while(i &amp;lt; length(T)){
-        // 如果递归回溯到第一个元素，它的next值为0，就无法继续回溯 -&amp;gt; 下一位元素的 Next值 就会等于 第一个元素的索引（1 即 0 + 1）
-        // 如果 当前元素 等于 当前元素Next值对应的元素 -&amp;gt; 下一个元素的 Next值 就会等于 当前元素的Next值 + 1
-        if (j == 0 || T[i] == T[j]){
-            ++i; ++j; next[i] = j;
-        }
-        else{
-            // 否则递归回溯j，将其指向更小的一个同首尾的子串的尾部 + 1
-            j = next[j];
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;nextval&quot;&gt;&lt;strong&gt;Nextval&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;(以下的讨论假设不需要递归以简化讨论过程)&lt;/p&gt;
-
-&lt;p&gt;优化Next，当第&lt;code&gt;i+1&lt;/code&gt;位失配的时候。通常，我们按照算法会比较 &lt;code&gt;T[i]&lt;/code&gt; 和 &lt;code&gt;T[next[i]]&lt;/code&gt;，若它们相同则将&lt;code&gt;Next[i+1]&lt;/code&gt;设置成&lt;code&gt;Next[i] + 1&lt;/code&gt;。但是，如果 &lt;code&gt;T[Next[i] + 1]&lt;/code&gt;和失配元素（&lt;code&gt;T[i+1]&lt;/code&gt;）相同时，这样设置则是多余的（Next元素的含义就是，某个元素失配时用哪个元素补充匹配，若补充匹配的元素和失配元素相同则这样设置是多余的）。所以，此时应该把&lt;code&gt;Next[i+1]&lt;/code&gt;设置成&lt;code&gt;Next[Next[i] + 1]&lt;/code&gt;，就是当&lt;code&gt;Next[i]+1&lt;/code&gt;失配时应该用哪个元素补充匹配。&lt;/p&gt;
-
-&lt;p&gt;那为什么&lt;code&gt;T[Next[Next[i] + 1]]&lt;/code&gt;不会等于&lt;code&gt;T[i+1]&lt;/code&gt;呢？因为按照这样的算法&lt;strong&gt;递推&lt;/strong&gt;是从第一个元素开始计算，可以确保除了当前失配的元素以外，&lt;strong&gt;之前的任意一个元素（索引为m）&lt;/strong&gt;都不可能等于&lt;code&gt;T[Next[m]+1]&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;// T 模式串， next Next数组
-// 约定索引起始值为1
-void get_nextval(SString T, int &amp;amp;nextval[]){
-    // i 计算每一个元素Next值的指针，它只可能右移用于计算下一个元素的Next值
-    // j 用于指向 无法找到头尾串时 的递归回溯的元素 
-    // 初始化第一个元素的Next值
-    i = 1; nextval[1] = 0; j = 0;
-    while(i &amp;lt; length(T)){
-        // 如果递归回溯到第一个元素，它的next值为0，就无法继续回溯 
-        // 如果 当前元素 等于 当前元素Next值对应的元素 
-        if (j == 0 || T[i] == T[j]){
-            ++i; ++j; 
-            if(T[i] != T[j]){
-                // 如果替补匹配的值不等于当前失配值,则设置它的索引为Next值
-               nextval[i] = j;
-            }
-          else{
-                // 否则设置它的Next值为当前失配值的Next值
-                nextval[i] = next[j];
-            }
-        }
-        else{
-            // 否则递归回溯j，将其指向更小的一个同首尾的子串的尾部 + 1
-            j = nextval[j];
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/next3.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="算法" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-进程基础</title><link href="http://localhost:4000/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="alternate" type="text/html" title="linux编程-进程基础" /><published>2020-05-25T00:00:00+08:00</published><updated>2020-05-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;进程标示符pid&quot;&gt;进程标示符pid&lt;/h1&gt;
-
-&lt;p&gt;类型:pid_t&lt;/p&gt;
-
-&lt;p&gt;命令:ps&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;getpid&lt;/li&gt;
-  &lt;li&gt;getppid&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-pid_t getpid(void);
-pid_t getppid(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;进程产生&quot;&gt;进程产生&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fork&lt;/li&gt;
-  &lt;li&gt;vfork&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-pid_t fork(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-pid_t vfork(void);
-Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
-vfork():
-Since glibc 2.12:
-(_XOPEN_SOURCE &amp;gt;= 500) &amp;amp;&amp;amp; ! (_POSIX_C_SOURCE &amp;gt;= 200809L)
-|| /* Since glibc 2.19: */ _DEFAULT_SOURCE
-|| /* Glibc versions &amp;lt;= 2.19: */ _BSD_SOURCE
-Before glibc 2.12:
-_BSD_SOURCE || _XOPEN_SOURCE &amp;gt;= 500
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;fork()  creates  a new process by duplicating the calling process.  The
-       new process is referred to as the child process.  The  calling  process
-       is referred to as the parent process.&lt;/p&gt;
-
-&lt;p&gt;fork后父子进程区别:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;返回值不同&lt;/li&gt;
-  &lt;li&gt;pid不同,ppid不同&lt;/li&gt;
-  &lt;li&gt;未决信号和文件锁不继承&lt;/li&gt;
-  &lt;li&gt;资源利用量清0&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;init进程:1号,是所有的进程的祖先进程&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;调度器的调度策略决定那个进程先运行&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在fork之前,尽量刷新所有的流:fflush&lt;很重要&gt;&lt;/很重要&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;进程消亡以及资源释放&quot;&gt;进程消亡以及资源释放&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;wait&lt;/li&gt;
-  &lt;li&gt;waitpid&lt;/li&gt;
-  &lt;li&gt;waitid&lt;/li&gt;
-  &lt;li&gt;wait3&lt;/li&gt;
-  &lt;li&gt;wait4&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;sys/wait.h&amp;gt;
-pid_t wait(int *wstatus);
-pid_t waitpid(pid_t pid, int *wstatus, int options);
-int waitid(idtype_t idtype, id_t id, siginfo_t *infop, int options);
-/* This is the glibc and POSIX interface; see
-NOTES for information on the raw system call. */
-Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
-waitid():
-Since glibc 2.26: _XOPEN_SOURCE &amp;gt;= 500 ||
-_POSIX_C_SOURCE &amp;gt;= 200809L
-Glibc 2.25 and earlier:
-_XOPEN_SOURCE
-|| /* Since glibc 2.12: */ _POSIX_C_SOURCE &amp;gt;= 200809L
-|| /* Glibc versions &amp;lt;= 2.19: */ _BSD_SOURCE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;exec函数族&quot;&gt;exec函数族&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-extern char **environ;
-int execl(const char *path, const char *arg, ...
-/* (char  *) NULL */);
-int execlp(const char *file, const char *arg, ...
-/* (char  *) NULL */);
-int execle(const char *path, const char *arg, ...
-/*, (char *) NULL, char * const envp[] */);
-int execv(const char *path, char *const argv[]);
-int execvp(const char *file, char *const argv[]);
-int execvpe(const char *file, char *const argv[],
-char *const envp[]);
-Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
-execvpe(): _GNU_SOURCE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;用户权限以及组权限&quot;&gt;用户权限以及组权限&lt;/h1&gt;
-
-&lt;p&gt;u+s&lt;/p&gt;
-
-&lt;p&gt;g+s&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;getuid&lt;/li&gt;
-  &lt;li&gt;geteuid&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-#include &amp;lt;sys/types.h&amp;gt;
-uid_t getuid(void);
-uid_t geteuid(void);
-#include &amp;lt;unistd.h&amp;gt;
-#include &amp;lt;sys/types.h&amp;gt;
-gid_t getgid(void);
-gid_t getegid(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;setuid&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-int setuid(uid_t uid);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;setgid&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-int setgid(gid_t gid);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;setreuid&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-int setreuid(uid_t ruid, uid_t euid);
-int setregid(gid_t rgid, gid_t egid);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;解释器文件&quot;&gt;解释器文件&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;#!bin/bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;system&quot;&gt;system&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
-int system(const char *command);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;fork&lt;/code&gt;+&lt;code&gt;exec&lt;/code&gt;+&lt;code&gt;wait&lt;/code&gt;封装&lt;/p&gt;
-
-&lt;h1 id=&quot;进程会计&quot;&gt;进程会计&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;acct&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int acct(const char *filename);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;不是标准,了解即可&lt;/p&gt;
-
-&lt;h1 id=&quot;进程时间&quot;&gt;进程时间&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;times&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/times.h&amp;gt;
-clock_t times(struct tms *buf);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;守护进程&quot;&gt;守护进程&lt;/h1&gt;
-
-&lt;p&gt;session:sid&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;setsid&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-pid_t setsid(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;getpgrp&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-int setpgid(pid_t pid, pid_t pgid);
-pid_t getpgid(pid_t pid);
-pid_t getpgrp(void);                 /* POSIX.1 version */
-pid_t getpgrp(pid_t pid);            /* BSD version */
-int setpgrp(void);                   /* System V version */
-int setpgrp(pid_t pid, pid_t pgid);  /* BSD version */
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;单实例守护进程:锁文件:/var/run/name.pid&lt;/p&gt;
-
-&lt;p&gt;启动脚本文件: /etc/rc*…&lt;/p&gt;
-
-&lt;h1 id=&quot;系统日志&quot;&gt;系统日志&lt;/h1&gt;
-
-&lt;p&gt;syslogd服务&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;openlog&lt;/li&gt;
-  &lt;li&gt;syslog&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;syslog.h&amp;gt;
-void openlog(const char *ident, int option, int facility);
-void syslog(int priority, const char *format, ...);
-void closelog(void);
-void vsyslog(int priority, const char *format, va_list ap);
 &lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
