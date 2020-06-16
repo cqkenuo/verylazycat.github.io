@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-15T14:13:58+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-16T19:23:43+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -643,6 +643,18 @@ main函数中的e、f、g三个静态局部变量也是放在数据段的，但�
 
 &lt;h2 id=&quot;io多路转接&quot;&gt;IO多路转接&lt;/h2&gt;
 
+&lt;p&gt;IO多路复用是指内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程。IO多路复用适用如下场合：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;当客户处理多个描述字时（一般是交互式输入和网络套接口），必须使用I/O复用。&lt;/li&gt;
+  &lt;li&gt;当一个客户同时处理多个套接口时，而这种情况是可能的，但很少出现。&lt;/li&gt;
+  &lt;li&gt;如果一个TCP服务器既要处理监听套接口，又要处理已连接套接口，一般也要用到I/O复用。&lt;/li&gt;
+  &lt;li&gt;如果一个服务器即要处理TCP，又要处理UDP，一般要使用I/O复用。&lt;/li&gt;
+  &lt;li&gt;如果一个服务器要处理多个服务或多个协议，一般要使用I/O复用。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　　与多进程和多线程技术相比，I/O多路复用技术的最大优势是系统开销小，系统不必创建进程/线程，也不必维护这些进程/线程，从而大大减小了系统的开销&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;select&lt;/li&gt;
 &lt;/ul&gt;
@@ -668,6 +680,8 @@ int pselect(int nfds, fd_set *readfds, fd_set *writefds,
 fd_set *exceptfds, const struct timespec *timeout,
 const sigset_t *sigmask);
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sellect.png&quot; alt=&quot;sellect&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;poll&lt;/li&gt;
