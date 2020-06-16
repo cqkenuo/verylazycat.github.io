@@ -1,11 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-16T19:23:43+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-16T20:27:08+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">滑动验证码黑产</title><link href="http://localhost:4000/_posts/2020-06-15-%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7/" rel="alternate" type="text/html" title="滑动验证码黑产" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">ARP安全</title><link href="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/" rel="alternate" type="text/html" title="ARP安全" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/ARP%E5%AE%89%E5%85%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;arp协议&quot;&gt;ARP协议&lt;/h1&gt;
+
+&lt;p&gt;ARP协议（&lt;code&gt;address resolution protocol&lt;/code&gt;）&lt;code&gt;地址解析协议&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;IP&lt;/code&gt; &lt;code&gt;--&amp;gt;&amp;gt;&lt;/code&gt;　&lt;code&gt;MAC&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;ARP协议的基本功能就是通过目标设备的IP地址，来查询目标设备的mac地址。&lt;/p&gt;
+
+&lt;p&gt;在局域网的任意一台主机中，都有一个&lt;code&gt;ARP缓存表&lt;/code&gt;，里面保存本机已知的此局域网中各主机和路由器的IP地址和MAC地址的对照关系。ARP缓存表的&lt;code&gt;生命周期是有时限的&lt;/code&gt;（一般不超过20分钟）&lt;/p&gt;
+
+&lt;h1 id=&quot;apr攻击发现&quot;&gt;APR攻击发现&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;上网明显变慢，或者突然掉线时&lt;/strong&gt;，我们可以用&lt;code&gt;arp -a&lt;/code&gt;命令来检查ARP表&lt;code&gt;arp -d&lt;/code&gt;删除ARP表&lt;/li&gt;
+  &lt;li&gt;ARP防火墙类软件&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;攻击方式&quot;&gt;&lt;strong&gt;攻击方式&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;简单的诈骗攻击&quot;&gt;&lt;strong&gt;简单的诈骗攻击&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;这是对比多见的攻击，经过发送伪造的ARP包来诈骗路由和方针主机，让方针主机认为这是一个合法的主机，便完成了诈骗，这种诈骗多发生在同一网段内，因为路由不会把本网段的包向外转发，当然完成不一样网段的攻击也有办法，便要经过ICMP协议来告诉路由器从头挑选路由&lt;/p&gt;
+
+&lt;h2 id=&quot;根据arp的dos&quot;&gt;&lt;strong&gt;根据ARP的DOS&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;D.O.S又称拒绝服务攻击，当大量的衔接请求被发送到一台主机时，因为主机的处理才能有限，不能为正常用户提供服务，便呈现拒绝服务。这个过程中假如运用ARP来躲藏自己，在被攻击主机的日志上就不会呈现真实的IP攻击，也不会影响到本机。&lt;/p&gt;
+
+&lt;h2 id=&quot;mac-flooding&quot;&gt;&lt;strong&gt;MAC Flooding&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;这是一个对比风险的攻击，能够溢出交流机的ARP表，使全部网络不能正常通讯。&lt;/p&gt;
+
+&lt;h1 id=&quot;arp攻击的防护&quot;&gt;&lt;strong&gt;arp攻击的防护&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;arp-高速缓存超时设置&quot;&gt;&lt;strong&gt;ARP 高速缓存超时设置&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;在ARP高速缓存中的表项一般都要设置超时值，缩短这个这个超时值能够有用的避免ARP表的溢出。&lt;/p&gt;
+
+&lt;h2 id=&quot;ipmac访问操控--推荐使用&quot;&gt;&lt;strong&gt;IP+MAC访问操控  —–推荐使用&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;单纯依托IP或MAC来树立信赖联系是不安全，抱负的安全联系树立在IP+MAC的根底上，这也是咱们校园网上网有必要绑定IP和MAC的因素之一&lt;/p&gt;
+
+&lt;h2 id=&quot;静态arp缓存表&quot;&gt;&lt;strong&gt;静态ARP缓存表&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;每台主机都有一个暂时寄存IP-MAC的对应表ARP攻击就经过更改这个缓存来到达诈骗的意图，运用静态的ARP来绑定正确的MAC是一个有用的办法，在命令行下运用arp -a能够检查当时的ARP缓存表。&lt;/p&gt;
+
+&lt;h2 id=&quot;自动查询&quot;&gt;&lt;strong&gt;自动查询&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;在某个正常的时间，做一个IP和MAC对应的数据库，以后定时检查当时的IP和MAC对应联系是否正常，定时检查交流机的流量列表，检查丢包率。&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">滑动验证码黑产</title><link href="http://localhost:4000/_posts/2020-06-15-%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7/" rel="alternate" type="text/html" title="滑动验证码黑产" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;session参数重复校验漏洞&lt;/p&gt;
@@ -863,450 +912,4 @@ int flock(int fd, int operation);
 
     &lt;p&gt;&lt;img src=&quot;/img/快速排序.gif&quot; alt=&quot;快速排序&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><category term="算法" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-并发</title><link href="http://localhost:4000/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/" rel="alternate" type="text/html" title="linux编程-并发" /><published>2020-05-30T00:00:00+08:00</published><updated>2020-05-30T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;信号&quot;&gt;信号&lt;/h1&gt;
-
-&lt;h2 id=&quot;信号概念&quot;&gt;信号概念&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;同步:&lt;/p&gt;
-
-  &lt;p&gt;异步:&lt;/p&gt;
-
-  &lt;p&gt;异步事件的处理:查询法,通知法&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;信号是软件的&lt;code&gt;中断&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;signal&quot;&gt;signal&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-typedef void (*sighandler_t)(int);
-sighandler_t signal(int signum, sighandler_t handler);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;void(&lt;em&gt;signal(intosignum,void (&lt;/em&gt;func)(int)))(int)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code&gt;信号会打断阻塞的系统调用&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;信号不可靠&quot;&gt;信号不可靠&lt;/h2&gt;
-
-&lt;h2 id=&quot;可重入函数&quot;&gt;可重入函数&lt;/h2&gt;
-
-&lt;p&gt;所有的系统调用都是可重入的,一部分库函数也可以重入,如memcpy&lt;/p&gt;
-
-&lt;h2 id=&quot;信号响应过程&quot;&gt;信号响应过程&lt;/h2&gt;
-
-&lt;h2 id=&quot;常用函数&quot;&gt;常用函数&lt;/h2&gt;
-
-&lt;h3 id=&quot;kill&quot;&gt;kill&lt;/h3&gt;
-
-&lt;p&gt;send signal to a process&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;signal.h&amp;gt;
-int kill(pid_t pid, int sig);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;raise&quot;&gt;raise&lt;/h3&gt;
-
-&lt;p&gt;send a signal to the caller&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int raise(int sig);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;alarm&quot;&gt;alarm&lt;/h3&gt;
-
-&lt;p&gt;set an alarm clock for delivery of a signal&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-unsigned int alarm(unsigned int seconds);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;pause&quot;&gt;pause&lt;/h3&gt;
-
-&lt;p&gt;wait for signal&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int pause(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;setitimer&quot;&gt;setitimer&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/time.h&amp;gt;
-int getitimer(int which, struct itimerval *curr_value);
-int setitimer(int which, const struct itimerval *new_value,
-struct itimerval *old_value);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;尽量用setitimer不要alarm&lt;/p&gt;
-
-&lt;h3 id=&quot;abort&quot;&gt;abort&lt;/h3&gt;
-
-&lt;p&gt;cause abnormal process termination&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
-void abort(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;system&quot;&gt;system&lt;/h3&gt;
-
-&lt;p&gt;execute a shell command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
-int system(const char *command);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;During  execution  of  the command, SIGCHLD will be blocked, and SIGINT
-       and SIGQUIT will be ignored, in the process that calls system()  (these
-       signals  will  be  handled according to their defaults inside the child
-       process that executes command)&lt;/p&gt;
-
-&lt;h3 id=&quot;sleep&quot;&gt;sleep&lt;/h3&gt;
-
-&lt;p&gt;sleep for a specified number of seconds&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-unsigned int sleep(unsigned int seconds);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;信号集&quot;&gt;信号集&lt;/h2&gt;
-
-&lt;p&gt;sigemptyset, sigfillset, sigaddset, sigdelset, sigismember - POSIX sig‐nal set operations&lt;/p&gt;
-
-&lt;p&gt;类型:sigset_t&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int sigemptyset(sigset_t *set);
-int sigfillset(sigset_t *set);
-int sigaddset(sigset_t *set, int signum);
-int sigdelset(sigset_t *set, int signum);
-int sigismember(const sigset_t *set, int signum);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;sigpending&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int sigpending(sigset_t *set);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;信号屏蔽字pending集的处理&quot;&gt;信号屏蔽字/pending集的处理&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;sigprocmask&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;sigprocmask, rt_sigprocmask - examine and change blocked signals&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-/* Prototype for the glibc wrapper function */
-int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
-/* Prototype for the underlying system call */
-int rt_sigprocmask(int how, const kernel_sigset_t *set,
-kernel_sigset_t *oldset, size_t sigsetsize);
-/* Prototype for the legacy system call (deprecated) */
-int sigprocmask(int how, const old_kernel_sigset_t *set,
-old_kernel_sigset_t *oldset);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;联系mask和pending的位图,理解原理&lt;/p&gt;
-
-&lt;h2 id=&quot;扩展函数&quot;&gt;扩展函数&lt;/h2&gt;
-
-&lt;h3 id=&quot;sigsuspend&quot;&gt;sigsuspend&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int sigsuspend(const sigset_t *mask);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;sigaction&quot;&gt;sigaction&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int sigaction(int signum, const struct sigaction *act,
-struct sigaction *oldact);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;实时信号&quot;&gt;实时信号&lt;/h2&gt;
-
-&lt;h1 id=&quot;线程&quot;&gt;线程&lt;/h1&gt;
-
-&lt;h2 id=&quot;线程概念&quot;&gt;线程概念&lt;/h2&gt;
-
-&lt;p&gt;posix标准&lt;/p&gt;
-
-&lt;p&gt;openmp线程&lt;/p&gt;
-
-&lt;p&gt;线程标识:pthread_t&lt;/p&gt;
-
-&lt;p&gt;pthread_equal&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;compare thread IDs&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-int pthread_equal(pthread_t t1, pthread_t t2);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;pthread_self&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;obtain ID of the calling thread&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-pthread_t pthread_self(void);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;线程创建&quot;&gt;线程创建&lt;/h2&gt;
-
-&lt;p&gt;pthread_create&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;create a new thread&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
-void *(*start_routine) (void *), void *arg);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;线程的调度取决于调度器策略&lt;/p&gt;
-
-&lt;h2 id=&quot;线程终止&quot;&gt;线程终止&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;线程从启动例程返回,返回值就是线程的退出码&lt;/li&gt;
-  &lt;li&gt;线程可以被同一进程中的其他线程取消&lt;/li&gt;
-  &lt;li&gt;线程调用&lt;code&gt;pthread_exi&lt;/code&gt;t函数&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-void pthread_exit(void *retval);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;pthread_join&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-int pthread_join(pthread_t thread, void **retval);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;线程的取消选项&quot;&gt;线程的取消选项&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pthread_cancel&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;send a cancellation request to a thread&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-int pthread_cancel(pthread_t thread);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;可取消状态&lt;/li&gt;
-  &lt;li&gt;取消类型(推迟取消)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;取消点必须是系统调用&lt;/p&gt;
-
-&lt;h2 id=&quot;栈清理&quot;&gt;栈清理&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pthread_cleanup_push&lt;/li&gt;
-  &lt;li&gt;pthread_cleanup_pop&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;类似钩子函数&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;pthread_cleanup_push, pthread_cleanup_pop - push and pop thread cancel-lation clean-up handlers&lt;/p&gt;
-
-&lt;p&gt;必须匹配使用&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-void pthread_cleanup_push(void (*routine)(void *),
-void *arg);
-void pthread_cleanup_pop(int execute);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;线程同步&quot;&gt;线程同步&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;ubuntu 环境需要安装:sudo apt-get install glibc-doc&lt;/p&gt;
-
-  &lt;p&gt;sudo apt-get install manpages-posix-dev&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;互斥量&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-pthread_mutex_t fastmutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t recmutex = PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
-pthread_mutex_t errchkmutex = PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP;
-int  pthread_mutex_init(pthread_mutex_t  *mutex,  const  pthread_mutex‐
-attr_t *mutexattr);
-int pthread_mutex_lock(pthread_mutex_t *mutex);
-int pthread_mutex_trylock(pthread_mutex_t *mutex);
-int pthread_mutex_unlock(pthread_mutex_t *mutex);
-int pthread_mutex_destroy(pthread_mutex_t *mutex);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;条件变量&lt;/p&gt;
-
-&lt;p&gt;类型:pthread_conf_t&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pthread_cond_init&lt;/li&gt;
-  &lt;li&gt;pthread_cond_signal&lt;/li&gt;
-  &lt;li&gt;pthread_cond_broadcast&lt;/li&gt;
-  &lt;li&gt;pthread_cond_wait&lt;/li&gt;
-  &lt;li&gt;pthread_cond_timedwait&lt;/li&gt;
-  &lt;li&gt;pthread_cond_destroy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
-int    pthread_cond_init(pthread_cond_t    *cond,    pthread_condattr_t
-*cond_attr);
-int pthread_cond_signal(pthread_cond_t *cond);
-int pthread_cond_broadcast(pthread_cond_t *cond);
-int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex);
-int   pthread_cond_timedwait(pthread_cond_t   *cond,    pthread_mutex_t
-*mutex, const struct timespec *abstime);
-int pthread_cond_destroy(pthread_cond_t *cond);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;信号量&lt;/p&gt;
-
-&lt;p&gt;读写锁&lt;/p&gt;
-
-&lt;p&gt;读锁-&amp;gt;共享锁;&lt;/p&gt;
-
-&lt;p&gt;写锁-&amp;gt;互斥锁&lt;/p&gt;
-
-&lt;h2 id=&quot;线程属性&quot;&gt;线程属性&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pthread_attr_init&lt;/li&gt;
-  &lt;li&gt;pthread_attr_destroy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-int pthread_attr_init(pthread_attr_t *attr);
-int pthread_attr_destroy(pthread_attr_t *attr);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;pthread_attr_init, pthread_attr_destroy - initialize and destroy thread attributes object&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;详细参考 SEE ALSO&lt;/p&gt;
-
-&lt;h2 id=&quot;线程同步属性&quot;&gt;线程同步属性&lt;/h2&gt;
-
-&lt;p&gt;互斥量属性&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pthread_mutexattr_init&lt;/li&gt;
-  &lt;li&gt;pthread_mutexattr_destroy&lt;/li&gt;
-  &lt;li&gt;pthread_mutexattr_settype&lt;/li&gt;
-  &lt;li&gt;pthread_mutexattr_gettype&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-int pthread_mutexattr_init(pthread_mutexattr_t *attr);
-int pthread_mutexattr_destroy(pthread_mutexattr_t *attr);
-int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int kind);
-int  pthread_mutexattr_gettype(const  pthread_mutexattr_t  *attr,   int
-*kind);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;clone&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;create a child process&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#define _GNU_SOURCE
-#include &amp;lt;sched.h&amp;gt;
-int clone(int (*fn)(void *), void *child_stack,
-int flags, void *arg, ...
-/* pid_t *ptid, void *newtls, pid_t *ctid */ );
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;条件变量属性&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;pthread.h&amp;gt;
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
-int    pthread_cond_init(pthread_cond_t    *cond,    pthread_condattr_t
-*cond_attr);
-int pthread_cond_signal(pthread_cond_t *cond);
-int pthread_cond_broadcast(pthread_cond_t *cond);
-int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex);
-int   pthread_cond_timedwait(pthread_cond_t   *cond,    pthread_mutex_t
-*mutex, const struct timespec *abstime);
-int pthread_cond_destroy(pthread_cond_t *cond);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;更多参考SEE ALSO&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;重入&quot;&gt;重入&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;POSIX标准规定发布的库要支持并发,如果不支持,函数名称要体现出来&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;多线程中的io&quot;&gt;多线程中的IO&lt;/h3&gt;
-
-&lt;h3 id=&quot;线程与信号&quot;&gt;线程与信号&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pthread_sigmask&lt;/li&gt;
-  &lt;li&gt;sigwait&lt;/li&gt;
-  &lt;li&gt;pthread_kill&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int pthread_sigmask(int how, const sigset_t *set, sigset_t *oldset);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int sigwait(const sigset_t *set, int *sig);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;signal.h&amp;gt;
-int pthread_kill(pthread_t thread, int sig);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;线程与fork&quot;&gt;线程与fork&lt;/h3&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;openmp标准&quot;&gt;openmp标准&lt;/h2&gt;
-
-&lt;p&gt;www.OpenMP.org&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;stdlib.h&amp;gt;
-int main(int argc, char const *argv[])
-{
-#pragma omp parallel
-{
-        puts(&quot;hello&quot;);
-        puts(&quot;world&quot;);
-}
-         exit(0);
-}
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/ol&gt;</content><author><name></name></author><category term="算法" /><summary type="html">[toc]</summary></entry></feed>
