@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-16T20:27:08+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-18T21:44:58+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -522,7 +522,131 @@ const void *optval, socklen_t optlen);
   &lt;li&gt;多播/组播&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;流式套接字&quot;&gt;流式套接字&lt;/h2&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">虚拟内存</title><link href="http://localhost:4000/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" rel="alternate" type="text/html" title="虚拟内存" /><published>2020-06-08T00:00:00+08:00</published><updated>2020-06-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h2 id=&quot;流式套接字&quot;&gt;流式套接字&lt;/h2&gt;
+
+&lt;h1 id=&quot;例子&quot;&gt;例子&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;服务端&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-06-18 14:57:07 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-06-18 21:42:23
+ */
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;sys/types.h&amp;gt; 
+#include &amp;lt;sys/socket.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include&amp;lt;netinet/in.h&amp;gt;
+#include &amp;lt;arpa/inet.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#define PORT  6666
+#define MAXDATASIZE 2048
+
+int main(int argc, char const *argv[])
+{
+    int listenfd;
+    listenfd = socket(AF_INET,SOCK_STREAM,0);
+    if (listenfd &amp;lt; 0)
+    {
+        perror(&quot;socket&quot;);
+        exit(EXIT_FAILURE);
+    }
+     struct sockaddr_in serverAddr;
+     bzero(&amp;amp;serverAddr,sizeof(serverAddr));
+     serverAddr.sin_family = AF_INET;
+     serverAddr.sin_port = htons(PORT);
+     serverAddr.sin_addr.s_addr = INADDR_ANY;
+     bind(listenfd,(struct sockaddr*)&amp;amp;serverAddr,sizeof(serverAddr));
+     listen(listenfd,10);
+     struct sockaddr_in peerAddr;
+    socklen_t peer_len  = sizeof(peerAddr);
+    int connfd;
+    while (1)
+    {
+        connfd = accept(listenfd,(struct sockaddr*)&amp;amp;peerAddr,&amp;amp;peer_len);
+        if (connfd &amp;lt; 0)
+        {
+            perror(&quot;accept&quot;);
+            exit(EXIT_FAILURE);
+        }
+        printf(&quot;-----------------连接成功--------------\n&quot;);
+        char buf[MAXDATASIZE];
+        while (1)
+        {
+            memset(buf,'\0',MAXDATASIZE/sizeof(char));
+            int recv_length = recv(connfd,buf,MAXDATASIZE/sizeof(char),0);
+            if(recv_length == 0)
+            {
+                printf(&quot;client has closed\n&quot;);
+                break;
+            }
+            printf(&quot;client say:&quot;);
+            fputs(buf,stdout);
+            memset(buf,'\0',MAXDATASIZE/sizeof(char));
+            printf(&quot;input:&quot;);
+            fgets(buf,sizeof(buf),stdin);
+            send(connfd,buf,recv_length,0);
+        }
+        close(connfd);
+        close(listenfd);
+        return 0;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;客服端&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;sys/types.h&amp;gt;          /* See NOTES */
+#include &amp;lt;sys/socket.h&amp;gt;
+#include &amp;lt;netinet/in.h&amp;gt;
+#include &amp;lt;arpa/inet.h&amp;gt;
+#define PORT  6666
+#define MAXDATASIZE 2048
+int main(int argc, char const *argv[])
+{
+    if(argc != 2)
+    {
+        printf(&quot;usage:%s+IP&quot;,argv[0]);
+        exit(EXIT_FAILURE);
+    }    
+    int sockfd;
+    sockfd = socket(AF_INET,SOCK_STREAM,0);
+    const char *server_ip = argv[1];
+    struct sockaddr_in serverAddr;
+    bzero(&amp;amp;serverAddr,sizeof(serverAddr));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(PORT);
+    inet_pton(AF_INET,server_ip,&amp;amp;serverAddr.sin_addr);
+    connect(sockfd,(struct sockaddr*)&amp;amp;serverAddr,sizeof(serverAddr));
+    printf(&quot;--------------服务器连接成功-------------\n&quot;);
+    char buf[MAXDATASIZE];
+    printf(&quot;input:&quot;);
+    while (fgets(buf,sizeof(buf),stdin)!=NULL &amp;amp;&amp;amp; (strcmp(buf,&quot;quit&quot;)))
+    {
+        send(sockfd,buf,sizeof(buf),0);
+        memset(buf,0,sizeof(buf));
+        recv(sockfd,buf,sizeof(buf),0);
+        printf(&quot;server say:&quot;);
+        fputs(buf,stdout);
+        memset(buf,0,sizeof(buf));
+        printf(&quot;input:&quot;);
+    }
+    printf(&quot;client will be closed, see you next time.\n&quot;);
+    close(sockfd);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">虚拟内存</title><link href="http://localhost:4000/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" rel="alternate" type="text/html" title="虚拟内存" /><published>2020-06-08T00:00:00+08:00</published><updated>2020-06-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;概念&quot;&gt;概念&lt;/h1&gt;
 

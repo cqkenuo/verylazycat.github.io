@@ -343,6 +343,7 @@
       <li><a href="#%E6%B5%81%E5%BC%8F%E5%A5%97%E6%8E%A5%E5%AD%97">流式套接字</a></li>
     </ol>
   </li>
+  <li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
 </ol>
       
       
@@ -610,11 +611,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    2263字
+    4735字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    8分
+    16分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" data-xid="/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" data-flag-title="linux编程-进程间通信">
@@ -865,6 +866,131 @@ const void *optval, socklen_t optlen);
 </ul>
 
 <h2 id="流式套接字">流式套接字</h2>
+
+<h1 id="例子">例子</h1>
+
+<ul>
+  <li>服务端</li>
+</ul>
+
+<pre><code class="language-c">/*
+ * @Author: verylazycat 
+ * @Date: 2020-06-18 14:57:07 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-06-18 21:42:23
+ */
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/types.h&gt; 
+#include &lt;sys/socket.h&gt;
+#include &lt;string.h&gt;
+#include&lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;unistd.h&gt;
+#define PORT  6666
+#define MAXDATASIZE 2048
+
+int main(int argc, char const *argv[])
+{
+    int listenfd;
+    listenfd = socket(AF_INET,SOCK_STREAM,0);
+    if (listenfd &lt; 0)
+    {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
+     struct sockaddr_in serverAddr;
+     bzero(&amp;serverAddr,sizeof(serverAddr));
+     serverAddr.sin_family = AF_INET;
+     serverAddr.sin_port = htons(PORT);
+     serverAddr.sin_addr.s_addr = INADDR_ANY;
+     bind(listenfd,(struct sockaddr*)&amp;serverAddr,sizeof(serverAddr));
+     listen(listenfd,10);
+     struct sockaddr_in peerAddr;
+    socklen_t peer_len  = sizeof(peerAddr);
+    int connfd;
+    while (1)
+    {
+        connfd = accept(listenfd,(struct sockaddr*)&amp;peerAddr,&amp;peer_len);
+        if (connfd &lt; 0)
+        {
+            perror("accept");
+            exit(EXIT_FAILURE);
+        }
+        printf("-----------------连接成功--------------\n");
+        char buf[MAXDATASIZE];
+        while (1)
+        {
+            memset(buf,'\0',MAXDATASIZE/sizeof(char));
+            int recv_length = recv(connfd,buf,MAXDATASIZE/sizeof(char),0);
+            if(recv_length == 0)
+            {
+                printf("client has closed\n");
+                break;
+            }
+            printf("client say:");
+            fputs(buf,stdout);
+            memset(buf,'\0',MAXDATASIZE/sizeof(char));
+            printf("input:");
+            fgets(buf,sizeof(buf),stdin);
+            send(connfd,buf,recv_length,0);
+        }
+        close(connfd);
+        close(listenfd);
+        return 0;
+    }
+}
+</code></pre>
+
+<ul>
+  <li>客服端</li>
+</ul>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/types.h&gt;          /* See NOTES */
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#define PORT  6666
+#define MAXDATASIZE 2048
+int main(int argc, char const *argv[])
+{
+    if(argc != 2)
+    {
+        printf("usage:%s+IP",argv[0]);
+        exit(EXIT_FAILURE);
+    }    
+    int sockfd;
+    sockfd = socket(AF_INET,SOCK_STREAM,0);
+    const char *server_ip = argv[1];
+    struct sockaddr_in serverAddr;
+    bzero(&amp;serverAddr,sizeof(serverAddr));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(PORT);
+    inet_pton(AF_INET,server_ip,&amp;serverAddr.sin_addr);
+    connect(sockfd,(struct sockaddr*)&amp;serverAddr,sizeof(serverAddr));
+    printf("--------------服务器连接成功-------------\n");
+    char buf[MAXDATASIZE];
+    printf("input:");
+    while (fgets(buf,sizeof(buf),stdin)!=NULL &amp;&amp; (strcmp(buf,"quit")))
+    {
+        send(sockfd,buf,sizeof(buf),0);
+        memset(buf,0,sizeof(buf));
+        recv(sockfd,buf,sizeof(buf),0);
+        printf("server say:");
+        fputs(buf,stdout);
+        memset(buf,0,sizeof(buf));
+        printf("input:");
+    }
+    printf("client will be closed, see you next time.\n");
+    close(sockfd);
+    return 0;
+}
+</code></pre>
+
 
 </div>
 <div class="v">

@@ -633,11 +633,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    20282字
+    20459字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    68分
+    69分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/" data-xid="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/" data-flag-title="linux编程-IO">
@@ -1113,7 +1113,17 @@ int fflush(FILE *stream);
 
 <p>If the stream argument is NULL, fflush() flushes all open output streams.For a nonlocking counterpart, see unlocked_stdio(3).</p>
 
-<p>缓冲区作用:合并系统调用</p>
+<p>缓冲区</p>
+
+<blockquote>
+  <p>高速设备与低速设备的不匹配，势必会让高速设备花时间等待低速设备，我们可以在这两者之间设立一个缓冲区。</p>
+</blockquote>
+
+<p>作用:合并系统调用</p>
+
+<p>缓冲区(buffer)，它是内存空间的一部分。也就是说，在内存空间中预留了一定的存储空间，这些存储空间用来缓冲输入或输出的数据，这部分预留的空间就叫做缓冲区，显然缓冲区是具有一定大小的。</p>
+
+<p>缓冲区根据其对应的是输入设备还是输出设备，分为输入缓冲区和输出缓冲区</p>
 
 <p>分类:</p>
 
