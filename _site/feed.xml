@@ -1,11 +1,199 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-19T17:26:42+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-20T16:29:52+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">ARP安全</title><link href="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/" rel="alternate" type="text/html" title="ARP安全" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/ARP%E5%AE%89%E5%85%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">恶意脚本分析</title><link href="http://localhost:4000/_posts/2020-06-20-%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/" rel="alternate" type="text/html" title="恶意脚本分析" /><published>2020-06-20T00:00:00+08:00</published><updated>2020-06-20T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-20-%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;python样本分析&quot;&gt;python样本分析&lt;/h1&gt;
+
+&lt;h2 id=&quot;如何打包&quot;&gt;如何打包&lt;/h2&gt;
+
+&lt;p&gt;pyinstaller&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;usage: pyinstaller [-h] [-v] [-D] [-F] [--specpath DIR] [-n NAME]
+                   [--add-data &amp;lt;SRC;DEST or SRC:DEST&amp;gt;]
+                   [--add-binary &amp;lt;SRC;DEST or SRC:DEST&amp;gt;] [-p DIR]
+                   [--hidden-import MODULENAME]
+                   [--additional-hooks-dir HOOKSPATH]
+                   [--runtime-hook RUNTIME_HOOKS] [--exclude-module EXCLUDES]
+                   [--key KEY] [-d {all,imports,bootloader,noarchive}] [-s]
+                   [--noupx] [--upx-exclude FILE] [-c] [-w]
+                   [-i &amp;lt;FILE.ico or FILE.exe,ID or FILE.icns&amp;gt;]
+                   [--version-file FILE] [-m &amp;lt;FILE or XML&amp;gt;] [-r RESOURCE]
+                   [--uac-admin] [--uac-uiaccess] [--win-private-assemblies]
+                   [--win-no-prefer-redirects]
+                   [--osx-bundle-identifier BUNDLE_IDENTIFIER]
+                   [--runtime-tmpdir PATH] [--bootloader-ignore-signals]
+                   [--distpath DIR] [--workpath WORKPATH] [-y]
+                   [--upx-dir UPX_DIR] [-a] [--clean] [--log-level LEVEL]
+                   scriptname [scriptname ...]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;–onefile 将结果打包成一个可执行文件&lt;/li&gt;
+  &lt;li&gt;–onedir 将所有结果打包到一个文件夹中，该文件夹包括一个可执行文件和可执行文件执行时需要的依赖文件（默认）&lt;/li&gt;
+  &lt;li&gt;–paths=DIR 设置导入路径&lt;/li&gt;
+  &lt;li&gt;–distpath=DIR 设置将打包的结果文件放置的路径&lt;/li&gt;
+  &lt;li&gt;–specpath=DIR 设置将spec文件放置的路径&lt;/li&gt;
+  &lt;li&gt;–windowed 使用windows子系统执行，不会打开命令行（只对windows有效）&lt;/li&gt;
+  &lt;li&gt;–nowindowed 使用控制台子系统执行（默认）（只对windows有效）&lt;/li&gt;
+  &lt;li&gt;–icon=&lt;FILE.ICO&gt; 将file.ico添加为可执行文件的资源(只对windows有效）&lt;/FILE.ICO&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;运行如下命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;pyinstaller --onefile --nowindowed filename.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在当前文件下生成了build文件夹、dist文件夹和.spec文件&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;.spec文件是配置规范文件&lt;/li&gt;
+  &lt;li&gt;build里存放将被打包的文件 exe文件就存放在dist文件夹下&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;__pycache__&lt;/code&gt;是pyc文件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pyc文件&quot;&gt;pyc文件&lt;/h3&gt;
+
+&lt;p&gt;pyc是一种二进制文件，是由py文件经过编译后，生成的文件，是一种byte code，py文件变成pyc文件后，加载的速度有所提高，而且pyc是一种跨平台的字节码，是由python的虚拟机来执行的，这个是类似于JAVA或者.NET的虚拟机的概念。pyc的内容，是跟python的版本相关的，不同版本编译后的pyc文件是不同的，2.5编译的pyc文件，2.4版本的 python是无法执行的。&lt;/p&gt;
+
+&lt;h3 id=&quot;pyo文件&quot;&gt;pyo文件&lt;/h3&gt;
+
+&lt;p&gt;pyo是优化编译后的程序 python -O 源文件即可将源程序编译为pyo文件&lt;/p&gt;
+
+&lt;h3 id=&quot;pyd文件&quot;&gt;pyd文件&lt;/h3&gt;
+
+&lt;p&gt;pyd是python的动态链接库。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;为什么需要pyc文件&lt;/p&gt;
+
+  &lt;p&gt;因为py文件是可以直接看到源码的，如果你是开发商业软件的话，不可能把源码也泄漏出去吧？所以就需要编译为pyc后，再发布出去。当然，pyc文件也是可以反编译的，不同版本编译后的pyc文件是不同的，根据python源码中提供的opcode，可以根据pyc文件反编译出  py文件源码，网上可以找到一个反编译python2.3版本的pyc文件的工具，不过该工具从python2.4开始就要收费了，如果需要反编译出新版本的pyc文件的话，就需要自己动手了,不过你可以自己修改python的源代码中的opcode文件，重新编译 python，从而防止不法分子的破解&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;关于打包的exe位数&quot;&gt;关于打包的exe位数&lt;/h3&gt;
+
+&lt;p&gt;如果你想打包为32位的程序，那么请在32位的windows环境下进行打包。如果你想打包为64位的程序，那么请在64位的windows环境下进行打包。&lt;/p&gt;
+
+&lt;h2 id=&quot;特征&quot;&gt;特征&lt;/h2&gt;
+
+&lt;h3 id=&quot;图标特征&quot;&gt;图标特征&lt;/h3&gt;
+
+&lt;p&gt;用pyintaller打包的exe，在没有指定图标的情况下默认的图标都是这一个，包括驱动人生的那几个木马，都是这样的图标，辨识度可以说是很高了。但是这个特征是可以被避免的，仅供参考&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/pyicon.PNG&quot; alt=&quot;pyicon&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;字符串特征&quot;&gt;字符串特征&lt;/h3&gt;
+
+&lt;p&gt;你会看到__main__和__file__以及一堆以py开头的函数。明明只写了一个hello world，为什么会有这么多字符串呢？这是因为python是个解释型语言，pyinstaller打包的时候实际上是将python的解释器和py文件一起打包成了一个exe。所以这个字符串特征几乎是不可避免的&lt;/p&gt;
+
+&lt;h3 id=&quot;编译器特征&quot;&gt;编译器特征&lt;/h3&gt;
+
+&lt;p&gt;使用&lt;strong&gt;Detect It Easy&lt;/strong&gt;这个软件查看,类似Linux &lt;strong&gt;strace&lt;/strong&gt;命令&lt;/p&gt;
+
+&lt;p&gt;可以看到hello.exe的编译器为VS14.0，这是因为python是基于VS14版本的，这也可以作为一个辨识的特征&lt;/p&gt;
+
+&lt;h3 id=&quot;反编译&quot;&gt;反编译&lt;/h3&gt;
+
+&lt;p&gt;这需要两个步骤，首先由exe获取pyc文件，再由pyc获取py文件&lt;/p&gt;
+
+&lt;p&gt;反编译python生成的exe需要用到pyinstaller库里的archive_viewer.py脚本。archive_viewer.py一共有四个可用命令：&lt;/p&gt;
+
+&lt;p&gt;U: go Up one level
+O &lt;name&gt;: open embedded archive name
+X &lt;name&gt;: extract name
+Q: quit&lt;/name&gt;&lt;/name&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;由exe获取pyc&quot;&gt;由exe获取pyc&lt;/h4&gt;
+
+&lt;p&gt;首先找到archive_viewer.py这个脚本的路径&lt;/p&gt;
+
+&lt;p&gt;运行&lt;code&gt;python archive_viewer.py C:\hello.exe&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;提取主程序的pyc文件&quot;&gt;提取主程序的pyc文件&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;x hello&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;由于用pyinstaller打包后，pyc文件的前8个字节会被抹掉，所以最后要自己添加回去。前四个字节为python编译的版本，后四个字节为时间戳，时间戳可以任意，编译器版本python2.7 为03 f3 0d 0a，python3.4 为ee 0c 0d 0a&lt;/p&gt;
+
+&lt;h4 id=&quot;由pyc获取py&quot;&gt;由pyc获取py&lt;/h4&gt;
+
+&lt;p&gt;最后使用&lt;code&gt;easy python decompiler&lt;/code&gt;这个软件从pyc文件得到py文件，直接将pyc文件拖拽进程序&lt;/p&gt;
+
+&lt;h2 id=&quot;python代码混淆的解决方案&quot;&gt;python代码混淆的解决方案&lt;/h2&gt;
+
+&lt;p&gt;python代码的混淆相对会比较简单，只是单纯利用宏替换的原理修改变量和函数名，这个网站是目前用的最多的python代码混淆工具：http://pyob.oxyry.com/&lt;/p&gt;
+
+&lt;h2 id=&quot;去除python代码混淆&quot;&gt;去除python代码混淆&lt;/h2&gt;
+
+&lt;p&gt;直接替换晦涩难懂的变量名&lt;/p&gt;
+
+&lt;h1 id=&quot;vbs样本分析&quot;&gt;vbs样本分析&lt;/h1&gt;
+
+&lt;h2 id=&quot;vbs病毒介绍&quot;&gt;vbs病毒介绍&lt;/h2&gt;
+
+&lt;p&gt;VBS病毒是用VB Script编写的，它利用Windows系统的开放性，通过调用现有的Windows对象、组件，程序可以直接控制文件、系统、注册表，功能非常强大。VBS脚本病毒通常的传播方式有：通过Email附件、IRC聊天通道、局域网共享传播，还可以通过感染htm、jsp、php 、asp等网页文件传播，传播范围比较广泛，它的变种多，迷惑性很强，所以电脑如果中了这种病毒就会很麻烦。
+vbs类的病毒如何动态调试是个很大的问题，微软的地表最强IDE Visual Studio就能做到这一点。&lt;/p&gt;
+
+&lt;h2 id=&quot;用vs调试vbs脚本&quot;&gt;用VS调试vbs脚本&lt;/h2&gt;
+
+&lt;p&gt;首先用管理员方式启动VS，接着选择调试-&amp;gt;选项，把脚本前面的勾给打上&lt;/p&gt;
+
+&lt;h2 id=&quot;启动调试器&quot;&gt;启动调试器&lt;/h2&gt;
+
+&lt;p&gt;命令行输入&lt;code&gt;wscript /X 要调试vbs脚本的路径&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;WScript.exe命令说明&lt;/p&gt;
+
+&lt;p&gt;WScript.exe [vbs文件全路径] [参数1] [参数2] […] [参数n] //D //
+参数说明：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;D 打开调试程序&lt;/li&gt;
+  &lt;li&gt;X 在调试程序中启动该程序&lt;/li&gt;
+  &lt;li&gt;? 可以使用该参数查看WScript.exe的所有参数及说明&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;然后你就可以开始用VS来调试vbs脚本了，可以看堆栈 看内存，看局部变量&lt;/p&gt;
+
+&lt;h2 id=&quot;vbs病毒混淆解决方案&quot;&gt;vbs病毒混淆解决方案&lt;/h2&gt;
+
+&lt;p&gt;vbs病毒最严重的就是混淆了， 不管怎么混淆，大致都能用以下两种解决方案&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果能直接打印或输出到文件则不需要关注语法，直接将结果打印&lt;/li&gt;
+  &lt;li&gt;如果不能直接看到结果则根据函数及参数含义弄清混淆原理之后手动将混淆结果替换&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;宏病毒样本分析&quot;&gt;宏病毒样本分析&lt;/h1&gt;
+
+&lt;h2 id=&quot;什么是宏&quot;&gt;什么是宏&lt;/h2&gt;
+
+&lt;p&gt;宏（macro），就是软件设计者为了在使用软件工作时，避免一再的重复相同的动作而设计出来的一种工具。它利用简单的语法，把常用的动作写成宏，当再工作时，就可以直接利用事先写好的宏自动运行，去完成某项特定的任务，而不必再重复相同的动作。&lt;/p&gt;
+
+&lt;h2 id=&quot;什么是宏病毒&quot;&gt;什么是宏病毒&lt;/h2&gt;
+
+&lt;p&gt;宏病毒是一种寄存在文档或模板的宏中的计算机病毒。一旦打开这样的文档，其中的宏就会被执行，于是宏病毒就会被激活，转移到计算机上，并驻留在Normal模板上。从此以后，所有自动保存的文档都会“感染”上这种宏病毒，而且如果其他用户打开了感染病毒的文档，宏病毒又会转移到他的计算机上。&lt;/p&gt;
+
+&lt;h2 id=&quot;宏病毒的特性&quot;&gt;宏病毒的特性&lt;/h2&gt;
+
+&lt;p&gt;宏病毒具有自动执行的特性，特别是含有AutoOpen的宏，一旦用户打开含有宏的文档，其中的宏就会被执行，而用户一无所知&lt;/p&gt;
+
+&lt;h2 id=&quot;宏语言&quot;&gt;宏语言&lt;/h2&gt;
+
+&lt;p&gt;宏语言即VISUAL BASIC FOR APPLICATION，简称VBA。VBA可以访问许多操作系统函数并支持文档打开时自动执行宏——这使得用这种语言写计算机病毒成为可能&lt;/p&gt;
+
+&lt;h2 id=&quot;数据文件格式&quot;&gt;数据文件格式&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;.doc—一种可以存贮云的普通文档；.docx—一种不包含宏的普通文档；&lt;/li&gt;
+  &lt;li&gt;.docm——一种包含宏或启用了宏的文档；&lt;/li&gt;
+  &lt;li&gt;.dotx——一种不包含宏的模板；&lt;/li&gt;
+  &lt;li&gt;.dotm———种包含宏或启用了宏的模板&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">ARP安全</title><link href="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/" rel="alternate" type="text/html" title="ARP安全" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/ARP%E5%AE%89%E5%85%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;arp协议&quot;&gt;ARP协议&lt;/h1&gt;
 
@@ -955,84 +1143,4 @@ int lockf(int fd, int cmd, off_t len);
 int flock(int fd, int operation);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&quot;有限状态机编程&quot;&gt;有限状态机编程&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">排序算法</title><link href="http://localhost:4000/_posts/2020-06-06-%E6%8E%92%E5%BA%8F/" rel="alternate" type="text/html" title="排序算法" /><published>2020-06-06T00:00:00+08:00</published><updated>2020-06-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%8E%92%E5%BA%8F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-06-%E6%8E%92%E5%BA%8F/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;冒泡排序&quot;&gt;冒泡排序&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/冒泡排序.webp&quot; alt=&quot;冒泡排序&quot; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;void BubbleSort(int *array,int length)
-{
-    if (array == NULL)
-    {
-        fprintf(stderr,&quot;empty\n&quot;);
-        exit(1);
-    }
-    int temp = 0;
-    for (size_t i = 0; i &amp;lt; length; i++)
-    {
-        for (size_t j = i+1; j &amp;lt; length; j++)
-        {
-            if (array[i] &amp;gt; array[j])
-            {
-                temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            } 
-        }          
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;选择排序&quot;&gt;选择排序&lt;/h1&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;在一个长度为 N 的无序数组中，第一次遍历 n-1 个数找到最小的和第一个数交换。&lt;/li&gt;
-  &lt;li&gt;第二次从下一个数开始遍历 n-2 个数，找到最小的数和第二个数交换。&lt;/li&gt;
-  &lt;li&gt;重复以上操作直到第 n-1 次遍历最小的数和第 n-1 个数交换，排序完成&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/选择排序.gif&quot; alt=&quot;选择排序&quot; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;void SelectSort(int *array,int length)
-{
-    if (array == NULL || length == 0)
-    {
-        fprintf(stderr,&quot;empty\n&quot;);
-        exit(1);
-    }
-    for (size_t i = 0; i &amp;lt; length; i++)
-    {
-        int MinKey = array[i];
-        for (size_t j = i; j &amp;lt; length; j++)
-        {
-            if (MinKey &amp;gt; array[j])
-            {
-                int temp = array[j];
-                array[j] = MinKey;
-                MinKey = temp;
-            } 
-        }
-           array[i] = MinKey;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;快速排序&quot;&gt;快速排序&lt;/h1&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;首先设定一个分界值，通过该分界值将数组分成左右两部分。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;将大于或等于分界值的数据集中到数组右边，小于分界值的数据集中到数组的左边。此时，左边部分中各元素都小于或等于分界值，而右边部分中各元素都大于或等于分界值。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;然后，左边和右边的数据可以独立排序。对于左侧的数组数据，又可以取一个分界值，将该部分数据分成左右两部分，同样在左边放置较小值，右边放置较大值。右侧的数组数据也可以做类似处理。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;重复上述过程，可以看出，这是一个递归定义。通过递归将左侧部分排好序后，再递归排好右侧部分的顺序。当左、右两个部分各数据排序完成后，整个数组的排序也就完成了&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/img/快速排序.gif&quot; alt=&quot;快速排序&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><category term="算法" /><summary type="html">[toc]</summary></entry></feed>
+&lt;h1 id=&quot;有限状态机编程&quot;&gt;有限状态机编程&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
