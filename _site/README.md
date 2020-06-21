@@ -42,9 +42,9 @@ XHU university
 
 <!-- slide vertical=true -->
 
-
-
 - 爱驰杯
+
+- 华迪杯
 
   
 
