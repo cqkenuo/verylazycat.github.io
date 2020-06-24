@@ -1,5 +1,4 @@
 ---
-
 title: John_the_Ripper
 tags: 安全
 ---
