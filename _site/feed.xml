@@ -1,11 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-21T11:36:42+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-24T17:01:00+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">恶意脚本分析</title><link href="http://localhost:4000/_posts/2020-06-20-%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/" rel="alternate" type="text/html" title="恶意脚本分析" /><published>2020-06-20T00:00:00+08:00</published><updated>2020-06-20T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-20-%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">John_the_Ripper</title><link href="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/" rel="alternate" type="text/html" title="John_the_Ripper" /><published>2020-06-22T00:00:00+08:00</published><updated>2020-06-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/John_the_Ripper</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
+
+&lt;p&gt;官方网站：http://www.openwall.com/john/&lt;/p&gt;
+
+&lt;p&gt;下载：wget http://www.openwall.com/john/j/john-1.8.0.tar.gz&lt;/p&gt;
+
+&lt;p&gt;解压：tar -xvf john-1.8.0.tar.gz&lt;/p&gt;
+
+&lt;p&gt;进入src目录：&lt;/p&gt;
+
+&lt;p&gt;cd john-1.8.0 &amp;amp;&amp;amp; cd src&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;根据自己系统版本选择,一般为如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;make clean linux-x86-64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编译成功会在run目录下生成john可执行文件&lt;/p&gt;
+
+&lt;h1 id=&quot;破解&quot;&gt;破解&lt;/h1&gt;
+
+&lt;p&gt;把想破解的/etc/shadow放在shadow.txt文件夹下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./john shadow.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;John the Ripper的默认密码字典为run目录下的password.lst&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">恶意脚本分析</title><link href="http://localhost:4000/_posts/2020-06-20-%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/" rel="alternate" type="text/html" title="恶意脚本分析" /><published>2020-06-20T00:00:00+08:00</published><updated>2020-06-20T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-20-%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;python样本分析&quot;&gt;python样本分析&lt;/h1&gt;
 
@@ -193,7 +224,11 @@ vbs类的病毒如何动态调试是个很大的问题，微软的地表最强ID
   &lt;li&gt;.docm——一种包含宏或启用了宏的文档；&lt;/li&gt;
   &lt;li&gt;.dotx——一种不包含宏的模板；&lt;/li&gt;
   &lt;li&gt;.dotm———种包含宏或启用了宏的模板&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">ARP安全</title><link href="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/" rel="alternate" type="text/html" title="ARP安全" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/ARP%E5%AE%89%E5%85%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;常用的宏&quot;&gt;常用的宏&lt;/h2&gt;
+
+&lt;h2&gt;&lt;img src=&quot;/img/hong.png&quot; alt=&quot;hong&quot; /&gt;&lt;/h2&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">ARP安全</title><link href="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/" rel="alternate" type="text/html" title="ARP安全" /><published>2020-06-15T00:00:00+08:00</published><updated>2020-06-15T00:00:00+08:00</updated><id>http://localhost:4000/_posts/ARP%E5%AE%89%E5%85%A8</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;arp协议&quot;&gt;ARP协议&lt;/h1&gt;
 
@@ -991,156 +1026,4 @@ main函数中的e、f、g三个静态局部变量也是放在数据段的，但�
 
 &lt;p&gt;同时这里理解时可能会产生一个问题，通常我们说局部变量是在栈上，为什么这里说是指令保存在指令段呢？事实上，int a = 12这句代码在编译时产生的是一条指令，这个指令保存在.text段，而在运行时，系统会在当前进程的栈上给函数开辟一个栈帧，该指令运行时会在栈上开辟一段4个字节的空间存放“12”这个整数&lt;/p&gt;
 
-&lt;p&gt;同时对于这一部分也要注意，每一个进程的用户空间是私有的，但是内核空间是共享的。这也就是进程间通信比较困难的原因，而进程间通信方式的一种，匿名管道通信其实就是在内核空间中划分出一片内存，每个进程就都可以在这片空间写入数据给其他进程看，由此实现通信的目的&lt;/p&gt;</content><author><name></name></author><category term="操作系统" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux编程-高级IO</title><link href="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/" rel="alternate" type="text/html" title="linux编程-高级IO" /><published>2020-06-06T00:00:00+08:00</published><updated>2020-06-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;非阻塞io&quot;&gt;非阻塞IO&lt;/h1&gt;
-
-&lt;h2 id=&quot;非阻塞io概念&quot;&gt;非阻塞IO概念&lt;/h2&gt;
-
-&lt;p&gt;简单流程:自然流程是结构化的&lt;/p&gt;
-
-&lt;p&gt;复杂流程:自然流程不是结构化的&lt;/p&gt;
-
-&lt;h2 id=&quot;io多路转接&quot;&gt;IO多路转接&lt;/h2&gt;
-
-&lt;p&gt;IO多路复用是指内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程。IO多路复用适用如下场合：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;当客户处理多个描述字时（一般是交互式输入和网络套接口），必须使用I/O复用。&lt;/li&gt;
-  &lt;li&gt;当一个客户同时处理多个套接口时，而这种情况是可能的，但很少出现。&lt;/li&gt;
-  &lt;li&gt;如果一个TCP服务器既要处理监听套接口，又要处理已连接套接口，一般也要用到I/O复用。&lt;/li&gt;
-  &lt;li&gt;如果一个服务器即要处理TCP，又要处理UDP，一般要使用I/O复用。&lt;/li&gt;
-  &lt;li&gt;如果一个服务器要处理多个服务或多个协议，一般要使用I/O复用。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;　　与多进程和多线程技术相比，I/O多路复用技术的最大优势是系统开销小，系统不必创建进程/线程，也不必维护这些进程/线程，从而大大减小了系统的开销&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;select&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;synchronous I/O  multiplexing&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;/* According to POSIX.1-2001, POSIX.1-2008 */
-#include &amp;lt;sys/select.h&amp;gt;
-/* According to earlier standards */
-#include &amp;lt;sys/time.h&amp;gt;
-#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-int select(int nfds, fd_set *readfds, fd_set *writefds,
-fd_set *exceptfds, struct timeval *timeout);
-void FD_CLR(int fd, fd_set *set);
-int  FD_ISSET(int fd, fd_set *set);
-void FD_SET(int fd, fd_set *set);
-void FD_ZERO(fd_set *set);
-#include &amp;lt;sys/select.h&amp;gt;
-int pselect(int nfds, fd_set *readfds, fd_set *writefds,
-fd_set *exceptfds, const struct timespec *timeout,
-const sigset_t *sigmask);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/sellect.png&quot; alt=&quot;sellect&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;poll&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;wait for some event on a file descriptor&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;poll.h&amp;gt;
-int poll(struct pollfd *fds, nfds_t nfds, int timeout);
-#define _GNU_SOURCE         /* See feature_test_macros(7) */
-#include &amp;lt;signal.h&amp;gt;
-#include &amp;lt;poll.h&amp;gt;
-int ppoll(struct pollfd *fds, nfds_t nfds,
-const struct timespec *tmo_p, const sigset_t *sigmask);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;epoll&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;I/O event notification facility&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;查看机制&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;man 7 epoll
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;其他读写函数&quot;&gt;其他读写函数&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;readv&lt;/li&gt;
-  &lt;li&gt;writev&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;read or write data into multiple buffers&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/uio.h&amp;gt;
-ssize_t readv(int fd, const struct iovec *iov, int iovcnt);
-ssize_t writev(int fd, const struct iovec *iov, int iovcnt);
-ssize_t preadv(int fd, const struct iovec *iov, int iovcnt,
-off_t offset);
-ssize_t pwritev(int fd, const struct iovec *iov, int iovcnt,
-off_t offset);
-ssize_t preadv2(int fd, const struct iovec *iov, int iovcnt,
-off_t offset, int flags);
-ssize_t pwritev2(int fd, const struct iovec *iov, int iovcnt,
-off_t offset, int flags);
-struct iovec {
-               void  *iov_base;    /* Starting address */
-               size_t iov_len;     /* Number of bytes to transfer */
-           };
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;存储映射io&quot;&gt;存储映射IO&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;mmap&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;map or unmap files or devices into memory&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/mman.h&amp;gt;
-void *mmap(void *addr, size_t length, int prot, int flags,
-int fd, off_t offset);
-int munmap(void *addr, size_t length);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;文件锁&quot;&gt;文件锁&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;lockf&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;test or remove a POSIX lock on an open file&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;unistd.h&amp;gt;
-int lockf(int fd, int cmd, off_t len);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;flock&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;apply or remove an advisory lock on an open file&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;sys/file.h&amp;gt;
-int flock(int fd, int operation);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;有限状态机编程&quot;&gt;有限状态机编程&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;同时对于这一部分也要注意，每一个进程的用户空间是私有的，但是内核空间是共享的。这也就是进程间通信比较困难的原因，而进程间通信方式的一种，匿名管道通信其实就是在内核空间中划分出一片内存，每个进程就都可以在这片空间写入数据给其他进程看，由此实现通信的目的&lt;/p&gt;</content><author><name></name></author><category term="操作系统" /><summary type="html">[toc]</summary></entry></feed>
