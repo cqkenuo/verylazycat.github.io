@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T12:41:26+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T12:43:49+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -94,6 +94,8 @@
 
 &lt;p&gt;计算:&lt;/p&gt;
 
+&lt;hr /&gt;
+
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 1.R\bigcup S\\
 2.R-S\\
@@ -102,6 +104,8 @@
 5.\sigma_{B&lt;'5'}(R)\\
 6. R\infty_{2&lt;2}S\\
 7. R\infty S %]]&gt;&lt;/script&gt;
+
+&lt;hr /&gt;
 
 &lt;p&gt;解:&lt;/p&gt;
 
