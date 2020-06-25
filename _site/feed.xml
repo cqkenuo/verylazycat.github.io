@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T12:39:12+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T12:41:26+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -92,19 +92,18 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;计算:
-$$
-1.R\bigcup S&lt;br /&gt;
-2.R-S&lt;br /&gt;
-3.RXS\&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;\prod_{2,3}(S)&lt;br /&gt;
-5.\sigma_{B&amp;lt;’5’}(R)\&lt;/li&gt;
-  &lt;li&gt;R\infty_{2&amp;lt;2}S\&lt;/li&gt;
-  &lt;li&gt;R\infty S
-$$
-解:&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;计算:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+1.R\bigcup S\\
+2.R-S\\
+3.RXS\\
+4. \prod_{2,3}(S)\\
+5.\sigma_{B&lt;'5'}(R)\\
+6. R\infty_{2&lt;2}S\\
+7. R\infty S %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;解:&lt;/p&gt;
 
 &lt;p&gt;1.&lt;/p&gt;
 
