@@ -1,582 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T12:43:49+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T12:57:00+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">sql-server期末复习</title><link href="http://localhost:4000/_posts/2020-06-25-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="alternate" type="text/html" title="sql-server期末复习" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;用于期末复习,切勿用于作弊!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;数据处理三个阶段&quot;&gt;数据处理三个阶段&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;概念模型&lt;/li&gt;
-  &lt;li&gt;逻辑模型&lt;/li&gt;
-  &lt;li&gt;物理模型&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;常见数据模型&quot;&gt;常见数据模型&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;层次模型&lt;/li&gt;
-  &lt;li&gt;网状模型&lt;/li&gt;
-  &lt;li&gt;关系模型&lt;/li&gt;
-  &lt;li&gt;面向对象模型&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;rs例题&quot;&gt;R&amp;amp;S例题&lt;/h1&gt;
-
-&lt;p&gt;R&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;S&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;计算:&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-1.R\bigcup S\\
-2.R-S\\
-3.RXS\\
-4. \prod_{2,3}(S)\\
-5.\sigma_{B&lt;'5'}(R)\\
-6. R\infty_{2&lt;2}S\\
-7. R\infty S %]]&gt;&lt;/script&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;解:&lt;/p&gt;
-
-&lt;p&gt;1.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;2.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;3.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A1&lt;/th&gt;
-      &lt;th&gt;B1&lt;/th&gt;
-      &lt;th&gt;C1&lt;/th&gt;
-      &lt;th&gt;A2&lt;/th&gt;
-      &lt;th&gt;B2&lt;/th&gt;
-      &lt;th&gt;C2&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;4.&lt;/p&gt;
-
-&lt;p&gt;???&lt;/p&gt;
-
-&lt;p&gt;5.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;6.&lt;/p&gt;
-
-&lt;p&gt;?&lt;/p&gt;
-
-&lt;p&gt;7.&lt;/p&gt;
-
-&lt;p&gt;?&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;教学管理例题&quot;&gt;教学管理例题&lt;/h1&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(SNO,SNAME,AGE,SEX,COLLEGE)\\
-SC(SNO,CNO,GRADE)\\
-C(CNO,CNAME,CDEPT,TNAME)\\&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索LIU老师教的课程号,课程名&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{CNO,CNAME}(\sigma_{TNAME='LIU'}(C))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索年龄大于23的男生的学号和姓名&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNO,SNAME}(\sigma_{SEX='男' and AGE &gt;23}(S))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索学号为S3学生所学课程的课程名与任课老师&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{CNAME,TNAME}(\sigma_{SNO='S3'}(SC\infty C))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索至少选修LIU老师教的课程中一门课的女生姓名&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNAME}(\sigma_{TNAME='LIU' and SEX='女'}(S\infty SC \infty C))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索WANG同学不学的课程的课程号&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{CNO}(C) - \pi_{CNO}(\sigma_{SNAME='wang'}(S\infty SC))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索至少选修两门课程的学生号&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;?????&lt;/script&gt;
-
-&lt;h1 id=&quot;部门例题&quot;&gt;部门例题&lt;/h1&gt;
-
-&lt;p&gt;关系模式R(职工编号,日期,日营业额,部门名,部门经理),规定没个职工每天只有一个营业额,每个职工只能在一个部门,每个部门只有一个经理,回答:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;写出模式R的基本FD和候选键&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;FD:\\
-(职工编号,日期)-&gt;日营业额\\
-职工编号-&gt;部门名\\
-部门名-&gt;部门经理\\
-候选键:(职工编号,日期)&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;说明R不是2NF理由,并吧R分解为2NF模式集&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;由候选键知:\\
-(职工编号,日期)-&gt;日营业额\\
-(职工编号,日期)-&gt;部门名\\
-(职工编号,日期)-&gt;部门经理\\&lt;/script&gt;
-
-&lt;p&gt;因为在(职工编号,日期)-&amp;gt;部门名,(职工编号,日期)-&amp;gt;部门经理 中,日期是多余属性,存在部分函数依赖,所以R不是2NF&lt;/p&gt;
-
-&lt;p&gt;R进行分解:
-&lt;script type=&quot;math/tex&quot;&gt;R1(职工编号, 日期,日营业额)\\
-R2(职工编号,部门名,部门经理)\\&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;进而分级3NF&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;R1不存在传递依赖,所以为3NF&lt;/p&gt;
-
-&lt;p&gt;R2中有&lt;/p&gt;
-
-&lt;p&gt;职工编号-&amp;gt;部门名,职工编号-&amp;gt;部门经理,&lt;/p&gt;
-
-&lt;p&gt;又部门名-&amp;gt;部门经理&lt;/p&gt;
-
-&lt;p&gt;则存在传递依赖,R2不是3NF&lt;/p&gt;
-
-&lt;p&gt;分解为R21(职工编号,部门名)&lt;/p&gt;
-
-&lt;p&gt;R22(部门名,部门经理)&lt;/p&gt;
-
-&lt;h1 id=&quot;运动例题&quot;&gt;运动例题&lt;/h1&gt;
-
-&lt;p&gt;有关系模式R(运动员编号,比赛项目,成绩,比赛类别,比赛主管),规定:每个运动员参加一个比赛项目,只有一个成绩,每个比赛项目只属于一个比赛类别,每个比赛类别只有一个比赛主管,回答:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;写出基本FD和候选键&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;FD:\\
-运动员编号-&gt;比赛项目\\
-(运动员编号,比赛项目)-&gt;成绩\\
-比赛项目-&gt;比赛类别\\
-比赛类别-&gt;比赛主管\\&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;R不是2NF理由,并把R分解为2NF&lt;/li&gt;
-  &lt;li&gt;分解为3NF&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;系统数据库&quot;&gt;系统数据库&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;master&lt;/li&gt;
-  &lt;li&gt;tempdb&lt;/li&gt;
-  &lt;li&gt;model&lt;/li&gt;
-  &lt;li&gt;msdb&lt;/li&gt;
-  &lt;li&gt;resource&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;数据库文件&quot;&gt;数据库文件&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;主数据文件,扩展名:.mdf&lt;/li&gt;
-  &lt;li&gt;辅助数据文件:扩展名:.ndf&lt;/li&gt;
-  &lt;li&gt;事务日志文件:扩展名:.ldf&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;创建数据库&quot;&gt;创建数据库&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;CREATE DATAVASE JXGL
-ON
-(
-    NAME=JXGL,
-    FILENAME='\D:\...\JXGL.mdf',
-    SIZE=5,
-    FILEGROWTH=1
-)
-LOG ON
-(
-    NAME = JXGL_LOG,
-    FILENAME='D:\..\JXGL_LOG.ldf',
-    MAXSIZE=20,
-    FILEGROWTH=10%
-)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;完整性约束&quot;&gt;完整性约束&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;实体完整性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;每一行看做一个实体,满足唯一性&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;域完整性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;指定列数据有正确的数据类型,格式,范围&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;参照完整性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;维持参照表和被参照表之间的数据一致性&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;创建数据库表例子&quot;&gt;创建数据库&amp;amp;表例子&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;　USE JXGL
-　CREATE TABLE S
-　(
-     SNO NCHAR(9) NOT NULL,
-     	CONSTRAINT PK_SNO PRIMARY KEY CLUSTERED
-     	CHECK(SNO LIKE '201705121[0-9][0-9]'),
-     SNAME NCHAR(8) NOT NULL,
-     SEX NCHAR(2) NULL,
-     BIRTHDATE DATE NULL,
-     COLLEGE NCHAR(20) NULL
- )
- USE JXGL
- CREATE TABLE C
- (
- 	CNO NCHAR(4) NOT NULL,
-     CNAME NCHAR(20) NOT NULL,
-     DESCRIPTION TEXT NULL,
-     CREDIT REAL NULL,
-     C_COLLEGE NCHAR(20)
-     PRIMARY KEY(CNO)
- )
- USE JXGL
- CREATE TABLE SC
- (
-     SNO CHAR(9) NOT NULL,
-     CNO CHAR(4) NOT NULL,
-     GRADE REAL NULL,
-     PRIMARY KEY(SNO,CNO),
-     FOREIGN KEY(SNO) REFERENCES S(SNO),
-     FOREIGN KEY(CNO) REFERENCES C(CNO)
- )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;数据库维护&quot;&gt;数据库维护&lt;/h1&gt;
-
-&lt;p&gt;参看此篇&lt;a href=&quot;/_posts/2020-05-12-sql-server常用命令总结.md&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;维护例子&quot;&gt;维护例子&lt;/h1&gt;
-
-&lt;p&gt;对Ｓ，ＳＣ，Ｃ的查询&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;统计所有学生选修的课程门数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;select count(*) from 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;求选修Ｃ４号课程的学生的平均年龄&lt;/li&gt;
-  &lt;li&gt;求学习计算机学院（ＣＳ）每门课程的学生平均成绩&lt;/li&gt;
-  &lt;li&gt;统计每门课程的学生选修人数（超过１０人的课程才统计）按人数降序排列，若人数相同，按课程号升序排列&lt;/li&gt;
-  &lt;li&gt;查询姓＂王＂的所有学生的姓名和年龄&lt;/li&gt;
-  &lt;li&gt;在ＳＣ中查询成绩为空值的学生学号和课程号&lt;/li&gt;
-  &lt;li&gt;查询１９９７年９月１日前出生的信息学院和数学学院女生的信息&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在基本表Ｓ中检索每一门课程成绩都大于８０分的学生学号，姓名，性别，并存储在一个已经存在的基本表ＳＴＵＤＥＮＴ（ＳＮＯ，ＳＮＡＭＥ，ＳＥＸ）&lt;/li&gt;
-  &lt;li&gt;在ＳＣ中删除无成绩的学科元组&lt;/li&gt;
-  &lt;li&gt;把＂张成民＂同学在ＳＣ中的选课记录全部删除&lt;/li&gt;
-  &lt;li&gt;把低于总平均成绩的女同学成绩提高５％&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;存储过程&quot;&gt;存储过程&lt;/h1&gt;
-
-&lt;p&gt;在教学管理数据库中，创建一个名为ＳＴＵ＿ＡＧＥ的存储过程，根据输入的学号，输出该学生的出生年份&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;．．．．．ＧＲＡＤＥ＿ＩＮＦＯ存储过程，功能是查询某门课程所有学生成绩，显示字段ＣＮＡＭＥ，ＳＮＯ，ＳＮＡＭＥ，ＧＲＡＤＥ&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;触发器&quot;&gt;触发器&lt;/h1&gt;
-
-&lt;p&gt;创建触发器ＴＲ＿Ｃ＿ＩＮＳＥＲＴ，在Ｃ表中插入一条新元组，触发器触发，给出＂你插入了一门新课程!＂信息&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;．．．．ＡＦＴＥＲ触发器，在ＳＣ表创建一个插入，更新类型的触发器ＴＲ＿ＧＲＡＤＥ＿ＣＨＥＣＫ，当ＧＲＡＤＥ字段中插入或修改成绩后触发，检查是否在０～１００之间&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;用户自定义函数&quot;&gt;用户自定义函数&lt;/h1&gt;
-
-&lt;p&gt;创建函数Ｃ＿ＭＡＸ，更具输入的课程名称，输出该门课程最高分数的同学学号&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;创建ＳＮＯ＿ＩＮＦＯ函数，更具输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;混合验证方式&quot;&gt;混合验证方式&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ＳＱＬ　ｓｅｒｖｅｒ&lt;/li&gt;
-  &lt;li&gt;Ｗｉｎｄｏｗｓ&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry><entry><title type="html">John_the_Ripper</title><link href="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/" rel="alternate" type="text/html" title="John_the_Ripper" /><published>2020-06-22T00:00:00+08:00</published><updated>2020-06-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/John_the_Ripper</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">John_the_Ripper</title><link href="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/" rel="alternate" type="text/html" title="John_the_Ripper" /><published>2020-06-22T00:00:00+08:00</published><updated>2020-06-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/John_the_Ripper</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
 
@@ -1518,4 +947,83 @@ int main(int argc, char const *argv[])
 &lt;ol&gt;
   &lt;li&gt;CPU想访问某个虚拟内存地址，找到进程对应的页表中的条目，判断有效位， 如果有效位为1，说明在页表条目中的物理内存地址不为空，根据物理内存地址，访问物理内存中的内容，返回&lt;/li&gt;
   &lt;li&gt;CPU想访问某个虚拟内存地址，找到进程对应的页表中的条目，判断有效位，如果有效位为0，但页表条目中还有地址，这个地址是磁盘空间的地址，这时触发缺页异常，系统把物理内存中的一些数据拷贝到磁盘上，腾出所需的空间，并且更新页表。此时重新执行访问之前虚拟内存的指令，就会发现变成了情况1.&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><category term="操作系统" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/ol&gt;</content><author><name></name></author><category term="操作系统" /><summary type="html">[toc]</summary></entry><entry><title type="html">进程虚拟地址空间区域划分</title><link href="http://localhost:4000/_posts/2020-06-08-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/" rel="alternate" type="text/html" title="进程虚拟地址空间区域划分" /><published>2020-06-08T00:00:00+08:00</published><updated>2020-06-08T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-08-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;首先要知道一点，程序由磁盘加载到内存时是不可能直接加载到物理内存当中的，这里的原因以及物理内存和虚拟内存的区别与联系在本篇先不做讨论&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本篇接下来所讨论的范围在x86体系32位Linux环境下&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Linux系统会给当前每一个进程分配一个2^32位大小(4G)的一块空间，这块空间就叫做进程的虚拟地址空间&lt;/p&gt;
+
+&lt;p&gt;这里附上IBM公司关于&lt;strong&gt;虚拟&lt;/strong&gt;的解释:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;它存在，你看得见，它是物理的&lt;/li&gt;
+  &lt;li&gt;它存在，你看不见，它是透明的&lt;/li&gt;
+  &lt;li&gt;它不存在，你看得见，它是虚拟的&lt;/li&gt;
+  &lt;li&gt;它不存在，你看不见，它被删除&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这块空间的内容如下图所示:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/内存空间.png&quot; alt=&quot;内存空间&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接下来分别阐述每块空间的作用:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;从0x00000000到0x08048000的这段空间是预留的，是不能访问的，例如对空指针进行访问程序就会崩溃&lt;/li&gt;
+  &lt;li&gt;程序运行时产生的指令就放在.text段（代码段）。这一段同时也保存了只读数据（read only data），例如char* p = “hello world”中的”hello world”，在这里，当想进行*p = ‘a’操作时可以通过编译但运行会崩溃（在比较新的c++编译器中不允许用普通指针指向常量字符串），因为该段是只能读但不能写的。&lt;/li&gt;
+  &lt;li&gt;.data存放了初始化了的且初始化的值不为0的数据&lt;/li&gt;
+  &lt;li&gt;.bss存放未初始化及初始化为0的数据,打印未初始化的全局变量会看到值为0，因为存放于.bss段，操作系统会将.bss段的数据全部赋值为0&lt;/li&gt;
+  &lt;li&gt;堆（heap），在《深入理解计算机系统》中的名称是运行时堆（由malloc创建），也就是说这里的堆空间是暂时没有的，当程序运行，new或malloc之后才会分配堆内存，由低地址向高地址增长&lt;/li&gt;
+  &lt;li&gt;加载共享库，也就是动态链接库，Windows下是&lt;em&gt;.dll,Linux下是&lt;/em&gt;so&lt;/li&gt;
+  &lt;li&gt;stack 函数运行或产生线程时，每一个函数/线程独有的栈空间，由高地址向低地址增长的&lt;/li&gt;
+  &lt;li&gt;命令行参数和环境变量，命令行参数如main函数传参，环境变量如搜索头文件、库文件时默认的路径&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;通过分析具体代码的方式体会虚拟地址空间的划分:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;int g_data1 = 10;
+int g_data2 = 0;
+int g_data3;
+
+static int g_data4 = 11;
+static int g_data5 = 0;
+static int g_data6;
+
+int main(){
+    int a = 12;
+    int b = 0;
+    int c;
+
+    static int e = 13;
+    static int f = 0;
+    static int g;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在上面的程序中，所有的全局变量（g_data），不管是普通的还是静态（static）的，每一个在编译后的符号表中都会产生符号，他们叫做数据。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;g_data1和g_data4都是初始化了的且初始化的值不为0的，所以它们放在.data段&lt;/li&gt;
+  &lt;li&gt;g_data3和g_data6都是未初始化的，g_data2和g_data5虽然已经初始化但初始化值为0，所以它们都放在.bss段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;而在main函数中，a、b、c三个局部变量并不会在符号表中产生符号，它们生成的是指令，例如int a = 12;在x86架构的汇编中产生的是mov dword ptr[a],0Ch指令，也就是将0Ch(12)移入a的内存，所以它们三个其实是放在指令段（.text）的
+main函数中的e、f、g三个静态局部变量也是放在数据段的，但是程序启动时不会初始化，当程序运行到该条语句时才会初始化，它们的存储位置与全局变量相同&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;e是初始化且不为0的，放在.data段&lt;/li&gt;
+  &lt;li&gt;f虽然初始化但初始化值为0，g未初始化，所以都放在.bss段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在这里，如果打印c，c的值不会为0，而打印g的值为0，原因就是g存放在.bss段，操作系统自动赋初值为0了.&lt;/p&gt;
+
+&lt;p&gt;同时这里理解时可能会产生一个问题，通常我们说局部变量是在栈上，为什么这里说是指令保存在指令段呢？事实上，int a = 12这句代码在编译时产生的是一条指令，这个指令保存在.text段，而在运行时，系统会在当前进程的栈上给函数开辟一个栈帧，该指令运行时会在栈上开辟一段4个字节的空间存放“12”这个整数&lt;/p&gt;
+
+&lt;p&gt;同时对于这一部分也要注意，每一个进程的用户空间是私有的，但是内核空间是共享的。这也就是进程间通信比较困难的原因，而进程间通信方式的一种，匿名管道通信其实就是在内核空间中划分出一片内存，每个进程就都可以在这片空间写入数据给其他进程看，由此实现通信的目的&lt;/p&gt;</content><author><name></name></author><category term="操作系统" /><summary type="html">[toc]</summary></entry></feed>
