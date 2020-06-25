@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "sql-server期末复习",
+      "category" : "",
+      "tags"     : "sql",
+      "date"     : "2020-06-24 00:00:00 +0800",
+      
+      "url"      : "/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"
+    } ,
+  
+    {
       "title"    : "John_the_Ripper",
       "category" : "",
       "tags"     : "安全",
