@@ -707,10 +707,10 @@ readme_index: # 缺失index.md和index.html时，使用README.md代替之
 
 permalink: /_posts/:year-:month-:day-:title/ #生成文章的地址格式，我希望它和_posts目录下的格式一样
 # timezone: Asia/Shanghai # 解决githubpage显示时间不正确的问题，见<https://www.iana.org/time-zones>
-# future: false # 不发布时间在未来的文章
+ #future: true # 不发布时间在未来的文章
 
 # limit_posts: 999 # 限制博文数量
-# encoding: utf-8
+#encoding: utf-8
 
 markdown: kramdown
 kramdown: # 见<https://kramdown.gettalong.org/options.html>
@@ -723,9 +723,9 @@ kramdown: # 见<https://kramdown.gettalong.org/options.html>
 #safe: true # 禁用自定义插件
 #source: [your repo's top level directory] # Jekyll 读取文件的路径
 #incremental: false # 增量生成
-#highlighter: rouge # 代码高亮器
+highlighter: rouge # 代码高亮器
 #gist:
 #  noscript: false
 #kramdown:
-#  math_engine: mathjax
-#  syntax_highlighter: rouge
+#math_engine: mathjax
+#syntax_highlighter: rouge
