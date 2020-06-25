@@ -608,11 +608,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    3546字
+    3729字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    12分
+    13分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-xid="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-flag-title="sql-server期末复习">
@@ -1031,15 +1031,40 @@ R2(职工编号,部门名,部门经理)\\</script></p>
 </ul>
 
 <script type="math/tex; mode=display">FD:\\
-运动员编号->比赛项目\\
 (运动员编号,比赛项目)->成绩\\
+
 比赛项目->比赛类别\\
-比赛类别->比赛主管\\</script>
+比赛项目->比赛主管\\
+候选键:(运动员编号,比赛项目),比赛项目</script>
 
 <ul>
   <li>R不是2NF理由,并把R分解为2NF</li>
+</ul>
+
+<p>存在非关键字段’比赛类别’和’比赛主管’对候选键(运动员编号,比赛项目)的部分依赖,所以不是2NF</p>
+
+<p>分解:</p>
+
+<p>R1(运动员编号,比赛项目,成绩)</p>
+
+<p>R2(比赛项目,比赛类别,比赛主管)</p>
+
+<ul>
   <li>分解为3NF</li>
 </ul>
+
+<p>R1不存在传递依赖所以是3NF</p>
+
+<p>又因为:</p>
+
+<p>比赛项目-&gt;比赛类别
+比赛项目-&gt;比赛主管</p>
+
+<p>所以R2存在传递依赖,不是3NF</p>
+
+<p>分解为如下:</p>
+
+<p>R21(比赛项目,比赛类别),R22(比赛类别,比赛主管)</p>
 
 <h1 id="系统数据库">系统数据库</h1>
 

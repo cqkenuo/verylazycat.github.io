@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T15:32:19+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-25T16:51:19+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -394,15 +394,40 @@ R2(职工编号,部门名,部门经理)\\&lt;/script&gt;&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;FD:\\
-运动员编号-&gt;比赛项目\\
 (运动员编号,比赛项目)-&gt;成绩\\
+
 比赛项目-&gt;比赛类别\\
-比赛类别-&gt;比赛主管\\&lt;/script&gt;
+比赛项目-&gt;比赛主管\\
+候选键:(运动员编号,比赛项目),比赛项目&lt;/script&gt;
 
 &lt;ul&gt;
   &lt;li&gt;R不是2NF理由,并把R分解为2NF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;存在非关键字段’比赛类别’和’比赛主管’对候选键(运动员编号,比赛项目)的部分依赖,所以不是2NF&lt;/p&gt;
+
+&lt;p&gt;分解:&lt;/p&gt;
+
+&lt;p&gt;R1(运动员编号,比赛项目,成绩)&lt;/p&gt;
+
+&lt;p&gt;R2(比赛项目,比赛类别,比赛主管)&lt;/p&gt;
+
+&lt;ul&gt;
   &lt;li&gt;分解为3NF&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;R1不存在传递依赖所以是3NF&lt;/p&gt;
+
+&lt;p&gt;又因为:&lt;/p&gt;
+
+&lt;p&gt;比赛项目-&amp;gt;比赛类别
+比赛项目-&amp;gt;比赛主管&lt;/p&gt;
+
+&lt;p&gt;所以R2存在传递依赖,不是3NF&lt;/p&gt;
+
+&lt;p&gt;分解为如下:&lt;/p&gt;
+
+&lt;p&gt;R21(比赛项目,比赛类别),R22(比赛类别,比赛主管)&lt;/p&gt;
 
 &lt;h1 id=&quot;系统数据库&quot;&gt;系统数据库&lt;/h1&gt;
 
