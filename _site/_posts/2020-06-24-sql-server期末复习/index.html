@@ -608,11 +608,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    4242字
+    4713字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    15分
+    16分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-xid="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-flag-title="sql-server期末复习">
@@ -1240,23 +1240,77 @@ LOG ON
   <li>统计所有学生选修的课程门数</li>
 </ul>
 
-<pre><code class="language-mssql">select count(*) from 
+<pre><code class="language-mssql">select count(*) from SC
 </code></pre>
 
 <ul>
   <li>求选修Ｃ４号课程的学生的平均年龄</li>
+</ul>
+
+<pre><code class="language-mssql">select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
+join S ON SC.SNO = S.SNO
+where CNO = 'C4'
+</code></pre>
+
+<ul>
   <li>求学习计算机学院（ＣＳ）每门课程的学生平均成绩</li>
+</ul>
+
+<pre><code class="language-mssql">select AVG(GRADE) FROM SC joio C on SC.CNO = C.CNO 
+where CDEPT = 'CS'
+</code></pre>
+
+<ul>
   <li>统计每门课程的学生选修人数（超过１０人的课程才统计）按人数降序排列，若人数相同，按课程号升序排列</li>
+</ul>
+
+<pre><code class="language-mssql">select distinct CNO,count(SNO) from SC
+group by CNO having count(SNO)&gt; 10 
+order by 10 desc,CNO ASC
+</code></pre>
+
+<ul>
   <li>查询姓＂王＂的所有学生的姓名和年龄</li>
+</ul>
+
+<pre><code class="language-mssql">select SNAME,AGE from S
+where SNAME like '王%'
+</code></pre>
+
+<ul>
   <li>在ＳＣ中查询成绩为空值的学生学号和课程号</li>
+</ul>
+
+<pre><code class="language-mssql">select SNO,CNO from SC where GRADE is NULL
+</code></pre>
+
+<ul>
   <li>查询１９９７年９月１日前出生的信息学院和数学学院女生的信息</li>
 </ul>
+
+<pre><code class="language-mssql">select * from S join SC on S.SNO = SC.SNO join C on SC.CNO = C.CNO
+where brith &lt; '19970901' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
+</code></pre>
 
 <hr />
 
 <ul>
-  <li>在基本表Ｓ中检索每一门课程成绩都大于８０分的学生学号，姓名，性别，并存储在一个已经存在的基本表ＳＴＵＤＥＮＴ（ＳＮＯ，ＳＮＡＭＥ，ＳＥＸ）</li>
+  <li>在基本表Ｓ中检索每一门课程成绩都大于８０分的学生学号，姓名，性别，并存储在一个<code>已经存在</code>的基本表ＳＴＵＤＥＮＴ（ＳＮＯ，ＳＮＡＭＥ，ＳＥＸ）</li>
+</ul>
+
+<pre><code class="language-mssql">insert into STUDENT
+select SNO,SNAME,SEX from S join SC on S.SNO = SC.SNO 
+where GRADE &gt; 80
+</code></pre>
+
+<ul>
   <li>在ＳＣ中删除无成绩的学科元组</li>
+</ul>
+
+<pre><code class="language-mssql">
+</code></pre>
+
+<ul>
   <li>把＂张成民＂同学在ＳＣ中的选课记录全部删除</li>
   <li>把低于总平均成绩的女同学成绩提高５％</li>
 </ul>

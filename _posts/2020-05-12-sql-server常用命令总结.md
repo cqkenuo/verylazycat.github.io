@@ -304,9 +304,9 @@ GO
 - ## 删除表里面的行数据
 
 ```mssql
--- Add a new column 'NewColumnName' to table 'TableName' in schema 'SchemaName'
-ALTER TABLE SchemaName.TableName
-    ADD NewColumnName /*new_column_name*/ int /*new_column_datatype*/ NULL /*new_column_nullability*/
+-- Delete rows from table 'TableName'
+DELETE FROM TableName
+WHERE 	/* add search conditions here */
 GO
 ```
 

@@ -357,20 +357,70 @@ LOG ON
 - 统计所有学生选修的课程门数
 
 ```mssql
-select count(*) from 
+select count(*) from SC
 ```
 
 - 求选修Ｃ４号课程的学生的平均年龄
+
+```mssql
+select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
+join S ON SC.SNO = S.SNO
+where CNO = 'C4'
+```
+
 - 求学习计算机学院（ＣＳ）每门课程的学生平均成绩
+
+```mssql
+select AVG(GRADE) FROM SC joio C on SC.CNO = C.CNO 
+where CDEPT = 'CS'
+```
+
 - 统计每门课程的学生选修人数（超过１０人的课程才统计）按人数降序排列，若人数相同，按课程号升序排列
+
+```mssql
+select distinct CNO,count(SNO) from SC
+group by CNO having count(SNO)> 10 
+order by 10 desc,CNO ASC
+```
+
 - 查询姓＂王＂的所有学生的姓名和年龄
+
+```mssql
+select SNAME,AGE from S
+where SNAME like '王%'
+```
+
 - 在ＳＣ中查询成绩为空值的学生学号和课程号
+
+```mssql
+select SNO,CNO from SC where GRADE is NULL
+```
+
 - 查询１９９７年９月１日前出生的信息学院和数学学院女生的信息
+
+```mssql
+select * from S join SC on S.SNO = SC.SNO join C on SC.CNO = C.CNO
+where brith < '19970901' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
+```
 
 -----
 
-- 在基本表Ｓ中检索每一门课程成绩都大于８０分的学生学号，姓名，性别，并存储在一个已经存在的基本表ＳＴＵＤＥＮＴ（ＳＮＯ，ＳＮＡＭＥ，ＳＥＸ）
+- 在基本表Ｓ中检索每一门课程成绩都大于８０分的学生学号，姓名，性别，并存储在一个`已经存在`的基本表ＳＴＵＤＥＮＴ（ＳＮＯ，ＳＮＡＭＥ，ＳＥＸ）
+
+```mssql
+insert into STUDENT
+select SNO,SNAME,SEX from S join SC on S.SNO = SC.SNO 
+where GRADE > 80
+```
+
 - 在ＳＣ中删除无成绩的学科元组
+
+```mssql
+
+```
+
+
+
 - 把＂张成民＂同学在ＳＣ中的选课记录全部删除
 - 把低于总平均成绩的女同学成绩提高５％
 
