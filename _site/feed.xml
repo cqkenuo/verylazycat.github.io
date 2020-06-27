@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-27T13:05:45+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-27T15:39:49+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -1129,8 +1129,8 @@ where CDEPT = 'CS'
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;select distinct CNO,count(SNO) from SC
-group by CNO having count(SNO)&amp;gt; 10 
-order by 10 desc,CNO ASC
+group by CNO having count(SNO)&amp;gt; 2
+order by count(SNO) desc,CNO ASC
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -1163,8 +1163,8 @@ where brith &amp;lt; '19970901' and (CDEPT = &quot;信息学院&quot; orCDEPT = 
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;insert into STUDENT
-select SNO,SNAME,SEX from S join SC on S.SNO = SC.SNO 
-where GRADE &amp;gt; 80
+select S.SNO,SNAME,SEX from S  
+where NOT EXISTS(select * from SC where GRADE &amp;lt; 80 AND S.SNO = SC.SNO)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;

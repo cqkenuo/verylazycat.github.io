@@ -608,7 +608,7 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    4875字
+    4908字
     
     
     <i class="fas fa-clock fa-fw"></i>
@@ -1269,8 +1269,8 @@ where CDEPT = 'CS'
 </ul>
 
 <pre><code class="language-mssql">select distinct CNO,count(SNO) from SC
-group by CNO having count(SNO)&gt; 10 
-order by 10 desc,CNO ASC
+group by CNO having count(SNO)&gt; 2
+order by count(SNO) desc,CNO ASC
 </code></pre>
 
 <ul>
@@ -1303,8 +1303,8 @@ where brith &lt; '19970901' and (CDEPT = "信息学院" orCDEPT = "数学学院"
 </ul>
 
 <pre><code class="language-mssql">insert into STUDENT
-select SNO,SNAME,SEX from S join SC on S.SNO = SC.SNO 
-where GRADE &gt; 80
+select S.SNO,SNAME,SEX from S  
+where NOT EXISTS(select * from SC where GRADE &lt; 80 AND S.SNO = SC.SNO)
 </code></pre>
 
 <ul>

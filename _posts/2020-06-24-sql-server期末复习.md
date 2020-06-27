@@ -389,8 +389,8 @@ where CDEPT = 'CS'
 
 ```mssql
 select distinct CNO,count(SNO) from SC
-group by CNO having count(SNO)> 10 
-order by 10 desc,CNO ASC
+group by CNO having count(SNO)> 2
+order by count(SNO) desc,CNO ASC
 ```
 
 - 查询姓＂王＂的所有学生的姓名和年龄
@@ -419,8 +419,8 @@ where brith < '19970901' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
 
 ```mssql
 insert into STUDENT
-select SNO,SNAME,SEX from S join SC on S.SNO = SC.SNO 
-where GRADE > 80
+select S.SNO,SNAME,SEX from S  
+where NOT EXISTS(select * from SC where GRADE < 80 AND S.SNO = SC.SNO)
 ```
 
 - 在ＳＣ中删除无成绩的学科元组
