@@ -97,10 +97,10 @@ $$
 
 4.
 
-| 6    | 7    |
+| B    | C    |
 | ---- | ---- |
-| 5    | 7    |
-| 4    | 3    |
+| 4    | 5    |
+| 2    | 3    |
 
 5.
 
@@ -348,7 +348,15 @@ LOG ON
 
 # 数据库维护
 
+----
+
+
+
 参看此篇[文章](/_posts/2020-05-12-sql-server常用命令总结.md)
+
+---
+
+
 
 # 维护例子
 
@@ -416,13 +424,25 @@ where GRADE > 80
 - 在ＳＣ中删除无成绩的学科元组
 
 ```mssql
-
+DELETE FROM SC
+where GRADE is NULL
 ```
 
-
-
 - 把＂张成民＂同学在ＳＣ中的选课记录全部删除
+
+```mssql
+DELETE FROM SC join S on SC.SNO = S.SNO
+where SNAME like '张成民'
+```
+
 - 把低于总平均成绩的女同学成绩提高５％
+
+```mssql
+UPDATE SC JOIN S on SC.SNO = S.SNO
+SET
+GRADE = GRADE + GRADE*5%
+WHERE GRADE < AVG(GRADE) and SEX = '女'
+```
 
 # 存储过程
 

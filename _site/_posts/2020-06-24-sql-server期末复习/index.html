@@ -608,11 +608,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    4713字
+    4875字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    16分
+    17分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-xid="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-flag-title="sql-server期末复习">
@@ -900,17 +900,17 @@
 <table>
   <thead>
     <tr>
-      <th>6</th>
-      <th>7</th>
+      <th>B</th>
+      <th>C</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>4</td>
       <td>5</td>
-      <td>7</td>
     </tr>
     <tr>
-      <td>4</td>
+      <td>2</td>
       <td>3</td>
     </tr>
   </tbody>
@@ -1230,7 +1230,11 @@ LOG ON
 
 <h1 id="数据库维护">数据库维护</h1>
 
+<hr />
+
 <p>参看此篇<a href="/_posts/2020-05-12-sql-server常用命令总结.md">文章</a></p>
+
+<hr />
 
 <h1 id="维护例子">维护例子</h1>
 
@@ -1307,13 +1311,27 @@ where GRADE &gt; 80
   <li>在ＳＣ中删除无成绩的学科元组</li>
 </ul>
 
-<pre><code class="language-mssql">
+<pre><code class="language-mssql">DELETE FROM SC
+where GRADE is NULL
 </code></pre>
 
 <ul>
   <li>把＂张成民＂同学在ＳＣ中的选课记录全部删除</li>
+</ul>
+
+<pre><code class="language-mssql">DELETE FROM SC join S on SC.SNO = S.SNO
+where SNAME like '张成民'
+</code></pre>
+
+<ul>
   <li>把低于总平均成绩的女同学成绩提高５％</li>
 </ul>
+
+<pre><code class="language-mssql">UPDATE SC JOIN S on SC.SNO = S.SNO
+SET
+GRADE = GRADE + GRADE*5%
+WHERE GRADE &lt; AVG(GRADE) and SEX = '女'
+</code></pre>
 
 <h1 id="存储过程">存储过程</h1>
 
