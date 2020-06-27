@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-27T15:39:49+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-27T15:44:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -505,7 +505,7 @@ enumdesktops     #用户登录数
 &lt;p&gt;在 IDEA 中新建项目，选择&lt;code&gt; Spring Initializr&lt;/code&gt;，点击 Next,完成项目组等配置后,点击next,然后选择&lt;code&gt;web&lt;/code&gt;-&amp;gt;&lt;code&gt;web&lt;/code&gt;,最后完成配置.&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">web压力测试程序开发</title><link href="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" rel="alternate" type="text/html" title="web压力测试程序开发" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">sql-server期末复习</title><link href="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="alternate" type="text/html" title="sql-server期末复习" /><published>2020-06-24T00:00:00+08:00</published><updated>2020-06-24T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;用于期末复习,切勿用于作弊!&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;用于期末复习,切勿用于作弊!违者后果自负!!!!!!!&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h1 id=&quot;数据处理三个阶段&quot;&gt;数据处理三个阶段&lt;/h1&gt;
