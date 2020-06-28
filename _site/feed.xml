@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-27T15:44:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-28T17:36:10+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -424,85 +424,283 @@ enumdesktops     #用户登录数
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom -p windows/meterpreter/bind_tcp -b &amp;amp;#039;\x00&amp;amp;#039; -f raw
 &lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">veu&amp;amp;spring项目开发</title><link href="http://localhost:4000/_posts/2020-06-25-veu&spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" rel="alternate" type="text/html" title="veu&amp;spring项目开发" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/veu&amp;spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-veu&amp;spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;
 
-&lt;h1 id=&quot;vue安装&quot;&gt;vue安装&lt;/h1&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
 
-&lt;h2 id=&quot;官网&quot;&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/guide/installation.html&quot;&gt;官网&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mp.baomidou.com/guide/#%E7%89%B9%E6%80%A7&quot;&gt;mybati-plus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;推荐CLI,安装配置此处不赘述&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h1 id=&quot;数据库配置&quot;&gt;数据库配置&lt;/h1&gt;
 
-&lt;h1 id=&quot;vue项目创建&quot;&gt;Vue项目创建&lt;/h1&gt;
-
-&lt;p&gt;命令行输入&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;vue -ui
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `age` int NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;在打开的浏览器里创建vue项目,使用&lt;code&gt;IDEA&lt;/code&gt;打开&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;一般需要在数据库添加&lt;code&gt;Create_time&lt;/code&gt;和&lt;code&gt;update_time&lt;/code&gt;字段,用于记录创建时间和修改时间,可以在操作数据库代码中添加相应代码去实现,不过可以在实体类中加上@TableField注解,再写一个handler继承MetaObjectHandler,实现&lt;code&gt;InsertFill&lt;/code&gt;和&lt;code&gt;updateFill&lt;/code&gt;方法,从而简化代码&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h1 id=&quot;登录界面开发&quot;&gt;登录界面开发&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `id` bigint NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `price` int DEFAULT '0',
+  `version` int DEFAULT '0' COMMENT '乐观锁',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;在&lt;code&gt;src/component&lt;/code&gt;文件夹创建&lt;code&gt;Login.vue&lt;/code&gt;文件,创建简单的登录界面&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;version 字段 在后续解决同时操作数据库发生冲突,需在其实体类对于的数据上添加@version注解&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-vue&quot;&gt;&amp;lt;template&amp;gt;
-    &amp;lt;div&amp;gt;
-        用户名:&amp;lt;input type=&quot;text&quot; v-model=&quot;loginForm.username&quot; placeholder=&quot;请输入用户名&quot;/&amp;gt;
-        &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
-        密码： &amp;lt;input type=&quot;password&quot; v-model=&quot;loginForm.password&quot; placeholder=&quot;请输入密码&quot;/&amp;gt;
-        &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
-        &amp;lt;button v-on:click=&quot;login&quot;&amp;gt;登录&amp;lt;/button&amp;gt;
-    &amp;lt;/div&amp;gt;
-&amp;lt;/template&amp;gt;
+&lt;h1 id=&quot;applicationproperties配置&quot;&gt;application.properties配置&lt;/h1&gt;
 
-&amp;lt;script&amp;gt;
+&lt;pre&gt;&lt;code class=&quot;language-properties&quot;&gt;spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/mybatis_plus?serverTimezone=GMT%2B8
+spring.datasource.username=name
+spring.datasource.password=pass
+&lt;/code&gt;&lt;/pre&gt;
 
-    export default {
-        name: 'Login',
-        data () {
-            return {
-                loginForm: {
-                    username: '',
-                    password: ''
-                },
-                responseResult: []
-            }
-        },
-        methods: {
-            login () {
-                this.axios
-                    .post('/login', {
-                        username: this.loginForm.username,
-                        password: this.loginForm.password
-                    })
-                    .then(successResponse =&amp;gt; {
-                        if (successResponse.data.code === 200) {
-                            this.$router.replace({path: '/index'})
-                        }
-                    })
-                    .catch(failResponse =&amp;gt; {
-                    })
-            }
-        }
+&lt;h1 id=&quot;实体类&quot;&gt;实体类&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建entity package&lt;/li&gt;
+  &lt;li&gt;创建User.class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.entity;
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
+import java.util.Date;
+
+@Data
+public class User {
+    @TableId(type =  IdType.AUTO)
+    private  long id;
+    private  String name;
+    private  Integer age;
+    private  String email;
+
+    @TableField(fill = FieldFill.INSERT)
+    private Date create_time;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private  Date update_time;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;@Data 注解:来源与&lt;code&gt;lombok&lt;/code&gt;,需要配置插件,主要功能是简化,自动生成getter和setter&lt;/li&gt;
+    &lt;li&gt;@TableId:主键注解,具体type参考官网&lt;/li&gt;
+    &lt;li&gt;@TableField:字段注解(非主键),后续创建类去继承MetaObjectHandler,实现InsertFill和updateFill等主要方法&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Product&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.entity;
+
+import com.baomidou.mybatisplus.annotation.Version;
+import lombok.Data;
+
+@Data
+public class Product {
+    private  Long id;
+    private  String name;
+    private  Integer price;
+
+    @Version
+    private  Integer version;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;@Version:乐观锁注解,为了在并发使用数据库时不产生冲突,具体参考测试数据库&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;mapper&quot;&gt;Mapper&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建mapper package&lt;/li&gt;
+  &lt;li&gt;在mapper下创建UserMapper&lt;code&gt;接口&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lazycat.mybatis_plus.entity.User;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserMapper extends BaseMapper&amp;lt;User&amp;gt; {
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;主要是要继承&lt;code&gt;BaseMapper&lt;/code&gt;,泛型根据自己定义的实体类&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ProductMapper&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lazycat.mybatis_plus.entity.Product;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductMapper extends BaseMapper&amp;lt;Product&amp;gt; {
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;handler&quot;&gt;Handler&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建Handler package&lt;/li&gt;
+  &lt;li&gt;创建MyObjectHandler&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.handler;
+
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+
+@Component
+public class MyObjectHandler implements MetaObjectHandler {
+    @Override
+    public void insertFill(MetaObject metaObject) {
+        this.setFieldValByName(&quot;create_time&quot;,new Date(),metaObject);
+        this.setFieldValByName(&quot;update_time&quot;,new Date(),metaObject);
     }
-&amp;lt;/script&amp;gt;
+
+    @Override
+    public void updateFill(MetaObject metaObject) {
+        this.setFieldValByName(&quot;update_time&quot;,new Date(),metaObject);
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;其中的样式自己添加&lt;/p&gt;
+  &lt;p&gt;主要是继承MetaObjectHandler,实现insertFill,updateFill等方法&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&quot;创建主页&quot;&gt;创建主页&lt;/h1&gt;
+&lt;h1 id=&quot;测试数据库&quot;&gt;测试数据库&lt;/h1&gt;
 
-&lt;p&gt;在&lt;code&gt;src/component&lt;/code&gt;文件夹下创建&lt;code&gt;MyIndex.vue&lt;/code&gt;文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package com.lazycat.mybatis_plus;
 
-&lt;p&gt;此处暂时不忙写内容,后续添加&lt;/p&gt;
+import com.lazycat.mybatis_plus.entity.Product;
+import com.lazycat.mybatis_plus.entity.User;
+import com.lazycat.mybatis_plus.mapper.ProductMapper;
+import com.lazycat.mybatis_plus.mapper.UserMapper;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-&lt;h1 id=&quot;创建后端项目&quot;&gt;创建后端项目&lt;/h1&gt;
+import java.util.Date;
 
-&lt;p&gt;打开&lt;code&gt;IDEA&lt;/code&gt;创建&lt;code&gt;spring web&lt;/code&gt;项目,具体过程:&lt;/p&gt;
+@SpringBootTest
+public class CRUDtest {
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private ProductMapper productMapper;
+    @Test
+    public void test(){
+        User user = new User();
+        user.setAge(19);
+        user.setEmail(&quot;test@qq.com&quot;);
+//        user.setCreate_time(new Date());
+//        user.setCreate_time(new Date());
+//        user.setId(5);
+        user.setName(&quot;hhh&quot;);
+        //影响的行数
+        int result = userMapper.insert(user);
+        System.out.println(&quot;影响的行数&quot;+result);
+        System.out.println(&quot;id=&quot;+user.getId());
+    }
+    @Test
+    public void updateById(){
+        User user = new User();
+        user.setId(1);
+        user.setName(&quot;test1&quot;);
+        user.setAge(20);
+        int result = userMapper.updateById(user);
+        System.out.println(&quot;影响行数:&quot;+result);
+    }
+    @Test
+    //并发测试
+    public void ConcurrentUpdatetest(){
+        Product product1 = productMapper.selectById(1);
+        Product product2 = productMapper.selectById(1);
+        product1.setPrice(product1.getPrice()+50);
+        productMapper.updateById(product1);
+        product2.setPrice(product2.getPrice()-30);
+        int result = productMapper.updateById(product2);
+        if (result == 0){
+            System.out.println(&quot;pro2更新失败&quot;);
+            System.out.println(&quot;pro2重新更新&quot;);
+            product2 = productMapper.selectById(1);
+            product2.setPrice(product2.getPrice() - 30);
+            productMapper.updateById(product2);
+        }
+        Product product3 = productMapper.selectById(1);
+        System.out.println(product3.getPrice()
+        );
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;在 IDEA 中新建项目，选择&lt;code&gt; Spring Initializr&lt;/code&gt;，点击 Next,完成项目组等配置后,点击next,然后选择&lt;code&gt;web&lt;/code&gt;-&amp;gt;&lt;code&gt;web&lt;/code&gt;,最后完成配置.&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">web压力测试程序开发</title><link href="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" rel="alternate" type="text/html" title="web压力测试程序开发" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">sql-server期末复习</title><link href="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="alternate" type="text/html" title="sql-server期末复习" /><published>2020-06-24T00:00:00+08:00</published><updated>2020-06-24T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;配置package&quot;&gt;配置package&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建config配置package&lt;/li&gt;
+  &lt;li&gt;创建MyBatisPlusConfig&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.config;
+
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@EnableTransactionManagement
+@Configuration
+@MapperScan(&quot;com.lazycat.mybatis_plus.mapper&quot;)
+public class MyBatisPlusConfig {
+    /*
+        乐观锁
+    * */
+    @Bean
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        return new OptimisticLockerInterceptor();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">web压力测试程序开发</title><link href="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" rel="alternate" type="text/html" title="web压力测试程序开发" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">sql-server期末复习</title><link href="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="alternate" type="text/html" title="sql-server期末复习" /><published>2020-06-24T00:00:00+08:00</published><updated>2020-06-24T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;strong&gt;用于期末复习,切勿用于作弊!违者后果自负!!!!!!!&lt;/strong&gt;&lt;/p&gt;
