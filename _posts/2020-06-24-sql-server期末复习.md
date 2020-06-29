@@ -1,6 +1,5 @@
 ---
-title: sql-server期末复习
-tags: sql
+
 ---
 
 [toc]
@@ -84,7 +83,7 @@ $$
 
 3.
 
-| A1   | B1   | C1   | A2   | B2   | C2   |
+| R.A  | R.B  | R.C  | S.A  | S.B  | S.C  |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | 3    | 6    | 7    | 3    | 4    | 5    |
 | 3    | 6    | 7    | 7    | 2    | 3    |
@@ -97,10 +96,10 @@ $$
 
 4.
 
-| B    | C    |
+| C    | B    |
 | ---- | ---- |
-| 4    | 5    |
-| 2    | 3    |
+| 5    | 4    |
+| 3    | 2    |
 
 5.
 
@@ -146,7 +145,7 @@ $$
 - 检索年龄大于23的男生的学号和姓名
 
 $$
-\pi_{SNO,SNAME}(\sigma_{SEX='男' and AGE >23}(S))
+\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE >23}(SC))
 $$
 
 - 检索学号为S3学生所学课程的课程名与任课老师
@@ -170,7 +169,7 @@ $$
 - 检索至少选修两门课程的学生号
 
 $$
-\pi_{SNO}(SC \infty SC) - \pi_{SNO}(\sigma_{1=4 \bigcap 2=5})(SC \infty SC)
+\pi_{1}(\sigma_{1=4  and  2 != 5}(SC \infty SC))
 $$
 
 # 部门例题
@@ -233,34 +232,41 @@ FD:\\
 (运动员编号,比赛项目)->成绩\\
 
 比赛项目->比赛类别\\
-比赛项目->比赛主管\\
+比赛类别->比赛主管\\
 候选键:(运动员编号,比赛项目),比赛项目
 $$
 
 - R不是2NF理由,并把R分解为2NF
 
-存在非关键字段'比赛类别'和'比赛主管'对候选键(运动员编号,比赛项目)的部分依赖,所以不是2NF
+R有两个这样的FD：
+
+​    （运动员编号，比赛项目）→ （比赛类别，比赛主管）
+
+​           比赛项目 → （比赛类别，比赛主管）
+
+可见，前一个FD是部分（局部）函数依赖，所以R不是2NF模式。
 
 分解:
 
-R1(运动员编号,比赛项目,成绩)
+R1(比赛项目，比赛类别，比赛主管)
 
-R2(比赛项目,比赛类别,比赛主管)
+R2(运动员编号，比赛项目，成绩)
 
 - 分解为3NF
 
-R1不存在传递依赖所以是3NF
+R2已是3NF模式。
 
-又因为:
+在R1中，存在两个FD：比赛项目 → 比赛类别
 
-比赛项目->比赛类别
-比赛项目->比赛主管
+​           比赛类别 → 比赛主管
 
-所以R2存在传递依赖,不是3NF
+因此，“比赛项目 → 比赛主管”是一个传递依赖，R1不是3NF模式。
 
-分解为如下:
+R1应分解为R11（比赛项目，比赛类别）
 
-R21(比赛项目,比赛类别),R22(比赛类别,比赛主管)
+​      R12（比赛类别，比赛主管）
+
+这样，ρ={R11，R12，R2}是一个3NF模式集。
 
 # 系统数据库
 
@@ -368,7 +374,11 @@ LOG ON
 - 统计所有学生选修的课程门数
 
 ```mssql
-select count(*) from SC
+USE JXGL
+GO
+SELECT COUNT(DISTINCT CNO)
+FROM SC
+GO
 ```
 
 - 求选修Ｃ４号课程的学生的平均年龄
@@ -382,29 +392,45 @@ where S.CNO = 'C4'
 - 求学习计算机学院（ＣＳ）每门课程的学生平均成绩
 
 ```mssql
-select AVG(GRADE) FROM SC joio C on SC.CNO = C.CNO 
-where CDEPT = 'CS'
+SELECT SC.CNO,AVG(GARDE) 
+ FROM SC JOIN C ON 
+ SC.CNO = C.CNO and cddept = 'CS'
+ GROUP BY SC.CNO
+ GO
 ```
 
 - 统计每门课程的学生选修人数（超过１０人的课程才统计）按人数降序排列，若人数相同，按课程号升序排列
 
 ```mssql
-select distinct CNO,count(SNO) from SC
-group by CNO having count(SNO)> 10
-order by count(SNO) desc,CNO ASC
+USE JXGL
+GO
+SELECT CNO,COUNT(SNO)
+FROM SC
+GROUP BY CNO HAVING COUNT(*)>10
+ORDER BY 2 DESC,1
+GO
 ```
 
 - 查询姓＂王＂的所有学生的姓名和年龄
 
 ```mssql
-select SNAME,AGE from S
-where SNAME like '王%'
+ USE JXGL
+GO
+SELECT SNAME,AGE
+FROM S
+WHERE SNAME LIKE '王%'
+GO
 ```
 
 - 在ＳＣ中查询成绩为空值的学生学号和课程号
 
 ```mssql
-select SNO,CNO from SC where GRADE is NULL
+ USE JXGL
+GO
+SELECT SNO,CNO
+FROM SC
+WHERE GRADE IS NULL
+GO
 ```
 
 - 查询１９９７年９月１日前出生的信息学院和数学学院女生的信息
@@ -419,32 +445,75 @@ where brith < '19970901' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
 - 在基本表Ｓ中检索每一门课程成绩都大于８０分的学生学号，姓名，性别，并存储在一个`已经存在`的基本表ＳＴＵＤＥＮＴ（ＳＮＯ，ＳＮＡＭＥ，ＳＥＸ）
 
 ```mssql
-insert into STUDENT
-select S.SNO,SNAME,SEX from S  
-where NOT EXISTS(select * from SC where GRADE < 80 AND S.SNO = SC.SNO)
+建表：
+USE JXGL
+GO
+CREATE TABLE STUDENT(SNO CHAR(9) NOT NULL,
+SNAME CHAR(8) NOT NULL,
+SEX CHAR(2))
+GO
+查询结果插入：
+USE JXGL
+GO
+INSERT INTO STUDENT(SNO,SNAME,SEX)
+SELECT SNO,SNAME,SEX
+FROM S
+WHERE SNO IN (SELECT SNO
+              FROM SC
+              GROUP BY SNO HAVING MIN(GRADE)>80)
+GO
 ```
 
 - 在ＳＣ中删除无成绩的学科元组
 
 ```mssql
+USE JXGL
+GO
 DELETE FROM SC
-where GRADE is NULL
+        WHERE GRADE IS NULL
+GO
 ```
 
 - 把＂张成民＂同学在ＳＣ中的选课记录全部删除
 
 ```mssql
-DELETE FROM SC join S on SC.SNO = S.SNO
-where SNAME like '张成民'
+USE JXGL
+GO
+DELETE 
+        FROM SC
+        WHERE SNO IN(SELECT SNO 
+                FROM S 
+                WHERE SNAME='张成民')
+GO
+```
+
+- 把选修“高等数学”课程中不及格的成绩全部改为空值
+
+```mssql
+USE JXGL
+GO
+UPDATE SC
+          SET GRADE=NULL
+          WHERE GRADE<60 AND CNO IN(SELECT CNO
+                                FROM C
+                                WHERE CNAME='高等数学')
+
+GO
 ```
 
 - 把低于总平均成绩的女同学成绩提高５％
 
 ```mssql
-UPDATE SC JOIN S on SC.SNO = S.SNO
-SET
-GRADE = GRADE + GRADE*5%
-WHERE GRADE < AVG(GRADE) and SEX = '女'
+USE JXGL
+GO
+UPDATE SC
+        SET GRADE=GRADE*1.05
+        WHERE SNO IN(SELECT SNO
+                FROM S 
+                WHERE SEX='F')
+                    AND GRADE<(SELECT AVG(GRADE)
+                                 FROM SC)
+GO
 ```
 
 # 存储过程
@@ -454,16 +523,13 @@ WHERE GRADE < AVG(GRADE) and SEX = '女'
 ```mssql
 USE JXGL
 GO
-IF EXITS(SELECT * FROM sysobjects WHERE name='STU_AGE' and TYPE = 'P')
-			DROP PROCEDURE STU_AGE
-			GO
-CREATE PROCEDURE  STU_AGE
-			@STUNO char(4)
-AS 
-			SELECT YEAR,MONTH,DAY FROM S
-			WHERE SNO like @STUNO
+CREATE PROCEDURE STU_AGE
+      @S_NAME CHAR(8)
+AS
+      SELECT YEAR(GETDATE()-AGE) AS 'YEAR'
+      FROM S 
+      WHERE SNAME=@S_NAME
 GO
-;使用例子:exec STU_AGE '0001'
 ```
 
 
@@ -473,18 +539,12 @@ GO
 ```mssql
 USE JXGL
 GO
-IF EXITS(SELECT * FROM sysobjects WHERE name='GRADE_INFO' and TYPE = 'P')
-			DROP PROCEDURE GRADE_INFO
-			GO
 CREATE PROCEDURE GRADE_INFO
-			@COURCE CHAR(10)
-AS 
-			SELECT CNAME,SNO,SNAME,GRADE
-			FROM S JOIN SC ON S.SNO = SC.SNO
-			JOIN C ON SC.CNO = C.CNO
-			WHERE CNAME LIKE '@COURCE'
-			GO
-;使用例子:exec GRADE_INFO 'C++'
+        @C_NAME VARCHAR(50)
+AS
+        SELECT CNAME,SC.SNO,SNAME,GRADE
+        FROM S JOIN SC ON S.SNO=SC.SNO JOIN C ON SC.CNO=C.CNO AND CNAME=@C_NAME     
+GO
 ```
 
 # 触发器
@@ -492,24 +552,13 @@ AS
 创建触发器ＴＲ＿Ｃ＿ＩＮＳＥＲＴ，在Ｃ表中插入一条新元组，触发器触发，给出＂你插入了一门新课程!＂信息
 
 ```mssql
-USE JXGL
-GO
-IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'TR_C_INSERT' AND TYPE = 'TR')
-					DROP TRIGGER TR_C_INSERT
-GO
 CREATE TRIGGER TR_C_INSERT
 ON C
-AFTER INSERT
-AS
-PRINT '你插入了一门新课程!'
-;更好的方法如下:
-;BEGIN
-;			DECLARE @COUNT VARCHAR(50)
- ;               SELECT @COUNT = STR(@@ROW COUNT)
- ;               	FROM INSERT
- ;               	PRINT "你插入了"+@COUNT +'门新课程!'
- ;END
- GO
+       FOR
+          INSERT
+AS 
+        PRINT '你插入了一门新的课程！'
+GO
 ```
 
 
@@ -517,28 +566,17 @@ PRINT '你插入了一门新课程!'
 ＡＦＴＥＲ触发器，在ＳＣ表创建一个插入，更新类型的触发器ＴＲ＿ＧＲＡＤＥ＿ＣＨＥＣＫ，当ＧＲＡＤＥ字段中插入或修改成绩后触发，检查是否在０～１００之间
 
 ```mssql
-USE JXGL 
-GO
-IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'TR_GRADE_CHECK' AND TYPE = 'TR')
-					DROP TRIGGER TR_GRADE_CHECK
-GO
 CREATE TRIGGER TR_GRADE_CHECK
 ON SC
-AFTER INSERT , UPDATE
-AS
-DECLARE @GRADE REAL
-SELECT @GRADE = GRADE FROM SC
-IF(@GRADE BETWEEN 0 AND 100)
-	PRINT '插入(更新)成功'
+       FOR
+          INSERT，UPDATE
+AS 
+  DECLARE @SC_grede tinyint
+SELECT @SC_grade=SC.grade
+FROM SC
+IF (@SC_grade NOT BETWEEN 0 AND 100)
+          PRINT '你插入的成绩不在0~100之间！'
 GO
-;
-;BEGIN 	
-;			IF ((SELECT GRADE FROM INSERTED) > 0 AND (SELECT GRADE FROM INSERTED) < 100)
-;			BEGIN 
-;						PRINT "插入成功"
-;			ELSE
-;			 RDLBACK TRANSACTION
-;END
 ```
 
 
@@ -550,21 +588,17 @@ GO
 ```mssql
 USE JXGL
 GO
-IF EXITS(SELECT * FROM sysobjects WHERE NAME ='S_MAX' AND TYPE='FN')
-	DROP FUNCTION dbo.C_MAX 
-	GO
-CREATE FUNCTION dbo.C_MAX(@CNAME VARCHAR(20))
-	RETURNS CHAR(9)
-	AS 
-		BEGIN 
-						DECLARE @MAX REAL
-						SELECT @MAX = MAX(GRADE) FROM SC
-						RETURN (SELECT SNO FROM SC WHERE GRADE = @MAX)
-        END
-  GO
-  DECLARE @STUNO CHAR(9)
-  SET @STUNO=dbo.C_MAX('ENGLISH')
-  PRINT "...."+CAST(@STUNO AS CHAR (9))
+CREATE FUNCTION C_MAX
+(@C_NAME CHAR(8))
+      RETURNS REAL
+     AS
+BEGIN
+          DECLARE @S_MAX REAL
+          SELECT @S_MAX=MAX(GRADE) 
+          FROM SC JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME
+          RETURN @S_MAX
+END
+GO
 ```
 
 创建ＳＮＯ＿ＩＮＦＯ函数，根据输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩
@@ -572,19 +606,13 @@ CREATE FUNCTION dbo.C_MAX(@CNAME VARCHAR(20))
 ```mssql
 USE JXGL
 GO
-IF EXITS(SELECT * FROM sys.objectS WHERE NAME = 'SNO_INFO' AND TYPE='FN')
-	DROP FUNCTION dbo.SNO_INFO
-	GO
-CREATE FUNCTION dbo.SNO_INFO(@CNAME CHAR(10))
-	RETURN TABLE
-AS 
-	BEGIN
-	RETURN (SELECT SNO,SNAME,SEX,CDEPT.GRADE FROM 
-           				S JOIN SC ON S.SNO=SC.SNO
-            			JOIN C ON SC.CNO = C.CNO
-           				WHERE CNAME LIKE @CNAME)
-    END
-  GO
+CREATE FUNCTION SNO_INFO
+(@C_NAME CHAR(8))
+ RETURNS TABLE
+     AS
+     RETURN(SELECT S.SNO,SNAME,SEX,SDEPT,GRADE
+          FROM S JOIN SC ON S.SNO=SC.SNO JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME)          
+GO
 ```
 
 
