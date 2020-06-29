@@ -622,7 +622,7 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    5736字
+    5733字
     
     
     <i class="fas fa-clock fa-fw"></i>
@@ -1505,11 +1505,11 @@ GO
 <p>创建ＳＮＯ＿ＩＮＦＯ函数，根据输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩</p>
 
 <pre><code class="language-mssql">USE JXGL
-IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = FN)
+IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
 DROP FUNCTION dbo.SNO_INFO
 CREATE FUNCTION SNO_INFO
 (@C_NAME CHAR(8))
- RETURNS CHAR(20)
+ RETURNS TABLE
      AS
      RETURN(SELECT S.SNO,SNAME,SEX,SDEPT,GRADE
           FROM S JOIN SC ON S.SNO=SC.SNO JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME)          
