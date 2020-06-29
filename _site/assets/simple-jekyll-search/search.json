@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "西华大学抢课脚本",
+      "category" : "",
+      "tags"     : "计算机网络",
+      "date"     : "2020-06-29 00:00:00 +0800",
+      
+      "url"      : "/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/"
+    } ,
+  
+    {
       "title"    : "metasploit使用总结",
       "category" : "",
       "tags"     : "安全",
