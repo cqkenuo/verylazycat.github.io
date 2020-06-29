@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T20:36:51+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T20:40:41+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -1720,7 +1720,7 @@ DROP FUNCTION dbo.C_MAX
 GO
 CREATE FUNCTION C_MAX
 (@C_NAME CHAR(8))
-      RETURNS REAL
+      RETURNS CHAR(20)
      AS
 BEGIN
           DECLARE @S_MAX REAL
@@ -1738,7 +1738,7 @@ IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = FN)
 DROP FUNCTION dbo.SNO_INFO
 CREATE FUNCTION SNO_INFO
 (@C_NAME CHAR(8))
- RETURNS TABLE
+ RETURNS CHAR(20)
      AS
      RETURN(SELECT S.SNO,SNAME,SEX,SDEPT,GRADE
           FROM S JOIN SC ON S.SNO=SC.SNO JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME)          
