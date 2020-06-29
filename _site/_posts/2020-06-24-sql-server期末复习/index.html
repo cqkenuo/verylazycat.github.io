@@ -622,11 +622,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    5354字
+    5729字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    18分
+    20分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-xid="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-flag-title="sql-server期末复习">
@@ -1424,6 +1424,8 @@ GO
 <p>在教学管理数据库中，创建一个名为ＳＴＵ＿ＡＧＥ的存储过程，根据输入的学号，输出该学生的出生年份</p>
 
 <pre><code class="language-mssql">USE JXGL
+IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
+DROP PROCEDURE STU_AGE
 GO
 CREATE PROCEDURE STU_AGE
       @S_NAME CHAR(8)
@@ -1437,6 +1439,9 @@ GO
 <p>创建ＧＲＡＤＥ＿ＩＮＦＯ存储过程，功能是查询某门课程所有学生成绩，显示字段ＣＮＡＭＥ，ＳＮＯ，ＳＮＡＭＥ，ＧＲＡＤＥ</p>
 
 <pre><code class="language-mssql">USE JXGL
+USE JXGL
+IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
+DROP PROCEDURE GARDE_INFO
 GO
 CREATE PROCEDURE GRADE_INFO
         @C_NAME VARCHAR(50)
@@ -1450,7 +1455,8 @@ GO
 
 <p>创建触发器ＴＲ＿Ｃ＿ＩＮＳＥＲＴ，在Ｃ表中插入一条新元组，触发器触发，给出＂你插入了一门新课程!＂信息</p>
 
-<pre><code class="language-mssql">CREATE TRIGGER TR_C_INSERT
+<pre><code class="language-mssql">USE JXGL
+CREATE TRIGGER TR_C_INSERT
 ON C
        FOR
           INSERT
@@ -1461,7 +1467,8 @@ GO
 
 <p>ＡＦＴＥＲ触发器，在ＳＣ表创建一个插入，更新类型的触发器ＴＲ＿ＧＲＡＤＥ＿ＣＨＥＣＫ，当ＧＲＡＤＥ字段中插入或修改成绩后触发，检查是否在０～１００之间</p>
 
-<pre><code class="language-mssql">CREATE TRIGGER TR_GRADE_CHECK
+<pre><code class="language-mssql">USE JAGL
+CREATE TRIGGER TR_GRADE_CHECK
 ON SC
        FOR
           INSERT，UPDATE
@@ -1479,6 +1486,8 @@ GO
 <p>创建函数Ｃ＿ＭＡＸ，根据输入的课程名称，输出该门课程最高分数的同学学号</p>
 
 <pre><code class="language-mssql">USE JXGL
+IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
+DROP FUNCTION dbo.C_MAX
 GO
 CREATE FUNCTION C_MAX
 (@C_NAME CHAR(8))
@@ -1488,7 +1497,7 @@ BEGIN
           DECLARE @S_MAX REAL
           SELECT @S_MAX=MAX(GRADE) 
           FROM SC JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME
-          RETURN @S_MAX
+          RETURN (SELECT SNO FROM SC WHERE GARDE= @S_MAX)
 END
 GO
 </code></pre>
@@ -1496,7 +1505,8 @@ GO
 <p>创建ＳＮＯ＿ＩＮＦＯ函数，根据输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩</p>
 
 <pre><code class="language-mssql">USE JXGL
-GO
+IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = FN)
+DROP FUNCTION dbo.SNO_INFO
 CREATE FUNCTION SNO_INFO
 (@C_NAME CHAR(8))
  RETURNS TABLE

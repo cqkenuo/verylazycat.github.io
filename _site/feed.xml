@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T19:23:21+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T20:36:51+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -1653,6 +1653,8 @@ GO
 &lt;p&gt;在教学管理数据库中，创建一个名为ＳＴＵ＿ＡＧＥ的存储过程，根据输入的学号，输出该学生的出生年份&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
+IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
+DROP PROCEDURE STU_AGE
 GO
 CREATE PROCEDURE STU_AGE
       @S_NAME CHAR(8)
@@ -1666,6 +1668,9 @@ GO
 &lt;p&gt;创建ＧＲＡＤＥ＿ＩＮＦＯ存储过程，功能是查询某门课程所有学生成绩，显示字段ＣＮＡＭＥ，ＳＮＯ，ＳＮＡＭＥ，ＧＲＡＤＥ&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
+USE JXGL
+IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
+DROP PROCEDURE GARDE_INFO
 GO
 CREATE PROCEDURE GRADE_INFO
         @C_NAME VARCHAR(50)
@@ -1679,7 +1684,8 @@ GO
 
 &lt;p&gt;创建触发器ＴＲ＿Ｃ＿ＩＮＳＥＲＴ，在Ｃ表中插入一条新元组，触发器触发，给出＂你插入了一门新课程!＂信息&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;CREATE TRIGGER TR_C_INSERT
+&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
+CREATE TRIGGER TR_C_INSERT
 ON C
        FOR
           INSERT
@@ -1690,7 +1696,8 @@ GO
 
 &lt;p&gt;ＡＦＴＥＲ触发器，在ＳＣ表创建一个插入，更新类型的触发器ＴＲ＿ＧＲＡＤＥ＿ＣＨＥＣＫ，当ＧＲＡＤＥ字段中插入或修改成绩后触发，检查是否在０～１００之间&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;CREATE TRIGGER TR_GRADE_CHECK
+&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JAGL
+CREATE TRIGGER TR_GRADE_CHECK
 ON SC
        FOR
           INSERT，UPDATE
@@ -1708,6 +1715,8 @@ GO
 &lt;p&gt;创建函数Ｃ＿ＭＡＸ，根据输入的课程名称，输出该门课程最高分数的同学学号&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
+IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
+DROP FUNCTION dbo.C_MAX
 GO
 CREATE FUNCTION C_MAX
 (@C_NAME CHAR(8))
@@ -1717,7 +1726,7 @@ BEGIN
           DECLARE @S_MAX REAL
           SELECT @S_MAX=MAX(GRADE) 
           FROM SC JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME
-          RETURN @S_MAX
+          RETURN (SELECT SNO FROM SC WHERE GARDE= @S_MAX)
 END
 GO
 &lt;/code&gt;&lt;/pre&gt;
@@ -1725,7 +1734,8 @@ GO
 &lt;p&gt;创建ＳＮＯ＿ＩＮＦＯ函数，根据输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
+IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = FN)
+DROP FUNCTION dbo.SNO_INFO
 CREATE FUNCTION SNO_INFO
 (@C_NAME CHAR(8))
  RETURNS TABLE
