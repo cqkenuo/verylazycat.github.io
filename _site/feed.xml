@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T21:24:23+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T23:18:28+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -1256,7 +1256,7 @@ C(CNO,CNAME,CDEPT,TNAME)\\&lt;/script&gt;
   &lt;li&gt;检索年龄大于23的男生的学号和姓名&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE &gt;23}(SC))&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE &gt;23}(S))&lt;/script&gt;
 
 &lt;ul&gt;
   &lt;li&gt;检索学号为S3学生所学课程的课程名与任课老师&lt;/li&gt;
@@ -1280,7 +1280,7 @@ C(CNO,CNAME,CDEPT,TNAME)\\&lt;/script&gt;
   &lt;li&gt;检索至少选修两门课程的学生号&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{1}(\sigma_{1=4  and  2 != 5}(SC \infty SC))&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNO}(SC\infty SC)- \pi_{SNO}(\sigma_{1=4  and  2 = 5}(SC \infty SC))&lt;/script&gt;
 
 &lt;h1 id=&quot;部门例题&quot;&gt;部门例题&lt;/h1&gt;
 
@@ -1506,9 +1506,11 @@ GO
   &lt;li&gt;求选修Ｃ４号课程的学生的平均年龄&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
-join S ON SC.SNO = S.SNO
-where S.CNO = 'C4'
+&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
+GO
+SELECT AVG(AGE)
+FROM S JOIN SC ON S.SNO=SC.SNO AND CNO='C4'
+GO
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -1564,7 +1566,7 @@ GO
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;select * from S join SC on S.SNO = SC.SNO join C on SC.CNO = C.CNO
-where brith &amp;lt; '19970901' and (CDEPT = &quot;信息学院&quot; orCDEPT = &quot;数学学院&quot; )
+where brith &amp;lt; '1997-09-01' and (CDEPT = &quot;信息学院&quot; orCDEPT = &quot;数学学院&quot; )
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
@@ -1653,7 +1655,7 @@ GO
 &lt;p&gt;在教学管理数据库中，创建一个名为ＳＴＵ＿ＡＧＥ的存储过程，根据输入的学号，输出该学生的出生年份&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
+IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
 DROP PROCEDURE STU_AGE
 GO
 CREATE PROCEDURE STU_AGE
@@ -1668,8 +1670,7 @@ GO
 &lt;p&gt;创建ＧＲＡＤＥ＿ＩＮＦＯ存储过程，功能是查询某门课程所有学生成绩，显示字段ＣＮＡＭＥ，ＳＮＯ，ＳＮＡＭＥ，ＧＲＡＤＥ&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-USE JXGL
-IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
+IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
 DROP PROCEDURE GARDE_INFO
 GO
 CREATE PROCEDURE GRADE_INFO
@@ -1715,7 +1716,7 @@ GO
 &lt;p&gt;创建函数Ｃ＿ＭＡＸ，根据输入的课程名称，输出该门课程最高分数的同学学号&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
 DROP FUNCTION dbo.C_MAX
 GO
 CREATE FUNCTION C_MAX
@@ -1734,7 +1735,7 @@ GO
 &lt;p&gt;创建ＳＮＯ＿ＩＮＦＯ函数，根据输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
 DROP FUNCTION dbo.SNO_INFO
 CREATE FUNCTION SNO_INFO
 (@C_NAME CHAR(8))
@@ -1846,7 +1847,7 @@ FROM DISK='D:\....\Dump2.bak'
 
 &lt;h2 id=&quot;简单还原&quot;&gt;简单还原&lt;/h2&gt;
 
-&lt;p&gt;指在还原时,仅仅使用了数据库完整备份或差异备份,而不涉及事务日志备份&lt;/p&gt;</content><author><name></name></author><category term="sq" /><summary type="html">[toc]</summary></entry><entry><title type="html">John_the_Ripper</title><link href="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/" rel="alternate" type="text/html" title="John_the_Ripper" /><published>2020-06-22T00:00:00+08:00</published><updated>2020-06-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/John_the_Ripper</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;指在还原时,仅仅使用了数据库完整备份或差异备份,而不涉及事务日志备份&lt;/p&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry><entry><title type="html">John_the_Ripper</title><link href="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/" rel="alternate" type="text/html" title="John_the_Ripper" /><published>2020-06-22T00:00:00+08:00</published><updated>2020-06-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/John_the_Ripper</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
 

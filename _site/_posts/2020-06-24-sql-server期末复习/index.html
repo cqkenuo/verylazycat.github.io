@@ -622,7 +622,7 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    5733字
+    5720字
     
     
     <i class="fas fa-clock fa-fw"></i>
@@ -639,7 +639,7 @@
     
     
     <i class="fas fa-tag fa-fw"></i>
-    sq
+    sql
     
     
     <br/>
@@ -1027,7 +1027,7 @@ C(CNO,CNAME,CDEPT,TNAME)\\</script>
   <li>检索年龄大于23的男生的学号和姓名</li>
 </ul>
 
-<script type="math/tex; mode=display">\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE >23}(SC))</script>
+<script type="math/tex; mode=display">\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE >23}(S))</script>
 
 <ul>
   <li>检索学号为S3学生所学课程的课程名与任课老师</li>
@@ -1051,7 +1051,7 @@ C(CNO,CNAME,CDEPT,TNAME)\\</script>
   <li>检索至少选修两门课程的学生号</li>
 </ul>
 
-<script type="math/tex; mode=display">\pi_{1}(\sigma_{1=4  and  2 != 5}(SC \infty SC))</script>
+<script type="math/tex; mode=display">\pi_{SNO}(SC\infty SC)- \pi_{SNO}(\sigma_{1=4  and  2 = 5}(SC \infty SC))</script>
 
 <h1 id="部门例题">部门例题</h1>
 
@@ -1277,9 +1277,11 @@ GO
   <li>求选修Ｃ４号课程的学生的平均年龄</li>
 </ul>
 
-<pre><code class="language-mssql">select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
-join S ON SC.SNO = S.SNO
-where S.CNO = 'C4'
+<pre><code class="language-mssql">USE JXGL
+GO
+SELECT AVG(AGE)
+FROM S JOIN SC ON S.SNO=SC.SNO AND CNO='C4'
+GO
 </code></pre>
 
 <ul>
@@ -1335,7 +1337,7 @@ GO
 </ul>
 
 <pre><code class="language-mssql">select * from S join SC on S.SNO = SC.SNO join C on SC.CNO = C.CNO
-where brith &lt; '19970901' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
+where brith &lt; '1997-09-01' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
 </code></pre>
 
 <hr />
@@ -1424,7 +1426,7 @@ GO
 <p>在教学管理数据库中，创建一个名为ＳＴＵ＿ＡＧＥ的存储过程，根据输入的学号，输出该学生的出生年份</p>
 
 <pre><code class="language-mssql">USE JXGL
-IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
+IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
 DROP PROCEDURE STU_AGE
 GO
 CREATE PROCEDURE STU_AGE
@@ -1439,8 +1441,7 @@ GO
 <p>创建ＧＲＡＤＥ＿ＩＮＦＯ存储过程，功能是查询某门课程所有学生成绩，显示字段ＣＮＡＭＥ，ＳＮＯ，ＳＮＡＭＥ，ＧＲＡＤＥ</p>
 
 <pre><code class="language-mssql">USE JXGL
-USE JXGL
-IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
+IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
 DROP PROCEDURE GARDE_INFO
 GO
 CREATE PROCEDURE GRADE_INFO
@@ -1486,7 +1487,7 @@ GO
 <p>创建函数Ｃ＿ＭＡＸ，根据输入的课程名称，输出该门课程最高分数的同学学号</p>
 
 <pre><code class="language-mssql">USE JXGL
-IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
 DROP FUNCTION dbo.C_MAX
 GO
 CREATE FUNCTION C_MAX
@@ -1505,7 +1506,7 @@ GO
 <p>创建ＳＮＯ＿ＩＮＦＯ函数，根据输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩</p>
 
 <pre><code class="language-mssql">USE JXGL
-IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
 DROP FUNCTION dbo.SNO_INFO
 CREATE FUNCTION SNO_INFO
 (@C_NAME CHAR(8))

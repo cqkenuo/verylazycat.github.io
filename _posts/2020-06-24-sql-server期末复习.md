@@ -1,6 +1,6 @@
 ---
 title: sql-server期末复习
-tags: sq
+tags: sql
 ---
 
 [toc]
@@ -146,7 +146,7 @@ $$
 - 检索年龄大于23的男生的学号和姓名
 
 $$
-\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE >23}(SC))
+\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE >23}(S))
 $$
 
 - 检索学号为S3学生所学课程的课程名与任课老师
@@ -170,7 +170,7 @@ $$
 - 检索至少选修两门课程的学生号
 
 $$
-\pi_{1}(\sigma_{1=4  and  2 != 5}(SC \infty SC))
+\pi_{SNO}(SC\infty SC)- \pi_{SNO}(\sigma_{1=4  and  2 = 5}(SC \infty SC))
 $$
 
 # 部门例题
@@ -385,9 +385,11 @@ GO
 - 求选修Ｃ４号课程的学生的平均年龄
 
 ```mssql
-select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
-join S ON SC.SNO = S.SNO
-where S.CNO = 'C4'
+USE JXGL
+GO
+SELECT AVG(AGE)
+FROM S JOIN SC ON S.SNO=SC.SNO AND CNO='C4'
+GO
 ```
 
 - 求学习计算机学院（ＣＳ）每门课程的学生平均成绩
@@ -438,7 +440,7 @@ GO
 
 ```mssql
 select * from S join SC on S.SNO = SC.SNO join C on SC.CNO = C.CNO
-where brith < '19970901' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
+where brith < '1997-09-01' and (CDEPT = "信息学院" orCDEPT = "数学学院" )
 ```
 
 -----
@@ -523,7 +525,7 @@ GO
 
 ```mssql
 USE JXGL
-IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
+IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
 DROP PROCEDURE STU_AGE
 GO
 CREATE PROCEDURE STU_AGE
@@ -541,8 +543,7 @@ GO
 
 ```mssql
 USE JXGL
-USE JXGL
-IF EXITS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
+IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
 DROP PROCEDURE GARDE_INFO
 GO
 CREATE PROCEDURE GRADE_INFO
@@ -595,7 +596,7 @@ GO
 
 ```mssql
 USE JXGL
-IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
 DROP FUNCTION dbo.C_MAX
 GO
 CREATE FUNCTION C_MAX
@@ -615,7 +616,7 @@ GO
 
 ```mssql
 USE JXGL
-IF EXITS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
+IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
 DROP FUNCTION dbo.SNO_INFO
 CREATE FUNCTION SNO_INFO
 (@C_NAME CHAR(8))
