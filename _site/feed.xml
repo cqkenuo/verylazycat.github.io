@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-28T17:36:10+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T11:16:10+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -609,17 +609,20 @@ public class MyObjectHandler implements MetaObjectHandler {
 
 &lt;h1 id=&quot;测试数据库&quot;&gt;测试数据库&lt;/h1&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.lazycat.mybatis_plus;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lazycat.mybatis_plus.entity.Product;
 import com.lazycat.mybatis_plus.entity.User;
 import com.lazycat.mybatis_plus.mapper.ProductMapper;
 import com.lazycat.mybatis_plus.mapper.UserMapper;
+import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
+import java.lang.reflect.Array;
+import java.util.*;
 
 @SpringBootTest
 public class CRUDtest {
@@ -670,6 +673,25 @@ public class CRUDtest {
         System.out.println(product3.getPrice()
         );
     }
+    @Test
+    public  void BatchSelectTest(){
+        List&amp;lt;User&amp;gt; users = userMapper.selectBatchIds(Arrays.asList(-1, 2, 3));
+        users.forEach(System.out::println);
+    }
+    @Test
+    public void SelectByMap(){
+        HashMap&amp;lt;String,Object&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        map.put(&quot;email&quot;,&quot;test@qq.com&quot;);
+        List&amp;lt;User&amp;gt; users = userMapper.selectByMap(map);
+        users.forEach(System.out::println);
+    }
+    @Test
+    public  void SelectPage(){
+        Page&amp;lt;User&amp;gt; pages = new Page&amp;lt;&amp;gt;(1,2);
+        Page&amp;lt;User&amp;gt; userPage = userMapper.selectPage(pages,null);
+        List&amp;lt;User&amp;gt; records = userPage.getRecords();
+        records.forEach(System.out::println);
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -698,6 +720,49 @@ public class MyBatisPlusConfig {
     @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;分页&quot;&gt;分页&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在config package 下编辑MyBatisPlusConfig&lt;/li&gt;
+  &lt;li&gt;添加如下插件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.config;
+
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@EnableTransactionManagement
+@Configuration
+@MapperScan(&quot;com.lazycat.mybatis_plus.mapper&quot;)
+public class MyBatisPlusConfig {
+    /*
+     乐观锁
+    * */
+    @Bean
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        return new OptimisticLockerInterceptor();
+    }
+    /*
+    分页插件
+    * */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+        // 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
+        // paginationInterceptor.setOverflow(false);
+        // 设置最大单页限制数量，默认 500 条，-1 不受限制
+        // paginationInterceptor.setLimit(500);
+        // 开启 count 的 join 优化,只针对部分 left join
+        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
+        return paginationInterceptor;
     }
 }
 &lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">web压力测试程序开发</title><link href="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" rel="alternate" type="text/html" title="web压力测试程序开发" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">sql-server期末复习</title><link href="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="alternate" type="text/html" title="sql-server期末复习" /><published>2020-06-24T00:00:00+08:00</published><updated>2020-06-24T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">&lt;p&gt;[toc]&lt;/p&gt;
@@ -1220,6 +1285,7 @@ LOG ON
 (
     NAME = JXGL_LOG,
     FILENAME='D:\..\JXGL_LOG.ldf',
+    SIZE=2,
     MAXSIZE=20,
     FILEGROWTH=10%
 )
@@ -1311,7 +1377,7 @@ LOG ON
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
 join S ON SC.SNO = S.SNO
-where CNO = 'C4'
+where S.CNO = 'C4'
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -1327,7 +1393,7 @@ where CDEPT = 'CS'
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;select distinct CNO,count(SNO) from SC
-group by CNO having count(SNO)&amp;gt; 2
+group by CNO having count(SNO)&amp;gt; 10
 order by count(SNO) desc,CNO ASC
 &lt;/code&gt;&lt;/pre&gt;
 

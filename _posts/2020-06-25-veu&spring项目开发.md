@@ -172,18 +172,21 @@ public class MyObjectHandler implements MetaObjectHandler {
 
 # 测试数据库
 
-```
+```java
 package com.lazycat.mybatis_plus;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lazycat.mybatis_plus.entity.Product;
 import com.lazycat.mybatis_plus.entity.User;
 import com.lazycat.mybatis_plus.mapper.ProductMapper;
 import com.lazycat.mybatis_plus.mapper.UserMapper;
+import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
+import java.lang.reflect.Array;
+import java.util.*;
 
 @SpringBootTest
 public class CRUDtest {
@@ -234,6 +237,25 @@ public class CRUDtest {
         System.out.println(product3.getPrice()
         );
     }
+    @Test
+    public  void BatchSelectTest(){
+        List<User> users = userMapper.selectBatchIds(Arrays.asList(-1, 2, 3));
+        users.forEach(System.out::println);
+    }
+    @Test
+    public void SelectByMap(){
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("email","test@qq.com");
+        List<User> users = userMapper.selectByMap(map);
+        users.forEach(System.out::println);
+    }
+    @Test
+    public  void SelectPage(){
+        Page<User> pages = new Page<>(1,2);
+        Page<User> userPage = userMapper.selectPage(pages,null);
+        List<User> records = userPage.getRecords();
+        records.forEach(System.out::println);
+    }
 }
 ```
 
@@ -264,3 +286,46 @@ public class MyBatisPlusConfig {
     }
 }
 ```
+
+# 分页
+
+- 在config package 下编辑MyBatisPlusConfig
+- 添加如下插件
+
+```java
+package com.lazycat.mybatis_plus.config;
+
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@EnableTransactionManagement
+@Configuration
+@MapperScan("com.lazycat.mybatis_plus.mapper")
+public class MyBatisPlusConfig {
+    /*
+     乐观锁
+    * */
+    @Bean
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        return new OptimisticLockerInterceptor();
+    }
+    /*
+    分页插件
+    * */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+        // 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
+        // paginationInterceptor.setOverflow(false);
+        // 设置最大单页限制数量，默认 500 条，-1 不受限制
+        // paginationInterceptor.setLimit(500);
+        // 开启 count 的 join 优化,只针对部分 left join
+        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
+        return paginationInterceptor;
+    }
+}
+```
+

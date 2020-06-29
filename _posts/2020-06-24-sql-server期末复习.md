@@ -291,6 +291,7 @@ LOG ON
 (
     NAME = JXGL_LOG,
     FILENAME='D:\..\JXGL_LOG.ldf',
+    SIZE=2,
     MAXSIZE=20,
     FILEGROWTH=10%
 )
@@ -375,7 +376,7 @@ select count(*) from SC
 ```mssql
 select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
 join S ON SC.SNO = S.SNO
-where CNO = 'C4'
+where S.CNO = 'C4'
 ```
 
 - 求学习计算机学院（ＣＳ）每门课程的学生平均成绩
@@ -389,7 +390,7 @@ where CDEPT = 'CS'
 
 ```mssql
 select distinct CNO,count(SNO) from SC
-group by CNO having count(SNO)> 2
+group by CNO having count(SNO)> 10
 order by count(SNO) desc,CNO ASC
 ```
 

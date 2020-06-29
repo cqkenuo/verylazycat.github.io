@@ -608,7 +608,7 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    4921字
+    4931字
     
     
     <i class="fas fa-clock fa-fw"></i>
@@ -1162,6 +1162,7 @@ LOG ON
 (
     NAME = JXGL_LOG,
     FILENAME='D:\..\JXGL_LOG.ldf',
+    SIZE=2,
     MAXSIZE=20,
     FILEGROWTH=10%
 )
@@ -1253,7 +1254,7 @@ LOG ON
 
 <pre><code class="language-mssql">select AVG(AGE) FROM C join SC on C.CNO = SC.CNO 
 join S ON SC.SNO = S.SNO
-where CNO = 'C4'
+where S.CNO = 'C4'
 </code></pre>
 
 <ul>
@@ -1269,7 +1270,7 @@ where CDEPT = 'CS'
 </ul>
 
 <pre><code class="language-mssql">select distinct CNO,count(SNO) from SC
-group by CNO having count(SNO)&gt; 2
+group by CNO having count(SNO)&gt; 10
 order by count(SNO) desc,CNO ASC
 </code></pre>
 

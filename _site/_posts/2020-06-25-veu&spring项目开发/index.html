@@ -332,6 +332,7 @@
   <li><a href="#handler">Handler</a></li>
   <li><a href="#%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93">测试数据库</a></li>
   <li><a href="#%E9%85%8D%E7%BD%AEpackage">配置package</a></li>
+  <li><a href="#%E5%88%86%E9%A1%B5">分页</a></li>
 </ol>
       
       
@@ -599,11 +600,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    5430字
+    7151字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    19分
+    24分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-25-veu&spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" data-xid="/_posts/2020-06-25-veu&spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" data-flag-title="veu&spring项目开发">
@@ -820,17 +821,20 @@ public class MyObjectHandler implements MetaObjectHandler {
 
 <h1 id="测试数据库">测试数据库</h1>
 
-<pre><code>package com.lazycat.mybatis_plus;
+<pre><code class="language-java">package com.lazycat.mybatis_plus;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lazycat.mybatis_plus.entity.Product;
 import com.lazycat.mybatis_plus.entity.User;
 import com.lazycat.mybatis_plus.mapper.ProductMapper;
 import com.lazycat.mybatis_plus.mapper.UserMapper;
+import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
+import java.lang.reflect.Array;
+import java.util.*;
 
 @SpringBootTest
 public class CRUDtest {
@@ -881,6 +885,25 @@ public class CRUDtest {
         System.out.println(product3.getPrice()
         );
     }
+    @Test
+    public  void BatchSelectTest(){
+        List&lt;User&gt; users = userMapper.selectBatchIds(Arrays.asList(-1, 2, 3));
+        users.forEach(System.out::println);
+    }
+    @Test
+    public void SelectByMap(){
+        HashMap&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+        map.put("email","test@qq.com");
+        List&lt;User&gt; users = userMapper.selectByMap(map);
+        users.forEach(System.out::println);
+    }
+    @Test
+    public  void SelectPage(){
+        Page&lt;User&gt; pages = new Page&lt;&gt;(1,2);
+        Page&lt;User&gt; userPage = userMapper.selectPage(pages,null);
+        List&lt;User&gt; records = userPage.getRecords();
+        records.forEach(System.out::println);
+    }
 }
 </code></pre>
 
@@ -912,6 +935,50 @@ public class MyBatisPlusConfig {
     }
 }
 </code></pre>
+
+<h1 id="分页">分页</h1>
+
+<ul>
+  <li>在config package 下编辑MyBatisPlusConfig</li>
+  <li>添加如下插件</li>
+</ul>
+
+<pre><code class="language-java">package com.lazycat.mybatis_plus.config;
+
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@EnableTransactionManagement
+@Configuration
+@MapperScan("com.lazycat.mybatis_plus.mapper")
+public class MyBatisPlusConfig {
+    /*
+     乐观锁
+    * */
+    @Bean
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        return new OptimisticLockerInterceptor();
+    }
+    /*
+    分页插件
+    * */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+        // 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
+        // paginationInterceptor.setOverflow(false);
+        // 设置最大单页限制数量，默认 500 条，-1 不受限制
+        // paginationInterceptor.setLimit(500);
+        // 开启 count 的 join 优化,只针对部分 left join
+        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
+        return paginationInterceptor;
+    }
+}
+</code></pre>
+
 
 </div>
 <div class="v">
