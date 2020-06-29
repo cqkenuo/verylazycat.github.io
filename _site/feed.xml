@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T12:48:25+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-29T14:11:29+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -1710,7 +1710,103 @@ AS
 &lt;ul&gt;
   &lt;li&gt;ＳＱＬ　ｓｅｒｖｅｒ&lt;/li&gt;
   &lt;li&gt;Ｗｉｎｄｏｗｓ&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry><entry><title type="html">John_the_Ripper</title><link href="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/" rel="alternate" type="text/html" title="John_the_Ripper" /><published>2020-06-22T00:00:00+08:00</published><updated>2020-06-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/John_the_Ripper</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;备份&quot;&gt;备份&lt;/h1&gt;
+
+&lt;h2 id=&quot;完整备份&quot;&gt;完整备份&lt;/h2&gt;
+
+&lt;p&gt;备份整个数据库所有内容,包括事务日志,在还原时,只需还原一个备份文件即可&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE master
+GO
+BACKUP DATABASE JXGL
+TO DISK='D:\...path...\JXGL_BACKUP.bak'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;差异备份&quot;&gt;差异备份&lt;/h2&gt;
+
+&lt;p&gt;是对完整备份的补充,只是备份上次完整备份后更改的数据,量更小,速度更快&lt;/p&gt;
+
+&lt;p&gt;数据还原时,需要先还原前一次完整备份数据,然后再还原差异备份的数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;BACKUP DATABASE &amp;lt;数据库名字&amp;gt;
+TO DISK|TAPE=&amp;lt;物理文件名&amp;gt;
+WITH DIFFERENTIAL
+;--------例子
+USE master
+GO
+BACKUP DATABASE JAGL
+TO DISK='D:\...\FIRSTBACKUP'
+WITH DIFFERENTIAL,
+NOINIT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;事务日志备份&quot;&gt;事务日志备份&lt;/h2&gt;
+
+&lt;p&gt;事务备份只备份事务日志中的内容.事务日志记录了上一次完整备份或事务日志备份后数据库所有变动过程,所以在事务备份前,一定要先做完整备份.&lt;/p&gt;
+
+&lt;p&gt;还原时,除了要还原上一次完整备份内容,还要依次还原每个事务日志备份,而不是最后一个事务日志备份&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;BACKUP LOG &amp;lt;数据库名&amp;gt;
+TO DISK|TYPE = &amp;lt;NAME&amp;gt;
+WITH DIFFERENTIAL
+;----------------
+;例子:事务日志备份,且追加到现有备份firstbackup
+USE master
+GO
+BACKUP LOG JXGL
+TO DISK='....\firstbackup'
+WITH NOINIT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;例题&lt;/p&gt;
+
+  &lt;p&gt;备份JXGL和还原JXGL全过程&lt;/p&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;;创建my_disk备份设备
+USE master
+GO
+EXEC  sp_addumpdevice 'disk','my_disk','D:\....\Dump.bak'
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;;备份
+USE master
+GO
+BACKUP DATABASE JXGL
+TO DISK='d:\...\Dump2.bak'
+BACKUP LOG JXGL TO DISK='D:\...\Dump2.bak' WITH NORECOVERY
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;;还原
+
+USE master
+GO
+RESTORE DATABASE JXGL
+FROM DISK='D:\....\Dump2.bak'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;还原模式&quot;&gt;还原模式&lt;/h1&gt;
+
+&lt;h2 id=&quot;完全还原&quot;&gt;完全还原&lt;/h2&gt;
+
+&lt;p&gt;选择完全还原常使用如下备份策略:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;完整数据库备份&lt;/li&gt;
+  &lt;li&gt;差异备份&lt;/li&gt;
+  &lt;li&gt;事务日志备份&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;大容量日志还原&quot;&gt;大容量日志还原&lt;/h2&gt;
+
+&lt;p&gt;是对完全还原模式的补充,也就是对大容量操作进行最小日志记录&lt;/p&gt;
+
+&lt;h2 id=&quot;简单还原&quot;&gt;简单还原&lt;/h2&gt;
+
+&lt;p&gt;指在还原时,仅仅使用了数据库完整备份或差异备份,而不涉及事务日志备份&lt;/p&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry><entry><title type="html">John_the_Ripper</title><link href="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/" rel="alternate" type="text/html" title="John_the_Ripper" /><published>2020-06-22T00:00:00+08:00</published><updated>2020-06-22T00:00:00+08:00</updated><id>http://localhost:4000/_posts/John_the_Ripper</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-22-John_the_Ripper/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
 

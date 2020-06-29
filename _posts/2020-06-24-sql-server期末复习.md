@@ -594,3 +594,100 @@ AS
 - ＳＱＬ　ｓｅｒｖｅｒ
 - Ｗｉｎｄｏｗｓ
 
+# 备份
+
+## 完整备份
+
+备份整个数据库所有内容,包括事务日志,在还原时,只需还原一个备份文件即可
+
+```mssql
+USE master
+GO
+BACKUP DATABASE JXGL
+TO DISK='D:\...path...\JXGL_BACKUP.bak'
+```
+
+## 差异备份
+
+是对完整备份的补充,只是备份上次完整备份后更改的数据,量更小,速度更快
+
+数据还原时,需要先还原前一次完整备份数据,然后再还原差异备份的数据
+
+```mssql
+BACKUP DATABASE <数据库名字>
+TO DISK|TAPE=<物理文件名>
+WITH DIFFERENTIAL
+;--------例子
+USE master
+GO
+BACKUP DATABASE JAGL
+TO DISK='D:\...\FIRSTBACKUP'
+WITH DIFFERENTIAL,
+NOINIT
+```
+
+## 事务日志备份
+
+事务备份只备份事务日志中的内容.事务日志记录了上一次完整备份或事务日志备份后数据库所有变动过程,所以在事务备份前,一定要先做完整备份.
+
+还原时,除了要还原上一次完整备份内容,还要依次还原每个事务日志备份,而不是最后一个事务日志备份
+
+```mssql
+BACKUP LOG <数据库名>
+TO DISK|TYPE = <NAME>
+WITH DIFFERENTIAL
+;----------------
+;例子:事务日志备份,且追加到现有备份firstbackup
+USE master
+GO
+BACKUP LOG JXGL
+TO DISK='....\firstbackup'
+WITH NOINIT
+```
+
+> 例题
+>
+> 备份JXGL和还原JXGL全过程
+>
+> ```mssql
+> ;创建my_disk备份设备
+> USE master
+> GO
+> EXEC  sp_addumpdevice 'disk','my_disk','D:\....\Dump.bak'
+> ```
+>
+> ```mssql
+> ;备份
+> USE master
+> GO
+> BACKUP DATABASE JXGL
+> TO DISK='d:\...\Dump2.bak'
+> BACKUP LOG JXGL TO DISK='D:\...\Dump2.bak' WITH NORECOVERY
+> ```
+>
+> ```mssql
+> ;还原
+> 
+> USE master
+> GO
+> RESTORE DATABASE JXGL
+> FROM DISK='D:\....\Dump2.bak'
+> ```
+
+# 还原模式
+
+## 完全还原
+
+选择完全还原常使用如下备份策略:
+
+1. 完整数据库备份
+2. 差异备份
+3. 事务日志备份
+
+## 大容量日志还原
+
+是对完全还原模式的补充,也就是对大容量操作进行最小日志记录
+
+## 简单还原
+
+指在还原时,仅仅使用了数据库完整备份或差异备份,而不涉及事务日志备份
