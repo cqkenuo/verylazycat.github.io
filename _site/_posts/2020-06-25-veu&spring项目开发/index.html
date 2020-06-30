@@ -333,6 +333,9 @@
   <li><a href="#%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93">测试数据库</a></li>
   <li><a href="#%E9%85%8D%E7%BD%AEpackage">配置package</a></li>
   <li><a href="#%E5%88%86%E9%A1%B5">分页</a></li>
+  <li><a href="#%E9%80%BB%E8%BE%91%E5%88%A0%E9%99%A4">逻辑删除</a></li>
+  <li><a href="#crdu">CRDU</a></li>
+  <li><a href="#%E7%88%B6%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE">父项目配置</a></li>
 </ol>
       
       
@@ -600,11 +603,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    7151字
+    15101字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    24分
+    51分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-25-veu&spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" data-xid="/_posts/2020-06-25-veu&spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" data-flag-title="veu&spring项目开发">
@@ -635,6 +638,12 @@
     
   </span>
   <p>[toc]</p>
+
+<blockquote>
+  <p>基础准备</p>
+</blockquote>
+
+<hr />
 
 <h1 id="参考">参考</h1>
 
@@ -977,6 +986,251 @@ public class MyBatisPlusConfig {
         return paginationInterceptor;
     }
 }
+</code></pre>
+
+<h1 id="逻辑删除">逻辑删除</h1>
+
+<p>在user表里面添加deleted 布尔字段,默认为0</p>
+
+<p>在实体类User里面添加如下内容:</p>
+
+<pre><code class="language-java">@TableLogic
+private  Integer deleted;
+</code></pre>
+
+<blockquote>
+  <p>主要是@TableLogic实现了逻辑删除</p>
+</blockquote>
+
+<p>可在application.yml加入如下配置(为默认配置,不添加也可以)</p>
+
+<pre><code class="language-yml">mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: flag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+</code></pre>
+
+<p>也可以在application.properties添加如下配置</p>
+
+<pre><code class="language-properties">mybatis-plus.global-config.db-config.logic-delete-value=1
+mybatis-plus.global-config.db-config.logic-not-delete-value=0
+</code></pre>
+
+<h1 id="crdu">CRDU</h1>
+
+<p><a href="https://mp.baomidou.com/guide/crud-interface.html#service-crud-%E6%8E%A5%E5%8F%A3">参考</a></p>
+
+<hr />
+
+<h1 id="父项目配置">父项目配置</h1>
+
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.3.1.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+    &lt;groupId&gt;com.lazycat&lt;/groupId&gt;
+    &lt;artifactId&gt;lazycat&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;name&gt;lazycat&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+    &lt;properties&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+        &lt;guli.version&gt;0.0.1-SNAPSHOT&lt;/guli.version&gt;
+        &lt;mybatis-plus.version&gt;3.0.5&lt;/mybatis-plus.version&gt;
+        &lt;velocity.version&gt;2.0&lt;/velocity.version&gt;
+        &lt;swagger.version&gt;2.7.0&lt;/swagger.version&gt;
+        &lt;aliyun.oss.version&gt;2.8.3&lt;/aliyun.oss.version&gt;
+        &lt;jodatime.version&gt;2.10.1&lt;/jodatime.version&gt;
+        &lt;poi.version&gt;3.17&lt;/poi.version&gt;
+        &lt;commons-fileupload.version&gt;1.3.1&lt;/commons-fileupload.version&gt;
+        &lt;commons-io.version&gt;2.6&lt;/commons-io.version&gt;
+        &lt;httpclient.version&gt;4.5.1&lt;/httpclient.version&gt;
+        &lt;jwt.version&gt;0.7.0&lt;/jwt.version&gt;
+        &lt;aliyun-java-sdk-core.version&gt;4.3.3&lt;/aliyun-java-sdk-core.version&gt;
+        &lt;aliyun-sdk-oss.version&gt;3.1.0&lt;/aliyun-sdk-oss.version&gt;
+        &lt;aliyun-java-sdk-vod.version&gt;2.15.2&lt;/aliyun-java-sdk-vod.version&gt;
+        &lt;aliyun-java-vod-upload.version&gt;1.4.11&lt;/aliyun-java-vod-upload.version&gt;
+
+        &lt;aliyun-sdk-vod-upload.version&gt;1.4.11&lt;/aliyun-sdk-vod-upload.version&gt;
+
+        &lt;fastjson.version&gt;1.2.28&lt;/fastjson.version&gt;
+
+        &lt;gson.version&gt;2.8.2&lt;/gson.version&gt;
+
+        &lt;json.version&gt;20170516&lt;/json.version&gt;
+
+        &lt;commons-dbutils.version&gt;1.7&lt;/commons-dbutils.version&gt;
+
+        &lt;canal.client.version&gt;1.1.0&lt;/canal.client.version&gt;
+
+        &lt;docker.image.prefix&gt;zx&lt;/docker.image.prefix&gt;
+
+        &lt;cloud-alibaba.version&gt;0.2.2.RELEASE&lt;/cloud-alibaba.version&gt;
+
+    &lt;/properties&gt;
+    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;!--Spring Cloud--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;Hoxton.RELEASE&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-cloud-alibaba-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;${cloud-alibaba.version}&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+
+            &lt;!--mybatis-plus 持久层--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+                &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+                &lt;version&gt;${mybatis-plus.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!-- velocity 模板引擎, Mybatis Plus 代码生成器需要 --&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;
+                &lt;artifactId&gt;velocity-engine-core&lt;/artifactId&gt;
+                &lt;version&gt;${velocity.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--swagger--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+                &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+                &lt;version&gt;${swagger.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--swagger ui--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+                &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+                &lt;version&gt;${swagger.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--aliyunOSS--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.aliyun.oss&lt;/groupId&gt;
+                &lt;artifactId&gt;aliyun-sdk-oss&lt;/artifactId&gt;
+                &lt;version&gt;${aliyun.oss.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--日期时间工具--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;joda-time&lt;/groupId&gt;
+                &lt;artifactId&gt;joda-time&lt;/artifactId&gt;
+                &lt;version&gt;${jodatime.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--xls--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+                &lt;artifactId&gt;poi&lt;/artifactId&gt;
+                &lt;version&gt;${poi.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--xlsx--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+                &lt;artifactId&gt;poi-ooxml&lt;/artifactId&gt;
+                &lt;version&gt;${poi.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--文件上传--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+                &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+                &lt;version&gt;${commons-fileupload.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--commons-io--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;commons-io&lt;/groupId&gt;
+                &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+                &lt;version&gt;${commons-io.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--httpclient--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+                &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+                &lt;version&gt;${httpclient.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
+                &lt;artifactId&gt;gson&lt;/artifactId&gt;
+                &lt;version&gt;${gson.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!-- JWT --&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+                &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+                &lt;version&gt;${jwt.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--aliyun--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.aliyun&lt;/groupId&gt;
+                &lt;artifactId&gt;aliyun-java-sdk-core&lt;/artifactId&gt;
+                &lt;version&gt;${aliyun-java-sdk-core.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.aliyun.oss&lt;/groupId&gt;
+                &lt;artifactId&gt;aliyun-sdk-oss&lt;/artifactId&gt;
+                &lt;version&gt;${aliyun-sdk-oss.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.aliyun&lt;/groupId&gt;
+                &lt;artifactId&gt;aliyun-java-sdk-vod&lt;/artifactId&gt;
+                &lt;version&gt;${aliyun-java-sdk-vod.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.aliyun&lt;/groupId&gt;
+                &lt;artifactId&gt;aliyun-java-vod-upload&lt;/artifactId&gt;
+                &lt;version&gt;${aliyun-java-vod-upload.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.aliyun&lt;/groupId&gt;
+                &lt;artifactId&gt;aliyun-sdk-vod-upload&lt;/artifactId&gt;
+                &lt;version&gt;${aliyun-sdk-vod-upload.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+
+                &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+                &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+                &lt;version&gt;${fastjson.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.json&lt;/groupId&gt;
+                &lt;artifactId&gt;json&lt;/artifactId&gt;
+                &lt;version&gt;${json.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;commons-dbutils&lt;/groupId&gt;
+                &lt;artifactId&gt;commons-dbutils&lt;/artifactId&gt;
+                &lt;version&gt;${commons-dbutils.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.alibaba.otter&lt;/groupId&gt;
+                &lt;artifactId&gt;canal.client&lt;/artifactId&gt;
+                &lt;version&gt;${canal.client.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+
+    &lt;/dependencyManagement&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
 </code></pre>
 
 
