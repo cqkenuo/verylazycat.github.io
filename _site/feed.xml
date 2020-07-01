@@ -1,11 +1,1297 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-30T20:51:20+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-01T15:39:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">西华大学抢课脚本</title><link href="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/" rel="alternate" type="text/html" title="西华大学抢课脚本" /><published>2020-06-29T00:00:00+08:00</published><updated>2020-06-29T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">车道保持&amp;amp;疲劳驾驶检测</title><link href="http://localhost:4000/_posts/2020-07-01-%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B/" rel="alternate" type="text/html" title="车道保持&amp;疲劳驾驶检测" /><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&amp;%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-01-%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&amp;%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/verylazycat/DriverAssistanceSystem&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;有问题可私信我&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;功能模块&quot;&gt;功能模块&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;车道保持
+    &lt;ul&gt;
+      &lt;li&gt;车道线识别&lt;/li&gt;
+      &lt;li&gt;航向判断&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;驾驶员行为及状态检测
+    &lt;ul&gt;
+      &lt;li&gt;疲劳检测&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;车道线车况识别总体流程图&quot;&gt;车道线&amp;amp;车况识别总体流程图&lt;/h1&gt;
+
+&lt;h1&gt;&lt;img src=&quot;/img/detect.png&quot; alt=&quot;detect&quot; /&gt;&lt;/h1&gt;
+
+&lt;p&gt;对输入的每一帧图像主要有如下处理：&lt;/p&gt;
+
+&lt;p&gt;1.车道线识别：
+	1.1.降噪
+	1.2.边缘检测
+	1.3.ROI处理
+	1.4.霍夫线获取
+	1.5.路线获取
+	1.6.渲染&lt;/p&gt;
+
+&lt;p&gt;2.车况识别：
+	2.1.加载yolo网络
+	2.2.前向传播
+	3.3.渲染&lt;/p&gt;
+
+&lt;h1 id=&quot;车道线识别主要操作&quot;&gt;车道线识别主要操作&lt;/h1&gt;
+
+&lt;h1 id=&quot;-1&quot;&gt;&lt;img src=&quot;/img/车道线处理.png&quot; alt=&quot;车道线处理&quot; /&gt;&lt;/h1&gt;
+
+&lt;h1 id=&quot;方向判断逻辑&quot;&gt;方向判断逻辑&lt;/h1&gt;
+
+&lt;h1 id=&quot;-2&quot;&gt;&lt;img src=&quot;/img/方向判断.png&quot; alt=&quot;方向判断&quot; /&gt;&lt;/h1&gt;
+
+&lt;p&gt;获得道路线后，即我们获取了两个方程:
+&lt;script type=&quot;math/tex&quot;&gt;y1 = a1x1 + b1\\
+y2 = a2x2 + b2&lt;/script&gt;
+计算两直线交点(x0,y0),即左图所提的消失点；
+此外，我们已知图像水平方向中心直线：x；&lt;/p&gt;
+
+&lt;p&gt;由此，我们有如下判断依据：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;x0 &amp;gt; x + thr_vp :右转&lt;/li&gt;
+  &lt;li&gt;x0 &amp;lt; x - thr_vp:左转&lt;/li&gt;
+  &lt;li&gt;x0 &amp;gt;= (x - thr_vp) &amp;amp;&amp;amp; x0 &amp;lt;= (x + thr_vp)：直线&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注：thr_vp为调整参数，根据实际情况调试&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;车况识别&quot;&gt;车况识别&lt;/h1&gt;
+
+&lt;p&gt;基于深度学习的目标检测与识别算法大致分为以下三大类:
+1.基于区域建议的目标检测与识别算法，如R-CNN, Fast-R-CNN, Faster-R-CNN;
+2.基于回归的目标检测与识别算法，如YOLO, SSD;
+3.基于搜索的目标检测与识别算法，如基于视觉注意的AttentionNet；&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;此处识别采用YOLO算法,其优点如下：
+1.速度非常快。在Titan X GPU上的速度是45 fps，加速版的YOLO差不多是150fps；
+2.YOLO是基于图像的全局信息进行预测的；
+3.泛化能力强；
+4.准确率高；&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;具体算法参考yolo论文&lt;/li&gt;
+  &lt;li&gt;训练参考&lt;a href=&quot;https://pjreddie.com/darknet/yolo/&quot;&gt;DarkNet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注：由于笔记本计算能力有限，此处采用开源coco数据集训练的yolo模型，支持80个分类识别，具体分类参考配置文件&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;快速体验yolo&quot;&gt;快速体验yolo&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git clone https://github.com/pjreddie/darknet.git
+cd darknet
+make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输出如下内容即安装成功&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mkdir -p obj
+gcc -I/usr/local/cuda/include/ -Wall -Wfatal-errors -Ofast....
+gcc -I/usr/local/cuda/include/ -Wall -Wfatal-errors -Ofast....
+gcc -I/usr/local/cuda/include/ -Wall -Wfatal-errors -Ofast....
+.....
+gcc -I/usr/local/cuda/include/ -Wall -Wfatal-errors -Ofast -lm....
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意:根据自己环境调整 Makefile ,尤其是 GPU , CUDNN , OPENCV&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下载weights文件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;wget https://pjreddie.com/media/files/yolov .weights
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;测试&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./darknet detect cfg/yolov .cfg yolov .weights data/dog.jpg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;驾驶员行为及状态检测&quot;&gt;驾驶员行为及状态检测&lt;/h1&gt;
+
+&lt;h1 id=&quot;-3&quot;&gt;&lt;img src=&quot;/img/驾驶员行为及状态检测.png&quot; alt=&quot;驾驶员行为及状态检测&quot; /&gt;&lt;/h1&gt;
+
+&lt;p&gt;关键操作有如下：&lt;/p&gt;
+
+&lt;p&gt;1.保存驾驶人员启动程序时的状态数据&lt;/p&gt;
+
+&lt;p&gt;2.判断是否无人驾驶&lt;/p&gt;
+
+&lt;p&gt;3.依据记录的状态数据判断当前技术人员状态是否异常&lt;/p&gt;
+
+&lt;h1 id=&quot;状态特征判断依据&quot;&gt;状态特征判断依据&lt;/h1&gt;
+
+&lt;p&gt;有如下内容需要了解:&lt;/p&gt;
+
+&lt;p&gt;1.“眼睛纵横比”（EAR）
+我们可以应用面部标志检测来定位脸部的重要区域，包括眼睛，眉毛，鼻子，耳朵和嘴巴&lt;/p&gt;
+
+&lt;p&gt;2.EAR计算公式
+&lt;script type=&quot;math/tex&quot;&gt;EAR = (||p_{2} - p_{6}||+||p_{3}-p_{5}||)/(2||p_{1} -p_{4}||)&lt;/script&gt;
+&lt;img src=&quot;/img/eyeEar.png&quot; alt=&quot;eyeEar&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;详细内容参考Soukupová和Čech在其2016年的论文Real-Time Eye Blink Detection using Facial Landmarks&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;landmark算法&quot;&gt;Landmark算法&lt;/h2&gt;
+
+&lt;p&gt;点标记》一文中有效果和标定点序号的示意图。今后可采用landmark中的点提取眼睛区域、嘴巴区
+域用于疲劳检测,提取鼻子等部分可用于3D姿态估计。
+Dlib库使用《One Millisecond Face Alignment with an Ensemble of Regression Trees》CVPR2014
+中提及的算法:ERT(ensemble of regression trees)级联回归,即基于梯度提高学习的回归树方法。
+该算法使用级联回归因子,首先需要使用一系列标定好的人脸图片作为训练集,然后会生成一个模型。
+使用基于特征选择的相关性方法把目标输出投影到一个随机方向w上,并且选择一对特征(u,v),使
+得Ii(u )-Ii(v )与被投影的目标wTri在训练数据上拥有最高的样本相关性。
+当获得一张图片后,算法会生成一个initial shape就是首先估计一个大致的特征点位置,然后采用
+gradient boosting算法减小initial shape 和 ground truth 的平方误差总和。用最小二乘法来最小化误
+差,得到每一级的级联回归因子。核心公式如下:
+&lt;script type=&quot;math/tex&quot;&gt;\hat{S}^{t+1} = \hat{S}+r_{t}(I,\hat{t}^{t})&lt;/script&gt;
+示当前级的回归器regressor。回归器的输入参数为图像I和上一级回归器更新后的shape,采用的特征可
+以是灰度值或者其它。每个回归器由很多棵树(tree)组成,每棵树参数是根据current shape和ground
+truth的坐标差和随机挑选的像素对训练得到的。&lt;/p&gt;
+
+&lt;p&gt;与LBF不同,ERT是在学习Tree的过程中,直接将shape的更新值ΔS存入叶子结点leaf node.初始位
+置S在通过所有学习到的Tree后,meanshape加上所有经过的叶子结点的ΔS,即可得到最终的人脸关
+键点位置。&lt;/p&gt;
+
+&lt;h1 id=&quot;ear参考意义&quot;&gt;EAR参考意义&lt;/h1&gt;
+
+&lt;p&gt;“眼睛纵横比”(EAR):我们可以应用面部标志检测来定位脸部的重要区域,包括眼睛,眉毛,鼻子,
+耳朵和嘴巴.&lt;/p&gt;
+
+&lt;p&gt;1.其中p1…p6是2D面部地标位置;
+2.方程的分子是计算垂直眼睛标志之间的距离，而分母是计算水平眼睛标志之间的距离，因为只有一组水平点，但是有两组垂直点，所以进行加权分母&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/EAR.png&quot; alt=&quot;EAR&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;当人眼闭眼时，EAR急剧减小，我们利用这一点去检测人眼闭眼状态&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/EARTEST.png&quot; alt=&quot;EARTEST&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;源码&quot;&gt;源码&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;FatigueDrivingDetection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;main&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-02-05 14:56:20 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-02-09 13:39:19
+ */
+#include &amp;lt;main.h&amp;gt;
+#include &amp;lt;render_face.h&amp;gt;
+#include &amp;lt;Compute.h&amp;gt;
+#include &amp;lt;BuzzerControl.h&amp;gt;
+#include &amp;lt;fatigueDetection.h&amp;gt;
+#include &amp;lt;getTime.h&amp;gt;
+int main()
+{
+	//判断的基础信息
+	double LeftEyeBase,RightEyeBase,InnerLipBase;
+	//标志位,用于第一次录入基础信息
+	int Base = 1;
+	//记录哈欠次数
+	int innerLipCounts = 0;
+	//记录眯眼次数
+	int squintingCounts = 0;
+	try
+	{
+		//读取摄像头
+		cv::VideoCapture cap(0);
+		// 窗体大小设置,看需求
+		//cap.set(CV_CAP_PROP_FRAME_WIDTH, 640);  
+		//cap.set(CV_CAP_PROP_FRAME_HEIGHT, 480);  
+		//模型加载 
+		frontal_face_detector detector = get_frontal_face_detector();
+		shape_predictor pose_model;
+		deserialize(datPath) &amp;gt;&amp;gt; pose_model;
+ 
+		int count = 0;
+		std::vector&amp;lt;dlib::rectangle&amp;gt; faces;
+
+		while (1)
+		{
+			cv::Mat img, img_small;
+			cap &amp;gt;&amp;gt; img;
+			//文字
+			cv::putText(img,&quot;s:save,q:quit&quot;,cv::Point(img.rows/2,img.cols/2),FONT_HERSHEY_SIMPLEX,2,Scalar(0,0,255),1,8,false);
+			cv::resize(img, img_small, cv::Size(), 1.0 / RATIO, 1.0 / RATIO);
+ 
+			cv_image&amp;lt;bgr_pixel&amp;gt; cimg(img);
+			cv_image&amp;lt;bgr_pixel&amp;gt; cimg_small(img_small);
+ 
+			//人脸检测   
+			if (count++ % SKIP_FRAMES == 0) {
+				faces = detector(cimg_small);
+			}
+			cout &amp;lt;&amp;lt; &quot;检测人数:&quot; &amp;lt;&amp;lt; faces.size() &amp;lt;&amp;lt; endl;
+			//无人状态
+			if(faces.empty())
+			{
+				cout  &amp;lt;&amp;lt; &quot;\033[31m警告:无人状态\033[0m&quot;&amp;lt;&amp;lt; endl;
+				//蜂鸣器功能,后续添加
+				// BuzzerControl();
+				getCurrentTime();
+			}
+
+			// 关键点检测  
+			std::vector&amp;lt;full_object_detection&amp;gt; shapes;
+			for (unsigned long i = 0; i &amp;lt; faces.size(); ++i) 
+			{
+				dlib::rectangle r(
+					(long)(faces[i].left() * RATIO),
+					(long)(faces[i].top() * RATIO),
+					(long)(faces[i].right() * RATIO),
+					(long)(faces[i].bottom() * RATIO)
+				);
+				// 关键点保存
+				full_object_detection shape = pose_model(cimg, r);
+				shapes.push_back(shape);
+ 
+				//渲染画线
+				render_face(img, shape);
+				double rightEye = RightEyeCompute(img,shape);
+				double leftEye = LeftEyeCompute(img,shape);
+				double innerLip = InnerLipCompute(img,shape);
+				cout&amp;lt;&amp;lt;&quot;-------------&quot;&amp;lt;&amp;lt;endl;
+
+				//第一次识别信息导入,以此为后续判断的标注
+				//RightEyeBase,LeftEyeBase,innerLipBase
+				if(Base)
+				{
+					RightEyeBase = rightEye;
+					LeftEyeBase = leftEye;
+					InnerLipBase = innerLip;
+					//退出信息录入,避免后续覆盖
+					Base--;
+					cout&amp;lt;&amp;lt;&quot;用户数据录入成功&amp;gt;&amp;gt;&amp;gt;初始化成功!&quot;&amp;lt;&amp;lt;endl;
+				}
+				int temp = fatigueDetection(LeftEyeBase,leftEye,RightEyeBase,rightEye,InnerLipBase,innerLip,innerLipCounts,squintingCounts);
+				innerLipCounts += temp;
+				squintingCounts += temp;
+				//疲劳驾驶
+				// innerLipCounts 哈欠次数 需要实际调试确定临界点
+				if(innerLipCounts &amp;gt;= 50)
+				{
+					//红色打印
+					cout  &amp;lt;&amp;lt; &quot;\033[31m警告:疲劳驾驶\033[0m&quot;&amp;lt;&amp;lt; endl;	
+					getCurrentTime();	
+				}
+				// squintingCounts 眯眼次数
+				if(squintingCounts &amp;gt;= 50)
+				{
+					//红色打印
+					cout  &amp;lt;&amp;lt; &quot;\033[31m警告:疲劳驾驶\033[0m&quot;&amp;lt;&amp;lt; endl;	
+					getCurrentTime();
+				}
+				//----------------------------------------------------
+			}
+			// std::cout &amp;lt;&amp;lt; &quot;count:&quot; &amp;lt;&amp;lt; count &amp;lt;&amp;lt; std::endl;
+			if (img.empty())
+			{
+				cerr&amp;lt;&amp;lt;&quot;img is mepty!&quot;&amp;lt;&amp;lt;endl;
+				getCurrentTime();
+				break;
+			}
+			imshow(&quot;Frame&quot;, img);
+			// Q q退出
+			char c = (char)waitKey(25);
+			if (c == 'Q' || c == 'q')
+			{
+				cout&amp;lt;&amp;lt;&quot;退出成功&quot;&amp;lt;&amp;lt;endl;
+				getCurrentTime();
+				break;
+			}
+			if(c == 's'||c == 'S')
+			{
+				cv::imwrite(&quot;../img/img.png&quot;,img);
+				cout&amp;lt;&amp;lt;&quot;保存成功&quot;&amp;lt;&amp;lt;endl;
+				getCurrentTime();
+			}
+		}
+	}
+	catch (serialization_error&amp;amp; e)
+	{
+		cout &amp;lt;&amp;lt; &quot;模型下载链接 &quot; &amp;lt;&amp;lt; endl;
+		cout &amp;lt;&amp;lt; &quot;http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2&quot; &amp;lt;&amp;lt; endl;
+		cout &amp;lt;&amp;lt; endl &amp;lt;&amp;lt; e.what() &amp;lt;&amp;lt; endl;
+		getCurrentTime();
+	}
+	catch (exception&amp;amp; e)
+	{
+		cout &amp;lt;&amp;lt; e.what() &amp;lt;&amp;lt; endl;
+		getCurrentTime();
+	}
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;BuzzerControl.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-02-07 12:15:16 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-02-08 13:18:52
+ */
+// 蜂鸣器控制
+#include &amp;lt;main.h&amp;gt;
+int BuzzerControl()
+{
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Compute.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-02-06 12:29:42 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-02-08 13:19:28
+ */
+#include &amp;lt;main.h&amp;gt;
+#include &amp;lt;cmath&amp;gt;
+// 欧式距离计算
+double PointsCompute(int x1,int y1,int x2,int y2)
+{
+    double results = 0;
+    results = sqrt(pow(x1-x2,2) + pow(y1 - y2,2));
+    return results;
+}
+// Right Eye:42~47
+double RightEyeCompute(cv::Mat &amp;amp;img,const dlib::full_object_detection&amp;amp; d)
+{
+    double result = 0;
+    std::vector&amp;lt;cv::Point&amp;gt; points;
+    for(int i = 42;i &amp;lt;=47;++i)
+    {
+        points.push_back(cv::Point(d.part(i).x(), d.part(i).y()));
+    }
+    result = (PointsCompute(points[1].x,points[1].y,points[5].x,points[5].y) + PointsCompute(points[2].x,points[2].y,points[4].x,points[4].y))/(2*PointsCompute(points[0].x,points[0].y,points[3].x,points[3].y)); 
+    cout&amp;lt;&amp;lt;&quot;右眼高宽比例:&quot;;
+    cout&amp;lt;&amp;lt;result&amp;lt;&amp;lt;endl;
+    return result;
+}
+//Left Eye:36 ~ 41
+double LeftEyeCompute(cv::Mat &amp;amp;img,const dlib::full_object_detection&amp;amp; d)
+{
+    double result = 0;
+    std::vector&amp;lt;cv::Point&amp;gt; points;
+    for(int i = 36;i &amp;lt;=41;++i)
+    {
+        points.push_back(cv::Point(d.part(i).x(), d.part(i).y()));
+    }
+    result = (PointsCompute(points[1].x,points[1].y,points[5].x,points[5].y) + PointsCompute(points[2].x,points[2].y,points[4].x,points[4].y))/(2*PointsCompute(points[0].x,points[0].y,points[3].x,points[3].y)); 
+    cout&amp;lt;&amp;lt;&quot;左眼高宽比例:&quot;;
+    cout&amp;lt;&amp;lt;result&amp;lt;&amp;lt;endl;
+    return result;
+}
+//inner lip :60 ~ 67
+double InnerLipCompute(cv::Mat &amp;amp;img,const dlib::full_object_detection&amp;amp; d)
+{
+    double result = 0;
+    std::vector&amp;lt;cv::Point&amp;gt; points;
+    for(int i = 60;i &amp;lt;=67;++i)
+    {
+        points.push_back(cv::Point(d.part(i).x(), d.part(i).y()));
+    }
+    result = (PointsCompute(points[1].x,points[1].y,points[7].x,points[7].y) + PointsCompute(points[3].x,points[3].y,points[5].x,points[5].y))/(2*PointsCompute(points[0].x,points[0].y,points[4].x,points[4].y)); 
+    cout&amp;lt;&amp;lt;&quot;内嘴唇高宽比例:&quot;;
+    cout&amp;lt;&amp;lt;result&amp;lt;&amp;lt;endl;
+    return result;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;fatigueDetection.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-02-09 12:41:21 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-02-09 13:41:51
+ */
+//警告状态
+#include &amp;lt;main.h&amp;gt;
+int fatigueDetection(double leftEyeBase,double leftEye,double rightEyeBase,double rightEye,double innerLipBase,double innerLip,int innerLipCounts,int squintingCounts)
+{
+    //当内嘴唇高宽比例大于基础高宽比0.,定义位打哈欠
+    if(innerLip - innerLipBase &amp;gt;= 0.3)
+    {
+        //绿色打印
+        cout  &amp;lt;&amp;lt; &quot;\033[32m警告:哈欠:\033[0m&quot;&amp;lt;&amp;lt;innerLipCounts&amp;lt;&amp;lt; endl;
+        //计数
+        return 1;
+    }
+    if(leftEyeBase - leftEye &amp;gt;=0.1 || rightEyeBase - rightEye &amp;gt;= 0.1)
+    {
+        //绿色打印
+        cout  &amp;lt;&amp;lt; &quot;\033[32m警告:眯眼:\033[0m&quot;&amp;lt;&amp;lt;squintingCounts&amp;lt;&amp;lt; endl;
+        //计数
+        return 1;
+    }
+    if((leftEye + rightEye)/2 &amp;lt; 0.2)
+    {
+        // 绿色打印
+        cout  &amp;lt;&amp;lt; &quot;\033[32m警告:闭眼\033[0m&quot;&amp;lt;&amp;lt; endl;	
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;getTime.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-02-09 13:27:35 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-02-09 13:37:06
+ */
+#include &amp;lt;main.h&amp;gt;
+void getCurrentTime()
+{
+    time_t rawtime;
+    struct tm *ptminfo;
+ 
+    time(&amp;amp;rawtime);
+    ptminfo = localtime(&amp;amp;rawtime);
+    printf(&quot;current: %02d-%02d-%02d %02d:%02d:%02d\n&quot;,
+            ptminfo-&amp;gt;tm_year + 1900, ptminfo-&amp;gt;tm_mon + 1, ptminfo-&amp;gt;tm_mday,
+            ptminfo-&amp;gt;tm_hour, ptminfo-&amp;gt;tm_min, ptminfo-&amp;gt;tm_sec);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;main.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-02-06 11:26:56 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-02-09 13:36:59
+ */
+#ifndef __BUILD__
+#define __BUILD__
+#include &amp;lt;dlib/opencv.h&amp;gt;  
+#include &amp;lt;opencv2/opencv.hpp&amp;gt;  
+#include &amp;lt;dlib/image_processing/frontal_face_detector.h&amp;gt;  
+#include &amp;lt;dlib/image_processing/render_face_detections.h&amp;gt;  
+#include &amp;lt;dlib/image_processing.h&amp;gt;  
+#include &amp;lt;dlib/gui_widgets.h&amp;gt;  
+#include &quot;opencv2/opencv.hpp&quot;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;ctime&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;fcntl.h&amp;gt;
+#include &amp;lt;sys/ioctl.h&amp;gt;
+
+using namespace dlib;
+using namespace std;
+using namespace cv;
+
+#define RATIO 4  
+#define SKIP_FRAMES 2 
+
+cv::String datPath = &quot;../config/shape_predictor_68_face_landmarks.dat&quot;;
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;render_face.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-02-06 11:57:30 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-02-08 13:19:01
+ */
+#include &amp;lt;main.h&amp;gt;
+// 画线 
+void draw_polyline(cv::Mat &amp;amp;img, const dlib::full_object_detection&amp;amp; d, const int start, const int end, bool isClosed = false)
+{
+	std::vector &amp;lt;cv::Point&amp;gt; points;
+	for (int i = start; i &amp;lt;= end; ++i)
+	{
+		points.push_back(cv::Point(d.part(i).x(), d.part(i).y()));
+	}
+	cv::polylines(img, points, isClosed, cv::Scalar(255, 0, 0), 2, 16);
+}
+// 渲染 
+void render_face(cv::Mat &amp;amp;img, const dlib::full_object_detection&amp;amp; d)
+{
+	DLIB_CASSERT
+	(
+		d.num_parts() == 68,
+		&quot;\n\t Invalid inputs were given to this function. &quot;
+		&amp;lt;&amp;lt; &quot;\n\t d.num_parts():  &quot; &amp;lt;&amp;lt; d.num_parts()
+	);
+ 
+	draw_polyline(img, d, 0, 16);           // Jaw line
+	draw_polyline(img, d, 17, 21);          // Left eyebrow
+	draw_polyline(img, d, 22, 26);          // Right eyebrow
+	draw_polyline(img, d, 27, 30);          // Nose bridge
+	draw_polyline(img, d, 30, 35, true);    // Lower nose
+	draw_polyline(img, d, 36, 41, true);    // Left eye
+	draw_polyline(img, d, 42, 47, true);    // Right Eye
+	draw_polyline(img, d, 48, 59, true);    // Outer lip
+	draw_polyline(img, d, 60, 67, true);    // Inner lip
+ 
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CMakeLists.txt&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-makefile&quot;&gt;#SET CMAKE VERSION
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+# 优化
+# SET(CMAKE_C_FLAGS &quot;${CMAKE_C_FLAGS} -O2&quot;)
+SET(CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} -Ofast&quot;)
+#SET PROJECT NAME
+SET(PROJECT_NAME FatigueDrivingDetection)
+#BUILD PROJECT NAME
+PROJECT(${PROJECT_NAME})
+#FIND OPENCV 
+FIND_PACKAGE(OpenCV REQUIRED)
+INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
+#FIND DLIB
+FIND_PACKAGE(dlib REQUIRED)
+INCLUDE_DIRECTORIES(${dlib_INCLUDE_DIRS})
+#PRINT STATUS
+MESSAGE(STATUS &quot;Project: ${PROJECT_NAME}&quot;)
+MESSAGE(STATUS &quot;------------------------------------------------------&quot;)
+MESSAGE(STATUS &quot;OpenCV library status:&quot;)
+MESSAGE(STATUS &quot;version: ${OpenCV_VERSION}&quot;)
+MESSAGE(STATUS &quot;libraries: ${OpenCV_LIBS}&quot;)
+MESSAGE(STATUS &quot;include path: ${OpenCV_INCLUDE_DIRS}&quot;)
+MESSAGE(STATUS &quot;------------------------------------------------------&quot;)
+MESSAGE(STATUS &quot;DLIB library status:&quot;)
+MESSAGE(STATUS &quot;version: ${dlib_VERSION}&quot;)
+MESSAGE(STATUS &quot;libraries: ${dlib_LIBS}&quot;)
+MESSAGE(STATUS &quot;include path: ${dlib_INCLUDE_DIRS}&quot;)
+MESSAGE(STATUS &quot;------------------------------------------------------&quot;)
+#GET CODE FROM SRC FOLDER
+AUX_SOURCE_DIRECTORY(src DIR_SRCS)
+include_directories(include)
+MESSAGE(STATUS &quot;Src file: ${DIR_SRCS}&quot;)
+#编译可执行程序
+ADD_EXECUTABLE(${PROJECT_NAME} ${DIR_SRCS})
+#添加链接库
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${OpenCV_LIBS} ${dlib_LIBRARIES})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;lane_car_detect&quot;&gt;lane_car_detect&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;main.cpp&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-04-17 12:39:24 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-04-18 13:12:06
+ */
+#include &quot;yolo_car_detect.h&quot;
+#include &quot;lane_detect.h&quot;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;error.h&amp;gt;
+
+// 摄像头调用
+// #define __USE__CAP_0__
+
+//视频测试
+#define __USE__VIDEO__
+
+int main(int argc ,char *argv[]) 
+{
+	
+	#ifdef  __USE__CAP_0__
+	//摄像头测试
+	cv::VideoCapture cap(0);
+	#endif
+
+	#ifdef  __USE__VIDEO__
+	cv::VideoCapture cap(&quot;../video/test.mp4&quot;);
+	#endif
+	
+	if (!cap.isOpened())
+		return -1;
+	//config检测
+	configFileDect;
+	//导入网络
+    Net net = readNetFromDarknet(modelConfiguration, modelWeights);
+    net.setPreferableBackend(DNN_BACKEND_OPENCV);
+    net.setPreferableTarget(DNN_TARGET_CPU);
+    Mat frame, blob;
+	//lane检测
+	LaneDetector lanedetector; 
+	// frame处理
+	while (i &amp;lt; 540) {
+		//frame为空
+		if (!cap.read(frame))
+			break;
+		//按照预先设定的参数初始化frame
+        blobFromImage(frame, blob, 1/255.0, cvSize(inpWidth, inpHeight), Scalar(0,0,0), true, false);
+        //将预处理后的frame输入网络
+        net.setInput(blob);
+        // 前向传播获取outs
+        vector&amp;lt;Mat&amp;gt; outs;
+        net.forward(outs, getOutputsNames(net));
+        // 值信度抑制
+		postprocess(frame, outs);
+		//time
+        vector&amp;lt;double&amp;gt; layersTimes;
+        double f = getTickFrequency() / 1000;
+        double t = net.getPerfProfile(layersTimes) / f;
+        string label = format(&quot;Inference time for a frame : %.2f ms&quot;, t);
+        putText(frame, label, Point(0, 15), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 0, 255));
+		// 降噪
+		img_denoise = lanedetector.deNoise(frame);
+		//边缘检测
+		img_edges = lanedetector.edgeDetector(img_denoise);
+		// ROI
+		img_mask = lanedetector.mask(img_edges);
+		//霍夫线获取
+		lines = lanedetector.houghLines(img_mask);
+		if (!lines.empty())
+		{
+			//区分左右
+			left_right_lines = lanedetector.lineSeparation(lines, img_edges);
+			//过滤
+			lane = lanedetector.regression(left_right_lines, frame);
+			//消失点预测方向
+			turn = lanedetector.predictTurn();
+			//航向输出
+			cout&amp;lt;&amp;lt;turn&amp;lt;&amp;lt;endl;
+			//渲染
+			flag_plot = lanedetector.plotLane(frame, lane, turn);
+			cv::waitKey(25);
+		}
+		else {
+			flag_plot = -1;
+		}
+	}
+	return flag_plot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;lane_detect.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-04-17 18:45:15 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-04-17 18:46:14
+ */
+#include &amp;lt;string&amp;gt;
+#include &amp;lt;opencv2/opencv.hpp&amp;gt;
+class LaneDetector 
+{
+private:
+	double img_size;
+	double img_center;
+    // 左边界
+	bool left_flag = false;  
+    // 右边界
+	bool right_flag = false;
+    // 车道线方程  
+    // y = m*x + b
+	cv::Point right_b;  
+	double right_m;  
+	cv::Point left_b; 
+	double left_m;  
+
+public:
+    //高斯模糊
+	cv::Mat deNoise(cv::Mat inputImage);  
+    // 边缘提取
+	cv::Mat edgeDetector(cv::Mat img_noise);
+    // ROI  
+	cv::Mat mask(cv::Mat img_edges);  
+    // 霍夫线检测
+	std::vector&amp;lt;cv::Vec4i&amp;gt; houghLines(cv::Mat img_mask);  
+    //路线提取
+	std::vector&amp;lt;std::vector&amp;lt;cv::Vec4i&amp;gt; &amp;gt; lineSeparation(std::vector&amp;lt;cv::Vec4i&amp;gt; lines, cv::Mat img_edges);  
+    //车道线获取,一条
+	std::vector&amp;lt;cv::Point&amp;gt; regression(std::vector&amp;lt;std::vector&amp;lt;cv::Vec4i&amp;gt; &amp;gt; left_right_lines, cv::Mat inputImage);  
+    // 转向决策，消失点决策
+	std::string predictTurn();  
+    // 渲染绘画
+	int plotLane(cv::Mat inputImage, std::vector&amp;lt;cv::Point&amp;gt; lane, std::string turn);  
+};
+
+cv::Mat LaneDetector::deNoise(cv::Mat inputImage) {
+	cv::Mat output;
+	cv::GaussianBlur(inputImage, output, cv::Size(3, 3), 0, 0);
+	return output;
+}
+
+cv::Mat LaneDetector::edgeDetector(cv::Mat img_noise) {
+	cv::Mat output;
+	cv::Mat kernel;
+	cv::Point anchor;
+
+	//灰度化
+	cv::cvtColor(img_noise, output, cv::COLOR_RGB2GRAY);
+	// 二值化
+	cv::threshold(output, output, 140, 255, cv::THRESH_BINARY);
+
+    // 偏离警告
+	anchor = cv::Point(-1, -1);
+	kernel = cv::Mat(1, 3, CV_32F);
+	kernel.at&amp;lt;float&amp;gt;(0, 0) = -1;
+	kernel.at&amp;lt;float&amp;gt;(0, 1) = 0;
+	kernel.at&amp;lt;float&amp;gt;(0, 2) = 1;
+
+	//边缘提取
+	cv::filter2D(output, output, -1, kernel, anchor, 0, cv::BORDER_DEFAULT);
+	// cv::imshow(&quot;output&quot;, output);
+	return output;
+}
+
+cv::Mat LaneDetector::mask(cv::Mat img_edges) {
+	cv::Mat output;
+    // 创建mask
+	cv::Mat mask = cv::Mat::zeros(img_edges.size(), img_edges.type());
+	// 定位点
+    cv::Point pts[4] = {
+		cv::Point(210, 720),
+		cv::Point(550, 450),
+		cv::Point(717, 450),
+		cv::Point(1280, 720)
+	};
+    // 区域填充
+	cv::fillConvexPoly(mask, pts, 4, cv::Scalar(255, 0, 0));
+	//图像和mask相乘输出
+	cv::bitwise_and(img_edges, mask, output);
+	return output;
+}
+
+//霍夫直线检测
+std::vector&amp;lt;cv::Vec4i&amp;gt; LaneDetector::houghLines(cv::Mat img_mask) {
+	std::vector&amp;lt;cv::Vec4i&amp;gt; line;
+	HoughLinesP(img_mask, line, 1, CV_PI / 180, 20, 20, 30);
+
+	return line;
+}
+//路线提取
+//过滤line
+//左右两条line
+std::vector&amp;lt;std::vector&amp;lt;cv::Vec4i&amp;gt; &amp;gt; LaneDetector::lineSeparation(std::vector&amp;lt;cv::Vec4i&amp;gt; lines, cv::Mat img_edges) {
+	std::vector&amp;lt;std::vector&amp;lt;cv::Vec4i&amp;gt; &amp;gt; output(2);
+	size_t j = 0;
+	cv::Point ini;
+	cv::Point fini;
+    //斜率限制阈值
+	double slope_thresh = 0.3;
+	std::vector&amp;lt;double&amp;gt; slopes;
+	std::vector&amp;lt;cv::Vec4i&amp;gt; selected_lines;
+	std::vector&amp;lt;cv::Vec4i&amp;gt; right_lines, left_lines;
+
+	// 斜率计算
+	for (auto i : lines) {
+		ini = cv::Point(i[0], i[1]);
+		fini = cv::Point(i[2], i[3]);
+
+		// m = (y1 - y0)/(x1 - x0)
+		double slope = (static_cast&amp;lt;double&amp;gt;(fini.y) - static_cast&amp;lt;double&amp;gt;(ini.y)) / (static_cast&amp;lt;double&amp;gt;(fini.x) - static_cast&amp;lt;double&amp;gt;(ini.x) + 0.00001);
+
+		//如果小于限制阈值，则去除
+        //保存大于限制阈值的线
+		if (std::abs(slope) &amp;gt; slope_thresh) {
+			slopes.push_back(slope);
+			selected_lines.push_back(i);
+		}
+	}
+
+	// 区分左右线
+	img_center = static_cast&amp;lt;double&amp;gt;((img_edges.cols / 2));
+	while (j &amp;lt; selected_lines.size()) {
+		ini = cv::Point(selected_lines[j][0], selected_lines[j][1]);
+		fini = cv::Point(selected_lines[j][2], selected_lines[j][3]);
+
+		// 如果斜率大于０且fini.x和fini大于图像中心点,则判断为左侧,反之右侧
+		if (slopes[j] &amp;gt; 0 &amp;amp;&amp;amp; fini.x &amp;gt; img_center &amp;amp;&amp;amp; ini.x &amp;gt; img_center) {
+			right_lines.push_back(selected_lines[j]);
+			right_flag = true;
+		}
+		else if (slopes[j] &amp;lt; 0 &amp;amp;&amp;amp; fini.x &amp;lt; img_center &amp;amp;&amp;amp; ini.x &amp;lt; img_center) {
+			left_lines.push_back(selected_lines[j]);
+			left_flag = true;
+		}
+		j++;
+	}
+
+	output[0] = right_lines;
+	output[1] = left_lines;
+
+	return output;
+}
+
+//最终车道线选择
+std::vector&amp;lt;cv::Point&amp;gt; LaneDetector::regression(std::vector&amp;lt;std::vector&amp;lt;cv::Vec4i&amp;gt; &amp;gt; left_right_lines, cv::Mat inputImage) {
+	std::vector&amp;lt;cv::Point&amp;gt; output(4);
+	cv::Point ini;
+	cv::Point fini;
+	cv::Point ini2;
+	cv::Point fini2;
+	cv::Vec4d right_line;
+	cv::Vec4d left_line;
+	std::vector&amp;lt;cv::Point&amp;gt; right_pts;
+	std::vector&amp;lt;cv::Point&amp;gt; left_pts;
+
+	// 检测到右侧线，则把点给连上
+	if (right_flag == true) {
+		for (auto i : left_right_lines[0]) {
+			ini = cv::Point(i[0], i[1]);
+			fini = cv::Point(i[2], i[3]);
+
+			right_pts.push_back(ini);
+			right_pts.push_back(fini);
+		}
+
+		if (right_pts.size() &amp;gt; 0) {
+			//拟合
+			cv::fitLine(right_pts, right_line, CV_DIST_L2, 0, 0.01, 0.01);
+			right_m = right_line[1] / right_line[0];
+			right_b = cv::Point(right_line[2], right_line[3]);
+		}
+	}
+
+	// 检测到左侧线，则把点给连上
+	if (left_flag == true) {
+		for (auto j : left_right_lines[1]) {
+			ini2 = cv::Point(j[0], j[1]);
+			fini2 = cv::Point(j[2], j[3]);
+
+			left_pts.push_back(ini2);
+			left_pts.push_back(fini2);
+		}
+
+		if (left_pts.size() &amp;gt; 0) {
+			//拟合
+			cv::fitLine(left_pts, left_line, CV_DIST_L2, 0, 0.01, 0.01);
+			left_m = left_line[1] / left_line[0];
+			left_b = cv::Point(left_line[2], left_line[3]);
+		}
+	}
+
+	// 通过直线方程获得点
+	int ini_y = inputImage.rows;
+	int fin_y = 470;
+
+	double right_ini_x = ((ini_y - right_b.y) / right_m) + right_b.x;
+	double right_fin_x = ((fin_y - right_b.y) / right_m) + right_b.x;
+
+	double left_ini_x = ((ini_y - left_b.y) / left_m) + left_b.x;
+	double left_fin_x = ((fin_y - left_b.y) / left_m) + left_b.x;
+
+	output[0] = cv::Point(right_ini_x, ini_y);
+	output[1] = cv::Point(right_fin_x, fin_y);
+	output[2] = cv::Point(left_ini_x, ini_y);
+	output[3] = cv::Point(left_fin_x, fin_y);
+
+	return output;
+}
+
+
+std::string LaneDetector::predictTurn() {
+	std::string output;
+	double vanish_x;
+	double thr_vp = 10;
+
+	//消失点:两直线交点
+	vanish_x = static_cast&amp;lt;double&amp;gt;(((right_m*right_b.x) - (left_m*left_b.x) - right_b.y + left_b.y) / (right_m - left_m));
+
+	//决策
+	if (vanish_x &amp;lt; (img_center - thr_vp))
+		output = &quot;Left Turn&quot;;
+	else if (vanish_x &amp;gt;(img_center + thr_vp))
+		output = &quot;Right Turn&quot;;
+	else if (vanish_x &amp;gt;= (img_center - thr_vp) &amp;amp;&amp;amp; vanish_x &amp;lt;= (img_center + thr_vp))
+		output = &quot;Straight&quot;;
+
+	return output;
+}
+
+int LaneDetector::plotLane(cv::Mat inputImage, std::vector&amp;lt;cv::Point&amp;gt; lane, std::string turn) 
+{
+	std::vector&amp;lt;cv::Point&amp;gt; poly_points;
+	cv::Mat output;
+
+	//渲染内部
+	inputImage.copyTo(output);
+	poly_points.push_back(lane[2]);
+	poly_points.push_back(lane[0]);
+	poly_points.push_back(lane[1]);
+	poly_points.push_back(lane[3]);
+	cv::fillConvexPoly(output, poly_points, cv::Scalar(0, 0, 255), CV_AA, 0);
+	cv::addWeighted(output, 0.3, inputImage, 1.0 - 0.3, 0, inputImage);
+
+	//划线
+	cv::line(inputImage, lane[0], lane[1], cv::Scalar(0, 255, 255), 5, CV_AA);
+	cv::line(inputImage, lane[2], lane[3], cv::Scalar(0, 255, 255), 5, CV_AA);
+
+	// 决策信息
+	cv::putText(inputImage, turn, cv::Point(50, 90), cv::FONT_HERSHEY_COMPLEX_SMALL, 3, cvScalar(0, 255, 0), 1, CV_AA);
+
+	cv::namedWindow(&quot;Lane&quot;, CV_WINDOW_AUTOSIZE);
+	cv::imshow(&quot;Lane&quot;, inputImage);
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;yolo_car_detect.h&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c++&quot;&gt;/*
+ * @Author: verylazycat 
+ * @Date: 2020-04-17 14:28:03 
+ * @Last Modified by: verylazycat
+ * @Last Modified time: 2020-04-18 12:12:02
+ */
+#include &amp;lt;opencv2/dnn.hpp&amp;gt;
+#include &amp;lt;opencv2/imgproc.hpp&amp;gt;
+#include &amp;lt;opencv2/highgui.hpp&amp;gt;
+#include &amp;lt;fstream&amp;gt;
+#include &amp;lt;sstream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+
+using namespace cv;
+using namespace dnn;
+using namespace std;
+
+//置信度
+float confThreshold = 0.5;
+float nmsThreshold = 0.4;
+
+//图片输入尺寸
+//参看cfg配置文件
+int inpWidth = 416;  
+int inpHeight = 416; 
+//配置文件
+const string classesFile = &quot;../config/coco.names&quot;;
+const string modelConfiguration = &quot;../config/yolov3-tiny.cfg&quot;;
+const string modelWeights = &quot;../config/yolov3-tiny.weights&quot;;
+//测试视频
+cv::Mat img_denoise;
+cv::Mat img_edges;
+cv::Mat img_mask;
+std::vector&amp;lt;cv::Vec4i&amp;gt; lines;
+std::vector&amp;lt;std::vector&amp;lt;cv::Vec4i&amp;gt; &amp;gt; left_right_lines;
+std::vector&amp;lt;cv::Point&amp;gt; lane;
+std::string turn;
+int flag_plot = -1;
+int i = 0;
+vector&amp;lt;string&amp;gt; classes;
+// 删除置信度低的图片
+void postprocess(Mat&amp;amp; frame, const vector&amp;lt;Mat&amp;gt;&amp;amp; out);
+
+//画预测框
+void drawPred(int classId, float conf, int left, int top, int right, int bottom, Mat&amp;amp; frame);
+
+//获取分类
+vector&amp;lt;String&amp;gt; getOutputsNames(const Net&amp;amp; net);
+
+//config检测
+size_t configFileDect()
+{
+	if(classesFile == NULL)
+	{
+		fprintf(stdout,&quot;classesFile is NULL\n&quot;);
+		return 1;
+	}
+	if(modelConfiguration == NULL)
+	{
+		perror(&quot;modelConfiguration&quot;);
+		return 1;
+	}
+	if(modelWeights == NULL)
+	{
+		perror(&quot;modelWeights&quot;);
+		return 1;
+	}
+}
+
+
+//抑制低置信度
+void postprocess(Mat&amp;amp; frame, const vector&amp;lt;Mat&amp;gt;&amp;amp; outs)
+{
+    vector&amp;lt;int&amp;gt; classIds;
+    vector&amp;lt;float&amp;gt; confidences;
+    vector&amp;lt;Rect&amp;gt; boxes;
+    // 遍历每一个box
+    for (size_t i = 0; i &amp;lt; outs.size(); ++i)
+    {
+        float* data = (float*)outs[i].data;
+        for (int j = 0; j &amp;lt; outs[i].rows; ++j, data += outs[i].cols)
+        {
+            Mat scores = outs[i].row(j).colRange(5, outs[i].cols);
+            Point classIdPoint;
+            double confidence;
+            //获取score最大和最小值
+            minMaxLoc(scores, 0, &amp;amp;confidence, 0, &amp;amp;classIdPoint);
+            if (confidence &amp;gt; confThreshold)
+            {
+                int centerX = (int)(data[0] * frame.cols);
+                int centerY = (int)(data[1] * frame.rows);
+                int width = (int)(data[2] * frame.cols);
+                int height = (int)(data[3] * frame.rows);
+                int left = centerX - width / 2;
+                int top = centerY - height / 2;
+                
+                classIds.push_back(classIdPoint.x);
+                confidences.push_back((float)confidence);
+                boxes.push_back(Rect(left, top, width, height));
+            }
+        }
+    }
+    
+    vector&amp;lt;int&amp;gt; indices;
+    NMSBoxes(boxes, confidences, confThreshold, nmsThreshold, indices);
+    for (size_t i = 0; i &amp;lt; indices.size(); ++i)
+    {
+        int idx = indices[i];
+        Rect box = boxes[idx];
+        drawPred(classIds[idx], confidences[idx], box.x, box.y,
+                 box.x + box.width, box.y + box.height, frame);
+    }
+}
+
+//绘画渲染
+void drawPred(int classId, float conf, int left, int top, int right, int bottom, Mat&amp;amp; frame)
+{
+    //矩形框
+    rectangle(frame, Point(left, top), Point(right, bottom), Scalar(0, 255, 0), 3);
+    
+    //获取name和置信度
+    string label = format(&quot;%.2f&quot;, conf);
+    if (!classes.empty())
+    {
+        CV_Assert(classId &amp;lt; (int)classes.size());
+        label = classes[classId] + &quot;:&quot; + label;
+    }
+    //说明
+    int baseLine;
+    Size labelSize = getTextSize(label, FONT_HERSHEY_SIMPLEX, 0.5, 1, &amp;amp;baseLine);
+    top = max(top, labelSize.height);
+    rectangle(frame, Point(left, top - round(1.5*labelSize.height)), Point(left + round(1.5*labelSize.width), top + baseLine), Scalar(255, 255, 255), FILLED);
+    putText(frame, label, Point(left, top), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0,0,0),1);
+}
+//获取name
+vector&amp;lt;String&amp;gt; getOutputsNames(const Net&amp;amp; net)
+{
+    static vector&amp;lt;String&amp;gt; names;
+    if (names.empty())
+    {
+        vector&amp;lt;int&amp;gt; outLayers = net.getUnconnectedOutLayers();
+        //获取所有name
+        vector&amp;lt;String&amp;gt; layersNames = net.getLayerNames();
+        //获取当前的name
+        names.resize(outLayers.size());
+        for (size_t i = 0; i &amp;lt; outLayers.size(); ++i)
+        names[i] = layersNames[outLayers[i] - 1];
+    }
+    return names;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;安装使用&quot;&gt;安装使用&lt;/h1&gt;
+
+&lt;h2 id=&quot;opencv配置&quot;&gt;opencv配置&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;建议使用3.4.5版本,其中 dnn 模块支持较好.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下载链接&lt;/li&gt;
+  &lt;li&gt;解压&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;unzip opencv- . . .zip
+cd opencv- 3.4.5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装cmake&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo apt-get install cmake
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;依赖环境&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo apt-get install build-essential libgtk . -dev libavcodec-dev libavformat-dev libjpeg-dev libswscale-
+dev libtiff -dev
+sudo apt-get install libgtk . -dev
+sudo apt-get install pkg-config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;建立build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mkdir build
+cd build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cmake&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;编译&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo make -j8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;配置环境&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo gedit /etc/ld.so.conf
+#添加 /usr/loacal/lib
+sudo gedit /etc/bash.bashrc
+#在文件末尾加入:
+#PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+#export PKG_CONFIG_PATH
+source /etc/bash.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;dlib配置&quot;&gt;Dlib配置&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装libboost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo apt-get install libboost-all-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下载dlib&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;git clone https://github.com/davisking/dlib.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cd dlib
+mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;-DDLIB_USE_CUDA=0 不使用cuda&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;-DUSE_AVX_INSTRUCTIONS=1 使用cpu的AVX加速&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;python扩展&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cd ..
+python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;编译程序&quot;&gt;编译程序&lt;/h2&gt;
+
+&lt;h3 id=&quot;fatiguedrivingdetection&quot;&gt;FatigueDrivingDetection&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cd FatigueDrivingDetection
+mkdir build
+cd build/
+cmake .. -DCMAKE_BUILD_TYPE=Release | tee ../log/cmake_log
+make -j |tee ../log/make_log
+chmod +x FatigueDrivingDe
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;lane_car_detect-1&quot;&gt;lane_car_detect&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cd lane_car_detect/
+mkdir build
+cd build
+cmake ..
+make
+chmod +x lane_car_detect
+./lane_car_detect
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="机器学习" /><summary type="html">[toc]</summary></entry><entry><title type="html">西华大学抢课脚本</title><link href="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/" rel="alternate" type="text/html" title="西华大学抢课脚本" /><published>2020-06-29T00:00:00+08:00</published><updated>2020-06-29T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;环境配置&quot;&gt;环境配置&lt;/h1&gt;
 
@@ -2397,133 +3683,4 @@ vbs类的病毒如何动态调试是个很大的问题，微软的地表最强ID
   &lt;li&gt;
     &lt;p&gt;最后黑产在实际批量注册，薅羊毛或刷赞过程中，遇到触发的滑动验证码机制，只要session在有效期内，只需使用python读取本地的txt内容，调用requests库发送请求数据包，即可绕过滑动验证码&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">TCP&amp;amp;UDP区别</title><link href="http://localhost:4000/_posts/2020-06-13-TCP&UDP%E5%8C%BA%E5%88%AB/" rel="alternate" type="text/html" title="TCP&amp;UDP区别" /><published>2020-06-13T00:00:00+08:00</published><updated>2020-06-13T00:00:00+08:00</updated><id>http://localhost:4000/_posts/TCP&amp;UDP%E5%8C%BA%E5%88%AB</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-13-TCP&amp;UDP%E5%8C%BA%E5%88%AB/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;tcp协议与udp协议的区别&quot;&gt;&lt;strong&gt;TCP协议与UDP协议的区别&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;TCP/IP协议是一个协议簇。里面包括很多协议的，UDP只是其中的一个， 之所以命名为TCP/IP协议，因为TCP、IP协议是两个很重要的协议，就用他两命名了。&lt;/p&gt;
-
-&lt;p&gt;TCP/IP协议集包括应用层,传输层，网络层，网络访问层。&lt;/p&gt;
-
-&lt;h2 id=&quot;应用层包括&quot;&gt;应用层包括&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;超文本传输协议（HTTP）:万维网的基本协议；&lt;/li&gt;
-  &lt;li&gt;文件传输（TFTP简单文件传输协议）；&lt;/li&gt;
-  &lt;li&gt;远程登录（Telnet），提供远程访问其它主机功能, 它允许用户登录internet主机，并在这台主机上执行命令；&lt;/li&gt;
-  &lt;li&gt;网络管理（SNMP简单网络管理协议），该协议提供了监控网络设备的方法， 以及配置管理,统计信息收集,性能管理及安全管理等；&lt;/li&gt;
-  &lt;li&gt;域名系统（DNS），该系统用于在internet中将域名及其公共广播的网络节点转换成IP地址。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;网络层包括&quot;&gt;网络层包括&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Internet协议（IP）；&lt;/li&gt;
-  &lt;li&gt;Internet控制信息协议（ICMP）；&lt;/li&gt;
-  &lt;li&gt;地址解析协议（ARP）；&lt;/li&gt;
-  &lt;li&gt;反向地址解析协议（RARP)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;网络访问层&quot;&gt;网络访问层&lt;/h2&gt;
-
-&lt;p&gt;网络访问层又称作主机到网络层（host-to-network），网络访问层的功能包括IP地址与物理地址硬件的映射，  以及将IP封装成帧.基于不同硬件类型的网络接口，网络访问层定义了和物理介质的连接.&lt;/p&gt;
-
-&lt;h1 id=&quot;tcp协议和udp协议的区别&quot;&gt;&lt;strong&gt;TCP协议和UDP协议的区别&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;TCP（Transmission Control  Protocol，传输控制协议）是面向连接的协议，也就是说，在收发数据前，必须和对方建立可靠的连接。  一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂， 只简单的描述下这三次对话的简单过程:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；&lt;/li&gt;
-  &lt;li&gt;主机B向主机A发送同意连接和要求同步 （同步就是两台主机一个在发送，一个在接收，协调工作）的数据包 ：“可以，你什么时候发？”，这是第二次对话；&lt;/li&gt;
-  &lt;li&gt;主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”， 这是第三次对话。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;三次“对话”的目的是使数据包的发送和接收同步， 经过三次“对话”之后，主机A才向主机B正式发送数据。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/_posts/2020-06-12-TCP三次握手四次挥手.md&quot;&gt;详细参考&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;名词解释&quot;&gt;名词解释&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ACK 是TCP报头的控制位之一，对数据进行确认。确认由目的端发出， 用它来告诉发送端这个序列号之前的数据段都收到了。  比如确认号为X，则表示前X-1个数据段都收到了，只有当ACK=1时,确认号才有效，当ACK=0时，确认号无效，这时会要求重传数据，保证数据的完整性。&lt;/li&gt;
-  &lt;li&gt;SYN 同步序列号，TCP建立连接时将这个位置1。&lt;/li&gt;
-  &lt;li&gt;FIN 发送端完成发送任务位，当TCP完成数据传输需要断开时,，提出断开连接的一方将这位置1。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;tcp的包头结构&quot;&gt;TCP的包头结构&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;源端口 16位；&lt;/li&gt;
-  &lt;li&gt;目标端口 16位；&lt;/li&gt;
-  &lt;li&gt;序列号 32位；&lt;/li&gt;
-  &lt;li&gt;回应序号 32位；&lt;/li&gt;
-  &lt;li&gt;TCP头长度 4位；&lt;/li&gt;
-  &lt;li&gt;reserved 6位；&lt;/li&gt;
-  &lt;li&gt;控制代码 6位；&lt;/li&gt;
-  &lt;li&gt;窗口大小 16位；&lt;/li&gt;
-  &lt;li&gt;偏移量 16位；&lt;/li&gt;
-  &lt;li&gt;校验和 16位；&lt;/li&gt;
-  &lt;li&gt;选项 32位(可选)；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;这样我们得出了TCP包头的最小长度，为20字节。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;udpuser-data-protocol用户数据报协议&quot;&gt;&lt;strong&gt;UDP（User Data Protocol，用户数据报协议）&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;UDP是一个非连接的协议，传输数据之前源端和终端不建立连接，  当它想传送时就简单地去抓取来自应用程序的数据，并尽可能快地把它扔到网络上。 在发送端，UDP传送数据的速度仅仅是受应用程序生成数据的速度、  计算机的能力和传输带宽的限制； 在接收端，UDP把每个消息段放在队列中，应用程序每次从队列中读一个消息段。&lt;/li&gt;
-  &lt;li&gt;由于传输数据不建立连接，因此也就不需要维护连接状态，包括收发状态等， 因此一台服务机可同时向多个客户机传输相同的消息。&lt;/li&gt;
-  &lt;li&gt;UDP信息包的标题很短，只有8个字节，相对于TCP的20个字节信息包的额外开销很小。&lt;/li&gt;
-  &lt;li&gt;吞吐量不受拥挤控制算法的调节，只受应用软件生成数据的速率、传输带宽、 源端和终端主机性能的限制。&lt;/li&gt;
-  &lt;li&gt;UDP使用尽最大努力交付，即不保证可靠交付， 因此主机不需要维持复杂的链接状态表（这里面有许多参数）。&lt;/li&gt;
-  &lt;li&gt;UDP是面向报文的。发送方的UDP对应用程序交下来的报文， 在添加首部后就向下交付给IP层。既不拆分，也不合并，而是保留这些报文的边界， 因此，应用程序需要选择合适的报文大小。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;我们经常使用“ping”命令来测试两台主机之间TCP/IP通信是否正常， 其实“ping”命令的原理就是向对方主机发送UDP数据包，然后对方主机确认收到数据包， 如果数据包是否到达的消息及时反馈回来，那么网络就是通的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ping命令&lt;/strong&gt;是用来探测主机到主机之间是否可通信，如果不能&lt;strong&gt;ping&lt;/strong&gt;到某台主机，表明不能和这台主机建立连接。&lt;strong&gt;ping命令&lt;/strong&gt;是使用 IP 和网络控制信息协议 (ICMP)，因而没有涉及到任何传输协议(UDP/TCP) 和应用程序。它发送icmp回送请求消息给目的主机&lt;/p&gt;
-
-&lt;p&gt;ICMP协议规定：目的主机必须返回ICMP回送应答消息给源主机。如果源主机在一定时间内收到应答，则认为主机可达。&lt;/p&gt;
-
-&lt;h2 id=&quot;udp的包头结构&quot;&gt;&lt;strong&gt;UDP的包头结构&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;源端口 16位&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;目的端口 16位&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;长度 16位&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;校验和 16位&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;具体编程时的区别&quot;&gt;具体编程时的区别&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;socket()的参数不同&lt;/li&gt;
-  &lt;li&gt;UDP Server不需要调用listen和accept&lt;/li&gt;
-  &lt;li&gt;UDP收发数据用sendto/recvfrom函数&lt;/li&gt;
-  &lt;li&gt;TCP：地址信息在connect/accept时确定&lt;/li&gt;
-  &lt;li&gt;UDP：在sendto/recvfrom函数中每次均 需指定地址信息&lt;/li&gt;
-  &lt;li&gt;UDP：shutdown函数无效&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;小结&quot;&gt;小结&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;基于连接与无连接；&lt;/li&gt;
-  &lt;li&gt;对系统资源的要求（TCP较多，UDP少）；&lt;/li&gt;
-  &lt;li&gt;UDP程序结构较简单；&lt;/li&gt;
-  &lt;li&gt;流模式与数据报模式 ；&lt;/li&gt;
-  &lt;li&gt;TCP保证数据正确性，UDP可能丢包；&lt;/li&gt;
-  &lt;li&gt;TCP保证数据顺序，UDP不保证&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry></feed>
