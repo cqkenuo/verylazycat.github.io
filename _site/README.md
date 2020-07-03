@@ -7,7 +7,7 @@
 ## 我的一些联系方式
 
 - Address: **SiChuan  China**
-- Phone: **+86 ####
+- Phone: +86 17378993771
 - Site: **<https://www.imod.top>**
 
 <!-- slide vertical=true -->
@@ -16,7 +16,7 @@
   - **[outlook](mailto:verylazycat@outlook.com)**
   - **[QQ](mailto:1647495684@qq.com)**
 - WeChat: **serendipity_liuY**
-- QQ: #####
+- QQ:  1647495684
 
 <!-- slide -->
 
