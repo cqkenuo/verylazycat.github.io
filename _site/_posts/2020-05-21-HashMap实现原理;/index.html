@@ -332,6 +332,13 @@
   <li><a href="#hashmap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86">HashMap实现原理</a></li>
   <li><a href="#%E4%B8%BA%E4%BD%95hashmap%E7%9A%84%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6%E4%B8%80%E5%AE%9A%E6%98%AF2%E7%9A%84%E6%AC%A1%E5%B9%82">为何HashMap的数组长度一定是2的次幂</a></li>
   <li><a href="#%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95%E9%9C%80%E5%90%8C%E6%97%B6%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95">重写equals方法需同时重写hashCode方法</a></li>
+  <li><a href="#jdk17%E4%B8%8Ejdk18%E4%B8%ADhashmap%E5%8C%BA%E5%88%AB">jdk1.7与jdk1.8中HashMap区别</a>
+    <ol>
+      <li><a href="#%E6%A1%B6%E7%9A%84%E6%A0%91%E5%BD%A2%E5%8C%96-treeifybin">桶的树形化 treeifyBin()</a></li>
+      <li><a href="#put">put()</a></li>
+      <li><a href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0-gettreenode">红黑树中查找元素 getTreeNode()</a></li>
+    </ol>
+  </li>
 </ol>
       
       
@@ -599,11 +606,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    9178字
+    13107字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    31分
+    44分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-05-21-HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86;/" data-xid="/_posts/2020-05-21-HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86;/" data-flag-title="HashMap实现原理">
@@ -976,6 +983,166 @@ public class MyTest {
 <p>如果我们已经对HashMap的原理有了一定了解，这个结果就不难理解了。尽管我们在进行get和put操作的时候，使用的key从逻辑上讲是等值的（通过equals比较是相等的），但由于没有重写hashCode方法，所以put操作时，key(hashcode1)–&gt;hash–&gt;indexFor–&gt;最终索引位置 ，而通过key取出value的时候  key(hashcode1)–&gt;hash–&gt;indexFor–&gt;最终索引位置，由于hashcode1不等于hashcode2，导致没有定位到一个数组位置而返回逻辑上错误的值null（也有可能碰巧定位到一个数组位置，但是也会判断其entry的hash值是否相等，上面get方法中有提到。）</p>
 
 <p>　　所以，在重写equals的方法的时候，必须注意重写hashCode方法，同时还要保证通过equals判断相等的两个对象，调用hashCode方法要返回同样的整数值。而如果equals判断不相等的两个对象，其hashCode可以相同（只不过会发生哈希冲突，应尽量避免）。</p>
+
+<h1 id="jdk17与jdk18中hashmap区别">jdk1.7与jdk1.8中HashMap区别</h1>
+
+<ul>
+  <li>
+    <p>最重要的一点是底层结构不一样，1.7是数组+链表，1.8则是数组+链表+红黑树结构;</p>
+  </li>
+  <li>jdk1.7中当哈希表为空时，会先调用inflateTable()初始化一个数组；而1.8则是直接调用resize()扩容;</li>
+  <li>插入键值对的put方法的区别，1.8中会将节点插入到链表尾部，而1.7中是采用头插；</li>
+  <li>jdk1.7中的hash函数对哈希值的计算直接使用key的hashCode值，而1.8中则是采用key的hashCode异或上key的hashCode进行无符号右移16位的结果，避免了只靠低位数据来计算哈希时导致的冲突，计算结果由高低位结合决定，使元素分布更均匀；</li>
+  <li>扩容时1.8会保持原链表的顺序，而1.7会颠倒链表的顺序；而且1.8是在元素插入后检测是否需要扩容，1.7则是在元素插入前；</li>
+  <li>jdk1.8是扩容时通过hash&amp;cap==0将链表分散，无需改变hash值，而1.7是通过更新hashSeed来修改hash值达到分散的目的；</li>
+  <li>扩容策略：1.7中是只要不小于阈值就直接扩容2倍；而1.8的扩容策略会更优化，当数组容量未达到64时，以2倍进行扩容，超过64之后若桶中元素个数不小于7就将链表转换为红黑树，但如果红黑树中的元素个数小于6就会还原为链表，当红黑树中元素不小于32的时候才会再次扩容。</li>
+</ul>
+
+<h2 id="桶的树形化-treeifybin">桶的树形化 treeifyBin()</h2>
+
+<ul>
+  <li>根据哈希表容量以及元素个数确定是扩容还是树形化</li>
+  <li>如果是树形化则遍历桶中的元素，创建相同个数的树形节点，复制内容，建立起联系；</li>
+  <li>让桶第一个元素指向新建的树头结点，替换桶的链表内容为树形内容；</li>
+</ul>
+
+<pre><code class="language-java"> final void treeifyBin(Node&lt;K,V&gt;[] tab, int hash) {
+   int n, index; Node&lt;K,V&gt; e;
+    //如果当前哈希表为空，或者哈希表中元素的个数小于 进行树形化的阈值(默认为 64)，就去新建/扩容
+   if (tab == null || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)
+        resize();
+    else if ((e = tab[index = (n - 1) &amp; hash]) != null) {
+        //如果哈希表中的元素个数超过了 树形化阈值，进行树形化
+        // e 是哈希表中指定位置桶里的链表节点，从第一个开始
+        TreeNode&lt;K,V&gt; hd = null, tl = null; //红黑树的头、尾节点
+        do {
+            //新建一个树形节点，内容和当前链表节点 e 一致
+            TreeNode&lt;K,V&gt; p = replacementTreeNode(e, null);
+            if (tl == null) //确定树头节点
+                hd = p;
+           else {
+               p.prev = tl;
+                tl.next = p;
+            }
+            tl = p;
+        } while ((e = e.next) != null); 
+        //让桶的第一个元素指向新建的红黑树头结点，以后这个桶里的元素就是红黑树而不是链表了
+        if ((tab[index] = hd) != null)
+            hd.treeify(tab);
+    }
+ }
+    TreeNode&lt;K,V&gt; replacementTreeNode(Node&lt;K,V&gt; p, Node&lt;K,V&gt; next) {
+    return new TreeNode&lt;&gt;(p.hash, p.key, p.value, next);
+}
+</code></pre>
+
+<h2 id="put">put()</h2>
+
+<p>①.判断键值对数组table[i]是否为空，否则执行resize()扩容；</p>
+
+<p>②.根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向③；</p>
+
+<p>③.判断table[i]的首个元素是否和key一样，如果相同直接覆盖value，否则转向④；</p>
+
+<p>④.判断table[i] 是否为treeNode，即table[i] 是否是红黑树，如果是红黑树，则直接在树中插入键值对，否则转向⑤；</p>
+
+<p>⑤.遍历table[i]，判断链表长度是否不小于7，不小于7就把链表转换为红黑树，在红黑树中执行插入操作，否则进行链表的插入操作；遍历过程中若发现key已经存在直接覆盖value即可；</p>
+
+<p>⑥.插入成功后，判断实际存在的键值对数量是否超过阈值，如果超过了就进行扩容；</p>
+
+<pre><code class="language-java">public V put(K key, V value) {
+2     // 对key的hashCode()做hash
+3     return putVal(hash(key), key, value, false, true);
+4 }
+5
+6 final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+7                boolean evict) {
+8     Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i;
+9     // 步骤①：tab为空则创建
+10     if ((tab = table) == null || (n = tab.length) == 0)
+11         n = (tab = resize()).length;
+12     // 步骤②：计算index，并对null做处理
+13     if ((p = tab[i = (n - 1) &amp; hash]) == null)
+14         tab[i] = newNode(hash, key, value, null);
+15     else {
+16         Node&lt;K,V&gt; e; K k;
+17         // 步骤③：节点key存在，直接覆盖value
+18         if (p.hash == hash &amp;&amp;
+19             ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+20             e = p;
+21         // 步骤④：判断该链为红黑树
+22         else if (p instanceof TreeNode)
+23             e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value);
+24         // 步骤⑤：该链为链表
+25         else {
+26             for (int binCount = 0; ; ++binCount) {
+27                 if ((e = p.next) == null) {
+28                     p.next = newNode(hash, key,value,null);
+                        //链表长度大于8转换为红黑树进行处理
+29                     if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st 
+30                         treeifyBin(tab, hash);
+31                     break;
+32                 }
+                    // key已经存在直接覆盖value
+33                 if (e.hash == hash &amp;&amp;
+34                     ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+35                            break;
+36                 p = e;
+37             }
+38         }
+39        
+40         if (e != null) { // existing mapping for key
+41             V oldValue = e.value;
+42             if (!onlyIfAbsent || oldValue == null)
+43                 e.value = value;
+44             afterNodeAccess(e);
+45             return oldValue;
+46         }
+47     }
+48     ++modCount;
+49     // 步骤⑥：超过最大容量就扩容
+50     if (++size &gt; threshold)
+51         resize();
+52     afterNodeInsertion(evict);
+53     return null;
+ }
+</code></pre>
+
+<h2 id="红黑树中查找元素-gettreenode">红黑树中查找元素 getTreeNode()</h2>
+
+<p>(1) HashMap的查找方法是get(),它通过计算指定key的哈希值后，调用内部方法 getNode()；</p>
+
+<p>(2) getNode()方法中根据哈希表元素个数与哈希值计算出对应索引位置，找到key所在的桶的头结点，如果头节点恰好是红黑树节点，就调用红黑树节点的getTreeNode()方法，否则就遍历链表节点；</p>
+
+<p>(3) getTreeNode()方法通过调用红黑树的find()方法进行查找即可；</p>
+
+<p>(4) 由于之前添加时已经保证整个树是有序的，因此查找时基本就是折半查找，效率很高</p>
+
+<pre><code class="language-java">1 final Node&lt;K,V&gt; getNode(int hash, Object key) {
+2    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;
+3    if ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;
+4        (first = tab[(n - 1) &amp; hash]) != null) {
+5       if (first.hash == hash &amp;&amp; // always check first node
+6            ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))
+7            return first;
+8        if ((e = first.next) != null) {
+9            if (first instanceof TreeNode)
+10                return ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);
+11            do {
+12               if (e.hash == hash &amp;&amp;
+13                    ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+14                    return e;
+15            } while ((e = e.next) != null);
+16        }
+17    }
+18    return null;
+19 }
+20
+21 final TreeNode&lt;K,V&gt; getTreeNode(int h, Object k) {
+22   return ((parent != null) ? root() : this).find(h, k, null);
+23 }
+</code></pre>
+
 
 </div>
 <div class="v">
