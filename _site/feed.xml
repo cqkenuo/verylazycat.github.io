@@ -1,11 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-04T17:48:58+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-05T16:28:33+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">HTTP和HTTPS</title><link href="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/" rel="alternate" type="text/html" title="HTTP和HTTPS" /><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/HTTP%E5%92%8CHTTPS</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;主要方法&quot;&gt;主要方法&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GET： 请求指定的页面信息，并返回实体主体。&lt;/li&gt;
+  &lt;li&gt;HEAD： 只请求页面的首部。&lt;/li&gt;
+  &lt;li&gt;POST： 请求服务器接受所指定的文档作为对所标识的URI的新的从属实体。&lt;/li&gt;
+  &lt;li&gt;PUT： 从客户端向服务器传送的数据取代指定的文档的内容。&lt;/li&gt;
+  &lt;li&gt;DELETE： 请求服务器删除指定的页面。&lt;/li&gt;
+  &lt;li&gt;OPTIONS： 允许客户端查看服务器的性能。&lt;/li&gt;
+  &lt;li&gt;TRACE： 请求服务器在响应中的实体主体部分返回所得到的内容。&lt;/li&gt;
+  &lt;li&gt;PATCH： 实体中包含一个表，表中说明与该URI所表示的原内容的区别。&lt;/li&gt;
+  &lt;li&gt;MOVE： 请求服务器将指定的页面移至另一个网络地址。&lt;/li&gt;
+  &lt;li&gt;COPY： 请求服务器将指定的页面拷贝至另一个网络地址。&lt;/li&gt;
+  &lt;li&gt;LINK： 请求服务器建立链接关系。&lt;/li&gt;
+  &lt;li&gt;UNLINK： 断开链接关系。&lt;/li&gt;
+  &lt;li&gt;WRAPPED： 允许客户端发送经过封装的请求。&lt;/li&gt;
+  &lt;li&gt;Extension-mothed：在不改动协议的前提下，可增加另外的方法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;get请求&quot;&gt;GET请求&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;根据HTTP规范，GET用于信息获取，而且应该是&lt;code&gt;安全的&lt;/code&gt;和&lt;code&gt;幂等的&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态&lt;/p&gt;
+
+&lt;p&gt;幂等的意味着对同一URL的多个请求应该返回同样的结果。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;幂等&lt;/strong&gt;是一个数学或计算机学概念，常见于抽象代数中&lt;/p&gt;
+
+  &lt;p&gt;对于单目运算，如果一个运算对于在范围内的所有的一个数多次进行该运算所得的结果和进行一次该运算所得的结果是一样的，那么我们就称该运算是幂等的。比如绝对值运算就是一个例子，在实数集中，有abs(a)=abs(abs(a))。对于双目运算，则要求当参与运算的两个值是等值的情况下，如果满足运算结果与参与运算的两个值相等，则称该运算幂等，如求两个数的最大值的函数，有在在实数集中幂等，即max(x,x) = x。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;post请求&quot;&gt;POST请求&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;根据HTTP规范，POST表示可能修改变服务器上的资源的请求&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;get和post区别&quot;&gt;get和post区别&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET在浏览器回退时是无害的，而POST会再次提交请求。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET产生的URL地址可以被Bookmark，而POST不可以。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET请求会被浏览器主动cache，而POST不会，除非手动设置。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET请求只能进行url编码，而POST支持多种编码方式。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET请求在URL中传送的参数是有长度限制的，而POST么有。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;对参数的数据类型，GET只接受ASCII字符，而POST没有限制。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;GET参数通过URL传递，POST放在Request body中&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;amp;相连，如：login.action?name=hyddd&amp;amp;password=idontknow&amp;amp;verify=%E4%BD%A0%E5%A5%BD。如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，则直接把字符串用BASE64加密，得出如：%E4%BD%A0%E5%A5%BD，其中％XX中的XX为该符号以16进制表示的ASCII。
+POST把提交的数据则放置在是HTTP包的包体中
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;理论上讲，POST是没有大小限制的，HTTP协议规范也没有进行大小限制
+POST的安全性要比GET的安全性高。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义，比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存，(2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了，除此之外，使用GET提交数据还可能会造成Cross-site request forgery攻击。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;总结一下，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求，在FORM（表单）中，Method默认为&quot;GET&quot;，实质上，GET和POST只是发送机制不同，并不是一个取一个发
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">ICMP协议和ping命令</title><link href="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="ICMP协议和ping命令" /><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;p&gt;ICMP全称Internet Control Message Protocol，就是&lt;strong&gt;互联网控制报文协议&lt;/strong&gt;。
+ ICMP 报文是封装在 IP 包里面的。因为传输指令的时候，肯定需要&lt;strong&gt;源地址&lt;/strong&gt;和&lt;strong&gt;目标地址&lt;/strong&gt;。它本身非常简单。因为作为侦查兵，要轻装上阵，不能携带大量的包袱&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/博客/verylazycat.github.io/img/ICMP&amp;amp;ping.png&quot; alt=&quot;ICMP&amp;amp;ping&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ICMP 报文有很多的类型，不同的类型有不同的代码。最常用的类型是主动请求为 8，主动请求的应答为0&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP和HTTPS</title><link href="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/" rel="alternate" type="text/html" title="HTTP和HTTPS" /><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/HTTP%E5%92%8CHTTPS</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;http和https的基本概念&quot;&gt;&lt;strong&gt;Http和Https的基本概念&lt;/strong&gt;&lt;/h1&gt;
 
@@ -3929,966 +4028,4 @@ mybatis-plus.global-config.db-config.logic-not-delete-value=0
         &amp;lt;/plugins&amp;gt;
     &amp;lt;/build&amp;gt;
 &amp;lt;/project&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">web压力测试程序开发</title><link href="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" rel="alternate" type="text/html" title="web压力测试程序开发" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">sql-server期末复习</title><link href="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="alternate" type="text/html" title="sql-server期末复习" /><published>2020-06-24T00:00:00+08:00</published><updated>2020-06-24T00:00:00+08:00</updated><id>http://localhost:4000/_posts/sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;用于期末复习,切勿用于作弊!违者后果自负!!!!!!!&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;数据处理三个阶段&quot;&gt;数据处理三个阶段&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;概念模型&lt;/li&gt;
-  &lt;li&gt;逻辑模型&lt;/li&gt;
-  &lt;li&gt;物理模型&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;常见数据模型&quot;&gt;常见数据模型&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;层次模型&lt;/li&gt;
-  &lt;li&gt;网状模型&lt;/li&gt;
-  &lt;li&gt;关系模型&lt;/li&gt;
-  &lt;li&gt;面向对象模型&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;rs例题&quot;&gt;R&amp;amp;S例题&lt;/h1&gt;
-
-&lt;p&gt;R&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;S&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;计算:&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-1.R\bigcup S\\
-2.R-S\\
-3.RXS\\
-4. \prod_{2,3}(S)\\
-5.\sigma_{B&lt;'5'}(R)\\
-6. R\infty_{2&lt;2}S\\
-7. R\infty S %]]&gt;&lt;/script&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;解:&lt;/p&gt;
-
-&lt;p&gt;1.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;2.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;3.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;R.A&lt;/th&gt;
-      &lt;th&gt;R.B&lt;/th&gt;
-      &lt;th&gt;R.C&lt;/th&gt;
-      &lt;th&gt;S.A&lt;/th&gt;
-      &lt;th&gt;S.B&lt;/th&gt;
-      &lt;th&gt;S.C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;4.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;C&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;5.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;6.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;RA&lt;/th&gt;
-      &lt;th&gt;RB&lt;/th&gt;
-      &lt;th&gt;RC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;SA&lt;/th&gt;
-      &lt;th&gt;SB&lt;/th&gt;
-      &lt;th&gt;SC&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;7.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;C&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;教学管理例题&quot;&gt;教学管理例题&lt;/h1&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(SNO,SNAME,AGE,SEX,COLLEGE)\\
-SC(SNO,CNO,GRADE)\\
-C(CNO,CNAME,CDEPT,TNAME)\\&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索LIU老师教的课程号,课程名&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{CNO,CNAME}(\sigma_{TNAME='LIU'}(C))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索年龄大于23的男生的学号和姓名&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNO,SNAME}(\sigma_{SEX='M' and AGE &gt;23}(S))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索学号为S3学生所学课程的课程名与任课老师&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{CNAME,TNAME}(\sigma_{SNO='S3'}(SC\infty C))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索至少选修LIU老师教的课程中一门课的女生姓名&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNAME}(\sigma_{TNAME='LIU' and SEX='女'}(S\infty SC \infty C))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索WANG同学不学的课程的课程号&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{CNO}(C) - \pi_{CNO}(\sigma_{SNAME='wang'}(S\infty SC))&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;检索至少选修两门课程的学生号&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{SNO}(SC\infty SC)- \pi_{SNO}(\sigma_{1=4  and  2 = 5}(SC \infty SC))&lt;/script&gt;
-
-&lt;h1 id=&quot;部门例题&quot;&gt;部门例题&lt;/h1&gt;
-
-&lt;p&gt;关系模式R(职工编号,日期,日营业额,部门名,部门经理),规定没个职工每天只有一个营业额,每个职工只能在一个部门,每个部门只有一个经理,回答:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;写出模式R的基本FD和候选键&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;FD:\\
-(职工编号,日期)-&gt;日营业额\\
-职工编号-&gt;部门名\\
-部门名-&gt;部门经理\\
-候选键:(职工编号,日期)&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;说明R不是2NF理由,并吧R分解为2NF模式集&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;由候选键知:\\
-(职工编号,日期)-&gt;日营业额\\
-(职工编号,日期)-&gt;部门名\\
-(职工编号,日期)-&gt;部门经理\\&lt;/script&gt;
-
-&lt;p&gt;因为在(职工编号,日期)-&amp;gt;部门名,(职工编号,日期)-&amp;gt;部门经理 中,日期是多余属性,存在部分函数依赖,所以R不是2NF&lt;/p&gt;
-
-&lt;p&gt;R进行分解:
-&lt;script type=&quot;math/tex&quot;&gt;R1(职工编号, 日期,日营业额)\\
-R2(职工编号,部门名,部门经理)\\&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;进而分级3NF&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;R1不存在传递依赖,所以为3NF&lt;/p&gt;
-
-&lt;p&gt;R2中有&lt;/p&gt;
-
-&lt;p&gt;职工编号-&amp;gt;部门名,职工编号-&amp;gt;部门经理,&lt;/p&gt;
-
-&lt;p&gt;又部门名-&amp;gt;部门经理&lt;/p&gt;
-
-&lt;p&gt;则存在传递依赖,R2不是3NF&lt;/p&gt;
-
-&lt;p&gt;分解为R21(职工编号,部门名)&lt;/p&gt;
-
-&lt;p&gt;R22(部门名,部门经理)&lt;/p&gt;
-
-&lt;h1 id=&quot;运动例题&quot;&gt;运动例题&lt;/h1&gt;
-
-&lt;p&gt;有关系模式R(运动员编号,比赛项目,成绩,比赛类别,比赛主管),规定:每个运动员参加一个比赛项目,只有一个成绩,每个比赛项目只属于一个比赛类别,每个比赛类别只有一个比赛主管,回答:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;写出基本FD和候选键&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;FD:\\
-(运动员编号,比赛项目)-&gt;成绩\\
-
-比赛项目-&gt;比赛类别\\
-比赛类别-&gt;比赛主管\\
-候选键:(运动员编号,比赛项目),比赛项目&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;R不是2NF理由,并把R分解为2NF&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;R有两个这样的FD：&lt;/p&gt;
-
-&lt;p&gt;​    （运动员编号，比赛项目）→ （比赛类别，比赛主管）&lt;/p&gt;
-
-&lt;p&gt;​           比赛项目 → （比赛类别，比赛主管）&lt;/p&gt;
-
-&lt;p&gt;可见，前一个FD是部分（局部）函数依赖，所以R不是2NF模式。&lt;/p&gt;
-
-&lt;p&gt;分解:&lt;/p&gt;
-
-&lt;p&gt;R1(比赛项目，比赛类别，比赛主管)&lt;/p&gt;
-
-&lt;p&gt;R2(运动员编号，比赛项目，成绩)&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;分解为3NF&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;R2已是3NF模式。&lt;/p&gt;
-
-&lt;p&gt;在R1中，存在两个FD：比赛项目 → 比赛类别&lt;/p&gt;
-
-&lt;p&gt;​           比赛类别 → 比赛主管&lt;/p&gt;
-
-&lt;p&gt;因此，“比赛项目 → 比赛主管”是一个传递依赖，R1不是3NF模式。&lt;/p&gt;
-
-&lt;p&gt;R1应分解为R11（比赛项目，比赛类别）&lt;/p&gt;
-
-&lt;p&gt;​      R12（比赛类别，比赛主管）&lt;/p&gt;
-
-&lt;p&gt;这样，ρ={R11，R12，R2}是一个3NF模式集。&lt;/p&gt;
-
-&lt;h1 id=&quot;系统数据库&quot;&gt;系统数据库&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;master&lt;/li&gt;
-  &lt;li&gt;tempdb&lt;/li&gt;
-  &lt;li&gt;model&lt;/li&gt;
-  &lt;li&gt;msdb&lt;/li&gt;
-  &lt;li&gt;resource&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;数据库文件&quot;&gt;数据库文件&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;主数据文件,扩展名:.mdf&lt;/li&gt;
-  &lt;li&gt;辅助数据文件:扩展名:.ndf&lt;/li&gt;
-  &lt;li&gt;事务日志文件:扩展名:.ldf&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;创建数据库&quot;&gt;创建数据库&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;CREATE DATAVASE JXGL
-ON
-(
-    NAME=JXGL,
-    FILENAME='\D:\...\JXGL.mdf',
-    SIZE=5,
-    FILEGROWTH=1
-)
-LOG ON
-(
-    NAME = JXGL_LOG,
-    FILENAME='D:\..\JXGL_LOG.ldf',
-    SIZE=2,
-    MAXSIZE=20,
-    FILEGROWTH=10%
-)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;完整性约束&quot;&gt;完整性约束&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;实体完整性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;每一行看做一个实体,满足唯一性&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;域完整性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;指定列数据有正确的数据类型,格式,范围&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;参照完整性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;维持参照表和被参照表之间的数据一致性&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;创建数据库表例子&quot;&gt;创建数据库&amp;amp;表例子&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;　USE JXGL
-　CREATE TABLE S
-　(
-     SNO NCHAR(9) NOT NULL,
-     	CONSTRAINT PK_SNO PRIMARY KEY CLUSTERED
-     	CHECK(SNO LIKE '201705121[0-9][0-9]'),
-     SNAME NCHAR(8) NOT NULL,
-     SEX NCHAR(2) NULL,
-     BIRTHDATE DATE NULL,
-     COLLEGE NCHAR(20) NULL
- )
- USE JXGL
- CREATE TABLE C
- (
- 	CNO NCHAR(4) NOT NULL,
-     CNAME NCHAR(20) NOT NULL,
-     DESCRIPTION TEXT NULL,
-     CREDIT REAL NULL,
-     C_COLLEGE NCHAR(20)
-     PRIMARY KEY(CNO)
- )
- USE JXGL
- CREATE TABLE SC
- (
-     SNO CHAR(9) NOT NULL,
-     CNO CHAR(4) NOT NULL,
-     GRADE REAL NULL,
-     PRIMARY KEY(SNO,CNO),
-     FOREIGN KEY(SNO) REFERENCES S(SNO),
-     FOREIGN KEY(CNO) REFERENCES C(CNO)
- )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;数据库维护&quot;&gt;数据库维护&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;参看此篇&lt;a href=&quot;/_posts/2020-05-12-sql-server常用命令总结.md&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;维护例子&quot;&gt;维护例子&lt;/h1&gt;
-
-&lt;p&gt;对Ｓ，ＳＣ，Ｃ的查询&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;统计所有学生选修的课程门数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
-SELECT COUNT(DISTINCT CNO)
-FROM SC
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;求选修Ｃ４号课程的学生的平均年龄&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
-SELECT AVG(AGE)
-FROM S JOIN SC ON S.SNO=SC.SNO AND CNO='C4'
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;求学习计算机学院（ＣＳ）每门课程的学生平均成绩&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;SELECT SC.CNO,AVG(GARDE) 
- FROM SC JOIN C ON 
- SC.CNO = C.CNO and cddept = 'CS'
- GROUP BY SC.CNO
- GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;统计每门课程的学生选修人数（超过１０人的课程才统计）按人数降序排列，若人数相同，按课程号升序排列&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
-SELECT CNO,COUNT(SNO)
-FROM SC
-GROUP BY CNO HAVING COUNT(*)&amp;gt;10
-ORDER BY 2 DESC,1
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;查询姓＂王＂的所有学生的姓名和年龄&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt; USE JXGL
-GO
-SELECT SNAME,AGE
-FROM S
-WHERE SNAME LIKE '王%'
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在ＳＣ中查询成绩为空值的学生学号和课程号&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt; USE JXGL
-GO
-SELECT SNO,CNO
-FROM SC
-WHERE GRADE IS NULL
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;查询１９９７年９月１日前出生的信息学院和数学学院女生的信息&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;select * from S join SC on S.SNO = SC.SNO join C on SC.CNO = C.CNO
-where brith &amp;lt; '1997-09-01' and (CDEPT = &quot;信息学院&quot; orCDEPT = &quot;数学学院&quot; )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在基本表Ｓ中检索每一门课程成绩都大于８０分的学生学号，姓名，性别，并存储在一个&lt;code&gt;已经存在&lt;/code&gt;的基本表ＳＴＵＤＥＮＴ（ＳＮＯ，ＳＮＡＭＥ，ＳＥＸ）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;建表：
-USE JXGL
-GO
-CREATE TABLE STUDENT(SNO CHAR(9) NOT NULL,
-SNAME CHAR(8) NOT NULL,
-SEX CHAR(2))
-GO
-查询结果插入：
-USE JXGL
-GO
-INSERT INTO STUDENT(SNO,SNAME,SEX)
-SELECT SNO,SNAME,SEX
-FROM S
-WHERE SNO IN (SELECT SNO
-              FROM SC
-              GROUP BY SNO HAVING MIN(GRADE)&amp;gt;80)
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在ＳＣ中删除无成绩的学科元组&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
-DELETE FROM SC
-        WHERE GRADE IS NULL
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;把＂张成民＂同学在ＳＣ中的选课记录全部删除&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
-DELETE 
-        FROM SC
-        WHERE SNO IN(SELECT SNO 
-                FROM S 
-                WHERE SNAME='张成民')
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;把选修“高等数学”课程中不及格的成绩全部改为空值&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
-UPDATE SC
-          SET GRADE=NULL
-          WHERE GRADE&amp;lt;60 AND CNO IN(SELECT CNO
-                                FROM C
-                                WHERE CNAME='高等数学')
-
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;把低于总平均成绩的女同学成绩提高５％&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-GO
-UPDATE SC
-        SET GRADE=GRADE*1.05
-        WHERE SNO IN(SELECT SNO
-                FROM S 
-                WHERE SEX='F')
-                    AND GRADE&amp;lt;(SELECT AVG(GRADE)
-                                 FROM SC)
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;存储过程&quot;&gt;存储过程&lt;/h1&gt;
-
-&lt;p&gt;在教学管理数据库中，创建一个名为ＳＴＵ＿ＡＧＥ的存储过程，根据输入的学号，输出该学生的出生年份&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='STU_AGE' AND TYPE='P')
-DROP PROCEDURE STU_AGE
-GO
-CREATE PROCEDURE STU_AGE
-      @S_NAME CHAR(8)
-AS
-      SELECT YEAR(GETDATE()-AGE) AS 'YEAR'
-      FROM S 
-      WHERE SNAME=@S_NAME
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;创建ＧＲＡＤＥ＿ＩＮＦＯ存储过程，功能是查询某门课程所有学生成绩，显示字段ＣＮＡＭＥ，ＳＮＯ，ＳＮＡＭＥ，ＧＲＡＤＥ&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-IF EXISTS(SELECT * FROM  SYSOBJECTS WHERE NAME='GARDE_INFO' AND TYPE='P')
-DROP PROCEDURE GARDE_INFO
-GO
-CREATE PROCEDURE GRADE_INFO
-        @C_NAME VARCHAR(50)
-AS
-        SELECT CNAME,SC.SNO,SNAME,GRADE
-        FROM S JOIN SC ON S.SNO=SC.SNO JOIN C ON SC.CNO=C.CNO AND CNAME=@C_NAME     
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;触发器&quot;&gt;触发器&lt;/h1&gt;
-
-&lt;p&gt;创建触发器ＴＲ＿Ｃ＿ＩＮＳＥＲＴ，在Ｃ表中插入一条新元组，触发器触发，给出＂你插入了一门新课程!＂信息&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-CREATE TRIGGER TR_C_INSERT
-ON C
-       FOR
-          INSERT
-AS 
-        PRINT '你插入了一门新的课程！'
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ＡＦＴＥＲ触发器，在ＳＣ表创建一个插入，更新类型的触发器ＴＲ＿ＧＲＡＤＥ＿ＣＨＥＣＫ，当ＧＲＡＤＥ字段中插入或修改成绩后触发，检查是否在０～１００之间&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JAGL
-CREATE TRIGGER TR_GRADE_CHECK
-ON SC
-       FOR
-          INSERT，UPDATE
-AS 
-  DECLARE @SC_grede tinyint
-SELECT @SC_grade=SC.grade
-FROM SC
-IF (@SC_grade NOT BETWEEN 0 AND 100)
-          PRINT '你插入的成绩不在0~100之间！'
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;用户自定义函数&quot;&gt;用户自定义函数&lt;/h1&gt;
-
-&lt;p&gt;创建函数Ｃ＿ＭＡＸ，根据输入的课程名称，输出该门课程最高分数的同学学号&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'C_MAX' AND TYPE = FN)
-DROP FUNCTION dbo.C_MAX
-GO
-CREATE FUNCTION C_MAX
-(@C_NAME CHAR(8))
-      RETURNS CHAR(20)
-     AS
-BEGIN
-          DECLARE @S_MAX REAL
-          SELECT @S_MAX=MAX(GRADE) 
-          FROM SC JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME
-          RETURN (SELECT SNO FROM SC WHERE GARDE= @S_MAX)
-END
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;创建ＳＮＯ＿ＩＮＦＯ函数，根据输入的课程名称，输出选修该门课程的学生学号，姓名，性别，系部，成绩&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE JXGL
-IF EXISTS(SELECT * FROM SYSOBJECTS WHERE NAME = 'SNO_INFO' AND TYPE = IF)
-DROP FUNCTION dbo.SNO_INFO
-CREATE FUNCTION SNO_INFO
-(@C_NAME CHAR(8))
- RETURNS TABLE
-     AS
-     RETURN(SELECT S.SNO,SNAME,SEX,SDEPT,GRADE
-          FROM S JOIN SC ON S.SNO=SC.SNO JOIN C ON SC.CNO=C.CNO AND C.CNAME=@C_NAME)          
-GO
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;混合验证方式&quot;&gt;混合验证方式&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ＳＱＬ　ｓｅｒｖｅｒ&lt;/li&gt;
-  &lt;li&gt;Ｗｉｎｄｏｗｓ&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;备份&quot;&gt;备份&lt;/h1&gt;
-
-&lt;h2 id=&quot;完整备份&quot;&gt;完整备份&lt;/h2&gt;
-
-&lt;p&gt;备份整个数据库所有内容,包括事务日志,在还原时,只需还原一个备份文件即可&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;USE master
-GO
-BACKUP DATABASE JXGL
-TO DISK='D:\...path...\JXGL_BACKUP.bak'
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;差异备份&quot;&gt;差异备份&lt;/h2&gt;
-
-&lt;p&gt;是对完整备份的补充,只是备份上次完整备份后更改的数据,量更小,速度更快&lt;/p&gt;
-
-&lt;p&gt;数据还原时,需要先还原前一次完整备份数据,然后再还原差异备份的数据&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;BACKUP DATABASE &amp;lt;数据库名字&amp;gt;
-TO DISK|TAPE=&amp;lt;物理文件名&amp;gt;
-WITH DIFFERENTIAL
-;--------例子
-USE master
-GO
-BACKUP DATABASE JAGL
-TO DISK='D:\...\FIRSTBACKUP'
-WITH DIFFERENTIAL,
-NOINIT
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;事务日志备份&quot;&gt;事务日志备份&lt;/h2&gt;
-
-&lt;p&gt;事务备份只备份事务日志中的内容.事务日志记录了上一次完整备份或事务日志备份后数据库所有变动过程,所以在事务备份前,一定要先做完整备份.&lt;/p&gt;
-
-&lt;p&gt;还原时,除了要还原上一次完整备份内容,还要依次还原每个事务日志备份,而不是最后一个事务日志备份&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;BACKUP LOG &amp;lt;数据库名&amp;gt;
-TO DISK|TYPE = &amp;lt;NAME&amp;gt;
-WITH DIFFERENTIAL
-;----------------
-;例子:事务日志备份,且追加到现有备份firstbackup
-USE master
-GO
-BACKUP LOG JXGL
-TO DISK='....\firstbackup'
-WITH NOINIT
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;例题&lt;/p&gt;
-
-  &lt;p&gt;备份JXGL和还原JXGL全过程&lt;/p&gt;
-
-  &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;;创建my_disk备份设备
-USE master
-GO
-EXEC  sp_addumpdevice 'disk','my_disk','D:\....\Dump.bak'
-&lt;/code&gt;&lt;/pre&gt;
-
-  &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;;备份
-USE master
-GO
-BACKUP DATABASE JXGL
-TO DISK='d:\...\Dump2.bak'
-BACKUP LOG JXGL TO DISK='D:\...\Dump2.bak' WITH NORECOVERY
-&lt;/code&gt;&lt;/pre&gt;
-
-  &lt;pre&gt;&lt;code class=&quot;language-mssql&quot;&gt;;还原
-
-USE master
-GO
-RESTORE DATABASE JXGL
-FROM DISK='D:\....\Dump2.bak'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;还原模式&quot;&gt;还原模式&lt;/h1&gt;
-
-&lt;h2 id=&quot;完全还原&quot;&gt;完全还原&lt;/h2&gt;
-
-&lt;p&gt;选择完全还原常使用如下备份策略:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;完整数据库备份&lt;/li&gt;
-  &lt;li&gt;差异备份&lt;/li&gt;
-  &lt;li&gt;事务日志备份&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;大容量日志还原&quot;&gt;大容量日志还原&lt;/h2&gt;
-
-&lt;p&gt;是对完全还原模式的补充,也就是对大容量操作进行最小日志记录&lt;/p&gt;
-
-&lt;h2 id=&quot;简单还原&quot;&gt;简单还原&lt;/h2&gt;
-
-&lt;p&gt;指在还原时,仅仅使用了数据库完整备份或差异备份,而不涉及事务日志备份&lt;/p&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry></feed>
