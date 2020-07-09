@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-08T09:11:17-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-09T01:39:27-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -7,13 +7,30 @@
 &lt;/a&gt;
 </subtitle><entry><title type="html">ubuntu安装问题及后续配置</title><link href="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="ubuntu安装问题及后续配置" /><published>2020-07-08T00:00:00-04:00</published><updated>2020-07-08T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">&lt;p&gt;[toc]&lt;/p&gt;
 
-&lt;p&gt;[toc]&lt;/p&gt;
-
 &lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
 
-&lt;h1 id=&quot;安装中出现的问题总结&quot;&gt;安装中出现的问题总结&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;镜像下载：&lt;a href=&quot;https://ubuntu.com/&quot;&gt;地址&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;win平台制作启动盘软件：软碟通&lt;/li&gt;
+  &lt;li&gt;linux制作启动盘：dd命令：dd if=镜像位置 of= U盘挂载位置&lt;/li&gt;
+  &lt;li&gt;设置BOIS引导启动，后安装，此处不赘述&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h1 id=&quot;后续配置&quot;&gt;后续配置&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">cve-2020-5902</title><link href="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/" rel="alternate" type="text/html" title="cve-2020-5902" /><published>2020-07-06T00:00:00-04:00</published><updated>2020-07-06T00:00:00-04:00</updated><id>http://localhost:4000/_posts/cve-2020-5902</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;安装中出现的问题&quot;&gt;安装中出现的问题&lt;/h1&gt;
+
+&lt;h2 id=&quot;卡死&quot;&gt;卡死&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;卡死在logo界面等等&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;一般是因为ubuntu自带nouveau显卡驱动，且是默认的驱动，与本机N卡冲突&lt;/p&gt;
+
+&lt;p&gt;解决方法：&lt;/p&gt;
+
+&lt;p&gt;在启动U盘时，当看到&lt;code&gt;Try Ubuntu ，Install Ubuntu&lt;/code&gt;时，按下&lt;code&gt;e&lt;/code&gt;键，把出现的文字中&lt;code&gt;quiet splash&lt;/code&gt;改为&lt;code&gt;nomodeset&lt;/code&gt;，然后按&lt;code&gt;F10&lt;/code&gt;重启&lt;/p&gt;
+
+&lt;p&gt;后续即可进入桌面进行安装了&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">cve-2020-5902</title><link href="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/" rel="alternate" type="text/html" title="cve-2020-5902" /><published>2020-07-06T00:00:00-04:00</published><updated>2020-07-06T00:00:00-04:00</updated><id>http://localhost:4000/_posts/cve-2020-5902</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;&lt;code&gt;警告,用于学习,切勿做破坏,造成的后果本人概不负责&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
 
