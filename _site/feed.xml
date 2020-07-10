@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-09T01:39:27-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T01:34:37-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -101,7 +101,11 @@
 &lt;h1 id=&quot;利用&quot;&gt;利用&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-http&quot;&gt;/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/etc/passwd
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00-04:00</published><updated>2020-07-05T00:00:00-04:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;测试结果&quot;&gt;测试结果&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/5902.png&quot; alt=&quot;5902&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00-04:00</published><updated>2020-07-05T00:00:00-04:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。&lt;/p&gt;
