@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T09:59:07-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T10:15:10-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -82,9 +82,11 @@
 
 &lt;h1 id=&quot;密码破解&quot;&gt;密码破解&lt;/h1&gt;
 
-&lt;p&gt;参照此篇&lt;a href=&quot;/_posts/2019-03-13-Hydra.md&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参照此篇&lt;a href=&quot;/_posts/2019-03-13-Hydra&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;相关linux编程&quot;&gt;相关linux编程&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">ubuntu安装问题及后续配置</title><link href="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="ubuntu安装问题及后续配置" /><published>2020-07-08T00:00:00-04:00</published><updated>2020-07-08T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;相关linux编程&quot;&gt;相关linux编程&lt;/h1&gt;
+
+&lt;p&gt;后续补充…&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">ubuntu安装问题及后续配置</title><link href="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="ubuntu安装问题及后续配置" /><published>2020-07-08T00:00:00-04:00</published><updated>2020-07-08T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
 

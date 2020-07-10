@@ -77,6 +77,8 @@ group_name:passwd:GID:user_list
 
 # 密码破解
 
-参照此篇[文章](/_posts/2019-03-13-Hydra.md)
+参照此篇[文章](/_posts/2019-03-13-Hydra)
 
 # 相关linux编程
+
+后续补充...
