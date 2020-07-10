@@ -1,11 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T01:34:37-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-10T09:59:07-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">ubuntu安装问题及后续配置</title><link href="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="ubuntu安装问题及后续配置" /><published>2020-07-08T00:00:00-04:00</published><updated>2020-07-08T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">passwd&amp;amp;shadow文件</title><link href="http://localhost:4000/_posts/2020-07-10-passwd&shadow%E6%96%87%E4%BB%B6/" rel="alternate" type="text/html" title="passwd&amp;shadow文件" /><published>2020-07-10T00:00:00-04:00</published><updated>2020-07-10T00:00:00-04:00</updated><id>http://localhost:4000/_posts/passwd&amp;shadow%E6%96%87%E4%BB%B6</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-10-passwd&amp;shadow%E6%96%87%E4%BB%B6/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;两文件均在&lt;code&gt;/etc&lt;/code&gt;目录下&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;passwd&quot;&gt;passwd&lt;/h1&gt;
+
+&lt;p&gt;这个文件存放着所有用户帐号的信息，包括用户名和密码&lt;/p&gt;
+
+&lt;p&gt;passwd文件由许多条记录组成，&lt;code&gt;每条记录占一行&lt;/code&gt;，记录了一个用户帐号的所有信息。每条记录由&lt;code&gt;7个字段&lt;/code&gt;组成，字段间用&lt;code&gt;冒号“：”隔开&lt;/code&gt;，其格式如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;username:password:User ID:Group ID:comment:home directory:shell
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;username:用户名 用户在登录时使用的就是它&lt;/li&gt;
+  &lt;li&gt;password:该帐号的口令&lt;/li&gt;
+  &lt;li&gt;User ID :用户识别码，简称UID,Linux系统内部使用UID来标识用户，而不是用户名&lt;/li&gt;
+  &lt;li&gt;GROUP ID:用户组识别码，简称GID&lt;/li&gt;
+  &lt;li&gt;comment :这是给用户帐号做的注解,可为空&lt;/li&gt;
+  &lt;li&gt;home directory:主目录,这个目录属于该帐号，当用户登录后，它就会被置于此目录中，就像回到家一样。一般来说，root帐号的主目录是/root，其他帐号的家目录都在/home目录下，并且和用户名同名&lt;/li&gt;
+  &lt;li&gt;shell :登录的shell&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;shadow&quot;&gt;shadow&lt;/h1&gt;
+
+&lt;p&gt;为了增强系统的安全性，Linux系统还可以为用户提供MD5和Shadow安全密码服务。如果在安装 Linux 时在相关配置的选项上选中了MD5和Shadow服务，那么将看到的/etc/passwd文件里的passwd项上无论是什么用户，都是一个“x”，系统其实是把真正的密码数据放在了/etc/shadow文件里。/etc/shadow文件只能以root身份来浏览。&lt;/p&gt;
+
+&lt;p&gt;格式如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;用户名：加密口令：上一次修改的时间（从1970年1月1日起的天数）：口令在两次修改间的最小天数：口令修改之前向用户发出警告的天数：口令终止后账号被禁用的天数：从1970年1月1日起账号被禁用的天数：保留域
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在linux中，口令文件在/etc/passwd中，早期的这个文件直接存放加密后的密码，前两位是”盐”值，是一个随机数，后面跟的是加密的密码。为了安全，现在的linux都提供了 /etc/shadow这个影子文件，密码放在这个文件里面，并且是只有root可读的。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;缺省账号&quot;&gt;缺省账号&lt;/h1&gt;
+
+&lt;p&gt;在利用了shadow文件的情况下，密码用一个x表示，普通用户看不到任何密码信息。如果你仔细的看看这个文件，会发现一些奇怪的用户名，她们是系  统的缺省账号，缺省账号是攻击者入侵的常用入口，因此一定要熟悉缺省账号，特别要注意密码域是否为空。下面简单介绍一下这些缺省账号&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;adm拥有账号文件，起始目录/var/adm通常包括日志文件&lt;/li&gt;
+  &lt;li&gt;bin拥有用户命令的可执行文件&lt;/li&gt;
+  &lt;li&gt;daemon用来执行系统守护进程&lt;/li&gt;
+  &lt;li&gt;games用来玩游戏&lt;/li&gt;
+  &lt;li&gt;halt用来执行halt命令&lt;/li&gt;
+  &lt;li&gt;lp拥有打印机后台打印文件&lt;/li&gt;
+  &lt;li&gt;mail拥有与邮件相关的进程和文件&lt;/li&gt;
+  &lt;li&gt;news拥有与usenet相关的进程和文件&lt;/li&gt;
+  &lt;li&gt;nobody被NFS（网络文件系统）使用&lt;/li&gt;
+  &lt;li&gt;shutdown执行shutdown命令&lt;/li&gt;
+  &lt;li&gt;sync执行sync命令&lt;/li&gt;
+  &lt;li&gt;uucp拥有uucp工具和文件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;/etc/passwd文件在很大范围内是可读的，因为许多应用程序需要用他来把UID转换为用户名，例如，如果不能访问/etc/passwd，那么ls -l命令将显示UID而不是用户名&lt;/p&gt;
+
+&lt;h1 id=&quot;group补充&quot;&gt;group补充&lt;/h1&gt;
+
+&lt;p&gt;etc/group  文件是用户组的配置文件，内容包括用户和用户组，并且能显示出用户是归属哪个用户组或哪几个用户组，因为一个用户可以归属一个或多个不同的用户组；同一用户组的用户之间具有相似的特征。比如我们把某一用户加入到root用户组，那么这个用户就可以浏览root用户家目录的文件，如果root用户把某个文件的读写执行权限开放，root用户组的所有用户都可以修改此文件，如果是可执行的文件（比如脚本），root用户组的用户也是可以执行的；用户组的特性在系统管理中为系统管理员提供了极大的方便，但安全性也是值得关注的，如某个用户下有对系统管理有最重要的内容，最好让用户拥有独立的用户组，或者是把用户下的文件的权限设置为完全私有；另外root用户组一般不要轻易把普通用户加入进去。&lt;/p&gt;
+
+&lt;p&gt;格式如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;group_name:passwd:GID:user_list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;group_name:用户组名称&lt;/li&gt;
+  &lt;li&gt;passwd:用户组密码&lt;/li&gt;
+  &lt;li&gt;GID:GID&lt;/li&gt;
+  &lt;li&gt;user_list:用户列表，每个用户之间用,号分割；本字段可以为空；如果字段为空表示用户组为GID的用户名；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;密码破解&quot;&gt;密码破解&lt;/h1&gt;
+
+&lt;p&gt;参照此篇&lt;a href=&quot;/_posts/2019-03-13-Hydra.md&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;相关linux编程&quot;&gt;相关linux编程&lt;/h1&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">ubuntu安装问题及后续配置</title><link href="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="ubuntu安装问题及后续配置" /><published>2020-07-08T00:00:00-04:00</published><updated>2020-07-08T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
 
@@ -2997,124 +3076,4 @@ Date: Fri May 5 19:00:48 2017 +0800
 
 &lt;p&gt;Tag对象就是里程碑的作用，一般在我们正式发布代码是需要建立一个里程碑。&lt;/p&gt;
 
-&lt;h1 id=&quot;工作区暂存区版本库&quot;&gt;工作区、暂存区、版本库&lt;/h1&gt;</content><author><name></name></author><summary type="html">title:git实现原理 tags: git</summary></entry><entry><title type="html">西华大学抢课脚本</title><link href="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/" rel="alternate" type="text/html" title="西华大学抢课脚本" /><published>2020-06-29T00:00:00-04:00</published><updated>2020-06-29T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC</id><content type="html" xml:base="http://localhost:4000/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;环境配置&quot;&gt;环境配置&lt;/h1&gt;
-
-&lt;p&gt;安装油猴插件&lt;/p&gt;
-
-&lt;h1 id=&quot;脚本&quot;&gt;脚本&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;// ==UserScript==
-// @name         西华大学选课脚本
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        http://*/*
-// @grant        none
-// ==/UserScript==
-
-(function () {
-  'use strict';
-  /**
-   * 西华大学一键式选课脚本
-   * 此脚本只能简单的代替你点击选课
-   * 不保证成功率
-   * 使用此脚本是您自愿使用的造成的损失作者概不负责·
-   * @author WDF
-   * 有问题请联系我
-   * @QQ 2921235963
-   */
-
-  //把名字替换为你需要的课程名称
-  let courseName = [&quot;足球&quot;, &quot;网球&quot;,&quot;桥牌&quot;]
-
-  document.getElementsByClassName(&quot;panel panel-info&quot;)[0].getElementsByClassName(&quot;nav nav-tabs sl_nav_tabs&quot;)[0].getElementsByTagName(&quot;li&quot;)[1].getElementsByTagName(&quot;a&quot;)[0].click()
-
-  let o = document.getElementById(&quot;more&quot;)
-  for (let i = 0; i &amp;lt; 10; i++) {
-    setTimeout(() =&amp;gt; {
-      o.getElementsByTagName(&quot;a&quot;)[0].click()
-    }, 1000)
-  }
-
-  let cnt = 0
-
-  // 等待加载出课程
-  setTimeout(() =&amp;gt; {
-    console.log('loading...')
-
-    //进入选课界面
-    let courseList = document.getElementsByClassName(&quot;panel panel-info&quot;)
-    for (let j = 0; j &amp;lt; courseName.length; j++) {
-      cnt = cnt + 1
-      if (j &amp;gt; 0)
-        console.log(courseName[j - 1] + '选课成功!\n')
-
-      console.log('当前准备选择的课程:' + courseName[j])
-      let i
-      // 搜索课程
-      for (i = 1; i &amp;lt; courseList.length; i++) {
-        setTimeout(() =&amp;gt; {
-        }, 1000)
-
-        let oo = courseList[i].getElementsByClassName(&quot;panel-heading kc_head&quot;)[0].getElementsByClassName(&quot;panel-title&quot;)[0]
-        let thisText = oo.getElementsByClassName(&quot;kcmc&quot;)[0].getElementsByTagName(&quot;a&quot;)[0].innerText
-
-        if (courseName[j] == thisText) {
-          courseList[i].getElementsByClassName(&quot;panel-heading kc_head&quot;)[0].getElementsByClassName(&quot;panel-title&quot;)[0].click()
-          break;
-        }
-      }
-      let flag = false
-      let map = new Map()
-      const timer = setInterval(() =&amp;gt; {
-        if (flag)
-          clearInterval(timer)
-        // 获取当前课程列表
-        let list = courseList[i].getElementsByClassName(&quot;panel-body table-responsive&quot;)[0].getElementsByClassName(&quot;table table-hover&quot;)[0].getElementsByClassName(&quot;body_tr&quot;)
-
-        for (let k = 0; k &amp;lt; list.length; k++) {
-          if (map.has(k))
-            continue
-          let o = list[k].getElementsByClassName(&quot;an&quot;)[0].getElementsByClassName(&quot;btn btn-primary btn-sm&quot;)[0]
-          if (o == null)
-            o = list[k].getElementsByClassName(&quot;an&quot;)[0].getElementsByClassName(&quot;btn btn-danger btn-sm&quot;)[0]
-          // console.log(k+&quot;---&quot;+o.innerText)
-          if (o.innerText == &quot;选课&quot;) {
-            o.click()
-            setTimeout(() =&amp;gt; {
-              let content = document.getElementsByClassName(&quot;modal-content&quot;)[0]
-              if (content != null) {
-                let message = content.getElementsByClassName(&quot;modal-body&quot;)[0].getElementsByClassName(&quot;bootbox-body&quot;)[0].getElementsByClassName(&quot;alert alert-modal&quot;)[0].innerText
-
-                if (message == &quot;所选教学班的上课时间与其他教学班有冲突！&quot;)
-                  map.set(k, '1')
-                else if (message == &quot;一门课程最多可选1个志愿！&quot;)
-                  clearInterval(timer)
-                var ok_btn = content.getElementsByClassName(&quot;modal-footer ui-draggable-handle&quot;)[0].getElementsByClassName(&quot;btn btn-sm btn-default&quot;)[0]
-                if (ok_btn != null)
-                  ok_btn.click()
-              }
-            }, 750)
-          } else {
-            flag = true
-            clearInterval(timer)
-          }
-          if (flag)
-            break
-        }
-      }, 1500)
-
-    }
-  }, 2000)
-  if (cnt == courseName.length)
-    console.log('选课成功')
-
-
-  // Your code here...
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;感谢吴同学分享的脚本,[github](https://github.com/Sherlockouo/script/tree/master/study&lt;/p&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry></feed>
+&lt;h1 id=&quot;工作区暂存区版本库&quot;&gt;工作区、暂存区、版本库&lt;/h1&gt;</content><author><name></name></author><summary type="html">title:git实现原理 tags: git</summary></entry></feed>

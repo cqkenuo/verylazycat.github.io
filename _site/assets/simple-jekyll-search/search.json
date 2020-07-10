@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "passwd&amp;shadow文件",
+      "category" : "",
+      "tags"     : "linux",
+      "date"     : "2020-07-10 00:00:00 -0400",
+      
+      "url"      : "/_posts/2020-07-10-passwd&shadow%E6%96%87%E4%BB%B6/"
+    } ,
+  
+    {
       "title"    : "ubuntu安装问题及后续配置",
       "category" : "",
       "tags"     : "linux",
