@@ -39,8 +39,6 @@ username:password:User ID:Group ID:comment:home directory:shell
 
 > 在linux中，口令文件在/etc/passwd中，早期的这个文件直接存放加密后的密码，前两位是"盐"值，是一个随机数，后面跟的是加密的密码。为了安全，现在的linux都提供了 /etc/shadow这个影子文件，密码放在这个文件里面，并且是只有root可读的。
 
-
-
 # 缺省账号
 
 在利用了shadow文件的情况下，密码用一个x表示，普通用户看不到任何密码信息。如果你仔细的看看这个文件，会发现一些奇怪的用户名，她们是系  统的缺省账号，缺省账号是攻击者入侵的常用入口，因此一定要熟悉缺省账号，特别要注意密码域是否为空。下面简单介绍一下这些缺省账号
@@ -81,4 +79,246 @@ group_name:passwd:GID:user_list
 
 # 相关linux编程
 
-后续补充...
+## 函数介绍
+
+- getpwuid
+
+- getpwnam
+
+  >getpwnam, getpwnam_r, getpwuid, getpwuid_r - get password file entry
+
+  ```c
+  #include <sys/types.h>
+  #include <pwd.h>
+  struct passwd *getpwnam(const char *name);
+  struct passwd *getpwuid(uid_t uid);
+  int getpwnam_r(const char *name, struct passwd *pwd,
+  char *buf, size_t buflen, struct passwd **result);
+  int getpwuid_r(uid_t uid, struct passwd *pwd,
+  char *buf, size_t buflen, struct passwd **result);
+  Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+  getpwnam_r(), getpwuid_r():
+  _POSIX_C_SOURCE
+  || /* Glibc versions <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+  ```
+
+passwd结构体定义`<pwd.h>`文件中，具体如下：
+
+```c
+struct passwd {
+               char   *pw_name;       /* username */
+               char   *pw_passwd;     /* user password */
+               uid_t   pw_uid;        /* user ID */
+               gid_t   pw_gid;        /* group ID */
+               char   *pw_gecos;      /* user information */
+               char   *pw_dir;        /* home directory */
+               char   *pw_shell;      /* shell program */
+           };
+```
+
+- getgrgid
+
+- getgrgrnam
+
+  > getgrnam, getgrnam_r, getgrgid, getgrgid_r - get group file entry
+
+  ```c
+  #include <sys/types.h>
+  #include <grp.h>
+  
+  struct group *getgrnam(const char *name);
+  
+  struct group *getgrgid(gid_t gid);
+  
+  int getgrnam_r(const char *name, struct group *grp,
+  char *buf, size_t buflen, struct group **result);
+  
+  int getgrgid_r(gid_t gid, struct group *grp,
+  char *buf, size_t buflen, struct group **result);
+  
+  Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+  
+  getgrnam_r(), getgrgid_r():
+  _POSIX_C_SOURCE
+  || /* Glibc versions <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+  ```
+
+group结构体定义`<group.h>`文件中，具体如下：
+
+```c
+struct group {
+               char   *gr_name;        /* group name */
+               char   *gr_passwd;      /* group password */
+               gid_t   gr_gid;         /* group ID */
+               char  **gr_mem;         /* NULL-terminated array of pointers
+                                          to names of group members */
+           };
+```
+
+## shadow密码部分解析
+
+案例：
+
+```markdown
+$6$/yP9fQlL$/2sALmuVqVSTCrBo5ObPl8v9cpOvSHX1dHOrAQORCNiB6fJc5.93po8RorRBWo1415wnOdd0EmNmgq.wpwYjE0
+```
+
+以*$*符为分割，
+
+- $6$：表示加密方法
+- $/yP9fQlL$ :杂质串,需要原串或上这个杂质串,然后经过第一个*$*间定义的加密方式进行加密,然后获得第三个*$*间的内容
+- $/2sALmuVqVSTCrBo5ObPl8v9cpOvSHX1dHOrAQORCNiB6fJc5.93po8RorRBWo1415wnOdd0EmNmgq.wpwYjE0 :加密生成的
+
+## 相关函数
+
+- getspnam
+
+> getspnam, getspnam_r, getspent, getspent_r, setspent, endspent, fgetspent, fgetspent_r, sgetspent,
+>   sgetspent_r, putspent, lckpwdf, ulckpwdf - get shadow password file entry
+
+```c
+#include <shadow.h>
+struct spwd *getspnam(const char *name);
+struct spwd *getspent(void);
+void setspent(void);
+void endspent(void);
+struct spwd *fgetspent(FILE *stream);
+struct spwd *sgetspent(const char *s);
+int putspent(const struct spwd *p, FILE *stream);
+int lckpwdf(void);
+int ulckpwdf(void);
+/* GNU extension */
+#include <shadow.h>
+int getspent_r(struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int getspnam_r(const char *name, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int fgetspent_r(FILE *stream, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int sgetspent_r(const char *s, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+```
+
+相应结构体为于`<shadow.h>`
+
+```c
+struct spwd {
+               char *sp_namp;     /* Login name */
+               char *sp_pwdp;     /* Encrypted password */
+               long  sp_lstchg;   /* Date of last change
+                                     (measured in days since
+                                     1970-01-01 00:00:00 +0000 (UTC)) */
+               long  sp_min;      /* Min # of days between changes */
+               long  sp_max;      /* Max # of days between changes */
+               long  sp_warn;     /* # of days before password expires
+                                     to warn user to change it */
+               long  sp_inact;    /* # of days after password expires
+                                     until account is disabled */
+               long  sp_expire;   /* Date when account expires
+                                     (measured in days since
+                                     1970-01-01 00:00:00 +0000 (UTC)) */
+               unsigned long sp_flag;  /* Reserved */
+           };
+```
+
+- crypt
+
+> crypt, crypt_r - password and data encryption
+
+```c
+#define _XOPEN_SOURCE       /* See feature_test_macros(7) */
+#include <unistd.h>
+
+char *crypt(const char *key, const char *salt);
+
+#define _GNU_SOURCE         /* See feature_test_macros(7) */
+#include <crypt.h>
+
+char *crypt_r(const char *key, const char *salt,
+              struct crypt_data *data);
+```
+
+> 注意：编译时需要带上` -lcrypt.`
+
+结合shadow文件密码部分，发现`crypt`函数参数并没有定义加密方法，其实这个部分被整合到salt部分去了，参照如下：
+
+The glibc2 version of this function supports additional encryption algorithms.
+
+If salt is a character string starting with the characters "$id$" followed by a string  optionally
+   terminated by "$", then the result has the form:
+
+          $id$salt$encrypted
+
+   id  identifies  the encryption method used instead of DES and this then determines how the rest of
+   the password string is interpreted.  The following values of id are supported:
+
+| ID   | Method                                                       |
+| ---- | ------------------------------------------------------------ |
+| 1    | MD5                                                          |
+| 2a   | Blowfish (not in mainline glibc; added in some Linux distributions) |
+| 5    | SHA-256                                                      |
+| 6    | SHA-512                                                      |
+
+Thus, $5$salt$encrypted and $6$salt$encrypted contain the password encrypted  with,  respectively,
+   functions based on SHA-256 and SHA-512.
+
+   "salt"  stands  for the up to 16 characters following "$id$" in the salt.  The "encrypted" part of
+   the password string is the actual computed password.  The size of this string is fixed:
+
+   MD5     | 22 characters
+   SHA-256 | 43 characters
+   SHA-512 | 86 characters
+
+   The characters in "salt" and "encrypted" are drawn from the set [a-zA-Z0-9./].  In the MD5 and SHA
+   implementations the entire key is significant (instead of only the first 8 bytes in DES).
+
+   Since glibc 2.7, the SHA-256 and SHA-512 implementations support a user-supplied number of hashing
+   rounds, defaulting to 5000.  If the "$id$" characters in the salt are followed  by  "rounds=xxx$",
+   where xxx is an integer, then the result has the form
+
+          $id$rounds=yyy$salt$encrypted
+
+   where  yyy  is  the number of hashing rounds actually used.  The number of rounds actually used is
+   1000 if xxx is less than 1000, 999999999 if xxx is greater than 999999999, and  is  equal  to  xxx
+   otherwise
+
+检测用户密码例子
+
+> 代码不规范，没有做一些判断处理等细节
+>
+> 编译： gcc checkpass.c -lcrypt -D _XOPEN_SOURCE
+>
+> 注意需要用root用户去运行(需要访问shadow文件)，不然会有段错误
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <shadow.h>
+int main(int argc,char ** argv[])
+{
+    char *input_pass;
+    struct spwd *shadowline;
+    char *crypt_pass;
+    if(argc < 2)
+    {
+        fprintf(stderr,"usage ...\n");
+        exit(EXIT_SUCCESS);
+    }
+    //获取用户口令
+    //关闭输入回显
+    input_pass = getpass("PassWord:");
+    shadowline =  getspnam(argv[1]);
+    crypt_pass = crypt(input_pass,shadowline->sp_pwdp);
+    if(strcmp(shadowline->sp_pwdp,crypt_pass) == 0)
+    {
+        puts("ok");
+    }
+    else
+    {
+        puts("error");
+    }
+    return 0;
+}
+```
+

@@ -329,7 +329,13 @@
   <li><a href="#%E7%BC%BA%E7%9C%81%E8%B4%A6%E5%8F%B7">缺省账号</a></li>
   <li><a href="#group%E8%A1%A5%E5%85%85">group补充</a></li>
   <li><a href="#%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3">密码破解</a></li>
-  <li><a href="#%E7%9B%B8%E5%85%B3linux%E7%BC%96%E7%A8%8B">相关linux编程</a></li>
+  <li><a href="#%E7%9B%B8%E5%85%B3linux%E7%BC%96%E7%A8%8B">相关linux编程</a>
+    <ol>
+      <li><a href="#%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D">函数介绍</a></li>
+      <li><a href="#shadow%E5%AF%86%E7%A0%81%E9%83%A8%E5%88%86%E8%A7%A3%E6%9E%90">shadow密码部分解析</a></li>
+      <li><a href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0">相关函数</a></li>
+    </ol>
+  </li>
 </ol>
       
       
@@ -597,11 +603,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    1767字
+    7109字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    6分
+    24分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-07-10-passwd&shadow%E6%96%87%E4%BB%B6/" data-xid="/_posts/2020-07-10-passwd&shadow%E6%96%87%E4%BB%B6/" data-flag-title="passwd&shadow文件">
@@ -712,7 +718,303 @@
 
 <h1 id="相关linux编程">相关linux编程</h1>
 
-<p>后续补充…</p>
+<h2 id="函数介绍">函数介绍</h2>
+
+<ul>
+  <li>
+    <p>getpwuid</p>
+  </li>
+  <li>
+    <p>getpwnam</p>
+
+    <blockquote>
+      <p>getpwnam, getpwnam_r, getpwuid, getpwuid_r - get password file entry</p>
+    </blockquote>
+
+    <pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;pwd.h&gt;
+struct passwd *getpwnam(const char *name);
+struct passwd *getpwuid(uid_t uid);
+int getpwnam_r(const char *name, struct passwd *pwd,
+char *buf, size_t buflen, struct passwd **result);
+int getpwuid_r(uid_t uid, struct passwd *pwd,
+char *buf, size_t buflen, struct passwd **result);
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+getpwnam_r(), getpwuid_r():
+_POSIX_C_SOURCE
+|| /* Glibc versions &lt;= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+</code></pre>
+  </li>
+</ul>
+
+<p>passwd结构体定义<code>&lt;pwd.h&gt;</code>文件中，具体如下：</p>
+
+<pre><code class="language-c">struct passwd {
+               char   *pw_name;       /* username */
+               char   *pw_passwd;     /* user password */
+               uid_t   pw_uid;        /* user ID */
+               gid_t   pw_gid;        /* group ID */
+               char   *pw_gecos;      /* user information */
+               char   *pw_dir;        /* home directory */
+               char   *pw_shell;      /* shell program */
+           };
+</code></pre>
+
+<ul>
+  <li>
+    <p>getgrgid</p>
+  </li>
+  <li>
+    <p>getgrgrnam</p>
+
+    <blockquote>
+      <p>getgrnam, getgrnam_r, getgrgid, getgrgid_r - get group file entry</p>
+    </blockquote>
+
+    <pre><code class="language-c">#include &lt;sys/types.h&gt;
+#include &lt;grp.h&gt;
+  
+struct group *getgrnam(const char *name);
+  
+struct group *getgrgid(gid_t gid);
+  
+int getgrnam_r(const char *name, struct group *grp,
+char *buf, size_t buflen, struct group **result);
+  
+int getgrgid_r(gid_t gid, struct group *grp,
+char *buf, size_t buflen, struct group **result);
+  
+Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+  
+getgrnam_r(), getgrgid_r():
+_POSIX_C_SOURCE
+|| /* Glibc versions &lt;= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+</code></pre>
+  </li>
+</ul>
+
+<p>group结构体定义<code>&lt;group.h&gt;</code>文件中，具体如下：</p>
+
+<pre><code class="language-c">struct group {
+               char   *gr_name;        /* group name */
+               char   *gr_passwd;      /* group password */
+               gid_t   gr_gid;         /* group ID */
+               char  **gr_mem;         /* NULL-terminated array of pointers
+                                          to names of group members */
+           };
+</code></pre>
+
+<h2 id="shadow密码部分解析">shadow密码部分解析</h2>
+
+<p>案例：</p>
+
+<pre><code class="language-markdown">$6$/yP9fQlL$/2sALmuVqVSTCrBo5ObPl8v9cpOvSHX1dHOrAQORCNiB6fJc5.93po8RorRBWo1415wnOdd0EmNmgq.wpwYjE0
+</code></pre>
+
+<p>以<em>$</em>符为分割，</p>
+
+<ul>
+  <li>$6$：表示加密方法</li>
+  <li>$/yP9fQlL$ :杂质串,需要原串或上这个杂质串,然后经过第一个<em>$</em>间定义的加密方式进行加密,然后获得第三个<em>$</em>间的内容</li>
+  <li>$/2sALmuVqVSTCrBo5ObPl8v9cpOvSHX1dHOrAQORCNiB6fJc5.93po8RorRBWo1415wnOdd0EmNmgq.wpwYjE0 :加密生成的</li>
+</ul>
+
+<h2 id="相关函数">相关函数</h2>
+
+<ul>
+  <li>getspnam</li>
+</ul>
+
+<blockquote>
+  <p>getspnam, getspnam_r, getspent, getspent_r, setspent, endspent, fgetspent, fgetspent_r, sgetspent,
+  sgetspent_r, putspent, lckpwdf, ulckpwdf - get shadow password file entry</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;shadow.h&gt;
+struct spwd *getspnam(const char *name);
+struct spwd *getspent(void);
+void setspent(void);
+void endspent(void);
+struct spwd *fgetspent(FILE *stream);
+struct spwd *sgetspent(const char *s);
+int putspent(const struct spwd *p, FILE *stream);
+int lckpwdf(void);
+int ulckpwdf(void);
+/* GNU extension */
+#include &lt;shadow.h&gt;
+int getspent_r(struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int getspnam_r(const char *name, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int fgetspent_r(FILE *stream, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+int sgetspent_r(const char *s, struct spwd *spbuf,
+char *buf, size_t buflen, struct spwd **spbufp);
+</code></pre>
+
+<p>相应结构体为于<code>&lt;shadow.h&gt;</code></p>
+
+<pre><code class="language-c">struct spwd {
+               char *sp_namp;     /* Login name */
+               char *sp_pwdp;     /* Encrypted password */
+               long  sp_lstchg;   /* Date of last change
+                                     (measured in days since
+                                     1970-01-01 00:00:00 +0000 (UTC)) */
+               long  sp_min;      /* Min # of days between changes */
+               long  sp_max;      /* Max # of days between changes */
+               long  sp_warn;     /* # of days before password expires
+                                     to warn user to change it */
+               long  sp_inact;    /* # of days after password expires
+                                     until account is disabled */
+               long  sp_expire;   /* Date when account expires
+                                     (measured in days since
+                                     1970-01-01 00:00:00 +0000 (UTC)) */
+               unsigned long sp_flag;  /* Reserved */
+           };
+</code></pre>
+
+<ul>
+  <li>crypt</li>
+</ul>
+
+<blockquote>
+  <p>crypt, crypt_r - password and data encryption</p>
+</blockquote>
+
+<pre><code class="language-c">#define _XOPEN_SOURCE       /* See feature_test_macros(7) */
+#include &lt;unistd.h&gt;
+
+char *crypt(const char *key, const char *salt);
+
+#define _GNU_SOURCE         /* See feature_test_macros(7) */
+#include &lt;crypt.h&gt;
+
+char *crypt_r(const char *key, const char *salt,
+              struct crypt_data *data);
+</code></pre>
+
+<blockquote>
+  <p>注意：编译时需要带上<code> -lcrypt.</code></p>
+</blockquote>
+
+<p>结合shadow文件密码部分，发现<code>crypt</code>函数参数并没有定义加密方法，其实这个部分被整合到salt部分去了，参照如下：</p>
+
+<p>The glibc2 version of this function supports additional encryption algorithms.</p>
+
+<p>If salt is a character string starting with the characters “$id$” followed by a string  optionally
+   terminated by “$”, then the result has the form:</p>
+
+<pre><code>      $id$salt$encrypted
+</code></pre>
+
+<p>id  identifies  the encryption method used instead of DES and this then determines how the rest of
+   the password string is interpreted.  The following values of id are supported:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>MD5</td>
+    </tr>
+    <tr>
+      <td>2a</td>
+      <td>Blowfish (not in mainline glibc; added in some Linux distributions)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>SHA-256</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>SHA-512</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Thus, $5$salt$encrypted and $6$salt$encrypted contain the password encrypted  with,  respectively,
+   functions based on SHA-256 and SHA-512.</p>
+
+<p>“salt”  stands  for the up to 16 characters following “$id$” in the salt.  The “encrypted” part of
+   the password string is the actual computed password.  The size of this string is fixed:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>MD5</td>
+      <td>22 characters</td>
+    </tr>
+    <tr>
+      <td>SHA-256</td>
+      <td>43 characters</td>
+    </tr>
+    <tr>
+      <td>SHA-512</td>
+      <td>86 characters</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The characters in “salt” and “encrypted” are drawn from the set [a-zA-Z0-9./].  In the MD5 and SHA
+   implementations the entire key is significant (instead of only the first 8 bytes in DES).</p>
+
+<p>Since glibc 2.7, the SHA-256 and SHA-512 implementations support a user-supplied number of hashing
+   rounds, defaulting to 5000.  If the “$id$” characters in the salt are followed  by  “rounds=xxx$”,
+   where xxx is an integer, then the result has the form</p>
+
+<pre><code>      $id$rounds=yyy$salt$encrypted
+</code></pre>
+
+<p>where  yyy  is  the number of hashing rounds actually used.  The number of rounds actually used is
+   1000 if xxx is less than 1000, 999999999 if xxx is greater than 999999999, and  is  equal  to  xxx
+   otherwise</p>
+
+<p>检测用户密码例子</p>
+
+<blockquote>
+  <p>代码不规范，没有做一些判断处理等细节</p>
+
+  <p>编译： gcc checkpass.c -lcrypt -D _XOPEN_SOURCE</p>
+
+  <p>注意需要用root用户去运行(需要访问shadow文件)，不然会有段错误</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;shadow.h&gt;
+int main(int argc,char ** argv[])
+{
+    char *input_pass;
+    struct spwd *shadowline;
+    char *crypt_pass;
+    if(argc &lt; 2)
+    {
+        fprintf(stderr,"usage ...\n");
+        exit(EXIT_SUCCESS);
+    }
+    //获取用户口令
+    //关闭输入回显
+    input_pass = getpass("PassWord:");
+    shadowline =  getspnam(argv[1]);
+    crypt_pass = crypt(input_pass,shadowline-&gt;sp_pwdp);
+    if(strcmp(shadowline-&gt;sp_pwdp,crypt_pass) == 0)
+    {
+        puts("ok");
+    }
+    else
+    {
+        puts("error");
+    }
+    return 0;
+}
+</code></pre>
+
 
 </div>
 <div class="v">
