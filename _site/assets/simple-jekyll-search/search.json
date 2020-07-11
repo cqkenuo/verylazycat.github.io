@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "xss",
+      "category" : "",
+      "tags"     : "安全",
+      "date"     : "2020-07-11 00:00:00 -0400",
+      
+      "url"      : "/_posts/2020-07-11-xss/"
+    } ,
+  
+    {
       "title"    : "passwd&amp;shadow文件",
       "category" : "",
       "tags"     : "linux",
