@@ -6,13 +6,13 @@
 
 ## 我的一些联系方式
 
--  :house: Address: **SiChuan  China**
-- :phone: Phone: +86 17378993771
-- :spider_web: Site: **<https://www.imod.top>**
+-  **SiChuan  China**
+- ​ Phone: +86 17378993771
+- ​Site: **<https://www.imod.top>**
 
 <!-- slide vertical=true -->
 
-- :e-mail: E-mail:
+-  E-mail:
   - **[outlook](mailto:verylazycat@outlook.com)**
   - **[QQ](mailto:1647495684@qq.com)**
 - WeChat: **serendipity_liuY**
@@ -24,7 +24,7 @@
 
 <!-- slide vertical=true -->
 
-:school: XHU university
+ XHU university
 
 <!-- slide -->
 
@@ -42,9 +42,9 @@
 
 <!-- slide vertical=true -->
 
-- :3rd_place_medal: 爱驰杯
+- ​ 爱驰杯
 
-- :3rd_place_medal: 华迪杯
+- ​ 华迪杯
 
   
 
