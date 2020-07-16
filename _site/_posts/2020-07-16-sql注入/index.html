@@ -4,17 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>标签 | lazycat</title>
+<title>sql注入 | lazycat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="标签" />
+<meta property="og:title" content="sql注入" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="lazycat" />
-<meta property="og:description" content="lazycat" />
-<link rel="canonical" href="http://localhost:4000/tags/" />
-<meta property="og:url" content="http://localhost:4000/tags/" />
+<meta name="description" content="[toc]" />
+<meta property="og:description" content="[toc]" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/" />
 <meta property="og:site_name" content="lazycat" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-16T00:00:00-04:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/tags/","headline":"标签","description":"lazycat","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/","headline":"sql注入","dateModified":"2020-07-16T00:00:00-04:00","datePublished":"2020-07-16T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/"},"description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -264,7 +266,7 @@
         <i class="fas fa-comments fa-fw"></i> 留言
       </a>
       
-      <a class="sidebar-nav-item active" href="/tags/">
+      <a class="sidebar-nav-item" href="/tags/">
         <i class="fas fa-tags fa-fw"></i> 标签
       </a>
       
@@ -322,19 +324,23 @@
 </style>
 
       <ol id="toc">
-  <li><a href="#%25E5%25AE%2589%25E5%2585%25A8">      10    安全</a></li>
-  <li><a href="#%25E6%259C%25BA%25E5%2599%25A8%25E5%25AD%25A6%25E4%25B9%25A0">      2    机器学习</a></li>
-  <li><a href="#linux">      14    linux</a></li>
-  <li><a href="#%25E6%2593%258D%25E4%25BD%259C%25E7%25B3%25BB%25E7%25BB%259F">      3    操作系统</a></li>
-  <li><a href="#JAVA">      8    JAVA</a></li>
-  <li><a href="#sql">      4    sql</a></li>
-  <li><a href="#%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584">      2    数据结构</a></li>
-  <li><a href="#%25E7%25AE%2597%25E6%25B3%2595">      3    算法</a></li>
-  <li><a href="#%25E6%2595%25B0%25E6%258D%25AE%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596">      1    数据可视化</a></li>
-  <li><a href="#git">      1    git</a></li>
-  <li><a href="#JVM">      1    JVM</a></li>
-  <li><a href="#%25E7%2594%259F%25E6%25B4%25BB">      1    生活</a></li>
-  <li><a href="#%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E7%25BD%2591%25E7%25BB%259C">      6    计算机网络</a></li>
+  <li><a href="#sql%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86">SQL注入原理</a></li>
+  <li><a href="#sql%E6%B3%A8%E5%85%A5%E7%9A%84%E4%BD%8D%E7%BD%AE">SQL注入的位置</a></li>
+  <li><a href="#sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B">SQL注入漏洞常见类型</a>
+    <ol>
+      <li><a href="#union%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">union注入攻击</a></li>
+      <li><a href="#boolean%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8">Boolean注入攻击-布尔盲注</a></li>
+      <li><a href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">报错注入攻击</a></li>
+      <li><a href="#%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8">时间注入攻击-时间盲注</a></li>
+      <li><a href="#%E5%A0%86%E5%8F%A0%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">堆叠查询注入攻击</a></li>
+      <li><a href="#%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">二次注入攻击</a></li>
+      <li><a href="#%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">宽字节注入攻击</a></li>
+      <li><a href="#base64%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">base64注入攻击</a></li>
+      <li><a href="#http%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5-cookie%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">HTTP请求头参数注入-cookie注入攻击</a></li>
+      <li><a href="#http%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5-xff%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB">HTTP请求头参数注入-XFF注入攻击</a></li>
+      <li><a href="#%E7%9F%A5%E9%81%93%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E6%B3%A8%E5%85%A5">知道绝对路径的注入</a></li>
+    </ol>
+  </li>
 </ol>
       
       
@@ -583,7 +589,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    标签
+    sql注入
     <a href="/" title="Home">
       <small>
         lazycat
@@ -594,464 +600,311 @@
 </div>
 
 <div class="container content">
-  <p>文章标签分类较多，可在侧边栏的目录中快速定位~</p>
+  <div class="post">
+  <span class="post-date">
+    
+    <i class="fas fa-calendar-day fa-fw"></i>
+    16 Jul 2020
+    
+    
+    <i class="fas fa-file-word fa-fw"></i>
+    3916字
+    
+    
+    <i class="fas fa-clock fa-fw"></i>
+    14分
+    
+    
+    <span class="leancloud-visitors" id="/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/" data-xid="/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/" data-flag-title="sql注入">
+      <i class="fas fa-book-reader fa-fw"></i>
+      <span class="leancloud-visitors-count">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>次
+    </span>
+    
+    
+    
+    <i class="fas fa-tag fa-fw"></i>
+    安全
+    
+    
+    <br/>
+<i class="fas fa-coffee fa-fw"></i>
+<a href="/merger/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+<br/>
+<i class="fab fa-creative-commons-by fa-fw"></i>
+<a
+  href="https://creativecommons.org/licenses/by/4.0/deed.zh"
+  rel="license">
+  CC BY 4.0
+</a>
+（除特别声明或转载文章外）
 
+    
+  </span>
+  <p>[toc]</p>
 
-<div class="mermaid">
-  pie
-  
-  
-  "安全" : 10
-  
-  "机器学习" : 2
-  
-  "linux" : 14
-  
-  "操作系统" : 3
-  
-  "JAVA" : 8
-  
-  "sql" : 4
-  
-  "数据结构" : 2
-  
-  "算法" : 3
-  
-  "数据可视化" : 1
-  
-  "git" : 1
-  
-  "JVM" : 1
-  
-  "生活" : 1
-  
-  "计算机网络" : 6
-  
+<h1 id="sql注入原理">SQL注入原理</h1>
+
+<p>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。（从客户端提交特殊的代码，从而收集程序及服务器的信息，从而获取你想到得到的资料）</p>
+
+<h1 id="sql注入的位置"><strong>SQL注入的位置</strong></h1>
+
+<ul>
+  <li>表单提交，主要是POST请求，也包括GET请求；</li>
+  <li>URL参数提交，主要为GET请求参数；</li>
+  <li>Cookie参数提交；</li>
+  <li>HTTP请求头部的一些可修改的值，比如Referer、User_Agent等；</li>
+  <li>一些边缘的输入点，比如.mp3文件的一些文件信息等。</li>
+</ul>
+
+<h1 id="sql注入漏洞常见类型">SQL注入漏洞常见类型</h1>
+
+<h2 id="union注入攻击">union注入攻击</h2>
+
+<ul>
+  <li>
+    <p>判断是get型还是post型注入；</p>
+  </li>
+  <li>
+    <p>找到正确的闭合规则；</p>
+  </li>
+  <li>
+    <p>order by 查询字段数；</p>
+  </li>
+  <li>
+    <p>union select 1,2…..查看显示位是第几位，没有的话就试试把id=1的显示位让出来，让其等于id=-1；</p>
+  </li>
+</ul>
+
+<p><img src="/home/admin233/Documents/verylazycat.github.io/img/sqli.png" alt="sqli" /></p>
+
+<ul>
+  <li>
+    <p>二、三位显示出来了，那么即可在这两个位置写入sql语句；</p>
+  </li>
+  <li>
+    <p>查询当前数据库,当前mysql用户 union select 1,user(),database()；</p>
+  </li>
+  <li>
+    <p>查询当前数据库里面的表 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=”data_name”;</p>
+  </li>
+  <li>
+    <p>查询到敏感表名user，继续查询表里面的字段 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=”user”;</p>
+  </li>
+  <li>
+    <p>查询字段，例如“id”、”passwd”的内容 union select 1,id,passwd from user;</p>
+  </li>
+  <li>
+    <p>拿到用户、密码登入后台。</p>
+  </li>
+</ul>
+
+<h2 id="boolean注入攻击-布尔盲注">Boolean注入攻击-布尔盲注</h2>
+
+<ul>
+  <li>查看现象，能报错，但没有报错信息，正确查询也显示不了查询内容就属于布尔盲注，只存在两种状态，对或错；</li>
+  <li>由页面的两种不同返回的状态来判定我们的闭合规则；</li>
+  <li>为了方便，我们这里假设返回正确用“yes”，返回错误用“no”来表示这两种状态</li>
+  <li>找到闭合规则后，我们在闭合规则里面 and 1=1 和 and 1=2 测试一下，看看最后返回是不是两种状态；</li>
+  <li>布尔盲注要用到length()和substr()语句，用两种状态来猜解数据库、表名等的长度和正确字母；</li>
+  <li>先用 and length(database())&gt;2 来猜数据库的长度，使用的是二分法；</li>
+  <li>再用 and substr(database(),1,1)=’t’ 来确定第一个字母，可用burp跑，26个字母,哪个字母返回yes则代表第一个字母就是它；</li>
+  <li>and substr(database(),2,1)=’t’ 代表当前数据库的第二个字母；</li>
+  <li>最后结合长度，成功的将数据库猜解出来；</li>
+  <li>后面的操作跟union注入的步骤差不多了，只是sql语句写在 上文的 database() 处。</li>
+</ul>
+
+<h2 id="报错注入攻击">报错注入攻击</h2>
+
+<ul>
+  <li>
+    <p>只要注入点有sql报错信息，那么就可以使用报错注入；</p>
+  </li>
+  <li>
+    <p>还是一样，引号报错，然后找到闭合规则，页面正常显示，则可以在闭合规则中开始写入报错注入的sql语句；</p>
+  </li>
+  <li>
+    <p>updatexml报错获取当前数据库：</p>
+  </li>
+</ul>
+
+<pre><code class="language-sql">and updatexml(1,concat(0x7e,(select database()),0x7e),1)
+</code></pre>
+
+<ul>
+  <li>floor报错获取当前数据库</li>
+</ul>
+
+<pre><code class="language-sql">and (select 1 from (select count(*),concat((database()),floor (rand(0)*2))x from information_schema.tables group by x)a)
+</code></pre>
+
+<ul>
+  <li>
+    <p>两种方式都可行，如果第一个不行就试试第二个</p>
+  </li>
+  <li>
+    <p>接着可以利用select语句替换掉上面database()来继续获取数据库中的表名、字段名，查询语句和union注入攻击的语句相同；</p>
+  </li>
+  <li>
+    <p>只不过这里不能再使用group_concat了，因为报错注入只显示一条结果，所以需要使用limit语句；</p>
+  </li>
+</ul>
+
+<h2 id="时间注入攻击-时间盲注">时间注入攻击-时间盲注</h2>
+
+<ul>
+  <li>
+    <p>没有明确的现象，不管是对是错都返回一个状态；</p>
+  </li>
+  <li>
+    <p>但是如果用sleep(5)方法，能让响应时间延迟为5秒以上，那么就为时间盲注；</p>
+  </li>
+  <li>
+    <p>我们用sleep(5)函数构造了一个时间延时的状态，因此，我们又有了两种状态，像布尔盲注一样可以根据这两种状态来判定数据库、表名和字段名的长度和正确的每个字母；</p>
+  </li>
+  <li>
+    <p>同样的找到正确的闭合规则，当然，这个闭合规则得配合着 and sleep(5)语句来构造，哪一个闭合规则执行了sleep(5)，那么就是正确得闭合规则；</p>
+  </li>
+  <li>
+    <p>时间盲注配合着 if(A,B,C) 语句结合使用，含义是：如果A是 true，则返回B（也就是执行B），否则返回C（执行C）；</p>
+  </li>
+  <li>
+    <p>那么判断当前数据库名的长度的语句为：</p>
+  </li>
+</ul>
+
+<pre><code class="language-sql">if (length(database())&gt;1,sleep(5),1)
+</code></pre>
+
+<p>就是说如果数据库长度大于1，那么响应延时5秒，否则执行select 1(也就是不延时)，由此来推出数据库长度。</p>
+
+<ul>
+  <li>判断当前数据库名的第一个和第二个字母的语句：</li>
+</ul>
+
+<pre><code class="language-sql">if(substr(database(),1,1)='s',sleep(5),1)
+if(substr(database(),2,1)='s',sleep(5),1)
+</code></pre>
+
+<p>只有第一个字母等于26个字母中正确的字母时，才会延时5秒，因此可以通过burp或者sqlmap来跑。</p>
+
+<ul>
+  <li>根据数据库名长度以此内推即可得出完整的数据库的库命、表名、字段名和具体内容。</li>
+</ul>
+
+<h2 id="堆叠查询注入攻击">堆叠查询注入攻击</h2>
+
+<ul>
+  <li>可以使用堆叠注入的地方也可以使用布尔盲注与时间盲注；</li>
+  <li>
+    <p>同样先找出正确的闭合规则，然后也看两种状态来猜解库名、表名等；</p>
+  </li>
+  <li>堆叠注入的语句为</li>
+</ul>
+
+<pre><code class="language-sql">;select if(length(database())&gt;1,sleep(3),1)
+;select if(substr(database(),1,1)='r',sleep(3),1)
+</code></pre>
+
+<ul>
+  <li>按照原理来说，分号后面可以执行新sql语句，但是很多时候没必要，如果遇到其他注入方法（或者绕过方式）不行的情况下可以试试这个注入方式；不是很常用。</li>
+</ul>
+
+<h2 id="二次注入攻击">二次注入攻击</h2>
+
+<ul>
+  <li>二次注入一共有两个url，url一用来注入，也就是注入点，插入sql语句的地方，另外一个url用来返回信息；</li>
+  <li>也就是url一插入了sql语句，url一的响应里面就会返回这条信息对应的id值，然后url二就传入这个新id值，然后访问，响应回来之后将会爆出sql语句查询的结果，正确或者错误的sql信息；</li>
+  <li>就相当于url是一个用户注册的地方，用户注册后会在数据库里面加入新id存放用户的注册信息，那么这个id可以传给url二来访问，url二就可以显示出用户的注册信息，但如果注册信息含义恶意sql语句，url二就会显示出敏感的数据库信息；</li>
+  <li>跟union注入攻击差不多，只是回显的信息需要在另外的url中显示出来了；</li>
+  <li>后面就是union注入攻击的常规操作。</li>
+</ul>
+
+<h2 id="宽字节注入攻击">宽字节注入攻击</h2>
+
+<ol>
+  <li>如果遇到单、双引号被转义，变成了反斜杠，导致参数id无法逃逸单引号的包围；</li>
+  <li>一般情况下，此处就不存在sql注入漏洞的；</li>
+  <li>但是如果数据库的编码为GBK时，就可以使用宽字节注入，因此在不知道是否是GBK编码时，都可以尝试去使用宽字节注入；</li>
+  <li>宽字节的格式是在地址后先加一个 %df ，再加单引号，因为反斜杠的编码为%5c，在GBK编码中，%df%5c是繁体字“連”，因此，单引号成功逃逸，爆出sql错误；</li>
+  <li>因此构造闭合规则时，在单引号前面加上 %df 就行了；</li>
+  <li>之后在闭合规则中写入同union注入的一些查询语句就行了；</li>
+</ol>
+
+<h2 id="base64注入攻击">base64注入攻击</h2>
+
+<ul>
+  <li>如果遇到url的参数id的值看起来像base64的，先拿去url解码，然后如果是base64，拿去base64解码，解出来的应该就是id的值（1，2等数字）；</li>
+  <li>那么如果要对这个url进行sql注入测试，就需要对id后面的所有值进行base64编码；</li>
+  <li>注入的方式步骤都是跟union注入一样的，只不过后面的所有值（整个payload）都要进行base64编码后传给url的c参数提交，包括闭合规则。</li>
+</ul>
+
+<h2 id="http请求头参数注入-cookie注入攻击">HTTP请求头参数注入-cookie注入攻击</h2>
+
+<ul>
+  <li>
+    <p>抓包对一个url的http请求头的所有参数进行sql注入测试，里面的所有参数都有可能存在注入点，如果响应包出现sql报错，那么测试的这个参数就是注入点；</p>
+  </li>
+  <li>
+    <p>常见的http头部注入的参数有：</p>
+  </li>
+</ul>
+
+<pre><code class="language-http">【Referer】、【X-Forwarded-For】、【Cookie】、【X-Real-IP】、【Accept-Language】、【Authorization】
+</code></pre>
+
+<ul>
+  <li>
+    <p>如果测试到cookie参数的时候，响应有报sql错误，那么就是cookie注入攻击；</p>
+  </li>
+  <li>
+    <p>和union注入的差别就在于注入点不一样，之后使用union注入的方法即可</p>
+  </li>
+</ul>
+
+<h2 id="http请求头参数注入-xff注入攻击">HTTP请求头参数注入-XFF注入攻击</h2>
+
+<ul>
+  <li>
+    <p>XFF注入即HTTP头部的X-Forwarded-for参数存在sql注入；</p>
+  </li>
+  <li>
+    <p>例如测试此参数的值 X-Forwarded-for:127.0.0.1’ 响应有sql报错，那么此处就是注入点；</p>
+  </li>
+  <li>
+    <p>之后使用union注入的方法完成即可</p>
+  </li>
+</ul>
+
+<h2 id="知道绝对路径的注入">知道绝对路径的注入</h2>
+
+<ol>
+  <li>如果通过一些方式爆出了网站的根目录，并且知道此站点存在sql注入；</li>
+  <li>猜测此数据库可能有file权限，那么我们就可以使用语句：into outfile 来写shell到网站的根目录下，之后用菜刀连接；</li>
+  <li>如果数据库没有file权限，那么我们用sqlmap的参数 –is-dba 来查看当前数据库的用户是否有管理员权限；</li>
+  <li>如果有管理员权限，我们就可以使用sqlmap里面的参数命令 –os-shell 来上传、反弹shell，最终getshell；</li>
+  <li>如果file、管理员权限都没有，那么另寻思路，日志、缓存写入等。</li>
+</ol>
+
 </div>
-
-
-<h2 id="%E5%AE%89%E5%85%A8">
-  <i class="fas fa-tag"></i>
-  
-  <small>10</small>
-  
-  安全
-</h2>
-<ul>
-  
-  <li>
-    <small>16 Jul 2020</small>
-    <a href="/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/">sql注入</a>
-  </li>
-  
-  <li>
-    <small>12 Jul 2020</small>
-    <a href="/_posts/2020-07-12-nmap/">nmap</a>
-  </li>
-  
-  <li>
-    <small>11 Jul 2020</small>
-    <a href="/_posts/2020-07-11-xss/">xss</a>
-  </li>
-  
-  <li>
-    <small>06 Jul 2020</small>
-    <a href="/_posts/2020-07-06-cve-2020-5902/">cve-2020-5902</a>
-  </li>
-  
-  <li>
-    <small>27 Jun 2020</small>
-    <a href="/_posts/2020-06-27-metasploit%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">metasploit使用总结</a>
-  </li>
-  
-  <li>
-    <small>22 Jun 2020</small>
-    <a href="/_posts/2020-06-22-John_the_Ripper/">John_the_Ripper</a>
-  </li>
-  
-  <li>
-    <small>20 Jun 2020</small>
-    <a href="/_posts/2020-06-20-%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/">恶意脚本分析</a>
-  </li>
-  
-  <li>
-    <small>15 Jun 2020</small>
-    <a href="/_posts/2020-06-15-%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E9%BB%91%E4%BA%A7/">滑动验证码黑产</a>
-  </li>
-  
-  <li>
-    <small>15 Jun 2020</small>
-    <a href="/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/">ARP安全</a>
-  </li>
-  
-  <li>
-    <small>13 Mar 2019</small>
-    <a href="/_posts/2019-03-13-Hydra/">Hydra</a>
-  </li>
-  
-</ul>
-
-<h2 id="%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">
-  <i class="fas fa-tag"></i>
-  
-  <small>2</small>
-  
-  机器学习
-</h2>
-<ul>
-  
-  <li>
-    <small>01 Jul 2020</small>
-    <a href="/_posts/2020-07-01-%E8%BD%A6%E9%81%93%E4%BF%9D%E6%8C%81&%E7%96%B2%E5%8A%B3%E9%A9%BE%E9%A9%B6%E6%A3%80%E6%B5%8B/">车道保持&疲劳驾驶检测</a>
-  </li>
-  
-  <li>
-    <small>13 May 2019</small>
-    <a href="/_posts/2019-05-13-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">机器学习笔记</a>
-  </li>
-  
-</ul>
-
-<h2 id="linux">
-  <i class="fas fa-tag"></i>
-  
-  <small>14</small>
-  
-  linux
-</h2>
-<ul>
-  
-  <li>
-    <small>10 Jul 2020</small>
-    <a href="/_posts/2020-07-10-passwd&shadow%E6%96%87%E4%BB%B6/">passwd&shadow文件</a>
-  </li>
-  
-  <li>
-    <small>08 Jul 2020</small>
-    <a href="/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">ubuntu安装问题及后续配置</a>
-  </li>
-  
-  <li>
-    <small>09 Jun 2020</small>
-    <a href="/_posts/2020-06-09-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">linux编程-进程间通信</a>
-  </li>
-  
-  <li>
-    <small>06 Jun 2020</small>
-    <a href="/_posts/2020-06-06-linux%E7%BC%96%E7%A8%8B-%E9%AB%98%E7%BA%A7IO/">linux编程-高级IO</a>
-  </li>
-  
-  <li>
-    <small>30 May 2020</small>
-    <a href="/_posts/2020-05-30-linux%E7%BC%96%E7%A8%8B-%E5%B9%B6%E5%8F%91/">linux编程-并发</a>
-  </li>
-  
-  <li>
-    <small>25 May 2020</small>
-    <a href="/_posts/2020-05-25-linux%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80/">linux编程-进程基础</a>
-  </li>
-  
-  <li>
-    <small>22 May 2020</small>
-    <a href="/_posts/2020-05-22-linux%E7%BC%96%E7%A8%8B-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">linux编程-文件系统</a>
-  </li>
-  
-  <li>
-    <small>20 May 2020</small>
-    <a href="/_posts/2020-05-20-linux%E7%BC%96%E7%A8%8B-IO/">linux编程-IO</a>
-  </li>
-  
-  <li>
-    <small>15 May 2020</small>
-    <a href="/_posts/2020-05-15-Docker%E7%AC%94%E8%AE%B0/">Docker笔记</a>
-  </li>
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="/_posts/2020-05-12-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%8E%9F%E7%90%86/">删除文件原理</a>
-  </li>
-  
-  <li>
-    <small>09 May 2020</small>
-    <a href="/_posts/2020-05-09-linux%E7%AC%94%E8%AE%B0/">linux笔记</a>
-  </li>
-  
-  <li>
-    <small>12 Mar 2020</small>
-    <a href="/_posts/2020-03-12-CPU%E6%A8%A1%E5%BC%8F/">CPU模式</a>
-  </li>
-  
-  <li>
-    <small>09 Feb 2020</small>
-    <a href="/_posts/2020-02-09-makefile%E7%AC%94%E8%AE%B0/">makefile笔记</a>
-  </li>
-  
-  <li>
-    <small>07 Jan 2020</small>
-    <a href="/_posts/2020-01-07-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-  </li>
-  
-</ul>
-
-<h2 id="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">
-  <i class="fas fa-tag"></i>
-  
-  <small>3</small>
-  
-  操作系统
-</h2>
-<ul>
-  
-  <li>
-    <small>08 Jun 2020</small>
-    <a href="/_posts/2020-06-08-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">进程虚拟地址空间区域划分</a>
-  </li>
-  
-  <li>
-    <small>08 Jun 2020</small>
-    <a href="/_posts/2020-06-08-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">虚拟内存</a>
-  </li>
-  
-  <li>
-    <small>08 Apr 2020</small>
-    <a href="/_posts/2020-04-08-MakeMyOs/">MakeMyOs</a>
-  </li>
-  
-</ul>
-
-<h2 id="JAVA">
-  <i class="fas fa-tag"></i>
-  
-  <small>8</small>
-  
-  JAVA
-</h2>
-<ul>
-  
-  <li>
-    <small>02 Jul 2020</small>
-    <a href="/_posts/2020-07-02-JAVA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">JAVA线程池</a>
-  </li>
-  
-  <li>
-    <small>01 Jul 2020</small>
-    <a href="/_posts/2020-07-01-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-  </li>
-  
-  <li>
-    <small>25 Jun 2020</small>
-    <a href="/_posts/2020-06-25-web%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">web压力测试程序开发</a>
-  </li>
-  
-  <li>
-    <small>25 Jun 2020</small>
-    <a href="/_posts/2020-06-25-veu&spring%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">veu&spring项目开发</a>
-  </li>
-  
-  <li>
-    <small>21 May 2020</small>
-    <a href="/_posts/2020-05-21-HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86;/">HashMap实现原理</a>
-  </li>
-  
-  <li>
-    <small>11 May 2020</small>
-    <a href="/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/">JAVA一些问题二</a>
-  </li>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="/_posts/2020-05-08-BIO&NIO&AIO/">BIO&NIO&AIO</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="/_posts/2020-05-02-jdbc%E7%AC%94%E8%AE%B0/">jdbc笔记</a>
-  </li>
-  
-</ul>
-
-<h2 id="sql">
-  <i class="fas fa-tag"></i>
-  
-  <small>4</small>
-  
-  sql
-</h2>
-<ul>
-  
-  <li>
-    <small>24 Jun 2020</small>
-    <a href="/_posts/2020-06-24-sql-server%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">sql-server期末复习</a>
-  </li>
-  
-  <li>
-    <small>12 May 2020</small>
-    <a href="/_posts/2020-05-12-sql-server%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">sql-server常用命令总结</a>
-  </li>
-  
-  <li>
-    <small>10 May 2020</small>
-    <a href="/_posts/2020-05-10-sql-server%E5%A4%8D%E4%B9%A0%E4%BA%8C/">sql-server复习二</a>
-  </li>
-  
-  <li>
-    <small>02 May 2020</small>
-    <a href="/_posts/2020-05-02-sql-server%E5%A4%8D%E4%B9%A0%E4%B8%80/">sql-server复习一</a>
-  </li>
-  
-</ul>
-
-<h2 id="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">
-  <i class="fas fa-tag"></i>
-  
-  <small>2</small>
-  
-  数据结构
-</h2>
-<ul>
-  
-  <li>
-    <small>05 May 2020</small>
-    <a href="/_posts/2020-05-05-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/">数据结构－二叉树</a>
-  </li>
-  
-  <li>
-    <small>04 May 2020</small>
-    <a href="/_posts/2020-05-04-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构－线性表</a>
-  </li>
-  
-</ul>
-
-<h2 id="%E7%AE%97%E6%B3%95">
-  <i class="fas fa-tag"></i>
-  
-  <small>3</small>
-  
-  算法
-</h2>
-<ul>
-  
-  <li>
-    <small>06 Jun 2020</small>
-    <a href="/_posts/2020-06-06-%E6%8E%92%E5%BA%8F/">排序算法</a>
-  </li>
-  
-  <li>
-    <small>26 May 2020</small>
-    <a href="/_posts/2020-05-26-KMP%E7%AE%97%E6%B3%95/">KMP算法</a>
-  </li>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="/_posts/2020-05-06-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">数据结构－二分查找</a>
-  </li>
-  
-</ul>
-
-<h2 id="%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96">
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  数据可视化
-</h2>
-<ul>
-  
-  <li>
-    <small>06 May 2020</small>
-    <a href="/_posts/2020-05-06-%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E8%82%BA%E7%82%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">新型冠状肺炎数据可视化</a>
-  </li>
-  
-</ul>
-
-<h2 id="git">
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  git
-</h2>
-<ul>
-  
-  <li>
-    <small>08 May 2020</small>
-    <a href="/_posts/2020-05-08-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
-  </li>
-  
-</ul>
-
-<h2 id="JVM">
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  JVM
-</h2>
-<ul>
-  
-  <li>
-    <small>13 May 2020</small>
-    <a href="/_posts/2020-05-13-%E7%B1%BB%E5%8A%A0%E8%BD%BD/">类加载</a>
-  </li>
-  
-</ul>
-
-<h2 id="%E7%94%9F%E6%B4%BB">
-  <i class="fas fa-tag"></i>
-  
-  <small>1</small>
-  
-  生活
-</h2>
-<ul>
-  
-  <li>
-    <small>11 Jun 2020</small>
-    <a href="/_posts/2020-06-11-%E5%A4%A7%E4%B8%89%E4%B8%8A%E8%AE%A1%E5%88%92/">大三上计划</a>
-  </li>
-  
-</ul>
-
-<h2 id="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">
-  <i class="fas fa-tag"></i>
-  
-  <small>6</small>
-  
-  计算机网络
-</h2>
-<ul>
-  
-  <li>
-    <small>05 Jul 2020</small>
-    <a href="/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/">ICMP协议和ping命令</a>
-  </li>
-  
-  <li>
-    <small>05 Jul 2020</small>
-    <a href="/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">HTTP请求方法</a>
-  </li>
-  
-  <li>
-    <small>04 Jul 2020</small>
-    <a href="/_posts/2020-07-04-HTTP%E5%92%8CHTTPS/">HTTP和HTTPS</a>
-  </li>
-  
-  <li>
-    <small>29 Jun 2020</small>
-    <a href="/_posts/2020-06-29-%E8%A5%BF%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%8A%A2%E8%AF%BE%E8%84%9A%E6%9C%AC/">西华大学抢课脚本</a>
-  </li>
-  
-  <li>
-    <small>13 Jun 2020</small>
-    <a href="/_posts/2020-06-13-TCP&UDP%E5%8C%BA%E5%88%AB/">TCP&UDP区别</a>
-  </li>
-  
-  <li>
-    <small>12 Jun 2020</small>
-    <a href="/_posts/2020-06-12-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP三次握手四次挥手</a>
-  </li>
-  
-</ul>
+<div class="v">
+  <i class="fas fa-spinner fa-pulse"></i>
+</div>
+<script
+  src='https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js'
+  defer='defer'
+  onload='
+    new Valine({
+      "el": document.getElementsByClassName("v")[0],
+      "appId": "9hABRddSuEkTgqLrt1VSK5B1-gzGzoHsz",
+      "appKey": "NJ7RwmgrxsF7KDzlqU7YewlL",
+      "placeholder": "在这里评论吧！填写邮箱可以获得 Gravatar 头像和回复通知哦",
+      "requiredFields": ["nick","mail"],
+      "visitor": true,
+      "recordIP": true
+    })'
+></script>
 
 </div>
   </div>
