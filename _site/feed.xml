@@ -1,11 +1,1820 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-18T07:14:39-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-19T02:43:18-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">IP报文</title><link href="http://localhost:4000/_posts/2020-07-18-IP%E6%8A%A5%E6%96%87/" rel="alternate" type="text/html" title="IP报文" /><published>2020-07-18T00:00:00-04:00</published><updated>2020-07-18T00:00:00-04:00</updated><id>http://localhost:4000/_posts/IP%E6%8A%A5%E6%96%87</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-18-IP%E6%8A%A5%E6%96%87/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">密码学基础总结</title><link href="http://localhost:4000/_posts/2020-07-19-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="密码学基础总结" /><published>2020-07-19T00:00:00-04:00</published><updated>2020-07-19T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-19-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;基础概念&quot;&gt;基础概念&lt;/h1&gt;
+
+&lt;h2 id=&quot;信息安全三要素cia&quot;&gt;信息安全三要素（CIA）&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;机密性&lt;/li&gt;
+  &lt;li&gt;完整性&lt;/li&gt;
+  &lt;li&gt;可用性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;扩展：&lt;/p&gt;
+
+&lt;p&gt;六要素：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;机密性&lt;/li&gt;
+  &lt;li&gt;所有权&lt;/li&gt;
+  &lt;li&gt;完整性&lt;/li&gt;
+  &lt;li&gt;可认证性&lt;/li&gt;
+  &lt;li&gt;可用性&lt;/li&gt;
+  &lt;li&gt;实用性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;八要素：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;机密性&lt;/li&gt;
+  &lt;li&gt;完整性&lt;/li&gt;
+  &lt;li&gt;可用性&lt;/li&gt;
+  &lt;li&gt;隐私性&lt;/li&gt;
+  &lt;li&gt;可认证性于可信任性&lt;/li&gt;
+  &lt;li&gt;不可抵赖性&lt;/li&gt;
+  &lt;li&gt;可说明性&lt;/li&gt;
+  &lt;li&gt;可审计性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;安全性攻击形式&quot;&gt;安全性攻击形式&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;被动攻击
+    &lt;ul&gt;
+      &lt;li&gt;截取&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;主动攻击
+    &lt;ul&gt;
+      &lt;li&gt;中断&lt;/li&gt;
+      &lt;li&gt;篡改&lt;/li&gt;
+      &lt;li&gt;伪造&lt;/li&gt;
+      &lt;li&gt;重放&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;密码编码学&quot;&gt;密码编码学&lt;/h1&gt;
+
+&lt;h2 id=&quot;保密体制&quot;&gt;保密体制&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对称加密体制&lt;/li&gt;
+  &lt;li&gt;非对称加密体制&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;认证体制&quot;&gt;认证体制&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;消息认证
+    &lt;ul&gt;
+      &lt;li&gt;消息认证码体制&lt;/li&gt;
+      &lt;li&gt;数字签名&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;实体认证
+    &lt;ul&gt;
+      &lt;li&gt;生份鉴别协议&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;对称与非对称加密体制&quot;&gt;对称与非对称加密体制&lt;/h1&gt;
+
+&lt;h2 id=&quot;对称加密体制&quot;&gt;对称加密体制&lt;/h2&gt;
+
+&lt;p&gt;实用的秘钥必须完全保密，且要求加密秘钥和解密秘钥相同或由其中一个可以很容易推出另外一个&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;优点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;速度快，有很高的吞吐率，软硬件易于实现&lt;/li&gt;
+  &lt;li&gt;秘钥相对较短&lt;/li&gt;
+  &lt;li&gt;对称保密体制密文长度往往与明文相同，或扩张较小&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;缺点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;秘钥分发需要安全通道&lt;/li&gt;
+  &lt;li&gt;秘钥量大，难管理&lt;/li&gt;
+  &lt;li&gt;难以解决不可否认性&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;非对称加密体制&quot;&gt;非对称加密体制&lt;/h2&gt;
+
+&lt;p&gt;秘钥有两个，一个对外公开，另外一个必须保密，不能从公钥推到私钥，或者是计算困难&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;优点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;秘钥分发容易&lt;/li&gt;
+  &lt;li&gt;秘钥管理简单&lt;/li&gt;
+  &lt;li&gt;可以有效实现数字签名&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;缺点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;速度慢&lt;/li&gt;
+  &lt;li&gt;同等安全下，非对称密码体制对秘钥位数要多一些&lt;/li&gt;
+  &lt;li&gt;非对称保密体制中，密文长度往往大于明文长度&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;柯克霍夫原则&quot;&gt;柯克霍夫原则&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;kerckhoffs princip&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;秘钥必须完全寓于秘钥中，即加密和解密算法的安全性取决于秘钥的安全性，而加密解密的过程和细节是公开的，只要秘钥是安全的，则攻击者无法推出明文&lt;/p&gt;
+
+&lt;p&gt;实际应用中，攻击者的能力还会受到进一步限制：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;破解密码系统的成本不超过被加密信息本身&lt;/li&gt;
+  &lt;li&gt;破译密码系统时间不超过被加密信息的有效生命周期&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;密码学加密系统的五元组&quot;&gt;密码学加密系统的五元组&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;明文，密文，密钥，加密算法，解密算法
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;密码体制攻击类型&quot;&gt;密码体制攻击类型&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;唯密文攻击（Ciphertext only）
+ 破译者已知：加密算法、待破译的密文&lt;/li&gt;
+  &lt;li&gt;已知明文攻击（Known plaintext）
+ 破译者已知：加密算法、一定数量的明文和对应的密文&lt;/li&gt;
+  &lt;li&gt;选择明文攻击（Chosen plaintext） 
+破译者已知：加密算法、选定的明文和对应的密文&lt;/li&gt;
+  &lt;li&gt;选择密文攻击（Chosen ciphertext） 
+破译者已知：加密算法、选定的密文和对应的明文&lt;/li&gt;
+  &lt;li&gt;选择文本攻击（Chosen text）
+破译者已知：加密算法、选定的明文和对应的密文、选定的密文和对应的明文&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;对加密系统的攻击类型前四种&quot;&gt;对加密系统的攻击类型（前四种）&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;1.已知明文攻击 （知道一些名密文对）
+2选择明文攻击 （任意明文-&amp;gt;密文）
+3.唯密文攻击 （只知道一些密文）    
+4选择密文攻击（任意密文-&amp;gt;明文）
+5.选择文本攻击（任意明文&amp;lt;-&amp;gt;任意密文）
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;攻击常用方法&quot;&gt;攻击常用方法&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;穷举&lt;/li&gt;
+  &lt;li&gt;统计分析&lt;/li&gt;
+  &lt;li&gt;数学分析&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;熵&quot;&gt;熵&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;随机事件x发生的概率的对数的相反数定义为该随机事件的自信息量，记为I（xi），设xi发生的概率为p（xi），则自信息量为：&lt;/em&gt;
+&lt;script type=&quot;math/tex&quot;&gt;I(x)_{i} = - log_{2}p(x_{i})&lt;/script&gt;
+底数为2，信息量单位为比特，如果以e为底数，单位为奈特&lt;/p&gt;
+
+&lt;h1 id=&quot;古典密码&quot;&gt;古典密码&lt;/h1&gt;
+
+&lt;h2 id=&quot;置换&quot;&gt;置换&lt;/h2&gt;
+
+&lt;p&gt;置换：根据一定的规则重新排列明文，打破明文结构特性&lt;/p&gt;
+
+&lt;h3 id=&quot;列置换&quot;&gt;列置换&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;明文按照秘钥规则按列换位并且得到密文&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/置换密码.png&quot; alt=&quot;置换密码&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;&lt;img src=&quot;/img/置换密码举例.png&quot; alt=&quot;置换密码举例&quot; /&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/列置换.png&quot; alt=&quot;列置换&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/列置换2.png&quot; alt=&quot;列置换2&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;周期置换&quot;&gt;周期置换&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;将明文按照固定长度分组，然后对每组按照某种排列位置得到密文&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;例子&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;明文：“State Key Laboratory of Networking and Switching”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;加密的密钥：S=(1 5 6 2 3)；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将明文分为七组，每组6个字符，不足6个的用双方规定好的字符进行填充，比如空格。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;​      P’ = (StateK)(eyLabo)(ratory)(ofNetw)(orking)(andSwi)(tching)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;对每组的字符进行加密，根据密钥S，可知将第1个字符放在第5个字符的位置，第5个字符放在第6个字符的位置，第6个字符放在第2个字符的位置，第2个字符放在第3个字符的位置，第3个字符放在第1个字符的位置，置换后P’如下：&lt;/p&gt;
+
+    &lt;p&gt;P‘ = (aKttSe)(Loyaeb)(tyaorr)(Nwfeot)(kgrion)(dinSaw)(hgcitn)&lt;/p&gt;
+
+    &lt;p&gt;所以得到的最终密文Pm = “aKttSeLoyaebtyaorrNwfeotkgriondinSawhgcitn”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;周期置换的解密方法就是加密的逆运算，只需求出密钥的逆置换即可。可以知道密钥S=(1 5 6 2 3)的逆置换S’ = (1 3 2 6 5)，所以只需将密文重新分组，通过S’的置换顺序就可以得出明文P&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;代换密码&quot;&gt;代换密码&lt;/h2&gt;
+
+&lt;p&gt;代换，就是将明文中的一个字母由其它字母、数字或者符号替代的一种方法
+代换密码建立一个代换表，加密时将需要加密的明文依次通过查表，替换为相应的字符，明文字符被逐个替换后，生成无任何意义的字符串，即密文。这样的代换表被称为密钥&lt;/p&gt;
+
+&lt;h3 id=&quot;单表代换密码&quot;&gt;单表代换密码&lt;/h3&gt;
+
+&lt;p&gt;单表代换是指英文字母在进行密码编码替换的时候，有一张对照表，也就是说，对于每一个字母，都是唯一对应的，如：&lt;/p&gt;
+
+&lt;p&gt;26个源字母表为：abcdefghijklmnopqrstuvwxyz&lt;/p&gt;
+
+&lt;p&gt;代换的字母表为：qwertyuiopasdfghjklzxcvbnm&lt;/p&gt;
+
+&lt;p&gt;在加密时，按照设计好的对照表对每一个明文字母进行替换，如a替换为q，b替换为w等。&lt;/p&gt;
+
+&lt;h3 id=&quot;放射密码&quot;&gt;放射密码&lt;/h3&gt;
+
+&lt;p&gt;加法密码和乘法密码结合就构成仿射密码，仿射密码的加密和解密算法是：
+&lt;script type=&quot;math/tex&quot;&gt;C=EK(m)=(k_{1}m+k_{2})modn\\
+M = DK(C)=k_{3}(C-k_{2})mod n\\
+(k_{3}Xk_{1})mod 26=1\\&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;仿射密码具有可逆性的条件是:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;gcd(k1, n)=1&lt;/code&gt;. 当k1=1时，仿射密码变为加法密码，当k2=0时，仿射密码变为乘法密码。
+仿射密码中的密钥空间的大小为&lt;code&gt;nφ(n)&lt;/code&gt;，当&lt;code&gt;n&lt;/code&gt;为&lt;code&gt;26&lt;/code&gt;字母，&lt;code&gt;φ(n)=12&lt;/code&gt;，因此仿射密码的密钥空间为12×26 = 312&lt;/p&gt;
+
+&lt;h4 id=&quot;例子&quot;&gt;例子&lt;/h4&gt;
+
+&lt;p&gt;设放射密码加密函数为：&lt;code&gt;e(x)=11x+6(mod 26)&lt;/code&gt;,则有11^{-1}(mod26)=19,所以解密函数:&lt;code&gt;x=19[e(x)-6]=19e(x)+16(mod 26)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;设加密明文：&lt;code&gt;sorcery&lt;/code&gt;，转换为数字：&lt;code&gt;18,14,17,2,4,17,24&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;加密：
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+11*
+ \left[
+ \begin{matrix}
+   18 \\
+   14 \\
+   17\\
+   2\\
+   4\\
+   17\\
+   24\\
+  \end{matrix}
+  \right]
++
+ \left[
+ \begin{matrix}
+   6 \\
+   6 \\
+   6\\
+   6\\
+   6\\
+   6\\
+   6\\
+  \end{matrix}
+  \right]
+  =
+   \left[
+ \begin{matrix}
+   204 \\
+   160\\
+   193\\
+  28\\
+   50\\
+   193\\
+  270\\
+  \end{matrix}
+  \right]
+  =
+   \left[
+ \begin{matrix}
+   22 \\
+   4\\
+   11\\
+  2\\
+   24\\
+   11\\
+  10\\
+  \end{matrix}
+  \right]
+ (mod26)
+&lt; =&gt;
+ \left[
+ \begin{matrix}
+   W \\
+   E\\
+   L\\
+   C\\
+   y\\
+   L\\
+   K\\
+  \end{matrix}
+  \right] %]]&gt;&lt;/script&gt;
+解密：
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+19*
+ \left[
+ \begin{matrix}
+   22 \\
+   4 \\
+   11\\
+   2\\
+   24\\
+   11\\
+   10\\
+  \end{matrix}
+  \right]
++
+ \left[
+ \begin{matrix}
+   16 \\
+   16 \\
+   16\\
+   16\\
+   16\\
+   16\\
+   16\\
+  \end{matrix}
+  \right]
+  =
+   \left[
+ \begin{matrix}
+   434 \\
+   92\\
+   225\\
+  54\\
+   472\\
+   225\\
+  206\\
+  \end{matrix}
+  \right]
+  =
+   \left[
+ \begin{matrix}
+   18\\
+   14\\
+   17\\
+  2\\
+   4\\
+   17\\
+  24\\
+  \end{matrix}
+  \right]
+ (mod26)
+&lt; =&gt;
+ \left[
+ \begin{matrix}
+   s \\
+   o\\
+   r\\
+   c\\
+   e\\
+   r\\
+   y\\
+  \end{matrix}
+  \right] %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;求逆元：&lt;strong&gt;扩展欧几里得算法&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;多表代换&quot;&gt;多表代换&lt;/h3&gt;
+
+&lt;h4 id=&quot;维吉尼亚密码&quot;&gt;维吉尼亚密码&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/多表代换.png&quot; alt=&quot;多表代换&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;例题：&lt;/p&gt;
+
+&lt;p&gt;p=data security , k = best&lt;/p&gt;
+
+&lt;p&gt;先将明文分解为长为4的序列：&lt;/p&gt;
+
+&lt;p&gt;data 			secu 			rity&lt;/p&gt;
+
+&lt;p&gt;每个序列用秘钥best加密&lt;/p&gt;
+
+&lt;p&gt;密文：EELT  	TIUN	  SMLR&lt;/p&gt;
+
+&lt;h4 id=&quot;playfair密码&quot;&gt;Playfair密码&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/维吉尼亚密码.png&quot; alt=&quot;维吉尼亚密码&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/playfair2.png&quot; alt=&quot;playfair2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;例题：&lt;/p&gt;
+
+&lt;p&gt;设秘钥为：PLAYFAIR IS A DIGRAM CIPHER&lt;/p&gt;
+
+&lt;p&gt;字母矩阵：
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\left[
+ \begin{matrix}
+  P&amp;L &amp;A &amp;Y&amp; F \\
+   I/J&amp;R&amp;S&amp;D&amp;G\\
+   M&amp;C&amp;H&amp;E&amp;B\\
+   K&amp;N&amp;O&amp;Q&amp;T\\
+   U&amp;V&amp;W&amp;X&amp;Z\\
+  \end{matrix}
+  \right] %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;明文：pI ay fa ir ci ph er&lt;/p&gt;
+
+&lt;p&gt;密文: LA YF PY RS MR AM CD&lt;/p&gt;
+
+&lt;h4 id=&quot;希尔密码&quot;&gt;希尔密码&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/希尔密码.png&quot; alt=&quot;希尔密码&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;例题：&lt;/p&gt;
+
+&lt;p&gt;明文：cyber，数字化：2,24,1,4,17&lt;/p&gt;
+
+&lt;p&gt;秘钥:
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\left[
+\begin{matrix}
+  10&amp;5 &amp;12 &amp;0&amp; 0 \\
+   3&amp;14&amp;21&amp;0&amp;0\\
+   8&amp;9&amp;11&amp;0&amp;0\\
+   0&amp;0&amp;0&amp;11&amp;8\\
+   0&amp;0&amp;0&amp;3&amp;7\\
+  \end{matrix}
+  \right] %]]&gt;&lt;/script&gt;
+加密：
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+c=(2,24,1,4,17)
+\left[
+\begin{matrix}
+  10&amp;5 &amp;12 &amp;0&amp; 0 \\
+   3&amp;14&amp;21&amp;0&amp;0\\
+   8&amp;9&amp;11&amp;0&amp;0\\
+   0&amp;0&amp;0&amp;11&amp;8\\
+   0&amp;0&amp;0&amp;3&amp;7\\
+  \end{matrix}
+  \right]
+  =
+  \left[
+\begin{matrix}
+  100 \\
+   355\\
+   539\\
+   95\\
+   151\\
+  \end{matrix}
+  \right]^{T}
+  (mod26)=
+  \left[
+\begin{matrix}
+  22 \\
+   17\\
+   19\\
+   17\\
+   21\\
+  \end{matrix}
+  \right]^{T}
+  &lt;=&gt;
+  \left[
+  \begin{matrix}
+  W\\
+  R\\
+  T\\
+  R\\
+  V
+  \end{matrix}
+  \right] %]]&gt;&lt;/script&gt;
+解密秘钥：
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+K^{-1}=
+\left[
+\begin{matrix}
+21&amp;15&amp;17&amp;0&amp;0\\
+21&amp;2&amp;16&amp;0&amp;0\\
+25&amp;4&amp;3&amp;0&amp;0\\
+0&amp;0&amp;0&amp;7&amp;18\\
+0&amp;0&amp;0&amp;23&amp;11
+\end{matrix}
+\right] %]]&gt;&lt;/script&gt;
+解密：
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+p=(22,17,19,17,21)
+\left [
+\begin{matrix}
+21&amp;15&amp;17&amp;0&amp;0\\
+21&amp;2&amp;16&amp;0&amp;0\\
+25&amp;4&amp;3&amp;0&amp;0\\
+0&amp;0&amp;0&amp;7&amp;18\\
+0&amp;0&amp;0&amp;23&amp;11
+\end{matrix}
+\right ]
+=
+\left [
+\begin{matrix}
+1328\\
+440\\
+703\\
+602\\
+537
+\end{matrix}
+\right ]^{T}
+(mod 26)
+=
+\left[
+\begin{matrix}
+2\\
+24\\
+1\\
+4\\
+17
+\end{matrix}
+\right ]
+&lt;=&gt;
+\left[
+\begin{matrix}
+c\\y\\
+b\\
+e\\
+r
+\end{matrix}
+\right]^{T} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;分组密码&quot;&gt;分组密码&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;分组密码（block cipher）是现代密码学中的重要体制之一，也是应用最广泛、影响最大的一种密码体制。其主要任务是提供数据保密性，也可以用在伪随机数生成器、序列密码、认证码和哈希函数的构造&lt;/p&gt;
+
+  &lt;p&gt;分组密码又称为对称密码，具有加解密速度快、安全性好的特点。得到许多密码芯片的支持，在许多研究和应用领域中得到了广泛的应用&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/分组密码流程.png&quot; alt=&quot;分组密码流程&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;扩散混乱&quot;&gt;扩散＆混乱&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;扩散：打乱明文，每一位比特明文的变化尽可能影响输出的密文序列比特，使得明文和密文之间的统计关系尽量复杂，即从密文不能获得明文的统计特性&lt;/li&gt;
+  &lt;li&gt;混乱：打乱明文，加密过程中，明文，密文，秘钥间的关系尽可能复制，使从密文中不能获得密钥的任何统计特性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;feiste网络&quot;&gt;Feiste网络&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;用简单算法的乘积来近似表达复杂的替代变换&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;优点：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;加解密相似，只需要一个逆转的密钥编排算法，加解密算法部分完全一致&lt;/li&gt;
+  &lt;li&gt;轮函数不必可逆&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;原理&quot;&gt;原理&lt;/h3&gt;
+
+&lt;p&gt;F表示轮函数,Ki表示每一轮的子秘钥&lt;/p&gt;
+
+&lt;h4 id=&quot;加密&quot;&gt;加密&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;i表示轮数&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;将明文分割为左右两部分(L_{0},R_{0})\\
+L_{i+1} = R_{i}\\
+R_{i+1} = L_{i}\bigoplus F(R_{i},k_{i})\\&lt;/script&gt;
+
+&lt;h4 id=&quot;解密&quot;&gt;解密&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;(i=n,n-1,…0)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_{i}  = L_{i+1}\\
+l_{i} = R_{i+1}\bigoplus(L_{i+1},k_{i})\\
+(L_{0},R_{0})为解密后的明文&lt;/script&gt;
+
+&lt;h2 id=&quot;雪崩效应&quot;&gt;雪崩效应&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/雪崩效应.png&quot; alt=&quot;雪崩效应&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sp网络&quot;&gt;SP网络&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sp网络.png&quot; alt=&quot;sp网络&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SP网络具有雪崩效应&lt;/p&gt;
+
+&lt;h2 id=&quot;子秘钥生成方法&quot;&gt;子秘钥生成方法&lt;/h2&gt;
+
+&lt;p&gt;子秘钥生成是迭代分组算法的一个重要部分，轮函数Ｆ的功能是在子秘钥的参与和控制下实现的&lt;/p&gt;
+
+&lt;p&gt;子秘钥评价指标：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;简单，速度快&lt;/li&gt;
+  &lt;li&gt;种子秘钥的所有比特对每个子秘钥比特的影响大致相同&lt;/li&gt;
+  &lt;li&gt;没有弱秘钥&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;轮函数ｆ设计准则&quot;&gt;轮函数Ｆ设计准则&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;非线性&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;依赖Ｓ盒&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可逆性&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;雪崩效应&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;des加密&quot;&gt;DES加密&lt;/h1&gt;
+
+&lt;h2 id=&quot;概述&quot;&gt;概述&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;分组加密：明文密文为64位分组长度&lt;/li&gt;
+  &lt;li&gt;密码算法：同一个算法&lt;/li&gt;
+  &lt;li&gt;密钥长度：56位，存在弱秘钥，但是可以避开&lt;/li&gt;
+  &lt;li&gt;采用混乱和扩散组合,每个组先代换后置换，共16轮&lt;/li&gt;
+  &lt;li&gt;易于实现,速度快&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;流程&quot;&gt;流程&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/des加密.png&quot; alt=&quot;des加密&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;初始置换ip&quot;&gt;初始置换(IP)&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/初始置换.png&quot; alt=&quot;初始置换&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;轮变换&quot;&gt;轮变换&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/轮变换.png&quot; alt=&quot;轮变换&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;f函数&quot;&gt;F函数&lt;/h2&gt;
+
+&lt;h3 id=&quot;扩展置换&quot;&gt;扩展置换&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;又叫E盒&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;扩展置置换目标是IP置换后获得的右半部分R0，将32位输入扩展为48位(分为4位×8组)输出。&lt;/p&gt;
+
+&lt;p&gt;扩展置换目的有两个：生成与密钥相同长度的数据以进行异或运算；提供更长的结果，在后续的替代运算中可以进行压缩。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/E盒.png&quot; alt=&quot;E盒&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;表中的数字代表位，两列黄色数据是扩展的数据，可以看出，扩展的数据是从相邻两组分别取靠近的一位，4位变为6位。靠近32位的位为1，靠近1位的位为32。表中第二行的4取自上组中的末位，9取自下组中的首位。&lt;/p&gt;
+
+&lt;h3 id=&quot;秘钥加&quot;&gt;秘钥加&lt;/h3&gt;
+
+&lt;p&gt;E扩展输出的49位与48位子秘钥逐位异或,输出48位数据&lt;/p&gt;
+
+&lt;h3 id=&quot;代换盒&quot;&gt;代换盒&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;S盒&lt;/p&gt;
+
+  &lt;p&gt;目的:非线性变换&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;压缩后的密钥与扩展分组异或以后得到48位的数据，将这个数据送人S盒，进行替代运算。替代由8个不同的S盒完成，每个S盒有6位输入4位输出。48位输入分为8个6位的分组，一个分组对应一个S盒，对应的S盒对各组进行代替操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/S盒.png&quot; alt=&quot;S盒&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;　一个S盒就是一个4行16列的表，盒中的每一项都是一个4位的数。S盒的6个输入确定了其对应的输出在哪一行哪一列，输入的高低两位做为行数H，中间四位做为列数L，在S-BOX中查找第H行L列对应的数据(&amp;lt;32)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;S盒代替时DES算法的关键步骤，所有的其他的运算都是线性的，易于分析，而S盒是非线性的，相比于其他步骤，提供了更好安全性。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;p盒置换&quot;&gt;P盒置换&lt;/h3&gt;
+
+&lt;p&gt;S盒代替运算的32位输出按照P盒进行置换。该置换把输入的每位映射到输出位，任何一位不能被映射两次，也不能被略去,映射规则如下表:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;16&lt;/th&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;th&gt;20&lt;/th&gt;
+      &lt;th&gt;21&lt;/th&gt;
+      &lt;th&gt;29&lt;/th&gt;
+      &lt;th&gt;12&lt;/th&gt;
+      &lt;th&gt;28&lt;/th&gt;
+      &lt;th&gt;17&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;15&lt;/td&gt;
+      &lt;td&gt;23&lt;/td&gt;
+      &lt;td&gt;26&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;31&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;24&lt;/td&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;32&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;19&lt;/td&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;30&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;22&lt;/td&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;表中的数字代表原数据中此位置的数据在新数据中的位置，即原数据块的第16位放到新数据的第1位，第7位放到第2位，……依此类推，第25位放到第32位。&lt;/p&gt;
+
+&lt;p&gt;例如0x10A1 0001进行P盒置换后变为0x8000 0886。&lt;/p&gt;
+
+&lt;p&gt;最后，P盒置换的结果与最初的64位分组左半部分L0异或，然后左、右半部分交换，接着开始另一轮。&lt;/p&gt;
+
+&lt;h2 id=&quot;ip-1末置换&quot;&gt;IP-1末置换&lt;/h2&gt;
+
+&lt;p&gt;末置换是初始置换的逆过程，DES最后一轮后，左、右两半部分并未进行交换，而是两部分合并形成一个分组做为末置换的输入。末置换规则如下表：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;40&lt;/th&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;th&gt;48&lt;/th&gt;
+      &lt;th&gt;16&lt;/th&gt;
+      &lt;th&gt;56&lt;/th&gt;
+      &lt;th&gt;24&lt;/th&gt;
+      &lt;th&gt;64&lt;/th&gt;
+      &lt;th&gt;32&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;39&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;47&lt;/td&gt;
+      &lt;td&gt;15&lt;/td&gt;
+      &lt;td&gt;55&lt;/td&gt;
+      &lt;td&gt;23&lt;/td&gt;
+      &lt;td&gt;63&lt;/td&gt;
+      &lt;td&gt;31&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;38&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;46&lt;/td&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;54&lt;/td&gt;
+      &lt;td&gt;22&lt;/td&gt;
+      &lt;td&gt;62&lt;/td&gt;
+      &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;37&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;45&lt;/td&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;21&lt;/td&gt;
+      &lt;td&gt;61&lt;/td&gt;
+      &lt;td&gt;29&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;36&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;44&lt;/td&gt;
+      &lt;td&gt;12&lt;/td&gt;
+      &lt;td&gt;52&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;60&lt;/td&gt;
+      &lt;td&gt;28&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;35&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;43&lt;/td&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;51&lt;/td&gt;
+      &lt;td&gt;19&lt;/td&gt;
+      &lt;td&gt;59&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;34&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;42&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;50&lt;/td&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;58&lt;/td&gt;
+      &lt;td&gt;26&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;33&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;41&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;49&lt;/td&gt;
+      &lt;td&gt;17&lt;/td&gt;
+      &lt;td&gt;57&lt;/td&gt;
+      &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;置换方法同上，此处省略。&lt;/p&gt;
+
+&lt;h2 id=&quot;des安全性&quot;&gt;DES安全性&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;互补性&lt;/li&gt;
+  &lt;li&gt;弱秘钥&lt;/li&gt;
+  &lt;li&gt;迭代轮数&lt;/li&gt;
+  &lt;li&gt;秘钥长度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3重des&quot;&gt;3重DES&lt;/h2&gt;
+
+&lt;p&gt;优点:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;秘钥长度增加到112位或168为,有效克服穷举&lt;/li&gt;
+  &lt;li&gt;相对于DES,增强了抗差分分析和线性分析&lt;/li&gt;
+  &lt;li&gt;DES升级到3重DES成本低&lt;/li&gt;
+  &lt;li&gt;对密码分析攻击由很强的免疫力&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;不足:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;处理速度慢&lt;/li&gt;
+  &lt;li&gt;秘钥长度增加了,但是明文分组的长度没有变化,任为63位,就效率和安全性与秘钥的增长不匹配&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;des分析方法&quot;&gt;DES分析方法&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;穷举&lt;/li&gt;
+  &lt;li&gt;差分分析&lt;/li&gt;
+  &lt;li&gt;线性分析&lt;/li&gt;
+  &lt;li&gt;积分攻击&lt;/li&gt;
+  &lt;li&gt;中间相遇攻击&lt;/li&gt;
+  &lt;li&gt;相关秘钥攻击&lt;/li&gt;
+  &lt;li&gt;侧信道攻击&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;aes&quot;&gt;AES&lt;/h1&gt;
+
+&lt;h2 id=&quot;aes的基本结构&quot;&gt;AES的基本结构&lt;/h2&gt;
+
+&lt;p&gt;AES为分组密码，分组密码也就是把明文分成一组一组的，每组长度相等，每次加密一组数据，直到加密完整个明文。在AES标准规范中，分组长度只能是128位，也就是说，每个分组为16个字节（每个字节8位）。密钥的长度可以使用128位、192位或256位。密钥的长度不同，推荐加密轮数也不同，如下表所示：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;AES&lt;/th&gt;
+      &lt;th&gt;密钥长度（32位比特字)&lt;/th&gt;
+      &lt;th&gt;分组长度(32位比特字)&lt;/th&gt;
+      &lt;th&gt;加密轮数&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AES-128&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AES-192&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AES-256&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;14&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;轮数在下面介绍，这里实现的是AES-128，也就是密钥的长度为128位，加密轮数为10轮。
+AES的加密公式为C = E(K,P)，在加密函数E中，会执行一个轮函数，并且执行10次这个轮函数，这个轮函数的前9次执行的操作是一样的，只有第10次有所不同。也就是说，一个明文分组会被加密10轮。AES的核心就是实现一轮中的所有操作。&lt;/p&gt;
+
+&lt;p&gt;AES的处理单位是字节，128位的输入明文分组P和输入密钥K都被分成16个字节，分别记为P = P0 P1 … P15 和 K = K0 K1 … K15。如，明文分组为P = abcdefghijklmnop,其中的字符a对应P0，p对应P15。一般地，明文分组用字节为单位的正方形矩阵描述，称为状态矩阵。在算法的每一轮中，状态矩阵的内容不断发生变化，最后的结果作为密文输出。该矩阵中字节的排列顺序为从上到下、从左至右依次排列，如下图所示：
+&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/AES.png&quot; alt=&quot;AES&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;现在假设明文分组P为”abcdefghijklmnop”，则对应上面生成的状态矩阵图如下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/AES1.png&quot; alt=&quot;AES1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图中，0x61为字符a的十六进制表示。可以看到，明文经过AES加密后，已经面目全非。&lt;/p&gt;
+
+&lt;p&gt;类似地，128位密钥也是用字节为单位的矩阵表示，矩阵的每一列被称为1个32位比特字。通过密钥编排函数该密钥矩阵被扩展成一个44个字组成的序列W[0],W[1], … ,W[43],该序列的前4个元素W[0],W[1],W[2],W[3]是原始密钥，用于加密运算中的初始密钥加（下面介绍）;后面40个字分为10组，每组4个字（128比特）分别用于10轮加密运算中的轮密钥加，如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/AES2.jpeg&quot; alt=&quot;AES2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图中，设K = “abcdefghijklmnop”，则K0 = a, K15 = p, W[0] = K0 K1 K2 K3 = “abcd”。&lt;/p&gt;
+
+&lt;p&gt;AES的整体结构如下图所示，其中的W[0,3]是指W[0]、W[1]、W[2]和W[3]串联组成的128位密钥。加密的第1轮到第9轮的轮函数一样，包括4个操作：字节代换、行位移、列混合和轮密钥加。最后一轮迭代不执行列混合。另外，在第一轮迭代之前，先将明文和原始密钥进行一次异或加密操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/AES.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图也展示了AES解密过程，解密过程仍为10轮，每一轮的操作是加密操作的逆操作。由于AES的4个轮操作都是可逆的，因此，解密操作的一轮就是顺序执行逆行移位、逆字节代换、轮密钥加和逆列混合。同加密操作类似，最后一轮不执行逆列混合，在第1轮解密之前，要执行1次密钥加操作。&lt;/p&gt;
+
+&lt;h2 id=&quot;字节代换&quot;&gt;字节代换&lt;/h2&gt;
+
+&lt;p&gt;AES的字节代换其实就是一个简单的查表操作。AES定义了一个S盒和一个逆S盒&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/AES_s.png&quot; alt=&quot;AES_s&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;状态矩阵中的元素按照下面的方式映射为一个新的字节：把该字节的高4位作为行值，低4位作为列值，取出S盒或者逆S盒中对应的行的元素作为输出。例如，加密时，输出的字节S1为0x12,则查S盒的第0x01行和0x02列，得到值0xc9,然后替换S1原有的0x12为0xc9。状态矩阵经字节代换后的图如下：
+&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/字节变换.png&quot; alt=&quot;字节变换&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;字节代换逆操作&quot;&gt;字节代换逆操作&lt;/h2&gt;
+
+&lt;p&gt;逆字节代换也就是查逆S盒来变换,此处不展示&lt;/p&gt;
+
+&lt;h2 id=&quot;行移位&quot;&gt;行移位&lt;/h2&gt;
+
+&lt;p&gt;行移位是一个简单的左循环移位操作。当密钥长度为128比特时，状态矩阵的第0行左移0字节，第1行左移1字节，第2行左移2字节，第3行左移3字节，如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/行位移.jpeg&quot; alt=&quot;行位移&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;行移位的逆变换&quot;&gt;行移位的逆变换&lt;/h2&gt;
+
+&lt;p&gt;行移位的逆变换是将状态矩阵中的每一行执行相反的移位操作，例如AES-128中，状态矩阵的第0行右移0字节，第1行右移1字节，第2行右移2字节，第3行右移3字节。&lt;/p&gt;
+
+&lt;h2 id=&quot;列混合&quot;&gt;列混合&lt;/h2&gt;
+
+&lt;p&gt;列混合变换是通过矩阵相乘来实现的，经行移位后的状态矩阵与固定的矩阵相乘，得到混淆后的状态矩阵，如下图的公式所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/列混合.png&quot; alt=&quot;列混合&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;列混合逆运算&quot;&gt;列混合逆运算&lt;/h2&gt;
+
+&lt;p&gt;逆向列混合变换可由下图的矩阵乘法定义&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/admin233/Documents/verylazycat.github.io/img/列混合逆.png&quot; alt=&quot;列混合逆&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;轮秘钥加&quot;&gt;轮秘钥加&lt;/h2&gt;
+
+&lt;p&gt;轮密钥加是将128位轮密钥Ki同状态矩阵中的数据进行逐位异或操作&lt;/p&gt;
+
+&lt;p&gt;轮密钥加的逆运算同正向的轮密钥加运算完全一致，这是因为异或的逆操作是其自身。轮密钥加非常简单，但却能够影响S数组中的每一位。&lt;/p&gt;
+
+&lt;h2 id=&quot;秘钥扩展&quot;&gt;秘钥扩展&lt;/h2&gt;
+
+&lt;h2 id=&quot;aes解密&quot;&gt;AES解密&lt;/h2&gt;
+
+&lt;h1 id=&quot;hash函数&quot;&gt;Hash函数&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;消息空间到像空间的不可逆映射&lt;/p&gt;
+
+  &lt;p&gt;像通常叫数字指纹,消息摘要,散列值&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h=H(M)&lt;/script&gt;
+
+&lt;h2 id=&quot;性质&quot;&gt;性质&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;H可应用于&lt;code&gt;任意&lt;/code&gt;长度的消息&lt;/li&gt;
+  &lt;li&gt;H输出固定长度&lt;/li&gt;
+  &lt;li&gt;对于任意给定消息x,计算H(x)比较容易,用硬件和软件均可实现&lt;/li&gt;
+  &lt;li&gt;单向性:对于给定散列值h,找到H(x)=h的消息x在计算上不可行&lt;/li&gt;
+  &lt;li&gt;抗弱碰撞性:对于给定的消息x,找到满足y!=x且H(x)=H(y)的消息y在计算上不可行&lt;/li&gt;
+  &lt;li&gt;抗强碰撞性:找到满足H(x)=H(y)的偶对(x,y)在计算上不可行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;应用&quot;&gt;应用&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数字签名&lt;/li&gt;
+  &lt;li&gt;生成程序或文档的”数字指纹”&lt;/li&gt;
+  &lt;li&gt;用于安全传输和存储口令&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;md5&quot;&gt;MD5&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;单向散列算法&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;功能&quot;&gt;功能&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;输入任意长度的信息，经过处理，输出为128位的信息（数字指纹）；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;不同的输入得到的不同的结果（唯一性）；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;根据128位的输出结果不可能反推出输入的信息（不可逆）；&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;算法&quot;&gt;算法&lt;/h3&gt;
+
+&lt;h4 id=&quot;填充&quot;&gt;&lt;strong&gt;填充&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;在MD5算法中，首先需要对信息进行填充，使其位长对512求余的结果等于448，&lt;strong&gt;并且填充必须进行，即使其位长对512求余的结果等于448&lt;/strong&gt;。因此，信息的位长（Bits Length）将被扩展至N*512+448，N为一个非负整数，N可以是零。&lt;/p&gt;
+
+&lt;p&gt;填充的方法如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在这个结果后面附加一个以64位二进制表示的填充前信息长度（单位为Bit），如果二&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;进制表示的填充前信息长度超过64位，则取低64位。&lt;/p&gt;
+
+&lt;p&gt;经过这两步的处理，信息的位长=N&lt;em&gt;512+448+64=(N+1）&lt;/em&gt;512，即长度恰好是512的整数倍。这样做的原因是为满足后面处理中对信息长度的要求。&lt;/p&gt;
+
+&lt;h4 id=&quot;初始化变量&quot;&gt;&lt;strong&gt;初始化变量&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;初始的128位值为初试链接变量，这些参数用于第一轮的运算，以大端&lt;a href=&quot;https://link.zhihu.com/?target=https%3A//baike.baidu.com/item/%E5%AD%97%E8%8A%82%E5%BA%8F&quot;&gt;字节序&lt;/a&gt;来表示，他们分别为： A=0x01234567，B=0x89ABCDEF，C=0xFEDCBA98，D=0x76543210。&lt;/p&gt;
+
+&lt;p&gt;（每一个变量给出的数值是高字节存于内存低地址，低字节存于内存高地址，即大端字节序。在程序中变量A、B、C、D的值分别为0x67452301，0xEFCDAB89，0x98BADCFE，0x10325476）&lt;/p&gt;
+
+&lt;h4 id=&quot;处理分组数据&quot;&gt;&lt;strong&gt;处理分组数据&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;每一分组的算法流程如下：&lt;/p&gt;
+
+&lt;p&gt;第一分组需要将上面四个链接变量复制到另外四个变量中：A到a，B到b，C到c，D到d。从第二分组开始的变量为上一分组的运算结果，即A = a， B = b， C = c， D = d。&lt;/p&gt;
+
+&lt;p&gt;主循环有四轮（MD4只有三轮），每轮循环都很相似。第一轮进行16次操作。每次操作对a、b、c和d中的其中三个作一次非线性函数运算，然后将所得结果加上第四个变量，文本的一个子分组和一个常数。再将所得结果向左&lt;strong&gt;环移&lt;/strong&gt;一个不定的数，并加上a、b、c或d中之一。最后用该结果取代a、b、c或d中之一。&lt;/p&gt;
+
+&lt;p&gt;以下是每次操作中用到的四个非线性函数（每轮一个）&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;F( X ,Y ,Z ) = ( X &amp;amp; Y )&lt;/td&gt;
+      &lt;td&gt;( (~X) &amp;amp; Z )&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;G( X ,Y ,Z ) = ( X &amp;amp; Z )&lt;/td&gt;
+      &lt;td&gt;( Y &amp;amp; (~Z) )&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;H( X ,Y ,Z ) =X ^ Y ^ Z&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I( X ,Y ,Z ) =Y ^ ( X&lt;/td&gt;
+      &lt;td&gt;(~Z) )&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;（&amp;amp;是与（And），&lt;/td&gt;
+      &lt;td&gt;是或（Or），~是非（Not），^是异或（Xor））&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;这四个函数的说明：如果X、Y和Z的对应位是独立和均匀的，那么结果的每一位也应是独立和均匀的。&lt;/p&gt;
+
+&lt;p&gt;F是一个逐位运算的函数。即，如果X，那么Y，否则Z。函数H是逐位奇偶操作符。&lt;/p&gt;
+
+&lt;p&gt;假设Mj表示消息的第j个子分组（从0到15），常数ti是4294967296*abs( sin(i) ）的整数部分，i 取值从1到64，单位是弧度。（4294967296=2的32次方）&lt;/p&gt;
+
+&lt;p&gt;现定义：&lt;/p&gt;
+
+&lt;p&gt;FF(a ,b ,c ,d ,Mj ,s ,ti ) 操作为 a = b + ( (a + F(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;GG(a ,b ,c ,d ,Mj ,s ,ti ) 操作为 a = b + ( (a + G(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;HH(a ,b ,c ,d ,Mj ,s ,ti) 操作为 a = b + ( (a + H(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;II(a ,b ,c ,d ,Mj ,s ,ti) 操作为 a = b + ( (a + I(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;现定义：&lt;/p&gt;
+
+&lt;p&gt;FF(a ,b ,c ,d ,Mj ,s ,ti ) 操作为 a = b + ( (a + F(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;GG(a ,b ,c ,d ,Mj ,s ,ti ) 操作为 a = b + ( (a + G(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;HH(a ,b ,c ,d ,Mj ,s ,ti) 操作为 a = b + ( (a + H(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;II(a ,b ,c ,d ,Mj ,s ,ti) 操作为 a = b + ( (a + I(b,c,d) + Mj + ti) « s)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：“«”表示循环左移位，不是左移位。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这四轮（共64步）是：&lt;/p&gt;
+
+&lt;p&gt;第一轮&lt;/p&gt;
+
+&lt;p&gt;FF(a ,b ,c ,d ,M0 ,7 ,0xd76aa478 )&lt;/p&gt;
+
+&lt;p&gt;FF(d ,a ,b ,c ,M1 ,12 ,0xe8c7b756 )&lt;/p&gt;
+
+&lt;p&gt;FF(c ,d ,a ,b ,M2 ,17 ,0x242070db )&lt;/p&gt;
+
+&lt;p&gt;FF(b ,c ,d ,a ,M3 ,22 ,0xc1bdceee )&lt;/p&gt;
+
+&lt;p&gt;FF(a ,b ,c ,d ,M4 ,7 ,0xf57c0faf )&lt;/p&gt;
+
+&lt;p&gt;FF(d ,a ,b ,c ,M5 ,12 ,0x4787c62a )&lt;/p&gt;
+
+&lt;p&gt;FF(c ,d ,a ,b ,M6 ,17 ,0xa8304613 )&lt;/p&gt;
+
+&lt;p&gt;FF(b ,c ,d ,a ,M7 ,22 ,0xfd469501)&lt;/p&gt;
+
+&lt;p&gt;FF(a ,b ,c ,d ,M8 ,7 ,0x698098d8 )&lt;/p&gt;
+
+&lt;p&gt;FF(d ,a ,b ,c ,M9 ,12 ,0x8b44f7af )&lt;/p&gt;
+
+&lt;p&gt;FF(c ,d ,a ,b ,M10 ,17 ,0xffff5bb1 )&lt;/p&gt;
+
+&lt;p&gt;FF(b ,c ,d ,a ,M11 ,22 ,0x895cd7be )&lt;/p&gt;
+
+&lt;p&gt;FF(a ,b ,c ,d ,M12 ,7 ,0x6b901122 )&lt;/p&gt;
+
+&lt;p&gt;FF(d ,a ,b ,c ,M13 ,12 ,0xfd987193 )&lt;/p&gt;
+
+&lt;p&gt;FF(c ,d ,a ,b ,M14 ,17 ,0xa679438e )&lt;/p&gt;
+
+&lt;p&gt;FF(b ,c ,d ,a ,M15 ,22 ,0x49b40821 )&lt;/p&gt;
+
+&lt;p&gt;第二轮&lt;/p&gt;
+
+&lt;p&gt;GG(a ,b ,c ,d ,M1 ,5 ,0xf61e2562 )&lt;/p&gt;
+
+&lt;p&gt;GG(d ,a ,b ,c ,M6 ,9 ,0xc040b340 )&lt;/p&gt;
+
+&lt;p&gt;GG(c ,d ,a ,b ,M11 ,14 ,0x265e5a51 )&lt;/p&gt;
+
+&lt;p&gt;GG(b ,c ,d ,a ,M0 ,20 ,0xe9b6c7aa )&lt;/p&gt;
+
+&lt;p&gt;GG(a ,b ,c ,d ,M5 ,5 ,0xd62f105d )&lt;/p&gt;
+
+&lt;p&gt;GG(d ,a ,b ,c ,M10 ,9 ,0x02441453 )&lt;/p&gt;
+
+&lt;p&gt;GG(c ,d ,a ,b ,M15 ,14 ,0xd8a1e681 )&lt;/p&gt;
+
+&lt;p&gt;GG(b ,c ,d ,a ,M4 ,20 ,0xe7d3fbc8 )&lt;/p&gt;
+
+&lt;p&gt;GG(a ,b ,c ,d ,M9 ,5 ,0x21e1cde6 )&lt;/p&gt;
+
+&lt;p&gt;GG(d ,a ,b ,c ,M14 ,9 ,0xc33707d6 )&lt;/p&gt;
+
+&lt;p&gt;GG(c ,d ,a ,b ,M3 ,14 ,0xf4d50d87 )&lt;/p&gt;
+
+&lt;p&gt;GG(b ,c ,d ,a ,M8 ,20 ,0x455a14ed )&lt;/p&gt;
+
+&lt;p&gt;GG(a ,b ,c ,d ,M13 ,5 ,0xa9e3e905 )&lt;/p&gt;
+
+&lt;p&gt;GG(d ,a ,b ,c ,M2 ,9 ,0xfcefa3f8 )&lt;/p&gt;
+
+&lt;p&gt;GG(c ,d ,a ,b ,M7 ,14 ,0x676f02d9 )&lt;/p&gt;
+
+&lt;p&gt;GG(b ,c ,d ,a ,M12 ,20 ,0x8d2a4c8a )&lt;/p&gt;
+
+&lt;p&gt;第三轮&lt;/p&gt;
+
+&lt;p&gt;HH(a ,b ,c ,d ,M5 ,4 ,0xfffa3942 )&lt;/p&gt;
+
+&lt;p&gt;HH(d ,a ,b ,c ,M8 ,11 ,0x8771f681 )&lt;/p&gt;
+
+&lt;p&gt;HH(c ,d ,a ,b ,M11 ,16 ,0x6d9d6122 )&lt;/p&gt;
+
+&lt;p&gt;HH(b ,c ,d ,a ,M14 ,23 ,0xfde5380c )&lt;/p&gt;
+
+&lt;p&gt;HH(a ,b ,c ,d ,M1 ,4 ,0xa4beea44 )&lt;/p&gt;
+
+&lt;p&gt;HH(d ,a ,b ,c ,M4 ,11 ,0x4bdecfa9 )&lt;/p&gt;
+
+&lt;p&gt;HH(c ,d ,a ,b ,M7 ,16 ,0xf6bb4b60 )&lt;/p&gt;
+
+&lt;p&gt;HH(b ,c ,d ,a ,M10 ,23 ,0xbebfbc70 )&lt;/p&gt;
+
+&lt;p&gt;HH(a ,b ,c ,d ,M13 ,4 ,0x289b7ec6 )&lt;/p&gt;
+
+&lt;p&gt;HH(d ,a ,b ,c ,M0 ,11 ,0xeaa127fa )&lt;/p&gt;
+
+&lt;p&gt;HH(c ,d ,a ,b ,M3 ,16 ,0xd4ef3085 )&lt;/p&gt;
+
+&lt;p&gt;HH(b ,c ,d ,a ,M6 ,23 ,0x04881d05 )&lt;/p&gt;
+
+&lt;p&gt;HH(a ,b ,c ,d ,M9 ,4 ,0xd9d4d039 )&lt;/p&gt;
+
+&lt;p&gt;HH(d ,a ,b ,c ,M12 ,11 ,0xe6db99e5 )&lt;/p&gt;
+
+&lt;p&gt;HH(c ,d ,a ,b ,M15 ,16 ,0x1fa27cf8 )&lt;/p&gt;
+
+&lt;p&gt;HH(b ,c ,d ,a ,M2 ,23 ,0xc4ac5665 )&lt;/p&gt;
+
+&lt;p&gt;第四轮&lt;/p&gt;
+
+&lt;p&gt;II(a ,b ,c ,d ,M0 ,6 ,0xf4292244 )&lt;/p&gt;
+
+&lt;p&gt;II(d ,a ,b ,c ,M7 ,10 ,0x432aff97 )&lt;/p&gt;
+
+&lt;p&gt;II(c ,d ,a ,b ,M14 ,15 ,0xab9423a7 )&lt;/p&gt;
+
+&lt;p&gt;II(b ,c ,d ,a ,M5 ,21 ,0xfc93a039 )&lt;/p&gt;
+
+&lt;p&gt;II(a ,b ,c ,d ,M12 ,6 ,0x655b59c3 )&lt;/p&gt;
+
+&lt;p&gt;II(d ,a ,b ,c ,M3 ,10 ,0x8f0ccc92 )&lt;/p&gt;
+
+&lt;p&gt;II(c ,d ,a ,b ,M10 ,15 ,0xffeff47d )&lt;/p&gt;
+
+&lt;p&gt;II(b ,c ,d ,a ,M1 ,21 ,0x85845dd1 )&lt;/p&gt;
+
+&lt;p&gt;II(a ,b ,c ,d ,M8 ,6 ,0x6fa87e4f )&lt;/p&gt;
+
+&lt;p&gt;II(d ,a ,b ,c ,M15 ,10 ,0xfe2ce6e0 )&lt;/p&gt;
+
+&lt;p&gt;II(c ,d ,a ,b ,M6 ,15 ,0xa3014314 )&lt;/p&gt;
+
+&lt;p&gt;II(b ,c ,d ,a ,M13 ,21 ,0x4e0811a1 )&lt;/p&gt;
+
+&lt;p&gt;II(a ,b ,c ,d ,M4 ,6 ,0xf7537e82 )&lt;/p&gt;
+
+&lt;p&gt;II(d ,a ,b ,c ,M11 ,10 ,0xbd3af235 )&lt;/p&gt;
+
+&lt;p&gt;II(c ,d ,a ,b ,M2 ,15 ,0x2ad7d2bb )&lt;/p&gt;
+
+&lt;p&gt;II(b ,c ,d ,a ,M9 ,21 ,0xeb86d391 )&lt;/p&gt;
+
+&lt;p&gt;所有这些完成之后，将a、b、c、d分别在原来基础上再加上A、B、C、D。&lt;/p&gt;
+
+&lt;p&gt;即a = a + A，b = b + B，c = c + C，d = d + D&lt;/p&gt;
+
+&lt;p&gt;然后用下一分组数据继续运行以上算法。&lt;/p&gt;
+
+&lt;h4 id=&quot;输出&quot;&gt;&lt;strong&gt;输出&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;最后的输出是a、b、c和d的级联。&lt;/p&gt;
+
+&lt;p&gt;当你按照我上面所说的方法实现MD5算法以后，你可以用以下几个信息对你做出来的程序作一个简单的测试，看看程序有没有错误。&lt;/p&gt;
+
+&lt;p&gt;MD5 (“”) = d41d8cd98f00b204e9800998ecf8427e&lt;/p&gt;
+
+&lt;p&gt;MD5 (“a”) = 0cc175b9c0f1b6a831c399e269772661&lt;/p&gt;
+
+&lt;p&gt;MD5 (“abc”) = 900150983cd24fb0d6963f7d28e17f72&lt;/p&gt;
+
+&lt;p&gt;MD5 (“message digest”) = f96b697d7cb7938d525a2f31aaf161d0&lt;/p&gt;
+
+&lt;p&gt;MD5 (“abcdefghijklmnopqrstuvwxyz”) = c3fcd3d76192e4007dfb496cca67e13b&lt;/p&gt;
+
+&lt;p&gt;MD5 (“ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz”) =&lt;/p&gt;
+
+&lt;p&gt;f29939a25efabaef3b87e2cbfe641315&lt;/p&gt;
+
+&lt;p&gt;MD5 (“8a683566bcc7801226b3d8b0cf35fd97”) =cf2cb5c89c5e5eeebef4a76becddfcfd&lt;/p&gt;
+
+&lt;p&gt;MD5加密字符串实例&lt;/p&gt;
+
+&lt;p&gt;现以字符串“jklmn”为例。&lt;/p&gt;
+
+&lt;p&gt;该字符串在内存中表示为：6A 6B 6C 6D 6E（从左到右为低地址到高地址，后同），信息长度为40 bits， 即0x28。&lt;/p&gt;
+
+&lt;p&gt;对其填充，填充至448位，即56字节。结果为：&lt;/p&gt;
+
+&lt;p&gt;6A 6B 6C 6D 6E 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00&lt;/p&gt;
+
+&lt;p&gt;剩下64位，即8字节填充填充前信息位长，按小端字节序填充剩下的8字节，结果为。&lt;/p&gt;
+
+&lt;p&gt;6A 6B 6C 6D 6E 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 28 00 00 00 00 00 00 00&lt;/p&gt;
+
+&lt;p&gt;（64字节，512 bits）&lt;/p&gt;
+
+&lt;p&gt;初始化A、B、C、D四个变量。&lt;/p&gt;
+
+&lt;p&gt;将这64字节填充后数据分成16个小组（程序中对应为16个数组），即：&lt;/p&gt;
+
+&lt;p&gt;M0：6A 6B 6C 6D （这是内存中的顺序，按照小端字节序原则，对应数组M(0)的值为0x6D6C6B6A，下同）&lt;/p&gt;
+
+&lt;p&gt;M1：6E 80 00 00&lt;/p&gt;
+
+&lt;p&gt;M2：00 00 00 00&lt;/p&gt;
+
+&lt;p&gt;…..&lt;/p&gt;
+
+&lt;p&gt;M14：28 00 00 00&lt;/p&gt;
+
+&lt;p&gt;M15：00 00 00 00&lt;/p&gt;
+
+&lt;p&gt;经过“&lt;strong&gt;3. 分组数据处理&lt;/strong&gt;”后，a、b、c、d值分别为0xD8523F60、0x837E0144、0x517726CA、0x1BB6E5FE&lt;/p&gt;
+
+&lt;p&gt;在内存中为a：60 3F 52 D8&lt;/p&gt;
+
+&lt;p&gt;b：44 01 7E 83&lt;/p&gt;
+
+&lt;p&gt;c：CA 26 77 51&lt;/p&gt;
+
+&lt;p&gt;d：FE E5 B6 1B&lt;/p&gt;
+
+&lt;p&gt;a、b、c、d按内存顺序输出即为最终结果：603F52D844017E83CA267751FEE5B61B。这就是字符串“jklmn”的MD5值。&lt;/p&gt;
+
+&lt;h2 id=&quot;sha1&quot;&gt;SHA1&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MD5算法得出的MD5值长度为16个字节（8&lt;em&gt;16=128位） 
+SHA1算法得出的SHA1值长度为20个字节（8&lt;/em&gt;20=160位）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;算法-1&quot;&gt;算法&lt;/h3&gt;
+
+&lt;h4 id=&quot;填充信息&quot;&gt;填充信息&lt;/h4&gt;
+
+&lt;p&gt;和MD5算法类似，对信息的第一步也是填充信息直至满足条件。&lt;/p&gt;
+
+&lt;p&gt;填充的过程如下：
+1.先判断文件（消息）的大小（长度） mod 512 == 448 mod 512 ，就是大小（长度）对512求余等于448。（这里的512、448是“位”为单位，转成“字节”就是64、56，即mod 64 == 56 mod 64）&lt;/p&gt;
+
+&lt;p&gt;2.如果大小（长度）满足 mod 512 == 448 mod 512，就在文件（消息）的末尾处添加64位（8字节）的值，值的内容是原消息的长度（以位为单位）&lt;/p&gt;
+
+&lt;p&gt;3.如果大小（长度）不满足要求，就执行以下操作：
+（1）填充1个1
+（2）填充0，直到满足满足过程的第一步。&lt;/p&gt;
+
+&lt;p&gt;注意：这里是以位为单位，假如是以字节为单位，第一个填充的是0x80（1000 0000），然后就填0x0
+举例：消息内容为“gnubd”，就能得到以下内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-reStructuredText&quot;&gt;67 6E 62 75 64 80 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 28 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;还需要注意到的是最后原消息的长度是以大端存储的方式存到内存中的，这里与MD5的存储是有区别的。&lt;/p&gt;
+
+&lt;p&gt;….&lt;/p&gt;
+
+&lt;h1 id=&quot;消息认证&quot;&gt;消息认证&lt;/h1&gt;
+
+&lt;h2 id=&quot;作用目的&quot;&gt;作用&amp;amp;目的&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;验证信息来源的真实性&lt;/li&gt;
+  &lt;li&gt;验证消息的完整性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;认证函数实现&quot;&gt;认证函数实现&lt;/h2&gt;
+
+&lt;h3 id=&quot;消息认证码mac&quot;&gt;消息认证码(MAC)&lt;/h3&gt;
+
+&lt;p&gt;消息认证码的输入包括任意长度的消息和一个发送者与接收者之间的共享的密钥，它可以输出固定长度的数据，这个数据成为&lt;strong&gt;MAC值&lt;/strong&gt;。
+ 根据任意长度的雄性输出固定长度的数据，这一点和散列函数很类似。但是单向散列函数中计算散列值时不需要密钥，相对地，消息认证码中则需要使用发送者与接收者之间的共享密钥。
+ 要计算MAC必须持有共享密钥，没有共享密钥的人就无法计算MAC值，消息认证正是利用这一性质来完成认证的。此外，和单向散列函数的散列值一样，哪怕消息中发生1比特的变化，MAC值一会产生变化，消息认证码正是利用这一性质来确认完整性的。
+ &lt;strong&gt;消息认证码是一种与密钥相关联的单向散列函数&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;基于des消息认证码&quot;&gt;基于DES消息认证码&lt;/h3&gt;
+
+&lt;h3 id=&quot;基于hash消息认证码&quot;&gt;基于Hash消息认证码&lt;/h3&gt;
+
+&lt;h4 id=&quot;hmac算法&quot;&gt;HMAC算法&lt;/h4&gt;
+
+&lt;p&gt;….&lt;/p&gt;
+
+&lt;h1 id=&quot;公钥密码&quot;&gt;公钥密码&lt;/h1&gt;
+
+&lt;h2 id=&quot;提出原因&quot;&gt;提出原因&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;秘钥分发问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;密钥更新共享的方式有以下几种类型：
+A 选择密钥并手工传递给 B,在这样的一个情境中，A 和 B都是确实存在且可信的。而在互联网环境中，A 和 B 之间要建立信任关系，会很困难。&lt;/li&gt;
+  &lt;li&gt;第三方 C 选择密钥分别手工传递给 A , B,在复杂的互联网环境中，C 如何将密钥安全的分发给 A和B，要保证其安全性也很困难。&lt;/li&gt;
+  &lt;li&gt;用 A , B 原有共享密钥传送新密钥,这是一种相对安全的方式，但是互联网环境中需要A和B要有一份复杂的密钥交换协议，才可以实现新密钥的共享。&lt;/li&gt;
+  &lt;li&gt;与 A , B 分别有共享密钥的第三方 C 传送新密钥给 A 和（或） B,此过程也需要一份复杂的密钥交换协议来确保C能够将密钥安全的分发给 A 和 B。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;秘钥管理问题&lt;/p&gt;
+
+    &lt;p&gt;除了密钥的更新问题困难以外，还有对密钥管理的问题仍然存在。在对称密码算法中必须要对密钥进行管理，但是对密钥的管理又十分的困难。&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;例如：&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;  N 个用户集需要 N(N-1)/2 个共享密钥，当用户量增大时，密钥空间急剧增大。&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;n = 100 时，  C(100,2) = 4,995&lt;/li&gt;
+      &lt;li&gt;n = 5000时， C(5000,2) = 12,497,500&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;数字签名问题&lt;/p&gt;
+
+    &lt;p&gt;传统加密算法无法实现抗抵赖的需求。在对称加密算法中，共享的密钥是通信双方都知道的 ，所以无法使用共享的密钥来对对方的身份进行确认。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;单向陷门函数&quot;&gt;单向陷门函数&lt;/h2&gt;
+
+&lt;p&gt;单向陷门函数可以被定义为如下函数f：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;给出f的定义域中的任意元素x,  f(x)的计算是容易的；&lt;/li&gt;
+  &lt;li&gt;给出y=f (x)中的y要计算x时，若知道设计函数f时结合进去的某种信息（该信息称为陷门），则容易计算；若不知道该信息，则难以计算。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目前人们主要是基于如下的数学上的困难问题来设计单向函数和公钥密码体制：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;大整数分解问题(如公钥密码体制RSA)；&lt;/li&gt;
+  &lt;li&gt;有限域上的离散对数问题(如公钥密码体制ElGamal):&lt;/li&gt;
+  &lt;li&gt;椭圆曲线上的离散对数问题(如公钥密码体制ECC)。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;为什么要用公钥密码&quot;&gt;为什么要用公钥密码&lt;/h2&gt;
+
+&lt;p&gt;（1） 机密性的实现
+发送方用接收方的公钥加密消息，接收方用自己的私钥来解密。
+（2） 数字签名
+发送方用自己的私钥来签名消息，接收方通过发送方对应的公钥来鉴别消息，并且发送方不能对自己的签名进行否认。
+（3） 密钥分发和协商
+发送方和接收方基于公钥密码系统容易实现在公开信道上的大规模的密钥分发和协商。&lt;/p&gt;
+
+&lt;h2 id=&quot;dh秘钥交换&quot;&gt;DH秘钥交换&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;DH，全称为“Diffie-Hellman”，这是一种确保共享KEY安全穿越不安全网络的方法，换句话说就是密钥一致协议，由公开密钥密码体制的奠基人Diffie和Hellman所提出的一种思想&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;简单的说就是允许两名用户在公开媒体上交换信息以生成“一致”的、可以共享的密钥。也就是由甲方产出一对密钥（公钥、私钥），乙方依照甲方公钥产生乙方密钥对（公钥、私钥）。它可以让双方在完全没有对方任何预先信息的条件下通过不安全信道建立起一个密钥。这个密钥可以在后续的通讯中作为对称密钥来加密通讯内容。&lt;/p&gt;
+
+&lt;h3 id=&quot;dh密钥交换模型分析&quot;&gt;DH密钥交换模型分析&lt;/h3&gt;
+
+&lt;p&gt;我们还是以甲乙双方发送数据为模型进行分析&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;甲方（消息发送方，下同）构建密钥对（公钥+私钥），甲方公布公钥给乙方（消息接收方，下同）&lt;/li&gt;
+  &lt;li&gt;乙方以甲方发送过来的公钥作为参数构造密钥对（公钥+私钥），将构造出来的公钥公布给甲方&lt;/li&gt;
+  &lt;li&gt;甲方用“甲方的私钥+乙方的公钥”构造本地密钥&lt;/li&gt;
+  &lt;li&gt;乙方用“乙方的私钥+甲方的公钥”构造本地的密钥&lt;/li&gt;
+  &lt;li&gt;这个时候，&lt;strong&gt;甲乙两方本地新构造出来的密钥应该一样&lt;/strong&gt;，甲乙双方可以通过本地密钥进行数据的加密和解密&lt;/li&gt;
+  &lt;li&gt;然后就可以&lt;strong&gt;使用AES这类对称加密算法进行数据的安全传送&lt;/strong&gt;了。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dh数学原理&quot;&gt;DH数学原理&lt;/h3&gt;
+
+&lt;p&gt;有两个全局公开的参数，一个素数p和一个整数g，g是p的一个原根。&lt;/p&gt;
+
+&lt;p&gt;服务端的私钥和公钥分别是a和A，客户端的私钥和公钥分别是b和B；&lt;/p&gt;
+
+&lt;p&gt;服务端根据a、p、g，可以计算出公钥A；&lt;/p&gt;
+
+&lt;p&gt;服务端将g, p, A明文传送给客户端，客户端可以计算自己的公钥B，以及共享密钥K；&lt;/p&gt;
+
+&lt;p&gt;客户端将B明文发送给服务端，服务端也可以计算出共享密钥K。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/DH.png&quot; alt=&quot;DH&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;安全问题-中间人攻击&quot;&gt;安全问题-中间人攻击&lt;/h3&gt;
+
+&lt;p&gt;在最初的描述中，迪菲-赫尔曼密钥交换本身并没有提供通讯双方的身份验证服务，因此它很容易受到中间人攻击。 
+一个中间人“丙”在信道的中央进行两次迪菲－赫尔曼密钥交换，一次和甲，另一次和乙，就能够成功的向甲假装自己是乙，反之亦然。
+而攻击者可以解密（读取和存储）任何一个人的信息并重新加密信息，然后传递给另一个人。因此通常都需要一个能够验证通讯双方身份的机制来防止这类攻击。
+&lt;strong&gt;有很多种安全身份验证解决方案使用到了迪菲－赫尔曼密钥交换。例如当甲和乙共有一个公钥基础设施时，可以将他们的返回密钥进行签名。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;rsa&quot;&gt;RSA&lt;/h2&gt;
+
+&lt;p&gt;RSA公钥算法是由 MIT (麻省理工学院, Massachusetts Institute of Technology) 的Rivest, Shamir和Adleman在1978年提出来的。RSA方案是被最广泛接受并实现的通用公开密钥密码算法，目前已成为公钥密码的国际标准。该算法的数学基础是初等数论中的欧拉定理，其安全性建立在大整数因子分解的困难性之上。&lt;/p&gt;
+
+&lt;h3 id=&quot;密钥的生成&quot;&gt;密钥的生成&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;选择两个大素数 &lt;code&gt;p&lt;/code&gt;，&lt;code&gt;q&lt;/code&gt;，（p，q为互异素数，需要保密）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;计算&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;n= p *q\\
+\Phi(n)=(p-1)*(q-1)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;选择整数 &lt;code&gt;e&lt;/code&gt; 使&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+gcd(\phi(n),e)=1\\
+1 &lt; e &lt;\phi(n) %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;计算d&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d*e=1mod\phi(n)&lt;/script&gt;
+
+&lt;p&gt;得到：公钥 为&lt;code&gt;{e,n}&lt;/code&gt;； 私钥为&lt;code&gt;{d}&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;加密-1&quot;&gt;加密&lt;/h3&gt;
+
+&lt;p&gt;明文:M&lt;/p&gt;
+
+&lt;p&gt;密文:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+接受(e,n)\\
+M分组,长度问L(L&lt;log_{2}n)M=m_{1}m_{2}...\\
+加密算法:c_{i}=m_{i}^{e}(modn) %]]&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;解密-1&quot;&gt;解密&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;m_{i}=c^{d}_{i}mod(n)&lt;/script&gt;
+
+&lt;h3 id=&quot;安全性&quot;&gt;安全性&lt;/h3&gt;
+
+&lt;h4 id=&quot;攻击方式&quot;&gt;攻击方式&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;因子分解&lt;/p&gt;
+
+    &lt;p&gt;​	分解n&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;针对参数攻击&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;共模攻击&lt;/li&gt;
+      &lt;li&gt;低指数攻击&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;elgamal&quot;&gt;ElGamal&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;该算法安全性依赖于计算有限域上离散对数难题：求解离散对数(目前)是困难的,其逆运算指数运算简单。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;秘钥生成&quot;&gt;秘钥生成&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;随机选取一个满足安全要求的大素数p,生成有限域z_{p}的一个生成元g&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;选取一个随机数x(1&amp;lt;x&amp;lt;p-1),计算:&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;y=g^{x}(modp)&lt;/script&gt;
+
+    &lt;p&gt;&lt;code&gt;公钥为(y,g,p),私钥为x&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;加密-2&quot;&gt;加密&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;接受(y,g,p)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;消息m分组为长度为L(L&amp;lt;log_{2}p)的消息分组m=m_{1}m_{2}….&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;对第i块消息(1&amp;lt;=i&amp;lt;=t)随机选择整数r_{i},1&amp;lt;r_{i}&amp;lt;p-1&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;计算:&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+c_{i}=g^{r_{i}}(modp)\\
+c^{'}_{i}=m_{i}y^{r_{i}}(modp)(1&lt;=i&lt;t) %]]&gt;&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将密文C=(c_{i},c^{‘}_{1})…..发给接受方&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;解密-2&quot;&gt;解密&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;接受密文&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;计算:&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+m_{i}=(c^{'}_{i}/c^{x}_{i})(mod p)\\
+(1&lt;=i&lt;=t) %]]&gt;&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;得到明文:&lt;/p&gt;
+
+    &lt;p&gt;m=m1m2…&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;安全性-1&quot;&gt;安全性&lt;/h3&gt;
+
+&lt;h4 id=&quot;小步大步算法&quot;&gt;小步大步算法&lt;/h4&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;h4 id=&quot;指数积分法&quot;&gt;指数积分法&lt;/h4&gt;
+
+&lt;p&gt;….&lt;/p&gt;
+
+&lt;h2 id=&quot;椭圆曲线公钥加密&quot;&gt;椭圆曲线公钥加密&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;椭圆曲线加密算法，即：Elliptic Curve Cryptography，简称ECC，是基于椭圆曲线数学理论实现的一种非对称加密算法。相比RSA，ECC优势是可以使用更短的密钥，来实现与RSA相当或更高的安全。据研究，160位ECC加密安全性相当于1024位RSA加密，210位ECC加密安全性相当于2048位RSA加密&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;一般情况下，椭圆曲线可用下列方程式来表示，其中a,b,c,d为系数。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E:y^2=ax^3+ bx^2+c^x+d&lt;/script&gt;
+
+&lt;h3 id=&quot;椭圆曲线的运算规则&quot;&gt;椭圆曲线的运算规则&lt;/h3&gt;
+
+&lt;h3 id=&quot;加法&quot;&gt;加法&lt;/h3&gt;
+
+&lt;p&gt;过曲线上的两点A、B画一条直线，找到直线与椭圆曲线的交点，交点关于x轴对称位置的点，定义为A+B，即为加法。如下图所示：A + B = C&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/加法.png&quot; alt=&quot;加法&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;二倍运算&quot;&gt;二倍运算&lt;/h3&gt;
+
+&lt;p&gt;上述方法无法解释A + A，即两点重合的情况。因此在这种情况下，将椭圆曲线在A点的切线，与椭圆曲线的交点，交点关于x轴对称位置的点，定义为A + A，即2A，即为二倍运算。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/2倍.png&quot; alt=&quot;2倍&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;正负取反&quot;&gt;正负取反&lt;/h3&gt;
+
+&lt;p&gt;将A关于x轴对称位置的点定义为-A，即椭圆曲线的正负取反运算。&lt;/p&gt;
+
+&lt;h3 id=&quot;无穷远点&quot;&gt;无穷远点&lt;/h3&gt;
+
+&lt;p&gt;如果将A与-A相加，过A与-A的直线平行于y轴，可以认为直线与椭圆曲线相交于无穷远点。&lt;/p&gt;
+
+&lt;p&gt;综上，定义了A+B、2A运算，因此给定椭圆曲线的某一点G，可以求出2G、3G（即G + 2G）、4G……。即：当给定G点时，已知x，求xG点并不困难。反之，已知xG点，求x则非常困难。此即为椭圆曲线加密算法背后的数学原理。&lt;/p&gt;
+
+&lt;p&gt;….&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;具体算法参考书籍&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;对称密码体制vs公钥密码体制&quot;&gt;对称密码体制Vs公钥密码体制&lt;/h2&gt;
+
+&lt;p&gt;对称密码体制的缺陷：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 密钥分配问题：通信双方要进行加密通信，需要通过秘密的安全信道协商加密密钥，而这种安全信道可能很难实现
+ 密钥管理问题：在有多个用户的网络中，任何两个用户之间都需要有共享的密钥，当网络中的用户n很大时，需要管理的密钥数目非常大，为n(n-1)/2
+没有签名功能：当主体A收到主体B的电子文挡(电子数据)时，无法向第三方证明此电子文档确实来源于B。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;公钥密码体制重点考察三个领域的问题：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;密钥交换：通信双方交换会话密钥，以加密通信双方后续连接所传输的信息。每次逻辑连接使用一把新的会话密钥，用完就丢弃。
+通信保密：将公钥作为加密密钥，私钥作为解密密钥，通信双方不需要交换密钥就可以实现保密通信。
+数字签名：将私钥作为加密密钥，公钥作为解密密钥，可实现由一个用户对数据加密而使多个用户解读。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在公钥密码体制以前的整个密码学史中，所有的密码算法，包括古典密码和现代密码，都是基于替换和置换这两个基本工具。而公钥密码体制则为密码学的发展提供了新的理论和技术基础， 一方面公钥密码算法的基本工具不再是代换和置换，而是数学函数； 另一方面公钥密码算法是以非对称的形式使用两个密钥，两个密钥的使用对保密性、密钥分配、签名、认证等都有着深刻的意义。&lt;/p&gt;
+
+&lt;p&gt;公钥算法加密解密速度慢。误区：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;公开密钥密码算法更安全
+公开密钥密码使对称密钥密码过时了 # 数字签名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;数字签名解决的问题&quot;&gt;数字签名解决的问题&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;A发送消息给B：A（不可抵赖）——————&amp;gt;B（不可伪造）（不可重用）
+(1)不可抵赖     (假如：A可以否认发过该消息，B无法证明A确实发了该消息)
+(2)不可伪造 	    (假如：B伪造一个不同的消息，但声称是从A收到的）
+(3)不可重用		(假如：签名没有和消息绑定)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;安全模型性质&quot;&gt;安全模型,性质&lt;/h2&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;h2 id=&quot;rsa签名算法以及存在的安全问题&quot;&gt;RSA签名算法以及存在的安全问题&lt;/h2&gt;
+
+&lt;p&gt;如果不使用HASH函数&lt;/p&gt;
+
+&lt;p&gt;1.（存在性伪造）使用“已知消息攻击”
+利用RSA的乘法特性，可以进行如下攻击
+假设 y1=sigk(m1)和y2=sigk(m2) 是签名者曾经签署的有效签名，
+那么 verk (m1m2 mod n, y1y2 mod n) = true&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;（选择性伪造）利用“选择消息攻击”
+假设攻击者要对消息 m 伪造一个签名，m=m1m2mod n。
+假设攻击者能请求签名者为 m1 和 m2 签名(结果分别为y1和y2)，
+那么， y1 y2 mod n 就是消息 m 的有效签名&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;对抗攻击的方法：使用HASH函数
+私钥签名，公钥验证&lt;/p&gt;
+
+&lt;h2 id=&quot;elgamal签名算法以及存在的安全问题&quot;&gt;ElGamal签名算法以及存在的安全问题&lt;/h2&gt;
+
+&lt;h2 id=&quot;特殊的签名算法以及适应的应用场景&quot;&gt;特殊的签名算法以及适应的应用场景&lt;/h2&gt;
+
+&lt;h1 id=&quot;密码协议&quot;&gt;密码协议&lt;/h1&gt;
+
+&lt;h1 id=&quot;秘钥管理&quot;&gt;秘钥管理&lt;/h1&gt;
+
+&lt;h2 id=&quot;原则&quot;&gt;原则&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;区分秘钥管理的策略和机制&lt;/li&gt;
+  &lt;li&gt;完全安全原则&lt;/li&gt;
+  &lt;li&gt;最小权利原则&lt;/li&gt;
+  &lt;li&gt;责任分离原则&lt;/li&gt;
+  &lt;li&gt;秘钥分级原则&lt;/li&gt;
+  &lt;li&gt;秘钥更换原则&lt;/li&gt;
+  &lt;li&gt;秘钥有足够长度&lt;/li&gt;
+  &lt;li&gt;密码体制不同,秘钥管理也不同&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;几类秘钥作用&quot;&gt;几类秘钥作用&lt;/h2&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc] 基础概念</summary></entry><entry><title type="html">IP报文</title><link href="http://localhost:4000/_posts/2020-07-18-IP%E6%8A%A5%E6%96%87/" rel="alternate" type="text/html" title="IP报文" /><published>2020-07-18T00:00:00-04:00</published><updated>2020-07-18T00:00:00-04:00</updated><id>http://localhost:4000/_posts/IP%E6%8A%A5%E6%96%87</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-18-IP%E6%8A%A5%E6%96%87/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;p&gt;IP报文是在网络层传输的数据单元，也叫IP数据报&lt;/p&gt;
 
@@ -2931,13 +4740,4 @@ POST的安全性要比GET的安全性高。注意：这里所说的安全性和�
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;总结一下，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求，在FORM（表单）中，Method默认为&quot;GET&quot;，实质上，GET和POST只是发送机制不同，并不是一个取一个发
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry><entry><title type="html">ICMP协议和ping命令</title><link href="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/" rel="alternate" type="text/html" title="ICMP协议和ping命令" /><published>2020-07-05T00:00:00-04:00</published><updated>2020-07-05T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-ICMP%E5%8D%8F%E8%AE%AE%E5%92%8Cping%E5%91%BD%E4%BB%A4/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;p&gt;ICMP全称Internet Control Message Protocol，就是&lt;strong&gt;互联网控制报文协议&lt;/strong&gt;。
- ICMP 报文是封装在 IP 包里面的。因为传输指令的时候，肯定需要&lt;strong&gt;源地址&lt;/strong&gt;和&lt;strong&gt;目标地址&lt;/strong&gt;。它本身非常简单。因为作为侦查兵，要轻装上阵，不能携带大量的包袱&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/home/admin233/博客/verylazycat.github.io/img/ICMP&amp;amp;ping.png&quot; alt=&quot;ICMP&amp;amp;ping&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;ICMP 报文有很多的类型，不同的类型有不同的代码。最常用的类型是主动请求为 8，主动请求的应答为0&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry></feed>
