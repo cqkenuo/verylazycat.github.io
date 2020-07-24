@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-23T09:33:02-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-24T00:53:57-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -126,7 +126,138 @@ CREATE TABLE `user` (
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&quot;curd&quot;&gt;CURD&lt;/h1&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">MySql存储引擎</title><link href="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="alternate" type="text/html" title="MySql存储引擎" /><published>2020-07-22T00:00:00-04:00</published><updated>2020-07-22T00:00:00-04:00</updated><id>http://localhost:4000/_posts/MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;404页面&quot;&gt;404页面&lt;/h1&gt;
+
+&lt;p&gt;在templates目录下新建404.html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&quot;en&quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+    &amp;lt;title&amp;gt;404&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;404&amp;lt;/h1&amp;gt;
+&amp;lt;h1&amp;gt;${error}&amp;lt;/h1&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;addbook页面&quot;&gt;addbook页面&lt;/h1&gt;
+
+&lt;p&gt;在templates/book目录下新建addbook,html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&quot;en&quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+    &amp;lt;title&amp;gt;添加图书&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;添加图书&amp;lt;/h1&amp;gt;
+&amp;lt;form action=&quot;/books/add/do&quot; method=&quot;post&quot;&amp;gt;
+    &amp;lt;P&amp;gt;书名: &amp;lt;input type=&quot;text&quot; name=&quot;name&quot;/&amp;gt;&amp;lt;/P&amp;gt;
+    &amp;lt;P&amp;gt;作者: &amp;lt;input type=&quot;text&quot; name=&quot;author&quot;/&amp;gt;&amp;lt;/P&amp;gt;
+    &amp;lt;P&amp;gt;价格: &amp;lt;input type=&quot;text&quot; name=&quot;price&quot;/&amp;gt;&amp;lt;/P&amp;gt;
+    &amp;lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在templates/book目录下新建books.html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+    &amp;lt;title&amp;gt;图书列表&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div align=&quot;center&quot;&amp;gt;
+    &amp;lt;h3&amp;gt;图书列表&amp;lt;/h3&amp;gt;
+    &amp;lt;h4 id=&quot;status&quot;&amp;gt;&amp;lt;/h4&amp;gt;
+
+    &amp;lt;#if host??&amp;gt;
+    &amp;lt;table cellpadding=&quot;10&quot;&amp;gt;
+        &amp;lt;tr&amp;gt;
+            &amp;lt;td&amp;gt;${host.name}&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;&amp;lt;a href=&quot;/users/logout/do&quot;&amp;gt;退出登录&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;/tr&amp;gt;
+    &amp;lt;/table&amp;gt;
+    &amp;lt;#else&amp;gt;
+    &amp;lt;h5&amp;gt;未登录！&amp;lt;a href=&quot;/users/login&quot;&amp;gt;登陆/&amp;lt;/a&amp;gt;&amp;lt;a href=&quot;/users/register&quot;&amp;gt;注册&amp;lt;/a&amp;gt;&amp;lt;/h5&amp;gt;
+&amp;lt;/#if&amp;gt;
+
+&amp;lt;table border=&quot;1&quot; cellpadding=&quot;10&quot;&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;ID&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;书名&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;作者&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;价格&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;状态&amp;lt;/td&amp;gt;
+        &amp;lt;td colspan=&quot;2&quot; align=&quot;center&quot;&amp;gt;&amp;lt;a href=&quot;/books/add&quot; target=&quot;_blank&quot;&amp;gt;Add&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;#list books as book&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;a&amp;gt;${book.id}&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;《${book.name}》&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;${book.author}&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;${book.price}&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;#if book.status == 0&amp;gt; 在库 &amp;lt;#elseif book.status == 1&amp;gt; 已借出 &amp;lt;/#if&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;a href=&quot;/books/${book.id}/delete&quot;&amp;gt;借书&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;a href=&quot;/books/${book.id}/recover&quot;&amp;gt;还书&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+&amp;lt;/#list&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;curd&quot;&gt;CURD&lt;/h1&gt;
+
+&lt;p&gt;在model目录下创建Book.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import lombok.Data;
+
+@Data
+public class Book {
+    private int id;
+    private  String name;
+    private  String author;
+    private  String price;
+    private int status;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里使用了&lt;code&gt;lombok&lt;/code&gt;自动实现get,set等方法&lt;/p&gt;
+
+&lt;p&gt;在dao目录下新建BookDAO&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import com.lazycat.lazycat.model.Book;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+@Mapper
+public interface BookDAO {
+    String table_name = &quot; book &quot;;
+    String insert_field = &quot; name,author,price &quot;;
+    String select_field = &quot; id,status, &quot;+insert_field;
+    @Select({&quot;select&quot;,select_field,&quot;from&quot;,table_name})
+    List&amp;lt;Book&amp;gt; selectAll();
+    @Insert({&quot;insert into&quot;,table_name,&quot;(&quot;,insert_field,&quot;) values (#{name},#{author},#{price})&quot;})
+    int addBook(Book book);
+    @Update({&quot;update&quot;,table_name,&quot; set status=#{status} where id=#{id}&quot;})
+    void updateBookStatus(@Param(&quot;id&quot;) int id,@Param(&quot;status&quot;) int status);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;主要是数据库交互&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">MySql存储引擎</title><link href="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="alternate" type="text/html" title="MySql存储引擎" /><published>2020-07-22T00:00:00-04:00</published><updated>2020-07-22T00:00:00-04:00</updated><id>http://localhost:4000/_posts/MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;什么是存储引擎&quot;&gt;什么是存储引擎&lt;/h1&gt;
 

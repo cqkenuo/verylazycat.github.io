@@ -326,6 +326,8 @@
       <ol id="toc">
   <li><a href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93">创建数据库</a></li>
   <li><a href="#%E9%85%8D%E7%BD%AEpom%E6%96%87%E4%BB%B6">配置pom文件</a></li>
+  <li><a href="#404%E9%A1%B5%E9%9D%A2">404页面</a></li>
+  <li><a href="#addbook%E9%A1%B5%E9%9D%A2">addbook页面</a></li>
   <li><a href="#curd">CURD</a></li>
 </ol>
       
@@ -594,11 +596,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    2674字
+    5504字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    9分
+    19分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" data-xid="/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" data-flag-title="图书管理系统demo">
@@ -749,7 +751,139 @@ CREATE TABLE `user` (
 
 </code></pre>
 
+<h1 id="404页面">404页面</h1>
+
+<p>在templates目录下新建404.html</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;404&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404&lt;/h1&gt;
+&lt;h1&gt;${error}&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h1 id="addbook页面">addbook页面</h1>
+
+<p>在templates/book目录下新建addbook,html</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;添加图书&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;添加图书&lt;/h1&gt;
+&lt;form action="/books/add/do" method="post"&gt;
+    &lt;P&gt;书名: &lt;input type="text" name="name"/&gt;&lt;/P&gt;
+    &lt;P&gt;作者: &lt;input type="text" name="author"/&gt;&lt;/P&gt;
+    &lt;P&gt;价格: &lt;input type="text" name="price"/&gt;&lt;/P&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>在templates/book目录下新建books.html</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;图书列表&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+    &lt;h3&gt;图书列表&lt;/h3&gt;
+    &lt;h4 id="status"&gt;&lt;/h4&gt;
+
+    &lt;#if host??&gt;
+    &lt;table cellpadding="10"&gt;
+        &lt;tr&gt;
+            &lt;td&gt;${host.name}&lt;/td&gt;
+            &lt;td&gt;&lt;a href="/users/logout/do"&gt;退出登录&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;#else&gt;
+    &lt;h5&gt;未登录！&lt;a href="/users/login"&gt;登陆/&lt;/a&gt;&lt;a href="/users/register"&gt;注册&lt;/a&gt;&lt;/h5&gt;
+&lt;/#if&gt;
+
+&lt;table border="1" cellpadding="10"&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ID&lt;/td&gt;
+        &lt;td&gt;书名&lt;/td&gt;
+        &lt;td&gt;作者&lt;/td&gt;
+        &lt;td&gt;价格&lt;/td&gt;
+        &lt;td&gt;状态&lt;/td&gt;
+        &lt;td colspan="2" align="center"&gt;&lt;a href="/books/add" target="_blank"&gt;Add&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;#list books as book&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;a&gt;${book.id}&lt;/a&gt;&lt;/td&gt;
+        &lt;td&gt;《${book.name}》&lt;/td&gt;
+        &lt;td&gt;${book.author}&lt;/td&gt;
+        &lt;td&gt;${book.price}&lt;/td&gt;
+        &lt;td&gt;&lt;#if book.status == 0&gt; 在库 &lt;#elseif book.status == 1&gt; 已借出 &lt;/#if&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;a href="/books/${book.id}/delete"&gt;借书&lt;/a&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;a href="/books/${book.id}/recover"&gt;还书&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/#list&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
 <h1 id="curd">CURD</h1>
+
+<p>在model目录下创建Book.java</p>
+
+<pre><code class="language-java">import lombok.Data;
+
+@Data
+public class Book {
+    private int id;
+    private  String name;
+    private  String author;
+    private  String price;
+    private int status;
+}
+</code></pre>
+
+<p>这里使用了<code>lombok</code>自动实现get,set等方法</p>
+
+<p>在dao目录下新建BookDAO</p>
+
+<pre><code class="language-java">import com.lazycat.lazycat.model.Book;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+@Mapper
+public interface BookDAO {
+    String table_name = " book ";
+    String insert_field = " name,author,price ";
+    String select_field = " id,status, "+insert_field;
+    @Select({"select",select_field,"from",table_name})
+    List&lt;Book&gt; selectAll();
+    @Insert({"insert into",table_name,"(",insert_field,") values (#{name},#{author},#{price})"})
+    int addBook(Book book);
+    @Update({"update",table_name," set status=#{status} where id=#{id}"})
+    void updateBookStatus(@Param("id") int id,@Param("status") int status);
+}
+</code></pre>
+
+<blockquote>
+  <p>主要是数据库交互</p>
+</blockquote>
+
 
 </div>
 <div class="v">
