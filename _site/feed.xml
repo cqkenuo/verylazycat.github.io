@@ -1,11 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-25T10:02:42-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-25T10:54:41-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">图书管理系统demo</title><link href="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" rel="alternate" type="text/html" title="图书管理系统demo" /><published>2020-07-23T00:00:00-04:00</published><updated>2020-07-23T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">ARP安全</title><link href="http://localhost:4000/_posts/2020-07-25-GPC&%E7%BB%95%E8%BF%87/" rel="alternate" type="text/html" title="ARP安全" /><published>2020-07-25T00:00:00-04:00</published><updated>2020-07-25T00:00:00-04:00</updated><id>http://localhost:4000/_posts/GPC&amp;%E7%BB%95%E8%BF%87</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-25-GPC&amp;%E7%BB%95%E8%BF%87/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;PHP magic_quotes_gpc作用范围是：WEB客户服务端；作用时间：请求开始时&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;使用&quot;&gt;使用&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于PHP magic_quotes_gpc=on的情况， 我们可以不对输入和输出数据库的字符串数据作addslashes()和&lt;a href=&quot;https://baike.baidu.com/item/stripslashes&quot;&gt;stripslashes&lt;/a&gt;()的操作,数据也会正常显示。如果此时你对输入的数据作了addslashes()处理，那么在输出的时候就必须使用stripslashes()去掉多余的&lt;a href=&quot;https://baike.baidu.com/item/反斜杠&quot;&gt;反斜杠&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于PHP magic_quotes_gpc=off 的情况,必须使用addslashes()对输入数据进行处理，但并不需要使用stripslashes()格式化输出，因为addslashes()并未将反斜杠一起写入数据库，只是帮助mysql完成了sql语句的执行。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;实例&quot;&gt;实例&lt;/h1&gt;
+
+&lt;p&gt;条件： PHP magic_quotes_gpc=off&lt;/p&gt;
+
+&lt;p&gt;写入数据库的字符串未经过任何过滤处理。从数据库读出的字符串也未作任何处理。&lt;/p&gt;
+
+&lt;p&gt;数据：  $data=”snow”’’sun” ; (snow和sun之间是四个连续的单引号).&lt;/p&gt;
+
+&lt;p&gt;操作： 将字符串:”snow”’’sun” 写入数据库，&lt;/p&gt;
+
+&lt;p&gt;结果： 出现sql语句错误，mysql不能顺利完成sql语句，写入数据库失败。&lt;/p&gt;
+
+&lt;p&gt;数据库保存格式：无数据。&lt;/p&gt;
+
+&lt;p&gt;输出数据格式：无数据。&lt;/p&gt;
+
+&lt;p&gt;说明： 对于未经处理的单引号在写入数据库时会使sql语句发生错误。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;条件： PHP magic_quotes_gpc=off&lt;/p&gt;
+
+&lt;p&gt;写入数据库的字符串经过函数addslashes()处理。从数据库读出的字符串未作任何处理。&lt;/p&gt;
+
+&lt;p&gt;数据：  $data=”snow”’’sun” ; (snow和sun之间是四个连续的单引号).&lt;/p&gt;
+
+&lt;p&gt;操作： 将字符串:”snow”’’sun” 写入数据库，&lt;/p&gt;
+
+&lt;p&gt;结果： sql语句顺利执行，数据成功写入数据库&lt;/p&gt;
+
+&lt;p&gt;数据库保存格式：snow”’’sun (和输入一样)&lt;/p&gt;
+
+&lt;p&gt;输出数据格式：snow”’’sun (和输入一样)&lt;/p&gt;
+
+&lt;p&gt;说明： addslashes()函数将单引号转换为\’的&lt;a href=&quot;https://baike.baidu.com/item/转义字符&quot;&gt;转义字符&lt;/a&gt;使sql语句成功执行，&lt;/p&gt;
+
+&lt;p&gt;但\’并未作为数据存入数据库，数据库保存的是snow”’’sun 而并不是我们想象的snow\’\’\’\’sun&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;条件： PHP magic_quotes_gpc=on&lt;/p&gt;
+
+&lt;p&gt;写入数据库的字符串未经过任何处理。从数据库读出的字符串未作任何处理。&lt;/p&gt;
+
+&lt;p&gt;数据：  $data=”snow”’’sun” ; (snow和sun之间是四个连续的单引号).&lt;/p&gt;
+
+&lt;p&gt;操作： 将字符串:”snow”’’sun” 写入数据库，&lt;/p&gt;
+
+&lt;p&gt;结果： sql语句顺利执行，数据成功写入数据库&lt;/p&gt;
+
+&lt;p&gt;数据库保存格式：snow”’’sun (和输入一样)&lt;/p&gt;
+
+&lt;p&gt;输出数据格式：snow”’’sun (和输入一样)&lt;/p&gt;
+
+&lt;p&gt;说明： PHP magic_quotes_gpc=on 将单引号转换为\’的&lt;a href=&quot;https://baike.baidu.com/item/转义字符&quot;&gt;转义字符&lt;/a&gt;使sql语句成功执行，&lt;/p&gt;
+
+&lt;p&gt;但\’并未作为数据入数据库，数据库保存的是snow”’’sun而并不是我们想象的snow\’\’\’\’sun。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;条件： PHP magic_quotes_gpc=on&lt;/p&gt;
+
+&lt;p&gt;写入数据库的字符串经过函数addlashes()处理。从数据库读出的字符串未作任何处理。&lt;/p&gt;
+
+&lt;p&gt;数据：  $data=”snow”’’sun” ; (snow和sun之间是四个连续的单引号).&lt;/p&gt;
+
+&lt;p&gt;操作： 将字符串:”snow”’’sun” 写入数据库，&lt;/p&gt;
+
+&lt;p&gt;结果： sql语句顺利执行，数据成功写入数据库&lt;/p&gt;
+
+&lt;p&gt;数据库保存格式：snow\’\’\’\’sun (添加了&lt;a href=&quot;https://baike.baidu.com/item/转义字符&quot;&gt;转义字符&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;输出数据格式：snow\’\’\’\’sun (添加了转义字符)&lt;/p&gt;
+
+&lt;p&gt;说明： PHP magic_quotes_gpc=on 将单引号转换为\’的转义字符使sql语句成功执行，&lt;/p&gt;
+
+&lt;p&gt;addslashes又将即将写入数据库的单引号转换为\’,后者的转换被作为数据写入&lt;/p&gt;
+
+&lt;p&gt;数据库，数据库保存的是snow\’\’\’\’sun&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">图书管理系统demo</title><link href="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" rel="alternate" type="text/html" title="图书管理系统demo" /><published>2020-07-23T00:00:00-04:00</published><updated>2020-07-23T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;创建数据库&quot;&gt;创建数据库&lt;/h1&gt;
 
@@ -5225,152 +5320,4 @@ int main(int argc,char ** argv[])
     }
     return 0;
 }
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry><entry><title type="html">ubuntu安装问题及后续配置</title><link href="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="ubuntu安装问题及后续配置" /><published>2020-07-08T00:00:00-04:00</published><updated>2020-07-08T00:00:00-04:00</updated><id>http://localhost:4000/_posts/ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;镜像下载：&lt;a href=&quot;https://ubuntu.com/&quot;&gt;地址&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;win平台制作启动盘软件：软碟通&lt;/li&gt;
-  &lt;li&gt;linux制作启动盘：dd命令：dd if=镜像位置 of= U盘挂载位置&lt;/li&gt;
-  &lt;li&gt;设置BOIS引导启动，后安装，此处不赘述&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;安装中出现的问题&quot;&gt;安装中出现的问题&lt;/h1&gt;
-
-&lt;h2 id=&quot;卡死&quot;&gt;卡死&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;卡死在logo界面等等&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;一般是因为ubuntu自带nouveau显卡驱动，且是默认的驱动，与本机N卡冲突&lt;/p&gt;
-
-&lt;p&gt;解决方法：&lt;/p&gt;
-
-&lt;p&gt;在启动U盘时，当看到&lt;code&gt;Try Ubuntu ，Install Ubuntu&lt;/code&gt;时，按下&lt;code&gt;e&lt;/code&gt;键，把出现的文字中&lt;code&gt;quiet splash&lt;/code&gt;改为&lt;code&gt;nomodeset&lt;/code&gt;，然后按&lt;code&gt;F10&lt;/code&gt;重启&lt;/p&gt;
-
-&lt;p&gt;后续即可进入桌面进行安装了&lt;/p&gt;
-
-&lt;h1 id=&quot;配置源&quot;&gt;配置源&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;先备份&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo cp  /etc/apt/sources.list /etc/apt/sources.list.bk
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;更新源&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo vim /etc/apt/sources.list
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;vim 自己安装 :sudo apt-get install vim&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;阿里源&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://developer.aliyun.com/mirror/&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;清华源&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://mirrors.tuna.tsinghua.edu.cn/&lt;/p&gt;
-
-&lt;h1 id=&quot;英伟达显卡驱动配置&quot;&gt;英伟达显卡驱动配置&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;可以到官网下载驱动&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;网址:https://www.nvidia.cn/Download/index.aspx?lang=cn&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;源安装
-    &lt;ul&gt;
-      &lt;li&gt;查看可安装的驱动&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;ubuntu-drivers devices
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;安装驱动&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt; sudo apt-get install 驱动版本
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;美化&quot;&gt;美化&lt;/h1&gt;
-
-&lt;p&gt;必要工具&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo apt install gnome-tweaks
-sudo apt install chrome-gnome-shell
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;gonome主题更换&lt;/p&gt;
-
-&lt;p&gt;下载网站&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;https://www.gnome-look.org/&lt;/p&gt;
-
-  &lt;p&gt;需要魔法上网,不然很慢&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;必要软件&quot;&gt;必要软件&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;搜狗输入法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://pinyin.sogou.com/linux/&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;网易云&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://music.163.com/&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;idea&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://www.jetbrains.com/idea/&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pycharm&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://www.jetbrains.com/pycharm/&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;VM-ware&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://www.vmware.com/cn.html&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;zsh&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://ohmyz.sh/&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;mysql&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;https://www.mysql.com/&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
