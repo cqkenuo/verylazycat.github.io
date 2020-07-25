@@ -330,6 +330,10 @@
       <li><a href="#%E5%8D%A1%E6%AD%BB">卡死</a></li>
     </ol>
   </li>
+  <li><a href="#%E9%85%8D%E7%BD%AE%E6%BA%90">配置源</a></li>
+  <li><a href="#%E8%8B%B1%E4%BC%9F%E8%BE%BE%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E9%85%8D%E7%BD%AE">英伟达显卡驱动配置</a></li>
+  <li><a href="#%E7%BE%8E%E5%8C%96">美化</a></li>
+  <li><a href="#%E5%BF%85%E8%A6%81%E8%BD%AF%E4%BB%B6">必要软件</a></li>
 </ol>
       
       
@@ -597,11 +601,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    241字
+    985字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    1分
+    4分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" data-xid="/_posts/2020-07-08-ubuntu%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E5%8F%8A%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE/" data-flag-title="ubuntu安装问题及后续配置">
@@ -657,6 +661,129 @@
 <p>在启动U盘时，当看到<code>Try Ubuntu ，Install Ubuntu</code>时，按下<code>e</code>键，把出现的文字中<code>quiet splash</code>改为<code>nomodeset</code>，然后按<code>F10</code>重启</p>
 
 <p>后续即可进入桌面进行安装了</p>
+
+<h1 id="配置源">配置源</h1>
+
+<ul>
+  <li>
+    <p>先备份</p>
+
+    <pre><code class="language-bash">sudo cp  /etc/apt/sources.list /etc/apt/sources.list.bk
+</code></pre>
+  </li>
+  <li>
+    <p>更新源</p>
+
+    <pre><code class="language-bash">sudo vim /etc/apt/sources.list
+</code></pre>
+
+    <blockquote>
+      <p>vim 自己安装 :sudo apt-get install vim</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>阿里源</p>
+  </li>
+</ul>
+
+<p>https://developer.aliyun.com/mirror/</p>
+
+<ul>
+  <li>清华源</li>
+</ul>
+
+<p>https://mirrors.tuna.tsinghua.edu.cn/</p>
+
+<h1 id="英伟达显卡驱动配置">英伟达显卡驱动配置</h1>
+
+<ul>
+  <li>可以到官网下载驱动</li>
+</ul>
+
+<p>网址:https://www.nvidia.cn/Download/index.aspx?lang=cn</p>
+
+<ul>
+  <li>源安装
+    <ul>
+      <li>查看可安装的驱动</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code class="language-bash">ubuntu-drivers devices
+</code></pre>
+
+<ul>
+  <li>安装驱动</li>
+</ul>
+
+<pre><code class="language-bash"> sudo apt-get install 驱动版本
+</code></pre>
+
+<h1 id="美化">美化</h1>
+
+<p>必要工具</p>
+
+<pre><code class="language-bash">sudo apt install gnome-tweaks
+sudo apt install chrome-gnome-shell
+</code></pre>
+
+<p>gonome主题更换</p>
+
+<p>下载网站</p>
+
+<blockquote>
+  <p>https://www.gnome-look.org/</p>
+
+  <p>需要魔法上网,不然很慢</p>
+</blockquote>
+
+<h1 id="必要软件">必要软件</h1>
+
+<ul>
+  <li>搜狗输入法</li>
+</ul>
+
+<p>https://pinyin.sogou.com/linux/</p>
+
+<ul>
+  <li>网易云</li>
+</ul>
+
+<p>https://music.163.com/</p>
+
+<ul>
+  <li>idea</li>
+</ul>
+
+<p>https://www.jetbrains.com/idea/</p>
+
+<ul>
+  <li>pycharm</li>
+</ul>
+
+<p>https://www.jetbrains.com/pycharm/</p>
+
+<ul>
+  <li>VM-ware</li>
+</ul>
+
+<p>https://www.vmware.com/cn.html</p>
+
+<ul>
+  <li>zsh</li>
+</ul>
+
+<p>https://ohmyz.sh/</p>
+
+<pre><code class="language-bash">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+</code></pre>
+
+<ul>
+  <li>mysql</li>
+</ul>
+
+<p>https://www.mysql.com/</p>
 
 </div>
 <div class="v">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-24T22:58:25-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-25T10:02:42-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -5250,4 +5250,127 @@ int main(int argc,char ** argv[])
 
 &lt;p&gt;在启动U盘时，当看到&lt;code&gt;Try Ubuntu ，Install Ubuntu&lt;/code&gt;时，按下&lt;code&gt;e&lt;/code&gt;键，把出现的文字中&lt;code&gt;quiet splash&lt;/code&gt;改为&lt;code&gt;nomodeset&lt;/code&gt;，然后按&lt;code&gt;F10&lt;/code&gt;重启&lt;/p&gt;
 
-&lt;p&gt;后续即可进入桌面进行安装了&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
+&lt;p&gt;后续即可进入桌面进行安装了&lt;/p&gt;
+
+&lt;h1 id=&quot;配置源&quot;&gt;配置源&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;先备份&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo cp  /etc/apt/sources.list /etc/apt/sources.list.bk
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;更新源&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo vim /etc/apt/sources.list
+&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;vim 自己安装 :sudo apt-get install vim&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;阿里源&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://developer.aliyun.com/mirror/&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;清华源&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://mirrors.tuna.tsinghua.edu.cn/&lt;/p&gt;
+
+&lt;h1 id=&quot;英伟达显卡驱动配置&quot;&gt;英伟达显卡驱动配置&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可以到官网下载驱动&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;网址:https://www.nvidia.cn/Download/index.aspx?lang=cn&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;源安装
+    &lt;ul&gt;
+      &lt;li&gt;查看可安装的驱动&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;ubuntu-drivers devices
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装驱动&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt; sudo apt-get install 驱动版本
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;美化&quot;&gt;美化&lt;/h1&gt;
+
+&lt;p&gt;必要工具&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo apt install gnome-tweaks
+sudo apt install chrome-gnome-shell
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;gonome主题更换&lt;/p&gt;
+
+&lt;p&gt;下载网站&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;https://www.gnome-look.org/&lt;/p&gt;
+
+  &lt;p&gt;需要魔法上网,不然很慢&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;必要软件&quot;&gt;必要软件&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;搜狗输入法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://pinyin.sogou.com/linux/&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;网易云&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://music.163.com/&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;idea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://www.jetbrains.com/idea/&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pycharm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://www.jetbrains.com/pycharm/&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VM-ware&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://www.vmware.com/cn.html&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;zsh&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://ohmyz.sh/&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;https://www.mysql.com/&lt;/p&gt;</content><author><name></name></author><category term="linux" /><summary type="html">[toc]</summary></entry></feed>
