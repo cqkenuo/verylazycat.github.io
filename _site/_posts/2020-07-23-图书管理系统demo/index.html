@@ -327,8 +327,10 @@
   <li><a href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93">创建数据库</a></li>
   <li><a href="#%E9%85%8D%E7%BD%AEpom%E6%96%87%E4%BB%B6">配置pom文件</a></li>
   <li><a href="#404%E9%A1%B5%E9%9D%A2">404页面</a></li>
-  <li><a href="#addbook%E9%A1%B5%E9%9D%A2">addbook页面</a></li>
+  <li><a href="#%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2">前端页面</a></li>
   <li><a href="#curd">CURD</a></li>
+  <li><a href="#service">service</a></li>
+  <li><a href="#controller">controller</a></li>
 </ol>
       
       
@@ -596,11 +598,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    5504字
+    10171字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    19分
+    34分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" data-xid="/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" data-flag-title="图书管理系统demo">
@@ -631,8 +633,6 @@
     
   </span>
   <p>[toc]</p>
-
-<p>[toc]</p>
 
 <h1 id="创建数据库">创建数据库</h1>
 
@@ -768,7 +768,7 @@ CREATE TABLE `user` (
 &lt;/html&gt;
 </code></pre>
 
-<h1 id="addbook页面">addbook页面</h1>
+<h1 id="前端页面">前端页面</h1>
 
 <p>在templates/book目录下新建addbook,html</p>
 
@@ -841,6 +841,47 @@ CREATE TABLE `user` (
 
 </code></pre>
 
+<p>在login目录下新建loginhtml</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;title&gt;用户登录&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;用户登录&lt;/h1&gt;
+&lt;form action="/users/login/do" method="post"&gt;
+	&lt;p&gt;邮箱： &lt;input type="text" name="email" /&gt;&lt;/p&gt;
+	&lt;p&gt;密码： &lt;input type="text" name="password" /&gt;&lt;/p&gt;
+	&lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+<p>在login目录下新建register.html</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;title&gt;用户注册&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;用户注册&lt;/h1&gt;
+&lt;form action="/users/register/do" method="post"&gt;
+	&lt;p&gt;昵称： &lt;input type="text" name="name" /&gt;&lt;/p&gt;
+	&lt;p&gt;邮箱： &lt;input type="text" name="email" /&gt;&lt;/p&gt;
+	&lt;p&gt;密码： &lt;input type="text" name="password" /&gt;&lt;/p&gt;
+	&lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
 <h1 id="curd">CURD</h1>
 
 <p>在model目录下创建Book.java</p>
@@ -859,7 +900,40 @@ public class Book {
 
 <p>这里使用了<code>lombok</code>自动实现get,set等方法</p>
 
-<p>在dao目录下新建BookDAO</p>
+<p>同理,在model目录下新建Ticket.java</p>
+
+<pre><code class="language-java">import lombok.Data;
+
+import java.util.Date;
+@Data
+public class Ticket {
+    private  int id;
+    private int userId;
+    private  String ticket;
+    //过期时间
+    private Date exporedAt;
+}
+</code></pre>
+
+<p>在model目录下新建User.java</p>
+
+<pre><code class="language-java">import lombok.Data;
+
+@Data
+public class User {
+    private  int id;
+    private String name;
+    private String email;
+    //md5加密
+    private String password;
+}
+</code></pre>
+
+<p><em>ok,主要部分已经写好了</em></p>
+
+<p>现在写DAO</p>
+
+<p>在dao目录下新建BookDAO.java</p>
 
 <pre><code class="language-java">import com.lazycat.lazycat.model.Book;
 import org.apache.ibatis.annotations.*;
@@ -883,6 +957,160 @@ public interface BookDAO {
 <blockquote>
   <p>主要是数据库交互</p>
 </blockquote>
+
+<p>在dao目录下新建TicketDAO.java</p>
+
+<pre><code class="language-java">import com.lazycat.lazycat.model.Ticket;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+@Mapper
+public interface TicketDAO {
+    String table_name = " ticket ";
+    String insert_field = " user_id, ticket,expired_at";
+    String select_field = " id, "+insert_field;
+
+    @Insert({"insert into", table_name, "(", insert_field,
+            ") values (#{userId},#{ticket},#{expiredAt})"})
+    int addTicket(Ticket ticket);
+    @Select({"select", select_field, "from", table_name, "where user_id=#{uid}"})
+    Ticket selectByUserId(int uid);
+
+    @Select({"select", select_field, "from", table_name, "where ticket=#{t}"})
+    Ticket selectByTicket(String t);
+
+    @Delete({"delete from", table_name, " where id=#{tid}"})
+    void deleteTicketById(int tid);
+
+    @Delete({"delete from", table_name, " where ticket=#{t}"})
+    void deleteTicket(String t);
+}
+</code></pre>
+
+<p>同理新建UserDAO</p>
+
+<pre><code class="language-java">import com.lazycat.lazycat.model.User;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+@Mapper
+public interface UserDAO {
+    String table_name = " user ";
+    String insert_field = " name, email, password ";
+    String select_field = " id, " + insert_field;
+
+    @Insert({"insert into", table_name, "(", insert_field,
+            ") values (#{name},#{email},#{password})"})
+    int addUser(User user);
+
+    @Select({"select", select_field, "from", table_name, "where id=#{id}"})
+    User selectById(int id);
+
+    @Select({"select", select_field, "from", table_name, "where name=#{name}"})
+    User selectByName(String name);
+
+    @Select({"select", select_field, "from", table_name, "where email=#{email}"})
+    User selectByEmail(String email);
+
+    @Update({"update", table_name, "set password=#{password} where id=#{id}"})
+    void updatePassword(User user);
+}
+</code></pre>
+
+<h1 id="service">service</h1>
+
+<p>在service新建BookService.java</p>
+
+<pre><code class="language-java">import com.lazycat.lazycat.dao.BookDAO;
+import com.lazycat.lazycat.model.Book;
+import com.lazycat.lazycat.model.enums.BookStatusEnum;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class BookService {
+    @Autowired(required = false)
+    private BookDAO bookDAO;
+
+    public List&lt;Book&gt; getAllBooks(){
+        return bookDAO.selectAll();
+    }
+    public int addBooks(Book book){
+        return  bookDAO.addBook(book);
+    }
+
+    public void deleteBooks(int id){
+        bookDAO.updateBookStatus(id, BookStatusEnum.DELETE.getValue());
+    }
+    public  void recoverBook(int id){
+        bookDAO.updateBookStatus(id,BookStatusEnum.NORMAL.getValue());
+    }
+}
+</code></pre>
+
+<p>同理新建TicketService.java</p>
+
+<pre><code class="language-java">import com.lazycat.lazycat.dao.TicketDAO;
+import com.lazycat.lazycat.model.Ticket;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TicketService {
+    @Autowired(required = false)
+    private TicketDAO ticketDAO;
+
+    public void addTicket(Ticket ticket){
+        ticketDAO.addTicket(ticket);
+    }
+    public Ticket getTicket(int uid){
+        return ticketDAO.selectByUserId(uid);
+    }
+    public  void deleteTicket(int tid){
+        ticketDAO.deleteTicketById(tid);
+    }
+    public void deleteTicket(String t){
+        ticketDAO.deleteTicket(t);
+    }
+}
+</code></pre>
+
+<p>新建UserService</p>
+
+<pre><code class="language-java">import com.lazycat.lazycat.dao.UserDAO;
+import com.lazycat.lazycat.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    @Autowired(required = false)
+    private UserDAO userDAO;
+
+    public  int addUser(User user){
+        return userDAO.addUser(user);
+    }
+    public  User getUser(String email){
+        return userDAO.selectByEmail(email);
+    }
+    public  User getUser(int uid){
+        return  userDAO.selectById(uid);
+    }
+}
+</code></pre>
+
+<h1 id="controller">controller</h1>
+
+<p>在controller目录下新建BookController.java</p>
+
+<pre><code>
+</code></pre>
 
 
 </div>

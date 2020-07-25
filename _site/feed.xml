@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-24T00:53:57-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-24T22:58:25-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
@@ -6,8 +6,6 @@
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 </subtitle><entry><title type="html">图书管理系统demo</title><link href="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/" rel="alternate" type="text/html" title="图书管理系统demo" /><published>2020-07-23T00:00:00-04:00</published><updated>2020-07-23T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-23-%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdemo/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;创建数据库&quot;&gt;创建数据库&lt;/h1&gt;
 
@@ -143,7 +141,7 @@ CREATE TABLE `user` (
 &amp;lt;/html&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&quot;addbook页面&quot;&gt;addbook页面&lt;/h1&gt;
+&lt;h1 id=&quot;前端页面&quot;&gt;前端页面&lt;/h1&gt;
 
 &lt;p&gt;在templates/book目录下新建addbook,html&lt;/p&gt;
 
@@ -216,6 +214,47 @@ CREATE TABLE `user` (
 
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;在login目录下新建loginhtml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+	&amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+	&amp;lt;title&amp;gt;用户登录&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;用户登录&amp;lt;/h1&amp;gt;
+&amp;lt;form action=&quot;/users/login/do&quot; method=&quot;post&quot;&amp;gt;
+	&amp;lt;p&amp;gt;邮箱： &amp;lt;input type=&quot;text&quot; name=&quot;email&quot; /&amp;gt;&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;密码： &amp;lt;input type=&quot;text&quot; name=&quot;password&quot; /&amp;gt;&amp;lt;/p&amp;gt;
+	&amp;lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在login目录下新建register.html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+	&amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;
+	&amp;lt;title&amp;gt;用户注册&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;用户注册&amp;lt;/h1&amp;gt;
+&amp;lt;form action=&quot;/users/register/do&quot; method=&quot;post&quot;&amp;gt;
+	&amp;lt;p&amp;gt;昵称： &amp;lt;input type=&quot;text&quot; name=&quot;name&quot; /&amp;gt;&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;邮箱： &amp;lt;input type=&quot;text&quot; name=&quot;email&quot; /&amp;gt;&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;密码： &amp;lt;input type=&quot;text&quot; name=&quot;password&quot; /&amp;gt;&amp;lt;/p&amp;gt;
+	&amp;lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h1 id=&quot;curd&quot;&gt;CURD&lt;/h1&gt;
 
 &lt;p&gt;在model目录下创建Book.java&lt;/p&gt;
@@ -234,7 +273,40 @@ public class Book {
 
 &lt;p&gt;这里使用了&lt;code&gt;lombok&lt;/code&gt;自动实现get,set等方法&lt;/p&gt;
 
-&lt;p&gt;在dao目录下新建BookDAO&lt;/p&gt;
+&lt;p&gt;同理,在model目录下新建Ticket.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import lombok.Data;
+
+import java.util.Date;
+@Data
+public class Ticket {
+    private  int id;
+    private int userId;
+    private  String ticket;
+    //过期时间
+    private Date exporedAt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在model目录下新建User.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import lombok.Data;
+
+@Data
+public class User {
+    private  int id;
+    private String name;
+    private String email;
+    //md5加密
+    private String password;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;ok,主要部分已经写好了&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;现在写DAO&lt;/p&gt;
+
+&lt;p&gt;在dao目录下新建BookDAO.java&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import com.lazycat.lazycat.model.Book;
 import org.apache.ibatis.annotations.*;
@@ -257,7 +329,161 @@ public interface BookDAO {
 
 &lt;blockquote&gt;
   &lt;p&gt;主要是数据库交互&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">MySql存储引擎</title><link href="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="alternate" type="text/html" title="MySql存储引擎" /><published>2020-07-22T00:00:00-04:00</published><updated>2020-07-22T00:00:00-04:00</updated><id>http://localhost:4000/_posts/MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在dao目录下新建TicketDAO.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import com.lazycat.lazycat.model.Ticket;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+@Mapper
+public interface TicketDAO {
+    String table_name = &quot; ticket &quot;;
+    String insert_field = &quot; user_id, ticket,expired_at&quot;;
+    String select_field = &quot; id, &quot;+insert_field;
+
+    @Insert({&quot;insert into&quot;, table_name, &quot;(&quot;, insert_field,
+            &quot;) values (#{userId},#{ticket},#{expiredAt})&quot;})
+    int addTicket(Ticket ticket);
+    @Select({&quot;select&quot;, select_field, &quot;from&quot;, table_name, &quot;where user_id=#{uid}&quot;})
+    Ticket selectByUserId(int uid);
+
+    @Select({&quot;select&quot;, select_field, &quot;from&quot;, table_name, &quot;where ticket=#{t}&quot;})
+    Ticket selectByTicket(String t);
+
+    @Delete({&quot;delete from&quot;, table_name, &quot; where id=#{tid}&quot;})
+    void deleteTicketById(int tid);
+
+    @Delete({&quot;delete from&quot;, table_name, &quot; where ticket=#{t}&quot;})
+    void deleteTicket(String t);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同理新建UserDAO&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import com.lazycat.lazycat.model.User;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+@Mapper
+public interface UserDAO {
+    String table_name = &quot; user &quot;;
+    String insert_field = &quot; name, email, password &quot;;
+    String select_field = &quot; id, &quot; + insert_field;
+
+    @Insert({&quot;insert into&quot;, table_name, &quot;(&quot;, insert_field,
+            &quot;) values (#{name},#{email},#{password})&quot;})
+    int addUser(User user);
+
+    @Select({&quot;select&quot;, select_field, &quot;from&quot;, table_name, &quot;where id=#{id}&quot;})
+    User selectById(int id);
+
+    @Select({&quot;select&quot;, select_field, &quot;from&quot;, table_name, &quot;where name=#{name}&quot;})
+    User selectByName(String name);
+
+    @Select({&quot;select&quot;, select_field, &quot;from&quot;, table_name, &quot;where email=#{email}&quot;})
+    User selectByEmail(String email);
+
+    @Update({&quot;update&quot;, table_name, &quot;set password=#{password} where id=#{id}&quot;})
+    void updatePassword(User user);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;service&quot;&gt;service&lt;/h1&gt;
+
+&lt;p&gt;在service新建BookService.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import com.lazycat.lazycat.dao.BookDAO;
+import com.lazycat.lazycat.model.Book;
+import com.lazycat.lazycat.model.enums.BookStatusEnum;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class BookService {
+    @Autowired(required = false)
+    private BookDAO bookDAO;
+
+    public List&amp;lt;Book&amp;gt; getAllBooks(){
+        return bookDAO.selectAll();
+    }
+    public int addBooks(Book book){
+        return  bookDAO.addBook(book);
+    }
+
+    public void deleteBooks(int id){
+        bookDAO.updateBookStatus(id, BookStatusEnum.DELETE.getValue());
+    }
+    public  void recoverBook(int id){
+        bookDAO.updateBookStatus(id,BookStatusEnum.NORMAL.getValue());
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同理新建TicketService.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import com.lazycat.lazycat.dao.TicketDAO;
+import com.lazycat.lazycat.model.Ticket;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TicketService {
+    @Autowired(required = false)
+    private TicketDAO ticketDAO;
+
+    public void addTicket(Ticket ticket){
+        ticketDAO.addTicket(ticket);
+    }
+    public Ticket getTicket(int uid){
+        return ticketDAO.selectByUserId(uid);
+    }
+    public  void deleteTicket(int tid){
+        ticketDAO.deleteTicketById(tid);
+    }
+    public void deleteTicket(String t){
+        ticketDAO.deleteTicket(t);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新建UserService&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import com.lazycat.lazycat.dao.UserDAO;
+import com.lazycat.lazycat.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    @Autowired(required = false)
+    private UserDAO userDAO;
+
+    public  int addUser(User user){
+        return userDAO.addUser(user);
+    }
+    public  User getUser(String email){
+        return userDAO.selectByEmail(email);
+    }
+    public  User getUser(int uid){
+        return  userDAO.selectById(uid);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;controller&quot;&gt;controller&lt;/h1&gt;
+
+&lt;p&gt;在controller目录下新建BookController.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="JAVA" /><summary type="html">[toc]</summary></entry><entry><title type="html">MySql存储引擎</title><link href="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="alternate" type="text/html" title="MySql存储引擎" /><published>2020-07-22T00:00:00-04:00</published><updated>2020-07-22T00:00:00-04:00</updated><id>http://localhost:4000/_posts/MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-22-MySql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;什么是存储引擎&quot;&gt;什么是存储引擎&lt;/h1&gt;
 
