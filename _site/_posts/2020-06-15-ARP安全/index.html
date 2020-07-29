@@ -341,6 +341,13 @@
       <li><a href="#%E8%87%AA%E5%8A%A8%E6%9F%A5%E8%AF%A2">自动查询</a></li>
     </ol>
   </li>
+  <li><a href="#%E6%89%A9%E5%B1%95dns%E6%AC%BA%E9%AA%97">扩展:DNS欺骗</a></li>
+  <li><a href="#ettercap">Ettercap</a>
+    <ol>
+      <li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+      <li><a href="#%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F">工作模式</a></li>
+    </ol>
+  </li>
 </ol>
       
       
@@ -608,11 +615,11 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    887字
+    2030字
     
     
     <i class="fas fa-clock fa-fw"></i>
-    3分
+    7分
     
     
     <span class="leancloud-visitors" id="/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/" data-xid="/_posts/2020-06-15-ARP%E5%AE%89%E5%85%A8/" data-flag-title="ARP安全">
@@ -692,6 +699,80 @@
 <h2 id="自动查询"><strong>自动查询</strong></h2>
 
 <p>在某个正常的时间，做一个IP和MAC对应的数据库，以后定时检查当时的IP和MAC对应联系是否正常，定时检查交流机的流量列表，检查丢包率。</p>
+
+<h1 id="扩展dns欺骗">扩展:DNS欺骗</h1>
+
+<p>如果可以冒充域名服务器，然后把受害者查询域名的IP地址设为攻击者的IP地址，这样的话，用户上网就访问域名时就会访问攻击者的主页，而不是用户想要取得的网站的主页了，这就是DNS欺骗的基本原理。DNS欺骗其实并不是真的“黑掉”了对方的网站，而是冒名顶替、招摇撞骗罢了</p>
+
+<p>hosts文件：</p>
+
+<ul>
+  <li>windows：C:\Windows\System32\Drivers\etc(针对系统有所不同)</li>
+  <li>Linux：/etc/hosts</li>
+</ul>
+
+<p>修改后需要刷新</p>
+
+<p>刷新方式：</p>
+
+<p>命令行(cmd)运行:ipconfig /flushdns   #清除DNS缓存内容。
+ ps:ipconfig /displaydns  //显示DNS缓存内容</p>
+
+<p>linux下，文件位置：/etc/hosts</p>
+
+<p>刷新方式：systemctl restart nscd。</p>
+
+<blockquote>
+  <p>需要安装nscd</p>
+
+  <p>sudo apt-get install nscd</p>
+</blockquote>
+
+<h1 id="ettercap">Ettercap</h1>
+
+<p>Ettercap最初设计为交换网上的sniffer(嗅探工具)，但是随着发展，它获得了越来越多的功能，成为一款有效的、灵活的中介攻击工具。它支持主动及被动的协议解析并包含了许多网络和主机特性（如OS指纹等）分析</p>
+
+<blockquote>
+  <p><a href="https://www.ettercap-project.org/">官网</a></p>
+</blockquote>
+
+<h2 id="安装">安装</h2>
+
+<pre><code class="language-bash">sudo apt-get install ettercap-graphical
+</code></pre>
+
+<h2 id="工作模式">工作模式</h2>
+
+<ul>
+  <li>
+    <p>ipbased：基于ip地址的sniffing(源IP与目的IP)；</p>
+  </li>
+  <li>
+    <p>macbased：基于mac地址的sniffing(在捕获网关的数据包，常用)；</p>
+  </li>
+  <li>
+    <p>arpbased：在基于ARP欺骗的方式下，Ettercap利用ARP欺骗在交换局域网内监听两个主机之间的通信（全双工）；</p>
+  </li>
+  <li>
+    <p>smartarp：在SMARTARP方式下，Ettercap利用ARP欺骗，监听交换网上某台主机与所有已知的其他主机（存在于主机表中的主机）之间的通信（全双工）；</p>
+  </li>
+  <li>
+    <p>publicarp：在PUBLICARP  方式下，Ettercap利用ARP欺骗，监听交换网上某台主机与所有其它主机之间的通信（半双工）。此方式以广播方式发送ARP响应，但是如果  Ettercap已经拥有了完整的主机地址表（或在Ettercap启动时已经对LAN上的主机进行了扫描），Ettercap会自动选取  SMARTARP方式，而且ARP响应会发送给被监听主机之外的所有主机，以避免在Win2K上出现IP地址冲突的消息；</p>
+  </li>
+</ul>
+
+<p>参数说明：</p>
+
+<pre><code>       -a或- -arpsniff：基于arp的sniffing(如果你想采用中间人技术，必选)；
+
+​       -s或- -sniff：基于IP的sniffing(适用于HUB环境)；
+
+​       -m或- -macsniff：基于MAC，适用于监听远程的通信；
+
+​       -T或- -readpacpfile：脱机sniffing，Ettercap将监听一个pcap兼容文件中存储的网络数据包
+</code></pre>
+
+<p>相关教程自行学习</p>
 
 </div>
 <div class="v">
