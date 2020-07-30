@@ -385,7 +385,7 @@
       "tags"     : "JAVA",
       "date"     : "2020-05-21 00:00:00 -0400",
       
-      "url"      : "/_posts/2020-05-21-HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86;/"
+      "url"      : "/_posts/2020-05-21-HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"
     } ,
   
     {
@@ -434,12 +434,12 @@
     } ,
   
     {
-      "title"    : "JAVA一些问题二",
+      "title"    : "JAVA集合",
       "category" : "",
       "tags"     : "JAVA",
       "date"     : "2020-05-11 00:00:00 -0400",
       
-      "url"      : "/_posts/2020-05-11-JAVA%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%89/"
+      "url"      : "/_posts/2020-05-11-JAVA%E9%9B%86%E5%90%88/"
     } ,
   
     {
