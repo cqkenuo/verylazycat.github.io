@@ -2,6 +2,15 @@
 [
   
     {
+      "title"    : "JAVA多线程常见问题",
+      "category" : "",
+      "tags"     : "JAVA",
+      "date"     : "2020-07-31 00:00:00 -0400",
+      
+      "url"      : "/_posts/2020-07-31-JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"
+    } ,
+  
+    {
       "title"    : "虚拟机逃逸",
       "category" : "",
       "tags"     : "安全",
