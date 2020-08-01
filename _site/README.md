@@ -7,8 +7,8 @@
 ## 我的一些联系方式
 
 -  **SiChuan  China**
-- ​ Phone: +86 17378993771
-- ​Site: **<https://www.imod.top>**
+-  Phone: +86 17378993771
+- Site: **<https://www.imod.top>**
 
 <!-- slide vertical=true -->
 
@@ -42,11 +42,9 @@
 
 <!-- slide vertical=true -->
 
-- ​ 爱驰杯
-
-- ​ 华迪杯
-
-  
+-  爱驰杯
+-  华迪杯
+- 华为云微认证
 
 <!-- slide vertical=true -->
 
