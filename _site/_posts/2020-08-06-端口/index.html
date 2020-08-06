@@ -4,19 +4,19 @@
 <head>
   
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>风险评估 | lazycat</title>
+<title>端口 | lazycat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="风险评估" />
+<meta property="og:title" content="端口" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="[toc]" />
 <meta property="og:description" content="[toc]" />
-<link rel="canonical" href="http://localhost:4000/_posts/2020-08-06-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0/" />
-<meta property="og:url" content="http://localhost:4000/_posts/2020-08-06-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0/" />
+<link rel="canonical" href="http://localhost:4000/_posts/2020-08-06-%E7%AB%AF%E5%8F%A3/" />
+<meta property="og:url" content="http://localhost:4000/_posts/2020-08-06-%E7%AB%AF%E5%8F%A3/" />
 <meta property="og:site_name" content="lazycat" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-08-06T00:00:00-04:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-08-06-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0/","headline":"风险评估","dateModified":"2020-08-06T00:00:00-04:00","datePublished":"2020-08-06T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-08-06-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0/"},"description":"[toc]","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/_posts/2020-08-06-%E7%AB%AF%E5%8F%A3/","headline":"端口","dateModified":"2020-08-06T00:00:00-04:00","datePublished":"2020-08-06T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_posts/2020-08-06-%E7%AB%AF%E5%8F%A3/"},"description":"[toc]","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -323,9 +323,7 @@
   }
 </style>
 
-      <ol id="toc">
-  <li><a href="#%E6%B5%81%E7%A8%8B">流程</a></li>
-</ol>
+      
       
       
       <style>
@@ -573,7 +571,7 @@
 <div class="masthead">
   <h3 class="container masthead-title">
     
-    风险评估
+    端口
     <a href="/" title="Home">
       <small>
         lazycat
@@ -592,14 +590,14 @@
     
     
     <i class="fas fa-file-word fa-fw"></i>
-    7字
+    208字
     
     
     <i class="fas fa-clock fa-fw"></i>
     1分
     
     
-    <span class="leancloud-visitors" id="/_posts/2020-08-06-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0/" data-xid="/_posts/2020-08-06-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0/" data-flag-title="风险评估">
+    <span class="leancloud-visitors" id="/_posts/2020-08-06-%E7%AB%AF%E5%8F%A3/" data-xid="/_posts/2020-08-06-%E7%AB%AF%E5%8F%A3/" data-flag-title="端口">
       <i class="fas fa-book-reader fa-fw"></i>
       <span class="leancloud-visitors-count">
         <i class="fas fa-spinner fa-pulse"></i>
@@ -628,9 +626,108 @@
   </span>
   <p>[toc]</p>
 
-<h1 id="流程">流程</h1>
+<table>
+  <thead>
+    <tr>
+      <th>端口</th>
+      <th>服务</th>
+      <th>漏洞</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>21</td>
+      <td>FTP</td>
+      <td>匿名访问,弱口令</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>SSH</td>
+      <td>弱口令</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Telnet</td>
+      <td>弱口令</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>Web</td>
+      <td>常见Web漏洞或后台登录弱口令</td>
+    </tr>
+    <tr>
+      <td>161</td>
+      <td>SNMP</td>
+      <td>public弱口令</td>
+    </tr>
+    <tr>
+      <td>389</td>
+      <td>LDAP</td>
+      <td>匿名访问</td>
+    </tr>
+    <tr>
+      <td>443</td>
+      <td>openssl</td>
+      <td>心脏滴血等</td>
+    </tr>
+    <tr>
+      <td>445</td>
+      <td>smb</td>
+      <td>操作系统溢出漏洞</td>
+    </tr>
+    <tr>
+      <td>873</td>
+      <td>rsync</td>
+      <td>匿名访问，弱口令</td>
+    </tr>
+    <tr>
+      <td>1099</td>
+      <td>JAVArmi</td>
+      <td>命令执行</td>
+    </tr>
+    <tr>
+      <td>1433</td>
+      <td>MsSQL</td>
+      <td>弱口令</td>
+    </tr>
+    <tr>
+      <td>1521</td>
+      <td>Oracle</td>
+      <td>弱口令</td>
+    </tr>
+    <tr>
+      <td>2601</td>
+      <td>Zebra</td>
+      <td>默认密码zebra</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
-<p><img src="/img/风险评估.jpg" alt="风险评估" /></p>
 
 </div>
 <div class="v">
