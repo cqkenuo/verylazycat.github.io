@@ -17,6 +17,7 @@
   - **[QQ](mailto:1647495684@qq.com)**
 - WeChat: **serendipity_liuY**
 - QQ:  1647495684
+- 微信公众号:CvImod
 
 <!-- slide -->
 
